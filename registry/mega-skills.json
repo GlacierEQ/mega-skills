@@ -10,11 +10,73 @@
       "version": "1.1.0",
       "path": "mega-skills/far-away-party",
       "entrypoint": "mega-skills/far-away-party/MEGA.md",
-      "required_combos": ["long-horizon-core"],
-      "conditional_combos": ["recon-and-map", "skill-forge", "automation-control"],
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "recon-and-map",
+        "skill-forge",
+        "automation-control"
+      ],
       "mission_output": "evidence-backed-mission-result.md",
-      "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
       "adds": "Conditional selection of Compounding Combo Skills, durable state, phase gates, safe resumption, and evidence-backed integration across a long-horizon mission."
+    },
+    {
+      "id": "apex-fleet-harmonizer",
+      "display_name": "APEX Fleet Harmonizer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-fleet-harmonizer",
+      "entrypoint": "mega-skills/apex-fleet-harmonizer/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "recon-and-map",
+        "fleet-recon-and-harmonize"
+      ],
+      "mission_output": "fleet-harmonization-mission-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Long-horizon batch coordination, cross-repository state tracking, regression gating, automated rollbacks, and lossless branch pruning across large GitHub accounts."
+    },
+    {
+      "id": "apex-legal-warfare",
+      "display_name": "APEX Legal Warfare",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-legal-warfare",
+      "entrypoint": "mega-skills/apex-legal-warfare/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "court-evidence-compiler",
+        "automation-control"
+      ],
+      "mission_output": "court-admissible-litigation-packet.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "End-to-end litigation campaign orchestration, durable case evidence tracking, court filing deadlines, exhibit tethering, and cross-jurisdictional state synchronization."
     }
   ]
 }

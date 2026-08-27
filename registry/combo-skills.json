@@ -4,56 +4,960 @@
   "schema": "../schemas/combo-skill.schema.json",
   "entries": [
     {
-      "id": "long-horizon-core", "display_name": "Long-Horizon Core", "ownership": "glaciereq", "maturity": "active", "version": "0.2.0", "path": "combo-skills/long-horizon-core", "entrypoint": "combo-skills/long-horizon-core/COMBO.md",
-      "selection": {"use_when":["Work has multiple dependent phases, artifacts, or a need to resume."],"do_not_use_when":["The response is a simple, bounded factual reply with no durable artifact."]},
-      "members":[
-        {"id":"mission-contract","kind":"skill","role":"Define mission boundary and acceptance criteria.","required":true},
-        {"id":"roadmap-builder","kind":"skill","role":"Plan dependencies, phases, and chunks.","required":true},
-        {"id":"evidence-register","kind":"skill","role":"Trace facts, tests, and claims.","required":true},
-        {"id":"context-capsule","kind":"skill","role":"Preserve a lean active state.","required":true},
-        {"id":"work-packet","kind":"skill","role":"Bound specialist work and handoffs.","required":true},
-        {"id":"quality-gate","kind":"skill","role":"Verify phase and delivery acceptance.","required":true},
-        {"id":"handoff-record","kind":"skill","role":"Create a safe resume point.","required":true}
+      "id": "long-horizon-core",
+      "display_name": "Long-Horizon Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "combo-skills/long-horizon-core",
+      "entrypoint": "combo-skills/long-horizon-core/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Work has multiple dependent phases, artifacts, or a need to resume."
+        ],
+        "do_not_use_when": [
+          "The response is a simple, bounded factual reply with no durable artifact."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Define mission boundary and acceptance criteria.",
+          "required": true
+        },
+        {
+          "id": "roadmap-builder",
+          "kind": "skill",
+          "role": "Plan dependencies, phases, and chunks.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Trace facts, tests, and claims.",
+          "required": true
+        },
+        {
+          "id": "context-capsule",
+          "kind": "skill",
+          "role": "Preserve a lean active state.",
+          "required": true
+        },
+        {
+          "id": "work-packet",
+          "kind": "skill",
+          "role": "Bound specialist work and handoffs.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify phase and delivery acceptance.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Create a safe resume point.",
+          "required": true
+        }
       ],
-      "execution":{"ordered_steps":[
-        {"step":1,"member_id":"mission-contract","consumes":["Mission request","Known constraints"],"produces":["MISSION.md"],"validation":"Scope, exclusions, criteria, and approvals are explicit."},
-        {"step":2,"member_id":"roadmap-builder","consumes":["MISSION.md"],"produces":["ROADMAP.md"],"validation":"Each criterion maps to a bounded, verified chunk."},
-        {"step":3,"member_id":"evidence-register","consumes":["Sources","Artifacts","Tests"],"produces":["EVIDENCE.md"],"validation":"Material claims map to evidence or named assumptions."},
-        {"step":4,"member_id":"context-capsule","consumes":["MISSION.md","ROADMAP.md","EVIDENCE.md"],"produces":["CONTEXT.md"],"validation":"Current state supports the next chunk without raw history."},
-        {"step":5,"member_id":"work-packet","consumes":["CONTEXT.md","ROADMAP.md"],"produces":["Bounded work packet"],"validation":"Owner, output, authority, and acceptance test are explicit."},
-        {"step":6,"member_id":"quality-gate","consumes":["Artifact","EVIDENCE.md","Acceptance criteria"],"produces":["Gate record"],"validation":"A non-creator can reproduce the pass, fail, or exception decision."},
-        {"step":7,"member_id":"handoff-record","consumes":["Validated state","Gate record"],"produces":["HANDOFF.md"],"validation":"A future operator can re-enter safely at the exact next action."}
-      ]},
-      "integration":{"handoffs":[
-        {"from_member":"mission-contract","to_member":"roadmap-builder","required_inputs":["MISSION.md"],"accepted_outputs":["ROADMAP.md with dependencies and gates"],"failure_owner":"mission owner"},
-        {"from_member":"roadmap-builder","to_member":"work-packet","required_inputs":["Current chunk","Canonical constraints"],"accepted_outputs":["Bounded work packet"],"failure_owner":"integrator"},
-        {"from_member":"quality-gate","to_member":"handoff-record","required_inputs":["Gate result","Validated evidence"],"accepted_outputs":["Accurate resume state"],"failure_owner":"quality owner"}
-      ],"evidence_requirements":["Record sources, tests, claims, artifacts, and unresolved gaps."],"risk_boundaries":["Do not bypass required approvals, privacy controls, or external-action confirmation."],"quality_gates":["Each phase must pass evidence-based acceptance before advancement."],"state_updates":["Refresh context and evidence after each meaningful chunk; update handoff before pause or delivery."]},
-      "compounding":{"inherits":["Mission framing","Planning","Evidence","Context","Packets","Gates","Recovery"],"adds":"A complete, repeatable operating loop that converts individual governance Skills into a durable mission-control system.","compound_artifact":"long-horizon-run-state.md","next_layer_ready_when":["All seven state artifacts are consistent.","The next mission route can consume named evidence and no raw hidden context."]}
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Mission request",
+              "Known constraints"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Scope, exclusions, criteria, and approvals are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "roadmap-builder",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "ROADMAP.md"
+            ],
+            "validation": "Each criterion maps to a bounded, verified chunk."
+          },
+          {
+            "step": 3,
+            "member_id": "evidence-register",
+            "consumes": [
+              "Sources",
+              "Artifacts",
+              "Tests"
+            ],
+            "produces": [
+              "EVIDENCE.md"
+            ],
+            "validation": "Material claims map to evidence or named assumptions."
+          },
+          {
+            "step": 4,
+            "member_id": "context-capsule",
+            "consumes": [
+              "MISSION.md",
+              "ROADMAP.md",
+              "EVIDENCE.md"
+            ],
+            "produces": [
+              "CONTEXT.md"
+            ],
+            "validation": "Current state supports the next chunk without raw history."
+          },
+          {
+            "step": 5,
+            "member_id": "work-packet",
+            "consumes": [
+              "CONTEXT.md",
+              "ROADMAP.md"
+            ],
+            "produces": [
+              "Bounded work packet"
+            ],
+            "validation": "Owner, output, authority, and acceptance test are explicit."
+          },
+          {
+            "step": 6,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Artifact",
+              "EVIDENCE.md",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "A non-creator can reproduce the pass, fail, or exception decision."
+          },
+          {
+            "step": 7,
+            "member_id": "handoff-record",
+            "consumes": [
+              "Validated state",
+              "Gate record"
+            ],
+            "produces": [
+              "HANDOFF.md"
+            ],
+            "validation": "A future operator can re-enter safely at the exact next action."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "roadmap-builder",
+            "required_inputs": [
+              "MISSION.md"
+            ],
+            "accepted_outputs": [
+              "ROADMAP.md with dependencies and gates"
+            ],
+            "failure_owner": "mission owner"
+          },
+          {
+            "from_member": "roadmap-builder",
+            "to_member": "work-packet",
+            "required_inputs": [
+              "Current chunk",
+              "Canonical constraints"
+            ],
+            "accepted_outputs": [
+              "Bounded work packet"
+            ],
+            "failure_owner": "integrator"
+          },
+          {
+            "from_member": "quality-gate",
+            "to_member": "handoff-record",
+            "required_inputs": [
+              "Gate result",
+              "Validated evidence"
+            ],
+            "accepted_outputs": [
+              "Accurate resume state"
+            ],
+            "failure_owner": "quality owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record sources, tests, claims, artifacts, and unresolved gaps."
+        ],
+        "risk_boundaries": [
+          "Do not bypass required approvals, privacy controls, or external-action confirmation."
+        ],
+        "quality_gates": [
+          "Each phase must pass evidence-based acceptance before advancement."
+        ],
+        "state_updates": [
+          "Refresh context and evidence after each meaningful chunk; update handoff before pause or delivery."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission framing",
+          "Planning",
+          "Evidence",
+          "Context",
+          "Packets",
+          "Gates",
+          "Recovery"
+        ],
+        "adds": "A complete, repeatable operating loop that converts individual governance Skills into a durable mission-control system.",
+        "compound_artifact": "long-horizon-run-state.md",
+        "next_layer_ready_when": [
+          "All seven state artifacts are consistent.",
+          "The next mission route can consume named evidence and no raw hidden context."
+        ]
+      }
     },
     {
-      "id":"recon-and-map","display_name":"Recon and Map","ownership":"glaciereq","maturity":"active","version":"0.2.0","path":"combo-skills/recon-and-map","entrypoint":"combo-skills/recon-and-map/COMBO.md",
-      "selection":{"use_when":["Repository roles, boundaries, or relationships are uncertain before a change."],"do_not_use_when":["The target repository, revision, and ownership are already verified and unambiguous."]},
-      "members":[{"id":"mission-contract","kind":"skill","role":"Set the read-only inspection boundary.","required":true},{"id":"evidence-register","kind":"skill","role":"Trace observed repository evidence.","required":true},{"id":"quality-gate","kind":"skill","role":"Verify the map distinguishes knowns from unknowns.","required":true},{"id":"repository-context-onboarding","kind":"external-skill","role":"Inspect and compare repository roles and tensions.","required":true}],
-      "execution":{"ordered_steps":[{"step":1,"member_id":"mission-contract","consumes":["User objective","Candidate repositories"],"produces":["Inspection mission"],"validation":"Scope is read-only and candidates are named."},{"step":2,"member_id":"repository-context-onboarding","consumes":["Inspection mission","Repository metadata"],"produces":["Repository evidence"],"validation":"Roles, revisions, boundaries, and tensions are observed."},{"step":3,"member_id":"evidence-register","consumes":["Repository evidence"],"produces":["Evidence trace"],"validation":"Claims distinguish documentation from proof."},{"step":4,"member_id":"quality-gate","consumes":["Evidence trace","Mission criteria"],"produces":["Context-map gate"],"validation":"Each candidate is ruled in, ruled out, or explicitly unresolved."}]},
-      "integration":{"handoffs":[{"from_member":"mission-contract","to_member":"repository-context-onboarding","required_inputs":["Candidate scope","Read-only boundary"],"accepted_outputs":["Observed repository metadata and topology"],"failure_owner":"mission owner"},{"from_member":"repository-context-onboarding","to_member":"evidence-register","required_inputs":["Observed sources","Revision facts"],"accepted_outputs":["Traceable evidence record"],"failure_owner":"research owner"}],"evidence_requirements":["Record owner, revision, source, role, and uncertainty for each repository."],"risk_boundaries":["Do not run code or mutate repositories during onboarding without separate approval."],"quality_gates":["Do not recommend a target repository until role and evidence gaps are explicit."],"state_updates":["Record resolved routing and residual tension in the active state."]},
-      "compounding":{"inherits":["Mission boundary","Observed repository evidence","Acceptance gate"],"adds":"A reusable inspect-before-change sequence that resolves repository role ambiguity into a safe routing map.","compound_artifact":"repository-context-map.md","next_layer_ready_when":["Repository roles and the smallest next verification are explicit."]}
+      "id": "recon-and-map",
+      "display_name": "Recon and Map",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "combo-skills/recon-and-map",
+      "entrypoint": "combo-skills/recon-and-map/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Repository roles, boundaries, or relationships are uncertain before a change."
+        ],
+        "do_not_use_when": [
+          "The target repository, revision, and ownership are already verified and unambiguous."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set the read-only inspection boundary.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Trace observed repository evidence.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify the map distinguishes knowns from unknowns.",
+          "required": true
+        },
+        {
+          "id": "repository-context-onboarding",
+          "kind": "external-skill",
+          "role": "Inspect and compare repository roles and tensions.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "User objective",
+              "Candidate repositories"
+            ],
+            "produces": [
+              "Inspection mission"
+            ],
+            "validation": "Scope is read-only and candidates are named."
+          },
+          {
+            "step": 2,
+            "member_id": "repository-context-onboarding",
+            "consumes": [
+              "Inspection mission",
+              "Repository metadata"
+            ],
+            "produces": [
+              "Repository evidence"
+            ],
+            "validation": "Roles, revisions, boundaries, and tensions are observed."
+          },
+          {
+            "step": 3,
+            "member_id": "evidence-register",
+            "consumes": [
+              "Repository evidence"
+            ],
+            "produces": [
+              "Evidence trace"
+            ],
+            "validation": "Claims distinguish documentation from proof."
+          },
+          {
+            "step": 4,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Evidence trace",
+              "Mission criteria"
+            ],
+            "produces": [
+              "Context-map gate"
+            ],
+            "validation": "Each candidate is ruled in, ruled out, or explicitly unresolved."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "repository-context-onboarding",
+            "required_inputs": [
+              "Candidate scope",
+              "Read-only boundary"
+            ],
+            "accepted_outputs": [
+              "Observed repository metadata and topology"
+            ],
+            "failure_owner": "mission owner"
+          },
+          {
+            "from_member": "repository-context-onboarding",
+            "to_member": "evidence-register",
+            "required_inputs": [
+              "Observed sources",
+              "Revision facts"
+            ],
+            "accepted_outputs": [
+              "Traceable evidence record"
+            ],
+            "failure_owner": "research owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record owner, revision, source, role, and uncertainty for each repository."
+        ],
+        "risk_boundaries": [
+          "Do not run code or mutate repositories during onboarding without separate approval."
+        ],
+        "quality_gates": [
+          "Do not recommend a target repository until role and evidence gaps are explicit."
+        ],
+        "state_updates": [
+          "Record resolved routing and residual tension in the active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission boundary",
+          "Observed repository evidence",
+          "Acceptance gate"
+        ],
+        "adds": "A reusable inspect-before-change sequence that resolves repository role ambiguity into a safe routing map.",
+        "compound_artifact": "repository-context-map.md",
+        "next_layer_ready_when": [
+          "Repository roles and the smallest next verification are explicit."
+        ]
+      }
     },
     {
-      "id":"skill-forge","display_name":"Skill Forge","ownership":"glaciereq","maturity":"active","version":"0.2.0","path":"combo-skills/skill-forge","entrypoint":"combo-skills/skill-forge/COMBO.md",
-      "selection":{"use_when":["A real, recurring task pattern should become a reusable package."],"do_not_use_when":["The pattern lacks concrete examples or is not independently reusable yet."]},
-      "members":[{"id":"mission-contract","kind":"skill","role":"Define the reusable behavior and non-goals.","required":true},{"id":"evidence-register","kind":"skill","role":"Preserve real examples and failure evidence.","required":true},{"id":"quality-gate","kind":"skill","role":"Verify package quality and reuse readiness.","required":true},{"id":"skill-creator","kind":"external-skill","role":"Author, package, and validate the skill.","required":true}],
-      "execution":{"ordered_steps":[{"step":1,"member_id":"mission-contract","consumes":["Recurring use cases","User need"],"produces":["Skill mission"],"validation":"Trigger, scope, and non-goals are explicit."},{"step":2,"member_id":"evidence-register","consumes":["Use cases","Failure observations"],"produces":["Reusable evidence"],"validation":"The need adds non-obvious procedure."},{"step":3,"member_id":"skill-creator","consumes":["Skill mission","Reusable evidence"],"produces":["Packaged Skill"],"validation":"Required package structure and resources are valid."},{"step":4,"member_id":"quality-gate","consumes":["Packaged Skill","Acceptance criteria"],"produces":["Package gate"],"validation":"The package is specific, concise, and validated."}]},
-      "integration":{"handoffs":[{"from_member":"mission-contract","to_member":"skill-creator","required_inputs":["Trigger","Scope","Non-goals"],"accepted_outputs":["Skill design contract"],"failure_owner":"skill owner"},{"from_member":"skill-creator","to_member":"quality-gate","required_inputs":["Packaged skill","Validator output"],"accepted_outputs":["Accepted package"],"failure_owner":"package reviewer"}],"evidence_requirements":["Record examples, validation output, and package version."],"risk_boundaries":["Do not copy external material without a provenance and adoption decision."],"quality_gates":["A skill must pass package validation and add an independent reusable method."],"state_updates":["Register accepted packages and their version before higher-layer use."]},
-      "compounding":{"inherits":["Mission framing","Evidence trace","Acceptance gate","Skill authoring method"],"adds":"A repeatable conversion from proven task pattern to a governed reusable atomic Skill.","compound_artifact":"validated-skill-package.skill","next_layer_ready_when":["The package is validated and registered as an atomic Skill."]}
+      "id": "skill-forge",
+      "display_name": "Skill Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "combo-skills/skill-forge",
+      "entrypoint": "combo-skills/skill-forge/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A real, recurring task pattern should become a reusable package."
+        ],
+        "do_not_use_when": [
+          "The pattern lacks concrete examples or is not independently reusable yet."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Define the reusable behavior and non-goals.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Preserve real examples and failure evidence.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify package quality and reuse readiness.",
+          "required": true
+        },
+        {
+          "id": "skill-creator",
+          "kind": "external-skill",
+          "role": "Author, package, and validate the skill.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Recurring use cases",
+              "User need"
+            ],
+            "produces": [
+              "Skill mission"
+            ],
+            "validation": "Trigger, scope, and non-goals are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "evidence-register",
+            "consumes": [
+              "Use cases",
+              "Failure observations"
+            ],
+            "produces": [
+              "Reusable evidence"
+            ],
+            "validation": "The need adds non-obvious procedure."
+          },
+          {
+            "step": 3,
+            "member_id": "skill-creator",
+            "consumes": [
+              "Skill mission",
+              "Reusable evidence"
+            ],
+            "produces": [
+              "Packaged Skill"
+            ],
+            "validation": "Required package structure and resources are valid."
+          },
+          {
+            "step": 4,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Packaged Skill",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Package gate"
+            ],
+            "validation": "The package is specific, concise, and validated."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "skill-creator",
+            "required_inputs": [
+              "Trigger",
+              "Scope",
+              "Non-goals"
+            ],
+            "accepted_outputs": [
+              "Skill design contract"
+            ],
+            "failure_owner": "skill owner"
+          },
+          {
+            "from_member": "skill-creator",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Packaged skill",
+              "Validator output"
+            ],
+            "accepted_outputs": [
+              "Accepted package"
+            ],
+            "failure_owner": "package reviewer"
+          }
+        ],
+        "evidence_requirements": [
+          "Record examples, validation output, and package version."
+        ],
+        "risk_boundaries": [
+          "Do not copy external material without a provenance and adoption decision."
+        ],
+        "quality_gates": [
+          "A skill must pass package validation and add an independent reusable method."
+        ],
+        "state_updates": [
+          "Register accepted packages and their version before higher-layer use."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission framing",
+          "Evidence trace",
+          "Acceptance gate",
+          "Skill authoring method"
+        ],
+        "adds": "A repeatable conversion from proven task pattern to a governed reusable atomic Skill.",
+        "compound_artifact": "validated-skill-package.skill",
+        "next_layer_ready_when": [
+          "The package is validated and registered as an atomic Skill."
+        ]
+      }
     },
     {
-      "id":"automation-control","display_name":"Automation Control","ownership":"glaciereq","maturity":"active","version":"0.2.0","path":"combo-skills/automation-control","entrypoint":"combo-skills/automation-control/COMBO.md",
-      "selection":{"use_when":["A mission includes recurrence, events, background execution, or external integration."],"do_not_use_when":["The work is a one-time manual task with no automation requirement."]},
-      "members":[{"id":"mission-contract","kind":"skill","role":"Set outcome and approval boundaries.","required":true},{"id":"roadmap-builder","kind":"skill","role":"Order analysis, configuration, and verification.","required":true},{"id":"evidence-register","kind":"skill","role":"Record architecture and run evidence.","required":true},{"id":"quality-gate","kind":"skill","role":"Accept the automation design and verification run.","required":true},{"id":"automation-and-scheduling","kind":"external-skill","role":"Assess trigger and execution architecture.","required":true},{"id":"manus-config","kind":"external-skill","role":"Manage only necessary controls after approval.","required":false},{"id":"persistent-computing","kind":"external-skill","role":"Assess persistence and runtime boundary.","required":false}],
-      "execution":{"ordered_steps":[{"step":1,"member_id":"mission-contract","consumes":["Automation intent","Approval constraints"],"produces":["Automation mission"],"validation":"Effects, ownership, and stops are explicit."},{"step":2,"member_id":"automation-and-scheduling","consumes":["Automation mission","Trigger requirements"],"produces":["Architecture options"],"validation":"At least viable routes and tradeoffs are observed."},{"step":3,"member_id":"roadmap-builder","consumes":["Chosen route"],"produces":["Implementation roadmap"],"validation":"Configuration and verification dependencies are ordered."},{"step":4,"member_id":"evidence-register","consumes":["Architecture","Configuration evidence","Test run"],"produces":["Automation evidence"],"validation":"Effects, failures, and monitoring are traceable."},{"step":5,"member_id":"quality-gate","consumes":["Automation evidence","Acceptance criteria"],"produces":["Automation gate"],"validation":"Idempotency, failure, and approval paths are explicit."}]},
-      "integration":{"handoffs":[{"from_member":"automation-and-scheduling","to_member":"roadmap-builder","required_inputs":["Chosen route","Tradeoffs","Trigger assumptions"],"accepted_outputs":["Dependency-aware implementation plan"],"failure_owner":"architecture owner"},{"from_member":"roadmap-builder","to_member":"quality-gate","required_inputs":["Configured or proposed system","Verification evidence"],"accepted_outputs":["Pass, fail, or explicit exception"],"failure_owner":"delivery owner"}],"evidence_requirements":["Record trigger, architecture choice, controls, failure behavior, and verification run."],"risk_boundaries":["External actions require the applicable user approval and connector policy."],"quality_gates":["Do not activate external effects until idempotency, monitoring, and failure paths are explicit."],"state_updates":["Record architecture decision, configuration status, and the next monitoring check."]},
-      "compounding":{"inherits":["Mission boundary","Plan","Evidence","Quality gate","Automation architecture"],"adds":"A governed path from automation request to approved control-plane and runtime decision.","compound_artifact":"automation-control-record.md","next_layer_ready_when":["Trigger, control, verification, and monitoring boundaries are explicit."]}
+      "id": "automation-control",
+      "display_name": "Automation Control",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "combo-skills/automation-control",
+      "entrypoint": "combo-skills/automation-control/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A mission includes recurrence, events, background execution, or external integration."
+        ],
+        "do_not_use_when": [
+          "The work is a one-time manual task with no automation requirement."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set outcome and approval boundaries.",
+          "required": true
+        },
+        {
+          "id": "roadmap-builder",
+          "kind": "skill",
+          "role": "Order analysis, configuration, and verification.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Record architecture and run evidence.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Accept the automation design and verification run.",
+          "required": true
+        },
+        {
+          "id": "automation-and-scheduling",
+          "kind": "external-skill",
+          "role": "Assess trigger and execution architecture.",
+          "required": true
+        },
+        {
+          "id": "manus-config",
+          "kind": "external-skill",
+          "role": "Manage only necessary controls after approval.",
+          "required": false
+        },
+        {
+          "id": "persistent-computing",
+          "kind": "external-skill",
+          "role": "Assess persistence and runtime boundary.",
+          "required": false
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Automation intent",
+              "Approval constraints"
+            ],
+            "produces": [
+              "Automation mission"
+            ],
+            "validation": "Effects, ownership, and stops are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "automation-and-scheduling",
+            "consumes": [
+              "Automation mission",
+              "Trigger requirements"
+            ],
+            "produces": [
+              "Architecture options"
+            ],
+            "validation": "At least viable routes and tradeoffs are observed."
+          },
+          {
+            "step": 3,
+            "member_id": "roadmap-builder",
+            "consumes": [
+              "Chosen route"
+            ],
+            "produces": [
+              "Implementation roadmap"
+            ],
+            "validation": "Configuration and verification dependencies are ordered."
+          },
+          {
+            "step": 4,
+            "member_id": "evidence-register",
+            "consumes": [
+              "Architecture",
+              "Configuration evidence",
+              "Test run"
+            ],
+            "produces": [
+              "Automation evidence"
+            ],
+            "validation": "Effects, failures, and monitoring are traceable."
+          },
+          {
+            "step": 5,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Automation evidence",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Automation gate"
+            ],
+            "validation": "Idempotency, failure, and approval paths are explicit."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "automation-and-scheduling",
+            "to_member": "roadmap-builder",
+            "required_inputs": [
+              "Chosen route",
+              "Tradeoffs",
+              "Trigger assumptions"
+            ],
+            "accepted_outputs": [
+              "Dependency-aware implementation plan"
+            ],
+            "failure_owner": "architecture owner"
+          },
+          {
+            "from_member": "roadmap-builder",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Configured or proposed system",
+              "Verification evidence"
+            ],
+            "accepted_outputs": [
+              "Pass, fail, or explicit exception"
+            ],
+            "failure_owner": "delivery owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record trigger, architecture choice, controls, failure behavior, and verification run."
+        ],
+        "risk_boundaries": [
+          "External actions require the applicable user approval and connector policy."
+        ],
+        "quality_gates": [
+          "Do not activate external effects until idempotency, monitoring, and failure paths are explicit."
+        ],
+        "state_updates": [
+          "Record architecture decision, configuration status, and the next monitoring check."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission boundary",
+          "Plan",
+          "Evidence",
+          "Quality gate",
+          "Automation architecture"
+        ],
+        "adds": "A governed path from automation request to approved control-plane and runtime decision.",
+        "compound_artifact": "automation-control-record.md",
+        "next_layer_ready_when": [
+          "Trigger, control, verification, and monitoring boundaries are explicit."
+        ]
+      }
+    },
+    {
+      "id": "fleet-recon-and-harmonize",
+      "display_name": "Fleet Recon and Harmonize",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/fleet-recon-and-harmonize",
+      "entrypoint": "combo-skills/fleet-recon-and-harmonize/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Unmerged branch clutter across repositories must be audited, synthesized into main, and safely pruned without data loss."
+        ],
+        "do_not_use_when": [
+          "The work is a simple local git commit or single-file edit."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set harmonization scope and safety gates.",
+          "required": true
+        },
+        {
+          "id": "fleet-git-harmonizer-core",
+          "kind": "skill",
+          "role": "Audit divergence, synthesize, tag, and prune.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify regression suites and pruning receipts.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Repository scopes",
+              "Target branch"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Non-destructive boundaries are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "fleet-git-harmonizer-core",
+            "consumes": [
+              "MISSION.md",
+              "Repository paths"
+            ],
+            "produces": [
+              "fleet-divergence-audit.json"
+            ],
+            "validation": "Zero data loss verified via archive tags."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Test outputs",
+              "Archive tags"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Regression test suites pass 100% green before branch deletion."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "fleet-git-harmonizer-core",
+            "required_inputs": [
+              "Repository scopes",
+              "Branch retention rules"
+            ],
+            "accepted_outputs": [
+              "Verified divergence manifest and synthesis diffs"
+            ],
+            "failure_owner": "mission owner"
+          },
+          {
+            "from_member": "fleet-git-harmonizer-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Synthesized tree",
+              "Test results",
+              "Archive tags"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "execution owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all commit SHAs, divergence counts, archive tag names, and test outputs."
+        ],
+        "risk_boundaries": [
+          "Do not force push to remote branches or delete unarchived branches."
+        ],
+        "quality_gates": [
+          "Every pruned branch has a verified archive tag; tests pass 100% green."
+        ],
+        "state_updates": [
+          "Record synthesized commits, archive tags, and pruned branches after each batch."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission boundary",
+          "Git divergence analysis",
+          "Regression gating"
+        ],
+        "adds": "A repeatable inspect-and-harmonize route that audits branch divergence, synthesizes features into main, applies archive tags, runs test assertions, and prunes clutter.",
+        "compound_artifact": "fleet-harmonization-record.md",
+        "next_layer_ready_when": [
+          "Every pruned branch has an archive tag.",
+          "Regression tests pass with zero regressions."
+        ]
+      }
+    },
+    {
+      "id": "court-evidence-compiler",
+      "display_name": "Court Evidence Compiler",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/court-evidence-compiler",
+      "entrypoint": "combo-skills/court-evidence-compiler/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Raw electronic records, exhibits, or discovery materials must be authenticated, Bates-stamped, and compiled into a court-certified exhibit packet."
+        ],
+        "do_not_use_when": [
+          "The work is informal note-taking or non-legal document editing."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set litigation matter scope and rules.",
+          "required": true
+        },
+        {
+          "id": "forensic-evidence-chain-core",
+          "kind": "skill",
+          "role": "Scan anomalies, hash SHA-256, and stamp Bates.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify cryptographic integrity and PII scrub.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Target evidence paths",
+              "Court rules"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Bates serial conventions and court standards are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "forensic-evidence-chain-core",
+            "consumes": [
+              "MISSION.md",
+              "Evidence paths"
+            ],
+            "produces": [
+              "BATES_MANIFEST.json"
+            ],
+            "validation": "SHA-256 digests and serials are complete."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Manifests",
+              "Anomaly logs"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "All cryptographic digests and PII scrubs are validated."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "forensic-evidence-chain-core",
+            "required_inputs": [
+              "Evidence directory path",
+              "Bates prefix"
+            ],
+            "accepted_outputs": [
+              "Complete exhibit manifest and forensic timeline"
+            ],
+            "failure_owner": "litigation owner"
+          },
+          {
+            "from_member": "forensic-evidence-chain-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Manifests",
+              "Hash digests",
+              "Anomaly logs"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "forensic owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all file hashes, Bates serial numbers, file sizes, and timestamps."
+        ],
+        "risk_boundaries": [
+          "Do not alter original evidentiary media or include unredacted sensitive PII."
+        ],
+        "quality_gates": [
+          "Every exhibit file has a deterministic SHA-256 digest; Bates serials are contiguous."
+        ],
+        "state_updates": [
+          "Record authenticated exhibits and Bates serial ranges in the active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Matter boundary",
+          "Cryptographic evidence trace",
+          "Anomaly gating"
+        ],
+        "adds": "A repeatable route from raw electronic files to a FRE 902(13)/(14) certified evidentiary exhibit packet with contiguous Bates stamps and deterministic SHA-256 digests.",
+        "compound_artifact": "court-evidence-packet.md",
+        "next_layer_ready_when": [
+          "Every exhibit has a verifiable SHA-256 digest.",
+          "Bates serials are contiguous and collision-free."
+        ]
+      }
     }
   ]
 }
