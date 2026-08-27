@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "layer": "external-skill-references",
+  "source": "/home/ubuntu/skills/.skill_versions.json",
+  "captured_at": "2026-08-26",
+  "vendored": false,
+  "entries": [
+    {"id": "repository-context-onboarding", "role": "repository-intelligence", "installed_version_id": "rogEpYxFy954iuZ0YaG8vN"},
+    {"id": "skill-creator", "role": "skill-authoring", "installed_version_id": "iuADnvHuSAromq49stFWAa"},
+    {"id": "automation-and-scheduling", "role": "automation-architecture", "installed_version_id": "XocNRk9FJnQ3ePyLsn33Rs"},
+    {"id": "manus-config", "role": "control-plane", "installed_version_id": "Agx7NUwTZNZdPjWMKm6PFg"},
+    {"id": "persistent-computing", "role": "runtime-selection", "installed_version_id": "F9DbUGTdeBwdpo8VoxQKw9"},
+    {"id": "manus-api", "role": "api-integration", "installed_version_id": "eVBYXKAWFxtJ4ThdHiYnUB"},
+    {"id": "builtin-llm-models", "role": "model-integration", "installed_version_id": "EmE92BsA8utrvfjGGdUQtP"},
+    {"id": "webdev-readme-static", "role": "web-foundation", "installed_version_id": "eDsr3hYEEzMMFSaucnpsAB"},
+    {"id": "webdev-readme-fullstack", "role": "web-foundation", "installed_version_id": "kVtFWAXVf69TS2PMaGNicr"},
+    {"id": "webdev-readme-mobile", "role": "mobile-foundation", "installed_version_id": "VYL8aoEfCWvUVFTSpkd2qi"},
+    {"id": "finance-pro-playbooks", "role": "finance-specialist", "installed_version_id": "GzVD2Up3o5cd6VwbZjYUem"},
+    {"id": "imagegen", "role": "visual-media", "installed_version_id": "YtGzn32fVaRt7yJ5yBU88z"}
+  ]
+}

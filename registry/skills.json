@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "layer": "skills",
+  "entries": [
+    {
+      "id": "far-away-party-core",
+      "display_name": "Far Away Party Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/far-away-party-core",
+      "entrypoint": "skills/far-away-party-core/SKILL.md",
+      "purpose": "Establish a context-preserving, evidence-driven operating method for complex work.",
+      "input_contract": ["Mission request", "Relevant specialist capability contracts"],
+      "output_contract": ["Mission contract", "Roadmap", "Evidence register", "Handoff state"],
+      "local_validation": ["Mission acceptance criteria are explicit", "Every material claim maps to evidence", "The next action is recoverable"],
+      "does_not_own": ["Specialist domain procedure", "Unverified external facts", "Irreversible action approvals"]
+    }
+  ]
+}

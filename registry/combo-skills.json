@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "layer": "combo-skills",
+  "entries": [
+    {
+      "id": "recon-and-map",
+      "display_name": "Recon and Map",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/recon-and-map",
+      "entrypoint": "combo-skills/recon-and-map/COMBO.md",
+      "members": ["far-away-party-core", "repository-context-onboarding"],
+      "order": ["far-away-party-core", "repository-context-onboarding"],
+      "compound_artifact": "repository-context-map.md",
+      "adds": "A repeatable inspect-before-change route that turns a vague repository ecosystem into a bounded map and decision record."
+    },
+    {
+      "id": "skill-forge",
+      "display_name": "Skill Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/skill-forge",
+      "entrypoint": "combo-skills/skill-forge/COMBO.md",
+      "members": ["far-away-party-core", "skill-creator"],
+      "order": ["far-away-party-core", "skill-creator"],
+      "compound_artifact": "validated-skill-package.skill",
+      "adds": "A repeatable route from observed task pattern to a validated, compact, and reusable skill package."
+    },
+    {
+      "id": "automation-control",
+      "display_name": "Automation Control",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/automation-control",
+      "entrypoint": "combo-skills/automation-control/COMBO.md",
+      "members": ["far-away-party-core", "automation-and-scheduling", "manus-config", "persistent-computing"],
+      "order": ["far-away-party-core", "automation-and-scheduling", "manus-config", "persistent-computing"],
+      "compound_artifact": "automation-control-record.md",
+      "adds": "A repeatable route from automation intent to an approved trigger, execution architecture, operational configuration, and monitoring boundary."
+    }
+  ]
+}
