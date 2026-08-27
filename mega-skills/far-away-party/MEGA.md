@@ -2,35 +2,25 @@
 
 ## Mission
 
-Run complex work from ambiguity to an evidence-backed outcome without context drift. This Mega Skill is the outer operating system for missions with multiple dependent phases, specialist handoffs, material uncertainty, several artifacts, elevated consequence, or a need to resume after interruption.
+Run complex work from ambiguity to an evidence-backed outcome without context drift. Far Away Party is the mission layer above the verified **Long-Horizon Core** Combo and conditionally selected specialist Combos.
 
 ## Compounding structure
 
-| Layer used | Select when | Required input | Carries forward |
-|---|---|---|---|
-| `far-away-party-core` | Always for this Mega Skill | User mission and existing state | Mission contract, roadmap, active context, evidence, handoff |
-| `recon-and-map` | Repository roles, boundaries, or relationships are unknown | Candidate repository scope | Verified context map and smallest next verification |
-| `skill-forge` | Repeated work should become reusable capability | Proven task pattern | Validated package and registry-ready skill contract |
-| `automation-control` | The mission includes a trigger, recurrence, event, background job, or external integration | Automation requirement | Approved architecture and control record |
+| Mandatory route | Conditional route | What the Mega layer adds |
+|---|---|---|
+| `long-horizon-core` | `recon-and-map` when repository scope is uncertain | Selects routes based on actual mission shape and preserves mission-wide state. |
+| `long-horizon-core` | `skill-forge` when recurring work should become a new Skill | Integrates a new atomic capability only after its validation and registry entry exist. |
+| `long-horizon-core` | `automation-control` when a trigger, recurrence, or external integration exists | Enforces mission-wide approval gates, route compatibility, and final evidence trace. |
 
 ## Route algorithm
 
-1. **Orient.** Inspect durable state, actual task wording, relevant Skills, and prior artifacts before research or action.
-2. **Classify.** Select Direct, Expedition, Frontier, or Resume mode and record why.
-3. **Map.** If repository ambiguity exists, run `recon-and-map` before selecting a repository or proposing mutation.
-4. **Compose.** Select one primary specialist or Combo Skill for the dominant deliverable; add only complements that close an observed gap.
-5. **Execute.** Perform one bounded chunk at a time: orient, act, verify, assimilate, and replan.
-6. **Gate.** Do not advance until the acceptance check passes or an explicit exception is recorded.
-7. **Integrate.** Trace each requested outcome to evidence, reconcile contradictions, preserve handoff state, and deliver limits and residual risks.
+1. Begin every non-trivial mission with `long-horizon-core` and maintain its durable state.
+2. Inspect mission facts before selecting any conditional Combo.
+3. Select a conditional Combo only when its documented selection criteria match an observed mission need.
+4. Accept only the named compound artifact from a Combo; do not treat its undocumented conversation history as input.
+5. Reconcile all compound artifacts into the durable state, apply phase gates, and preserve an exact handoff after every significant transition.
+6. Close only when every requested outcome maps to evidence, approvals are observed, residual uncertainty is disclosed, and the next action is recoverable.
 
 ## Durable state
 
-| File | Required purpose |
-|---|---|
-| `MISSION.md` | Outcome, constraints, scope, approvals, and acceptance criteria |
-| `ROADMAP.md` | Ordered phases, dependencies, gates, risks, and exact next chunk |
-| `CONTEXT.md` | Compact active-state capsule with settled decisions and blockers |
-| `EVIDENCE.md` | Sources, tests, artifacts, claims, and verification links |
-| `HANDOFF.md` | Accurate recovery point, environment facts, unresolved items, and next action |
-
-Far Away Party adds conditional routing, durable mission state, phase gates, cross-combo evidence integration, and safe resumption. It does not add or copy specialist domain instructions.
+`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` remain the mission source of truth. The Mega Skill owns their consistency; individual Skills and Combos own their local artifacts and checks.

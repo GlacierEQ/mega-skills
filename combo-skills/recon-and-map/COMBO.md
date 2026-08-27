@@ -1,25 +1,20 @@
+---
+id: recon-and-map
+display_name: Recon and Map
+schema: ../../schemas/combo-skill.schema.json
+version: 0.2.0
+status: active
+---
+
 # Recon and Map
 
-## Purpose
+Use this Combo when repository roles, boundaries, or relationships are uncertain before a change. It composes `mission-contract`, `repository-context-onboarding`, `evidence-register`, and `quality-gate` into one read-only inspection route.
 
-Convert an uncertain repository or multi-repository request into a truthful context map before any change is proposed. Select this Combo when repository ownership, overlap, or relationship needs inspection.
+| Order | Member | Compound contribution |
+|---:|---|---|
+| 1 | `mission-contract` | Fixes candidate scope, purpose, acceptance criteria, and read-only boundary. |
+| 2 | `repository-context-onboarding` | Inspects roles, revisions, contracts, and tensions. |
+| 3 | `evidence-register` | Separates documented claims, verified behavior, and unknowns. |
+| 4 | `quality-gate` | Accepts the map only when every candidate is resolved or explicitly unresolved. |
 
-## Members and order
-
-1. **`far-away-party-core`** defines the mission boundary, risk, acceptance criteria, and evidence record.
-2. **`repository-context-onboarding`** identifies candidate repositories, inspects decisive evidence, and produces the relationship map.
-
-## Handoff contract
-
-| Boundary | Required input | Output | Validation |
-|---|---|---|---|
-| Mission → repository inspection | Mission contract, candidate names/URLs, read-only boundary | Scoped repository inventory | Every plausible candidate is ruled in, ruled out, or marked unresolved. |
-| Repository inspection → integration | Metadata, topology, source/manifest evidence, observed tensions | `repository-context-map.md` | Claims separate documented intent, verified behavior, and unknowns. |
-
-## Compound artifact
-
-The context map names repository roles, inspected revisions, tensions, default routing, and the smallest next verification. It becomes Mega-Skill input only after its evidence and next action are explicit.
-
-## Non-goals
-
-Do not execute repository code, mutate a repository, or choose a canonical implementation because a name appears first in search results.
+The output is `repository-context-map.md`, including source locations, role boundaries, tensions, and the smallest next verification. It is ready for a Mega Skill only after no repository selection depends on implicit assumption or uninspected evidence.

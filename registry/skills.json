@@ -2,19 +2,12 @@
   "schema_version": 1,
   "layer": "skills",
   "entries": [
-    {
-      "id": "far-away-party-core",
-      "display_name": "Far Away Party Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/far-away-party-core",
-      "entrypoint": "skills/far-away-party-core/SKILL.md",
-      "purpose": "Establish a context-preserving, evidence-driven operating method for complex work.",
-      "input_contract": ["Mission request", "Relevant specialist capability contracts"],
-      "output_contract": ["Mission contract", "Roadmap", "Evidence register", "Handoff state"],
-      "local_validation": ["Mission acceptance criteria are explicit", "Every material claim maps to evidence", "The next action is recoverable"],
-      "does_not_own": ["Specialist domain procedure", "Unverified external facts", "Irreversible action approvals"]
-    }
+    {"id":"mission-contract","display_name":"Mission Contract","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/mission-contract","entrypoint":"skills/mission-contract/SKILL.md","purpose":"Turn a request into bounded, testable mission intent.","input_contract":["User request","Constraints and known state"],"output_contract":["MISSION.md"],"local_validation":["Scope, exclusions, criteria, and approvals are explicit"],"does_not_own":["Technical implementation","Unapproved external actions"]},
+    {"id":"roadmap-builder","display_name":"Roadmap Builder","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/roadmap-builder","entrypoint":"skills/roadmap-builder/SKILL.md","purpose":"Plan verified chunks and dependency-aware phase gates.","input_contract":["MISSION.md","Known artifacts and dependencies"],"output_contract":["ROADMAP.md"],"local_validation":["Every acceptance criterion maps to a verifiable chunk"],"does_not_own":["Specialist execution method","Unverified completion claims"]},
+    {"id":"evidence-register","display_name":"Evidence Register","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/evidence-register","entrypoint":"skills/evidence-register/SKILL.md","purpose":"Trace sources, tests, artifacts, claims, and uncertainty.","input_contract":["Sources","Tests","Artifacts","Claims"],"output_contract":["EVIDENCE.md"],"local_validation":["Every material claim maps to evidence or a declared assumption"],"does_not_own":["Invented verification","Unobserved source facts"]},
+    {"id":"context-capsule","display_name":"Context Capsule","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/context-capsule","entrypoint":"skills/context-capsule/SKILL.md","purpose":"Maintain only the current state needed for the next chunk.","input_contract":["MISSION.md","ROADMAP.md","EVIDENCE.md","Prior handoff"],"output_contract":["CONTEXT.md"],"local_validation":["A new operator can begin the next chunk from named state"],"does_not_own":["Full historical transcript","Evidence archive"]},
+    {"id":"work-packet","display_name":"Work Packet","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/work-packet","entrypoint":"skills/work-packet/SKILL.md","purpose":"Create a bounded and testable assignment contract.","input_contract":["Chunk objective","Canonical inputs","Authority boundary"],"output_contract":["Work packet"],"local_validation":["Owner and integrator can act without implicit context"],"does_not_own":["Receiving specialist procedure","Extra authority"]},
+    {"id":"quality-gate","display_name":"Quality Gate","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/quality-gate","entrypoint":"skills/quality-gate/SKILL.md","purpose":"Accept, reject, or conditionally pass a phase against named criteria.","input_contract":["Acceptance criteria","Artifact","Evidence"],"output_contract":["Gate record"],"local_validation":["A non-creator can reproduce the acceptance decision"],"does_not_own":["Underlying deliverable creation","Unsupported confidence"]},
+    {"id":"handoff-record","display_name":"Handoff Record","ownership":"glaciereq","maturity":"active","version":"0.1.0","path":"skills/handoff-record","entrypoint":"skills/handoff-record/SKILL.md","purpose":"Preserve an exact recovery point for transferred or paused work.","input_contract":["Validated state","Environment facts","Next chunk"],"output_contract":["HANDOFF.md"],"local_validation":["An uninvolved operator can resume safely"],"does_not_own":["Vague continuation","Concealed failed attempts"]}
   ]
 }

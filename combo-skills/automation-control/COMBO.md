@@ -1,28 +1,21 @@
+---
+id: automation-control
+display_name: Automation Control
+schema: ../../schemas/combo-skill.schema.json
+version: 0.2.0
+status: active
+---
+
 # Automation Control
 
-## Purpose
+Use this Combo when a mission includes a trigger, recurrence, background process, or external integration. It composes GlacierEQ’s contract, plan, evidence, and quality Skills with the appropriate external architecture, configuration, and runtime procedures.
 
-Convert an automation request into an approved execution architecture with an explicit trigger, data boundary, control-plane configuration, reliability plan, and runtime suitability assessment.
+| Order | Member | Compound contribution |
+|---:|---|---|
+| 1 | `mission-contract` | States desired effects, user controls, approvals, and stop conditions. |
+| 2 | `automation-and-scheduling` | Assesses trigger, frequency, architecture, and scaling constraints. |
+| 3 | `roadmap-builder` | Orders implementation, configuration, failure-path, and verification work. |
+| 4 | `manus-config` / `persistent-computing` | Applies only necessary controls or runtime assessment after route choice. |
+| 5 | `evidence-register` + `quality-gate` | Records proof and accepts the automation only when safety and failure conditions are explicit. |
 
-## Members and order
-
-1. **`far-away-party-core`** frames the mission, constraints, approvals, acceptance criteria, and evidence requirements.
-2. **`automation-and-scheduling`** assesses trigger, frequency, decision complexity, and growth risk.
-3. **`manus-config`** inspects or changes only the necessary connector, project, or schedule controls after scope is clear.
-4. **`persistent-computing`** determines whether persistent runtime conditions are necessary and viable.
-
-## Handoff contract
-
-| Boundary | Required input | Output | Validation |
-|---|---|---|---|
-| Mission → automation assessment | Trigger intent, latency expectation, inputs, outputs, user control needs | Architecture decision | At least two viable approaches and their tradeoffs are stated when architecture is not obvious. |
-| Architecture → configuration | Chosen route, approved integrations, actor boundary | Configuration change plan | Only necessary controls are in scope; no secrets are copied into records. |
-| Configuration → runtime assessment | Expected frequency, state needs, tooling, resource needs | Runtime suitability record | Persistent hosting is proposed only when the workload requires it. |
-
-## Compound artifact
-
-`automation-control-record.md` contains the trigger map, idempotency behavior, failure path, monitoring evidence plan, approval boundary, and first verification run.
-
-## Non-goals
-
-Do not treat a scheduled job as an excuse to avoid architecture analysis. Do not activate external effects without the required user approval.
+The output is `automation-control-record.md`: trigger map, idempotency rule, effect/approval boundary, configuration status, monitoring plan, and verification result. Do not activate external effects until the gate passes.

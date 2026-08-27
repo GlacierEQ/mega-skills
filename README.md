@@ -33,11 +33,16 @@ GlacierEQ/mega-skills/
 │   ├── mega-skills.json                      # Canonical registry for mission systems
 │   └── external-skills.json                  # Installed-platform references, never source copies
 ├── skills/
-│   └── far-away-party-core/                  # First GlacierEQ-owned atomic Skill
-│       ├── SKILL.md
-│       ├── references/
-│       └── templates/
+│   ├── mission-contract/SKILL.md             # Mission boundary and acceptance criteria
+│   ├── roadmap-builder/SKILL.md              # Dependency-aware chunks and gates
+│   ├── evidence-register/SKILL.md            # Source, test, artifact, and claims trace
+│   ├── context-capsule/SKILL.md              # Lean active-state capsule
+│   ├── work-packet/SKILL.md                  # Bounded specialist assignment contract
+│   ├── quality-gate/SKILL.md                 # Reproducible acceptance decision
+│   └── handoff-record/SKILL.md               # Exact recovery point
 ├── combo-skills/
+│   ├── _template/COMBO.md                    # Required human-facing integration template
+│   ├── long-horizon-core/COMBO.md            # Required core composition of seven atomic Skills
 │   ├── recon-and-map/COMBO.md
 │   ├── skill-forge/COMBO.md
 │   └── automation-control/COMBO.md
@@ -47,6 +52,7 @@ GlacierEQ/mega-skills/
 │   ├── CONTRIBUTING.md
 │   └── decision-records/README.md
 ├── scripts/validate_hierarchy.py
+├── schemas/combo-skill.schema.json           # Versioned machine-readable Combo integration schema
 ├── tests/test_hierarchy.py
 └── .github/
     ├── CODEOWNERS
@@ -83,7 +89,7 @@ For example, `recon-and-map` does not repeat Far Away Party Core or repository-o
   EXTERNAL: repository...     EXTERNAL: skill-creator     EXTERNAL: automation/config/runtime
 ```
 
-The initial version has one GlacierEQ-owned atomic Skill—`far-away-party-core`—and external/platform references where a procedure belongs outside this repository. Do not fabricate ownership or create empty internal packages merely to make the graph look full.
+The initial version has seven GlacierEQ-owned atomic Skills—mission framing, planning, evidence, active context, work packets, quality gates, and handoffs. Their required composition is `long-horizon-core`; external/platform references remain separate where a procedure belongs outside this repository. Do not fabricate ownership or create empty internal packages merely to make the graph look full.
 
 ## Normal operating progression
 
