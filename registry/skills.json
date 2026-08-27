@@ -229,6 +229,160 @@
         "Court motion drafting",
         "PACER docket submission"
       ]
+    },
+    {
+      "id": "aerospace-trajectory-core",
+      "display_name": "Aerospace Trajectory Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aerospace-trajectory-core",
+      "entrypoint": "skills/aerospace-trajectory-core/SKILL.md",
+      "purpose": "Execute orbital propagation, Lambert boundary value solvers, and cryogenic boil-off thermodynamics.",
+      "input_contract": [
+        "State vectors or Keplerian elements",
+        "Target transfer parameters"
+      ],
+      "output_contract": [
+        "aerospace-trajectory-telemetry.json"
+      ],
+      "local_validation": [
+        "Energy and angular momentum conserved within numerical limits",
+        "Tests pass 100% green"
+      ],
+      "does_not_own": [
+        "Physical flight command execution",
+        "Hardware thruster authority"
+      ]
+    },
+    {
+      "id": "polyglot-rosetta-core",
+      "display_name": "Polyglot Rosetta Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/polyglot-rosetta-core",
+      "entrypoint": "skills/polyglot-rosetta-core/SKILL.md",
+      "purpose": "Translate, compile, and formally verify code across 51 Tower of Babel language floors.",
+      "input_contract": [
+        "Source AST",
+        "Target language floor",
+        "Invariant specification"
+      ],
+      "output_contract": [
+        "polyglot-verification-receipt.json"
+      ],
+      "local_validation": [
+        "Cross-language compilation passes",
+        "Formal proofs verify zero invariant violations"
+      ],
+      "does_not_own": [
+        "Non-functional code stubs",
+        "Unverified unsafe memory blocks"
+      ]
+    },
+    {
+      "id": "omni-memory-core",
+      "display_name": "Omni Memory Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/omni-memory-core",
+      "entrypoint": "skills/omni-memory-core/SKILL.md",
+      "purpose": "Index 291k+ multi-cloud files into subword n-gram vectors and reinforce Hebbian synapses.",
+      "input_contract": [
+        "Multi-cloud file paths",
+        "Query terms",
+        "Learning rate constant"
+      ],
+      "output_contract": [
+        "omni-memory-index-report.json"
+      ],
+      "local_validation": [
+        "Cosine metrics match mathematical vectors",
+        "Synaptic weights update monotonically"
+      ],
+      "does_not_own": [
+        "Unencrypted credential storage",
+        "Raw source file mutations"
+      ]
+    },
+    {
+      "id": "fork-overlay-core",
+      "display_name": "Fork Overlay Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/fork-overlay-core",
+      "entrypoint": "skills/fork-overlay-core/SKILL.md",
+      "purpose": "Automate upstream tracking across forks while strictly protecting custom overlay layers.",
+      "input_contract": [
+        "Fork repository path",
+        "Upstream remote URL",
+        "Protected overlay paths"
+      ],
+      "output_contract": [
+        "fork-sync-audit-receipt.json"
+      ],
+      "local_validation": [
+        "Upstream commits merged cleanly",
+        "Protected overlay layers remain 100% untouched"
+      ],
+      "does_not_own": [
+        "Upstream core file mutations",
+        "Unverified origin pushes"
+      ]
+    },
+    {
+      "id": "ast-repair-core",
+      "display_name": "AST Repair Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ast-repair-core",
+      "entrypoint": "skills/ast-repair-core/SKILL.md",
+      "purpose": "Parse test stack traces, isolate failing AST chunks, synthesize diffs, and verify resolution.",
+      "input_contract": [
+        "Failing test command",
+        "Workspace directory",
+        "Max attempt count"
+      ],
+      "output_contract": [
+        "ast-repair-execution-record.json"
+      ],
+      "local_validation": [
+        "Re-executed test suite passes 100% green with zero syntax/lint defects"
+      ],
+      "does_not_own": [
+        "Non-functional stubs",
+        "Test assertion tampering"
+      ]
+    },
+    {
+      "id": "audio-forensic-core",
+      "display_name": "Audio Forensic Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/audio-forensic-core",
+      "entrypoint": "skills/audio-forensic-core/SKILL.md",
+      "purpose": "Process evidentiary audio with ENF grid analysis, WhisperX phoneme alignment, and diarization.",
+      "input_contract": [
+        "Raw audio file path",
+        "Recording date/time",
+        "Court rule standards"
+      ],
+      "output_contract": [
+        "audio-forensic-verification-record.json"
+      ],
+      "local_validation": [
+        "Phonetic alignment has zero drift",
+        "ENF acoustic hum confirms non-tampering"
+      ],
+      "does_not_own": [
+        "Waveform tampering",
+        "Unverified speaker assertions"
+      ]
     }
   ]
 }

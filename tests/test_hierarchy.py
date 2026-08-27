@@ -26,6 +26,8 @@ class HierarchyFoundationTests(unittest.TestCase):
             "mission-contract", "roadmap-builder", "evidence-register", "context-capsule",
             "work-packet", "quality-gate", "handoff-record",
             "fleet-git-harmonizer-core", "forensic-evidence-chain-core",
+            "aerospace-trajectory-core", "polyglot-rosetta-core", "omni-memory-core",
+            "fork-overlay-core", "ast-repair-core", "audio-forensic-core",
         }
         self.assertEqual({entry["id"] for entry in skills}, expected)
         for entry in skills:

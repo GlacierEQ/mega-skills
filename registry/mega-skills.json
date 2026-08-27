@@ -77,6 +77,156 @@
         "HANDOFF.md"
       ],
       "adds": "End-to-end litigation campaign orchestration, durable case evidence tracking, court filing deadlines, exhibit tethering, and cross-jurisdictional state synchronization."
+    },
+    {
+      "id": "apex-aerospace-sim",
+      "display_name": "APEX Aerospace Simulation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-aerospace-sim",
+      "entrypoint": "mega-skills/apex-aerospace-sim/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "aerospace-mission-simulation",
+        "automation-control"
+      ],
+      "mission_output": "aerospace-mission-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Orchestration of multi-vehicle aerospace simulations spanning orbital dynamics, Lambert transfer targeting, cryogenic boil-off, and countdown abort gates."
+    },
+    {
+      "id": "apex-polyglot-rosetta",
+      "display_name": "APEX Polyglot Rosetta",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-polyglot-rosetta",
+      "entrypoint": "mega-skills/apex-polyglot-rosetta/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "polyglot-systems-verification",
+        "skill-forge"
+      ],
+      "mission_output": "polyglot-systems-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Multi-language systems compilation, translation, zero-copy IPC integration, and formal truth verification across 51 Tower of Babel floors."
+    },
+    {
+      "id": "apex-omniversal-memory",
+      "display_name": "APEX Omniversal Memory",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-omniversal-memory",
+      "entrypoint": "mega-skills/apex-omniversal-memory/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "cross-cloud-memory-synthesis",
+        "recon-and-map"
+      ],
+      "mission_output": "omniversal-memory-matrix-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Large-scale cross-cloud semantic memory indexing across 291k+ files with subword n-gram vector spaces and dynamic Hebbian synaptic reinforcement."
+    },
+    {
+      "id": "apex-dev-fork-orchestrator",
+      "display_name": "APEX Dev Fork Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-dev-fork-orchestrator",
+      "entrypoint": "mega-skills/apex-dev-fork-orchestrator/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "upstream-fork-harmonization",
+        "automation-control"
+      ],
+      "mission_output": "dev-fork-orchestration-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Automated weekly synchronization, overlay layer shielding, and regression test gatekeeping across all 513 repository forks in GlacierEQ."
+    },
+    {
+      "id": "apex-self-healing-forge",
+      "display_name": "APEX Self-Healing Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-self-healing-forge",
+      "entrypoint": "mega-skills/apex-self-healing-forge/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "closed-loop-code-repair",
+        "skill-forge"
+      ],
+      "mission_output": "self-healing-forge-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses."
+    },
+    {
+      "id": "apex-voice-forensics",
+      "display_name": "APEX Voice Forensics",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-voice-forensics",
+      "entrypoint": "mega-skills/apex-voice-forensics/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "voice-evidence-authenticator",
+        "court-evidence-compiler"
+      ],
+      "mission_output": "court-certified-voice-forensic-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Evidentiary audio processing for Apple Voice Memos and court recordings with ENF acoustic grid analysis, WhisperX phonetic alignment, and 17-point court transcripts."
     }
   ]
 }

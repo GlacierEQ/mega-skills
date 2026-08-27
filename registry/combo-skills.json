@@ -958,6 +958,788 @@
           "Bates serials are contiguous and collision-free."
         ]
       }
+    },
+    {
+      "id": "aerospace-mission-simulation",
+      "display_name": "Aerospace Mission Simulation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/aerospace-mission-simulation",
+      "entrypoint": "combo-skills/aerospace-mission-simulation/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Aerospace flight dynamics, orbital transfer maneuvers, or cryogenic boil-off simulations must be validated."
+        ],
+        "do_not_use_when": [
+          "The task is general non-aerospace software development."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set flight profile and orbital target criteria.",
+          "required": true
+        },
+        {
+          "id": "aerospace-trajectory-core",
+          "kind": "skill",
+          "role": "Propagate orbits, solve Lambert, and compute boil-off.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify aerodynamic and thermal limits.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Mission requests",
+              "Target orbit parameters"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Flight constraints and target state vectors are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "aerospace-trajectory-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "aerospace-trajectory-telemetry.json"
+            ],
+            "validation": "Lambert solvers and thermal equations converge."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Telemetry logs",
+              "Thermal limits"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Orbital mechanics test suites pass 100% green."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "aerospace-trajectory-core",
+            "required_inputs": [
+              "Target orbit",
+              "State vectors",
+              "Propellant mass"
+            ],
+            "accepted_outputs": [
+              "Verified telemetry packet and trajectory vectors"
+            ],
+            "failure_owner": "flight dynamics owner"
+          },
+          {
+            "from_member": "aerospace-trajectory-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Telemetry logs",
+              "Boil-off curves",
+              "Delta-v"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "safety owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all state vectors, delta-v budgets, boil-off curves, and conjunction probabilities."
+        ],
+        "risk_boundaries": [
+          "Do not bypass structural or aerodynamic thermal safety limits."
+        ],
+        "quality_gates": [
+          "All orbital integration tests pass with numerical precision; energy is conserved."
+        ],
+        "state_updates": [
+          "Record telemetry, delta-v budgets, and conjunction probabilities in active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Flight parameter constraints",
+          "Orbital propagation math",
+          "Thermal limit gating"
+        ],
+        "adds": "Combines mission parameter bounds with high-order orbital integration and cryogenic boil-off thermodynamics, emitting an evidence-backed telemetry verification record.",
+        "compound_artifact": "aerospace-simulation-record.md",
+        "next_layer_ready_when": [
+          "Delta-v budget and transfer vectors are verified.",
+          "Boil-off pressure curves remain within limits."
+        ]
+      }
+    },
+    {
+      "id": "polyglot-systems-verification",
+      "display_name": "Polyglot Systems Verification",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/polyglot-systems-verification",
+      "entrypoint": "combo-skills/polyglot-systems-verification/COMBO.md",
+      "selection": {
+        "use_when": [
+          "High-performance algorithms, zero-copy IPC protocols, or formal truth invariants must be translated and compiled across Tower of Babel floors."
+        ],
+        "do_not_use_when": [
+          "The task is simple single-language script execution."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set target language floors and invariant criteria.",
+          "required": true
+        },
+        {
+          "id": "polyglot-rosetta-core",
+          "kind": "skill",
+          "role": "Translate, compile, benchmark, and verify.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify formal proofs and latency budgets.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "System mandates",
+              "Source code"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Target language floors and performance budgets are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "polyglot-rosetta-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "polyglot-verification-receipt.json"
+            ],
+            "validation": "Binaries compile and formal proofs verify invariants."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Receipts",
+              "Benchmarks"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Zero memory leaks and formal invariants are validated."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "polyglot-rosetta-core",
+            "required_inputs": [
+              "Source AST",
+              "Target floor",
+              "Invariant spec"
+            ],
+            "accepted_outputs": [
+              "Compiled binaries, benchmark logs, Lean 4 proofs"
+            ],
+            "failure_owner": "systems architect"
+          },
+          {
+            "from_member": "polyglot-rosetta-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Verification receipts",
+              "Latency metrics"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "verification owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all compiler flags, benchmark TTFT/latency numbers, binary hashes, and Lean 4 proof receipts."
+        ],
+        "risk_boundaries": [
+          "Do not generate non-functional stubs or bypass memory safety invariants."
+        ],
+        "quality_gates": [
+          "Target binaries compile cleanly, latency meets budgets, and Lean 4 proofs pass."
+        ],
+        "state_updates": [
+          "Record compilation status and latency metrics across language floors."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Systems specification",
+          "Cross-language compilation",
+          "Invariant verification"
+        ],
+        "adds": "Establishes an end-to-end multi-language verification bridge proving behavioral equivalence and zero-copy IPC performance across Rust, C++, eBPF, CUDA, and Lean 4.",
+        "compound_artifact": "polyglot-systems-record.md",
+        "next_layer_ready_when": [
+          "Cross-language binary compilation passes.",
+          "Formal invariant proofs verify in Lean 4."
+        ]
+      }
+    },
+    {
+      "id": "cross-cloud-memory-synthesis",
+      "display_name": "Cross Cloud Memory Synthesis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/cross-cloud-memory-synthesis",
+      "entrypoint": "combo-skills/cross-cloud-memory-synthesis/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Knowledge across 291k+ multi-cloud documents must be indexed into subword n-gram vector spaces and reinforced through Hebbian synaptic learning."
+        ],
+        "do_not_use_when": [
+          "The task is a trivial single-file text search."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set cloud storage scope and indexing boundaries.",
+          "required": true
+        },
+        {
+          "id": "omni-memory-core",
+          "kind": "skill",
+          "role": "Vectorize files, calculate cosine metrics, update synapses.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify embedding integrity and retrieval recall.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Search mandates",
+              "Cloud storage paths"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Cloud Horizons and learning rate constants are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "omni-memory-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "omni-memory-index-report.json"
+            ],
+            "validation": "Term frequency vectors and associative synapses update cleanly."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Index reports",
+              "Benchmark queries"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Retrieval accuracy passes acceptance thresholds."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "omni-memory-core",
+            "required_inputs": [
+              "Cloud Horizon paths",
+              "Learning rate",
+              "Decay factor"
+            ],
+            "accepted_outputs": [
+              "Vector embeddings and synaptic weight graph"
+            ],
+            "failure_owner": "memory owner"
+          },
+          {
+            "from_member": "omni-memory-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Index report",
+              "Similarity matrices",
+              "Recall tests"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "quality owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record document counts, shingle vocabulary sizes, cosine similarity scores, and synaptic updates."
+        ],
+        "risk_boundaries": [
+          "Do not alter raw cloud files or expose private credentials in vector indices."
+        ],
+        "quality_gates": [
+          "Candidate files vectorized, synaptic weights monotonically updated, zero NaN values."
+        ],
+        "state_updates": [
+          "Record vector shingle counts and reinforced synaptic weights in active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Storage scope boundary",
+          "Subword n-gram vectorization",
+          "Synaptic reinforcement"
+        ],
+        "adds": "Converts unstructured distributed cloud storage into a deterministic, self-learning vector memory matrix with dynamic Hebbian updates.",
+        "compound_artifact": "cross-cloud-memory-record.md",
+        "next_layer_ready_when": [
+          "Subword 3-gram vocabulary and TF-IDF matrices calculated.",
+          "Hebbian synapses reinforced."
+        ]
+      }
+    },
+    {
+      "id": "upstream-fork-harmonization",
+      "display_name": "Upstream Fork Harmonization",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/upstream-fork-harmonization",
+      "entrypoint": "combo-skills/upstream-fork-harmonization/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Repository forks must be synchronized with upstream source codebases while strictly protecting local overlay layers."
+        ],
+        "do_not_use_when": [
+          "The repository is an upstream canonical master."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set fork scope and overlay protection criteria.",
+          "required": true
+        },
+        {
+          "id": "fork-overlay-core",
+          "kind": "skill",
+          "role": "Pull upstream main, protect overlays, merge cleanly.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify regression suites before origin push.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Sync mandates",
+              "Fork repository paths"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Upstream remote URLs and protected overlay directories are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "fork-overlay-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "fork-sync-audit-receipt.json"
+            ],
+            "validation": "Upstream commits are fetched and merged with overlays intact."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Test logs",
+              "Git diffs"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Local regression suites pass 100% green before push."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "fork-overlay-core",
+            "required_inputs": [
+              "Fork repository path",
+              "Upstream remote",
+              "Overlay paths"
+            ],
+            "accepted_outputs": [
+              "Cleanly merged working tree and audit receipt"
+            ],
+            "failure_owner": "fork owner"
+          },
+          {
+            "from_member": "fork-overlay-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Merged tree",
+              "Test suite command",
+              "Audit receipt"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "verification owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record upstream commit ranges, conflict resolutions, overlay hash digests, and test logs."
+        ],
+        "risk_boundaries": [
+          "Do not destructively modify upstream core files or push unverified builds."
+        ],
+        "quality_gates": [
+          "Upstream commits integrated without conflict; overlay directories match pre-merge hashes."
+        ],
+        "state_updates": [
+          "Record synchronized forks and overlay integrity verification in active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Fork sync boundary",
+          "Overlay protection logic",
+          "Regression gating"
+        ],
+        "adds": "Enforces the Dev Fork Doctrine across distributed forks, providing clean upstream tracking, overlay shielding, and conflict isolation.",
+        "compound_artifact": "upstream-fork-record.md",
+        "next_layer_ready_when": [
+          "Upstream commits fetched and merged.",
+          "Protected overlays remain cryptographically unmodified."
+        ]
+      }
+    },
+    {
+      "id": "closed-loop-code-repair",
+      "display_name": "Closed Loop Code Repair",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/closed-loop-code-repair",
+      "entrypoint": "combo-skills/closed-loop-code-repair/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A failing test harness, compiler error, or runtime exception must be automatically diagnosed, patched at the AST level, and verified green."
+        ],
+        "do_not_use_when": [
+          "The task is open-ended feature creation with no test harness."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set test command and repair attempt bounds.",
+          "required": true
+        },
+        {
+          "id": "ast-repair-core",
+          "kind": "skill",
+          "role": "Parse traceback, extract AST, and apply patch.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify re-executed test suite passes green.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Repair mandates",
+              "Test commands"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Failing commands and maximum iterations are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "ast-repair-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "ast-repair-execution-record.json"
+            ],
+            "validation": "Stack traces are isolated and surgical diffs applied."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Test outputs"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Test assertions pass 100% green with zero stubs."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "ast-repair-core",
+            "required_inputs": [
+              "Test command",
+              "Workspace path",
+              "Attempt cutoff"
+            ],
+            "accepted_outputs": [
+              "AST chunk diffs, execution record, re-run logs"
+            ],
+            "failure_owner": "repair owner"
+          },
+          {
+            "from_member": "ast-repair-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Patched source files",
+              "Test exit codes"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "verification owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all failing tracebacks, AST chunk coordinates, model patch tokens, and before/after test outputs."
+        ],
+        "risk_boundaries": [
+          "Do not inject non-functional stubs (return True, pass) or tamper with test assertion files."
+        ],
+        "quality_gates": [
+          "Failing test suite passes 100% green on hardware with minimal, idiomatic diffs."
+        ],
+        "state_updates": [
+          "Record repaired files, applied patches, and green verification receipts in active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Repair mission boundary",
+          "AST traceback isolation",
+          "Regression test gating"
+        ],
+        "adds": "Establishes an autonomous self-healing execution loop combining stack trace parsing, AST chunk isolation, minimal diff synthesis, and repeated regression verification.",
+        "compound_artifact": "closed-loop-repair-record.md",
+        "next_layer_ready_when": [
+          "Failing stack trace isolated to exact AST chunk.",
+          "Surgical patch written and verified green."
+        ]
+      }
+    },
+    {
+      "id": "voice-evidence-authenticator",
+      "display_name": "Voice Evidence Authenticator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/voice-evidence-authenticator",
+      "entrypoint": "combo-skills/voice-evidence-authenticator/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Apple Voice Memos, court hearings, or witness audio must be authenticated against acoustic grid frequencies, diarized, and transcribed under FRE 902."
+        ],
+        "do_not_use_when": [
+          "The task is casual non-evidentiary audio transcription."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set evidentiary criteria and court rule standards.",
+          "required": true
+        },
+        {
+          "id": "audio-forensic-core",
+          "kind": "skill",
+          "role": "Run ENF validation, WhisperX, and diarization.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Verify non-tampering and transcript formatting.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Audio file paths",
+              "Target court rules"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Court caption and evidence standards are defined."
+          },
+          {
+            "step": 2,
+            "member_id": "audio-forensic-core",
+            "consumes": [
+              "MISSION.md"
+            ],
+            "produces": [
+              "audio-forensic-verification-record.json"
+            ],
+            "validation": "ENF grid matching and word alignment succeed."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Transcripts",
+              "ENF certificates"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Line numbering, speaker labels, and SHA-256 signatures are validated."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "audio-forensic-core",
+            "required_inputs": [
+              "Audio file path",
+              "Recording date/time",
+              "Court rules"
+            ],
+            "accepted_outputs": [
+              "Diarized phonetic transcript and ENF certificate"
+            ],
+            "failure_owner": "legal owner"
+          },
+          {
+            "from_member": "audio-forensic-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Verification record",
+              "Line-numbered transcript"
+            ],
+            "accepted_outputs": [
+              "Verified gate record"
+            ],
+            "failure_owner": "forensic owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record all raw audio SHA-256 digests, ENF frequency variations, phoneme timestamps, and speaker turns."
+        ],
+        "risk_boundaries": [
+          "Do not alter original audio tracks or synthesize waveforms."
+        ],
+        "quality_gates": [
+          "ENF confirms absence of splices or timeline edits; WhisperX timestamps aligned at word level."
+        ],
+        "state_updates": [
+          "Record audio authenticity certificates and word-level transcript references in active state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Evidentiary matter boundary",
+          "Acoustic ENF analysis",
+          "Court-certified transcript gating"
+        ],
+        "adds": "Establishes an airtight evidentiary chain of custody for acoustic recordings combining ENF grid validation, WhisperX phoneme alignment, and speaker diarization.",
+        "compound_artifact": "voice-evidence-record.md",
+        "next_layer_ready_when": [
+          "Raw audio SHA-256 digest cryptographically recorded.",
+          "ENF validates recording date and integrity."
+        ]
+      }
     }
   ]
 }
