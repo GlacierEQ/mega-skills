@@ -15,6 +15,9 @@
       ],
       "conditional_combos": [
         "capability-readiness",
+        "signal-to-decision-loop",
+        "guarded-automation-loop",
+        "evidence-to-evolution-loop",
         "recon-and-map",
         "skill-forge",
         "automation-control"

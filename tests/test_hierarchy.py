@@ -56,6 +56,29 @@ class HierarchyFoundationTests(unittest.TestCase):
             ["capability-admission", "resource-preflight", "claim-calibration", "quality-gate"],
         )
 
+    def test_feedback_loops_have_guarded_outputs_and_resolved_members(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        by_id = {entry["id"]: entry for entry in combos}
+        expected = {
+            "signal-to-decision-loop": "SIGNAL_DECISION_RECORD.md",
+            "guarded-automation-loop": "GUARDED_RUN_RECORD.md",
+            "evidence-to-evolution-loop": "CAPABILITY_EVOLUTION_PROPOSAL.md",
+        }
+        for combo_id, artifact in expected.items():
+            combo = by_id[combo_id]
+            self.assertEqual(combo["compounding"]["compound_artifact"], artifact)
+            self.assertTrue((ROOT / combo["entrypoint"]).is_file())
+            self.assertTrue(combo["integration"]["risk_boundaries"])
+
+    def test_far_away_party_exposes_feedback_loops(self):
+        mega = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"][0]
+        for combo_id in (
+            "signal-to-decision-loop",
+            "guarded-automation-loop",
+            "evidence-to-evolution-loop",
+        ):
+            self.assertIn(combo_id, mega["conditional_combos"])
+
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())
         self.assertTrue((REGISTRY / "external-skills.json").is_file())

@@ -1863,6 +1863,108 @@
           "Every material claim has an evidence-matched scope and limitations."
         ]
       }
+    },
+    {
+      "id": "signal-to-decision-loop",
+      "display_name": "Signal to Decision Loop",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/signal-to-decision-loop",
+      "entrypoint": "combo-skills/signal-to-decision-loop/COMBO.md",
+      "selection": {
+        "use_when": ["A new observation, failure, review finding, or scheduled checkpoint may require a future decision."],
+        "do_not_use_when": ["The objective is to make or execute a change automatically without a separate approval route."]
+      },
+      "members": [
+        {"id":"mission-contract","kind":"skill","role":"Bound the decision scope, impact, authority, and stop condition.","required":true},
+        {"id":"evidence-register","kind":"skill","role":"Trace observed signals, sources, tests, and unresolved gaps.","required":true},
+        {"id":"claim-calibration","kind":"skill","role":"Scope the conclusion to the available evidence.","required":true},
+        {"id":"roadmap-builder","kind":"skill","role":"Propose a dependency-aware next route or exact next chunk.","required":true},
+        {"id":"quality-gate","kind":"skill","role":"Accept a decision record only when review is reproducible.","required":true}
+      ],
+      "execution": {"ordered_steps":[
+        {"step":1,"member_id":"mission-contract","consumes":["Signal","Mission context"],"produces":["Decision scope"],"validation":"Impact, authority, and stop condition are explicit."},
+        {"step":2,"member_id":"evidence-register","consumes":["Observation","Source context"],"produces":["Signal evidence"],"validation":"Observed facts and unknowns are traceable."},
+        {"step":3,"member_id":"claim-calibration","consumes":["Candidate conclusion","Signal evidence"],"produces":["Scoped conclusion"],"validation":"Wording matches the current evidence boundary."},
+        {"step":4,"member_id":"roadmap-builder","consumes":["Scoped conclusion","Decision scope"],"produces":["Recommended route"],"validation":"Dependencies and verification are explicit."},
+        {"step":5,"member_id":"quality-gate","consumes":["Decision record","Evidence"],"produces":["Decision gate"],"validation":"A reviewer can reproduce the recommendation."}
+      ]},
+      "integration": {"handoffs":[
+        {"from_member":"mission-contract","to_member":"evidence-register","required_inputs":["Signal definition","Decision boundary"],"accepted_outputs":["Traceable observed evidence"],"failure_owner":"mission owner"},
+        {"from_member":"evidence-register","to_member":"claim-calibration","required_inputs":["Evidence links","Unresolved gaps"],"accepted_outputs":["Evidence-scoped conclusion"],"failure_owner":"evidence owner"},
+        {"from_member":"roadmap-builder","to_member":"quality-gate","required_inputs":["Recommended route","Decision alternatives"],"accepted_outputs":["Reproducible decision gate"],"failure_owner":"decision owner"}
+      ],"evidence_requirements":["Record the observed signal, evidence links, classification, uncertainty, and review trigger."],"risk_boundaries":["This Combo cannot authorize or execute a consequential external action."],"quality_gates":["A recommendation must be evidence-scoped, reviewable, and assigned to a decision owner."],"state_updates":["Record the signal, decision status, owner, and exact next review or action in durable state."]},
+      "compounding":{"inherits":["Mission boundary","Observed evidence","Scoped conclusion","Roadmap","Acceptance gate"],"adds":"A repeatable feedback loop that converts observations into an evidence-backed decision record without silently executing a change.","compound_artifact":"SIGNAL_DECISION_RECORD.md","next_layer_ready_when":["Observation, recommendation, and authority are distinct.","The next route or approval is named and recoverable."]}
+    },
+    {
+      "id": "guarded-automation-loop",
+      "display_name": "Guarded Automation Loop",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/guarded-automation-loop",
+      "entrypoint": "combo-skills/guarded-automation-loop/COMBO.md",
+      "selection": {
+        "use_when": ["An approved mission has a repeating or event-triggered need and requires a guarded execution and recovery contract."],
+        "do_not_use_when": ["There is no chosen automation architecture, no approval boundary, or the requested work is a one-time manual task."]
+      },
+      "members": [
+        {"id":"capability-admission","kind":"skill","role":"Define whether the candidate route is allowed for this mission.","required":true},
+        {"id":"resource-preflight","kind":"skill","role":"Verify required access, dependencies, data, and environment conditions.","required":true},
+        {"id":"automation-and-scheduling","kind":"external-skill","role":"Assess trigger, frequency, execution architecture, and runtime constraints.","required":true},
+        {"id":"work-packet","kind":"skill","role":"Bind execution authority, idempotency, output, and failure path.","required":true},
+        {"id":"quality-gate","kind":"skill","role":"Accept or block the run using actual evidence.","required":true},
+        {"id":"handoff-record","kind":"skill","role":"Preserve the retry, recovery, and next review point.","required":true}
+      ],
+      "execution": {"ordered_steps":[
+        {"step":1,"member_id":"capability-admission","consumes":["Automation intent","Mission authority"],"produces":["Admission decision"],"validation":"Effect boundary, approval requirement, and fallback are explicit."},
+        {"step":2,"member_id":"resource-preflight","consumes":["Admission decision","Prerequisite inventory"],"produces":["Preflight record"],"validation":"Every required prerequisite has current observed status."},
+        {"step":3,"member_id":"automation-and-scheduling","consumes":["Preflight record","Trigger requirements"],"produces":["Architecture options"],"validation":"Frequency, latency, determinism, and runtime tradeoffs are assessed."},
+        {"step":4,"member_id":"work-packet","consumes":["Approved architecture","Mission constraints"],"produces":["Guarded execution packet"],"validation":"Effect authority, idempotency, output, and failure path are explicit."},
+        {"step":5,"member_id":"quality-gate","consumes":["Run evidence or proposal","Acceptance criteria"],"produces":["Run gate"],"validation":"Result is passed, blocked, or escalated truthfully."},
+        {"step":6,"member_id":"handoff-record","consumes":["Run gate","Current state"],"produces":["Recovery record"],"validation":"Retry and review conditions are safe and exact."}
+      ]},
+      "integration": {"handoffs":[
+        {"from_member":"capability-admission","to_member":"resource-preflight","required_inputs":["Approved candidate route","Prerequisite inventory"],"accepted_outputs":["Observed resource status"],"failure_owner":"admission owner"},
+        {"from_member":"resource-preflight","to_member":"automation-and-scheduling","required_inputs":["Verified environment facts","Missing prerequisite fallbacks"],"accepted_outputs":["Architecture options and suitability limits"],"failure_owner":"architecture owner"},
+        {"from_member":"work-packet","to_member":"quality-gate","required_inputs":["Authorized execution boundary","Observed run output"],"accepted_outputs":["Pass, block, or escalation record"],"failure_owner":"execution owner"},
+        {"from_member":"quality-gate","to_member":"handoff-record","required_inputs":["Gate result","Remaining risk"],"accepted_outputs":["Recoverable next action"],"failure_owner":"quality owner"}
+      ],"evidence_requirements":["Record trigger class, approved route, preflight, authority, idempotency, observed result, and recovery condition."],"risk_boundaries":["Do not activate a schedule, polling process, external API effect, or persistent service without explicit approval and architecture selection."],"quality_gates":["No claimed execution result may advance without actual run evidence and a defined failure path."],"state_updates":["Write execution status, result, failure class, next review, and recovery point to durable state."]},
+      "compounding":{"inherits":["Admission","Resource preflight","Architecture assessment","Bounded execution","Quality gate","Recovery"],"adds":"A guarded loop that keeps automation logic, execution authority, observed results, and recovery conditions connected without creating uncontrolled background behavior.","compound_artifact":"GUARDED_RUN_RECORD.md","next_layer_ready_when":["Effect boundary, approval, preflight, and result are all recorded.","A safe retry or escalation route is available."]}
+    },
+    {
+      "id": "evidence-to-evolution-loop",
+      "display_name": "Evidence to Evolution Loop",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/evidence-to-evolution-loop",
+      "entrypoint": "combo-skills/evidence-to-evolution-loop/COMBO.md",
+      "selection": {
+        "use_when": ["Repeated evidence, failures, or quality findings may justify an improvement proposal for an existing capability."],
+        "do_not_use_when": ["The evidence is isolated, the target is unowned, or no maintainer review authority exists."]
+      },
+      "members": [
+        {"id":"evidence-register","kind":"skill","role":"Trace repeated observations, outcomes, and limitations.","required":true},
+        {"id":"claim-calibration","kind":"skill","role":"Scope the inferred improvement to the evidence.","required":true},
+        {"id":"mission-contract","kind":"skill","role":"Bound the proposed change and its acceptance criteria.","required":true},
+        {"id":"work-packet","kind":"skill","role":"Prepare a maintainable review and validation packet.","required":true},
+        {"id":"quality-gate","kind":"skill","role":"Admit, defer, or reject the proposal for review.","required":true}
+      ],
+      "execution": {"ordered_steps":[
+        {"step":1,"member_id":"evidence-register","consumes":["Run outcomes","Failures","Quality findings"],"produces":["Pattern evidence"],"validation":"Repetition, source, and limitations are traceable."},
+        {"step":2,"member_id":"claim-calibration","consumes":["Pattern evidence","Proposed improvement"],"produces":["Scoped rationale"],"validation":"No universal conclusion is inferred from isolated or partial evidence."},
+        {"step":3,"member_id":"mission-contract","consumes":["Scoped rationale","Affected capability"],"produces":["Change boundary"],"validation":"Owner, impact, non-goals, and acceptance criteria are explicit."},
+        {"step":4,"member_id":"work-packet","consumes":["Change boundary","Affected files and contracts"],"produces":["Evolution proposal packet"],"validation":"Required review, validation, and compatibility steps are named."},
+        {"step":5,"member_id":"quality-gate","consumes":["Proposal packet","Evidence"],"produces":["Evolution gate"],"validation":"Proposal is accepted for review, deferred, or rejected with an exact reason."}
+      ]},
+      "integration": {"handoffs":[
+        {"from_member":"evidence-register","to_member":"claim-calibration","required_inputs":["Traceable observations","Failure history"],"accepted_outputs":["Evidence-scoped improvement rationale"],"failure_owner":"evidence owner"},
+        {"from_member":"claim-calibration","to_member":"mission-contract","required_inputs":["Scoped rationale","Known limitations"],"accepted_outputs":["Bounded change contract"],"failure_owner":"change owner"},
+        {"from_member":"work-packet","to_member":"quality-gate","required_inputs":["Affected IDs","Acceptance criteria","Review authority"],"accepted_outputs":["Review-admission decision"],"failure_owner":"maintainer"}
+      ],"evidence_requirements":["Record provenance, repetition count or pattern basis, limitations, compatibility risk, and validation plan."],"risk_boundaries":["Do not self-modify active capabilities, alter an active mission contract, or merge a proposal without the defined review process."],"quality_gates":["A proposal needs traceable evidence, clear ownership, compatibility consideration, and a named first validation."],"state_updates":["Record the proposal status, affected capability IDs, review owner, and next validation in durable state."]},
+      "compounding":{"inherits":["Evidence trace","Claim scope","Change boundary","Work packet","Quality gate"],"adds":"A governed feedback loop that converts recurring evidence into a review-ready improvement proposal without autonomous mutation or untracked learning.","compound_artifact":"CAPABILITY_EVOLUTION_PROPOSAL.md","next_layer_ready_when":["The proposal has evidence, owner, compatibility risk, and a first validation step.","Any implementation work is routed through the appropriate governed change process."]}
     }
   ]
 }
