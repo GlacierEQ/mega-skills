@@ -14,6 +14,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "recon-and-map",
         "skill-forge",
         "automation-control"
@@ -40,6 +41,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "recon-and-map",
         "fleet-recon-and-harmonize"
       ],
@@ -65,6 +67,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "court-evidence-compiler",
         "automation-control"
       ],
@@ -90,6 +93,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "aerospace-mission-simulation",
         "automation-control"
       ],
@@ -115,6 +119,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "polyglot-systems-verification",
         "skill-forge"
       ],
@@ -140,6 +145,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "cross-cloud-memory-synthesis",
         "recon-and-map"
       ],
@@ -165,6 +171,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "upstream-fork-harmonization",
         "automation-control"
       ],
@@ -190,6 +197,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "closed-loop-code-repair",
         "skill-forge"
       ],
@@ -215,6 +223,7 @@
         "long-horizon-core"
       ],
       "conditional_combos": [
+        "capability-readiness",
         "voice-evidence-authenticator",
         "court-evidence-compiler"
       ],

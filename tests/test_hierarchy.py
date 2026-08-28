@@ -28,6 +28,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "fleet-git-harmonizer-core", "forensic-evidence-chain-core",
             "aerospace-trajectory-core", "polyglot-rosetta-core", "omni-memory-core",
             "fork-overlay-core", "ast-repair-core", "audio-forensic-core",
+            "capability-admission", "resource-preflight", "claim-calibration",
         }
         self.assertEqual({entry["id"] for entry in skills}, expected)
         for entry in skills:
@@ -40,10 +41,20 @@ class HierarchyFoundationTests(unittest.TestCase):
         self.assertTrue(all(member["kind"] == "skill" for member in core["members"]))
 
     def test_mega_layer_requires_but_does_not_duplicate_core_contracts(self):
-        mega = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"][0]
-        self.assertIn("long-horizon-core", mega["required_combos"])
-        self.assertTrue((ROOT / mega["entrypoint"]).is_file())
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        for mega in megas:
+            self.assertIn("long-horizon-core", mega["required_combos"])
+            self.assertIn("capability-readiness", mega["conditional_combos"])
+            self.assertTrue((ROOT / mega["entrypoint"]).is_file())
         self.assertFalse((ROOT / "skills/far-away-party-core").exists())
+
+    def test_capability_readiness_has_its_atomic_foundations(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        readiness = next(entry for entry in combos if entry["id"] == "capability-readiness")
+        self.assertEqual(
+            [member["id"] for member in readiness["members"]],
+            ["capability-admission", "resource-preflight", "claim-calibration", "quality-gate"],
+        )
 
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())

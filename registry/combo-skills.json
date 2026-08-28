@@ -1740,6 +1740,129 @@
           "ENF validates recording date and integrity."
         ]
       }
+    },
+    {
+      "id": "capability-readiness",
+      "display_name": "Capability Readiness",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/capability-readiness",
+      "entrypoint": "combo-skills/capability-readiness/COMBO.md",
+      "selection": {
+        "use_when": [
+          "An advanced route has unverified dependencies, environment assumptions, access requirements, or strong operational claims."
+        ],
+        "do_not_use_when": [
+          "The candidate route already has current mission-specific preflight and evidence-matched claim records."
+        ]
+      },
+      "members": [
+        {
+          "id": "capability-admission",
+          "kind": "skill",
+          "role": "Define the mission-specific readiness decision and fallback.",
+          "required": true
+        },
+        {
+          "id": "resource-preflight",
+          "kind": "skill",
+          "role": "Verify required environment, access, dependency, and data conditions.",
+          "required": true
+        },
+        {
+          "id": "claim-calibration",
+          "kind": "skill",
+          "role": "Constrain wording and confidence to available evidence.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Accept only aligned admission, preflight, and claim records.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "capability-admission",
+            "consumes": ["Mission scope", "Candidate capability", "Declared prerequisites"],
+            "produces": ["CAPABILITY_ADMISSION.md"],
+            "validation": "Required prerequisites, admission criteria, and fallback route are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "resource-preflight",
+            "consumes": ["CAPABILITY_ADMISSION.md", "Authorized environment facts"],
+            "produces": ["RESOURCE_PREFLIGHT.md"],
+            "validation": "Every required resource has a current observed status."
+          },
+          {
+            "step": 3,
+            "member_id": "claim-calibration",
+            "consumes": ["Candidate claims", "RESOURCE_PREFLIGHT.md", "Evidence links"],
+            "produces": ["CLAIM_BOUNDARIES.md"],
+            "validation": "Claim wording matches current evidence and environment scope."
+          },
+          {
+            "step": 4,
+            "member_id": "quality-gate",
+            "consumes": ["Admission decision", "Preflight record", "Claim boundaries"],
+            "produces": ["Capability readiness gate"],
+            "validation": "The route is admitted, conditional, or blocked with no hidden prerequisite."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "capability-admission",
+            "to_member": "resource-preflight",
+            "required_inputs": ["Required prerequisite inventory", "Mission-specific boundaries"],
+            "accepted_outputs": ["Observed resource status and documented fallback"],
+            "failure_owner": "admission owner"
+          },
+          {
+            "from_member": "resource-preflight",
+            "to_member": "claim-calibration",
+            "required_inputs": ["Observed prerequisite status", "Evidence locations"],
+            "accepted_outputs": ["Scoped claim boundaries"],
+            "failure_owner": "evidence owner"
+          },
+          {
+            "from_member": "claim-calibration",
+            "to_member": "quality-gate",
+            "required_inputs": ["Approved wording", "Limitations", "Review trigger"],
+            "accepted_outputs": ["Reproducible readiness decision"],
+            "failure_owner": "quality owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record each prerequisite source, observed status, access limit, and validation result."
+        ],
+        "risk_boundaries": [
+          "Do not install tools, reveal secrets, access restricted data, or imply certification during preflight."
+        ],
+        "quality_gates": [
+          "No advanced route is selected until admission, preflight, and claim scope agree."
+        ],
+        "state_updates": [
+          "Write the readiness decision, missing prerequisites, fallback, and next review trigger into durable mission state."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission-specific capability decision", "Observed resource status", "Evidence-matched claim scope", "Acceptance gate"
+        ],
+        "adds": "A reusable preflight gate that makes advanced route selection conditional on verified prerequisites and calibrated claims rather than capability descriptions alone.",
+        "compound_artifact": "CAPABILITY_READINESS_RECORD.md",
+        "next_layer_ready_when": [
+          "The route is explicitly admitted or safely blocked for this mission.",
+          "Every material claim has an evidence-matched scope and limitations."
+        ]
+      }
     }
   ]
 }

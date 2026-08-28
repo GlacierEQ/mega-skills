@@ -156,6 +156,7 @@ def validate_mega(data: dict, combo_ids: set[str]) -> None:
         all_combos = set(required) | set(conditional)
         expect(all_combos.issubset(combo_ids), f"{entry['id']}: unresolved Combo Skill reference")
         expect(not set(required).intersection(conditional), f"{entry['id']}: Combo cannot be both required and conditional")
+        expect("capability-readiness" in conditional, f"{entry['id']}: must include capability-readiness as a conditional route")
         expect(len(entry.get("durable_state", [])) >= 5, f"{entry['id']}: durable state contract is incomplete")
         expect(bool(entry.get("mission_output")) and bool(entry.get("adds")), f"{entry['id']}: mission integration contract is incomplete")
         seen.add(entry["id"])
