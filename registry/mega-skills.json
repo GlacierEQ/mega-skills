@@ -305,6 +305,20 @@
       "mission_output": "SAFE_CHANGE_MISSION_RECORD.md",
       "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
       "adds": "Cross-Combo control of repository scope, route admission, decision evidence, bounded repair or change execution, verification, approval status, and exact recovery state."
+    },
+    {
+      "id": "apex-web-build-system",
+      "display_name": "APEX Web Build System",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-web-build-system",
+      "entrypoint": "mega-skills/apex-web-build-system/MEGA.md",
+      "required_combos": ["long-horizon-core", "web-build-foundation"],
+      "conditional_combos": ["capability-readiness"],
+      "mission_output": "WEB_BUILD_MISSION_RECORD.md",
+      "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
+      "adds": "Mission-wide routing from repository reconnaissance through visual direction, browser implementation, justified full-stack escalation, readiness gating, validation evidence, approval state, and recoverable handoff."
     }
   ]
 }

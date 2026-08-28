@@ -87,6 +87,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "apex-adaptive-operations": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
             "apex-capability-foundry": "CAPABILITY_FOUNDRY_MISSION_RECORD.md",
             "apex-safe-change-orchestrator": "SAFE_CHANGE_MISSION_RECORD.md",
+            "apex-web-build-system": "WEB_BUILD_MISSION_RECORD.md",
         }
         for mega_id, artifact in expected.items():
             mega = by_id[mega_id]
@@ -94,6 +95,23 @@ class HierarchyFoundationTests(unittest.TestCase):
             self.assertIn("capability-readiness", mega["conditional_combos"])
             self.assertEqual(mega["mission_output"], artifact)
             self.assertTrue((ROOT / mega["entrypoint"]).is_file())
+
+    def test_web_build_foundation_composes_five_lifecycle_members(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        combo = next(entry for entry in combos if entry["id"] == "web-build-foundation")
+        self.assertEqual(
+            [member["id"] for member in combo["members"]],
+            [
+                "repository-context-onboarding",
+                "imagegen",
+                "webdev-readme-static",
+                "webdev-readme-fullstack",
+                "mega-skills-test-runner",
+            ],
+        )
+        self.assertEqual(combo["compounding"]["compound_artifact"], "WEB_BUILD_FOUNDATION_RECORD.md")
+        self.assertTrue((ROOT / combo["entrypoint"]).is_file())
+        self.assertEqual([step["step"] for step in combo["execution"]["ordered_steps"]], [1, 2, 3, 4, 5])
 
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())

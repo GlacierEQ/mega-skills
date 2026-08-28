@@ -1965,6 +1965,37 @@
         {"from_member":"work-packet","to_member":"quality-gate","required_inputs":["Affected IDs","Acceptance criteria","Review authority"],"accepted_outputs":["Review-admission decision"],"failure_owner":"maintainer"}
       ],"evidence_requirements":["Record provenance, repetition count or pattern basis, limitations, compatibility risk, and validation plan."],"risk_boundaries":["Do not self-modify active capabilities, alter an active mission contract, or merge a proposal without the defined review process."],"quality_gates":["A proposal needs traceable evidence, clear ownership, compatibility consideration, and a named first validation."],"state_updates":["Record the proposal status, affected capability IDs, review owner, and next validation in durable state."]},
       "compounding":{"inherits":["Evidence trace","Claim scope","Change boundary","Work packet","Quality gate"],"adds":"A governed feedback loop that converts recurring evidence into a review-ready improvement proposal without autonomous mutation or untracked learning.","compound_artifact":"CAPABILITY_EVOLUTION_PROPOSAL.md","next_layer_ready_when":["The proposal has evidence, owner, compatibility risk, and a first validation step.","Any implementation work is routed through the appropriate governed change process."]}
+    },
+    {
+      "id": "web-build-foundation",
+      "display_name": "Web Build Foundation",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "combo-skills/web-build-foundation",
+      "entrypoint": "combo-skills/web-build-foundation/COMBO.md",
+      "selection": {"use_when":["A web experience spans repository inspection, visual direction, coded browser delivery, optional product behavior, and verification."],"do_not_use_when":["The request is only a simple copy edit, standalone visual, mobile-only Expo app, or specialist domain decision with no web artifact."]},
+      "members": [
+        {"id":"repository-context-onboarding","kind":"external-skill","role":"Map repository ownership, source of truth, constraints, and related systems without mutation.","required":true},
+        {"id":"imagegen","kind":"external-skill","role":"Choose the visual production route and define asset acceptance risks.","required":true},
+        {"id":"webdev-readme-static","kind":"external-skill","role":"Implement the accessible, responsive browser experience within the static template boundary.","required":true},
+        {"id":"webdev-readme-fullstack","kind":"external-skill","role":"Escalate only when data, auth, storage, API, or other real product behavior is required.","required":false},
+        {"id":"mega-skills-test-runner","kind":"skill","role":"Run hierarchy, regression, and diff-hygiene verification with evidence.","required":true}
+      ],
+      "execution": {"ordered_steps":[
+        {"step":1,"member_id":"repository-context-onboarding","consumes":["User request","Trusted repository or project"],"produces":["REPOSITORY_CONTEXT.md"],"validation":"Revision, ownership, source-of-truth files, constraints, and unresolved questions are recorded."},
+        {"step":2,"member_id":"imagegen","consumes":["REPOSITORY_CONTEXT.md","Design intent","Asset inventory"],"produces":["VISUAL_DIRECTION.md"],"validation":"Each prominent visual has a selected route and acceptance risk."},
+        {"step":3,"member_id":"webdev-readme-static","consumes":["Repository context","Visual direction"],"produces":["Working frontend change"],"validation":"Type check, build, route inspection, and responsive behavior pass."},
+        {"step":4,"member_id":"webdev-readme-fullstack","consumes":["Verified feature requirement","Working frontend"],"produces":["FULLSTACK_ESCALATION_RECORD.md or NOT_REQUIRED"],"validation":"Escalation boundary, schema/API/test plan, secrets, and approval are explicit."},
+        {"step":5,"member_id":"mega-skills-test-runner","consumes":["Complete diff","Current revision"],"produces":["MEGA_SKILLS_VALIDATION.json"],"validation":"Required validation commands return zero or the route is explicitly blocked with evidence."}
+      ]},
+      "integration": {"handoffs":[
+        {"from_member":"repository-context-onboarding","to_member":"imagegen","required_inputs":["Repository map","Brand constraints","Asset inventory"],"accepted_outputs":["Visual route and acceptance risks"],"failure_owner":"context owner"},
+        {"from_member":"imagegen","to_member":"webdev-readme-static","required_inputs":["Visual brief","Asset route","Contrast constraints"],"accepted_outputs":["Implementable visual system"],"failure_owner":"design owner"},
+        {"from_member":"webdev-readme-static","to_member":"webdev-readme-fullstack","required_inputs":["Verified feature gap","Current frontend"],"accepted_outputs":["Escalation record or NOT_REQUIRED"],"failure_owner":"product owner"},
+        {"from_member":"webdev-readme-fullstack","to_member":"mega-skills-test-runner","required_inputs":["Implementation and integration boundary"],"accepted_outputs":["Verifiable repository change"],"failure_owner":"implementation owner"}
+      ],"evidence_requirements":["Record source paths, revisions, visual decisions, asset provenance, commands, browser observations, tests, and limitations."],"risk_boundaries":["Do not expose secrets, deploy, create schedules, poll services, mutate external repositories, or claim unobserved live capability."],"quality_gates":["Source of truth is mapped, visual route is explicit, browser artifact is buildable, escalation is justified or not required, and validation is reproducible."],"state_updates":["Update the foundation record and handoff after each member transition."]},
+      "compounding": {"inherits":["Repository context","Visual route","Working frontend","Escalation decision","Validation receipt"],"adds":"An auditable web-build foundation route that reconciles source-of-truth discovery, visual production, browser implementation, justified escalation, and verification.","compound_artifact":"WEB_BUILD_FOUNDATION_RECORD.md","next_layer_ready_when":["All required outputs are present and the conditional full-stack route is explicitly resolved.","Every handoff names an owner, accepted output, and close condition."]}
     }
   ]
 }
