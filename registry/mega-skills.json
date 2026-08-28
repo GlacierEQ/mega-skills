@@ -239,6 +239,72 @@
         "HANDOFF.md"
       ],
       "adds": "Evidentiary audio processing for Apple Voice Memos and court recordings with ENF acoustic grid analysis, WhisperX phonetic alignment, and 17-point court transcripts."
+    },
+    {
+      "id": "apex-adaptive-operations",
+      "display_name": "APEX Adaptive Operations",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-adaptive-operations",
+      "entrypoint": "mega-skills/apex-adaptive-operations/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "automation-control",
+        "guarded-automation-loop",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
+      "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
+      "adds": "Mission-wide coordination of observed signals, readiness, approved operational responses, guarded run records, feedback proposals, and recoverable state without implying automatic external execution."
+    },
+    {
+      "id": "apex-capability-foundry",
+      "display_name": "APEX Capability Foundry",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-capability-foundry",
+      "entrypoint": "mega-skills/apex-capability-foundry/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "evidence-to-evolution-loop",
+        "skill-forge"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "recon-and-map",
+        "signal-to-decision-loop"
+      ],
+      "mission_output": "CAPABILITY_FOUNDRY_MISSION_RECORD.md",
+      "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
+      "adds": "A controlled mission sequence that converts repeated evidence into a reusable, governed capability increment with repository, registry, validation, release, and recovery evidence."
+    },
+    {
+      "id": "apex-safe-change-orchestrator",
+      "display_name": "APEX Safe Change Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-safe-change-orchestrator",
+      "entrypoint": "mega-skills/apex-safe-change-orchestrator/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "recon-and-map",
+        "closed-loop-code-repair",
+        "guarded-automation-loop"
+      ],
+      "mission_output": "SAFE_CHANGE_MISSION_RECORD.md",
+      "durable_state": ["MISSION.md", "ROADMAP.md", "CONTEXT.md", "EVIDENCE.md", "HANDOFF.md"],
+      "adds": "Cross-Combo control of repository scope, route admission, decision evidence, bounded repair or change execution, verification, approval status, and exact recovery state."
     }
   ]
 }

@@ -459,6 +459,35 @@
         "Professional certification",
         "Unsupported guarantees"
       ]
+    },
+    {
+      "id": "mega-skill-forge",
+      "display_name": "Mega Skill Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-skill-forge",
+      "entrypoint": "skills/mega-skill-forge/SKILL.md",
+      "purpose": "Design, validate, register, and release a mission-level Mega Skill that genuinely integrates multiple Combo Skills.",
+      "input_contract": [
+        "Observed recurring mission pattern",
+        "Resolved Combo Skill registry",
+        "Target repository and release authority"
+      ],
+      "output_contract": [
+        "Validated MEGA.md",
+        "Registered Mega Skill entry",
+        "Focused regression test and release evidence"
+      ],
+      "local_validation": [
+        "Candidate has at least two resolved Combo dependencies and a unique mission-level integration artifact",
+        "Hierarchy validator and regression suite pass"
+      ],
+      "does_not_own": [
+        "Combo procedure duplication",
+        "Unapproved repository releases",
+        "Unsupported automation claims"
+      ]
     }
   ]
 }

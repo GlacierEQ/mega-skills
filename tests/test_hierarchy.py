@@ -29,6 +29,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "aerospace-trajectory-core", "polyglot-rosetta-core", "omni-memory-core",
             "fork-overlay-core", "ast-repair-core", "audio-forensic-core",
             "capability-admission", "resource-preflight", "claim-calibration",
+            "mega-skill-forge",
         }
         self.assertEqual({entry["id"] for entry in skills}, expected)
         for entry in skills:
@@ -78,6 +79,21 @@ class HierarchyFoundationTests(unittest.TestCase):
             "evidence-to-evolution-loop",
         ):
             self.assertIn(combo_id, mega["conditional_combos"])
+
+    def test_new_end_to_end_megas_require_multiple_resolved_combos(self):
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        by_id = {entry["id"]: entry for entry in megas}
+        expected = {
+            "apex-adaptive-operations": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
+            "apex-capability-foundry": "CAPABILITY_FOUNDRY_MISSION_RECORD.md",
+            "apex-safe-change-orchestrator": "SAFE_CHANGE_MISSION_RECORD.md",
+        }
+        for mega_id, artifact in expected.items():
+            mega = by_id[mega_id]
+            self.assertGreaterEqual(len(mega["required_combos"]), 2)
+            self.assertIn("capability-readiness", mega["conditional_combos"])
+            self.assertEqual(mega["mission_output"], artifact)
+            self.assertTrue((ROOT / mega["entrypoint"]).is_file())
 
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())
