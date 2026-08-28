@@ -488,6 +488,32 @@
         "Unapproved repository releases",
         "Unsupported automation claims"
       ]
+    },
+    {
+      "id": "mega-skills-test-runner",
+      "display_name": "Mega Skills Test Runner",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-skills-test-runner",
+      "entrypoint": "skills/mega-skills-test-runner/SKILL.md",
+      "purpose": "Run and diagnose the canonical local hierarchy validator, full regression suite, diff-hygiene check, and optional JSON evidence report.",
+      "input_contract": [
+        "Trusted Mega Skills repository path",
+        "Optional validation report path"
+      ],
+      "output_contract": [
+        "Console validation summary",
+        "Optional JSON validation report"
+      ],
+      "local_validation": [
+        "Hierarchy validator, regression suite, and diff-hygiene command pass against the selected trusted checkout"
+      ],
+      "does_not_own": [
+        "Automated failure remediation",
+        "Repository mutation",
+        "Deployment or external execution"
+      ]
     }
   ]
 }

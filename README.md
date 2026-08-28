@@ -103,9 +103,25 @@ This package is a foundation draft. It has not created or pushed any repository.
 gh repo create GlacierEQ/mega-skills --private --source /path/to/GlacierEQ-mega-skills-foundation --remote origin --push
 ```
 
-Run the hierarchy validation before every merge:
+Run the complete local quality gate before every merge:
+
+```bash
+python skills/mega-skills-test-runner/scripts/run_checks.py --repo .
+```
+
+The runner executes the hierarchy validator, full regression suite, and `git diff --check` in that order. To preserve a machine-readable result outside the source tree, use:
+
+```bash
+python skills/mega-skills-test-runner/scripts/run_checks.py \
+  --repo . \
+  --report /tmp/mega-skills-validation.json
+```
+
+To run the checks individually during diagnosis, use:
 
 ```bash
 python scripts/validate_hierarchy.py
 python -m unittest discover -s tests -v
+git diff --check
+git status --short --branch
 ```

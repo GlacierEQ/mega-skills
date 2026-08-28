@@ -29,7 +29,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "aerospace-trajectory-core", "polyglot-rosetta-core", "omni-memory-core",
             "fork-overlay-core", "ast-repair-core", "audio-forensic-core",
             "capability-admission", "resource-preflight", "claim-calibration",
-            "mega-skill-forge",
+            "mega-skill-forge", "mega-skills-test-runner",
         }
         self.assertEqual({entry["id"] for entry in skills}, expected)
         for entry in skills:
