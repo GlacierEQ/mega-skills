@@ -383,6 +383,110 @@
         "Waveform tampering",
         "Unverified speaker assertions"
       ]
+    },
+    {
+      "id": "epistemic-gate",
+      "display_name": "Epistemic Gate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/epistemic-gate",
+      "entrypoint": "skills/epistemic-gate/SKILL.md",
+      "purpose": "Enforce the 6-Tier Epistemic Ladder (L0 to L6) as an immutable verification gate on all actions and assertions.",
+      "input_contract": [
+        "Proposed operational action",
+        "Artifact or claim state",
+        "Supporting evidence or test logs"
+      ],
+      "output_contract": [
+        "epistemic-verification-receipt.json"
+      ],
+      "local_validation": [
+        "Claim meets or exceeds L2 for local execution or L5 for enterprise deliverables",
+        "Cryptographic SHA-256 evidence is recorded with zero stubs"
+      ],
+      "does_not_own": [
+        "Task scheduling",
+        "Broad AST parsing"
+      ]
+    },
+    {
+      "id": "computer-user-core",
+      "display_name": "Computer User Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/computer-user-core",
+      "entrypoint": "skills/computer-user-core/SKILL.md",
+      "purpose": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI events, and process supervision.",
+      "input_contract": [
+        "Target application or PID",
+        "Action sequence or keystroke payload",
+        "Screen capture request"
+      ],
+      "output_contract": [
+        "computer-user-action-receipt.json"
+      ],
+      "local_validation": [
+        "Target native process executes requested operation",
+        "Visual state transition verified with zero residual zombie processes"
+      ],
+      "does_not_own": [
+        "Cross-cloud authentication",
+        "Relational database transformations"
+      ]
+    },
+    {
+      "id": "connector-bridge",
+      "display_name": "Connector Bridge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/connector-bridge",
+      "entrypoint": "skills/connector-bridge/SKILL.md",
+      "purpose": "Unified, typed transport interface for stacking multi-cloud services with exponential backoff and rate-limiting.",
+      "input_contract": [
+        "Endpoint definition and credentials",
+        "Protocol specification (REST/PostgREST/RPC)",
+        "Payload data"
+      ],
+      "output_contract": [
+        "connector-response-receipt.json"
+      ],
+      "local_validation": [
+        "Upstream service returns valid response",
+        "Payload satisfies typed schema with token budget respected"
+      ],
+      "does_not_own": [
+        "Long-horizon mission planning",
+        "Local file editing"
+      ]
+    },
+    {
+      "id": "pipeline-compositor",
+      "display_name": "Pipeline Compositor",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/pipeline-compositor",
+      "entrypoint": "skills/pipeline-compositor/SKILL.md",
+      "purpose": "Compose isolated skills, connectors, and agent runtimes into verified, fault-tolerant DAG pipelines.",
+      "input_contract": [
+        "Pipeline stage definitions",
+        "Dependency and edge type contracts",
+        "Checkpoint configuration"
+      ],
+      "output_contract": [
+        "pipeline-execution-manifest.json"
+      ],
+      "local_validation": [
+        "DAG topology is verified acyclic",
+        "Pipeline executes from source to terminal nodes without type errors"
+      ],
+      "does_not_own": [
+        "Unbounded recursive loops",
+        "Low-level kernel drivers"
+      ]
     }
   ]
 }

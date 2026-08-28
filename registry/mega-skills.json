@@ -227,6 +227,33 @@
         "HANDOFF.md"
       ],
       "adds": "Evidentiary audio processing for Apple Voice Memos and court recordings with ENF acoustic grid analysis, WhisperX phonetic alignment, and 17-point court transcripts."
+    },
+    {
+      "id": "apex-sovereign-runtime",
+      "display_name": "APEX Sovereign Runtime",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-sovereign-runtime",
+      "entrypoint": "mega-skills/apex-sovereign-runtime/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "runtime-operations",
+        "epistemic-verification-chain",
+        "pipeline-orchestration",
+        "closed-loop-code-repair"
+      ],
+      "mission_output": "sovereign-runtime-mission-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Unified control plane for native desktop embodiment, stacked multi-connector pipelines, automated self-healing, and absolute epistemic proof across local and cloud horizons."
     }
   ]
 }

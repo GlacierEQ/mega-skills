@@ -1740,6 +1740,414 @@
           "ENF validates recording date and integrity."
         ]
       }
+    },
+    {
+      "id": "runtime-operations",
+      "display_name": "Runtime Operations",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/runtime-operations",
+      "entrypoint": "combo-skills/runtime-operations/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Automating native macOS desktop applications, windows, and process lifecycle",
+          "Capturing and visually validating screen perception with zero zombie processes",
+          "Bridging local desktop actions directly to cloud connectors under quality gates"
+        ],
+        "do_not_use_when": [
+          "Executing pure cloud database queries without desktop interaction",
+          "Operating single non-GUI shell scripts"
+        ]
+      },
+      "members": [
+        {
+          "id": "computer-user-core",
+          "kind": "skill",
+          "required": true,
+          "role": "Execute native desktop, window, and screen automation"
+        },
+        {
+          "id": "connector-bridge",
+          "kind": "skill",
+          "required": true,
+          "role": "Route operational state and data to cloud connectors"
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "required": true,
+          "role": "Validate operational invariants and resource cleanup"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "computer-user-core",
+            "consumes": [
+              "Action request or GUI automation mandate"
+            ],
+            "produces": [
+              "computer-user-action-receipt.json"
+            ],
+            "validation": "Target process responds and visual delta confirms execution"
+          },
+          {
+            "step": 2,
+            "member_id": "connector-bridge",
+            "consumes": [
+              "computer-user-action-receipt.json",
+              "Target cloud service credentials"
+            ],
+            "produces": [
+              "connector-response-receipt.json"
+            ],
+            "validation": "Cloud connector confirms persistence and status 200/201"
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "computer-user-action-receipt.json",
+              "connector-response-receipt.json"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Zero residual zombie processes and confirmed cloud synchronization"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "computer-user-core",
+            "to_member": "connector-bridge",
+            "required_inputs": [
+              "computer-user-action-receipt.json"
+            ],
+            "accepted_outputs": [
+              "connector-response-receipt.json"
+            ],
+            "failure_owner": "runtime operator"
+          },
+          {
+            "from_member": "connector-bridge",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "connector-response-receipt.json"
+            ],
+            "accepted_outputs": [
+              "Gate record"
+            ],
+            "failure_owner": "quality auditor"
+          }
+        ],
+        "evidence_requirements": [
+          "Process PID and window bounds",
+          "Screen visual verification hash",
+          "Connector status and latency metrics"
+        ],
+        "risk_boundaries": [
+          "Do not leave zombie background processes",
+          "Do not expose secrets in action logs"
+        ],
+        "quality_gates": [
+          "Visual verification confirms GUI transition",
+          "Connector endpoint returns clean 200/201 status",
+          "Complete cleanup of temporary screenshot files"
+        ],
+        "state_updates": [
+          "Update active runtime operational log",
+          "Record execution latency into telemetry state"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Native desktop process supervision",
+          "Cloud connector transport resilience",
+          "Quality gate invariants"
+        ],
+        "adds": "Closed-loop execution between native desktop perception and cloud synchronization with verified teardown.",
+        "compound_artifact": "runtime-operations-record.md",
+        "next_layer_ready_when": [
+          "Desktop action successfully executes with zero process hangs.",
+          "Cloud connectors confirm synchronized state across local and remote horizons."
+        ]
+      }
+    },
+    {
+      "id": "epistemic-verification-chain",
+      "display_name": "Epistemic Verification Chain",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/epistemic-verification-chain",
+      "entrypoint": "combo-skills/epistemic-verification-chain/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Operational actions, legal claims, or code modifications require proof under the 6-tier epistemic spectrum",
+          "Asserting facts or forensic integrity across multi-cloud environments",
+          "Verifying enterprise production deliverables against L5 consensus standards"
+        ],
+        "do_not_use_when": [
+          "Conversational queries without operational state impact",
+          "Drafting uncommitted scratch notes"
+        ]
+      },
+      "members": [
+        {
+          "id": "epistemic-gate",
+          "kind": "skill",
+          "required": true,
+          "role": "Classify claim and evaluate against L0-L6 spectrum"
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "required": true,
+          "role": "Catalog SHA-256 hashes, provenance sources, and claims trace"
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "required": true,
+          "role": "Enforce the Epistemic Law of Action (L2+ local, L5+ enterprise)"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "epistemic-gate",
+            "consumes": [
+              "Operational claims and candidate actions"
+            ],
+            "produces": [
+              "epistemic-verification-receipt.json"
+            ],
+            "validation": "Epistemic tier is assigned with empirical proof requirements"
+          },
+          {
+            "step": 2,
+            "member_id": "evidence-register",
+            "consumes": [
+              "epistemic-verification-receipt.json",
+              "Raw evidence files"
+            ],
+            "produces": [
+              "EVIDENCE.md"
+            ],
+            "validation": "All underlying files and claims have SHA-256 digests recorded"
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "EVIDENCE.md",
+              "epistemic-verification-receipt.json"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Action authorized only when threshold meets or exceeds L2"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "epistemic-gate",
+            "to_member": "evidence-register",
+            "required_inputs": [
+              "epistemic-verification-receipt.json"
+            ],
+            "accepted_outputs": [
+              "EVIDENCE.md"
+            ],
+            "failure_owner": "epistemic auditor"
+          },
+          {
+            "from_member": "evidence-register",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "EVIDENCE.md"
+            ],
+            "accepted_outputs": [
+              "Gate record"
+            ],
+            "failure_owner": "quality lead"
+          }
+        ],
+        "evidence_requirements": [
+          "Assigned epistemic level (L0-L6)",
+          "Deterministic SHA-256 digests",
+          "Timestamped verification receipts"
+        ],
+        "risk_boundaries": [
+          "Strict zero-tolerance for unverified assumptions",
+          "No authorization below L2"
+        ],
+        "quality_gates": [
+          "100% of underlying evidence files have verified SHA-256 hashes",
+          "Quality gate issues formal authorization based on L2/L5 proof",
+          "Zero placeholders or stubs present in deliverables"
+        ],
+        "state_updates": [
+          "Update EVIDENCE.md with immutable proof chain",
+          "Record epistemic tier in mission ledger"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "6-tier epistemic ladder enforcement",
+          "Cryptographic evidence registration",
+          "Quality gate authorization"
+        ],
+        "adds": "Cryptographically verifiable pipeline proving that every claim meets mathematical and empirical proof standards before execution.",
+        "compound_artifact": "epistemic-verification-record.md",
+        "next_layer_ready_when": [
+          "Every claim is formally classified against L0-L6 spectrum.",
+          "Deterministic SHA-256 hashes are recorded in EVIDENCE.md."
+        ]
+      }
+    },
+    {
+      "id": "pipeline-orchestration",
+      "display_name": "Pipeline Orchestration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/pipeline-orchestration",
+      "entrypoint": "combo-skills/pipeline-orchestration/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Multi-stage data pipelines or stacked connectors require resilient DAG execution",
+          "Streaming or batch data across multiple cloud horizons with rate-limiting",
+          "Orchestrating multi-agent workflows with checkpoint/resume support"
+        ],
+        "do_not_use_when": [
+          "Executing simple linear single-step shell commands",
+          "Ad-hoc manual file inspections"
+        ]
+      },
+      "members": [
+        {
+          "id": "pipeline-compositor",
+          "kind": "skill",
+          "required": true,
+          "role": "Compose stages into a verified DAG with typed edges"
+        },
+        {
+          "id": "connector-bridge",
+          "kind": "skill",
+          "required": true,
+          "role": "Execute cloud connector transfers and API integrations"
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "required": true,
+          "role": "Validate stage output invariants, throughput, and error boundaries"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "pipeline-compositor",
+            "consumes": [
+              "Pipeline specification and stage definitions"
+            ],
+            "produces": [
+              "pipeline-execution-manifest.json"
+            ],
+            "validation": "DAG topology verified acyclic and step dependencies match"
+          },
+          {
+            "step": 2,
+            "member_id": "connector-bridge",
+            "consumes": [
+              "pipeline-execution-manifest.json",
+              "Connector connection parameters"
+            ],
+            "produces": [
+              "connector-response-receipt.json"
+            ],
+            "validation": "Connector endpoints return clean status with data intact"
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "pipeline-execution-manifest.json",
+              "connector-response-receipt.json"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "All pipeline stages complete within latency and error budgets"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "pipeline-compositor",
+            "to_member": "connector-bridge",
+            "required_inputs": [
+              "pipeline-execution-manifest.json"
+            ],
+            "accepted_outputs": [
+              "connector-response-receipt.json"
+            ],
+            "failure_owner": "pipeline architect"
+          },
+          {
+            "from_member": "connector-bridge",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "connector-response-receipt.json"
+            ],
+            "accepted_outputs": [
+              "Gate record"
+            ],
+            "failure_owner": "quality lead"
+          }
+        ],
+        "evidence_requirements": [
+          "DAG execution manifest with stage timings",
+          "Connector status and token telemetry",
+          "Intermediate state checkpoints"
+        ],
+        "risk_boundaries": [
+          "Do not allow unhandled step exceptions to halt entire pipeline without recovery",
+          "Enforce strict token and rate-limit ceilings"
+        ],
+        "quality_gates": [
+          "All DAG stages complete to terminal state",
+          "Zero data corruption across multi-connector handoffs",
+          "Intermediate checkpoints successfully persisted"
+        ],
+        "state_updates": [
+          "Record pipeline execution manifest into mission evidence",
+          "Update connector rate-limit telemetry"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "DAG pipeline composition",
+          "Stacked connector transport resilience",
+          "Quality gate invariants"
+        ],
+        "adds": "Deterministic orchestration of multi-stage pipelines across heterogeneous cloud and runtime endpoints.",
+        "compound_artifact": "pipeline-orchestration-record.md",
+        "next_layer_ready_when": [
+          "Pipeline DAG finishes execution with zero unhandled exceptions.",
+          "Connector transfers across cloud and database endpoints verify data parity."
+        ]
+      }
     }
   ]
 }
