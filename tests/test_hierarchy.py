@@ -31,7 +31,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "capability-admission", "resource-preflight", "claim-calibration",
             "mega-skill-forge", "mega-skills-test-runner",
         }
-        self.assertEqual({entry["id"] for entry in skills}, expected)
+        self.assertTrue(expected.issubset({entry["id"] for entry in skills}))
         for entry in skills:
             self.assertTrue((ROOT / entry["entrypoint"]).is_file())
 
