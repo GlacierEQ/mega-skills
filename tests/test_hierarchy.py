@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -122,6 +123,47 @@ class HierarchyFoundationTests(unittest.TestCase):
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())
         self.assertTrue((REGISTRY / "external-skills.json").is_file())
+
+    def test_skill_descriptions_match_sub_skill_headings(self):
+        pattern = re.compile(r"encompassing (\d+) sub-skills")
+        heading = re.compile(r"^## Sub-Skill:", re.M)
+        by_id = {
+            entry["id"]: entry
+            for entry in json.loads((REGISTRY / "skills.json").read_text(encoding="utf-8"))["entries"]
+        }
+        mismatches = []
+        for skill_md in sorted((ROOT / "skills").glob("*/SKILL.md")):
+            text = skill_md.read_text(encoding="utf-8")
+            match = pattern.search(text)
+            if not match:
+                continue
+            counted = int(match.group(1))
+            headings = len(heading.findall(text))
+            skill_id = skill_md.parent.name
+            if counted != headings:
+                mismatches.append(f"{skill_id}: description={counted} headings={headings}")
+            purpose = by_id.get(skill_id, {}).get("purpose", "")
+            purpose_match = pattern.search(purpose)
+            if purpose_match and int(purpose_match.group(1)) != headings:
+                mismatches.append(
+                    f"{skill_id}: registry purpose={purpose_match.group(1)} headings={headings}"
+                )
+        self.assertEqual(mismatches, [], "\n".join(mismatches))
+
+    def test_skill_docs_do_not_hardcode_clone_root_or_missing_legal_cli(self):
+        clone_root = "/Users/kcbflux/mega-skills"
+        stale = []
+        for skill_md in sorted((ROOT / "skills").glob("*/SKILL.md")):
+            text = skill_md.read_text(encoding="utf-8")
+            if clone_root in text:
+                stale.append(f"{skill_md.parent.name}: hardcoded clone-root path")
+            if ".gemini/config/skills/" in text:
+                stale.append(f"{skill_md.parent.name}: stale .gemini skill path")
+        legal = (ROOT / "skills/mega-legal-forensic-engine/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("skills/mega-legal-forensic-engine/skill.py", legal)
+        self.assertNotIn("engine_cli.py", legal)
+        self.assertFalse((ROOT / "skills/mega-legal-forensic-engine/scripts/engine_cli.py").exists())
+        self.assertEqual(stale, [], "\n".join(stale))
 
 
 if __name__ == "__main__":

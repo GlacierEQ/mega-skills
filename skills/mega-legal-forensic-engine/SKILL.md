@@ -17,33 +17,18 @@ This skill implements the **Deep Soul Protocol & AION-777** framework. It acts a
 - `building-data-apps` (to visualize timelines and bias graphs)
 
 ## Quick Start
-Run the CLI tool directly through the workspace:
+Run the in-repo dispatcher from the repository root:
 ```bash
-uv run /Users/kcbflux/.gemini/config/skills/deep-soul-litigation-engine/scripts/engine_cli.py --help
+python3 skills/mega-legal-forensic-engine/skill.py
 ```
 
 ## Utility Scripts
-The CLI provides the following workflows:
+Deep Soul litigation workflows are operator procedures. WhisperX, docket PDF parsing, and LaTeX compilation require their local toolchains. The packaged dispatcher currently exposes `dependencies`, `quick_start`, and `sub-skill_deep-soul-litigation-engine`.
 
-1. **Media Transcription (WhisperX)**:
-   ```bash
-   uv run /Users/kcbflux/.gemini/config/skills/deep-soul-litigation-engine/scripts/engine_cli.py transcribe-media --input court_hearing.mp3 --output transcripts/court_hearing.json
-   ```
-
-2. **Docket Parsing**:
-   ```bash
-   uv run /Users/kcbflux/.gemini/config/skills/deep-soul-litigation-engine/scripts/engine_cli.py parse-docket --input docket_export.pdf --output docket_timeline.json
-   ```
-
-3. **Bias & Temporal Anomaly Analysis**:
-   ```bash
-   uv run /Users/kcbflux/.gemini/config/skills/deep-soul-litigation-engine/scripts/engine_cli.py analyze-bias --docket-json docket_timeline.json --output bias_report.json
-   ```
-
-4. **Pleading Compilation (LaTeX)**:
-   ```bash
-   uv run /Users/kcbflux/.gemini/config/skills/deep-soul-litigation-engine/scripts/engine_cli.py compile-pleading --case-data case_info.json --template hawaii --output Motion_001_Stay.pdf
-   ```
+1. **Media Transcription (WhisperX)**: ingest `court_hearing.mp3` → `transcripts/court_hearing.json`
+2. **Docket Parsing**: ingest `docket_export.pdf` → `docket_timeline.json`
+3. **Bias & Temporal Anomaly Analysis**: ingest `docket_timeline.json` → `bias_report.json`
+4. **Pleading Compilation (LaTeX)**: ingest `case_info.json` with the Hawaii template → `Motion_001_Stay.pdf`
 
 ## Common Mistakes
 - **LaTeX Compilation Errors**: Make sure MacTeX/TeX Live is installed (`pdflatex` must be in the PATH).

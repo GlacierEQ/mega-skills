@@ -1406,7 +1406,7 @@
       "version": "0.1.0",
       "path": "skills/mega-apex-sovereign-mastermind",
       "entrypoint": "skills/mega-apex-sovereign-mastermind/SKILL.md",
-      "purpose": "Consolidated mega skill encompassing 7 sub-skills.",
+      "purpose": "Consolidated mega skill encompassing 8 sub-skills.",
       "input_contract": [
         "Sub-skill task context",
         "Requested operation intent"
@@ -2709,7 +2709,7 @@
       "version": "0.1.0",
       "path": "skills/mega-supabase-ecosystem",
       "entrypoint": "skills/mega-supabase-ecosystem/SKILL.md",
-      "purpose": "Consolidated mega skill encompassing 2 sub-skills.",
+      "purpose": "Consolidated mega skill encompassing 5 sub-skills.",
       "input_contract": [
         "Sub-skill task context",
         "Requested operation intent"
