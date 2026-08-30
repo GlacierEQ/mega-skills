@@ -7,11 +7,14 @@ import json
 import re
 from pathlib import Path
 
+from firewall import REQUIRED_FORBIDDEN, validate_policy
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry"
 COMBO_SCHEMA = ROOT / "schemas" / "combo-skill.schema.json"
 COMBO_TEMPLATE = ROOT / "combo-skills" / "_template" / "COMBO.md"
+FIREWALL_SCHEMA = ROOT / "schemas" / "firewall.schema.json"
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 OWNERSHIP = {"glaciereq", "external-platform", "candidate"}
 
@@ -140,14 +143,29 @@ def validate_combos(data: dict, skill_ids: set[str], external: set[str]) -> set[
     return combo_ids
 
 
+def validate_firewall_contract(policy: object, mega_id: str) -> None:
+    expect(isinstance(policy, dict), f"{mega_id}: firewall policy is missing")
+    validate_policy(policy, mega_id)
+    expect(FIREWALL_SCHEMA.is_file(), "firewall schema is missing")
+    try:
+        schema = json.loads(FIREWALL_SCHEMA.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"firewall schema is invalid JSON: {exc}") from exc
+    expect(schema.get("properties", {}).get("mode", {}).get("const") == "read_only", "firewall schema must enforce read_only mode")
+    expect(set(REQUIRED_FORBIDDEN).issubset(policy["forbidden_actions"]), f"{mega_id}: mandatory firewall denials are incomplete")
+
+
 def validate_mega(data: dict, combo_ids: set[str]) -> None:
     expect(data.get("schema_version") == 2, "mega-skills.json: unsupported schema version")
     expect(data.get("layer") == "mega-skills", "mega-skills.json: invalid layer")
     entries = data.get("entries", [])
     expect(entries, "mega-skills.json: at least one Mega Skill is required")
+    expect(not list((ROOT / "combo-skills").glob("*/SKILL.md")), "combo layer contains copied SKILL.md methods")
+    expect(not list((ROOT / "mega-skills").glob("*/SKILL.md")), "mega layer contains copied SKILL.md methods")
     seen: set[str] = set()
     for entry in entries:
         validate_common(entry, "mega skill")
+        validate_firewall_contract(entry.get("firewall"), entry["id"])
         expect(entry["id"] not in seen, f"duplicate mega ID: {entry['id']}")
         required = entry.get("required_combos")
         conditional = entry.get("conditional_combos")

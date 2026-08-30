@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/mega-skills/schemas/firewall.schema.json",
+  "title": "Mega Skill Read-Only Firewall Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mega_id",
+    "mode",
+    "allowed_actions",
+    "approval_required_for",
+    "forbidden_actions",
+    "required_evidence",
+    "human_control"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "mega_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "mode": {
+      "const": "read_only"
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "approval_required_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "human_control": {
+      "const": "required"
+    }
+  },
+  "additionalProperties": false
+}
