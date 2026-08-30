@@ -28,7 +28,12 @@ class HierarchyFoundationTests(unittest.TestCase):
             "fleet-git-harmonizer-core", "forensic-evidence-chain-core",
             "aerospace-trajectory-core", "polyglot-rosetta-core", "omni-memory-core",
             "fork-overlay-core", "ast-repair-core", "audio-forensic-core",
+<<<<<<< HEAD
             "epistemic-gate", "computer-user-core", "connector-bridge", "pipeline-compositor",
+=======
+            "capability-admission", "resource-preflight", "claim-calibration",
+            "mega-skill-forge", "mega-skills-test-runner",
+>>>>>>> origin/main
         }
         self.assertEqual({entry["id"] for entry in skills}, expected)
         for entry in skills:
@@ -41,10 +46,58 @@ class HierarchyFoundationTests(unittest.TestCase):
         self.assertTrue(all(member["kind"] == "skill" for member in core["members"]))
 
     def test_mega_layer_requires_but_does_not_duplicate_core_contracts(self):
-        mega = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"][0]
-        self.assertIn("long-horizon-core", mega["required_combos"])
-        self.assertTrue((ROOT / mega["entrypoint"]).is_file())
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        for mega in megas:
+            self.assertIn("long-horizon-core", mega["required_combos"])
+            self.assertIn("capability-readiness", mega["conditional_combos"])
+            self.assertTrue((ROOT / mega["entrypoint"]).is_file())
         self.assertFalse((ROOT / "skills/far-away-party-core").exists())
+
+    def test_capability_readiness_has_its_atomic_foundations(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        readiness = next(entry for entry in combos if entry["id"] == "capability-readiness")
+        self.assertEqual(
+            [member["id"] for member in readiness["members"]],
+            ["capability-admission", "resource-preflight", "claim-calibration", "quality-gate"],
+        )
+
+    def test_feedback_loops_have_guarded_outputs_and_resolved_members(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        by_id = {entry["id"]: entry for entry in combos}
+        expected = {
+            "signal-to-decision-loop": "SIGNAL_DECISION_RECORD.md",
+            "guarded-automation-loop": "GUARDED_RUN_RECORD.md",
+            "evidence-to-evolution-loop": "CAPABILITY_EVOLUTION_PROPOSAL.md",
+        }
+        for combo_id, artifact in expected.items():
+            combo = by_id[combo_id]
+            self.assertEqual(combo["compounding"]["compound_artifact"], artifact)
+            self.assertTrue((ROOT / combo["entrypoint"]).is_file())
+            self.assertTrue(combo["integration"]["risk_boundaries"])
+
+    def test_far_away_party_exposes_feedback_loops(self):
+        mega = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"][0]
+        for combo_id in (
+            "signal-to-decision-loop",
+            "guarded-automation-loop",
+            "evidence-to-evolution-loop",
+        ):
+            self.assertIn(combo_id, mega["conditional_combos"])
+
+    def test_new_end_to_end_megas_require_multiple_resolved_combos(self):
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        by_id = {entry["id"]: entry for entry in megas}
+        expected = {
+            "apex-adaptive-operations": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
+            "apex-capability-foundry": "CAPABILITY_FOUNDRY_MISSION_RECORD.md",
+            "apex-safe-change-orchestrator": "SAFE_CHANGE_MISSION_RECORD.md",
+        }
+        for mega_id, artifact in expected.items():
+            mega = by_id[mega_id]
+            self.assertGreaterEqual(len(mega["required_combos"]), 2)
+            self.assertIn("capability-readiness", mega["conditional_combos"])
+            self.assertEqual(mega["mission_output"], artifact)
+            self.assertTrue((ROOT / mega["entrypoint"]).is_file())
 
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())

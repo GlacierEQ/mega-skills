@@ -385,6 +385,137 @@
       ]
     },
     {
+      "id": "capability-admission",
+      "display_name": "Capability Admission",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/capability-admission",
+      "entrypoint": "skills/capability-admission/SKILL.md",
+      "purpose": "Decide whether a capability may be selected for a specific mission.",
+      "input_contract": [
+        "Mission contract",
+        "Candidate capability",
+        "Declared prerequisites"
+      ],
+      "output_contract": [
+        "CAPABILITY_ADMISSION.md"
+      ],
+      "local_validation": [
+        "Decision distinguishes verified readiness, conditional readiness, and blocked routes"
+      ],
+      "does_not_own": [
+        "Unverified capability promotion",
+        "Specialist route execution"
+      ]
+    },
+    {
+      "id": "resource-preflight",
+      "display_name": "Resource Preflight",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/resource-preflight",
+      "entrypoint": "skills/resource-preflight/SKILL.md",
+      "purpose": "Verify mission-relevant dependencies, access, resources, and environment assumptions.",
+      "input_contract": [
+        "Candidate capability",
+        "Prerequisite inventory",
+        "Authorized environment"
+      ],
+      "output_contract": [
+        "RESOURCE_PREFLIGHT.md"
+      ],
+      "local_validation": [
+        "Every required prerequisite has a current observed status and fallback"
+      ],
+      "does_not_own": [
+        "Unapproved installation",
+        "Restricted-data access",
+        "Secret disclosure"
+      ]
+    },
+    {
+      "id": "claim-calibration",
+      "display_name": "Claim Calibration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/claim-calibration",
+      "entrypoint": "skills/claim-calibration/SKILL.md",
+      "purpose": "Align capability claims and confidence wording to actual evidence and scope.",
+      "input_contract": [
+        "Candidate claims",
+        "Evidence register",
+        "Preflight results"
+      ],
+      "output_contract": [
+        "CLAIM_BOUNDARIES.md"
+      ],
+      "local_validation": [
+        "Every material statement has evidence-matched wording and a disclosed limitation"
+      ],
+      "does_not_own": [
+        "Professional certification",
+        "Unsupported guarantees"
+      ]
+    },
+    {
+      "id": "mega-skill-forge",
+      "display_name": "Mega Skill Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-skill-forge",
+      "entrypoint": "skills/mega-skill-forge/SKILL.md",
+      "purpose": "Design, validate, register, and release a mission-level Mega Skill that genuinely integrates multiple Combo Skills.",
+      "input_contract": [
+        "Observed recurring mission pattern",
+        "Resolved Combo Skill registry",
+        "Target repository and release authority"
+      ],
+      "output_contract": [
+        "Validated MEGA.md",
+        "Registered Mega Skill entry",
+        "Focused regression test and release evidence"
+      ],
+      "local_validation": [
+        "Candidate has at least two resolved Combo dependencies and a unique mission-level integration artifact",
+        "Hierarchy validator and regression suite pass"
+      ],
+      "does_not_own": [
+        "Combo procedure duplication",
+        "Unapproved repository releases",
+        "Unsupported automation claims"
+      ]
+    },
+    {
+      "id": "mega-skills-test-runner",
+      "display_name": "Mega Skills Test Runner",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-skills-test-runner",
+      "entrypoint": "skills/mega-skills-test-runner/SKILL.md",
+      "purpose": "Run and diagnose the canonical local hierarchy validator, full regression suite, diff-hygiene check, and optional JSON evidence report.",
+      "input_contract": [
+        "Trusted Mega Skills repository path",
+        "Optional validation report path"
+      ],
+      "output_contract": [
+        "Console validation summary",
+        "Optional JSON validation report"
+      ],
+      "local_validation": [
+        "Hierarchy validator, regression suite, and diff-hygiene command pass against the selected trusted checkout"
+      ],
+      "does_not_own": [
+        "Automated failure remediation",
+        "Repository mutation",
+        "Deployment or external execution"
+      ]
+    },
+    {
       "id": "epistemic-gate",
       "display_name": "Epistemic Gate",
       "ownership": "glaciereq",
