@@ -21,3 +21,7 @@ __pycache__/
 *~
 dist/
 runs/
+
+# Combo and Mega layers own COMBO.md / MEGA.md, not SKILL.md copies
+combo-skills/**/SKILL.md
+mega-skills/**/SKILL.md
