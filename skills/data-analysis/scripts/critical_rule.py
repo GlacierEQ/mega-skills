@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""
+Critical Rule.
+Part of data-analysis skill.
+"""
+
+import sys
+import json
+from pathlib import Path
+
+def main():
+    """Main implementation for critical_rule.py."""
+    print(f"Executing critical_rule.py for data-analysis")
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

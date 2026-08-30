@@ -1,0 +1,5 @@
+# Configuration schema for apex-sovereign-runtime
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

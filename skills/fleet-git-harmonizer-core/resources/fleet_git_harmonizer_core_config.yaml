@@ -1,0 +1,5 @@
+# Configuration schema for fleet-git-harmonizer-core
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

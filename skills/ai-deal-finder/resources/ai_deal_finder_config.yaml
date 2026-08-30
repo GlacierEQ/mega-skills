@@ -1,0 +1,5 @@
+# Configuration schema for ai-deal-finder
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

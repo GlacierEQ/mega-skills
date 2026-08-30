@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mega-Cc-Skill-Security-Review",
+  "type": "object",
+  "properties": {
+    "status": {"type": "string"},
+    "artifacts": {"type": "array"}
+  }
+}

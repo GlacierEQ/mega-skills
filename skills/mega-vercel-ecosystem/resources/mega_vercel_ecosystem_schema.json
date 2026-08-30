@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mega-Vercel-Ecosystem",
+  "type": "object",
+  "properties": {
+    "status": {"type": "string"},
+    "artifacts": {"type": "array"}
+  }
+}

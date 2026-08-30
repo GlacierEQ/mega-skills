@@ -1,0 +1,5 @@
+# Configuration schema for mega-skill-forge
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

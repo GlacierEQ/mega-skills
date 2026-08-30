@@ -1,0 +1,5 @@
+# Configuration schema for mega-meta-llama-collective-sentinel
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

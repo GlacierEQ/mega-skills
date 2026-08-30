@@ -1,0 +1,5 @@
+# Configuration schema for mega-agent-memory-systems
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

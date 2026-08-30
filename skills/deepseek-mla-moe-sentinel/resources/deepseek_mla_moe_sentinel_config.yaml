@@ -1,0 +1,5 @@
+# Configuration schema for deepseek-mla-moe-sentinel
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

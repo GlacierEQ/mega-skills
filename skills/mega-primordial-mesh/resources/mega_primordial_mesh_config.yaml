@@ -1,0 +1,5 @@
+# Configuration schema for mega-primordial-mesh
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

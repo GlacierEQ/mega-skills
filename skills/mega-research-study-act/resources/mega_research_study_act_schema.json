@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mega-Research-Study-Act",
+  "type": "object",
+  "properties": {
+    "status": {"type": "string"},
+    "artifacts": {"type": "array"}
+  }
+}
