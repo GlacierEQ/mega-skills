@@ -89,6 +89,11 @@ class HierarchyFoundationTests(unittest.TestCase):
             "apex-capability-foundry": "CAPABILITY_FOUNDRY_MISSION_RECORD.md",
             "apex-safe-change-orchestrator": "SAFE_CHANGE_MISSION_RECORD.md",
             "apex-web-build-system": "WEB_BUILD_MISSION_RECORD.md",
+            "apex-autonomous-agent-foundry": "AGENT_FOUNDRY_MISSION_RESULT.md",
+            "apex-architectural-evolution-engine": "ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md",
+            "apex-secure-cloud-foundry": "SECURE_CLOUD_MISSION_RESULT.md",
+            "apex-accelerated-compute-mesh": "ACCELERATED_COMPUTE_MISSION_RESULT.md",
+            "apex-forensic-litigation-sentinel": "FORENSIC_LITIGATION_SENTINEL_RECORD.md",
         }
         for mega_id, artifact in expected.items():
             mega = by_id[mega_id]

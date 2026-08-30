@@ -376,6 +376,145 @@
         "HANDOFF.md"
       ],
       "adds": "Mission-wide routing from repository reconnaissance through visual direction, browser implementation, justified full-stack escalation, readiness gating, validation evidence, approval state, and recoverable handoff."
+    },
+    {
+      "id": "apex-autonomous-agent-foundry",
+      "display_name": "APEX Autonomous Agent Foundry",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-autonomous-agent-foundry",
+      "entrypoint": "mega-skills/apex-autonomous-agent-foundry/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "autonomous-agent-foundry"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "skill-forge",
+        "automation-control",
+        "guarded-automation-loop"
+      ],
+      "mission_output": "AGENT_FOUNDRY_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "End-to-end agent manufacturing mission control: orchestrates multi-agent system architecture, persistent memory topology, statistical evaluation pipelines, and release certification across long-horizon development sprints."
+    },
+    {
+      "id": "apex-architectural-evolution-engine",
+      "display_name": "APEX Architectural Evolution Engine",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-architectural-evolution-engine",
+      "entrypoint": "mega-skills/apex-architectural-evolution-engine/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "architectural-refactoring-engine"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "closed-loop-code-repair",
+        "upstream-fork-harmonization",
+        "recon-and-map"
+      ],
+      "mission_output": "ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Continuous autonomous codebase modernization: diagnoses architectural bottlenecks, designs formal Architecture Decision Records, conducts clean refactoring with AST self-healing, and enforces Google Senior Staff engineering invariants across the estate."
+    },
+    {
+      "id": "apex-secure-cloud-foundry",
+      "display_name": "APEX Secure Cloud Foundry",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-secure-cloud-foundry",
+      "entrypoint": "mega-skills/apex-secure-cloud-foundry/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "secure-service-deployment"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "pipeline-orchestration",
+        "runtime-operations",
+        "automation-control"
+      ],
+      "mission_output": "SECURE_CLOUD_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Long-horizon cloud microservice lifecycle engineering: unifies typed API integration, multi-stage Docker containerization, OWASP security auditing, and MCP gateway registration into verified, production-ready deployments."
+    },
+    {
+      "id": "apex-accelerated-compute-mesh",
+      "display_name": "APEX Accelerated Compute Mesh",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-accelerated-compute-mesh",
+      "entrypoint": "mega-skills/apex-accelerated-compute-mesh/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "hardware-accelerated-inference"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "polyglot-systems-verification",
+        "automation-control"
+      ],
+      "mission_output": "ACCELERATED_COMPUTE_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Hardware-accelerated machine learning control plane: coordinates neural network quantization on Apple Neural Engine, latent attention routing on DeepSeek MoE, and compiler graph execution across AWS Trainium and xAI Colossus superclusters."
+    },
+    {
+      "id": "apex-forensic-litigation-sentinel",
+      "display_name": "APEX Forensic Litigation Sentinel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-forensic-litigation-sentinel",
+      "entrypoint": "mega-skills/apex-forensic-litigation-sentinel/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "forensic-docket-intelligence"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "court-evidence-compiler",
+        "voice-evidence-authenticator",
+        "automation-control"
+      ],
+      "mission_output": "FORENSIC_LITIGATION_SENTINEL_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Autonomous legal prosecution and investigative warfare: dissects judicial dockets, aligns minute-by-minute transcripts against official records, detects 39-second impossibilities, and outputs verified impeachment traps for state and federal courts."
     }
   ]
 }
