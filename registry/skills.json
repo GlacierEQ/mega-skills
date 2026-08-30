@@ -3,77 +3,608 @@
   "layer": "skills",
   "entries": [
     {
-      "id": "mission-contract",
-      "display_name": "Mission Contract",
+      "id": "aerospace-trajectory-core",
+      "display_name": "Aerospace Trajectory Core",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/mission-contract",
-      "entrypoint": "skills/mission-contract/SKILL.md",
-      "purpose": "Turn a request into bounded, testable mission intent.",
+      "path": "skills/aerospace-trajectory-core",
+      "entrypoint": "skills/aerospace-trajectory-core/SKILL.md",
+      "purpose": "Execute orbital propagation, Lambert boundary value solvers, and cryogenic boil-off thermodynamics.",
       "input_contract": [
-        "User request",
-        "Constraints and known state"
+        "State vectors or Keplerian elements",
+        "Target transfer parameters"
       ],
       "output_contract": [
-        "MISSION.md"
+        "aerospace-trajectory-telemetry.json"
       ],
       "local_validation": [
-        "Scope, exclusions, criteria, and approvals are explicit"
+        "Energy and angular momentum conserved within numerical limits",
+        "Tests pass 100% green"
       ],
       "does_not_own": [
-        "Technical implementation",
-        "Unapproved external actions"
+        "Physical flight command execution",
+        "Hardware thruster authority"
       ]
     },
     {
-      "id": "roadmap-builder",
-      "display_name": "Roadmap Builder",
+      "id": "agent-evaluation",
+      "display_name": "Agent Evaluation",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/roadmap-builder",
-      "entrypoint": "skills/roadmap-builder/SKILL.md",
-      "purpose": "Plan verified chunks and dependency-aware phase gates.",
+      "path": "skills/agent-evaluation",
+      "entrypoint": "skills/agent-evaluation/SKILL.md",
+      "purpose": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and produc",
       "input_contract": [
-        "MISSION.md",
-        "Known artifacts and dependencies"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "ROADMAP.md"
+        "AGENT-EVALUATION_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Every acceptance criterion maps to a verifiable chunk"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Specialist execution method",
-        "Unverified completion claims"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
-      "id": "evidence-register",
-      "display_name": "Evidence Register",
+      "id": "agent-memory-mcp",
+      "display_name": "Agent Memory Mcp",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/evidence-register",
-      "entrypoint": "skills/evidence-register/SKILL.md",
-      "purpose": "Trace sources, tests, artifacts, claims, and uncertainty.",
+      "path": "skills/agent-memory-mcp",
+      "entrypoint": "skills/agent-memory-mcp/SKILL.md",
+      "purpose": "A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, ",
       "input_contract": [
-        "Sources",
-        "Tests",
-        "Artifacts",
-        "Claims"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "EVIDENCE.md"
+        "AGENT-MEMORY-MCP_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Every material claim maps to evidence or a declared assumption"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Invented verification",
-        "Unobserved source facts"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "agent-memory-systems",
+      "display_name": "Agent Memory Systems",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/agent-memory-systems",
+      "entrypoint": "skills/agent-memory-systems/SKILL.md",
+      "purpose": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the a",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "AGENT-MEMORY-SYSTEMS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "ai-agents-architect",
+      "display_name": "Ai Agents Architect",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ai-agents-architect",
+      "entrypoint": "skills/ai-agents-architect/SKILL.md",
+      "purpose": "Expert in designing and building autonomous AI agents. Masters tool use, memory systems, planning strategies, and multi-",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "AI-AGENTS-ARCHITECT_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "ai-deal-finder",
+      "display_name": "Ai Deal Finder",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ai-deal-finder",
+      "entrypoint": "skills/ai-deal-finder/SKILL.md",
+      "purpose": "Operating inside AI Deal Finder at /root/projects/ai-deal-finder. Use when working on the deal-discovery and matching pi",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "AI-DEAL-FINDER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "apex-integrations",
+      "display_name": "Apex Integrations",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-integrations",
+      "entrypoint": "skills/apex-integrations/SKILL.md",
+      "purpose": "Operating inside the Apex Integrations service-connector family at /root/projects/apex-integrations. Use when wiring API",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "APEX-INTEGRATIONS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "apex-sovereign-runtime",
+      "display_name": "Apex Sovereign Runtime",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-sovereign-runtime",
+      "entrypoint": "skills/apex-sovereign-runtime/SKILL.md",
+      "purpose": "Canonical APEX Sovereign Runtime Instruct \u2014 the unified doctrine applied to all APEX-family projects (mastermind, monoli",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "APEX-SOVEREIGN-RUNTIME_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "api-integration",
+      "display_name": "Api Integration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/api-integration",
+      "entrypoint": "skills/api-integration/SKILL.md",
+      "purpose": "Integrate REST/GraphQL APIs, webhooks, auth, and service calls with retry and rate-limit discipline.",
+      "input_contract": [
+        "API spec or endpoint contract",
+        "Auth credentials/keys via secret store"
+      ],
+      "output_contract": [
+        "API-INTEGRATION_OUTPUT.md",
+        "Verified request/response artifacts"
+      ],
+      "local_validation": [
+        "Calls succeed against mocked endpoints",
+        "No secret inlined in config"
+      ],
+      "does_not_own": [
+        "Upstream service availability",
+        "Non-API data pipelines"
+      ]
+    },
+    {
+      "id": "apple-ane-kv-quantizer",
+      "display_name": "Apple Ane Kv Quantizer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apple-ane-kv-quantizer",
+      "entrypoint": "skills/apple-ane-kv-quantizer/SKILL.md",
+      "purpose": "Operating inside the Apple ANE KV-Quantizer job-app portfolio repo at github.com/GlacierEQ/apple-ane-kv-quantizer. Targe",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "APPLE-ANE-KV-QUANTIZER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "architecture",
+      "display_name": "Architecture",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/architecture",
+      "entrypoint": "skills/architecture/SKILL.md",
+      "purpose": "Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "ARCHITECTURE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "aspen-grove",
+      "display_name": "Aspen Grove",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aspen-grove",
+      "entrypoint": "skills/aspen-grove/SKILL.md",
+      "purpose": "Wire Aspen Grove connectors (GitHub, Notion, Supabase, etc.) and MCP servers with health monitoring.",
+      "input_contract": [
+        "Connector spec and credentials",
+        "Target service schema"
+      ],
+      "output_contract": [
+        "ASPEN-GROVE_OUTPUT.md",
+        "Registered/healthy connector state"
+      ],
+      "local_validation": [
+        "Connectors register and pass health check",
+        "No token inlined in config"
+      ],
+      "does_not_own": [
+        "Upstream service data ownership",
+        "Cross-repo mission orchestration"
+      ]
+    },
+    {
+      "id": "aspen-grove-connectors",
+      "display_name": "Aspen Grove Connectors",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aspen-grove-connectors",
+      "entrypoint": "skills/aspen-grove-connectors/SKILL.md",
+      "purpose": "Operating inside the Aspen Grove MCP connector family at /root/projects/aspen-grove-connectors. Bridges to GitHub, Notio",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "ASPEN-GROVE-CONNECTORS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "ast-repair-core",
+      "display_name": "AST Repair Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ast-repair-core",
+      "entrypoint": "skills/ast-repair-core/SKILL.md",
+      "purpose": "Parse test stack traces, isolate failing AST chunks, synthesize diffs, and verify resolution.",
+      "input_contract": [
+        "Failing test command",
+        "Workspace directory",
+        "Max attempt count"
+      ],
+      "output_contract": [
+        "ast-repair-execution-record.json"
+      ],
+      "local_validation": [
+        "Re-executed test suite passes 100% green with zero syntax/lint defects"
+      ],
+      "does_not_own": [
+        "Non-functional stubs",
+        "Test assertion tampering"
+      ]
+    },
+    {
+      "id": "audio-forensic-core",
+      "display_name": "Audio Forensic Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/audio-forensic-core",
+      "entrypoint": "skills/audio-forensic-core/SKILL.md",
+      "purpose": "Process evidentiary audio with ENF grid analysis, WhisperX phoneme alignment, and diarization.",
+      "input_contract": [
+        "Raw audio file path",
+        "Recording date/time",
+        "Court rule standards"
+      ],
+      "output_contract": [
+        "audio-forensic-verification-record.json"
+      ],
+      "local_validation": [
+        "Phonetic alignment has zero drift",
+        "ENF acoustic hum confirms non-tampering"
+      ],
+      "does_not_own": [
+        "Waveform tampering",
+        "Unverified speaker assertions"
+      ]
+    },
+    {
+      "id": "aws-trainium-neuron-sentinel",
+      "display_name": "Aws Trainium Neuron Sentinel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aws-trainium-neuron-sentinel",
+      "entrypoint": "skills/aws-trainium-neuron-sentinel/SKILL.md",
+      "purpose": "Operating inside the AWS Trainium Neuron Sentinel job-app portfolio repo at github.com/GlacierEQ/aws-trainium-neuron-sen",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "AWS-TRAINIUM-NEURON-SENTINEL_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "brain",
+      "display_name": "Brain",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/brain",
+      "entrypoint": "skills/brain/SKILL.md",
+      "purpose": "Operate the Quantum Nexus unified case brain: autonomous decision engine, threat intel, memory orchestration.",
+      "input_contract": [
+        "Case/timeline context",
+        "Evidence artifacts"
+      ],
+      "output_contract": [
+        "BRAIN_OUTPUT.md",
+        "Decision/timeline record"
+      ],
+      "local_validation": [
+        "Decisions trace to evidence",
+        "No fabricated case state"
+      ],
+      "does_not_own": [
+        "Judicial rulings",
+        "External legal advice"
+      ]
+    },
+    {
+      "id": "capability-admission",
+      "display_name": "Capability Admission",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/capability-admission",
+      "entrypoint": "skills/capability-admission/SKILL.md",
+      "purpose": "Decide whether a capability may be selected for a specific mission.",
+      "input_contract": [
+        "Mission contract",
+        "Candidate capability",
+        "Declared prerequisites"
+      ],
+      "output_contract": [
+        "CAPABILITY_ADMISSION.md"
+      ],
+      "local_validation": [
+        "Decision distinguishes verified readiness, conditional readiness, and blocked routes"
+      ],
+      "does_not_own": [
+        "Unverified capability promotion",
+        "Specialist route execution"
+      ]
+    },
+    {
+      "id": "cc-skill-security-review",
+      "display_name": "Cc Skill Security Review",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/cc-skill-security-review",
+      "entrypoint": "skills/cc-skill-security-review/SKILL.md",
+      "purpose": "Apply a security checklist for auth, user input, secrets, and sensitive endpoints.",
+      "input_contract": [
+        "Code diff or new endpoint",
+        "Threat model notes"
+      ],
+      "output_contract": [
+        "SECURITY-REVIEW_OUTPUT.md",
+        "Findings list"
+      ],
+      "local_validation": [
+        "No secret inlined in code",
+        "Checklist items verified"
+      ],
+      "does_not_own": [
+        "Penetration testing",
+        "Compliance certification"
+      ]
+    },
+    {
+      "id": "claim-calibration",
+      "display_name": "Claim Calibration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/claim-calibration",
+      "entrypoint": "skills/claim-calibration/SKILL.md",
+      "purpose": "Align capability claims and confidence wording to actual evidence and scope.",
+      "input_contract": [
+        "Candidate claims",
+        "Evidence register",
+        "Preflight results"
+      ],
+      "output_contract": [
+        "CLAIM_BOUNDARIES.md"
+      ],
+      "local_validation": [
+        "Every material statement has evidence-matched wording and a disclosed limitation"
+      ],
+      "does_not_own": [
+        "Professional certification",
+        "Unsupported guarantees"
+      ]
+    },
+    {
+      "id": "clean-code",
+      "display_name": "Clean Code",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/clean-code",
+      "entrypoint": "skills/clean-code/SKILL.md",
+      "purpose": "Pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "CLEAN-CODE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "code-review-checklist",
+      "display_name": "Code Review Checklist",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/code-review-checklist",
+      "entrypoint": "skills/code-review-checklist/SKILL.md",
+      "purpose": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintain",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "CODE-REVIEW-CHECKLIST_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "codemaster",
+      "display_name": "Codemaster",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/codemaster",
+      "entrypoint": "skills/codemaster/SKILL.md",
+      "purpose": "The coding-orchestration playbook. Recipes for the recurring task types: add a feature, fix a bug, refactor, review a PR",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "CODEMASTER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "composio",
+      "display_name": "Composio",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/composio",
+      "entrypoint": "skills/composio/SKILL.md",
+      "purpose": "Route and complete Composio work across Composio For You and Composio Platform. Use when the user mentions Composio; wan",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "COMPOSIO_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
@@ -103,78 +634,206 @@
       ]
     },
     {
-      "id": "work-packet",
-      "display_name": "Work Packet",
+      "id": "conversation-memory",
+      "display_name": "Conversation Memory",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/work-packet",
-      "entrypoint": "skills/work-packet/SKILL.md",
-      "purpose": "Create a bounded and testable assignment contract.",
+      "path": "skills/conversation-memory",
+      "entrypoint": "skills/conversation-memory/SKILL.md",
+      "purpose": "Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory Use when: conve",
       "input_contract": [
-        "Chunk objective",
-        "Canonical inputs",
-        "Authority boundary"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "Work packet"
+        "CONVERSATION-MEMORY_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Owner and integrator can act without implicit context"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Receiving specialist procedure",
-        "Extra authority"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
-      "id": "quality-gate",
-      "display_name": "Quality Gate",
+      "id": "data-analysis",
+      "display_name": "Data Analysis",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/quality-gate",
-      "entrypoint": "skills/quality-gate/SKILL.md",
-      "purpose": "Accept, reject, or conditionally pass a phase against named criteria.",
+      "path": "skills/data-analysis",
+      "entrypoint": "skills/data-analysis/SKILL.md",
+      "purpose": "Analyze local files (CSV/JSON/Excel/logs) with pandas/numpy and produce stats/visualizations.",
       "input_contract": [
-        "Acceptance criteria",
-        "Artifact",
-        "Evidence"
+        "Local data file path",
+        "Analysis question"
       ],
       "output_contract": [
-        "Gate record"
+        "DATA-ANALYSIS_OUTPUT.md",
+        "Figures/tables"
       ],
       "local_validation": [
-        "A non-creator can reproduce the acceptance decision"
+        "Reads files via process tool",
+        "Results reproducible"
       ],
       "does_not_own": [
-        "Underlying deliverable creation",
-        "Unsupported confidence"
+        "Remote data pipelines",
+        "Model training"
       ]
     },
     {
-      "id": "handoff-record",
-      "display_name": "Handoff Record",
+      "id": "deepseek-mla-moe-sentinel",
+      "display_name": "Deepseek Mla Moe Sentinel",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/handoff-record",
-      "entrypoint": "skills/handoff-record/SKILL.md",
-      "purpose": "Preserve an exact recovery point for transferred or paused work.",
+      "path": "skills/deepseek-mla-moe-sentinel",
+      "entrypoint": "skills/deepseek-mla-moe-sentinel/SKILL.md",
+      "purpose": "Operating inside the DeepSeek MLA MoE Sentinel job-app portfolio repo at github.com/GlacierEQ/deepseek-mla-moe-sentinel.",
       "input_contract": [
-        "Validated state",
-        "Environment facts",
-        "Next chunk"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "HANDOFF.md"
+        "DEEPSEEK-MLA-MOE-SENTINEL_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "An uninvolved operator can resume safely"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Vague continuation",
-        "Concealed failed attempts"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "docker-devops",
+      "display_name": "Docker Devops",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/docker-devops",
+      "entrypoint": "skills/docker-devops/SKILL.md",
+      "purpose": "Build, deploy, and operate containers/CI-CD with Docker, K8s, and registry pipelines.",
+      "input_contract": [
+        "Service manifest",
+        "Build/deploy config"
+      ],
+      "output_contract": [
+        "DOCKER-DEVOPS_OUTPUT.md",
+        "Image/ deploy artifact"
+      ],
+      "local_validation": [
+        "Image builds and runs",
+        "No secret baked into image"
+      ],
+      "does_not_own": [
+        "Cloud account provisioning",
+        "Runtime traffic routing"
+      ]
+    },
+    {
+      "id": "engineering-innovations",
+      "display_name": "Engineering Innovations",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/engineering-innovations",
+      "entrypoint": "skills/engineering-innovations/SKILL.md",
+      "purpose": "Operating inside the GlacierEQ engineering-innovations family (~195 repos pushed since 2026-08-20). These are the August",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "ENGINEERING-INNOVATIONS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "evidence-register",
+      "display_name": "Evidence Register",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/evidence-register",
+      "entrypoint": "skills/evidence-register/SKILL.md",
+      "purpose": "Trace sources, tests, artifacts, claims, and uncertainty.",
+      "input_contract": [
+        "Sources",
+        "Tests",
+        "Artifacts",
+        "Claims"
+      ],
+      "output_contract": [
+        "EVIDENCE.md"
+      ],
+      "local_validation": [
+        "Every material claim maps to evidence or a declared assumption"
+      ],
+      "does_not_own": [
+        "Invented verification",
+        "Unobserved source facts"
+      ]
+    },
+    {
+      "id": "far-away-party",
+      "display_name": "Far Away Party",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/far-away-party",
+      "entrypoint": "skills/far-away-party/SKILL.md",
+      "purpose": "Governing long-horizon autonomous missions from high ambiguity to evidence-backed delivery without context drift. Coordi",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "FAR-AWAY-PARTY_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "flagships",
+      "display_name": "Flagships",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/flagships",
+      "entrypoint": "skills/flagships/SKILL.md",
+      "purpose": "Operating inside one of the 22 GlacierEQ flagship projects. Each flagship is a substantial, ongoing engineering effort w",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "FLAGSHIPS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
@@ -231,83 +890,6 @@
       ]
     },
     {
-      "id": "aerospace-trajectory-core",
-      "display_name": "Aerospace Trajectory Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/aerospace-trajectory-core",
-      "entrypoint": "skills/aerospace-trajectory-core/SKILL.md",
-      "purpose": "Execute orbital propagation, Lambert boundary value solvers, and cryogenic boil-off thermodynamics.",
-      "input_contract": [
-        "State vectors or Keplerian elements",
-        "Target transfer parameters"
-      ],
-      "output_contract": [
-        "aerospace-trajectory-telemetry.json"
-      ],
-      "local_validation": [
-        "Energy and angular momentum conserved within numerical limits",
-        "Tests pass 100% green"
-      ],
-      "does_not_own": [
-        "Physical flight command execution",
-        "Hardware thruster authority"
-      ]
-    },
-    {
-      "id": "polyglot-rosetta-core",
-      "display_name": "Polyglot Rosetta Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/polyglot-rosetta-core",
-      "entrypoint": "skills/polyglot-rosetta-core/SKILL.md",
-      "purpose": "Translate, compile, and formally verify code across 51 Tower of Babel language floors.",
-      "input_contract": [
-        "Source AST",
-        "Target language floor",
-        "Invariant specification"
-      ],
-      "output_contract": [
-        "polyglot-verification-receipt.json"
-      ],
-      "local_validation": [
-        "Cross-language compilation passes",
-        "Formal proofs verify zero invariant violations"
-      ],
-      "does_not_own": [
-        "Non-functional code stubs",
-        "Unverified unsafe memory blocks"
-      ]
-    },
-    {
-      "id": "omni-memory-core",
-      "display_name": "Omni Memory Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/omni-memory-core",
-      "entrypoint": "skills/omni-memory-core/SKILL.md",
-      "purpose": "Index 291k+ multi-cloud files into subword n-gram vectors and reinforce Hebbian synapses.",
-      "input_contract": [
-        "Multi-cloud file paths",
-        "Query terms",
-        "Learning rate constant"
-      ],
-      "output_contract": [
-        "omni-memory-index-report.json"
-      ],
-      "local_validation": [
-        "Cosine metrics match mathematical vectors",
-        "Synaptic weights update monotonically"
-      ],
-      "does_not_own": [
-        "Unencrypted credential storage",
-        "Raw source file mutations"
-      ]
-    },
-    {
       "id": "fork-overlay-core",
       "display_name": "Fork Overlay Core",
       "ownership": "glaciereq",
@@ -334,130 +916,1604 @@
       ]
     },
     {
-      "id": "ast-repair-core",
-      "display_name": "AST Repair Core",
+      "id": "forks",
+      "display_name": "Forks",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/ast-repair-core",
-      "entrypoint": "skills/ast-repair-core/SKILL.md",
-      "purpose": "Parse test stack traces, isolate failing AST chunks, synthesize diffs, and verify resolution.",
+      "path": "skills/forks",
+      "entrypoint": "skills/forks/SKILL.md",
+      "purpose": "Operating inside one of the 513 GlacierEQ private inbound forks. These are private copies of public upstream projects, k",
       "input_contract": [
-        "Failing test command",
-        "Workspace directory",
-        "Max attempt count"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "ast-repair-execution-record.json"
+        "FORKS_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Re-executed test suite passes 100% green with zero syntax/lint defects"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Non-functional stubs",
-        "Test assertion tampering"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
-      "id": "audio-forensic-core",
-      "display_name": "Audio Forensic Core",
+      "id": "genesis-prime",
+      "display_name": "Genesis Prime",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/audio-forensic-core",
-      "entrypoint": "skills/audio-forensic-core/SKILL.md",
-      "purpose": "Process evidentiary audio with ENF grid analysis, WhisperX phoneme alignment, and diarization.",
+      "path": "skills/genesis-prime",
+      "entrypoint": "skills/genesis-prime/SKILL.md",
+      "purpose": "Operating inside Genesis Prime at /root/genesis-prime. Memory integration, document processing, and the AI pipeline that",
       "input_contract": [
-        "Raw audio file path",
-        "Recording date/time",
-        "Court rule standards"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "audio-forensic-verification-record.json"
+        "GENESIS-PRIME_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Phonetic alignment has zero drift",
-        "ENF acoustic hum confirms non-tampering"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Waveform tampering",
-        "Unverified speaker assertions"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
-      "id": "capability-admission",
-      "display_name": "Capability Admission",
+      "id": "github-power",
+      "display_name": "Github Power",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/capability-admission",
-      "entrypoint": "skills/capability-admission/SKILL.md",
-      "purpose": "Decide whether a capability may be selected for a specific mission.",
+      "path": "skills/github-power",
+      "entrypoint": "skills/github-power/SKILL.md",
+      "purpose": "Drive GitHub repos, PRs, issues, Actions, and CLI (gh) operations end to end.",
       "input_contract": [
-        "Mission contract",
-        "Candidate capability",
-        "Declared prerequisites"
+        "Repo/owner spec",
+        "Operation intent"
       ],
       "output_contract": [
-        "CAPABILITY_ADMISSION.md"
+        "GITHUB-POWER_OUTPUT.md",
+        "PR/issue/run artifacts"
       ],
       "local_validation": [
-        "Decision distinguishes verified readiness, conditional readiness, and blocked routes"
+        "gh calls authenticated",
+        "No token inlined in config"
       ],
       "does_not_own": [
-        "Unverified capability promotion",
-        "Specialist route execution"
+        "Repository ownership transfer",
+        "Org policy changes"
       ]
     },
     {
-      "id": "resource-preflight",
-      "display_name": "Resource Preflight",
+      "id": "handoff-record",
+      "display_name": "Handoff Record",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/resource-preflight",
-      "entrypoint": "skills/resource-preflight/SKILL.md",
-      "purpose": "Verify mission-relevant dependencies, access, resources, and environment assumptions.",
+      "path": "skills/handoff-record",
+      "entrypoint": "skills/handoff-record/SKILL.md",
+      "purpose": "Preserve an exact recovery point for transferred or paused work.",
       "input_contract": [
-        "Candidate capability",
-        "Prerequisite inventory",
-        "Authorized environment"
+        "Validated state",
+        "Environment facts",
+        "Next chunk"
       ],
       "output_contract": [
-        "RESOURCE_PREFLIGHT.md"
+        "HANDOFF.md"
       ],
       "local_validation": [
-        "Every required prerequisite has a current observed status and fallback"
+        "An uninvolved operator can resume safely"
       ],
       "does_not_own": [
-        "Unapproved installation",
-        "Restricted-data access",
-        "Secret disclosure"
+        "Vague continuation",
+        "Concealed failed attempts"
       ]
     },
     {
-      "id": "claim-calibration",
-      "display_name": "Claim Calibration",
+      "id": "job-app-portfolio",
+      "display_name": "Job App Portfolio",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.1.0",
-      "path": "skills/claim-calibration",
-      "entrypoint": "skills/claim-calibration/SKILL.md",
-      "purpose": "Align capability claims and confidence wording to actual evidence and scope.",
+      "path": "skills/job-app-portfolio",
+      "entrypoint": "skills/job-app-portfolio/SKILL.md",
+      "purpose": "Operating inside the GlacierEQ job-app portfolio estate (~50+ repos at github.com/GlacierEQ/ targeting specific employer",
       "input_contract": [
-        "Candidate claims",
-        "Evidence register",
-        "Preflight results"
+        "Task specification",
+        "Context artifacts"
       ],
       "output_contract": [
-        "CLAIM_BOUNDARIES.md"
+        "JOB-APP-PORTFOLIO_OUTPUT.md",
+        "Execution receipt"
       ],
       "local_validation": [
-        "Every material statement has evidence-matched wording and a disclosed limitation"
+        "Passes local test harness and verified criteria"
       ],
       "does_not_own": [
-        "Professional certification",
-        "Unsupported guarantees"
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "legacy-estate",
+      "display_name": "Legacy Estate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legacy-estate",
+      "entrypoint": "skills/legacy-estate/SKILL.md",
+      "purpose": "Operating inside one of the older GlacierEQ repos \u2014 pushed before the August 2026 burst, not a flagship, not portfolio, ",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "LEGACY-ESTATE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "legal-powerhouse",
+      "display_name": "Legal Powerhouse",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legal-powerhouse",
+      "entrypoint": "skills/legal-powerhouse/SKILL.md",
+      "purpose": "Operating inside the JUGGERNAUT_JACK legal-powerhouse projects (Case 1FDV-23-0001009 and related). Use when working in /",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "LEGAL-POWERHOUSE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "long-horizon-core",
+      "display_name": "Long Horizon Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/long-horizon-core",
+      "entrypoint": "skills/long-horizon-core/SKILL.md",
+      "purpose": "The 7-stage resilient long-horizon operating loop: mission-contract -> roadmap-builder -> evidence-register -> context-c",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "LONG-HORIZON-CORE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "make-it-heavy",
+      "display_name": "Make It Heavy",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/make-it-heavy",
+      "entrypoint": "skills/make-it-heavy/SKILL.md",
+      "purpose": "Operating inside the Make-It-Heavy multi-agent swarm project at /root/projects/make-it-heavy. Use when adding workers, m",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MAKE-IT-HEAVY_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "master",
+      "display_name": "Master",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/master",
+      "entrypoint": "skills/master/SKILL.md",
+      "purpose": "The master skill \u2014 load this first. Single index and decision tree over every skill installed in this workspace. Use whe",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MASTER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mastermind",
+      "display_name": "Mastermind",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mastermind",
+      "entrypoint": "skills/mastermind/SKILL.md",
+      "purpose": "Operating inside the Mastermind mission-control runtime at /root/projects/mastermind. Use when wiring lanes, appending t",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MASTERMIND_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mcp-master-server",
+      "display_name": "Mcp Master Server",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mcp-master-server",
+      "entrypoint": "skills/mcp-master-server/SKILL.md",
+      "purpose": "Operating inside the MCP Master Server at /root/mcp-master-server. Unified tool interface and server orchestration. Use ",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MCP-MASTER-SERVER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-agent-core-operations",
+      "display_name": "Agent Core Operations (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-agent-core-operations",
+      "entrypoint": "skills/mega-agent-core-operations/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 7 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AGENT_CORE_OPERATIONS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-agent-evaluation",
+      "display_name": "Agent Evaluation (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-agent-evaluation",
+      "entrypoint": "skills/mega-agent-evaluation/SKILL.md",
+      "purpose": "Agent Evaluation",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AGENT_EVALUATION_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-agent-memory-mcp",
+      "display_name": "Agent Memory Mcp (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-agent-memory-mcp",
+      "entrypoint": "skills/mega-agent-memory-mcp/SKILL.md",
+      "purpose": "Agent Memory Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AGENT_MEMORY_MCP_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-agent-memory-systems",
+      "display_name": "Agent Memory Systems (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-agent-memory-systems",
+      "entrypoint": "skills/mega-agent-memory-systems/SKILL.md",
+      "purpose": "Agent Memory Systems",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AGENT_MEMORY_SYSTEMS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-ai-agents-architect",
+      "display_name": "Ai Agents Architect (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-ai-agents-architect",
+      "entrypoint": "skills/mega-ai-agents-architect/SKILL.md",
+      "purpose": "AI Agents Architect",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AI_AGENTS_ARCHITECT_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-ai-deal-finder",
+      "display_name": "Ai Deal Finder (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-ai-deal-finder",
+      "entrypoint": "skills/mega-ai-deal-finder/SKILL.md",
+      "purpose": "AI Deal Finder",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AI_DEAL_FINDER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-apex-integrations",
+      "display_name": "Apex Integrations (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-apex-integrations",
+      "entrypoint": "skills/mega-apex-integrations/SKILL.md",
+      "purpose": "Apex Integrations",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_APEX_INTEGRATIONS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-apex-sovereign-mastermind",
+      "display_name": "Apex Sovereign Mastermind (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-apex-sovereign-mastermind",
+      "entrypoint": "skills/mega-apex-sovereign-mastermind/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 7 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_APEX_SOVEREIGN_MASTERMIND_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-apex-sovereign-runtime",
+      "display_name": "Apex Sovereign Runtime (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-apex-sovereign-runtime",
+      "entrypoint": "skills/mega-apex-sovereign-runtime/SKILL.md",
+      "purpose": "\ud83c\udfdb\ufe0f The APEX Sovereign Runtime Instruct",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_APEX_SOVEREIGN_RUNTIME_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-api-integration",
+      "display_name": "Api Integration (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-api-integration",
+      "entrypoint": "skills/mega-api-integration/SKILL.md",
+      "purpose": "API Integration Skill \u2014 REST/GraphQL/Webhook Communication",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_API_INTEGRATION_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-apple-ane-kv-quantizer",
+      "display_name": "Apple Ane Kv Quantizer (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-apple-ane-kv-quantizer",
+      "entrypoint": "skills/mega-apple-ane-kv-quantizer/SKILL.md",
+      "purpose": "Apple ANE KV-Quantizer (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_APPLE_ANE_KV_QUANTIZER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-architecture",
+      "display_name": "Architecture (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-architecture",
+      "entrypoint": "skills/mega-architecture/SKILL.md",
+      "purpose": "Architecture Decision Framework",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_ARCHITECTURE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-aspen-grove",
+      "display_name": "Aspen Grove (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-aspen-grove",
+      "entrypoint": "skills/mega-aspen-grove/SKILL.md",
+      "purpose": "Aspen Grove Connectors Skill \u2014 Multi-Service Integration",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_ASPEN_GROVE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-aspen-grove-connectors",
+      "display_name": "Aspen Grove Connectors (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-aspen-grove-connectors",
+      "entrypoint": "skills/mega-aspen-grove-connectors/SKILL.md",
+      "purpose": "Aspen Grove Connectors",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_ASPEN_GROVE_CONNECTORS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-aws-trainium-neuron-sentinel",
+      "display_name": "Aws Trainium Neuron Sentinel (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-aws-trainium-neuron-sentinel",
+      "entrypoint": "skills/mega-aws-trainium-neuron-sentinel/SKILL.md",
+      "purpose": "AWS Trainium Neuron Sentinel (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_AWS_TRAINIUM_NEURON_SENTINEL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-brain",
+      "display_name": "Brain (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-brain",
+      "entrypoint": "skills/mega-brain/SKILL.md",
+      "purpose": "Brain Skill \u2014 Unified Case Intelligence",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_BRAIN_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-cc-skill-security-review",
+      "display_name": "Cc Skill Security Review (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-cc-skill-security-review",
+      "entrypoint": "skills/mega-cc-skill-security-review/SKILL.md",
+      "purpose": "Security Review Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_CC_SKILL_SECURITY_REVIEW_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-clean-code",
+      "display_name": "Clean Code (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-clean-code",
+      "entrypoint": "skills/mega-clean-code/SKILL.md",
+      "purpose": "Clean Code - Pragmatic AI Coding Standards",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_CLEAN_CODE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-code-review-checklist",
+      "display_name": "Code Review Checklist (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-code-review-checklist",
+      "entrypoint": "skills/mega-code-review-checklist/SKILL.md",
+      "purpose": "Code Review Checklist",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_CODE_REVIEW_CHECKLIST_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-codemaster",
+      "display_name": "Codemaster (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-codemaster",
+      "entrypoint": "skills/mega-codemaster/SKILL.md",
+      "purpose": "CodeMaster \u2014 The Coding Playbook (v2)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_CODEMASTER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-composio",
+      "display_name": "Composio (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-composio",
+      "entrypoint": "skills/mega-composio/SKILL.md",
+      "purpose": "Composio",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_COMPOSIO_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-conversation-memory",
+      "display_name": "Conversation Memory (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-conversation-memory",
+      "entrypoint": "skills/mega-conversation-memory/SKILL.md",
+      "purpose": "Conversation Memory",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_CONVERSATION_MEMORY_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-data-analysis",
+      "display_name": "Data Analysis (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-data-analysis",
+      "entrypoint": "skills/mega-data-analysis/SKILL.md",
+      "purpose": "Data Analysis Skill \u2014 Local File Processing & Analytics",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_DATA_ANALYSIS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-deepseek-mla-moe-sentinel",
+      "display_name": "Deepseek Mla Moe Sentinel (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-deepseek-mla-moe-sentinel",
+      "entrypoint": "skills/mega-deepseek-mla-moe-sentinel/SKILL.md",
+      "purpose": "DeepSeek MLA MoE Sentinel (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_DEEPSEEK_MLA_MOE_SENTINEL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-docker-devops",
+      "display_name": "Docker Devops (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-docker-devops",
+      "entrypoint": "skills/mega-docker-devops/SKILL.md",
+      "purpose": "Docker & DevOps Skill \u2014 Container Infrastructure & Deployment",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_DOCKER_DEVOPS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-engineering-innovations",
+      "display_name": "Engineering Innovations (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-engineering-innovations",
+      "entrypoint": "skills/mega-engineering-innovations/SKILL.md",
+      "purpose": "Engineering Innovations (GlacierEQ)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_ENGINEERING_INNOVATIONS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-filesystem-omni-engine",
+      "display_name": "Filesystem Omni Engine (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-filesystem-omni-engine",
+      "entrypoint": "skills/mega-filesystem-omni-engine/SKILL.md",
+      "purpose": "Consolidated mega skill for filesystem perception, document parsing (PDF, Doc, LaTeX, Pandoc), tabular data & spreadsheets, cloud storage orchestration (Rclone, Google Suite, Dropbox, S3), atomic file operations, visual infographics/slides,",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_FILESYSTEM_OMNI_ENGINE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-flagships",
+      "display_name": "Flagships (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-flagships",
+      "entrypoint": "skills/mega-flagships/SKILL.md",
+      "purpose": "Flagships (GlacierEQ)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_FLAGSHIPS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-forks",
+      "display_name": "Forks (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-forks",
+      "entrypoint": "skills/mega-forks/SKILL.md",
+      "purpose": "Forks (GlacierEQ)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_FORKS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-gcp-data-engineering",
+      "display_name": "Gcp Data Engineering (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-gcp-data-engineering",
+      "entrypoint": "skills/mega-gcp-data-engineering/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 23 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_GCP_DATA_ENGINEERING_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-genesis-prime",
+      "display_name": "Genesis Prime (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-genesis-prime",
+      "entrypoint": "skills/mega-genesis-prime/SKILL.md",
+      "purpose": "Genesis Prime",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_GENESIS_PRIME_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-github-power",
+      "display_name": "Github Power (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-github-power",
+      "entrypoint": "skills/mega-github-power/SKILL.md",
+      "purpose": "GitHub Power Skill \u2014 Maximum GitHub Productivity",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_GITHUB_POWER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-job-app-portfolio",
+      "display_name": "Job App Portfolio (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-job-app-portfolio",
+      "entrypoint": "skills/mega-job-app-portfolio/SKILL.md",
+      "purpose": "Job-App Portfolio (GlacierEQ)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_JOB_APP_PORTFOLIO_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-legacy-estate",
+      "display_name": "Legacy Estate (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-legacy-estate",
+      "entrypoint": "skills/mega-legacy-estate/SKILL.md",
+      "purpose": "Legacy Estate (GlacierEQ)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_LEGACY_ESTATE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-legal-forensic-engine",
+      "display_name": "Legal Forensic Engine (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-legal-forensic-engine",
+      "entrypoint": "skills/mega-legal-forensic-engine/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 5 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_LEGAL_FORENSIC_ENGINE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-legal-powerhouse",
+      "display_name": "Legal Powerhouse (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-legal-powerhouse",
+      "entrypoint": "skills/mega-legal-powerhouse/SKILL.md",
+      "purpose": "Legal Powerhouse Skill \u2014 Legal Case Management & Court Automation",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_LEGAL_POWERHOUSE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-make-it-heavy",
+      "display_name": "Make It Heavy (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-make-it-heavy",
+      "entrypoint": "skills/mega-make-it-heavy/SKILL.md",
+      "purpose": "Make-It-Heavy Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MAKE_IT_HEAVY_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-master",
+      "display_name": "Master (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-master",
+      "entrypoint": "skills/mega-master/SKILL.md",
+      "purpose": "Master Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MASTER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-mastermind",
+      "display_name": "Mastermind (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-mastermind",
+      "entrypoint": "skills/mega-mastermind/SKILL.md",
+      "purpose": "Mastermind Skill \u2014 Mission-Control Runtime",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MASTERMIND_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-mcp-master-server",
+      "display_name": "Mcp Master Server (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-mcp-master-server",
+      "entrypoint": "skills/mega-mcp-master-server/SKILL.md",
+      "purpose": "MCP Master Server",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MCP_MASTER_SERVER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-mermicorn-grove",
+      "display_name": "Mermicorn Grove (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-mermicorn-grove",
+      "entrypoint": "skills/mega-mermicorn-grove/SKILL.md",
+      "purpose": "Mermicorn Grove",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MERMICORN_GROVE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-mermicorn-mega-boot",
+      "display_name": "Mermicorn Boot (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-mermicorn-mega-boot",
+      "entrypoint": "skills/mega-mermicorn-mega-boot/SKILL.md",
+      "purpose": "Mermicorn Mega Boot",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MERMICORN_MEGA_BOOT_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-meta-llama-collective-sentinel",
+      "display_name": "Meta Llama Collective Sentinel (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-meta-llama-collective-sentinel",
+      "entrypoint": "skills/mega-meta-llama-collective-sentinel/SKILL.md",
+      "purpose": "Meta Llama Collective Sentinel (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_META_LLAMA_COLLECTIVE_SENTINEL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-model-expansion-engine",
+      "display_name": "Model Expansion Engine (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-model-expansion-engine",
+      "entrypoint": "skills/mega-model-expansion-engine/SKILL.md",
+      "purpose": "Universal multi-model expansion engine integrating OpenRouter free tier, OpenCode Zen CLI, Cline agentic workflows, and KiloCode token cost optimization into Antigravity CLI.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MODEL_EXPANSION_ENGINE_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-monolith",
+      "display_name": "Monolith (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-monolith",
+      "entrypoint": "skills/mega-monolith/SKILL.md",
+      "purpose": "Monolith Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_MONOLITH_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-openai-reasoning-kv-sentinel",
+      "display_name": "Openai Reasoning Kv Sentinel (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-openai-reasoning-kv-sentinel",
+      "entrypoint": "skills/mega-openai-reasoning-kv-sentinel/SKILL.md",
+      "purpose": "OpenAI Reasoning KV-Sentinel (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_OPENAI_REASONING_KV_SENTINEL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-primordial-mesh",
+      "display_name": "Primordial Mesh (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-primordial-mesh",
+      "entrypoint": "skills/mega-primordial-mesh/SKILL.md",
+      "purpose": "Primordial Mesh Titan",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_PRIMORDIAL_MESH_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-quantum-nexus",
+      "display_name": "Quantum Nexus (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-quantum-nexus",
+      "entrypoint": "skills/mega-quantum-nexus/SKILL.md",
+      "purpose": "Quantum Nexus Skill \u2014 Sovereign Intelligence System",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_QUANTUM_NEXUS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-reasoning-variants",
+      "display_name": "Reasoning Variants (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-reasoning-variants",
+      "entrypoint": "skills/mega-reasoning-variants/SKILL.md",
+      "purpose": "Reasoning Variants",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_REASONING_VARIANTS_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-research-study-act",
+      "display_name": "Research Study Act (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-research-study-act",
+      "entrypoint": "skills/mega-research-study-act/SKILL.md",
+      "purpose": "\ud83e\udd4b Research -> Study -> Act: Elite Engineering Protocol",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_RESEARCH_STUDY_ACT_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
@@ -617,6 +2673,688 @@
       "does_not_own": [
         "Unbounded recursive loops",
         "Low-level kernel drivers"
+      ]
+    },
+    {
+      "id": "mega-spacex-mission-control",
+      "display_name": "Spacex Mission Control (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-spacex-mission-control",
+      "entrypoint": "skills/mega-spacex-mission-control/SKILL.md",
+      "purpose": "SpaceX Mission Control (job-app portfolio)",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_SPACEX_MISSION_CONTROL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-supabase-ecosystem",
+      "display_name": "Supabase Ecosystem (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-supabase-ecosystem",
+      "entrypoint": "skills/mega-supabase-ecosystem/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 2 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_SUPABASE_ECOSYSTEM_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-token-saver",
+      "display_name": "Token Saver (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-token-saver",
+      "entrypoint": "skills/mega-token-saver/SKILL.md",
+      "purpose": "Token Saver",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_TOKEN_SAVER_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-tower-of-babel",
+      "display_name": "Tower Of Babel (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-tower-of-babel",
+      "entrypoint": "skills/mega-tower-of-babel/SKILL.md",
+      "purpose": "Tower of Babel Skill",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_TOWER_OF_BABEL_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-vercel-ecosystem",
+      "display_name": "Vercel Ecosystem (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-vercel-ecosystem",
+      "entrypoint": "skills/mega-vercel-ecosystem/SKILL.md",
+      "purpose": "Consolidated mega skill encompassing 25 sub-skills.",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_VERCEL_ECOSYSTEM_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mega-xai-colossus-2",
+      "display_name": "Xai Colossus 2 (Mega)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-xai-colossus-2",
+      "entrypoint": "skills/mega-xai-colossus-2/SKILL.md",
+      "purpose": "xAI Colossus 2",
+      "input_contract": [
+        "Sub-skill task context",
+        "Requested operation intent"
+      ],
+      "output_contract": [
+        "MEGA_XAI_COLOSSUS_2_OUTPUT.md",
+        "Consolidated execution artifact"
+      ],
+      "local_validation": [
+        "Sub-skills resolve to real sources",
+        "No fabricated completion"
+      ],
+      "does_not_own": [
+        "Cross-layer mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mermicorn-grove",
+      "display_name": "Mermicorn Grove",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mermicorn-grove",
+      "entrypoint": "skills/mermicorn-grove/SKILL.md",
+      "purpose": "Operating inside the Mermicorn Grove at /root/mermicorn-grove. A constellation registry spanning 15 repos across deals, ",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MERMICORN-GROVE_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mermicorn-mega-boot",
+      "display_name": "Mermicorn Mega Boot",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mermicorn-mega-boot",
+      "entrypoint": "skills/mermicorn-mega-boot/SKILL.md",
+      "purpose": "Operating inside Mermicorn Mega Boot at /root/mermicorn-mega-boot. Use to scaffold a new Mermicorn-compliant project (th",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MERMICORN-MEGA-BOOT_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "meta-llama-collective-sentinel",
+      "display_name": "Meta Llama Collective Sentinel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/meta-llama-collective-sentinel",
+      "entrypoint": "skills/meta-llama-collective-sentinel/SKILL.md",
+      "purpose": "Operating inside the Meta Llama Collective Sentinel job-app portfolio repo at github.com/GlacierEQ/meta-llama-collective",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "META-LLAMA-COLLECTIVE-SENTINEL_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "mission-contract",
+      "display_name": "Mission Contract",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mission-contract",
+      "entrypoint": "skills/mission-contract/SKILL.md",
+      "purpose": "Turn a request into bounded, testable mission intent.",
+      "input_contract": [
+        "User request",
+        "Constraints and known state"
+      ],
+      "output_contract": [
+        "MISSION.md"
+      ],
+      "local_validation": [
+        "Scope, exclusions, criteria, and approvals are explicit"
+      ],
+      "does_not_own": [
+        "Technical implementation",
+        "Unapproved external actions"
+      ]
+    },
+    {
+      "id": "monolith",
+      "display_name": "Monolith",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/monolith",
+      "entrypoint": "skills/monolith/SKILL.md",
+      "purpose": "Operating inside the Monolith meta-layer at /root/projects/monolith. Use when working with the catalog, the integration ",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "MONOLITH_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "omni-memory-core",
+      "display_name": "Omni Memory Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/omni-memory-core",
+      "entrypoint": "skills/omni-memory-core/SKILL.md",
+      "purpose": "Index 291k+ multi-cloud files into subword n-gram vectors and reinforce Hebbian synapses.",
+      "input_contract": [
+        "Multi-cloud file paths",
+        "Query terms",
+        "Learning rate constant"
+      ],
+      "output_contract": [
+        "omni-memory-index-report.json"
+      ],
+      "local_validation": [
+        "Cosine metrics match mathematical vectors",
+        "Synaptic weights update monotonically"
+      ],
+      "does_not_own": [
+        "Unencrypted credential storage",
+        "Raw source file mutations"
+      ]
+    },
+    {
+      "id": "openai-reasoning-kv-sentinel",
+      "display_name": "Openai Reasoning Kv Sentinel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/openai-reasoning-kv-sentinel",
+      "entrypoint": "skills/openai-reasoning-kv-sentinel/SKILL.md",
+      "purpose": "Operating inside the OpenAI Reasoning KV-Sentinel job-app portfolio repo at github.com/GlacierEQ/openai-reasoning-kv-sen",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "OPENAI-REASONING-KV-SENTINEL_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "polyglot-rosetta-core",
+      "display_name": "Polyglot Rosetta Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/polyglot-rosetta-core",
+      "entrypoint": "skills/polyglot-rosetta-core/SKILL.md",
+      "purpose": "Translate, compile, and formally verify code across 51 Tower of Babel language floors.",
+      "input_contract": [
+        "Source AST",
+        "Target language floor",
+        "Invariant specification"
+      ],
+      "output_contract": [
+        "polyglot-verification-receipt.json"
+      ],
+      "local_validation": [
+        "Cross-language compilation passes",
+        "Formal proofs verify zero invariant violations"
+      ],
+      "does_not_own": [
+        "Non-functional code stubs",
+        "Unverified unsafe memory blocks"
+      ]
+    },
+    {
+      "id": "primordial-mesh",
+      "display_name": "Primordial Mesh",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/primordial-mesh",
+      "entrypoint": "skills/primordial-mesh/SKILL.md",
+      "purpose": "Operating inside the Primordial Mesh Titan at /root/projects/PRIMORDIAL-MESH-TITAN. Distributed context, polymorphic mes",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "PRIMORDIAL-MESH_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "quality-gate",
+      "display_name": "Quality Gate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/quality-gate",
+      "entrypoint": "skills/quality-gate/SKILL.md",
+      "purpose": "Accept, reject, or conditionally pass a phase against named criteria.",
+      "input_contract": [
+        "Acceptance criteria",
+        "Artifact",
+        "Evidence"
+      ],
+      "output_contract": [
+        "Gate record"
+      ],
+      "local_validation": [
+        "A non-creator can reproduce the acceptance decision"
+      ],
+      "does_not_own": [
+        "Underlying deliverable creation",
+        "Unsupported confidence"
+      ]
+    },
+    {
+      "id": "quantum-nexus",
+      "display_name": "Quantum Nexus",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/quantum-nexus",
+      "entrypoint": "skills/quantum-nexus/SKILL.md",
+      "purpose": "Operating inside the Quantum Legal Intelligence System at /root/quantum_nexus. Vault, memory, CourtListener integration,",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "QUANTUM-NEXUS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "reasoning-variants",
+      "display_name": "Reasoning Variants",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/reasoning-variants",
+      "entrypoint": "skills/reasoning-variants/SKILL.md",
+      "purpose": "Reasoning strategy variants for LLM agents \u2014 ReAct, Plan-and-Execute, Reflection, Tree-of-Thoughts, Reflexion, and Debat",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "REASONING-VARIANTS_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "research-study-act",
+      "display_name": "Research Study Act",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/research-study-act",
+      "entrypoint": "skills/research-study-act/SKILL.md",
+      "purpose": "Elite Tri-Phase Engineering Protocol: Research -> Study -> Act. Enforces cutting-edge code quality, architectural rigor,",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "RESEARCH-STUDY-ACT_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "resource-preflight",
+      "display_name": "Resource Preflight",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/resource-preflight",
+      "entrypoint": "skills/resource-preflight/SKILL.md",
+      "purpose": "Verify mission-relevant dependencies, access, resources, and environment assumptions.",
+      "input_contract": [
+        "Candidate capability",
+        "Prerequisite inventory",
+        "Authorized environment"
+      ],
+      "output_contract": [
+        "RESOURCE_PREFLIGHT.md"
+      ],
+      "local_validation": [
+        "Every required prerequisite has a current observed status and fallback"
+      ],
+      "does_not_own": [
+        "Unapproved installation",
+        "Restricted-data access",
+        "Secret disclosure"
+      ]
+    },
+    {
+      "id": "roadmap-builder",
+      "display_name": "Roadmap Builder",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/roadmap-builder",
+      "entrypoint": "skills/roadmap-builder/SKILL.md",
+      "purpose": "Plan verified chunks and dependency-aware phase gates.",
+      "input_contract": [
+        "MISSION.md",
+        "Known artifacts and dependencies"
+      ],
+      "output_contract": [
+        "ROADMAP.md"
+      ],
+      "local_validation": [
+        "Every acceptance criterion maps to a verifiable chunk"
+      ],
+      "does_not_own": [
+        "Specialist execution method",
+        "Unverified completion claims"
+      ]
+    },
+    {
+      "id": "security-review",
+      "display_name": "Security Review",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/security-review",
+      "entrypoint": "skills/security-review/SKILL.md",
+      "purpose": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or impleme",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "SECURITY-REVIEW_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "spacex-mission-control",
+      "display_name": "Spacex Mission Control",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/spacex-mission-control",
+      "entrypoint": "skills/spacex-mission-control/SKILL.md",
+      "purpose": "Operating inside the SpaceX Mission Control job-app portfolio repo at github.com/GlacierEQ/spacex-mission-control. Targe",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "SPACEX-MISSION-CONTROL_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "token-saver",
+      "display_name": "Token Saver",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/token-saver",
+      "entrypoint": "skills/token-saver/SKILL.md",
+      "purpose": "Operating with the Mermicorn Token Saver active. Use to compact context, apply prompt packs, manage handoffs, and stay w",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "TOKEN-SAVER_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "tower-of-babel",
+      "display_name": "Tower Of Babel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/tower-of-babel",
+      "entrypoint": "skills/tower-of-babel/SKILL.md",
+      "purpose": "Operating inside the Tower of Babel polyglot technology authority at /root/projects/GlacierEQ_Swarm/the-tower-of-babel. ",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "TOWER-OF-BABEL_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "work-packet",
+      "display_name": "Work Packet",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/work-packet",
+      "entrypoint": "skills/work-packet/SKILL.md",
+      "purpose": "Create a bounded and testable assignment contract.",
+      "input_contract": [
+        "Chunk objective",
+        "Canonical inputs",
+        "Authority boundary"
+      ],
+      "output_contract": [
+        "Work packet"
+      ],
+      "local_validation": [
+        "Owner and integrator can act without implicit context"
+      ],
+      "does_not_own": [
+        "Receiving specialist procedure",
+        "Extra authority"
+      ]
+    },
+    {
+      "id": "xai-colossus-2",
+      "display_name": "Xai Colossus 2",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/xai-colossus-2",
+      "entrypoint": "skills/xai-colossus-2/SKILL.md",
+      "purpose": "Operating inside xAI Colossus 2 at GlacierEQ/xai-colossus-2. The end-to-end Colossus infrastructure project \u2014 CLI, maste",
+      "input_contract": [
+        "Task specification",
+        "Context artifacts"
+      ],
+      "output_contract": [
+        "XAI-COLOSSUS-2_OUTPUT.md",
+        "Execution receipt"
+      ],
+      "local_validation": [
+        "Passes local test harness and verified criteria"
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     }
   ]
