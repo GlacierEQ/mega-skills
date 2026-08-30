@@ -51,7 +51,7 @@ GlacierEQ/mega-skills/
 ├── governance/
 │   ├── CONTRIBUTING.md
 │   └── decision-records/README.md
-├── scripts/validate_hierarchy.py
+├── scripts/validate_hierarchy.py             # Contract and no-copy validator
 ├── schemas/combo-skill.schema.json           # Versioned machine-readable Combo integration schema
 ├── tests/test_hierarchy.py
 └── .github/
@@ -125,9 +125,3 @@ python -m unittest discover -s tests -v
 git diff --check
 git status --short --branch
 ```
-
-## Read-only firewall contract
-
-Every registered Mega Skill declares a machine-validated `firewall` contract in `registry/mega-skills.json`. The contract permits only repository reads, local tests, local run-artifact writes, and receipt emission. External mutation, sending, filing, deletion, deployment, merge, credential access, unknown-program execution, and autonomous legal decisions are denied by `scripts/firewall.py`. Human control is required for all actions outside that local envelope.
-
-`python scripts/validate_hierarchy.py` validates every firewall declaration, and `python scripts/run_mega_mission.py` exercises the contract-backed foundry route while emitting a hash manifest and durable receipt. The runner does not claim model accuracy, production certification, legal filing, or external execution.

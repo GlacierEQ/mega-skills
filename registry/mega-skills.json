@@ -49,7 +49,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -116,7 +117,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -183,7 +185,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -250,7 +253,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -317,7 +321,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -384,7 +389,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -451,7 +457,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -518,7 +525,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -585,7 +593,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -654,7 +663,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -723,7 +733,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -792,7 +803,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -861,7 +873,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -927,7 +940,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -996,7 +1010,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -1065,7 +1080,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -1134,7 +1150,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -1202,7 +1219,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
@@ -1271,7 +1289,8 @@
           "merge",
           "credential_access",
           "legal_filing",
-          "autonomous_legal_decision"
+          "autonomous_legal_decision",
+          "execute_unknown_program"
         ],
         "forbidden_actions": [
           "external_mutation",
