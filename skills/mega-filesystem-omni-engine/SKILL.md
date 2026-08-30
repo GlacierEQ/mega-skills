@@ -1,9 +1,16 @@
 ---
 name: mega-filesystem-omni-engine
-description: Consolidated mega skill for filesystem perception, document parsing (PDF, Doc, LaTeX, Pandoc), tabular data & spreadsheets, cloud storage orchestration (Rclone, Google Suite, Dropbox, S3), atomic file operations, visual infographics/slides, and audio/podcast processing.
+description: Consolidated mega skill encompassing 7 sub-skills (filesystem perception, documents, spreadsheets, rclone cloud, bates stamping, visual charts, audio).
 ---
 
 # MEGA-FILESYSTEM-OMNI-ENGINE
+
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains filesystem perception, document parsing, cloud storage sync, and media processing engines.
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- Document conversions (PDF/LaTeX/Pandoc), spreadsheet generation, Rclone operations, or audio processing.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
 
 > **Role:** Universal File System Perception, Document Engineering, Cloud Storage Synchronization, and Media/Publishing Pipeline.
 

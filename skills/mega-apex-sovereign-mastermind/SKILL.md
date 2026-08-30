@@ -5,6 +5,13 @@ description: Consolidated mega skill encompassing 8 sub-skills.
 
 # MEGA-APEX-SOVEREIGN-MASTERMIND
 
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains the complete APEX Sovereign Mastermind execution framework, 12 Pistons, and Swarm protocols.
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- APEX execution modes (Lean/Throughput/Exhaustive), swarming orchestration, or epistemic methodology.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
+
 
 ## Sub-Skill: apex-execution-modes
 # APEX Execution Modes (3 Modes in 1)

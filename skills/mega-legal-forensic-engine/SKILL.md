@@ -5,6 +5,13 @@ description: Consolidated mega skill encompassing 5 sub-skills.
 
 # MEGA-LEGAL-FORENSIC-ENGINE
 
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains dense legal warfare, forensic evidence ingestion, and court pleading compilation directives.
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- Court pleadings, motions, docket timelines, evidence verification, or device forensics.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
+
 
 ## Sub-Skill: deep-soul-litigation-engine
 # Deep Soul Litigation Engine

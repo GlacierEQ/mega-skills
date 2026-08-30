@@ -5,6 +5,13 @@ description: Consolidated mega skill encompassing 5 sub-skills.
 
 # MEGA-SUPABASE-ECOSYSTEM
 
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains Supabase database architecture, Postgres query tuning, Deno Edge Functions, and PGVector embeddings.
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- Supabase, PostgreSQL schemas, RLS policies, Edge Functions, or PGVector.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
+
 
 ## Sub-Skill: supabase
 # Supabase

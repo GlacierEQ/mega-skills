@@ -5,6 +5,13 @@ description: Consolidated mega skill encompassing 7 sub-skills.
 
 # MEGA-AGENT-CORE-OPERATIONS
 
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains core operational safety, dependency management, and notebook execution protocols.
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- Data loss safety verification, Python dependency resolution, notebook authoring, or ML best practices.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
+
 
 ## Sub-Skill: accidental-data-loss-prevention
 # Accidental Data Loss Prevention

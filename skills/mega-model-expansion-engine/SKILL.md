@@ -1,9 +1,16 @@
 ---
 name: mega-model-expansion-engine
-description: Universal multi-model expansion engine integrating OpenRouter free tier, OpenCode Zen CLI, Cline agentic workflows, and KiloCode token cost optimization into Antigravity CLI.
+description: Universal multi-model expansion engine encompassing 5 sub-skills (OpenRouter, OpenCode Zen, KiloCode).
 ---
 
 # MEGA-MODEL-EXPANSION-ENGINE
+
+> [!WARNING]
+> **APEX COGNITIVE FIREWALL (INTERCEPTOR GATE)**
+> This file contains multi-model routing bridges (OpenRouter, OpenCode Zen, KiloCode, Novita).
+DO NOT READ FURTHER unless the current user mandate explicitly requires:
+- Switching models, routing across external LLMs, or multi-model cost optimization.
+> If the current task does not specifically target this domain, **STOP READING HERE** to preserve token context.
 
 A comprehensive multi-model orchestration framework designed to expand Antigravity CLI's daily model loadout with zero-cost and high-capacity models.
 
