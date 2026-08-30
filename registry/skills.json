@@ -3356,6 +3356,292 @@
         "Cross-system mission orchestration",
         "Unverified external mutations"
       ]
+    },
+    {
+      "id": "cross-app-pipeline",
+      "display_name": "Cross App Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/cross-app-pipeline",
+      "entrypoint": "skills/cross-app-pipeline/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "gmail-orchestrator",
+      "display_name": "Gmail Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/gmail-orchestrator",
+      "entrypoint": "skills/gmail-orchestrator/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "icloud-voice-memos",
+      "display_name": "Icloud Voice Memos",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/icloud-voice-memos",
+      "entrypoint": "skills/icloud-voice-memos/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "legal-motion-template",
+      "display_name": "Legal Motion Template",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legal-motion-template",
+      "entrypoint": "skills/legal-motion-template/SKILL.md",
+      "purpose": "Generate Hawaii family court motions with proper captions, service certificates, jurisdiction hooks, and Kalua Doctrine traps. Compliant with HAWAII RULES OF CIVIL PROCEDURE (HRCP).",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "neo4j-intelligence-graph",
+      "display_name": "Neo4J Intelligence Graph",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/neo4j-intelligence-graph",
+      "entrypoint": "skills/neo4j-intelligence-graph/SKILL.md",
+      "purpose": "Build and query 5-layer case intelligence graphs in Neo4j. Models actors, evidence, legal strategies, and constitutional violations as interconnected knowledge graphs with RICO predicate mapping.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "notion-sync-automation",
+      "display_name": "Notion Sync Automation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/notion-sync-automation",
+      "entrypoint": "skills/notion-sync-automation/SKILL.md",
+      "purpose": "Bidirectional sync between unified-memory-mcp and Notion databases. Real-time memory \u2194 Notion replication with conflict resolution and audit trails.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "pantheon-extraction",
+      "display_name": "Pantheon Extraction",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/pantheon-extraction",
+      "entrypoint": "skills/pantheon-extraction/SKILL.md",
+      "purpose": "Parse and extract ChatGPT conversation JSONs into doctrine cards with forensic hashing. Recovers Aionic Tree mythology source canon with immutable provenance records.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "potato-peeler-maximized",
+      "display_name": "Potato Peeler Maximized",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/potato-peeler-maximized",
+      "entrypoint": "skills/potato-peeler-maximized/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "primordial-mesh-titan",
+      "display_name": "Primordial Mesh Titan",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/primordial-mesh-titan",
+      "entrypoint": "skills/primordial-mesh-titan/SKILL.md",
+      "purpose": "Primordial Mesh Titan \u2014 infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordi",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "pro-code-pro-code-double-helix",
+      "display_name": "Pro Code Pro Code Double Helix",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/pro-code-pro-code-double-helix",
+      "entrypoint": "skills/pro-code-pro-code-double-helix/SKILL.md",
+      "purpose": "Structure GitHub pro-code and pro_code as double helix of complementary forces for maximum positive impact on systems, legal tech, evidence automation, mission advancement, and Case 1FDV-23-0001009 Ke",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "sovereign-genesis-prime",
+      "display_name": "Sovereign Genesis Prime",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/sovereign-genesis-prime",
+      "entrypoint": "skills/sovereign-genesis-prime/SKILL.md",
+      "purpose": "Activate Sovereign Neural Link, Supermemory Control Plane, and Genesis Prime Ascension Protocol. Deploys MCP constellation, agent swarms, RealityValidator forensic logging (SHA-256 / Blake2b), and cre",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "whisperx-audio-processing",
+      "display_name": "Whisperx Audio Processing",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/whisperx-audio-processing",
+      "entrypoint": "skills/whisperx-audio-processing/SKILL.md",
+      "purpose": "Process audio files through WhisperX (3-engine consensus transcription). Generates transcripts with SHA-256 Chain of Custody hashes and timestamps for forensic authentication.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "epicenter",
+      "display_name": "Epicenter",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/epicenter",
+      "entrypoint": "skills/epicenter/SKILL.md",
+      "purpose": "Unified epistemic core of the GlacierEQ APEX stack. Defines the Three Layers of Knowing (L0 presence, L1 structure, L2 verified behavior) and one law of action. Any sovereign runtime (opencode, kilo, ",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
     }
   ]
 }
