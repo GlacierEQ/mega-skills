@@ -1,9 +1,9 @@
 ---
 name: mega-reasoning-variants
-description: Reasoning Variants
-domains: [reasoning-variants]
-token_profile: Lean
+description: "Reasoning Variants"
 ---
+
+
 
 # MEGA-REASONING-VARIANTS
 

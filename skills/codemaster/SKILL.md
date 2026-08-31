@@ -1,13 +1,9 @@
 ---
 name: codemaster
-description: 'The coding-orchestration playbook. Recipes for the recurring task types:
-  add a feature, fix a bug, refactor, review a PR, debug a test failure. Each recipe
-  is a procedure with pre-flight, in-flight, and post-flight rituals. Use this when
-  you start any coding work that involves more than one trivial edit, when you don''t
-  know which skill to load, or when you want a single source of truth for ''how we
-  do code here.'''
-version: 0.1.0
+description: "The coding-orchestration playbook. Recipes for the recurring task types: add a feature, fix a bug, refactor, review a PR, debug a test failure. Each recipe is a procedure with pre-flight, in-flight, and post-flight rituals. Use this when you start any coding work that involves more than one trivial edit, when you don't know which skill to load, or when you want a single source of truth for 'how we do code here.'"
 ---
+
+
 
 # CodeMaster — The Coding Playbook (v2)
 

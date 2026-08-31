@@ -1,9 +1,9 @@
 ---
 name: mega-spacex-mission-control
-description: SpaceX Mission Control (job-app portfolio)
-domains: [spacex-mission-control]
-token_profile: Lean
+description: "SpaceX Mission Control (job-app portfolio)"
 ---
+
+
 
 # MEGA-SPACEX-MISSION-CONTROL
 

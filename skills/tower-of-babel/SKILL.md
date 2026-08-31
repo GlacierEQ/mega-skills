@@ -1,12 +1,9 @@
 ---
 name: tower-of-babel
-description: "Operating inside the Tower of Babel polyglot technology authority at\
-  \ /root/projects/GlacierEQ_Swarm/the-tower-of-babel. Use when changing the registry,\
-  \ adding a floor, updating exhibits, changing proof state, or generating surface\
-  \ artifacts. Tower has its own doctrine and a mandatory preflight \u2014 violations\
-  \ break the evidence chain."
-version: 0.1.0
+description: "Operating inside the Tower of Babel polyglot technology authority at /root/projects/GlacierEQ_Swarm/the-tower-of-babel. Use when changing the registry, adding a floor, updating exhibits, changing proof state, or generating surface artifacts. Tower has its own doctrine and a mandatory preflight — violations break the evidence chain."
 ---
+
+
 
 # Tower of Babel Skill
 

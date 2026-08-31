@@ -1,9 +1,9 @@
 ---
 name: mega-legacy-estate
-description: Legacy Estate (GlacierEQ)
-domains: [legacy-estate]
-token_profile: Lean
+description: "Legacy Estate (GlacierEQ)"
 ---
+
+
 
 # MEGA-LEGACY-ESTATE
 

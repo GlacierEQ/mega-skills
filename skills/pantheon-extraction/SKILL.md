@@ -1,7 +1,8 @@
 ---
 name: pantheon-extraction
-description: Parse and extract ChatGPT conversation JSONs into doctrine cards with forensic hashing. Recovers Aionic Tree mythology source canon with immutable provenance records.
+description: "Parse and extract ChatGPT conversation JSONs into doctrine cards with forensic hashing. Recovers Aionic Tree mythology source canon with immutable provenance records."
 ---
+
 
 # Pantheon Extraction Skill
 

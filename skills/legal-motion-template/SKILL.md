@@ -1,7 +1,8 @@
 ---
 name: legal-motion-template
-description: Generate Hawaii family court motions with proper captions, service certificates, jurisdiction hooks, and Kalua Doctrine traps. Compliant with HAWAII RULES OF CIVIL PROCEDURE (HRCP).
+description: "Generate Hawaii family court motions with proper captions, service certificates, jurisdiction hooks, and Kalua Doctrine traps. Compliant with HAWAII RULES OF CIVIL PROCEDURE (HRCP)."
 ---
+
 
 # Legal Motion Template Skill
 

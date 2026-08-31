@@ -1,10 +1,9 @@
 ---
 name: openai-reasoning-kv-sentinel
-description: Operating inside the OpenAI Reasoning KV-Sentinel job-app portfolio repo
-  at github.com/GlacierEQ/openai-reasoning-kv-sentinel. Targets the OpenAI / xAI reasoning-systems
-  orbit with KV-cache and reasoning-budget materials.
-version: 0.1.0
+description: "Operating inside the OpenAI Reasoning KV-Sentinel job-app portfolio repo at github.com/GlacierEQ/openai-reasoning-kv-sentinel. Targets the OpenAI / xAI reasoning-systems orbit with KV-cache and reasoning-budget materials."
 ---
+
+
 
 # OpenAI Reasoning KV-Sentinel (job-app portfolio)
 

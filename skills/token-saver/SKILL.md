@@ -1,10 +1,9 @@
 ---
 name: token-saver
-description: Operating with the Mermicorn Token Saver active. Use to compact context,
-  apply prompt packs, manage handoffs, and stay within token budgets. Loads first
-  when context is filling.
-version: 0.1.0
+description: "Operating with the Mermicorn Token Saver active. Use to compact context, apply prompt packs, manage handoffs, and stay within token budgets. Loads first when context is filling."
 ---
+
+
 
 # Token Saver
 

@@ -1,9 +1,9 @@
 ---
 name: mega-mcp-master-server
-description: MCP Master Server
-domains: [mcp-master-server]
-token_profile: Lean
+description: "MCP Master Server"
 ---
+
+
 
 # MEGA-MCP-MASTER-SERVER
 

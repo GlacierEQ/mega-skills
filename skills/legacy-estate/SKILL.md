@@ -1,11 +1,9 @@
 ---
 name: legacy-estate
-description: "Operating inside one of the older GlacierEQ repos \u2014 pushed before\
-  \ the August 2026 burst, not a flagship, not portfolio, not a fork. Use when working\
-  \ in any repo under github.com/GlacierEQ/ that hasn't been touched recently and\
-  \ isn't in the other family contracts."
-version: 0.1.0
+description: "Operating inside one of the older GlacierEQ repos — pushed before the August 2026 burst, not a flagship, not portfolio, not a fork. Use when working in any repo under github.com/GlacierEQ/ that hasn't been touched recently and isn't in the other family contracts."
 ---
+
+
 
 # Legacy Estate (GlacierEQ)
 

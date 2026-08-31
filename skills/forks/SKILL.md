@@ -1,11 +1,9 @@
 ---
 name: forks
-description: Operating inside one of the 513 GlacierEQ private inbound forks. These
-  are private copies of public upstream projects, kept for reference, contribution,
-  or downstream packaging. Use this skill when working in any repo under github.com/GlacierEQ/
-  that has fork=true.
-version: 0.1.0
+description: "Operating inside one of the 513 GlacierEQ private inbound forks. These are private copies of public upstream projects, kept for reference, contribution, or downstream packaging. Use this skill when working in any repo under github.com/GlacierEQ/ that has fork=true."
 ---
+
+
 
 # Forks (GlacierEQ)
 

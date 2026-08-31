@@ -1,9 +1,9 @@
 ---
 name: mega-quantum-nexus
-description: Quantum Nexus Skill — Sovereign Intelligence System
-domains: [quantum-nexus]
-token_profile: Lean
+description: "Quantum Nexus Skill — Sovereign Intelligence System"
 ---
+
+
 
 # MEGA-QUANTUM-NEXUS
 

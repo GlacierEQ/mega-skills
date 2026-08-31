@@ -1,10 +1,9 @@
 ---
 name: aspen-grove-connectors
-description: Operating inside the Aspen Grove MCP connector family at /root/projects/aspen-grove-connectors.
-  Bridges to GitHub, Notion, Supabase, Dropbox, ClickUp, Linear, Vercel, DuckDB, Taskade,
-  MemoryPlugin, Pinecone. Use when wiring a new external service or debugging a connector.
-version: 0.1.0
+description: "Operating inside the Aspen Grove MCP connector family at /root/projects/aspen-grove-connectors. Bridges to GitHub, Notion, Supabase, Dropbox, ClickUp, Linear, Vercel, DuckDB, Taskade, MemoryPlugin, Pinecone. Use when wiring a new external service or debugging a connector."
 ---
+
+
 
 # Aspen Grove Connectors
 

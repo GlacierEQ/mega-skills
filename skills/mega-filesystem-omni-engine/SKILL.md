@@ -1,7 +1,8 @@
 ---
 name: mega-filesystem-omni-engine
-description: Consolidated mega skill encompassing 7 sub-skills (filesystem perception, documents, spreadsheets, rclone cloud, bates stamping, visual charts, audio).
+description: "Consolidated mega skill encompassing 7 sub-skills (filesystem perception, documents, spreadsheets, rclone cloud, bates stamping, visual charts, audio)."
 ---
+
 
 # MEGA-FILESYSTEM-OMNI-ENGINE
 

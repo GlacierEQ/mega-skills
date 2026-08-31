@@ -1,8 +1,9 @@
 ---
 name: automated-test-generation
-description: Generate, strengthen, and enforce automated tests with measurable coverage and behavior evidence. Use when adding tests for existing code, closing coverage gaps, generating regression cases, enforcing quality thresholds, or validating Tower of Babel language and toolchain lanes.
-license: Complete terms in LICENSE.txt
+description: "Generate, strengthen, and enforce automated tests with measurable coverage and behavior evidence. Use when adding tests for existing code, closing coverage gaps, generating regression cases, enforcing quality thresholds, or validating Tower of Babel language and toolchain lanes."
 ---
+
+
 
 # Automated Test Generation
 

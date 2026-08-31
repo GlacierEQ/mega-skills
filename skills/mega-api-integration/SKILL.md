@@ -1,9 +1,9 @@
 ---
 name: mega-api-integration
-description: API Integration Skill — REST/GraphQL/Webhook Communication
-domains: [api-integration]
-token_profile: Lean
+description: "API Integration Skill — REST/GraphQL/Webhook Communication"
 ---
+
+
 
 # MEGA-API-INTEGRATION
 

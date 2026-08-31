@@ -1,10 +1,9 @@
 ---
 name: mermicorn-grove
-description: Operating inside the Mermicorn Grove at /root/mermicorn-grove. A constellation
-  registry spanning 15 repos across deals, design, games, collectibles, commerce,
-  and AI. Use when working on a Mermicorn project or wiring a new constellation entry.
-version: 0.1.0
+description: "Operating inside the Mermicorn Grove at /root/mermicorn-grove. A constellation registry spanning 15 repos across deals, design, games, collectibles, commerce, and AI. Use when working on a Mermicorn project or wiring a new constellation entry."
 ---
+
+
 
 # Mermicorn Grove
 

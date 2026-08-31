@@ -1,9 +1,9 @@
 ---
 name: mega-flagships
-description: Flagships (GlacierEQ)
-domains: [flagships]
-token_profile: Lean
+description: "Flagships (GlacierEQ)"
 ---
+
+
 
 # MEGA-FLAGSHIPS
 

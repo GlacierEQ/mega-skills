@@ -1,9 +1,9 @@
 ---
 name: ai-deal-finder
-description: Operating inside AI Deal Finder at /root/projects/ai-deal-finder. Use
-  when working on the deal-discovery and matching pipeline.
-version: 0.1.0
+description: "Operating inside AI Deal Finder at /root/projects/ai-deal-finder. Use when working on the deal-discovery and matching pipeline."
 ---
+
+
 
 # AI Deal Finder
 

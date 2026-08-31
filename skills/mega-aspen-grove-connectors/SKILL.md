@@ -1,9 +1,9 @@
 ---
 name: mega-aspen-grove-connectors
-description: Aspen Grove Connectors
-domains: [aspen-grove-connectors]
-token_profile: Lean
+description: "Aspen Grove Connectors"
 ---
+
+
 
 # MEGA-ASPEN-GROVE-CONNECTORS
 

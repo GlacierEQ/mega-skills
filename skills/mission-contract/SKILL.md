@@ -1,7 +1,8 @@
 ---
 name: mission-contract
-description: Convert a request into a bounded, testable mission contract. Use when work has material scope, dependencies, risk, approvals, multiple deliverables, or ambiguity that must be resolved before execution.
+description: "Convert a request into a bounded, testable mission contract. Use when work has material scope, dependencies, risk, approvals, multiple deliverables, or ambiguity that must be resolved before execution."
 ---
+
 
 # Mission Contract
 

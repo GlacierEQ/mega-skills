@@ -1,9 +1,9 @@
 ---
 name: mega-primordial-mesh
-description: Primordial Mesh Titan
-domains: [primordial-mesh]
-token_profile: Lean
+description: "Primordial Mesh Titan"
 ---
+
+
 
 # MEGA-PRIMORDIAL-MESH
 

@@ -1,13 +1,9 @@
 ---
 name: engineering-innovations
-description: "Operating inside the GlacierEQ engineering-innovations family (~195\
-  \ repos pushed since 2026-08-20). These are the August 2026 burst of new engineering\
-  \ work \u2014 case-specific projects, framework prototypes, evidence systems, and\
-  \ frontier experiments. Use when working in any repo under github.com/GlacierEQ/\
-  \ that is recent, is a source (not a fork), and is not a flagship or a portfolio\
-  \ orbit repo."
-version: 0.1.0
+description: "Operating inside the GlacierEQ engineering-innovations family (~195 repos pushed since 2026-08-20). These are the August 2026 burst of new engineering work — case-specific projects, framework prototypes, evidence systems, and frontier experiments. Use when working in any repo under github.com/GlacierEQ/ that is recent, is a source (not a fork), and is not a flagship or a portfolio orbit repo."
 ---
+
+
 
 # Engineering Innovations (GlacierEQ)
 

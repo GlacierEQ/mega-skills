@@ -1,9 +1,9 @@
 ---
 name: mega-composio
-description: Composio
-domains: [composio]
-token_profile: Lean
+description: "Composio"
 ---
+
+
 
 # MEGA-COMPOSIO
 

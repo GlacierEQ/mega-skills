@@ -1,9 +1,9 @@
 ---
 name: mega-mermicorn-grove
-description: Mermicorn Grove
-domains: [mermicorn-grove]
-token_profile: Lean
+description: "Mermicorn Grove"
 ---
+
+
 
 # MEGA-MERMICORN-GROVE
 

@@ -1,7 +1,8 @@
 ---
 name: mega-skill-forge
-description: Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill.
+description: "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill."
 ---
+
 
 # Mega Skill Forge
 

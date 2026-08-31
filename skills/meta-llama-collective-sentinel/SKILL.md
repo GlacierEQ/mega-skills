@@ -1,10 +1,9 @@
 ---
 name: meta-llama-collective-sentinel
-description: Operating inside the Meta Llama Collective Sentinel job-app portfolio
-  repo at github.com/GlacierEQ/meta-llama-collective-sentinel. Targets the Meta FAIR
-  collective-comms orbit.
-version: 0.1.0
+description: "Operating inside the Meta Llama Collective Sentinel job-app portfolio repo at github.com/GlacierEQ/meta-llama-collective-sentinel. Targets the Meta FAIR collective-comms orbit."
 ---
+
+
 
 # Meta Llama Collective Sentinel (job-app portfolio)
 

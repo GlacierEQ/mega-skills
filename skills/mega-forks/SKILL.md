@@ -1,9 +1,9 @@
 ---
 name: mega-forks
-description: Forks (GlacierEQ)
-domains: [forks]
-token_profile: Lean
+description: "Forks (GlacierEQ)"
 ---
+
+
 
 # MEGA-FORKS
 

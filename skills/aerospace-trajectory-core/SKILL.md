@@ -1,7 +1,8 @@
 ---
 name: aerospace-trajectory-core
-description: SpaceX orbital dynamics, Keplerian propagation, Lambert transfer boundary value solvers, and thermodynamic cryogenic boil-off equations.
+description: "SpaceX orbital dynamics, Keplerian propagation, Lambert transfer boundary value solvers, and thermodynamic cryogenic boil-off equations."
 ---
+
 
 # Aerospace Trajectory Core
 

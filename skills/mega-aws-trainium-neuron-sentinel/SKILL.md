@@ -1,9 +1,9 @@
 ---
 name: mega-aws-trainium-neuron-sentinel
-description: AWS Trainium Neuron Sentinel (job-app portfolio)
-domains: [aws-trainium-neuron-sentinel]
-token_profile: Lean
+description: "AWS Trainium Neuron Sentinel (job-app portfolio)"
 ---
+
+
 
 # MEGA-AWS-TRAINIUM-NEURON-SENTINEL
 

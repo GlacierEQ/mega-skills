@@ -1,9 +1,9 @@
 ---
 name: mega-xai-colossus-2
-description: xAI Colossus 2
-domains: [xai-colossus-2]
-token_profile: Lean
+description: "xAI Colossus 2"
 ---
+
+
 
 # MEGA-XAI-COLOSSUS-2
 

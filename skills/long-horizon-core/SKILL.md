@@ -1,11 +1,9 @@
 ---
 name: long-horizon-core
-description: 'The 7-stage resilient long-horizon operating loop: mission-contract
-  -> roadmap-builder -> evidence-register -> context-capsule -> work-packet -> quality-gate
-  -> handoff-record. Generates and maintains the 5 durable state files (MISSION.md,
-  ROADMAP.md, CONTEXT.md, EVIDENCE.md, HANDOFF.md) for zero-drift execution.'
-version: 0.1.0
+description: "The 7-stage resilient long-horizon operating loop: mission-contract - roadmap-builder - evidence-register - context-capsule - work-packet - quality-gate - handoff-record. Generates and maintains the 5 durable state files (MISSION.md, ROADMAP.md, CONTEXT.md, EVIDENCE.md, HANDOFF.md) for zero-drift execution."
 ---
+
+
 
 # 🔁 Long-Horizon Core Combo-Skill
 

@@ -1,9 +1,9 @@
 ---
 name: mega-job-app-portfolio
-description: Job-App Portfolio (GlacierEQ)
-domains: [job-app-portfolio]
-token_profile: Lean
+description: "Job-App Portfolio (GlacierEQ)"
 ---
+
+
 
 # MEGA-JOB-APP-PORTFOLIO
 

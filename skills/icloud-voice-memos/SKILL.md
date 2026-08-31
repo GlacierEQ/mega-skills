@@ -1,7 +1,8 @@
 ---
 name: icloud-voice-memos
-description: Extracts transcripts, GPS/location metadata, and audio timestamps from iCloud Voice Memos.
+description: "Extracts transcripts, GPS/location metadata, and audio timestamps from iCloud Voice Memos."
 ---
+
 
 # iCloud Voice Memos Harvester
 

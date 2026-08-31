@@ -1,9 +1,9 @@
 ---
 name: mega-github-power
-description: GitHub Power Skill — Maximum GitHub Productivity
-domains: [github-power]
-token_profile: Lean
+description: "GitHub Power Skill — Maximum GitHub Productivity"
 ---
+
+
 
 # MEGA-GITHUB-POWER
 

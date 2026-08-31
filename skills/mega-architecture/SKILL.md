@@ -1,9 +1,9 @@
 ---
 name: mega-architecture
-description: Architecture Decision Framework
-domains: [architecture]
-token_profile: Lean
+description: "Architecture Decision Framework"
 ---
+
+
 
 # MEGA-ARCHITECTURE
 

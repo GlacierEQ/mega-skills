@@ -1,7 +1,8 @@
 ---
 name: notion-sync-automation
-description: Bidirectional sync between unified-memory-mcp and Notion databases. Real-time memory ↔ Notion replication with conflict resolution and audit trails.
+description: "Bidirectional sync between unified-memory-mcp and Notion databases. Real-time memory ↔ Notion replication with conflict resolution and audit trails."
 ---
+
 
 # Notion Sync Automation Skill
 

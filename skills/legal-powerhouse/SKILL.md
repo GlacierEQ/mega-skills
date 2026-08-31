@@ -1,11 +1,9 @@
 ---
 name: legal-powerhouse
-description: Operating inside the JUGGERNAUT_JACK legal-powerhouse projects (Case
-  1FDV-23-0001009 and related). Use when working in /root/cases/1FDV-23-0001009/FEDERAL-WARFARE,
-  /root/cases/1FDV-23-0001009/casey-legal-mcp-server, /root/cases/1FDV-23-0001009/legal-powerhouse,
-  /root/projects/quantum-legal, or /root/projects/GlacierEQ_Swarm/legal-powerhouse.
-version: 0.1.0
+description: "Operating inside the JUGGERNAUT_JACK legal-powerhouse projects (Case 1FDV-23-0001009 and related). Use when working in /root/cases/1FDV-23-0001009/FEDERAL-WARFARE, /root/cases/1FDV-23-0001009/casey-legal-mcp-server, /root/cases/1FDV-23-0001009/legal-powerhouse, /root/projects/quantum-legal, or /root/projects/GlacierEQ_Swarm/legal-powerhouse."
 ---
+
+
 
 # Legal Powerhouse Skill (JUGGERNAUT_JACK)
 

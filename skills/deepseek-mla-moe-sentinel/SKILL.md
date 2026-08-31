@@ -1,9 +1,9 @@
 ---
 name: deepseek-mla-moe-sentinel
-description: Operating inside the DeepSeek MLA MoE Sentinel job-app portfolio repo
-  at github.com/GlacierEQ/deepseek-mla-moe-sentinel. Targets the DeepSeek V3/R1 attention-orbit.
-version: 0.1.0
+description: "Operating inside the DeepSeek MLA MoE Sentinel job-app portfolio repo at github.com/GlacierEQ/deepseek-mla-moe-sentinel. Targets the DeepSeek V3/R1 attention-orbit."
 ---
+
+
 
 # DeepSeek MLA MoE Sentinel (job-app portfolio)
 

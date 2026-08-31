@@ -1,10 +1,9 @@
 ---
 name: apex-integrations
-description: Operating inside the Apex Integrations service-connector family at /root/projects/apex-integrations.
-  Use when wiring API bridges between legal, memory, and runtime systems, or when
-  adding a new connector to the APEX stack.
-version: 0.1.0
+description: "Operating inside the Apex Integrations service-connector family at /root/projects/apex-integrations. Use when wiring API bridges between legal, memory, and runtime systems, or when adding a new connector to the APEX stack."
 ---
+
+
 
 # Apex Integrations
 

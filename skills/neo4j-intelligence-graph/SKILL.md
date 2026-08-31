@@ -1,7 +1,8 @@
 ---
 name: neo4j-intelligence-graph
-description: Build and query 5-layer case intelligence graphs in Neo4j. Models actors, evidence, legal strategies, and constitutional violations as interconnected knowledge graphs with RICO predicate mapping.
+description: "Build and query 5-layer case intelligence graphs in Neo4j. Models actors, evidence, legal strategies, and constitutional violations as interconnected knowledge graphs with RICO predicate mapping."
 ---
+
 
 # Neo4j Intelligence Graph Skill
 

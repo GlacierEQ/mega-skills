@@ -1,7 +1,8 @@
 ---
 name: connector-bridge
-description: Unified, typed interface for connecting and stacking multi-cloud services (Supabase, GitHub API, OpenRouter, Google Drive, Dropbox, OneDrive) with exponential backoff and rate-limiting.
+description: "Unified, typed interface for connecting and stacking multi-cloud services (Supabase, GitHub API, OpenRouter, Google Drive, Dropbox, OneDrive) with exponential backoff and rate-limiting."
 ---
+
 
 # Connector Bridge
 

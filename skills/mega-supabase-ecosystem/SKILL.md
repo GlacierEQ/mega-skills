@@ -1,7 +1,8 @@
 ---
 name: mega-supabase-ecosystem
-description: Consolidated mega skill encompassing 5 sub-skills.
+description: "Consolidated mega skill encompassing 5 sub-skills."
 ---
+
 
 # MEGA-SUPABASE-ECOSYSTEM
 

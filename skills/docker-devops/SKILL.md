@@ -1,23 +1,9 @@
 ---
 name: docker-devops
-description: >
-  Use when working with Docker, Docker Compose, container management, health checks,
-  deployments, CI/CD pipelines, infrastructure automation, Kubernetes, Docker Swarm,
-  container orchestration, image building, multi-stage builds, Docker networks, Docker
-  volumes, bind mounts, named volumes, container security, vulnerability scanning, secrets
-  management, environment variables, container monitoring, log aggregation, resource limits,
-  memory constraints, CPU limits, restart policies, container labeling, container profiling,
-  service mesh, load balancing, reverse proxy, nginx, traefik, port mapping, port forwarding,
-  Docker registry, container registry, GitHub Actions, GitLab CI, Jenkins, Travis CI,
-  CircleCI, build automation, test automation, deployment automation, blue-green deployment,
-  rolling update, canary deployment, infrastructure as code, terraform, ansible, pulumi,
-  cloud deployment, AWS ECS, Google Cloud Run, Azure Container Instances, container
-  networking, overlay networks, bridge networks, host networking, container storage,
-  persistent volumes, container backups, container recovery, disaster recovery, high
-  availability, scaling, auto-scaling, container profiling, performance monitoring,
-  Prometheus, Grafana, ELK stack, container forensics, container debugging, or any
-  container-based infrastructure and deployment automation.
+description: "Use when working with Docker, Docker Compose, container management, health checks, deployments, CI/CD pipelines, infrastructure automation, Kubernetes, Docker Swarm, container orchestration, image building, multi-stage builds, Docker networks, Docker volumes, bind mounts, named volumes, container security, vulnerability scanning, secrets management, environment variables, container monitoring, log aggregation, resource limits, memory constraints, CPU limits, restart policies, container labeling, container profiling, service mesh, load balancing, reverse proxy, nginx, traefik, port mapping, port forwarding, Docker registry, container registry, GitHub Actions, GitLab CI, Jenkins, Travis CI, CircleCI, build automation, test automation, deployment automation, blue-green deployment, rolling update, canary deployment, infrastructure as code, terraform, ansible, pulumi, cloud deployment, AWS ECS, Google Cloud Run, Azure Container Instances, container networking, overlay networks, bridge ne..."
 ---
+
+
 
 # Docker & DevOps Skill — Container Infrastructure & Deployment
 

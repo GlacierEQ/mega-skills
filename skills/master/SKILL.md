@@ -1,11 +1,9 @@
 ---
 name: master
-description: "The master skill \u2014 load this first. Single index and decision tree\
-  \ over every skill installed in this workspace. Use when you're unsure which skill\
-  \ applies, when starting a new task, or when a request spans multiple domains (memory\
-  \ + agents + security + code quality + architecture)."
-version: 0.1.0
+description: "The master skill — load this first. Single index and decision tree over every skill installed in this workspace. Use when you're unsure which skill applies, when starting a new task, or when a request spans multiple domains (memory + agents + security + code quality + architecture)."
 ---
+
+
 
 # Master Skill
 

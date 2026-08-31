@@ -1,9 +1,9 @@
 ---
 name: mega-genesis-prime
-description: Genesis Prime
-domains: [genesis-prime]
-token_profile: Lean
+description: "Genesis Prime"
 ---
+
+
 
 # MEGA-GENESIS-PRIME
 

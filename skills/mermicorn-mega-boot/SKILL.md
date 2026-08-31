@@ -1,10 +1,9 @@
 ---
 name: mermicorn-mega-boot
-description: Operating inside Mermicorn Mega Boot at /root/mermicorn-mega-boot. Use
-  to scaffold a new Mermicorn-compliant project (the boot pattern that produces a
-  leaf for the Mermicorn Grove).
-version: 0.1.0
+description: "Operating inside Mermicorn Mega Boot at /root/mermicorn-mega-boot. Use to scaffold a new Mermicorn-compliant project (the boot pattern that produces a leaf for the Mermicorn Grove)."
 ---
+
+
 
 # Mermicorn Mega Boot
 

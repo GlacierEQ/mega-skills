@@ -1,10 +1,9 @@
 ---
 name: xai-colossus-2
-description: "Operating inside xAI Colossus 2 at GlacierEQ/xai-colossus-2. The end-to-end\
-  \ Colossus infrastructure project \u2014 CLI, mastermind sidecar, devops, and the\
-  \ AKOS portfolio. Use when working on Colossus integration."
-version: 0.1.0
+description: "Operating inside xAI Colossus 2 at GlacierEQ/xai-colossus-2. The end-to-end Colossus infrastructure project — CLI, mastermind sidecar, devops, and the AKOS portfolio. Use when working on Colossus integration."
 ---
+
+
 
 # xAI Colossus 2
 

@@ -1,7 +1,8 @@
 ---
 name: primordial-mesh-titan
-description: Primordial Mesh Titan — infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordial mesh, titan infrastructure, polymorphic mesh, device bridges, or full-stack resilience requests.
+description: "Primordial Mesh Titan — infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordial mesh, titan infrastructure, polymorphic mesh, device bridges, or full-stack resilience requests."
 ---
+
 
 # PRIMORDIAL-MESH-TITAN — Monolith Edition
 

@@ -1,9 +1,9 @@
 ---
 name: mega-tower-of-babel
-description: Tower of Babel Skill
-domains: [tower-of-babel]
-token_profile: Lean
+description: "Tower of Babel Skill"
 ---
+
+
 
 # MEGA-TOWER-OF-BABEL
 

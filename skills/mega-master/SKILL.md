@@ -1,9 +1,9 @@
 ---
 name: mega-master
-description: Master Skill
-domains: [master]
-token_profile: Lean
+description: "Master Skill"
 ---
+
+
 
 # MEGA-MASTER
 

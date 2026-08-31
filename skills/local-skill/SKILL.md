@@ -1,7 +1,8 @@
 ---
 name: local-skill
-description: Meta-skill that inspects the mega-skills repository, extracts structural and behavioral patterns from existing skills, and generates complete, ready-to-commit new skills (or mega-skills) on demand. Use when asked to create, scaffold, or bootstrap any new skill that must conform to the GlacierEQ mega-skills conventions.
+description: "Meta-skill that inspects the mega-skills repository, extracts structural and behavioral patterns from existing skills, and generates complete, ready-to-commit new skills (or mega-skills) on demand. Use when asked to create, scaffold, or bootstrap any new skill that must conform to the GlacierEQ mega-skills conventions."
 ---
+
 
 # Local Skill
 

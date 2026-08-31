@@ -1,7 +1,8 @@
 ---
 name: pipeline-compositor
-description: Directed Acyclic Graph (DAG) pipeline composition engine for stacking connectors, skills, and agents with typed edges, backpressure, checkpoint/resume, and parallel execution.
+description: "Directed Acyclic Graph (DAG) pipeline composition engine for stacking connectors, skills, and agents with typed edges, backpressure, checkpoint/resume, and parallel execution."
 ---
+
 
 # Pipeline Compositor
 

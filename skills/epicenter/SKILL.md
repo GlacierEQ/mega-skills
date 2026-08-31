@@ -1,7 +1,8 @@
 ---
 name: epicenter
-description: Unified epistemic core of the GlacierEQ APEX stack. Defines the Three Layers of Knowing (L0 presence, L1 structure, L2 verified behavior) and one law of action. Any sovereign runtime (opencode, kilo, grok-build, antigravity) improves this shared core on its own authority. Use when verifying claims before acting, classifying your own knowledge state, or amending the unified epistemic core itself.
+description: "Unified epistemic core of the GlacierEQ APEX stack. Defines the Three Layers of Knowing (L0 presence, L1 structure, L2 verified behavior) and one law of action. Any sovereign runtime (opencode, kilo, grok-build, antigravity) improves this shared core on its own authority. Use when verifying claims before acting, classifying your own knowledge state, or amending the unified epistemic core itself."
 ---
+
 
 # EPICENTER — Unified Epistemic Core
 

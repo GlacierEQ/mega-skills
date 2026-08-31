@@ -1,9 +1,9 @@
 ---
 name: mega-agent-memory-mcp
-description: Agent Memory Skill
-domains: [agent-memory-mcp]
-token_profile: Lean
+description: "Agent Memory Skill"
 ---
+
+
 
 # MEGA-AGENT-MEMORY-MCP
 

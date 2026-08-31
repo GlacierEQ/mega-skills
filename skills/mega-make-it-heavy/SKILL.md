@@ -1,9 +1,9 @@
 ---
 name: mega-make-it-heavy
-description: Make-It-Heavy Skill
-domains: [make-it-heavy]
-token_profile: Lean
+description: "Make-It-Heavy Skill"
 ---
+
+
 
 # MEGA-MAKE-IT-HEAVY
 

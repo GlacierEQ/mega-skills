@@ -1,7 +1,8 @@
 ---
 name: capability-admission
-description: Decide whether a proposed capability may be selected for a specific mission. Use before activating a new, advanced, externally dependent, high-consequence, or strongly claimed Skill, Combo Skill, or Mega Skill.
+description: "Decide whether a proposed capability may be selected for a specific mission. Use before activating a new, advanced, externally dependent, high-consequence, or strongly claimed Skill, Combo Skill, or Mega Skill."
 ---
+
 
 # Capability Admission
 

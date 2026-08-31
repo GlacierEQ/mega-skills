@@ -1,10 +1,9 @@
 ---
 name: mcp-master-server
-description: Operating inside the MCP Master Server at /root/mcp-master-server. Unified
-  tool interface and server orchestration. Use when wiring new MCP servers or debugging
-  the orchestrator.
-version: 0.1.0
+description: "Operating inside the MCP Master Server at /root/mcp-master-server. Unified tool interface and server orchestration. Use when wiring new MCP servers or debugging the orchestrator."
 ---
+
+
 
 # MCP Master Server
 

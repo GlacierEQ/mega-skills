@@ -1,17 +1,8 @@
 ---
 name: data-analysis
-description: >
-  Use when analyzing local files (CSV, JSON, Excel, logs, Parquet, XML), processing data,
-  running Python/Node REPLs, performing data visualization, statistical analysis, data
-  cleaning, data transformation, pandas operations, numpy computations, matplotlib/seaborn
-  plotting, DataFrame operations, groupby aggregations, merge/join operations, time series
-  analysis, pivot tables, cross-tabulations, data profiling, outlier detection, missing
-  data handling, data type conversion, column operations, filtering, sorting, deduplication,
-  data validation, schema inference, file format conversion, data summarization, correlation
-  analysis, regression analysis, hypothesis testing, A/B testing, cohort analysis, funnel
-  analysis, RFM analysis, clustering, dimensionality reduction, feature engineering, or
-  any local file-based data processing and analysis task.
+description: ">   Use when analyzing local files (CSV, JSON, Excel, logs, Parquet, XML), processing data,   running Python/Node REPLs, performing data visualization, statistical analysis, data   cleaning, data transformation, pandas operations, numpy computations, matplotlib/seaborn   plotting, DataFrame operations, groupby aggregations, merge/join operations, time series   analysis, pivot tables, cross-tabulations, data profiling, outlier detection, missing   data handling, data type conversion, column operations, filtering, sorting, deduplication,   data validation, schema inference, file format conversion, data summarization, correlation   analysis, regression analysis, hypothesis testing, A/B testing, cohort analysis, funnel   analysis, RFM analysis, clustering, dimensionality reduction, feature engineering, or   any local file-based data processing and analysis task."
 ---
+
 
 # Data Analysis Skill — Local File Processing & Analytics
 

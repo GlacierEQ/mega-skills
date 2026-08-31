@@ -1,7 +1,8 @@
 ---
 name: polyglot-rosetta-core
-description: 51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages.
+description: "51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages."
 ---
+
 
 # Polyglot Rosetta Core
 

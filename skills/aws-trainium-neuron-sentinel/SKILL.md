@@ -1,10 +1,9 @@
 ---
 name: aws-trainium-neuron-sentinel
-description: Operating inside the AWS Trainium Neuron Sentinel job-app portfolio repo
-  at github.com/GlacierEQ/aws-trainium-neuron-sentinel. Targets the AWS Trainium2/Inferentia2
-  NeuronCore ring-orbit.
-version: 0.1.0
+description: "Operating inside the AWS Trainium Neuron Sentinel job-app portfolio repo at github.com/GlacierEQ/aws-trainium-neuron-sentinel. Targets the AWS Trainium2/Inferentia2 NeuronCore ring-orbit."
 ---
+
+
 
 # AWS Trainium Neuron Sentinel (job-app portfolio)
 

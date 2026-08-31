@@ -1,12 +1,9 @@
 ---
 name: flagships
-description: Operating inside one of the 22 GlacierEQ flagship projects. Each flagship
-  is a substantial, ongoing engineering effort with its own runtime, doctrine, and
-  skill. Use this skill to pick the right flagship-specific skill before starting
-  work. Covers monolith, make-it-heavy, mastermind, the-tower-of-babel, apex-control-plane,
-  apex-singularity-head, and the broader APEX/APIs/portfolio family.
-version: 0.1.0
+description: "Operating inside one of the 22 GlacierEQ flagship projects. Each flagship is a substantial, ongoing engineering effort with its own runtime, doctrine, and skill. Use this skill to pick the right flagship-specific skill before starting work. Covers monolith, make-it-heavy, mastermind, the-tower-of-babel, apex-control-plane, apex-singularity-head, and the broader APEX/APIs/portfolio family."
 ---
+
+
 
 # Flagships (GlacierEQ)
 

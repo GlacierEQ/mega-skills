@@ -1,12 +1,9 @@
 ---
 name: apex-sovereign-runtime
-description: "Canonical APEX Sovereign Runtime Instruct \u2014 the unified doctrine\
-  \ applied to all APEX-family projects (mastermind, monolith, AKOS, the-tower-of-babel).\
-  \ Use when operating inside any APEX project, when receipt-chain authority is required,\
-  \ or when coordinating cross-project missions. Project-specific AGENTS.md files\
-  \ should reference this skill rather than duplicating it."
-version: 0.1.0
+description: "Canonical APEX Sovereign Runtime Instruct — the unified doctrine applied to all APEX-family projects (mastermind, monolith, AKOS, the-tower-of-babel). Use when operating inside any APEX project, when receipt-chain authority is required, or when coordinating cross-project missions. Project-specific AGENTS.md files should reference this skill rather than duplicating it."
 ---
+
+
 
 # 🏛️ The APEX Sovereign Runtime Instruct
 

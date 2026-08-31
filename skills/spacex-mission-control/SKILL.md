@@ -1,10 +1,9 @@
 ---
 name: spacex-mission-control
-description: Operating inside the SpaceX Mission Control job-app portfolio repo at
-  github.com/GlacierEQ/spacex-mission-control. Targets the SpaceX mission-control
-  and ground-network orbit.
-version: 0.1.0
+description: "Operating inside the SpaceX Mission Control job-app portfolio repo at github.com/GlacierEQ/spacex-mission-control. Targets the SpaceX mission-control and ground-network orbit."
 ---
+
+
 
 # SpaceX Mission Control (job-app portfolio)
 

@@ -1,7 +1,8 @@
 ---
 name: mega-model-expansion-engine
-description: Universal multi-model expansion engine encompassing 5 sub-skills (OpenRouter, OpenCode Zen, KiloCode).
+description: "Universal multi-model expansion engine encompassing 5 sub-skills (OpenRouter, OpenCode Zen, KiloCode)."
 ---
+
 
 # MEGA-MODEL-EXPANSION-ENGINE
 

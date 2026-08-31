@@ -1,9 +1,9 @@
 ---
 name: mega-agent-memory-systems
-description: Agent Memory Systems
-domains: [agent-memory-systems]
-token_profile: Lean
+description: "Agent Memory Systems"
 ---
+
+
 
 # MEGA-AGENT-MEMORY-SYSTEMS
 

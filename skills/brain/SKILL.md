@@ -1,22 +1,9 @@
 ---
 name: brain
-description: >
-  Use when working with the Quantum Nexus brain system, unified case brain, autonomous
-  decision engine, threat intelligence, case timeline, memory orchestration, memory
-  tagging, case 1FDV-23-0001009, KEKOA, evidence processing, threat detection, judicial
-  fraud patterns, judge movements, HPD escalations, retaliation triggers, JEFS email
-  analysis, court filing analysis, threat level assessment, case stage routing, decision
-  matrix, priority matrix, intelligence feeds, supermemory integration, memory categories,
-  CATACLYSM evidence processing, SUPERLUMINAL intelligence fusion, JEFS court system
-  monitoring, timeline tracking, chronological record, motion sequencing, filing deadlines,
-  flip cascade, custody restoration, evidence chain, knowledge graph, context retrieval,
-  decision logic, emergency response, filing decisions, strategic decisions, threat response,
-  due process violations, void ab initio, RICO complaint, bar complaint, judicial conduct,
-  criminal referral, FOIA requests, witness coordination, evidence gathering, motion
-  drafting, strategy updates, documentation, monitoring, maintenance, archival, sm-ops,
-  apex-prime, apex-setup, apex-grok-ready, or any intelligence fusion, threat assessment,
-  or autonomous decision-making for legal case management.
+description: "Use when working with the Quantum Nexus brain system, unified case brain, autonomous decision engine, threat intelligence, case timeline, memory orchestration, memory tagging, case 1FDV-23-0001009, KEKOA, evidence processing, threat detection, judicial fraud patterns, judge movements, HPD escalations, retaliation triggers, JEFS email analysis, court filing analysis, threat level assessment, case stage routing, decision matrix, priority matrix, intelligence feeds, supermemory integration, memory categories, CATACLYSM evidence processing, SUPERLUMINAL intelligence fusion, JEFS court system monitoring, timeline tracking, chronological record, motion sequencing, filing deadlines, flip cascade, custody restoration, evidence chain, knowledge graph, context retrieval, decision logic, emergency response, filing decisions, strategic decisions, threat response, due process violations, void ab initio, RICO complaint, bar complaint, judicial conduct, criminal referral, FOIA requests, witness co..."
 ---
+
+
 
 # Brain Skill — Unified Case Intelligence
 

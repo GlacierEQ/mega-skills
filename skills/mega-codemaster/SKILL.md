@@ -1,9 +1,9 @@
 ---
 name: mega-codemaster
-description: CodeMaster — The Coding Playbook (v2)
-domains: [codemaster]
-token_profile: Lean
+description: "CodeMaster — The Coding Playbook (v2)"
 ---
+
+
 
 # MEGA-CODEMASTER
 

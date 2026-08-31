@@ -1,7 +1,8 @@
 ---
 name: cross-app-pipeline
-description: Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.
+description: "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault."
 ---
+
 
 # Cross-App Pipeline — GlacierEQ APEX
 

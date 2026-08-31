@@ -1,9 +1,9 @@
 ---
 name: mega-meta-llama-collective-sentinel
-description: Meta Llama Collective Sentinel (job-app portfolio)
-domains: [meta-llama-collective-sentinel]
-token_profile: Lean
+description: "Meta Llama Collective Sentinel (job-app portfolio)"
 ---
+
+
 
 # MEGA-META-LLAMA-COLLECTIVE-SENTINEL
 

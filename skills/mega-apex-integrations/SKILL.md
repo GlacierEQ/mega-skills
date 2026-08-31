@@ -1,9 +1,9 @@
 ---
 name: mega-apex-integrations
-description: Apex Integrations
-domains: [apex-integrations]
-token_profile: Lean
+description: "Apex Integrations"
 ---
+
+
 
 # MEGA-APEX-INTEGRATIONS
 
