@@ -4869,6 +4869,241 @@
           "Every handoff names an owner, accepted output, and close condition."
         ]
       }
+    },
+    {
+      "id": "mission-aware-operating-loop",
+      "display_name": "Mission Aware Operating Loop",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "combo-skills/mission-aware-operating-loop",
+      "entrypoint": "combo-skills/mission-aware-operating-loop/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A mission must preserve purpose, context, options, impact, action, outcome, verification, learning, and safe resumption across time or systems."
+        ],
+        "do_not_use_when": [
+          "The task is a simple bounded response with no durable decision, evidence, or learning requirement."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Define mission boundary, authority, and stop condition.",
+          "required": true
+        },
+        {
+          "id": "context-capsule",
+          "kind": "skill",
+          "role": "Carry forward lean context and retrieval locations without reopening raw history.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Separate observations, conclusions, assumptions, unknowns, and contradictions.",
+          "required": true
+        },
+        {
+          "id": "roadmap-builder",
+          "kind": "skill",
+          "role": "Turn context and evidence into alternatives, impact forecasts, and the next route.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Record whether the action is pending, observed, verified, contradicted, blocked, or escalated.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Preserve learnings, strengthening changes, exact resumption point, and review trigger.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Operator mission",
+              "Constraints",
+              "Authority boundary"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Mission outcome, scope, non-goals, stop condition, and acceptance criteria are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "context-capsule",
+            "consumes": [
+              "MISSION.md",
+              "Prior state",
+              "Retrieval map"
+            ],
+            "produces": [
+              "CONTEXT.md"
+            ],
+            "validation": "Known context, operator report, retrieval status, and unresolved questions remain distinct."
+          },
+          {
+            "step": 3,
+            "member_id": "evidence-register",
+            "consumes": [
+              "CONTEXT.md",
+              "Sources",
+              "Observations",
+              "Tests"
+            ],
+            "produces": [
+              "EVIDENCE.md"
+            ],
+            "validation": "Material claims map to evidence or declared assumptions, with gaps and contradictions retained."
+          },
+          {
+            "step": 4,
+            "member_id": "roadmap-builder",
+            "consumes": [
+              "MISSION.md",
+              "CONTEXT.md",
+              "EVIDENCE.md"
+            ],
+            "produces": [
+              "ROADMAP.md",
+              "Options and impact forecast"
+            ],
+            "validation": "Alternatives, dependencies, impact, selected action, and verification conditions are explicit."
+          },
+          {
+            "step": 5,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Action result",
+              "Evidence",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Outcome gate"
+            ],
+            "validation": "The outcome state is grounded in observed verification and is not silently promoted."
+          },
+          {
+            "step": 6,
+            "member_id": "handoff-record",
+            "consumes": [
+              "Outcome gate",
+              "Learnings",
+              "Strengthening proposal"
+            ],
+            "produces": [
+              "HANDOFF.md",
+              "MISSION_OPERATING_LOOP_RECORD.md"
+            ],
+            "validation": "The exact next action and review trigger make the mission safely resumable."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "context-capsule",
+            "required_inputs": [
+              "MISSION.md",
+              "Prior state locations"
+            ],
+            "accepted_outputs": [
+              "Context capsule with retrieval map"
+            ],
+            "failure_owner": "mission owner"
+          },
+          {
+            "from_member": "context-capsule",
+            "to_member": "evidence-register",
+            "required_inputs": [
+              "Known context",
+              "Operator-reported facts",
+              "Retrieval states"
+            ],
+            "accepted_outputs": [
+              "Evidence trace with explicit gaps"
+            ],
+            "failure_owner": "context owner"
+          },
+          {
+            "from_member": "evidence-register",
+            "to_member": "roadmap-builder",
+            "required_inputs": [
+              "Evidence trace",
+              "Unknowns",
+              "Contradictions"
+            ],
+            "accepted_outputs": [
+              "Scoped options and impact forecast"
+            ],
+            "failure_owner": "evidence owner"
+          },
+          {
+            "from_member": "roadmap-builder",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Selected action",
+              "Acceptance criteria",
+              "Verification plan"
+            ],
+            "accepted_outputs": [
+              "Observed or verified outcome gate"
+            ],
+            "failure_owner": "route owner"
+          },
+          {
+            "from_member": "quality-gate",
+            "to_member": "handoff-record",
+            "required_inputs": [
+              "Outcome state",
+              "Failure or success evidence"
+            ],
+            "accepted_outputs": [
+              "Exact recovery and strengthening record"
+            ],
+            "failure_owner": "quality owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record source locations, retrieval status, impact forecast, action result, verification method, learnings, and strengthening changes."
+        ],
+        "risk_boundaries": [
+          "Do not treat absence from the active context as disproof, an observed outcome as verified, or a recommendation as authorization for external mutation."
+        ],
+        "quality_gates": [
+          "The complete mission-to-learning chain is present and every material claim has an evidence state or declared assumption."
+        ],
+        "state_updates": [
+          "Update the context capsule, evidence register, roadmap, and handoff with the verified learning and next review trigger."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission boundary",
+          "Lean context capsule",
+          "Evidence trace",
+          "Dependency-aware roadmap",
+          "Reproducible quality gate",
+          "Exact handoff record"
+        ],
+        "adds": "A mission-aware decision-and-learning spine that carries purpose through action and returns verified learning to the next state without collapsing retrieval uncertainty into truth.",
+        "compound_artifact": "MISSION_OPERATING_LOOP_RECORD.md",
+        "next_layer_ready_when": [
+          "The mission can resume from the record without raw conversation history.",
+          "Outcome, evidence, learning, and strengthening states are explicit and internally consistent."
+        ]
+      }
     }
   ],
   "schema": "../schemas/combo-skill.schema.json"
