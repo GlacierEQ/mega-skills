@@ -3643,5 +3643,31 @@
         "Unbounded scope"
       ]
     }
+    ,
+    {
+      "id": "skills",
+      "display_name": "Skills",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/skills",
+      "entrypoint": "skills/skills/SKILL.md",
+      "purpose": "Discover, validate, select, compose, and maintain Manus-compatible skills with evidence-backed audits.",
+      "input_contract": [
+        "Skill package or repository path",
+        "Target runtime or validation contract"
+      ],
+      "output_contract": [
+        "Skill audit table",
+        "Validation result and remediation actions"
+      ],
+      "local_validation": [
+        "Run the platform quick validator and repository checks"
+      ],
+      "does_not_own": [
+        "Long-horizon mission orchestration",
+        "Unverified external mutations"
+      ]
+    }
   ]
 }
