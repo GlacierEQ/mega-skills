@@ -63,6 +63,15 @@ Maintain a compact mission capsule containing the objective, current phase, assu
 
 Write for the machine, the reviewer, and the future maintainer. Prefer simple, explainable, humanized engineering over impressive but opaque automation. Use contradiction checks when evidence disagrees, counterfactual checks when a fix might merely hide a symptom, and explicit uncertainty when measurement or tooling is incomplete. Preserve behavior by default, make trade-offs visible, and optimize for durable correctness rather than local task completion.
 
+## Integration simulation
+
+Run `scripts/run_pipeline_simulation.py` for a deterministic, side-effect-free integration rehearsal before changing orchestration logic. It exercises the happy route, security blocking, approval escalation, Tower ordering, handoff recovery, and fail-closed invalid routing. Read `references/simulation-contract.md` for scenario expectations and extension rules.
+
+```bash
+python skills/autonomous-software-engineering/scripts/run_pipeline_simulation.py --scenario happy
+python -m unittest discover -s skills/autonomous-software-engineering/tests -v
+```
+
 ## Validation commands
 
 For this repository, use the established quality sequence:
