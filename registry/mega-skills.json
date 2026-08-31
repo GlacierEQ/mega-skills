@@ -90,7 +90,8 @@
         "capability-readiness",
         "automation-control",
         "guarded-automation-loop",
-        "evidence-to-evolution-loop"
+        "evidence-to-evolution-loop",
+        "mission-aware-operating-loop"
       ],
       "mission_output": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
       "durable_state": [
@@ -2244,7 +2245,8 @@
         "evidence-to-evolution-loop",
         "recon-and-map",
         "skill-forge",
-        "automation-control"
+        "automation-control",
+        "mission-aware-operating-loop"
       ],
       "mission_output": "evidence-backed-mission-result.md",
       "durable_state": [
