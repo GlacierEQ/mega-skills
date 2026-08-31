@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local-Skill",
+  "type": "object",
+  "properties": {
+    "status": {"type": "string"},
+    "artifacts": {"type": "array"},
+    "generated_skill": {"type": "string"},
+    "exemplar": {"type": "string"}
+  }
+}

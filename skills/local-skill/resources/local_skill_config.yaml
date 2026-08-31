@@ -1,0 +1,7 @@
+# Configuration schema for local-skill
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true
+  default_exemplar: mega-skill-forge
+  allow_overwrite: false
