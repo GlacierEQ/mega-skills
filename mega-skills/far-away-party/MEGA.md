@@ -7,7 +7,7 @@ Conditional selection of Compounding Combo Skills, durable state, phase gates, s
 ## Compounding structure
 
 - Required combos: `long-horizon-core`
-- Conditional combos: `capability-readiness`, `signal-to-decision-loop`, `guarded-automation-loop`, `evidence-to-evolution-loop`, `recon-and-map`, `skill-forge`, `automation-control`
+- Conditional combos: `capability-readiness`, `signal-to-decision-loop`, `mission-aware-operating-loop`, `guarded-automation-loop`, `evidence-to-evolution-loop`, `recon-and-map`, `skill-forge`, `automation-control`
 
 ## Execution protocol
 
