@@ -406,6 +406,36 @@
       ]
     },
     {
+      "id": "automated-architecture-analysis",
+      "display_name": "Automated Architecture Analysis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-architecture-analysis",
+      "entrypoint": "skills/automated-architecture-analysis/SKILL.md",
+      "purpose": "Build typed dependency graphs, detect cycles and forbidden edges, generate safe decoupling plans, and enforce architecture evidence gates.",
+      "input_contract": [
+        "Authorized repository or system scope",
+        "Architecture sources, layer policy, and public-boundary rules",
+        "Acceptance tests and remediation authorization"
+      ],
+      "output_contract": [
+        "Normalized dependency graph and cycle analysis",
+        "Reviewed architecture remediation patch or decision",
+        "Architecture dependency analysis receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Graph rebuild and cycle/layer policy checks pass",
+        "Repository tests and build checks pass"
+      ],
+      "does_not_own": [
+        "Unbounded system redesign",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    },
+    {
       "id": "automated-code-refactoring",
       "display_name": "Automated Code Refactoring",
       "ownership": "glaciereq",
@@ -430,6 +460,67 @@
       ],
       "does_not_own": [
         "Unbounded rewrites",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    },
+    {
+      "id": "automated-performance-profiling",
+      "display_name": "Automated Performance Profiling",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-performance-profiling",
+      "entrypoint": "skills/automated-performance-profiling/SKILL.md",
+      "purpose": "Measure performance, diagnose evidence-backed bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, cost, and correctness outcomes.",
+      "input_contract": [
+        "Authorized repository, service, or artifact scope",
+        "Representative workload, environment, baseline, and performance budget",
+        "Correctness acceptance tests and deployment authorization"
+      ],
+      "output_contract": [
+        "Reproducible profiling and benchmark evidence",
+        "Reviewed mitigation patch or documented no-change decision",
+        "Performance profiling and mitigation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Correctness and repository quality gates pass",
+        "Baseline and post-change benchmark protocol is reproducible"
+      ],
+      "does_not_own": [
+        "Unbounded optimization or production deployment approval",
+        "Security authorization for live targets",
+        "Tower registry or generated-artifact authority"
+      ]
+    },
+    {
+      "id": "automated-security-scanning",
+      "display_name": "Automated Security Scanning",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-security-scanning",
+      "entrypoint": "skills/automated-security-scanning/SKILL.md",
+      "purpose": "Scan authorized code, dependencies, containers, secrets, and configuration; triage findings; generate minimal fixes; and verify remediation with fail-closed evidence gates.",
+      "input_contract": [
+        "Authorized repository, artifact, or build scope",
+        "Security policy, severity threshold, and disclosure boundary",
+        "Scanner/toolchain configuration and acceptance tests"
+      ],
+      "output_contract": [
+        "Triage-ready vulnerability findings",
+        "Reviewed remediation patch or documented mitigation",
+        "Security scan and remediation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Scanners fail closed and re-run after remediation",
+        "Focused/full tests and repository gates pass"
+      ],
+      "does_not_own": [
+        "Unauthorized security testing",
+        "Exploit development or persistence",
         "Production deployment approval",
         "Tower registry or generated-artifact authority"
       ]
@@ -460,6 +551,36 @@
       "does_not_own": [
         "Production deployment approval",
         "Unbounded test generation",
+        "Tower registry or generated-artifact authority"
+      ]
+    },
+    {
+      "id": "autonomous-software-engineering",
+      "display_name": "Autonomous Software Engineering",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/autonomous-software-engineering",
+      "entrypoint": "skills/autonomous-software-engineering/SKILL.md",
+      "purpose": "Orchestrate end-to-end software engineering through architecture, implementation, testing, security, performance, review, Tower evidence, and release gates.",
+      "input_contract": [
+        "Authorized engineering mission and repository scope",
+        "Acceptance criteria, constraints, owners, and approval boundaries",
+        "Available specialized skills and project-specific quality commands"
+      ],
+      "output_contract": [
+        "Verified implementation or evidence-backed blocked decision",
+        "Mission capsule with durable state and handoffs",
+        "Autonomous engineering delivery receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "All required specialized gates and repository tests pass",
+        "Approval is obtained before irreversible release actions"
+      ],
+      "does_not_own": [
+        "Silent authorization for production or external mutations",
+        "Specialized domain procedures owned by member skills",
         "Tower registry or generated-artifact authority"
       ]
     },
@@ -1360,6 +1481,31 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "local-skill",
+      "display_name": "Local Skill",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/local-skill",
+      "entrypoint": "skills/local-skill/SKILL.md",
+      "purpose": "Meta-skill that inspects the mega-skills repository, extracts structural and behavioral patterns from existing skills, and generates complete, ready-to-commit new skills.",
+      "input_contract": [
+        "Target skill name and description",
+        "Optional exemplar skill name"
+      ],
+      "output_contract": [
+        "Complete new skill package directory with scripts, tests, resources, and SKILL.md"
+      ],
+      "local_validation": [
+        "SKILL.md frontmatter matches standard schema",
+        "Tests pass 100% green"
+      ],
+      "does_not_own": [
+        "One-off temporary scripts outside skills/ directory",
+        "Destructive overwriting without confirmation"
       ]
     },
     {
@@ -3749,131 +3895,6 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
-      ]
-    }
-    ,
-    {
-      "id": "automated-security-scanning",
-      "display_name": "Automated Security Scanning",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/automated-security-scanning",
-      "entrypoint": "skills/automated-security-scanning/SKILL.md",
-      "purpose": "Scan authorized code, dependencies, containers, secrets, and configuration; triage findings; generate minimal fixes; and verify remediation with fail-closed evidence gates.",
-      "input_contract": [
-        "Authorized repository, artifact, or build scope",
-        "Security policy, severity threshold, and disclosure boundary",
-        "Scanner/toolchain configuration and acceptance tests"
-      ],
-      "output_contract": [
-        "Triage-ready vulnerability findings",
-        "Reviewed remediation patch or documented mitigation",
-        "Security scan and remediation receipt"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "Scanners fail closed and re-run after remediation",
-        "Focused/full tests and repository gates pass"
-      ],
-      "does_not_own": [
-        "Unauthorized security testing",
-        "Exploit development or persistence",
-        "Production deployment approval",
-        "Tower registry or generated-artifact authority"
-      ]
-    }
-    ,
-    {
-      "id": "automated-performance-profiling",
-      "display_name": "Automated Performance Profiling",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/automated-performance-profiling",
-      "entrypoint": "skills/automated-performance-profiling/SKILL.md",
-      "purpose": "Measure performance, diagnose evidence-backed bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, cost, and correctness outcomes.",
-      "input_contract": [
-        "Authorized repository, service, or artifact scope",
-        "Representative workload, environment, baseline, and performance budget",
-        "Correctness acceptance tests and deployment authorization"
-      ],
-      "output_contract": [
-        "Reproducible profiling and benchmark evidence",
-        "Reviewed mitigation patch or documented no-change decision",
-        "Performance profiling and mitigation receipt"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "Correctness and repository quality gates pass",
-        "Baseline and post-change benchmark protocol is reproducible"
-      ],
-      "does_not_own": [
-        "Unbounded optimization or production deployment approval",
-        "Security authorization for live targets",
-        "Tower registry or generated-artifact authority"
-      ]
-    }
-    ,
-    {
-      "id": "automated-architecture-analysis",
-      "display_name": "Automated Architecture Analysis",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/automated-architecture-analysis",
-      "entrypoint": "skills/automated-architecture-analysis/SKILL.md",
-      "purpose": "Build typed dependency graphs, detect cycles and forbidden edges, generate safe decoupling plans, and enforce architecture evidence gates.",
-      "input_contract": [
-        "Authorized repository or system scope",
-        "Architecture sources, layer policy, and public-boundary rules",
-        "Acceptance tests and remediation authorization"
-      ],
-      "output_contract": [
-        "Normalized dependency graph and cycle analysis",
-        "Reviewed architecture remediation patch or decision",
-        "Architecture dependency analysis receipt"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "Graph rebuild and cycle/layer policy checks pass",
-        "Repository tests and build checks pass"
-      ],
-      "does_not_own": [
-        "Unbounded system redesign",
-        "Production deployment approval",
-        "Tower registry or generated-artifact authority"
-      ]
-    }
-    ,
-    {
-      "id": "autonomous-software-engineering",
-      "display_name": "Autonomous Software Engineering",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/autonomous-software-engineering",
-      "entrypoint": "skills/autonomous-software-engineering/SKILL.md",
-      "purpose": "Orchestrate end-to-end software engineering through architecture, implementation, testing, security, performance, review, Tower evidence, and release gates.",
-      "input_contract": [
-        "Authorized engineering mission and repository scope",
-        "Acceptance criteria, constraints, owners, and approval boundaries",
-        "Available specialized skills and project-specific quality commands"
-      ],
-      "output_contract": [
-        "Verified implementation or evidence-backed blocked decision",
-        "Mission capsule with durable state and handoffs",
-        "Autonomous engineering delivery receipt"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "All required specialized gates and repository tests pass",
-        "Approval is obtained before irreversible release actions"
-      ],
-      "does_not_own": [
-        "Silent authorization for production or external mutations",
-        "Specialized domain procedures owned by member skills",
-        "Tower registry or generated-artifact authority"
       ]
     }
   ]
