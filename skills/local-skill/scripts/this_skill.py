@@ -14,6 +14,8 @@ def main():
     print(json.dumps({
         "skill": "local-skill",
         "status": "ready",
+        "epistemic_tier": "L2",
+        "firewall_active": True,
         "version": "1.0.0",
         "path": str(here),
         "commands": [
