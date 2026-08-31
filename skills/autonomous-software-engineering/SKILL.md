@@ -1,8 +1,8 @@
 ---
 name: autonomous-software-engineering
-description: Orchestrate autonomous, end-to-end software engineering from requirement framing through architecture, implementation, testing, security, performance, review, and release. Use when coordinating multiple specialized engineering skills across a repository, planning a full feature or fix, managing a long-horizon coding mission, or producing an evidence-backed software delivery.
-license: Complete terms in LICENSE.txt
+description: "Orchestrate autonomous, end-to-end software engineering from requirement framing through architecture, implementation, testing, security, performance, review, and release. Use when coordinating multiple specialized engineering skills across a repository, planning a full feature or fix, managing a long-horizon coding mission, or producing an evidence-backed software delivery."
 ---
+
 
 # Autonomous Software Engineering
 
