@@ -3823,5 +3823,36 @@
         "Tower registry or generated-artifact authority"
       ]
     }
+    ,
+    {
+      "id": "autonomous-software-engineering",
+      "display_name": "Autonomous Software Engineering",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/autonomous-software-engineering",
+      "entrypoint": "skills/autonomous-software-engineering/SKILL.md",
+      "purpose": "Orchestrate end-to-end software engineering through architecture, implementation, testing, security, performance, review, Tower evidence, and release gates.",
+      "input_contract": [
+        "Authorized engineering mission and repository scope",
+        "Acceptance criteria, constraints, owners, and approval boundaries",
+        "Available specialized skills and project-specific quality commands"
+      ],
+      "output_contract": [
+        "Verified implementation or evidence-backed blocked decision",
+        "Mission capsule with durable state and handoffs",
+        "Autonomous engineering delivery receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "All required specialized gates and repository tests pass",
+        "Approval is obtained before irreversible release actions"
+      ],
+      "does_not_own": [
+        "Silent authorization for production or external mutations",
+        "Specialized domain procedures owned by member skills",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
