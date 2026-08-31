@@ -51,7 +51,7 @@ GlacierEQ/mega-skills/
 ├── governance/
 │   ├── CONTRIBUTING.md
 │   └── decision-records/README.md
-├── scripts/validate_hierarchy.py
+├── scripts/validate_hierarchy.py             # Contract and no-copy validator
 ├── schemas/combo-skill.schema.json           # Versioned machine-readable Combo integration schema
 ├── tests/test_hierarchy.py
 └── .github/
