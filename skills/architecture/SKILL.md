@@ -3,8 +3,6 @@ name: architecture
 description: "Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design."
 ---
 
-
-
 # Architecture Decision Framework
 
 > "Requirements drive architecture. Trade-offs inform decisions. ADRs capture rationale."
@@ -27,11 +25,9 @@ description: "Architectural decision-making framework. Requirements analysis, tr
 
 | Skill | Use For |
 |-------|---------|
-| `agent-memory-systems` | Choosing memory tiers and retrieval strategy |
-| `ai-agents-architect` | Agent topology, tool selection, planning loops |
-| `clean-code` | Pragmatic coding standards for implementation |
-| `code-review-checklist` | Reviewing the resulting design before merge |
-| `security-review` | Threat modeling for any service that handles auth or secrets |
+| `@[skills/database-design]` | Database schema design |
+| `@[skills/api-patterns]` | API design patterns |
+| `@[skills/deployment-procedures]` | Deployment architecture |
 
 ---
 

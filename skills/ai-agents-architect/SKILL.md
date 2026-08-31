@@ -3,8 +3,6 @@ name: ai-agents-architect
 description: "Expert in designing and building autonomous AI agents. Masters tool use, memory systems, planning strategies, and multi-agent orchestration. Use when: build agent, AI agent, autonomous agent, tool use, function calling."
 ---
 
-
-
 # AI Agents Architect
 
 **Role**: AI Agent Systems Architect
@@ -77,14 +75,14 @@ Dynamic tool discovery and management
 
 | Issue | Severity | Solution |
 |-------|----------|----------|
-| Agent loops without iteration limits | critical | **Always set iteration and time limits** — hard cap on ReAct steps (e.g. 10), wall-clock timeout, and total token budget. Treat infinite-loop as an uncaught exception. |
-| Vague or incomplete tool descriptions | high | **Write complete tool specs** — name, when-to-use, when-NOT-to-use, exact JSON schema, failure modes, and a worked example per tool. The model is only as smart as your spec. |
-| Tool errors not surfaced to agent | high | **Explicit error handling** — return structured error objects (`{ok: false, error: "..."}`) to the agent, not exceptions that abort the run. Let the agent reason about retries. |
-| Storing everything in agent memory | medium | **Selective memory** — only persist turns/facts that change future behavior. Apply a confidence threshold; never write ephemeral chitchat to long-term memory. |
-| Agent has too many tools | medium | **Curate tools per task** — dynamically expose a relevant subset (~10-20) per task, not the full registry. Tool overload degrades selection accuracy. |
-| Using multiple agents when one would work | medium | **Justify multi-agent setup** — if one agent with the right tools and memory can do the job, prefer that. Multi-agent adds coordination cost and failure modes. |
-| Agent internals not logged or traceable | medium | **Implement tracing** — log every thought, action, observation with timestamps and IDs. Make runs replayable from logs alone. |
-| Fragile parsing of agent outputs | medium | **Robust output handling** — validate against a schema, retry on parse failure, fall back to a default rather than crashing. Treat agent text as untrusted input. |
+| Agent loops without iteration limits | critical | Always set limits: |
+| Vague or incomplete tool descriptions | high | Write complete tool specs: |
+| Tool errors not surfaced to agent | high | Explicit error handling: |
+| Storing everything in agent memory | medium | Selective memory: |
+| Agent has too many tools | medium | Curate tools per task: |
+| Using multiple agents when one would work | medium | Justify multi-agent: |
+| Agent internals not logged or traceable | medium | Implement tracing: |
+| Fragile parsing of agent outputs | medium | Robust output handling: |
 
 ## Related Skills
 

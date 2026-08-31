@@ -59,8 +59,8 @@ whether it has already been migrated.
 
 Scope     | Workflow Name | Source Path                                   | Target Skill Path                            | Status
 :-------- | :------------ | :-------------------------------------------- | :------------------------------------------- | :-----
-Global    | `<name>`      | `~/.gemini/config/global_workflows/<name>.md` | `<global_skills_dir>/<name>/SKILL.md`        | `Pending` / `Already Migrated`
-Global    | `<name>`      | `~/.gemini/config/workflows/<name>.md`        | `<global_skills_dir>/<name>/SKILL.md`        | `Pending` / `Already Migrated`
+Global    | `<name>`      | `~/.gemini/config/global_workflows/<name>.md` | `<skills_root>/<name>/SKILL.md`    | `Pending` / `Already Migrated`
+Global    | `<name>`      | `~/.gemini/config/workflows/<name>.md`        | `<skills_root>/<name>/SKILL.md`    | `Pending` / `Already Migrated`
 Workspace | `<name>`      | `<workspace>/.agents/workflows/<name>.md`     | `<workspace>/.agents/skills/<name>/SKILL.md` | `Pending` / `Already Migrated`
 Workspace | `<name>`      | `<workspace>/_agents/workflows/<name>.md`     | `<workspace>/_agents/skills/<name>/SKILL.md` | `Pending` / `Already Migrated`
 
@@ -108,7 +108,7 @@ For each workflow file:
 
     -   Create the directory: `<target_dir>/<name>/` (e.g.
         `<workspace>/.agents/skills/<name>/` or
-        `<global_skills_dir>/<name>/`)
+        `<skills_root>/<name>/`)
     -   Write the file: `<target_dir>/<name>/SKILL.md`
 
 4.  **Archive the legacy workflow safely**:

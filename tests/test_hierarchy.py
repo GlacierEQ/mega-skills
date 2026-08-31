@@ -101,6 +101,11 @@ class HierarchyFoundationTests(unittest.TestCase):
             "apex-legal-forensic-powerhouse": "LEGAL_FORENSIC_POWERHOUSE_RECORD.md",
             "apex-docgen-synthesis": "DOCGEN_SYNTHESIS_MISSION_RECORD.md",
             "apex-backend-infrastructure-engine": "BACKEND_INFRASTRUCTURE_MISSION_RESULT.md",
+            "apex-cybersecurity-sentinel": "CYBERSECURITY_SENTINEL_RECORD.md",
+            "apex-vercel-web-foundry": "VERCEL_WEB_FOUNDRY_RECORD.md",
+            "apex-agent-architect-core": "AGENT_ARCHITECT_RECORD.md",
+            "apex-interactive-engine": "INTERACTIVE_ENGINE_RECORD.md",
+            "apex-growth-intelligence": "GROWTH_INTELLIGENCE_RECORD.md",
         }
         for mega_id, artifact in expected.items():
             mega = by_id[mega_id]

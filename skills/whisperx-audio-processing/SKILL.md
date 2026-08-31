@@ -3,7 +3,6 @@ name: whisperx-audio-processing
 description: "Process audio files through WhisperX (3-engine consensus transcription). Generates transcripts with SHA-256 Chain of Custody hashes and timestamps for forensic authentication."
 ---
 
-
 # WhisperX Audio Processing Skill
 
 ## Overview

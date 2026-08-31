@@ -1,25 +1,50 @@
-# APEX Polyglot Rosetta Mega Skill
+# APEX Polyglot Rosetta
 
 ## Mission
 
-Coordinate multi-language systems translation, compilation, zero-copy IPC integration, and formal truth verification across the 51 production floors of The Tower of Babel.
+Multi-language systems compilation, translation, zero-copy IPC integration, and formal truth verification across 51 Tower of Babel floors.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `polyglot-systems-verification` when cross-language algorithms must be compiled and verified | Coordinates 51 language floor transitions, latency benchmarks, and formal mathematical truth gates. |
-| `long-horizon-core` | `skill-forge` when an optimized systems pattern should become a reusable skill | Packages verified cross-language kernels into modular, versioned agent skills. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `polyglot-systems-verification`, `skill-forge`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin the polyglot campaign with `long-horizon-core` and identify origin and target language floors.
-2. Select `polyglot-systems-verification` to execute cross-language AST translation and compilation.
-3. Validate sub-microsecond zero-copy serialization using Cap'n Proto.
-4. Execute Lean 4 formal verification proofs (`advanced_truth_gate_proof.lean`) to lock invariants.
-5. Select `skill-forge` if the compiled kernel represents a reusable capability for the APEX fleet.
-6. Reconcile binary artifacts, latency metrics, and formal proof receipts into `EVIDENCE.md` and deliver final release package.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `polyglot-systems-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` maintain formal verification state across systems programming floors.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `polyglot-systems-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `polyglot-systems-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

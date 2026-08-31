@@ -6,21 +6,45 @@ Continuous autonomous codebase modernization: diagnoses architectural bottleneck
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `architectural-refactoring-engine` | `capability-readiness` | Coordinates end-to-end execution of architectural-refactoring-engine with mission-level state gates. |
-| `long-horizon-core` | `closed-loop-code-repair` | Dynamically activates closed-loop-code-repair based on mission requirements. |
-| `long-horizon-core` | `upstream-fork-harmonization` | Dynamically activates upstream-fork-harmonization based on mission requirements. |
-| `long-horizon-core` | `recon-and-map` | Dynamically activates recon-and-map based on mission requirements. |
+- Required combos: `long-horizon-core`, `architectural-refactoring-engine`
+- Conditional combos: `capability-readiness`, `closed-loop-code-repair`, `upstream-fork-harmonization`, `recon-and-map`
 
-## Route algorithm
+## Execution protocol
 
-1. Initialize mission state with `long-horizon-core` and load mission boundary parameters.
-2. Evaluate `capability-readiness` for all required and conditional combo routes.
-3. Execute primary pipeline via `architectural-refactoring-engine`.
-4. Conditionally dispatch specialist combos based on runtime risk flags and telemetry.
-5. Compile final verified deliverable into `ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md` and persist immutable state.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md, ROADMAP.md, CONTEXT.md, EVIDENCE.md, HANDOFF.md` maintain durable mission state across sprints and server restarts.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `ARCHITECTURAL_EVOLUTION_MISSION_RESULT.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

@@ -1,34 +1,50 @@
-# APEX Backend Infrastructure Engine Mega Skill
+# Apex Backend Infrastructure Engine
 
 ## Mission
 
-Architect, migrate, and orchestrate colossal backend infrastructure across PostgreSQL / Supabase relational databases, zero-copy Cap'n Proto RPC services, DuckDB analytical lakehouses, and Rclone multi-cloud storage horizons.
+Colossal backend infrastructure across PostgreSQL / Supabase, Cap'n Proto RPC, DuckDB, and Rclone multi-cloud storage.
 
 ## Compounding structure
 
-| Route Type | Member Combo Skill | What the Mega Layer Adds |
-|---|---|---|
-| **Mandatory** | `long-horizon-core` | Backend mission framing, transactional roadmap planning, and active context compaction. |
-| **Mandatory** | `closed-loop-code-repair` | Idempotent migration testing, traceback self-healing, and 100% green query assertions. |
-| **Mandatory** | `guarded-automation-loop` | Safe database sandboxing, bounded batch mutations, and automated rollback snapshots. |
-| **Conditional** | `capability-readiness` | Preflight database connection, connection pool, and credentials vetting. |
-| **Conditional** | `polyglot-systems-verification` | High-throughput Cap'n Proto / Swift Metal kernel verification. |
-| **Conditional** | `secure-service-deployment` | Container security scanning, secret isolation, and zero-downtime deployment gates. |
+- Required combos: `long-horizon-core`, `closed-loop-code-repair`, `guarded-automation-loop`
+- Conditional combos: `capability-readiness`, `polyglot-systems-verification`, `secure-service-deployment`
 
-## End-to-end execution protocol
+## Execution protocol
 
-1. **Schema & Migration Planning (`colossal-backend-engine`)**: Formulate idempotent schema DDL with reversible down migrations.
-2. **Isolated Sandbox Verification**: Execute migrations against local SQLite/DuckDB or Postgres ephemeral test containers.
-3. **RPC & API Integration**: Synthesize zero-copy Cap'n Proto interfaces and PostgREST endpoint wrappers.
-4. **Multi-Cloud Horizons Sync**: Replicate snapshots across Dropbox, ShadowDrive, and OneDrive with SHA-256 integrity gates.
-5. **Quality Gate Seal**: Validate transactional consistency and compile delivery into `BACKEND_INFRASTRUCTURE_MISSION_RESULT.md`.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `BACKEND_INFRASTRUCTURE_MISSION_RESULT.md`.
 
-## Durable state
+## Durable state files
 
-Maintains six immutable state files:
-- `MISSION.md` — Backend infrastructure scope, SLOs, and migration invariants.
-- `ROADMAP.md` — Ordered transactional migration and deployment steps.
-- `EVIDENCE.md` — Migration logs, rollback scripts, and benchmark receipts.
-- `CONTEXT.md` — Lean active infrastructure state capsule.
-- `HANDOFF.md` — Recovery checkpoint and rollback coordinates.
-- `BACKEND_RECEIPT.md` — Formal infrastructure delivery receipt.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `BACKEND_INFRASTRUCTURE_MISSION_RESULT.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `BACKEND_INFRASTRUCTURE_MISSION_RESULT.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

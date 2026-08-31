@@ -1,0 +1,1 @@
+# Dependencies for flutter-apply-architecture-best-practices

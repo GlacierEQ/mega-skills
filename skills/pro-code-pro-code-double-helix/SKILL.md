@@ -3,7 +3,6 @@ name: pro-code-pro-code-double-helix
 description: "Structure GitHub pro-code and pro_code as double helix of complementary forces for maximum positive impact on systems, legal tech, evidence automation, mission advancement, and Case 1FDV-23-0001009 Kekoa protection. Activate on pro-code double helix, github pro_code structure, complementary forces, spiral engine, diamond agents."
 ---
 
-
 # PRO-CODE / PRO_CODE DOUBLE HELIX — Monolith Edition
 
 **Repo:** GlacierEQ/computer-user  

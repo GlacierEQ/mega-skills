@@ -1,0 +1,1 @@
+# Dependencies for i18n-localization

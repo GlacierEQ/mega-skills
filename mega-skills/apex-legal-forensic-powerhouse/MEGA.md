@@ -1,33 +1,50 @@
-# APEX Legal Forensic Powerhouse Mega Skill
+# Apex Legal Forensic Powerhouse
 
 ## Mission
 
-Autonomous legal warfare and electronic cyber forensics command center. Enforces Federal Rules of Evidence (FRE 902(13)/(14)) self-authenticating integrity, cryptographic Bates numbering, audio phonetics & speaker diarization (`audio-forensic-core`), forensic timeline generation, and court pleading automation.
+Autonomous legal warfare and electronic cyber forensics command center enforcing FRE 902(13)/(14) manifests.
 
 ## Compounding structure
 
-| Route Type | Member Combo Skill | What the Mega Layer Adds |
-|---|---|---|
-| **Mandatory** | `long-horizon-core` | Mission framing, evidentiary roadmaps, and cryptographic chain-of-custody tracking. |
-| **Mandatory** | `guarded-automation-loop` | Safe isolated analysis, zero-byte trace detection, and fail-closed audit boundaries. |
-| **Mandatory** | `signal-to-decision-loop` | Real-time docket anomaly scanning, timestamp inversion checks, and pleading generation. |
-| **Conditional** | `capability-readiness` | Preflight verification of OCR engines, WhisperX audio diarization models, and court APIs. |
-| **Conditional** | `evidence-to-evolution-loop` | Persistent cross-exhibit link indexing and forensic knowledge graph updates. |
+- Required combos: `long-horizon-core`, `guarded-automation-loop`, `signal-to-decision-loop`
+- Conditional combos: `capability-readiness`, `evidence-to-evolution-loop`
 
-## End-to-end execution protocol
+## Execution protocol
 
-1. **Evidentiary Intake & Bates Stamping (`apex-bates`)**: Catalog incoming exhibits, compute SHA-256 digests, and assign consecutive Bates numbers.
-2. **Forensic Audio Processing (`audio-forensic-core`)**: Execute phonetic alignment, speaker diarization, Electric Network Frequency (ENF) grid validation, and court transcript generation.
-3. **Docket Timeline Synthesis (`00_FORENSIC_TIMELINE`)**: Assemble chronological cross-exhibit master timelines and flag timestamp inversion anomalies.
-4. **Pleading & Motion Assembly (`legal-powerhouse`)**: Draft jurisdictional filings, Table of Authorities, and FRE 902 certifications.
-5. **Quality & Sealing Gate (`quality-gate`)**: Enforce cryptographic SHA-256 seal on `BATES_MANIFEST.json` and compile deliverable into `LEGAL_FORENSIC_POWERHOUSE_RECORD.md`.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `LEGAL_FORENSIC_POWERHOUSE_RECORD.md`.
 
-## Durable state
+## Durable state files
 
-Maintains six immutable state files:
-- `MISSION.md` — Case docket parameters, non-goals, and jurisdictional scope.
-- `ROADMAP.md` — Ordered evidentiary processing stages.
-- `EVIDENCE.md` — FRE 902(13)/(14) SHA-256 manifest and forensic receipts.
-- `CONTEXT.md` — Active case facts and timeline indices.
-- `HANDOFF.md` — Safe audit checkpoint for legal review.
-- `LEGAL_POWERHOUSE_RECEIPT.md` — Cryptographic chain-of-custody delivery receipt.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `LEGAL_FORENSIC_POWERHOUSE_RECORD.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `LEGAL_FORENSIC_POWERHOUSE_RECORD.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

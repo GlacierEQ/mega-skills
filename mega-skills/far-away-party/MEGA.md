@@ -1,32 +1,50 @@
-# Far Away Party Mega Skill
+# Far Away Party
 
 ## Mission
 
-Run complex work from ambiguity to an evidence-backed outcome without context drift. Far Away Party is the mission layer above the verified **Long-Horizon Core** Combo and conditionally selected specialist Combos.
+Conditional selection of Compounding Combo Skills, durable state, phase gates, safe resumption, and evidence-backed integration across a long-horizon mission.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `capability-readiness` when a route depends on unverified tools, access, data, runtime, or strong claims | Admits or blocks the route using mission-specific preflight evidence and calibrated wording. |
-| `long-horizon-core` | `signal-to-decision-loop` when a new signal may require an evidence-backed decision | Converts observation into a reviewable route recommendation without executing a change. |
-| `long-horizon-core` | `guarded-automation-loop` after an approved recurring or event-triggered need is identified | Preserves approval, idempotency, evidence, recovery, and human-control boundaries around any future execution. |
-| `long-horizon-core` | `evidence-to-evolution-loop` when repeated evidence may justify improving a capability | Produces a governed improvement proposal rather than self-modifying an active route. |
-| `long-horizon-core` | `recon-and-map` when repository scope is uncertain | Selects routes based on actual mission shape and preserves mission-wide state. |
-| `long-horizon-core` | `skill-forge` when recurring work should become a new Skill | Integrates a new atomic capability only after its validation and registry entry exist. |
-| `long-horizon-core` | `automation-control` when a trigger, recurrence, or external integration exists | Enforces mission-wide approval gates, route compatibility, and final evidence trace. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `signal-to-decision-loop`, `guarded-automation-loop`, `evidence-to-evolution-loop`, `recon-and-map`, `skill-forge`, `automation-control`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin every non-trivial mission with `long-horizon-core` and maintain its durable state.
-2. Inspect mission facts before selecting any conditional Combo.
-3. Run `capability-readiness` before an advanced route if its prerequisites, environment, access, or claim scope are not currently verified for this mission.
-4. Use `signal-to-decision-loop` for observed signals, `guarded-automation-loop` for approved recurring execution, and `evidence-to-evolution-loop` for review-governed capability improvement.
-5. Select any other conditional Combo only when its documented selection criteria match an observed mission need and its readiness record admits the route.
-6. Accept only the named compound artifact from a Combo; do not treat its undocumented conversation history as input.
-7. Reconcile all compound artifacts into the durable state, apply phase gates, and preserve an exact handoff after every significant transition.
-8. Close only when every requested outcome maps to evidence, approvals are observed, residual uncertainty is disclosed, and the next action is recoverable.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `evidence-backed-mission-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` remain the mission source of truth. The Mega Skill owns their consistency; individual Skills and Combos own their local artifacts and checks.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `evidence-backed-mission-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `evidence-backed-mission-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

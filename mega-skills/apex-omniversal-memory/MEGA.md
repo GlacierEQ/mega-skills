@@ -1,24 +1,50 @@
-# APEX Omniversal Memory Mega Skill
+# APEX Omniversal Memory
 
 ## Mission
 
-Operate large-scale cross-cloud semantic memory indexing and retrieval across 291k+ multi-cloud documents, maintaining subword n-gram vector spaces and dynamically reinforcing Hebbian associative synapses.
+Large-scale cross-cloud semantic memory indexing across 291k+ files with subword n-gram vector spaces and dynamic Hebbian synaptic reinforcement.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `cross-cloud-memory-synthesis` when distributed cloud files must be vectorized and indexed | Orchestrates multi-cloud storage traversals, TF-IDF vectorization, and Hebbian weight reinforcement. |
-| `long-horizon-core` | `recon-and-map` when candidate cloud storage buckets or file trees are unmapped | Establishes cloud Horizon boundaries and prevents duplicate or unauthenticated indexing. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `cross-cloud-memory-synthesis`, `recon-and-map`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin the memory campaign with `long-horizon-core` and load cloud storage scope contracts.
-2. Select `recon-and-map` if cloud storage loci (Dropbox, ShadowDrive) require structural inspection.
-3. Select `cross-cloud-memory-synthesis` to extract text, construct subword 3-gram vectors, and compute cosine metrics.
-4. Dynamically reinforce associative synaptic weights for co-retrieved entities during operational sprints.
-5. Reconcile vector counts, vocabulary sizes, and retrieval recall metrics into `EVIDENCE.md` and deliver updated memory state.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `omniversal-memory-matrix-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` maintain semantic memory state across distributed cloud Horizons.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `omniversal-memory-matrix-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `omniversal-memory-matrix-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.
