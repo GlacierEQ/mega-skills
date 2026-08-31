@@ -3792,5 +3792,36 @@
         "Tower registry or generated-artifact authority"
       ]
     }
+    ,
+    {
+      "id": "automated-architecture-analysis",
+      "display_name": "Automated Architecture Analysis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-architecture-analysis",
+      "entrypoint": "skills/automated-architecture-analysis/SKILL.md",
+      "purpose": "Build typed dependency graphs, detect cycles and forbidden edges, generate safe decoupling plans, and enforce architecture evidence gates.",
+      "input_contract": [
+        "Authorized repository or system scope",
+        "Architecture sources, layer policy, and public-boundary rules",
+        "Acceptance tests and remediation authorization"
+      ],
+      "output_contract": [
+        "Normalized dependency graph and cycle analysis",
+        "Reviewed architecture remediation patch or decision",
+        "Architecture dependency analysis receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Graph rebuild and cycle/layer policy checks pass",
+        "Repository tests and build checks pass"
+      ],
+      "does_not_own": [
+        "Unbounded system redesign",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
