@@ -1,9 +1,9 @@
 ---
 name: mega-clean-code
-description: Clean Code - Pragmatic AI Coding Standards
-domains: [clean-code]
-token_profile: Lean
+description: "Clean Code - Pragmatic AI Coding Standards"
 ---
+
+
 
 # MEGA-CLEAN-CODE
 

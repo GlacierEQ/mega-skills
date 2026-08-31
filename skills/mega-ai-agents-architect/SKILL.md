@@ -1,9 +1,9 @@
 ---
 name: mega-ai-agents-architect
-description: AI Agents Architect
-domains: [ai-agents-architect]
-token_profile: Lean
+description: "AI Agents Architect"
 ---
+
+
 
 # MEGA-AI-AGENTS-ARCHITECT
 

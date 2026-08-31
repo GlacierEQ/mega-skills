@@ -1,9 +1,9 @@
 ---
 name: mega-aspen-grove
-description: Aspen Grove Connectors Skill — Multi-Service Integration
-domains: [aspen-grove]
-token_profile: Lean
+description: "Aspen Grove Connectors Skill — Multi-Service Integration"
 ---
+
+
 
 # MEGA-ASPEN-GROVE
 

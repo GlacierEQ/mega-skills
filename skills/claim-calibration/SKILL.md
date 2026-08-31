@@ -1,7 +1,8 @@
 ---
 name: claim-calibration
-description: Match a capability’s wording and decision confidence to the evidence actually available. Use when a Skill, Combo, Mega, report, or user-facing artifact makes strong operational, security, legal, scientific, or quality claims.
+description: "Match a capability’s wording and decision confidence to the evidence actually available. Use when a Skill, Combo, Mega, report, or user-facing artifact makes strong operational, security, legal, scientific, or quality claims."
 ---
+
 
 # Claim Calibration
 

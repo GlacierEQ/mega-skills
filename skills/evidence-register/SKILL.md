@@ -1,7 +1,8 @@
 ---
 name: evidence-register
-description: Build a traceable register of sources, tests, artifacts, claims, and uncertainty. Use when conclusions, implementation decisions, or deliverables must be verified, cited, audited, or safely resumed.
+description: "Build a traceable register of sources, tests, artifacts, claims, and uncertainty. Use when conclusions, implementation decisions, or deliverables must be verified, cited, audited, or safely resumed."
 ---
+
 
 # Evidence Register
 

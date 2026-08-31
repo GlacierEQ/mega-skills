@@ -1,9 +1,9 @@
 ---
 name: mega-apex-sovereign-runtime
-description: 🏛️ The APEX Sovereign Runtime Instruct
-domains: [apex-sovereign-runtime]
-token_profile: Lean
+description: "🏛️ The APEX Sovereign Runtime Instruct"
 ---
+
+
 
 # MEGA-APEX-SOVEREIGN-RUNTIME
 

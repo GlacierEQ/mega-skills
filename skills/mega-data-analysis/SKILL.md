@@ -1,9 +1,9 @@
 ---
 name: mega-data-analysis
-description: Data Analysis Skill — Local File Processing & Analytics
-domains: [data-analysis]
-token_profile: Lean
+description: "Data Analysis Skill — Local File Processing & Analytics"
 ---
+
+
 
 # MEGA-DATA-ANALYSIS
 

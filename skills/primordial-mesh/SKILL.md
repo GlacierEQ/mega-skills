@@ -1,10 +1,9 @@
 ---
 name: primordial-mesh
-description: Operating inside the Primordial Mesh Titan at /root/projects/PRIMORDIAL-MESH-TITAN.
-  Distributed context, polymorphic mesh architecture, zenith capsule. Use when working
-  on the mesh layer that sits beneath all other Mermicorn/GlacierEQ projects.
-version: 0.1.0
+description: "Operating inside the Primordial Mesh Titan at /root/projects/PRIMORDIAL-MESH-TITAN. Distributed context, polymorphic mesh architecture, zenith capsule. Use when working on the mesh layer that sits beneath all other Mermicorn/GlacierEQ projects."
 ---
+
+
 
 # Primordial Mesh Titan
 

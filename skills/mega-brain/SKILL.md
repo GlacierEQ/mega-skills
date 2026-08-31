@@ -1,9 +1,9 @@
 ---
 name: mega-brain
-description: Brain Skill — Unified Case Intelligence
-domains: [brain]
-token_profile: Lean
+description: "Brain Skill — Unified Case Intelligence"
 ---
+
+
 
 # MEGA-BRAIN
 

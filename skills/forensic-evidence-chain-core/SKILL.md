@@ -1,7 +1,8 @@
 ---
 name: forensic-evidence-chain-core
-description: FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.
+description: "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection."
 ---
+
 
 # Forensic Evidence Chain Core
 

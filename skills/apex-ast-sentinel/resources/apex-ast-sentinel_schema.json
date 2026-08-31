@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Apex Ast Sentinel",
+  "type": "object",
+  "properties": {
+    "skill": {"type": "string"},
+    "status": {"type": "string"},
+    "epistemic_tier": {"type": "string"},
+    "firewall": {"type": "string"},
+    "sha256": {"type": "string"}
+  },
+  "required": ["skill", "status", "epistemic_tier"]
+}

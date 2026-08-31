@@ -1,9 +1,9 @@
 ---
 name: agent-memory-mcp
-description: A hybrid memory system that provides persistent, searchable knowledge
-  management for AI agents (Architecture, Patterns, Decisions).
-version: 0.1.0
+description: "A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, Decisions)."
 ---
+
+
 
 # Agent Memory Skill
 

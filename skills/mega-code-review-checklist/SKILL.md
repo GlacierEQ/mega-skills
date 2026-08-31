@@ -1,9 +1,9 @@
 ---
 name: mega-code-review-checklist
-description: Code Review Checklist
-domains: [code-review-checklist]
-token_profile: Lean
+description: "Code Review Checklist"
 ---
+
+
 
 # MEGA-CODE-REVIEW-CHECKLIST
 

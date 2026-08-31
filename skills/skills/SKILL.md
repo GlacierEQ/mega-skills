@@ -1,8 +1,9 @@
 ---
 name: skills
-description: Skill discovery, validation, selection, composition, security review, versioning, and lifecycle management for Manus-compatible skills. Use when auditing a skills repository, evaluating or creating a skill, resolving trigger or loading failures, designing skill compositions, or improving a skill catalog.
-license: Complete terms in LICENSE.txt
+description: "Skill discovery, validation, selection, composition, security review, versioning, and lifecycle management for Manus-compatible skills. Use when auditing a skills repository, evaluating or creating a skill, resolving trigger or loading failures, designing skill compositions, or improving a skill catalog."
 ---
+
+
 
 # Skills
 

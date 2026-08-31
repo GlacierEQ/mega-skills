@@ -1,12 +1,9 @@
 ---
 name: reasoning-variants
-description: "Reasoning strategy variants for LLM agents \u2014 ReAct, Plan-and-Execute,\
-  \ Reflection, Tree-of-Thoughts, Reflexion, and Debate. Use when picking a reasoning\
-  \ loop for a new agent, when an existing agent keeps failing, when you need to compose\
-  \ strategies, or when debugging why an agent loops/diverges. All examples integrate\
-  \ with the make-it-heavy agent.py API."
-version: 0.1.0
+description: "Reasoning strategy variants for LLM agents — ReAct, Plan-and-Execute, Reflection, Tree-of-Thoughts, Reflexion, and Debate. Use when picking a reasoning loop for a new agent, when an existing agent keeps failing, when you need to compose strategies, or when debugging why an agent loops/diverges. All examples integrate with the make-it-heavy agent.py API."
 ---
+
+
 
 # Reasoning Variants
 

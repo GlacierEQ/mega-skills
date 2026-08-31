@@ -1,9 +1,9 @@
 ---
 name: code-review-checklist
-description: Comprehensive checklist for conducting thorough code reviews covering
-  functionality, security, performance, and maintainability
-version: 0.1.0
+description: "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability"
 ---
+
+
 
 # Code Review Checklist
 

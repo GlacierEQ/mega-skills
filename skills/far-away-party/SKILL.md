@@ -1,11 +1,9 @@
 ---
 name: far-away-party
-description: Governing long-horizon autonomous missions from high ambiguity to evidence-backed
-  delivery without context drift. Coordinates Long-Horizon Core with conditional specialist
-  loops (capability-readiness, signal-to-decision, guarded-automation, evidence-to-evolution,
-  recon-and-map, skill-forge, automation-control).
-version: 0.1.0
+description: "Governing long-horizon autonomous missions from high ambiguity to evidence-backed delivery without context drift. Coordinates Long-Horizon Core with conditional specialist loops (capability-readiness, signal-to-decision, guarded-automation, evidence-to-evolution, recon-and-map, skill-forge, automation-control)."
 ---
+
+
 
 # 🚀 Far Away Party Mega-Skill
 

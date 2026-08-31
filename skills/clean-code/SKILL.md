@@ -1,9 +1,9 @@
 ---
 name: clean-code
-description: Pragmatic coding standards - concise, direct, no over-engineering, no
-  unnecessary comments
-version: 0.1.0
+description: "Pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments"
 ---
+
+
 
 # Clean Code - Pragmatic AI Coding Standards
 

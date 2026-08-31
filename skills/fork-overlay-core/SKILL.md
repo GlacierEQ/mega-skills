@@ -1,7 +1,8 @@
 ---
 name: fork-overlay-core
-description: Dev Fork Doctrine automated upstream synchronization, custom overlay shielding, and regression test gatekeeping across repository forks.
+description: "Dev Fork Doctrine automated upstream synchronization, custom overlay shielding, and regression test gatekeeping across repository forks."
 ---
+
 
 # Fork Overlay Core
 

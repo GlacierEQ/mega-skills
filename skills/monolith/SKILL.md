@@ -1,11 +1,9 @@
 ---
 name: monolith
-description: Operating inside the Monolith meta-layer at /root/projects/monolith.
-  Use when working with the catalog, the integration fabric, mega-skills, or the propagation
-  contract. Monolith is upstream of all other projects; updates here propagate via
-  the contract, not via direct edits downstream.
-version: 0.1.0
+description: "Operating inside the Monolith meta-layer at /root/projects/monolith. Use when working with the catalog, the integration fabric, mega-skills, or the propagation contract. Monolith is upstream of all other projects; updates here propagate via the contract, not via direct edits downstream."
 ---
+
+
 
 # Monolith Skill
 

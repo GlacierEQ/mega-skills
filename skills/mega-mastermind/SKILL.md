@@ -1,9 +1,9 @@
 ---
 name: mega-mastermind
-description: Mastermind Skill — Mission-Control Runtime
-domains: [mastermind]
-token_profile: Lean
+description: "Mastermind Skill — Mission-Control Runtime"
 ---
+
+
 
 # MEGA-MASTERMIND
 

@@ -1,9 +1,9 @@
 ---
 name: mega-token-saver
-description: Token Saver
-domains: [token-saver]
-token_profile: Lean
+description: "Token Saver"
 ---
+
+
 
 # MEGA-TOKEN-SAVER
 

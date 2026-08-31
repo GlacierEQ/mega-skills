@@ -1,0 +1,7 @@
+# Configuration for apex-ast-sentinel
+version: '1.0.0'
+enabled: true
+epistemic_tier: 'L2'
+settings:
+  strict_validation: true
+  firewall_enforced: true

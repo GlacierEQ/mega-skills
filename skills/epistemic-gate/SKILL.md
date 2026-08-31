@@ -1,7 +1,8 @@
 ---
 name: epistemic-gate
-description: 6-Tier Epistemic Ladder (L0 to L6) verification gate enforcing mathematical, empirical, and cryptographic proof standards across all operations.
+description: "6-Tier Epistemic Ladder (L0 to L6) verification gate enforcing mathematical, empirical, and cryptographic proof standards across all operations."
 ---
+
 
 # Epistemic Gate
 

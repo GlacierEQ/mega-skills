@@ -1,72 +1,9 @@
 ---
 name: github-power
-description: >
-  Use when working with GitHub repos, PRs, issues, CI/CD, GitHub Actions, GitHub API,
-  GitHub CLI (gh), repository management, code review, issue triage, branch management,
-  merge strategies, conflict resolution, git operations, clone, push, pull, fetch,
-  rebase, cherry-pick, stash, tags, releases, packages, packages registry, GitHub Pages,
-  GitHub Projects, GitHub Discussions, GitHub Security, Dependabot, code scanning,
-  secret scanning, push protection, branch protection rules, required reviews, status
-  checks, merge queues, code owners, CODEOWNERS file, contributing guidelines, templates,
-  issue templates, PR templates, repository templates, GitHub Sponsors, GitHub Actions
-  marketplace, reusable workflows, composite actions, JavaScript actions, Docker actions,
-  self-hosted runners, GitHub-hosted runners, workflow triggers, workflow secrets,
-  workflow variables, workflow outputs, matrix builds, caching, artifacts, logs,
-  deployment environments, environment secrets, protection rules, OIDC, deployment keys,
-  deploy keys, SSH keys, PATs, fine-grained tokens, GitHub Apps, OAuth apps, webhooks,
-  API pagination, rate limiting, GraphQL API, REST API, search API, GitHub Copilot,
-  GitHub Codespaces, GitHub Dev, GitHub Mobile, GitHub Desktop, GitHub Education,
-  GitHub for Teams, GitHub Enterprise, GitHub AE, GHES, multi-repo operations,
-  cross-repo search, batch operations, automation, scripting, CI/CD pipelines,
-  deployment automation, release management, changelog generation, semantic versioning,
-  conventional commits, commit signing, GPG signing, SSH signing, verified commits,
-  merge commits, squash merges, rebase merges, fast-forward merges, auto-merge,
-  merge conflicts, conflict resolution, code owners review, CODEOWNERS review,
-  required reviewers, dismiss stale reviews, restrict pushes, admin enforcement,
-  status checks, required status checks, strict status checks, branch protection,
-  tag protection, environment protection, deployment protection, deployment branches,
-  custom deployment protection rules, GitHub Connect, unified search, internal repos,
-  audit log streaming, IP allow lists, SAML SSO, SCIM provisioning, team synchronization,
-  repository roles, organization roles, custom repository roles, security log, audit log,
-  compliance reports, SOC2, FedRAMP, HIPAA, PCI DSS, ISO 27001, GDPR, data residency,
-  data retention, backup, disaster recovery, high availability, SLA, uptime, performance,
-  scalability, reliability, availability, durability, consistency, latency, throughput,
-  bandwidth, IOPS, storage, compute, networking, security, compliance, governance, risk,
-  audit, monitoring, alerting, logging, tracing, observability, APM, RUM, synthetics,
-  real user monitoring, synthetic monitoring, log management, SIEM, SOAR, XDR, MDR,
-  threat detection, incident response, vulnerability management, patch management,
-  configuration management, change management, release management, deployment management,
-  environment management, secrets management, identity management, access management,
-  privileged access management, just-in-time access, just-in-time provisioning, zero trust,
-  least privilege, separation of duties, defense in depth, security in depth, defense in
-  breadth, security in breadth, security architecture, security engineering, security
-  operations, security administration, security governance, security compliance, security
-  audit, security assessment, security testing, penetration testing, red teaming, blue
-  teaming, purple teaming, bug bounty, responsible disclosure, vulnerability disclosure,
-  security advisory, security bulletin, security patch, hotfix, emergency fix, rollback,
-  revert, restore, recovery, backup, archive, snapshot, clone, fork, branch, merge,
-  rebase, cherry-pick, revert, reset, reflog, gc, prune, pack, index, worktree, HEAD,
-  branch, tag, commit, tree, blob, object, ref, remote, upstream, downstream, tracking,
-  upstream branch, downstream branch, merge base, common ancestor, three-way merge,
-  octopus merge, recursive strategy, ort strategy, ours strategy, subtree strategy, alpha
-  strategy, patience strategy, histogram strategy, diff algorithm, myers, histogram,
-  patience, minimal, semantic diff, structural diff, AST diff, code diff, text diff,
-  file diff, directory diff, binary diff, image diff, PDF diff, DOCX diff, Excel diff,
-  merge conflict, conflict marker, conflict resolution, conflict style, merge tool,
-  diff tool, beyond compare, p4merge, vimdiff, meld, kdiff3, opendiff, tortoisemerge,
-  winmerge, araxis merge, diffmerge, semantic merge, structural merge, AST merge, code
-  merge, text merge, file merge, directory merge, binary merge, image merge, PDF merge,
-  DOCX merge, Excel merge, zip merge, tar merge, archive merge, bundle merge, package
-  merge, release merge, version merge, changelog merge, commit merge, branch merge, tag
-  merge, ref merge, remote merge, upstream merge, downstream merge, cross-merge, octopus
-  merge, recursive merge, ort merge, ours merge, subtree merge, alpha merge, patience
-  merge, histogram merge, minimal merge, semantic merge, structural merge, AST merge,
-  code merge, text merge, file merge, directory merge, binary merge, image merge, PDF
-  merge, DOCX merge, Excel merge, zip merge, tar merge, archive merge, bundle merge,
-  package merge, release merge, version merge, changelog merge, commit merge, branch
-  merge, tag merge, ref merge, remote merge, upstream merge, downstream merge, cross-merge
-
+description: "Use when working with GitHub repos, PRs, issues, CI/CD, GitHub Actions, GitHub API, GitHub CLI (gh), repository management, code review, issue triage, branch management, merge strategies, conflict resolution, git operations, clone, push, pull, fetch, rebase, cherry-pick, stash, tags, releases, packages, packages registry, GitHub Pages, GitHub Projects, GitHub Discussions, GitHub Security, Dependabot, code scanning, secret scanning, push protection, branch protection rules, required reviews, status checks, merge queues, code owners, CODEOWNERS file, contributing guidelines, templates, issue templates, PR templates, repository templates, GitHub Sponsors, GitHub Actions marketplace, reusable workflows, composite actions, JavaScript actions, Docker actions, self-hosted runners, GitHub-hosted runners, workflow triggers, workflow secrets, workflow variables, workflow outputs, matrix builds, caching, artifacts, logs, deployment environments, environment secrets, protection rules, OIDC, dep..."
 ---
+
+
 
 # GitHub Power Skill — Maximum GitHub Productivity
 

@@ -1,9 +1,9 @@
 ---
 name: mega-legal-powerhouse
-description: Legal Powerhouse Skill — Legal Case Management & Court Automation
-domains: [legal-powerhouse]
-token_profile: Lean
+description: "Legal Powerhouse Skill — Legal Case Management & Court Automation"
 ---
+
+
 
 # MEGA-LEGAL-POWERHOUSE
 

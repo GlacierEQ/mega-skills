@@ -1,7 +1,8 @@
 ---
 name: fleet-git-harmonizer-core
-description: Autonomous git history analysis, branch divergence reconciliation, and clutter pruning across repositories.
+description: "Autonomous git history analysis, branch divergence reconciliation, and clutter pruning across repositories."
 ---
+
 
 # Fleet Git Harmonizer Core
 

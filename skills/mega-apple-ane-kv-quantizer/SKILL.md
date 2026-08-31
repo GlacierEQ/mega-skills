@@ -1,9 +1,9 @@
 ---
 name: mega-apple-ane-kv-quantizer
-description: Apple ANE KV-Quantizer (job-app portfolio)
-domains: [apple-ane-kv-quantizer]
-token_profile: Lean
+description: "Apple ANE KV-Quantizer (job-app portfolio)"
 ---
+
+
 
 # MEGA-APPLE-ANE-KV-QUANTIZER
 

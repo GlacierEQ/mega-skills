@@ -1,9 +1,9 @@
 ---
 name: mega-ai-deal-finder
-description: AI Deal Finder
-domains: [ai-deal-finder]
-token_profile: Lean
+description: "AI Deal Finder"
 ---
+
+
 
 # MEGA-AI-DEAL-FINDER
 

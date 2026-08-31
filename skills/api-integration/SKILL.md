@@ -1,20 +1,9 @@
 ---
 name: api-integration
-description: >
-  Use when working with REST/GraphQL APIs, webhooks, API testing, authentication,
-  rate limiting, OAuth 2.0, JWT tokens, API keys, bearer tokens, basic auth, API
-  gateway, API documentation, OpenAPI/Swagger, Postman, curl, Python requests, Node.js
-  fetch, axios, HTTP methods (GET, POST, PUT, PATCH, DELETE), request/response handling,
-  error handling, retry logic, circuit breaker, pagination, cursor-based pagination,
-  offset pagination, rate limit handling, backoff strategies, API versioning, content
-  negotiation, JSON parsing, XML parsing, multipart form data, file uploads, download
-  management, streaming responses, Server-Sent Events, WebSocket connections, gRPC,
-  Protocol Buffers, webhook validation, webhook signing, HMAC verification, API
-  monitoring, API analytics, API security, CORS, CSRF protection, input validation,
-  output sanitization, API mocking, service integration, GitHub API, Stripe API,
-  SendGrid API, Twilio API, AWS SDK, Google Cloud SDK, Azure SDK, or any external
-  service integration and API communication.
+description: "Use when working with REST/GraphQL APIs, webhooks, API testing, authentication, rate limiting, OAuth 2.0, JWT tokens, API keys, bearer tokens, basic auth, API gateway, API documentation, OpenAPI/Swagger, Postman, curl, Python requests, Node.js fetch, axios, HTTP methods (GET, POST, PUT, PATCH, DELETE), request/response handling, error handling, retry logic, circuit breaker, pagination, cursor-based pagination, offset pagination, rate limit handling, backoff strategies, API versioning, content negotiation, JSON parsing, XML parsing, multipart form data, file uploads, download management, streaming responses, Server-Sent Events, WebSocket connections, gRPC, Protocol Buffers, webhook validation, webhook signing, HMAC verification, API monitoring, API analytics, API security, CORS, CSRF protection, input validation, output sanitization, API mocking, service integration, GitHub API, Stripe API, SendGrid API, Twilio API, AWS SDK, Google Cloud SDK, Azure SDK, or any external service integr..."
 ---
+
+
 
 # API Integration Skill — REST/GraphQL/Webhook Communication
 

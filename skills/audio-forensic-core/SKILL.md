@@ -1,7 +1,8 @@
 ---
 name: audio-forensic-core
-description: Sovereign evidentiary audio processing, WhisperX phonetic alignment, speaker diarization, Electric Network Frequency (ENF) validation, and 17-point court transcripts.
+description: "Sovereign evidentiary audio processing, WhisperX phonetic alignment, speaker diarization, Electric Network Frequency (ENF) validation, and 17-point court transcripts."
 ---
+
 
 # Audio Forensic Core
 

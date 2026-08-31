@@ -1,9 +1,9 @@
 ---
 name: mega-monolith
-description: Monolith Skill
-domains: [monolith]
-token_profile: Lean
+description: "Monolith Skill"
 ---
+
+
 
 # MEGA-MONOLITH
 

@@ -1,7 +1,8 @@
 ---
 name: omni-memory-core
-description: 291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement.
+description: "291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement."
 ---
+
 
 # Omni Memory Core
 

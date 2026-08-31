@@ -1,9 +1,9 @@
 ---
 name: mega-openai-reasoning-kv-sentinel
-description: OpenAI Reasoning KV-Sentinel (job-app portfolio)
-domains: [openai-reasoning-kv-sentinel]
-token_profile: Lean
+description: "OpenAI Reasoning KV-Sentinel (job-app portfolio)"
 ---
+
+
 
 # MEGA-OPENAI-REASONING-KV-SENTINEL
 

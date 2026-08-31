@@ -1,9 +1,9 @@
 ---
 name: mega-deepseek-mla-moe-sentinel
-description: DeepSeek MLA MoE Sentinel (job-app portfolio)
-domains: [deepseek-mla-moe-sentinel]
-token_profile: Lean
+description: "DeepSeek MLA MoE Sentinel (job-app portfolio)"
 ---
+
+
 
 # MEGA-DEEPSEEK-MLA-MOE-SENTINEL
 

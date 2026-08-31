@@ -1,11 +1,9 @@
 ---
 name: make-it-heavy
-description: Operating inside the Make-It-Heavy multi-agent swarm project at /root/projects/make-it-heavy.
-  Use when adding workers, modifying orchestrator logic, extending the persistent
-  SwarmMemory, writing tools, or running the test suite. Covers role-bound workers,
-  GeniusOrchestration, policy-bound tool allowlisting, and tiered memory.
-version: 0.1.0
+description: "Operating inside the Make-It-Heavy multi-agent swarm project at /root/projects/make-it-heavy. Use when adding workers, modifying orchestrator logic, extending the persistent SwarmMemory, writing tools, or running the test suite. Covers role-bound workers, GeniusOrchestration, policy-bound tool allowlisting, and tiered memory."
 ---
+
+
 
 # Make-It-Heavy Skill
 

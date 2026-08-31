@@ -1,7 +1,8 @@
 ---
 name: quality-gate
-description: Verify that a phase, artifact, or mission outcome satisfies its stated contract before work advances. Use at phase boundaries, before irreversible actions, after specialist handoffs, and before final delivery.
+description: "Verify that a phase, artifact, or mission outcome satisfies its stated contract before work advances. Use at phase boundaries, before irreversible actions, after specialist handoffs, and before final delivery."
 ---
+
 
 # Quality Gate
 

@@ -1,12 +1,9 @@
 ---
 name: job-app-portfolio
-description: Operating inside the GlacierEQ job-app portfolio estate (~50+ repos at
-  github.com/GlacierEQ/ targeting specific employer orbits). Use when working in any
-  *-sentinel, *-quantizer, *-sentinel, *-control-plane, *-singularity, or similar
-  orbit-targeted portfolio repo. The individual repos are templated; this skill is
-  the family contract.
-version: 0.1.0
+description: "Operating inside the GlacierEQ job-app portfolio estate (~50+ repos at github.com/GlacierEQ/ targeting specific employer orbits). Use when working in any *-sentinel, *-quantizer, *-sentinel, *-control-plane, *-singularity, or similar orbit-targeted portfolio repo. The individual repos are templated; this skill is the family contract."
 ---
+
+
 
 # Job-App Portfolio (GlacierEQ)
 

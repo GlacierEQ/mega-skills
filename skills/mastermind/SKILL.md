@@ -1,11 +1,9 @@
 ---
 name: mastermind
-description: Operating inside the Mastermind mission-control runtime at /root/projects/mastermind.
-  Use when wiring lanes, appending to the receipt chain, configuring identity policy,
-  adding adapters, or running the test suite. The canonical APEX Sovereign Runtime
-  lives here.
-version: 0.1.0
+description: "Operating inside the Mastermind mission-control runtime at /root/projects/mastermind. Use when wiring lanes, appending to the receipt chain, configuring identity policy, adding adapters, or running the test suite. The canonical APEX Sovereign Runtime lives here."
 ---
+
+
 
 # Mastermind Skill
 

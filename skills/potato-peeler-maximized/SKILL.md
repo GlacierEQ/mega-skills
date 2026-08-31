@@ -1,7 +1,8 @@
 ---
 name: potato-peeler-maximized
-description: Maximizes the Quantum Potato Peeler OSINT Research Network for constitutional warfare, military-grade legal intelligence, corruption detection, and federal evidence generation in child custody cases. Primary trigger: Case 1FDV-23-0001009 Kekoa Barton child protection. Activate on maximize, quantum transfer, constitutional protocol, potato peeler, Kekoa case, RICO network, federal intervention, Brower-Yamatani-Yamamoto. Specializes in 14th Amendment, 42 USC 1983/1985, 18 USC 241/242, HRS 571-46.
+description: "Maximizes the Quantum Potato Peeler OSINT Research Network for constitutional warfare, military-grade legal intelligence, corruption detection, and federal evidence generation in child custody cases. Primary trigger: Case 1FDV-23-0001009 Kekoa Barton child protection. Activate on maximize, quantum transfer, constitutional protocol, potato peeler, Kekoa case, RICO network, federal intervention, Brower-Yamatani-Yamamoto. Specializes in 14th Amendment, 42 USC 1983/1985, 18 USC 241/242, HRS 571-46."
 ---
+
 
 # POTATO-PEELER-MAXIMIZED — Quantum OSINT Protocol (Monolith Edition)
 

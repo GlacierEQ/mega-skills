@@ -1,8 +1,9 @@
 ---
 name: automated-code-refactoring
-description: Plan, apply, verify, and safely deliver automated code refactorings across supported repositories. Use when reducing technical debt, modernizing APIs, migrating patterns, improving structure, or applying repeatable code transformations, especially when Tower of Babel technology evidence or polyglot build lanes are involved.
-license: Complete terms in LICENSE.txt
+description: "Plan, apply, verify, and safely deliver automated code refactorings across supported repositories. Use when reducing technical debt, modernizing APIs, migrating patterns, improving structure, or applying repeatable code transformations, especially when Tower of Babel technology evidence or polyglot build lanes are involved."
 ---
+
+
 
 # Automated Code Refactoring
 

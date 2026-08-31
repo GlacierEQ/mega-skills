@@ -153,6 +153,31 @@
       ]
     },
     {
+      "id": "apex-ast-sentinel",
+      "display_name": "Apex AST Sentinel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-ast-sentinel",
+      "entrypoint": "skills/apex-ast-sentinel/SKILL.md",
+      "purpose": "AST-level syntactic invariant validator and defect sentinel for zero-regression code generation.",
+      "input_contract": [
+        "Source code files or AST chunks",
+        "Target validation schemas"
+      ],
+      "output_contract": [
+        "ast-sentinel-verification-report.json"
+      ],
+      "local_validation": [
+        "AST invariant assertions pass 100% green",
+        "Deterministic SHA-256 receipt generated"
+      ],
+      "does_not_own": [
+        "Blind destructive file clobbering",
+        "Unverified production deployment"
+      ]
+    },
+    {
       "id": "apex-integrations",
       "display_name": "Apex Integrations",
       "ownership": "glaciereq",
@@ -378,6 +403,64 @@
       "does_not_own": [
         "Waveform tampering",
         "Unverified speaker assertions"
+      ]
+    },
+    {
+      "id": "automated-code-refactoring",
+      "display_name": "Automated Code Refactoring",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-code-refactoring",
+      "entrypoint": "skills/automated-code-refactoring/SKILL.md",
+      "purpose": "Apply bounded, syntax-aware, evidence-driven code transformations with reversible batches, semantic verification, and Tower of Babel handoffs.",
+      "input_contract": [
+        "Repository root and approved refactoring scope",
+        "Target language/toolchain and behavior invariants",
+        "Acceptance tests and mutation authorization"
+      ],
+      "output_contract": [
+        "Verified refactoring patch",
+        "Refactoring receipt with tests, warnings, and rollback path"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Repository tests, builds, and diff checks pass",
+        "Tower preflight and evidence gates pass when applicable"
+      ],
+      "does_not_own": [
+        "Unbounded rewrites",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    },
+    {
+      "id": "automated-test-generation",
+      "display_name": "Automated Test Generation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-test-generation",
+      "entrypoint": "skills/automated-test-generation/SKILL.md",
+      "purpose": "Generate meaningful automated tests, measure and enforce coverage, and produce evidence-backed quality receipts across repository and Tower toolchain lanes.",
+      "input_contract": [
+        "Repository root and target test scope",
+        "Behavioral risks, coverage baseline, and threshold policy",
+        "Test framework and mutation authorization"
+      ],
+      "output_contract": [
+        "Reviewed test suite additions",
+        "Coverage enforcement result and test-generation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Focused and full tests plus coverage pass",
+        "Tower evidence gates pass when applicable"
+      ],
+      "does_not_own": [
+        "Production deployment approval",
+        "Unbounded test generation",
+        "Tower registry or generated-artifact authority"
       ]
     },
     {
@@ -608,6 +691,58 @@
       ]
     },
     {
+      "id": "computer-user-core",
+      "display_name": "Computer User Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/computer-user-core",
+      "entrypoint": "skills/computer-user-core/SKILL.md",
+      "purpose": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI events, and process supervision.",
+      "input_contract": [
+        "Target application or PID",
+        "Action sequence or keystroke payload",
+        "Screen capture request"
+      ],
+      "output_contract": [
+        "computer-user-action-receipt.json"
+      ],
+      "local_validation": [
+        "Target native process executes requested operation",
+        "Visual state transition verified with zero residual zombie processes"
+      ],
+      "does_not_own": [
+        "Cross-cloud authentication",
+        "Relational database transformations"
+      ]
+    },
+    {
+      "id": "connector-bridge",
+      "display_name": "Connector Bridge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/connector-bridge",
+      "entrypoint": "skills/connector-bridge/SKILL.md",
+      "purpose": "Unified, typed transport interface for stacking multi-cloud services with exponential backoff and rate-limiting.",
+      "input_contract": [
+        "Endpoint definition and credentials",
+        "Protocol specification (REST/PostgREST/RPC)",
+        "Payload data"
+      ],
+      "output_contract": [
+        "connector-response-receipt.json"
+      ],
+      "local_validation": [
+        "Upstream service returns valid response",
+        "Payload satisfies typed schema with token budget respected"
+      ],
+      "does_not_own": [
+        "Long-horizon mission planning",
+        "Local file editing"
+      ]
+    },
+    {
       "id": "context-capsule",
       "display_name": "Context Capsule",
       "ownership": "glaciereq",
@@ -656,6 +791,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "cross-app-pipeline",
+      "display_name": "Cross App Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/cross-app-pipeline",
+      "entrypoint": "skills/cross-app-pipeline/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
       ]
     },
     {
@@ -758,6 +915,54 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "epicenter",
+      "display_name": "Epicenter",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/epicenter",
+      "entrypoint": "skills/epicenter/SKILL.md",
+      "purpose": "Unified epistemic core of the GlacierEQ APEX stack. Defines the Three Layers of Knowing (L0 presence, L1 structure, L2 verified behavior) and one law of action. Any sovereign runtime (opencode, kilo, ",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "epistemic-gate",
+      "display_name": "Epistemic Gate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/epistemic-gate",
+      "entrypoint": "skills/epistemic-gate/SKILL.md",
+      "purpose": "Enforce the 6-Tier Epistemic Ladder (L0 to L6) as an immutable verification gate on all actions and assertions.",
+      "input_contract": [
+        "Proposed operational action",
+        "Artifact or claim state",
+        "Supporting evidence or test logs"
+      ],
+      "output_contract": [
+        "epistemic-verification-receipt.json"
+      ],
+      "local_validation": [
+        "Claim meets or exceeds L2 for local execution or L5 for enterprise deliverables",
+        "Cryptographic SHA-256 evidence is recorded with zero stubs"
+      ],
+      "does_not_own": [
+        "Task scheduling",
+        "Broad AST parsing"
       ]
     },
     {
@@ -992,6 +1197,28 @@
       ]
     },
     {
+      "id": "gmail-orchestrator",
+      "display_name": "Gmail Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/gmail-orchestrator",
+      "entrypoint": "skills/gmail-orchestrator/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
       "id": "handoff-record",
       "display_name": "Handoff Record",
       "ownership": "glaciereq",
@@ -1014,6 +1241,28 @@
       "does_not_own": [
         "Vague continuation",
         "Concealed failed attempts"
+      ]
+    },
+    {
+      "id": "icloud-voice-memos",
+      "display_name": "Icloud Voice Memos",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/icloud-voice-memos",
+      "entrypoint": "skills/icloud-voice-memos/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
       ]
     },
     {
@@ -1064,6 +1313,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "legal-motion-template",
+      "display_name": "Legal Motion Template",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legal-motion-template",
+      "entrypoint": "skills/legal-motion-template/SKILL.md",
+      "purpose": "Generate Hawaii family court motions with proper captions, service certificates, jurisdiction hooks, and Kalua Doctrine traps. Compliant with HAWAII RULES OF CIVIL PROCEDURE (HRCP).",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
       ]
     },
     {
@@ -2572,110 +2843,6 @@
       ]
     },
     {
-      "id": "epistemic-gate",
-      "display_name": "Epistemic Gate",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/epistemic-gate",
-      "entrypoint": "skills/epistemic-gate/SKILL.md",
-      "purpose": "Enforce the 6-Tier Epistemic Ladder (L0 to L6) as an immutable verification gate on all actions and assertions.",
-      "input_contract": [
-        "Proposed operational action",
-        "Artifact or claim state",
-        "Supporting evidence or test logs"
-      ],
-      "output_contract": [
-        "epistemic-verification-receipt.json"
-      ],
-      "local_validation": [
-        "Claim meets or exceeds L2 for local execution or L5 for enterprise deliverables",
-        "Cryptographic SHA-256 evidence is recorded with zero stubs"
-      ],
-      "does_not_own": [
-        "Task scheduling",
-        "Broad AST parsing"
-      ]
-    },
-    {
-      "id": "computer-user-core",
-      "display_name": "Computer User Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/computer-user-core",
-      "entrypoint": "skills/computer-user-core/SKILL.md",
-      "purpose": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI events, and process supervision.",
-      "input_contract": [
-        "Target application or PID",
-        "Action sequence or keystroke payload",
-        "Screen capture request"
-      ],
-      "output_contract": [
-        "computer-user-action-receipt.json"
-      ],
-      "local_validation": [
-        "Target native process executes requested operation",
-        "Visual state transition verified with zero residual zombie processes"
-      ],
-      "does_not_own": [
-        "Cross-cloud authentication",
-        "Relational database transformations"
-      ]
-    },
-    {
-      "id": "connector-bridge",
-      "display_name": "Connector Bridge",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/connector-bridge",
-      "entrypoint": "skills/connector-bridge/SKILL.md",
-      "purpose": "Unified, typed transport interface for stacking multi-cloud services with exponential backoff and rate-limiting.",
-      "input_contract": [
-        "Endpoint definition and credentials",
-        "Protocol specification (REST/PostgREST/RPC)",
-        "Payload data"
-      ],
-      "output_contract": [
-        "connector-response-receipt.json"
-      ],
-      "local_validation": [
-        "Upstream service returns valid response",
-        "Payload satisfies typed schema with token budget respected"
-      ],
-      "does_not_own": [
-        "Long-horizon mission planning",
-        "Local file editing"
-      ]
-    },
-    {
-      "id": "pipeline-compositor",
-      "display_name": "Pipeline Compositor",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/pipeline-compositor",
-      "entrypoint": "skills/pipeline-compositor/SKILL.md",
-      "purpose": "Compose isolated skills, connectors, and agent runtimes into verified, fault-tolerant DAG pipelines.",
-      "input_contract": [
-        "Pipeline stage definitions",
-        "Dependency and edge type contracts",
-        "Checkpoint configuration"
-      ],
-      "output_contract": [
-        "pipeline-execution-manifest.json"
-      ],
-      "local_validation": [
-        "DAG topology is verified acyclic",
-        "Pipeline executes from source to terminal nodes without type errors"
-      ],
-      "does_not_own": [
-        "Unbounded recursive loops",
-        "Low-level kernel drivers"
-      ]
-    },
-    {
       "id": "mega-spacex-mission-control",
       "display_name": "Spacex Mission Control (Mega)",
       "ownership": "glaciereq",
@@ -2956,6 +3123,50 @@
       ]
     },
     {
+      "id": "neo4j-intelligence-graph",
+      "display_name": "Neo4J Intelligence Graph",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/neo4j-intelligence-graph",
+      "entrypoint": "skills/neo4j-intelligence-graph/SKILL.md",
+      "purpose": "Build and query 5-layer case intelligence graphs in Neo4j. Models actors, evidence, legal strategies, and constitutional violations as interconnected knowledge graphs with RICO predicate mapping.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "notion-sync-automation",
+      "display_name": "Notion Sync Automation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/notion-sync-automation",
+      "entrypoint": "skills/notion-sync-automation/SKILL.md",
+      "purpose": "Bidirectional sync between unified-memory-mcp and Notion databases. Real-time memory \u2194 Notion replication with conflict resolution and audit trails.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
       "id": "omni-memory-core",
       "display_name": "Omni Memory Core",
       "ownership": "glaciereq",
@@ -3007,6 +3218,54 @@
       ]
     },
     {
+      "id": "pantheon-extraction",
+      "display_name": "Pantheon Extraction",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/pantheon-extraction",
+      "entrypoint": "skills/pantheon-extraction/SKILL.md",
+      "purpose": "Parse and extract ChatGPT conversation JSONs into doctrine cards with forensic hashing. Recovers Aionic Tree mythology source canon with immutable provenance records.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "pipeline-compositor",
+      "display_name": "Pipeline Compositor",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/pipeline-compositor",
+      "entrypoint": "skills/pipeline-compositor/SKILL.md",
+      "purpose": "Compose isolated skills, connectors, and agent runtimes into verified, fault-tolerant DAG pipelines.",
+      "input_contract": [
+        "Pipeline stage definitions",
+        "Dependency and edge type contracts",
+        "Checkpoint configuration"
+      ],
+      "output_contract": [
+        "pipeline-execution-manifest.json"
+      ],
+      "local_validation": [
+        "DAG topology is verified acyclic",
+        "Pipeline executes from source to terminal nodes without type errors"
+      ],
+      "does_not_own": [
+        "Unbounded recursive loops",
+        "Low-level kernel drivers"
+      ]
+    },
+    {
       "id": "polyglot-rosetta-core",
       "display_name": "Polyglot Rosetta Core",
       "ownership": "glaciereq",
@@ -3033,6 +3292,28 @@
       ]
     },
     {
+      "id": "potato-peeler-maximized",
+      "display_name": "Potato Peeler Maximized",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/potato-peeler-maximized",
+      "entrypoint": "skills/potato-peeler-maximized/SKILL.md",
+      "purpose": "Specialized capability",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
       "id": "primordial-mesh",
       "display_name": "Primordial Mesh",
       "ownership": "glaciereq",
@@ -3055,6 +3336,50 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "primordial-mesh-titan",
+      "display_name": "Primordial Mesh Titan",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/primordial-mesh-titan",
+      "entrypoint": "skills/primordial-mesh-titan/SKILL.md",
+      "purpose": "Primordial Mesh Titan \u2014 infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordi",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
+      "id": "pro-code-pro-code-double-helix",
+      "display_name": "Pro Code Pro Code Double Helix",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/pro-code-pro-code-double-helix",
+      "entrypoint": "skills/pro-code-pro-code-double-helix/SKILL.md",
+      "purpose": "Structure GitHub pro-code and pro_code as double helix of complementary forces for maximum positive impact on systems, legal tech, evidence automation, mission advancement, and Case 1FDV-23-0001009 Ke",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
       ]
     },
     {
@@ -3233,6 +3558,53 @@
       ]
     },
     {
+      "id": "skills",
+      "display_name": "Skills",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/skills",
+      "entrypoint": "skills/skills/SKILL.md",
+      "purpose": "Discover, validate, select, compose, and maintain Manus-compatible skills with evidence-backed audits.",
+      "input_contract": [
+        "Skill package or repository path",
+        "Target runtime or validation contract"
+      ],
+      "output_contract": [
+        "Skill audit table",
+        "Validation result and remediation actions"
+      ],
+      "local_validation": [
+        "Run the platform quick validator and repository checks"
+      ],
+      "does_not_own": [
+        "Long-horizon mission orchestration",
+        "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "sovereign-genesis-prime",
+      "display_name": "Sovereign Genesis Prime",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/sovereign-genesis-prime",
+      "entrypoint": "skills/sovereign-genesis-prime/SKILL.md",
+      "purpose": "Activate Sovereign Neural Link, Supermemory Control Plane, and Genesis Prime Ascension Protocol. Deploys MCP constellation, agent swarms, RealityValidator forensic logging (SHA-256 / Blake2b), and cre",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
       "id": "spacex-mission-control",
       "display_name": "Spacex Mission Control",
       "ownership": "glaciereq",
@@ -3308,6 +3680,28 @@
       ]
     },
     {
+      "id": "whisperx-audio-processing",
+      "display_name": "Whisperx Audio Processing",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/whisperx-audio-processing",
+      "entrypoint": "skills/whisperx-audio-processing/SKILL.md",
+      "purpose": "Process audio files through WhisperX (3-engine consensus transcription). Generates transcripts with SHA-256 Chain of Custody hashes and timestamps for forensic authentication.",
+      "input_contract": [
+        "Structured operational task payload"
+      ],
+      "output_contract": [
+        "Execution receipt or artifact"
+      ],
+      "local_validation": [
+        "Passes domain assertions"
+      ],
+      "does_not_own": [
+        "Unbounded scope"
+      ]
+    },
+    {
       "id": "work-packet",
       "display_name": "Work Packet",
       "ownership": "glaciereq",
@@ -3355,378 +3749,6 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
-      ]
-    },
-    {
-      "id": "cross-app-pipeline",
-      "display_name": "Cross App Pipeline",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/cross-app-pipeline",
-      "entrypoint": "skills/cross-app-pipeline/SKILL.md",
-      "purpose": "Specialized capability",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "gmail-orchestrator",
-      "display_name": "Gmail Orchestrator",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/gmail-orchestrator",
-      "entrypoint": "skills/gmail-orchestrator/SKILL.md",
-      "purpose": "Specialized capability",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "icloud-voice-memos",
-      "display_name": "Icloud Voice Memos",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/icloud-voice-memos",
-      "entrypoint": "skills/icloud-voice-memos/SKILL.md",
-      "purpose": "Specialized capability",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "legal-motion-template",
-      "display_name": "Legal Motion Template",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/legal-motion-template",
-      "entrypoint": "skills/legal-motion-template/SKILL.md",
-      "purpose": "Generate Hawaii family court motions with proper captions, service certificates, jurisdiction hooks, and Kalua Doctrine traps. Compliant with HAWAII RULES OF CIVIL PROCEDURE (HRCP).",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "neo4j-intelligence-graph",
-      "display_name": "Neo4J Intelligence Graph",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/neo4j-intelligence-graph",
-      "entrypoint": "skills/neo4j-intelligence-graph/SKILL.md",
-      "purpose": "Build and query 5-layer case intelligence graphs in Neo4j. Models actors, evidence, legal strategies, and constitutional violations as interconnected knowledge graphs with RICO predicate mapping.",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "notion-sync-automation",
-      "display_name": "Notion Sync Automation",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/notion-sync-automation",
-      "entrypoint": "skills/notion-sync-automation/SKILL.md",
-      "purpose": "Bidirectional sync between unified-memory-mcp and Notion databases. Real-time memory \u2194 Notion replication with conflict resolution and audit trails.",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "pantheon-extraction",
-      "display_name": "Pantheon Extraction",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/pantheon-extraction",
-      "entrypoint": "skills/pantheon-extraction/SKILL.md",
-      "purpose": "Parse and extract ChatGPT conversation JSONs into doctrine cards with forensic hashing. Recovers Aionic Tree mythology source canon with immutable provenance records.",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "potato-peeler-maximized",
-      "display_name": "Potato Peeler Maximized",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/potato-peeler-maximized",
-      "entrypoint": "skills/potato-peeler-maximized/SKILL.md",
-      "purpose": "Specialized capability",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "primordial-mesh-titan",
-      "display_name": "Primordial Mesh Titan",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/primordial-mesh-titan",
-      "entrypoint": "skills/primordial-mesh-titan/SKILL.md",
-      "purpose": "Primordial Mesh Titan \u2014 infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordi",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "pro-code-pro-code-double-helix",
-      "display_name": "Pro Code Pro Code Double Helix",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/pro-code-pro-code-double-helix",
-      "entrypoint": "skills/pro-code-pro-code-double-helix/SKILL.md",
-      "purpose": "Structure GitHub pro-code and pro_code as double helix of complementary forces for maximum positive impact on systems, legal tech, evidence automation, mission advancement, and Case 1FDV-23-0001009 Ke",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "sovereign-genesis-prime",
-      "display_name": "Sovereign Genesis Prime",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/sovereign-genesis-prime",
-      "entrypoint": "skills/sovereign-genesis-prime/SKILL.md",
-      "purpose": "Activate Sovereign Neural Link, Supermemory Control Plane, and Genesis Prime Ascension Protocol. Deploys MCP constellation, agent swarms, RealityValidator forensic logging (SHA-256 / Blake2b), and cre",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "whisperx-audio-processing",
-      "display_name": "Whisperx Audio Processing",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/whisperx-audio-processing",
-      "entrypoint": "skills/whisperx-audio-processing/SKILL.md",
-      "purpose": "Process audio files through WhisperX (3-engine consensus transcription). Generates transcripts with SHA-256 Chain of Custody hashes and timestamps for forensic authentication.",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    },
-    {
-      "id": "epicenter",
-      "display_name": "Epicenter",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/epicenter",
-      "entrypoint": "skills/epicenter/SKILL.md",
-      "purpose": "Unified epistemic core of the GlacierEQ APEX stack. Defines the Three Layers of Knowing (L0 presence, L1 structure, L2 verified behavior) and one law of action. Any sovereign runtime (opencode, kilo, ",
-      "input_contract": [
-        "Structured operational task payload"
-      ],
-      "output_contract": [
-        "Execution receipt or artifact"
-      ],
-      "local_validation": [
-        "Passes domain assertions"
-      ],
-      "does_not_own": [
-        "Unbounded scope"
-      ]
-    }
-    ,
-    {
-      "id": "skills",
-      "display_name": "Skills",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/skills",
-      "entrypoint": "skills/skills/SKILL.md",
-      "purpose": "Discover, validate, select, compose, and maintain Manus-compatible skills with evidence-backed audits.",
-      "input_contract": [
-        "Skill package or repository path",
-        "Target runtime or validation contract"
-      ],
-      "output_contract": [
-        "Skill audit table",
-        "Validation result and remediation actions"
-      ],
-      "local_validation": [
-        "Run the platform quick validator and repository checks"
-      ],
-      "does_not_own": [
-        "Long-horizon mission orchestration",
-        "Unverified external mutations"
-      ]
-    }
-    ,
-    {
-      "id": "automated-code-refactoring",
-      "display_name": "Automated Code Refactoring",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/automated-code-refactoring",
-      "entrypoint": "skills/automated-code-refactoring/SKILL.md",
-      "purpose": "Apply bounded, syntax-aware, evidence-driven code transformations with reversible batches, semantic verification, and Tower of Babel handoffs.",
-      "input_contract": [
-        "Repository root and approved refactoring scope",
-        "Target language/toolchain and behavior invariants",
-        "Acceptance tests and mutation authorization"
-      ],
-      "output_contract": [
-        "Verified refactoring patch",
-        "Refactoring receipt with tests, warnings, and rollback path"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "Repository tests, builds, and diff checks pass",
-        "Tower preflight and evidence gates pass when applicable"
-      ],
-      "does_not_own": [
-        "Unbounded rewrites",
-        "Production deployment approval",
-        "Tower registry or generated-artifact authority"
-      ]
-    }
-    ,
-    {
-      "id": "automated-test-generation",
-      "display_name": "Automated Test Generation",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/automated-test-generation",
-      "entrypoint": "skills/automated-test-generation/SKILL.md",
-      "purpose": "Generate meaningful automated tests, measure and enforce coverage, and produce evidence-backed quality receipts across repository and Tower toolchain lanes.",
-      "input_contract": [
-        "Repository root and target test scope",
-        "Behavioral risks, coverage baseline, and threshold policy",
-        "Test framework and mutation authorization"
-      ],
-      "output_contract": [
-        "Reviewed test suite additions",
-        "Coverage enforcement result and test-generation receipt"
-      ],
-      "local_validation": [
-        "Platform manifest validation passes",
-        "Focused and full tests plus coverage pass",
-        "Tower evidence gates pass when applicable"
-      ],
-      "does_not_own": [
-        "Production deployment approval",
-        "Unbounded test generation",
-        "Tower registry or generated-artifact authority"
       ]
     }
     ,

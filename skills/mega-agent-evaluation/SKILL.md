@@ -1,9 +1,9 @@
 ---
 name: mega-agent-evaluation
-description: Agent Evaluation
-domains: [agent-evaluation]
-token_profile: Lean
+description: "Agent Evaluation"
 ---
+
+
 
 # MEGA-AGENT-EVALUATION
 

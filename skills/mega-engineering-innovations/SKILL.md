@@ -1,9 +1,9 @@
 ---
 name: mega-engineering-innovations
-description: Engineering Innovations (GlacierEQ)
-domains: [engineering-innovations]
-token_profile: Lean
+description: "Engineering Innovations (GlacierEQ)"
 ---
+
+
 
 # MEGA-ENGINEERING-INNOVATIONS
 

@@ -1,7 +1,8 @@
 ---
 name: context-capsule
-description: Create a compact, current-state capsule that preserves the information needed for the next work chunk without replaying full history. Use before handoffs, resumption, context compaction, delegation, or any complex step requiring focused inputs.
+description: "Create a compact, current-state capsule that preserves the information needed for the next work chunk without replaying full history. Use before handoffs, resumption, context compaction, delegation, or any complex step requiring focused inputs."
 ---
+
 
 # Context Capsule
 

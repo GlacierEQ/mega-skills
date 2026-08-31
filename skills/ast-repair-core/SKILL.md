@@ -1,7 +1,8 @@
 ---
 name: ast-repair-core
-description: Closed-loop AST traceback parsing, pinpoint defect localization, and surgical automated code patching to achieve 100% green test assertions.
+description: "Closed-loop AST traceback parsing, pinpoint defect localization, and surgical automated code patching to achieve 100% green test assertions."
 ---
+
 
 # AST Repair Core
 

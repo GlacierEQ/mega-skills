@@ -1,7 +1,8 @@
 ---
 name: sovereign-genesis-prime
-description: Activate Sovereign Neural Link, Supermemory Control Plane, and Genesis Prime Ascension Protocol. Deploys MCP constellation, agent swarms, RealityValidator forensic logging (SHA-256 / Blake2b), and credential injection patterns for pro_code missions, Kekoa protection, and sovereign AI memory architecture.
+description: "Activate Sovereign Neural Link, Supermemory Control Plane, and Genesis Prime Ascension Protocol. Deploys MCP constellation, agent swarms, RealityValidator forensic logging (SHA-256 / Blake2b), and credential injection patterns for pro_code missions, Kekoa protection, and sovereign AI memory architecture."
 ---
+
 
 # SOVEREIGN-GENESIS-PRIME — Monolith Edition
 

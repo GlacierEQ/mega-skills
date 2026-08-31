@@ -1,9 +1,9 @@
 ---
 name: mega-mermicorn-mega-boot
-description: Mermicorn Mega Boot
-domains: [mermicorn-mega-boot]
-token_profile: Lean
+description: "Mermicorn Mega Boot"
 ---
+
+
 
 # MEGA-MERMICORN-MEGA-BOOT
 

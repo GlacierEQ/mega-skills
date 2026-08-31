@@ -1,10 +1,9 @@
 ---
 name: apple-ane-kv-quantizer
-description: Operating inside the Apple ANE KV-Quantizer job-app portfolio repo at
-  github.com/GlacierEQ/apple-ane-kv-quantizer. Targets the Apple Neural Engine + KV-cache
-  quantization orbit.
-version: 0.1.0
+description: "Operating inside the Apple ANE KV-Quantizer job-app portfolio repo at github.com/GlacierEQ/apple-ane-kv-quantizer. Targets the Apple Neural Engine + KV-cache quantization orbit."
 ---
+
+
 
 # Apple ANE KV-Quantizer (job-app portfolio)
 

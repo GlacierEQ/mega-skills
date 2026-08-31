@@ -1,9 +1,8 @@
 ---
 name: mega-research-study-act
-description: 🥋 Research -> Study -> Act: Elite Engineering Protocol
-domains: [research-study-act]
-token_profile: Lean
+description: "🥋 Research -> Study -> Act: Elite Engineering Protocol"
 ---
+
 
 # MEGA-RESEARCH-STUDY-ACT
 

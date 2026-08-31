@@ -1,11 +1,9 @@
 ---
 name: quantum-nexus
-description: Operating inside the Quantum Legal Intelligence System at /root/quantum_nexus.
-  Vault, memory, CourtListener integration, MCP server, and the buckets (identity,
-  legal, technical, memory, services, cloud). Use when working on legal intelligence,
-  vault, or the memory bucket system.
-version: 0.1.0
+description: "Operating inside the Quantum Legal Intelligence System at /root/quantum_nexus. Vault, memory, CourtListener integration, MCP server, and the buckets (identity, legal, technical, memory, services, cloud). Use when working on legal intelligence, vault, or the memory bucket system."
 ---
+
+
 
 # Quantum Nexus
 

@@ -1,11 +1,9 @@
 ---
 name: agent-evaluation
-description: "Testing and benchmarking LLM agents including behavioral testing, capability\
-  \ assessment, reliability metrics, and production monitoring\u2014where even top\
-  \ agents achieve less than 50% on real-world benchmarks Use when: agent testing,\
-  \ agent evaluation, benchmark agents, agent reliability, test agent."
-version: 0.1.0
+description: "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring—where even top agents achieve less than 50% on real-world benchmarks Use when: agent testing, agent evaluation, benchmark agents, agent reliability, test agent."
 ---
+
+
 
 # Agent Evaluation
 

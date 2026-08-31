@@ -1,9 +1,9 @@
 ---
 name: mega-docker-devops
-description: Docker & DevOps Skill — Container Infrastructure & Deployment
-domains: [docker-devops]
-token_profile: Lean
+description: "Docker & DevOps Skill — Container Infrastructure & Deployment"
 ---
+
+
 
 # MEGA-DOCKER-DEVOPS
 

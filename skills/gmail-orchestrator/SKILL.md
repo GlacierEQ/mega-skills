@@ -1,7 +1,8 @@
 ---
 name: gmail-orchestrator
-description: Headless browser-based Gmail control for triage, drafting, and forensic extraction.
+description: "Headless browser-based Gmail control for triage, drafting, and forensic extraction."
 ---
+
 
 # Gmail Orchestrator
 

@@ -1,9 +1,9 @@
 ---
 name: mega-conversation-memory
-description: Conversation Memory
-domains: [conversation-memory]
-token_profile: Lean
+description: "Conversation Memory"
 ---
+
+
 
 # MEGA-CONVERSATION-MEMORY
 

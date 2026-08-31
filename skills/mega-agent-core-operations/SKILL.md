@@ -1,7 +1,8 @@
 ---
 name: mega-agent-core-operations
-description: Consolidated mega skill encompassing 7 sub-skills.
+description: "Consolidated mega skill encompassing 7 sub-skills."
 ---
+
 
 # MEGA-AGENT-CORE-OPERATIONS
 

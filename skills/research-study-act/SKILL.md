@@ -1,9 +1,9 @@
 ---
 name: research-study-act
-description: 'Elite Tri-Phase Engineering Protocol: Research -> Study -> Act. Enforces
-  cutting-edge code quality, architectural rigor, and verifiable test-driven execution.'
-version: 0.1.0
+description: "Elite Tri-Phase Engineering Protocol: Research - Study - Act. Enforces cutting-edge code quality, architectural rigor, and verifiable test-driven execution."
 ---
+
+
 
 # 🥋 Research -> Study -> Act: Elite Engineering Protocol
 

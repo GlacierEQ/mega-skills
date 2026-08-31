@@ -1,9 +1,9 @@
 ---
 name: mega-cc-skill-security-review
-description: Security Review Skill
-domains: [cc-skill-security-review]
-token_profile: Lean
+description: "Security Review Skill"
 ---
+
+
 
 # MEGA-CC-SKILL-SECURITY-REVIEW
 

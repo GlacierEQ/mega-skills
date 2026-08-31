@@ -1,10 +1,9 @@
 ---
 name: genesis-prime
-description: Operating inside Genesis Prime at /root/genesis-prime. Memory integration,
-  document processing, and the AI pipeline that ingests external sources. Use when
-  wiring document ingestion or extending the AI pipeline.
-version: 0.1.0
+description: "Operating inside Genesis Prime at /root/genesis-prime. Memory integration, document processing, and the AI pipeline that ingests external sources. Use when wiring document ingestion or extending the AI pipeline."
 ---
+
+
 
 # Genesis Prime
 

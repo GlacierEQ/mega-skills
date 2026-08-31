@@ -1,7 +1,8 @@
 ---
 name: work-packet
-description: Define a bounded, testable assignment for a specialist, agent, or sequential work chunk. Use when work must be delegated, handed off, isolated for verification, or performed without relying on implicit conversational context.
+description: "Define a bounded, testable assignment for a specialist, agent, or sequential work chunk. Use when work must be delegated, handed off, isolated for verification, or performed without relying on implicit conversational context."
 ---
+
 
 # Work Packet
 

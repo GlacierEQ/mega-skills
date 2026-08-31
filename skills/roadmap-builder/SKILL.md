@@ -1,7 +1,8 @@
 ---
 name: roadmap-builder
-description: Convert a mission contract into a dependency-aware sequence of verifiable work chunks. Use when work must be planned across phases, artifacts, risks, or specialist handoffs.
+description: "Convert a mission contract into a dependency-aware sequence of verifiable work chunks. Use when work must be planned across phases, artifacts, risks, or specialist handoffs."
 ---
+
 
 # Roadmap Builder
 

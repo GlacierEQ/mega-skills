@@ -1,7 +1,8 @@
 ---
 name: computer-user-core
-description: Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI event simulation, window state inspection, and process lifecycle supervision.
+description: "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI event simulation, window state inspection, and process lifecycle supervision."
 ---
+
 
 # Computer User Core
 
