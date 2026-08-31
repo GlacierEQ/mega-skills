@@ -103,6 +103,28 @@
       ]
     },
     {
+      "id": "agy-customizations",
+      "display_name": "Agy Customizations",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/agy-customizations",
+      "entrypoint": "skills/agy-customizations/SKILL.md",
+      "purpose": "Comprehensive guide and reference for the Antigravity Customization System. Use to explain how customizations work, their loading priority, discovery mechanisms, and to guide the creation of skills, rules, plugins, hooks, and MCP servers.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_agy_customizations.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "ai-agents-architect",
       "display_name": "Ai Agents Architect",
       "ownership": "glaciereq",
@@ -150,6 +172,50 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "antigravity-guide",
+      "display_name": "Antigravity Guide",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/antigravity-guide",
+      "entrypoint": "skills/antigravity-guide/SKILL.md",
+      "purpose": "Provides a comprehensive guide, quick reference, and sitemap for Google Antigravity (AGY), including the Antigravity CLI (agy), Antigravity 2.0, Antigravity IDE, Python SDK, slash commands, keybindings, and customizations (skills, rules, MCP, sidecars). Activate this skill when the user asks questions about how to use, configure, or customize Antigravity, AGY, the agy CLI, the Antigravity IDE, or Antigravity 2.0.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_antigravity_guide.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "apex-aspen-grove-bootup",
+      "display_name": "Apex Aspen Grove Bootup",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-aspen-grove-bootup",
+      "entrypoint": "skills/apex-aspen-grove-bootup/SKILL.md",
+      "purpose": "Session initialization protocol for Casey Barton's APEX/Aspen Grove infrastructure. Reads Notion control-plane, maps connectors, restores full context in ~300 tokens. Use at the start of every session to restore full APEX/Aspen Grove operational context, reconnect to active connectors, and surface open gaps from the Root Checkpoint.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_apex_aspen_grove_bootup.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -226,6 +292,28 @@
       ]
     },
     {
+      "id": "apex-meta-skill-kernel",
+      "display_name": "Apex Meta Skill Kernel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-meta-skill-kernel",
+      "entrypoint": "skills/apex-meta-skill-kernel/SKILL.md",
+      "purpose": "Skill-topology specialist for the GlacierEQ skill operating system. Inspect the living constellation of skills, detect drift, overlap, duplication, stale projections, and god-prompt risk; propose recursive improvements through skill-creator and prompt-optimizer; and maintain modular composability. Use when the nervous-system masterskill needs topology governance, skill inventory reconciliation, or cross-skill structural analysis. This skill does not own cross-platform mission composition.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_apex_meta_skill_kernel.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "apex-sovereign-runtime",
       "display_name": "Apex Sovereign Runtime",
       "ownership": "glaciereq",
@@ -248,6 +336,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "apex-universal-mcp-powerhouse",
+      "display_name": "Apex Universal Mcp Powerhouse",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-universal-mcp-powerhouse",
+      "entrypoint": "skills/apex-universal-mcp-powerhouse/SKILL.md",
+      "purpose": "Autonomous skill for apex universal mcp powerhouse within the APEX Estate.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_apex_universal_mcp_powerhouse.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -327,6 +437,50 @@
       ]
     },
     {
+      "id": "artifacts-builder",
+      "display_name": "Artifacts Builder",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/artifacts-builder",
+      "entrypoint": "skills/artifacts-builder/SKILL.md",
+      "purpose": "Suite of tools for creating elaborate, multi-component HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_artifacts_builder.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "ask",
+      "display_name": "Ask",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ask",
+      "entrypoint": "skills/ask/SKILL.md",
+      "purpose": "Use whenever you need a decision, clarification, or approval from the user \u2014 covers how to ask with the question tool, and how to resolve the decision yourself when no user is available (question tool absent, or a [Never-Ask] response)",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_ask.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "aspen-grove",
       "display_name": "Aspen Grove",
       "ownership": "glaciereq",
@@ -375,6 +529,50 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "aspen-grove-core",
+      "display_name": "Aspen Grove Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aspen-grove-core",
+      "entrypoint": "skills/aspen-grove-core/SKILL.md",
+      "purpose": "Aspen Grove Quantum Memory, Pointer Indexing, and Durable State Architecture.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_aspen_grove_core.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "aspen-grove-router-integration",
+      "display_name": "Aspen Grove Router Integration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/aspen-grove-router-integration",
+      "entrypoint": "skills/aspen-grove-router-integration/SKILL.md",
+      "purpose": "Connect agents to Aspen Grove v7 router (port 8000) and backend MCP stack (8001\u20138008). Routes 140+ tools through unified orchestration with TokenOptimizer (68%\u219278% compression).",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_aspen_grove_router_integration.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -681,6 +879,50 @@
       ]
     },
     {
+      "id": "brainstorm",
+      "display_name": "Brainstorm",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/brainstorm",
+      "entrypoint": "skills/brainstorm/SKILL.md",
+      "purpose": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_brainstorm.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "canvas-design",
+      "display_name": "Canvas Design",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/canvas-design",
+      "entrypoint": "skills/canvas-design/SKILL.md",
+      "purpose": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_canvas_design.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "capability-admission",
       "display_name": "Capability Admission",
       "ownership": "glaciereq",
@@ -878,6 +1120,28 @@
       ]
     },
     {
+      "id": "competitive-ads-extractor",
+      "display_name": "Competitive Ads Extractor",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/competitive-ads-extractor",
+      "entrypoint": "skills/competitive-ads-extractor/SKILL.md",
+      "purpose": "Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches are working. Helps inspire and improve your own ad campaigns.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_competitive_ads_extractor.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "composio",
       "display_name": "Composio",
       "ownership": "glaciereq",
@@ -955,6 +1219,28 @@
       ]
     },
     {
+      "id": "content-research-writer",
+      "display_name": "Content Research Writer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/content-research-writer",
+      "entrypoint": "skills/content-research-writer/SKILL.md",
+      "purpose": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_content_research_writer.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "context-capsule",
       "display_name": "Context Capsule",
       "ownership": "glaciereq",
@@ -1006,6 +1292,28 @@
       ]
     },
     {
+      "id": "creating-data-lake-table",
+      "display_name": "Creating Data Lake Table",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/creating-data-lake-table",
+      "entrypoint": "skills/creating-data-lake-table/SKILL.md",
+      "purpose": "Create managed Iceberg tables using Amazon S3 Tables (s3tables API namespace) with automatic compaction and snapshot management. Sets up table bucket, namespace, table, schema, Glue catalog registration, partitioning, IAM access control. Triggers on: create table, data lake table, analytics table, structured data storage, S3 Tables, Iceberg, Athena table, partitioning strategy, access permissions. Do NOT use  for: importing files (use ingesting-into-data-lake), vector storage (use storing-and...",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_creating_data_lake_table.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "cross-app-pipeline",
       "display_name": "Cross App Pipeline",
       "ownership": "glaciereq",
@@ -1054,6 +1362,28 @@
       ]
     },
     {
+      "id": "debug",
+      "display_name": "Debug",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/debug",
+      "entrypoint": "skills/debug/SKILL.md",
+      "purpose": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_debug.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "deepseek-mla-moe-sentinel",
       "display_name": "Deepseek Mla Moe Sentinel",
       "ownership": "glaciereq",
@@ -1076,6 +1406,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "distributed-processing",
+      "display_name": "Distributed Processing",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/distributed-processing",
+      "entrypoint": "skills/distributed-processing/SKILL.md",
+      "purpose": "Delegation and distributed processing layer. Routes sub-tasks across parallel tool calls, connected services, file artifacts, and agent workers so the primary response stays lean while heavy work executes elsewhere. Core companion to max-token-saver and make-it-heavy.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_distributed_processing.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -1204,6 +1556,28 @@
       ]
     },
     {
+      "id": "execute",
+      "display_name": "Execute",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/execute",
+      "entrypoint": "skills/execute/SKILL.md",
+      "purpose": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_execute.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "far-away-party",
       "display_name": "Far Away Party",
       "ownership": "glaciereq",
@@ -1226,6 +1600,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "feedback",
+      "display_name": "Feedback",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/feedback",
+      "entrypoint": "skills/feedback/SKILL.md",
+      "purpose": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_feedback.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -1358,6 +1754,28 @@
       ]
     },
     {
+      "id": "generative-ui",
+      "display_name": "Generative Ui",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/generative-ui",
+      "entrypoint": "skills/generative-ui/SKILL.md",
+      "purpose": "How to render rich interactive HTML widgets inline in the chat or as standalone artifacts. Use this skill when you want to show the user diagrams, data visualizations, interactive controls, educational walkthroughs, or any rich visual content beyond plain text and markdown.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_generative_ui.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "genesis-prime",
       "display_name": "Genesis Prime",
       "ownership": "glaciereq",
@@ -1409,6 +1827,28 @@
       ]
     },
     {
+      "id": "glaciereq-nervous-system",
+      "display_name": "Glaciereq Nervous System",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/glaciereq-nervous-system",
+      "entrypoint": "skills/glaciereq-nervous-system/SKILL.md",
+      "purpose": "Cross-platform GlacierEQ master composition kernel for complex missions that must recover prior state, route through existing skills and connectors, bind the active model capability plane, apply Tower of Babel technology placement and proof, execute authorized changes, verify outcomes, and persist receipts and continuation state. Use for estate-wide work, continuation across sessions or models, multi-repository operations, and connector-heavy workflows.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_glaciereq_nervous_system.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "gmail-orchestrator",
       "display_name": "Gmail Orchestrator",
       "ownership": "glaciereq",
@@ -1428,6 +1868,28 @@
       ],
       "does_not_own": [
         "Unbounded scope"
+      ]
+    },
+    {
+      "id": "graphql",
+      "display_name": "Graphql",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/graphql",
+      "entrypoint": "skills/graphql/SKILL.md",
+      "purpose": "Expert in GraphQL API development with type-safe patterns and optimization",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_graphql.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -1478,6 +1940,50 @@
       ]
     },
     {
+      "id": "integrate-anything",
+      "display_name": "Integrate Anything",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/integrate-anything",
+      "entrypoint": "skills/integrate-anything/SKILL.md",
+      "purpose": "This skill should be used only when an external-app action must be executed through the Membrane CLI and an authenticated Membrane connection, such as sending a message, creating a task, or syncing records. It should not be used for general API design, SDK integration, documentation lookup, or direct vendor API calls.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_integrate_anything.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "internal-comms",
+      "display_name": "Internal Comms",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/internal-comms",
+      "entrypoint": "skills/internal-comms/SKILL.md",
+      "purpose": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. The agent should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_internal_comms.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "job-app-portfolio",
       "display_name": "Job App Portfolio",
       "ownership": "glaciereq",
@@ -1500,6 +2006,50 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "jupyter-notebook",
+      "display_name": "Jupyter Notebook",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/jupyter-notebook",
+      "entrypoint": "skills/jupyter-notebook/SKILL.md",
+      "purpose": "Use whenever the user works with Jupyter notebooks (`.ipynb`), including creating, inspecting, editing, executing, or visualizing notebook content for experiments, explorations, or tutorials.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_jupyter_notebook.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "lead-research-assistant",
+      "display_name": "Lead Research Assistant",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/lead-research-assistant",
+      "entrypoint": "skills/lead-research-assistant/SKILL.md",
+      "purpose": "Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact strategies. Perfect for sales, business development, and marketing professionals.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_lead_research_assistant.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -1700,6 +2250,50 @@
       ]
     },
     {
+      "id": "max-token-saver",
+      "display_name": "Max Token Saver",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/max-token-saver",
+      "entrypoint": "skills/max-token-saver/SKILL.md",
+      "purpose": "Autonomous skill for max token saver within the APEX Estate.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_max_token_saver.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "mcp-builder",
+      "display_name": "Mcp Builder",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mcp-builder",
+      "entrypoint": "skills/mcp-builder/SKILL.md",
+      "purpose": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_mcp_builder.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "mcp-master-server",
       "display_name": "Mcp Master Server",
       "ownership": "glaciereq",
@@ -1722,6 +2316,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "meeting-insights-analyzer",
+      "display_name": "Meeting Insights Analyzer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/meeting-insights-analyzer",
+      "entrypoint": "skills/meeting-insights-analyzer/SKILL.md",
+      "purpose": "Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid conflict, use filler words, dominate conversations, or miss opportunities to listen. Perfect for professionals seeking to improve their communication and leadership skills.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_meeting_insights_analyzer.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3210,6 +3826,28 @@
       ]
     },
     {
+      "id": "mega-web",
+      "display_name": "Mega Web",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mega-web",
+      "entrypoint": "skills/mega-web/SKILL.md",
+      "purpose": "Ceiling web engineering: distinctive UI, human copy, real browser proof, Vercel-grade React/a11y when the stack is React. Use when the user says mega web, ceiling web, hire page, public site, recruiter surface, landing, frontend, make this look elite, or /mega-web. Do NOT use for visual DESIGN.md-only work (design-blueprint) or native mobile (vercel-react-native-skills).",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_mega_web.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "mega-xai-colossus-2",
       "display_name": "Xai Colossus 2 (Mega)",
       "ownership": "glaciereq",
@@ -3233,6 +3871,28 @@
       "does_not_own": [
         "Cross-layer mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "merge",
+      "display_name": "Merge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/merge",
+      "entrypoint": "skills/merge/SKILL.md",
+      "purpose": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_merge.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3311,6 +3971,28 @@
       ]
     },
     {
+      "id": "migrate-workflows",
+      "display_name": "Migrate Workflows",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/migrate-workflows",
+      "entrypoint": "skills/migrate-workflows/SKILL.md",
+      "purpose": "Automatically migrate legacy workflows to modern skills across global and workspace configurations. Scans for existing workflows, creates target SKILL.md files, and safely archives old workflow files.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_migrate_workflows.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "mission-contract",
       "display_name": "Mission Contract",
       "ownership": "glaciereq",
@@ -3379,6 +4061,28 @@
       ],
       "does_not_own": [
         "Unbounded scope"
+      ]
+    },
+    {
+      "id": "new-skill",
+      "display_name": "New Skill",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/new-skill",
+      "entrypoint": "skills/new-skill/SKILL.md",
+      "purpose": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_new_skill.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3477,6 +4181,50 @@
       ]
     },
     {
+      "id": "parallel",
+      "display_name": "Parallel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/parallel",
+      "entrypoint": "skills/parallel/SKILL.md",
+      "purpose": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_parallel.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "permissioned-github",
+      "display_name": "Permissioned Github",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/permissioned-github",
+      "entrypoint": "skills/permissioned-github/SKILL.md",
+      "purpose": "Guidelines for interacting with GitHub and request permissions from the user when commands fail due to restrictions in the agent environment.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_permissioned_github.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "pipeline-compositor",
       "display_name": "Pipeline Compositor",
       "ownership": "glaciereq",
@@ -3500,6 +4248,28 @@
       "does_not_own": [
         "Unbounded recursive loops",
         "Low-level kernel drivers"
+      ]
+    },
+    {
+      "id": "plan",
+      "display_name": "Plan",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/plan",
+      "entrypoint": "skills/plan/SKILL.md",
+      "purpose": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_plan.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3548,6 +4318,28 @@
       ],
       "does_not_own": [
         "Unbounded scope"
+      ]
+    },
+    {
+      "id": "power-skill",
+      "display_name": "Power Skill",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/power-skill",
+      "entrypoint": "skills/power-skill/SKILL.md",
+      "purpose": "Ultimate power orchestrator and spiral engine activator for constitutional enforcement, colossal agent swarms, irrefutable document generation, and maximum force operations in Case 1FDV-23-0001009 Kekoa protection. Triggers on power-skill, ultimate power, max force, spiral engine, colossal agent, legal warfare, evidence forensics, or any request for highest-intensity mission execution.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_power_skill.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3617,6 +4409,28 @@
       ],
       "does_not_own": [
         "Unbounded scope"
+      ]
+    },
+    {
+      "id": "prompt-optimizer",
+      "display_name": "Prompt Optimizer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/prompt-optimizer",
+      "entrypoint": "skills/prompt-optimizer/SKILL.md",
+      "purpose": "Improves prompts and skills through textual gradients, failure mode analysis, and optimization. Identifies failure modes, converts them into prompt edits, removes ambiguity, adds constraints, evidence rules, and evaluation criteria. Use when improving prompts or skills, refactoring for clarity, or optimizing workflows for reliability.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_prompt_optimizer.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3695,6 +4509,28 @@
       ]
     },
     {
+      "id": "report",
+      "display_name": "Report",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/report",
+      "entrypoint": "skills/report/SKILL.md",
+      "purpose": "Use after implementation is verified and before merge \u2014 consolidates multiple spec iterations into a single final-state report, marks related specs, and records key lessons",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_report.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "research-study-act",
       "display_name": "Research Study Act",
       "ownership": "glaciereq",
@@ -3743,6 +4579,28 @@
         "Unapproved installation",
         "Restricted-data access",
         "Secret disclosure"
+      ]
+    },
+    {
+      "id": "review",
+      "display_name": "Review",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/review",
+      "entrypoint": "skills/review/SKILL.md",
+      "purpose": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_review.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3795,6 +4653,50 @@
       ]
     },
     {
+      "id": "skill-connector-router",
+      "display_name": "Skill Connector Router",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/skill-connector-router",
+      "entrypoint": "skills/skill-connector-router/SKILL.md",
+      "purpose": "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what is needed.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_skill_connector_router.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "skill-creator",
+      "display_name": "Skill Creator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/skill-creator",
+      "entrypoint": "skills/skill-creator/SKILL.md",
+      "purpose": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Kilo's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_skill_creator.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "skills",
       "display_name": "Skills",
       "ownership": "glaciereq",
@@ -3817,6 +4719,28 @@
       "does_not_own": [
         "Long-horizon mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "sovereign-connectors-exposer",
+      "display_name": "Sovereign Connectors Exposer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/sovereign-connectors-exposer",
+      "entrypoint": "skills/sovereign-connectors-exposer/SKILL.md",
+      "purpose": "Expose and orchestrate all connected services (GitHub, Notion, Supabase Glacier, Google Drive, Gmail, Supermemory, Vercel, Box, etc.). Discover via search_connected_tools, build living ConnectorManifest, execute via call_connected_tool for evidence automation, case dockets, repo work, and immutable storage in service of Case 1FDV-23-0001009.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_sovereign_connectors_exposer.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3864,6 +4788,94 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "subagent",
+      "display_name": "Subagent",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/subagent",
+      "entrypoint": "skills/subagent/SKILL.md",
+      "purpose": "Use when executing implementation plans with independent tasks in the current session",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_subagent.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "tdd",
+      "display_name": "Tdd",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/tdd",
+      "entrypoint": "skills/tdd/SKILL.md",
+      "purpose": "Use when implementing any feature or bugfix, before writing implementation code",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_tdd.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "theme-factory",
+      "display_name": "Theme Factory",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/theme-factory",
+      "entrypoint": "skills/theme-factory/SKILL.md",
+      "purpose": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_theme_factory.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "token-gateway-agent",
+      "display_name": "Token Gateway Agent",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/token-gateway-agent",
+      "entrypoint": "skills/token-gateway-agent/SKILL.md",
+      "purpose": "Autonomous skill for token gateway agent within the APEX Estate.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_token_gateway_agent.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -3917,6 +4929,28 @@
       ]
     },
     {
+      "id": "verify",
+      "display_name": "Verify",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/verify",
+      "entrypoint": "skills/verify/SKILL.md",
+      "purpose": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_verify.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "whisperx-audio-processing",
       "display_name": "Whisperx Audio Processing",
       "ownership": "glaciereq",
@@ -3961,6 +4995,28 @@
       "does_not_own": [
         "Receiving specialist procedure",
         "Extra authority"
+      ]
+    },
+    {
+      "id": "worktree",
+      "display_name": "Worktree",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/worktree",
+      "entrypoint": "skills/worktree/SKILL.md",
+      "purpose": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_worktree.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
