@@ -1,8 +1,8 @@
 ---
 name: automated-performance-profiling
-description: Profile authorized software, identify evidence-backed performance bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, and cost improvements. Use when optimizing code, diagnosing slow paths, reducing memory or CPU pressure, tuning concurrency, enforcing performance budgets, or profiling Tower of Babel language and toolchain lanes.
-license: Complete terms in LICENSE.txt
+description: "Profile authorized software, identify evidence-backed performance bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, and cost improvements. Use when optimizing code, diagnosing slow paths, reducing memory or CPU pressure, tuning concurrency, enforcing performance budgets, or profiling Tower of Babel language and toolchain lanes."
 ---
+
 
 # Automated Performance Profiling
 

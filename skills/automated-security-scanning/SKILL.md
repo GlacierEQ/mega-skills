@@ -1,8 +1,8 @@
 ---
 name: automated-security-scanning
-description: Scan code, dependencies, containers, secrets, and configuration for security vulnerabilities, triage findings, generate safe fixes, and verify remediation. Use when performing automated security audits, dependency or secret scanning, secure code review, vulnerability remediation, or evidence-backed security quality gates.
-license: Complete terms in LICENSE.txt
+description: "Scan code, dependencies, containers, secrets, and configuration for security vulnerabilities, triage findings, generate safe fixes, and verify remediation. Use when performing automated security audits, dependency or secret scanning, secure code review, vulnerability remediation, or evidence-backed security quality gates."
 ---
+
 
 # Automated Security Scanning
 

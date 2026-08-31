@@ -1,8 +1,8 @@
 ---
 name: automated-architecture-analysis
-description: Analyze software architecture dependencies, detect circular references and forbidden edges, generate safe decoupling fixes, and enforce evidence-backed layering rules. Use when mapping module or service dependencies, preventing cycles, reviewing architecture drift, planning refactors, or validating Tower of Babel and polyglot boundaries.
-license: Complete terms in LICENSE.txt
+description: "Analyze software architecture dependencies, detect circular references and forbidden edges, generate safe decoupling fixes, and enforce evidence-backed layering rules. Use when mapping module or service dependencies, preventing cycles, reviewing architecture drift, planning refactors, or validating Tower of Babel and polyglot boundaries."
 ---
+
 
 # Automated Architecture Dependency Analysis
 
