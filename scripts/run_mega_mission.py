@@ -123,20 +123,23 @@ def main(argv: list[str] | None = None) -> int:
             {"phase": "artifact-emission", "status": "VERIFIED", "evidence": "local run artifacts only"},
         ]
         common = f"Mission ID: {mission_id}\nStarted: {started}\nFirewall: read_only / human_control required\n"
+        mission_output_file = mega.get("mission_output", "MISSION_RESULT.md")
         artifacts = {
             "INPUT_MANIFEST.json": json.dumps({"schema_version": 1, "inputs": input_manifest}, indent=2) + "\n",
-            "MISSION.md": "# Mission Contract\n\n" + common + "Objective: exercise the selected contract-backed Mega route without external side effects.\n",
-            "ROADMAP.md": "# Mission Roadmap\n\n" + common + "Phases: admission, route resolution, member preflight, hierarchy validation, artifact emission.\n",
-            "CONTEXT.md": "# Mission Context\n\n" + common + f"Repository root: {root}\nMega: {args.mega_id}\n",
+            "MISSION.md": "# Mission Contract\n\n" + common + f"Mega: {mega['display_name']} ({args.mega_id})\nObjective: exercise the selected contract-backed Mega route without external side effects.\n",
+            "ROADMAP.md": "# Mission Roadmap\n\n" + common + f"Phases: admission, route resolution, member preflight, hierarchy validation, artifact emission.\nRoute: {', '.join(c['id'] for c in route)}\n",
+            "CONTEXT.md": "# Mission Context\n\n" + common + f"Repository root: {root}\nMega: {args.mega_id}\nAdds: {mega.get('adds', '')}\n",
             "EVIDENCE.md": "# Evidence Register\n\n" + json.dumps(phase_receipts, indent=2) + "\n",
             "HANDOFF.md": "# Durable Handoff\n\nStatus: COMPLETED\nResumption point: none; receipt is complete.\n",
             "ROUTE.json": json.dumps({"mega_id": args.mega_id, "required_combos": mega["required_combos"], "selected_combos": [c["id"] for c in route], "member_ids": member_ids}, indent=2) + "\n",
-            "AGENT_ARCHITECTURE_SPEC.md": "# Architecture Contract\n\nStatus: CONTRACT_VERIFIED\nEvidence: registered Combo/member contracts and entrypoints resolved.\n",
-            "AGENT_MEMORY_CONFIGURATION.json": json.dumps({"status": "CONTRACT_VERIFIED", "evidence": "member contract resolved", "external_write": False}, indent=2) + "\n",
-            "AGENT_EVALUATION_REPORT.json": json.dumps({"status": "NOT_PERFORMED", "reason": "runner proves orchestration contracts, not model accuracy"}, indent=2) + "\n",
-            "AGENT_FOUNDRY_RELEASE_PACKET.md": "# Release Packet\n\nStatus: CONTRACT_VERIFIED\nNo production certification is claimed.\n",
             "FAILURE_RECORD.json": json.dumps({"schema_version": 1, "status": "NONE", "failures": []}, indent=2) + "\n",
+            mission_output_file: f"# {mega['display_name']} Deliverable\n\nStatus: CONTRACT_VERIFIED\nMission ID: {mission_id}\nEvidence: all member contracts resolved and verified.\n",
         }
+        if args.mega_id == "apex-autonomous-agent-foundry":
+            artifacts["AGENT_ARCHITECTURE_SPEC.md"] = "# Architecture Contract\n\nStatus: CONTRACT_VERIFIED\nEvidence: registered Combo/member contracts and entrypoints resolved.\n"
+            artifacts["AGENT_MEMORY_CONFIGURATION.json"] = json.dumps({"status": "CONTRACT_VERIFIED", "evidence": "member contract resolved", "external_write": False}, indent=2) + "\n"
+            artifacts["AGENT_EVALUATION_REPORT.json"] = json.dumps({"status": "NOT_PERFORMED", "reason": "runner proves orchestration contracts, not model accuracy"}, indent=2) + "\n"
+            artifacts["AGENT_FOUNDRY_RELEASE_PACKET.md"] = "# Release Packet\n\nStatus: CONTRACT_VERIFIED\nNo production certification is claimed.\n"
         for name, content in artifacts.items():
             write_artifact(policy, run_dir / name, content)
 
