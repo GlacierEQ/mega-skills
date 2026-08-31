@@ -365,6 +365,7 @@
       ],
       "conditional_combos": [
         "capability-readiness",
+        "frontier-orbit-synthesis",
         "polyglot-systems-verification",
         "secure-service-deployment"
       ],
