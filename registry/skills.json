@@ -3699,5 +3699,35 @@
         "Tower registry or generated-artifact authority"
       ]
     }
+    ,
+    {
+      "id": "automated-test-generation",
+      "display_name": "Automated Test Generation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-test-generation",
+      "entrypoint": "skills/automated-test-generation/SKILL.md",
+      "purpose": "Generate meaningful automated tests, measure and enforce coverage, and produce evidence-backed quality receipts across repository and Tower toolchain lanes.",
+      "input_contract": [
+        "Repository root and target test scope",
+        "Behavioral risks, coverage baseline, and threshold policy",
+        "Test framework and mutation authorization"
+      ],
+      "output_contract": [
+        "Reviewed test suite additions",
+        "Coverage enforcement result and test-generation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Focused and full tests plus coverage pass",
+        "Tower evidence gates pass when applicable"
+      ],
+      "does_not_own": [
+        "Production deployment approval",
+        "Unbounded test generation",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
