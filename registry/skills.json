@@ -3669,5 +3669,35 @@
         "Unverified external mutations"
       ]
     }
+    ,
+    {
+      "id": "automated-code-refactoring",
+      "display_name": "Automated Code Refactoring",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-code-refactoring",
+      "entrypoint": "skills/automated-code-refactoring/SKILL.md",
+      "purpose": "Apply bounded, syntax-aware, evidence-driven code transformations with reversible batches, semantic verification, and Tower of Babel handoffs.",
+      "input_contract": [
+        "Repository root and approved refactoring scope",
+        "Target language/toolchain and behavior invariants",
+        "Acceptance tests and mutation authorization"
+      ],
+      "output_contract": [
+        "Verified refactoring patch",
+        "Refactoring receipt with tests, warnings, and rollback path"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Repository tests, builds, and diff checks pass",
+        "Tower preflight and evidence gates pass when applicable"
+      ],
+      "does_not_own": [
+        "Unbounded rewrites",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
