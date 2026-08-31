@@ -1,0 +1,33 @@
+steps:
+  - label: ":python: Mega Skills contract validation"
+    timeout_in_minutes: 10
+    command: |
+      set -eu
+      python3 --version
+      python3 scripts/validate_hierarchy.py
+      python3 -m unittest discover -s tests -v
+      python3 -m compileall -q scripts tests
+      export RUN_DIR=/tmp/mega-skills-buildkite-run
+      rm -rf "$RUN_DIR"
+      python3 scripts/run_mega_mission.py --output-dir "$RUN_DIR"
+      python3 - <<'PY'
+      import hashlib
+      import json
+      import os
+      from pathlib import Path
+
+      run_dir = Path(os.environ["RUN_DIR"])
+      receipt = json.loads((run_dir / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
+      assert receipt["status"] == "COMPLETED"
+      manifest = receipt["output_manifest"]
+      canonical = json.dumps(manifest, sort_keys=True, separators=(",", ":")).encode("utf-8")
+      assert hashlib.sha256(canonical).hexdigest() == receipt["output_manifest_sha256"]
+      for item in manifest:
+          path = run_dir / item["path"]
+          assert path.is_file(), item["path"]
+          assert path.stat().st_size == item["bytes"], item["path"]
+          assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], item["path"]
+      print(f"Verified {len(manifest)} receipt-manifest entries and their SHA-256 hashes.")
+      PY
+    artifact_paths:
+      - "/tmp/mega-skills-buildkite-run/**/*"
