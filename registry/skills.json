@@ -178,6 +178,29 @@
       ]
     },
     {
+      "id": "apex-boot-core",
+      "display_name": "Apex Boot Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/apex-boot-core",
+      "entrypoint": "skills/apex-boot-core/SKILL.md",
+      "purpose": "Bootstrap, health watchdog, and environment normalizer for the APEX Estate.",
+      "input_contract": [
+        "Estate root directory and environment variables"
+      ],
+      "output_contract": [
+        "Preflight system health check and toolchain verification telemetry"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_apex_boot_core.py"
+      ],
+      "does_not_own": [
+        "Persistent daemon background polling loops without supervision",
+        "Destructive permission overrides outside ~/.local/bin"
+      ]
+    },
+    {
       "id": "apex-integrations",
       "display_name": "Apex Integrations",
       "ownership": "glaciereq",
@@ -465,6 +488,28 @@
       ]
     },
     {
+      "id": "automated-documentation-synthesis",
+      "display_name": "Automated Documentation Synthesis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-documentation-synthesis",
+      "entrypoint": "skills/automated-documentation-synthesis/SKILL.md",
+      "purpose": "Surgical AST docstring extraction, living architectural codex generation, and OpenAPI synthesis.",
+      "input_contract": [
+        "Source code files and repository hierarchy"
+      ],
+      "output_contract": [
+        "Extracted AST documentation and living architectural codex"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_doc_synthesis.py"
+      ],
+      "does_not_own": [
+        "Marketing or promotional prose without code backing"
+      ]
+    },
+    {
       "id": "automated-performance-profiling",
       "display_name": "Automated Performance Profiling",
       "ownership": "glaciereq",
@@ -687,6 +732,30 @@
       ]
     },
     {
+      "id": "chunk-power",
+      "display_name": "Chunk Power",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/chunk-power",
+      "entrypoint": "skills/chunk-power/SKILL.md",
+      "purpose": "Best-in-class sequential thinking, dynamic cognitive chunking, and iterative multi-branch reasoning engine.",
+      "input_contract": [
+        "Problem mandate, constraints, and hypothesis parameters"
+      ],
+      "output_contract": [
+        "Structured sequential thoughts with confidence scores, revisions, branches, and synthesized action plan"
+      ],
+      "local_validation": [
+        "All thought steps validate against chunk_schema.json",
+        "100% test assertions pass in tests/test_chunk_power.py"
+      ],
+      "does_not_own": [
+        "Unbounded speculative thinking without empirical evidence",
+        "Direct uncontrolled state mutation outside the synthesis gate"
+      ]
+    },
+    {
       "id": "claim-calibration",
       "display_name": "Claim Calibration",
       "ownership": "glaciereq",
@@ -784,6 +853,28 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "colossal-backend-engine",
+      "display_name": "Colossal Backend Engine",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/colossal-backend-engine",
+      "entrypoint": "skills/colossal-backend-engine/SKILL.md",
+      "purpose": "Colossal backend services, Postgres/Supabase migrations, zero-copy RPC, and multi-cloud sync.",
+      "input_contract": [
+        "Database schemas, RPC definitions, and cloud sync targets"
+      ],
+      "output_contract": [
+        "Idempotent migration plans and verified storage synchronization receipts"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_backend_engine.py"
+      ],
+      "does_not_own": [
+        "Destructive migration execution without rollback snapshots"
       ]
     },
     {

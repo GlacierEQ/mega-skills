@@ -97,6 +97,10 @@ class HierarchyFoundationTests(unittest.TestCase):
             "apex-accelerated-compute-mesh": "ACCELERATED_COMPUTE_MISSION_RESULT.md",
             "apex-forensic-litigation-sentinel": "FORENSIC_LITIGATION_SENTINEL_RECORD.md",
             "apex-autonomous-software-engineering": "AUTONOMOUS_ENGINEERING_MISSION_RESULT.md",
+            "apex-always-on-core": "ALWAYS_ON_CORE_MISSION_RESULT.md",
+            "apex-legal-forensic-powerhouse": "LEGAL_FORENSIC_POWERHOUSE_RECORD.md",
+            "apex-docgen-synthesis": "DOCGEN_SYNTHESIS_MISSION_RECORD.md",
+            "apex-backend-infrastructure-engine": "BACKEND_INFRASTRUCTURE_MISSION_RESULT.md",
         }
         for mega_id, artifact in expected.items():
             mega = by_id[mega_id]
