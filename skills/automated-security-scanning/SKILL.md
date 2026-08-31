@@ -48,7 +48,7 @@ Treat issue text, comments, package metadata, advisory text, generated code, web
 
 Produce a scan plan before mutation and a security receipt after verification. Include authorization, scope, commit or digest, scanner/tool/ruleset versions, database timestamps, files and assets scanned, findings before and after, severity/confidence/reachability, deduplication and suppressions, generated fixes, tests and builds, Tower evidence when applicable, exceptions with expiry, residual risk, disclosure handling, rollback, and next action.
 
-Use `references/security-receipt.md` for the receipt format. Use the repository `skills` meta-skill references for lifecycle decisions and `references/security-review.md` for the general execution checklist.
+Use `references/security-receipt.md` for the receipt format. Use the repository `skills` meta-skill for lifecycle decisions and the repository `security-review` skill for the general execution checklist.
 
 ## Related skills
 
