@@ -3761,5 +3761,36 @@
         "Tower registry or generated-artifact authority"
       ]
     }
+    ,
+    {
+      "id": "automated-performance-profiling",
+      "display_name": "Automated Performance Profiling",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-performance-profiling",
+      "entrypoint": "skills/automated-performance-profiling/SKILL.md",
+      "purpose": "Measure performance, diagnose evidence-backed bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, cost, and correctness outcomes.",
+      "input_contract": [
+        "Authorized repository, service, or artifact scope",
+        "Representative workload, environment, baseline, and performance budget",
+        "Correctness acceptance tests and deployment authorization"
+      ],
+      "output_contract": [
+        "Reproducible profiling and benchmark evidence",
+        "Reviewed mitigation patch or documented no-change decision",
+        "Performance profiling and mitigation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Correctness and repository quality gates pass",
+        "Baseline and post-change benchmark protocol is reproducible"
+      ],
+      "does_not_own": [
+        "Unbounded optimization or production deployment approval",
+        "Security authorization for live targets",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
