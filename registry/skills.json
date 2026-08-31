@@ -392,6 +392,28 @@
       ]
     },
     {
+      "id": "ai-autonomous-repair",
+      "display_name": "Ai Autonomous Repair",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ai-autonomous-repair",
+      "entrypoint": "skills/ai-autonomous-repair/SKILL.md",
+      "purpose": "Operational capability for ai autonomous repair.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_ai_autonomous_repair.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "ai-deal-finder",
       "display_name": "Ai Deal Finder",
       "ownership": "glaciereq",
@@ -1434,6 +1456,28 @@
       "does_not_own": [
         "Non-functional stubs",
         "Test assertion tampering"
+      ]
+    },
+    {
+      "id": "attio",
+      "display_name": "Attio",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/attio",
+      "entrypoint": "skills/attio/SKILL.md",
+      "purpose": "Operational capability for attio.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_attio.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -3371,6 +3415,28 @@
       ]
     },
     {
+      "id": "connectivity-hub",
+      "display_name": "Connectivity Hub",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/connectivity-hub",
+      "entrypoint": "skills/connectivity-hub/SKILL.md",
+      "purpose": "Operational capability for connectivity hub.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_connectivity_hub.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "connector-bridge",
       "display_name": "Connector Bridge",
       "ownership": "glaciereq",
@@ -4313,6 +4379,28 @@
       ]
     },
     {
+      "id": "desktop-commander-overview",
+      "display_name": "Desktop Commander Overview",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/desktop-commander-overview",
+      "entrypoint": "skills/desktop-commander-overview/SKILL.md",
+      "purpose": "Use for Desktop Commander MCP capabilities \u2014 persistent shells and REPLs, long-running processes, filesystem beyond the workspace, structured files (.xlsx, .docx, .pdf, images) and large local data files such as CSVs, ripgrep search at scale, SSH, or cross-turn state.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_desktop_commander_overview.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "digital-law-library-master",
       "display_name": "Digital Law Library Master",
       "ownership": "glaciereq",
@@ -4556,6 +4644,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "dotenvx",
+      "display_name": "Dotenvx",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/dotenvx",
+      "entrypoint": "skills/dotenvx/SKILL.md",
+      "purpose": "Use dotenvx to run commands with environment variables, manage multiple .env files, expand variables, and encrypt env files for safe commits and CI/CD.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_dotenvx.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -6663,6 +6773,28 @@
       ]
     },
     {
+      "id": "github-nexus",
+      "display_name": "Github Nexus",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/github-nexus",
+      "entrypoint": "skills/github-nexus/SKILL.md",
+      "purpose": "Operational capability for github nexus.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_github_nexus.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "github-power",
       "display_name": "Github Power",
       "ownership": "glaciereq",
@@ -8319,6 +8451,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "mcp-architect",
+      "display_name": "Mcp Architect",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mcp-architect",
+      "entrypoint": "skills/mcp-architect/SKILL.md",
+      "purpose": "Operational capability for mcp architect.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_mcp_architect.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -10219,6 +10373,28 @@
       ]
     },
     {
+      "id": "mimo-skills",
+      "display_name": "Mimo Skills",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/mimo-skills",
+      "entrypoint": "skills/mimo-skills/SKILL.md",
+      "purpose": "Operational capability for mimo skills.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_mimo_skills.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "mimocode",
       "display_name": "Mimocode",
       "ownership": "glaciereq",
@@ -12002,6 +12178,28 @@
       ]
     },
     {
+      "id": "prompt-optimization",
+      "display_name": "Prompt Optimization",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/prompt-optimization",
+      "entrypoint": "skills/prompt-optimization/SKILL.md",
+      "purpose": "Techniques for fixing and enhancing prompts for maximum efficiency",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_prompt_optimization.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "prompt-optimizer",
       "display_name": "Prompt Optimizer",
       "ownership": "glaciereq",
@@ -12200,6 +12398,28 @@
       "does_not_own": [
         "Underlying deliverable creation",
         "Unsupported confidence"
+      ]
+    },
+    {
+      "id": "quantum-context",
+      "display_name": "Quantum Context",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/quantum-context",
+      "entrypoint": "skills/quantum-context/SKILL.md",
+      "purpose": "Operational capability for quantum context.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_quantum_context.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -12555,6 +12775,28 @@
       ],
       "local_validation": [
         "100% test assertions pass in tests/test_remove_wall_of_text.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
+      "id": "repo-operator",
+      "display_name": "Repo Operator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/repo-operator",
+      "entrypoint": "skills/repo-operator/SKILL.md",
+      "purpose": "Operational capability for repo operator.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_repo_operator.py"
       ],
       "does_not_own": [
         "Unbounded operations outside declared scope"
@@ -13833,6 +14075,50 @@
       ]
     },
     {
+      "id": "stealth-ghosting",
+      "display_name": "Stealth Ghosting",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/stealth-ghosting",
+      "entrypoint": "skills/stealth-ghosting/SKILL.md",
+      "purpose": "Operational capability for stealth ghosting.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_stealth_ghosting.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
+      "id": "stealth-ops",
+      "display_name": "Stealth Ops",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/stealth-ops",
+      "entrypoint": "skills/stealth-ops/SKILL.md",
+      "purpose": "Operational capability for stealth ops.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_stealth_ops.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "string-database",
       "display_name": "String Database",
       "ownership": "glaciereq",
@@ -13918,6 +14204,50 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "supabase-postgres-best-practices",
+      "display_name": "Supabase Postgres Best Practices",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/supabase-postgres-best-practices",
+      "entrypoint": "skills/supabase-postgres-best-practices/SKILL.md",
+      "purpose": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search ...",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_supabase_postgres_best_practices.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
+      "id": "super-agent-orchestrator",
+      "display_name": "Super Agent Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/super-agent-orchestrator",
+      "entrypoint": "skills/super-agent-orchestrator/SKILL.md",
+      "purpose": "Operational capability for super agent orchestrator.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_super_agent_orchestrator.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -14094,6 +14424,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "terminal-context",
+      "display_name": "Terminal Context",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/terminal-context",
+      "entrypoint": "skills/terminal-context/SKILL.md",
+      "purpose": "Complete Kitty terminal awareness + control for coding agents: list panes/tabs, read scrollback, map ports\u2192processes, parse per-pane git/last-command metadata (from shell hooks), and send commands/focus panes. Use when user mentions \"another terminal\", \"is the server running\", \"what failed\", or you need to run/inspect commands across panes.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_terminal_context.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -14587,6 +14939,28 @@
       ]
     },
     {
+      "id": "universal-mcp",
+      "display_name": "Universal Mcp",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/universal-mcp",
+      "entrypoint": "skills/universal-mcp/SKILL.md",
+      "purpose": "Operational capability for universal mcp.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_universal_mcp.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
+      ]
+    },
+    {
       "id": "upstash-qstash",
       "display_name": "Upstash Qstash",
       "ownership": "glaciereq",
@@ -15046,6 +15420,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "vlex",
+      "display_name": "Vlex",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/vlex",
+      "entrypoint": "skills/vlex/SKILL.md",
+      "purpose": "Operational capability for vlex.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_vlex.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
@@ -15646,6 +16042,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "zendesk",
+      "display_name": "Zendesk",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/zendesk",
+      "entrypoint": "skills/zendesk/SKILL.md",
+      "purpose": "Zendesk Support REST API for managing tickets, users, organizations, and support operations. Use this skill to create tickets, manage users, search, and automate customer support workflows.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_zendesk.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared scope"
       ]
     },
     {
