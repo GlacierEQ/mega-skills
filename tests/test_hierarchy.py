@@ -74,7 +74,8 @@ class HierarchyFoundationTests(unittest.TestCase):
             self.assertTrue(combo["integration"]["risk_boundaries"])
 
     def test_far_away_party_exposes_feedback_loops(self):
-        mega = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"][0]
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        mega = next(entry for entry in megas if entry["id"] == "far-away-party")
         for combo_id in (
             "signal-to-decision-loop",
             "guarded-automation-loop",
@@ -95,6 +96,7 @@ class HierarchyFoundationTests(unittest.TestCase):
             "apex-secure-cloud-foundry": "SECURE_CLOUD_MISSION_RESULT.md",
             "apex-accelerated-compute-mesh": "ACCELERATED_COMPUTE_MISSION_RESULT.md",
             "apex-forensic-litigation-sentinel": "FORENSIC_LITIGATION_SENTINEL_RECORD.md",
+            "apex-autonomous-software-engineering": "AUTONOMOUS_ENGINEERING_MISSION_RESULT.md",
         }
         for mega_id, artifact in expected.items():
             mega = by_id[mega_id]
