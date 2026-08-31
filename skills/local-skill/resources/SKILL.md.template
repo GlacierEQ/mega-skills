@@ -1,0 +1,25 @@
+---
+name: {{name}}
+description: {{description}}
+---
+
+# {{title}}
+
+## Use this skill when
+
+{{use_when}}
+
+## Decision gate
+
+{{decision_gate}}
+
+## Creation workflow
+
+{{workflow}}
+
+## Resources
+
+| Resource | Use |
+|---|---|
+| `resources/{{name}}_config.yaml` | Runtime configuration. |
+| `resources/{{name}}_schema.json` | Input/output schema. |
