@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChunkPowerThoughtStep",
+  "type": "object",
+  "properties": {
+    "thought_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "total_thoughts_estimate": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "thought": {
+      "type": "string"
+    },
+    "is_revision": {
+      "type": "boolean"
+    },
+    "revises_thought": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "epistemic_tier": {
+      "type": "string"
+    },
+    "next_action": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "thought_number",
+    "total_thoughts_estimate",
+    "thought"
+  ]
+}
