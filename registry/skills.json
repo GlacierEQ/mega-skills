@@ -3729,5 +3729,37 @@
         "Tower registry or generated-artifact authority"
       ]
     }
+    ,
+    {
+      "id": "automated-security-scanning",
+      "display_name": "Automated Security Scanning",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/automated-security-scanning",
+      "entrypoint": "skills/automated-security-scanning/SKILL.md",
+      "purpose": "Scan authorized code, dependencies, containers, secrets, and configuration; triage findings; generate minimal fixes; and verify remediation with fail-closed evidence gates.",
+      "input_contract": [
+        "Authorized repository, artifact, or build scope",
+        "Security policy, severity threshold, and disclosure boundary",
+        "Scanner/toolchain configuration and acceptance tests"
+      ],
+      "output_contract": [
+        "Triage-ready vulnerability findings",
+        "Reviewed remediation patch or documented mitigation",
+        "Security scan and remediation receipt"
+      ],
+      "local_validation": [
+        "Platform manifest validation passes",
+        "Scanners fail closed and re-run after remediation",
+        "Focused/full tests and repository gates pass"
+      ],
+      "does_not_own": [
+        "Unauthorized security testing",
+        "Exploit development or persistence",
+        "Production deployment approval",
+        "Tower registry or generated-artifact authority"
+      ]
+    }
   ]
 }
