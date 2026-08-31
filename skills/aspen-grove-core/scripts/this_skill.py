@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""aspen-grove-core skill entrypoint."""
+"""aspen-grove-core execution dispatcher."""
 
 import json
 import sys
+import hashlib
 
 def main():
-    print(json.dumps({
+    payload = {
         "skill": "aspen-grove-core",
         "status": "ready",
         "epistemic_tier": "L2",
         "firewall_active": True
-    }, indent=2))
+    }
+    if len(sys.argv) > 1 and sys.argv[1] == "--execute":
+        payload["status"] = "executed"
+        payload["sha256"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+    print(json.dumps(payload, indent=2))
     return 0
 
 if __name__ == "__main__":

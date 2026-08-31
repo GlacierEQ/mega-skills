@@ -1,25 +1,50 @@
-# APEX Self-Healing Forge Mega Skill
+# APEX Self-Healing Forge
 
 ## Mission
 
-Operate autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses to guarantee 100% green unit assertions.
+Autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `closed-loop-code-repair` when test suites fail and require automated AST repair | Manages multi-attempt repair cycles, bounded cutoffs, and automated rollback checkpoints. |
-| `long-horizon-core` | `skill-forge` when a successful repair pattern should be abstracted into a new reusable procedure | Converts verified bug fix patterns into permanent regression test procedures. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `closed-loop-code-repair`, `skill-forge`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin the repair mission with `long-horizon-core` and record the failing test command.
-2. Select `closed-loop-code-repair` to intercept stack traces, isolate AST chunks, and apply surgical patches.
-3. Verify that re-executed test suites pass 100% green on hardware with zero stub injection.
-4. Select `skill-forge` if the defect pattern represents a common pitfall warranting a reusable guardrail.
-5. Reconcile failing traces, applied AST diffs, and green verification receipts into `EVIDENCE.md`.
-6. Deliver clean, verified code with full test suite green receipts.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `self-healing-forge-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` maintain self-healing execution state across iterative repair cycles.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `self-healing-forge-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `self-healing-forge-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

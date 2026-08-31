@@ -6,21 +6,45 @@ Long-horizon cloud microservice lifecycle engineering: unifies typed API integra
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `secure-service-deployment` | `capability-readiness` | Coordinates end-to-end execution of secure-service-deployment with mission-level state gates. |
-| `long-horizon-core` | `pipeline-orchestration` | Dynamically activates pipeline-orchestration based on mission requirements. |
-| `long-horizon-core` | `runtime-operations` | Dynamically activates runtime-operations based on mission requirements. |
-| `long-horizon-core` | `automation-control` | Dynamically activates automation-control based on mission requirements. |
+- Required combos: `long-horizon-core`, `secure-service-deployment`
+- Conditional combos: `capability-readiness`, `pipeline-orchestration`, `runtime-operations`, `automation-control`
 
-## Route algorithm
+## Execution protocol
 
-1. Initialize mission state with `long-horizon-core` and load mission boundary parameters.
-2. Evaluate `capability-readiness` for all required and conditional combo routes.
-3. Execute primary pipeline via `secure-service-deployment`.
-4. Conditionally dispatch specialist combos based on runtime risk flags and telemetry.
-5. Compile final verified deliverable into `SECURE_CLOUD_MISSION_RESULT.md` and persist immutable state.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `SECURE_CLOUD_MISSION_RESULT.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md, ROADMAP.md, CONTEXT.md, EVIDENCE.md, HANDOFF.md` maintain durable mission state across sprints and server restarts.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `SECURE_CLOUD_MISSION_RESULT.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `SECURE_CLOUD_MISSION_RESULT.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

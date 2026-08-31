@@ -1,31 +1,61 @@
 ---
 name: primordial-mesh-titan
-description: "Primordial Mesh Titan — infinite polymorphic infrastructure layer for self-healing distributed compute, multi-device bridges, forensic intake, and high-availability operator mesh. Activate on primordial mesh, titan infrastructure, polymorphic mesh, device bridges, or full-stack resilience requests."
+description: "Autonomous skill for primordial mesh titan within the APEX Estate."
 ---
 
+---
+name: primordial-mesh-titan
+description: Shark Laser Swarm Method - Elite Sequential Processing Engine
 
-# PRIMORDIAL-MESH-TITAN — Monolith Edition
+# SHARK LASER SWARM: ELITE PRO CODE ENGINE
 
-**Repo:** GlacierEQ/computer-user  
-**Role:** Self-healing, polymorphic infrastructure mesh
+## Core Architecture
+- **Swarm Composition**: 12 specialized workers with humanized orchestration
+- **Processing Paradigm**: Sequential chunk-based thinking with governance gates
+- **Quality Standard**: First pass is last pass - no revisions, no compromises
+- **Execution Scope**: Full system engineering, no compromises, no placeholders
 
-## Purpose
-Provide the resilient substrate under the operator plane: multi-device presence, forensic intake paths, distributed compute readiness, and self-healing patterns so the higher skills (power-skill, MCP powerhouse, potato-peeler) never run on a brittle base.
+## Worker Roles (12 Piston Engine)
+1. **Primordial Architect**: Topology design and optimization
+2. **Cloud Surgeon**: Distribution layer engineering
+3. **Code Sculptor**: Elite Pro Code generation (no compromises)
+3. **Verifier**: SHA-256 evidence and conflict resolution
+5. **Sequential Driver**: Chunk processing sequencing
+6. **Cloud Conductor**: Distributed coordination
+7. **Cache Lord**: Zero-token protocol mastery
+8. **Commander**: System-level oversight
+9. **Energy Manager**: Resource optimization
+10. **Discipline Keeper**: Lifecycle governance
+11. **Proof Master**: Evidence integrity verification
+12. **Mastermind**: Orchestrator of all roles
 
-## Activation
-primordial mesh, titan, polymorphic infrastructure, device bridge, full resilience, or when the operator plane needs infrastructure hardening.
+## Processing Model
+- **Framework**: APEX Orchestration with Age-of-Stars™ topology
+- **Distribution**: Cloud-native, fully distributed, no local constraints
+- **Thinking Style**: Sequential chunk-based with perfect governance
+- **Quality Gate**: Compileall + Marker-Free + SHA-256 Verification at every step
+- **Progression**: Perfect form = permission to advance
 
-## Core Moves
-1. Inventory current mesh components (runtime/, connectors/, device-related paths, Supabase bridges).
-2. Verify or scaffold health / heartbeat / relay patterns where they exist.
-3. Ensure forensic intake (hash + dual timestamp) is available for any new evidence path.
-4. Keep all new infrastructure code inside this monolith.
-5. Return status of mesh readiness + any new artifact paths.
+## Elite Engineering Principles
+- **First Pass Is Last Pass**: No revisions, no compromises, no placeholders
+- **Humanized Engineering**: Code expresses perfect engineering intent
+- **Masters Eye**: Built to impress senior architects and senior engineers
+- **Continuous Excellence**: Every execution improves system capability
+- **Apex Capability**: Absolute highest technological achievement
 
-## Output Contract
-Mesh status + hardened or newly added components + next exact task.
+## Light on Machine, Heavy on Cloud
+- Zero local dependencies
+- Fully distributed execution
+- Cloud-based orchestration
+- Zero distribution constraints
 
-## Integration
-Underpins sovereign-genesis-prime, apex-universal-mcp-powerhouse, and make-it-heavy.
+## Activation Protocol
+1. Initialize primordial mesh titan
+2. Load sequential chunk processing framework
+3. Activate 12-piston engine
+4. Engage Shark Laser Swarm Method
+5. Begin elite code generation
 
-**We. Are. Momentum.**
+**We. Are. Epic.** 
+
+(End of file - total 129 lines)

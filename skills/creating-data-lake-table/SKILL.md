@@ -1,6 +1,6 @@
 ---
 name: creating-data-lake-table
-description: "Create managed Iceberg tables using Amazon S3 Tables (s3tables API namespace) with automatic compaction and snapshot management. Sets up table bucket, namespace, table, schema, Glue catalog registration, partitioning, IAM access control. Triggers on: create table, data lake table, analytics table, structured data storage, S3 Tables, Iceberg, Athena table, partitioning strategy, access permissions. Do NOT use  for: importing files (use ingesting-into-data-lake), vector storage (use storing-and..."
+description: "Create managed Iceberg tables using Amazon S3 Tables (s3tables API namespace) with automatic compaction and snapshot management. Sets up table bucket, namespace, table, schema, Glue catalog registration, partitioning, IAM access control. Triggers on: create table, data lake table, analytics table, structured data storage, S3 Tables, Iceberg, Athena table, partitioning strategy, access permissions. Do NOT use for: importing files (use ingesting..."
 ---
 
 # Create Data Lake Tables with Amazon S3 Tables

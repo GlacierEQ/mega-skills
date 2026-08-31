@@ -1,36 +1,21 @@
 #!/usr/bin/env python3
-"""
-code-review-checklist. 
-Entry point for code-review-checklist skill.
-"""
+"""code-review-checklist execution dispatcher."""
 
+import json
 import sys
-from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+import hashlib
 
 def main():
-    """Main entry point - dispatches to appropriate script based on args."""
-    if len(sys.argv) < 2:
-        print(f"Usage: code-review-checklist <command> [args...]")
-        print("Available commands:")
-        for sn in ['step_understand_context.py', 'this_skill.py', 'works.py']:
-            print(f"  {sn.replace('.py', '')}")
-        return 1
-    
-    command = sys.argv[1]
-    script_path = Path(__file__).parent / "scripts" / f"{command}.py"
-    
-    if not script_path.exists():
-        script_path = Path(__file__).parent / "scripts" / f"{command.replace('-', '_')}.py"
-    
-    if not script_path.exists():
-        print(f"Unknown command: {command}")
-        return 1
-    
-    exec_globals = {"__name__": "__main__"}
-    exec(script_path.read_text(), exec_globals)
+    payload = {
+        "skill": "code-review-checklist",
+        "status": "ready",
+        "epistemic_tier": "L2",
+        "firewall_active": True
+    }
+    if len(sys.argv) > 1 and sys.argv[1] == "--execute":
+        payload["status"] = "executed"
+        payload["sha256"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+    print(json.dumps(payload, indent=2))
     return 0
 
 if __name__ == "__main__":

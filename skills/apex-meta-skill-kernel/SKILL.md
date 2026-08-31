@@ -1,6 +1,6 @@
 ---
 name: apex-meta-skill-kernel
-description: "Skill-topology specialist for the GlacierEQ skill operating system. Inspect the living constellation of skills, detect drift, overlap, duplication, stale projections, and god-prompt risk; propose recursive improvements through skill-creator and prompt-optimizer; and maintain modular composability. Use when the nervous-system masterskill needs topology governance, skill inventory reconciliation, or cross-skill structural analysis. This skill does not own cross-platform mission composition."
+description: "Skill-topology specialist for the GlacierEQ skill operating system. Inspect the living constellation of skills, detect drift, overlap, duplication, stale projections, and god-prompt risk; propose recursive improvements through skill-creator and prompt-optimizer; and maintain modular composability. Use when the nervous-system masterskill needs topology governance, skill inventory reconciliation, or cross-skill structural analysis. This skill do..."
 ---
 
 # APEX META SKILL KERNEL — Topology Specialist

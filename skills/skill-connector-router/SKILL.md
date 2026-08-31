@@ -1,6 +1,6 @@
 ---
 name: skill-connector-router
-description: "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what is needed."
+description: "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i..."
 ---
 
 # Skill + Connector Router

@@ -1,25 +1,50 @@
-# APEX Aerospace Simulation Mega Skill
+# APEX Aerospace Simulation
 
 ## Mission
 
-Orchestrate high-fidelity aerospace simulation campaigns spanning orbital mechanics propagation, Lambert transfer targeting, cryogenic propellant boil-off, and launch countdown sequencing across SpaceX flight software repositories.
+Orchestration of multi-vehicle aerospace simulations spanning orbital dynamics, Lambert transfer targeting, cryogenic boil-off, and countdown abort gates.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `aerospace-mission-simulation` when trajectory or boil-off models are tested | Manages multi-vehicle mission profiles, delta-v budgets, and orbital safety gates. |
-| `long-horizon-core` | `automation-control` when automated simulation pipelines or hardware monitors are active | Automates telemetry ingestion, real-time sensor polling, and countdown abort triggers. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `aerospace-mission-simulation`, `automation-control`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin the aerospace mission with `long-horizon-core` and load mission parameter contracts.
-2. Select `aerospace-mission-simulation` to solve Lambert targeting and propagate orbital elements.
-3. Evaluate thermodynamic cryogenic boil-off models to ensure tank pressure safety.
-4. Select `automation-control` if hardware-in-the-loop or automated test harnesses are running.
-5. Require 100% green unit assertions across `spacex-orbital-mechanics` and `spacex-cryogenics`.
-6. Reconcile telemetry records, delta-v budgets, and conjunction assessments into `EVIDENCE.md` and deliver final mission package.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `aerospace-mission-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` maintain immutable mission state across orbital simulation phases.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `aerospace-mission-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `aerospace-mission-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

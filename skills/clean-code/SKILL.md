@@ -3,8 +3,6 @@ name: clean-code
 description: "Pragmatic coding standards - concise, direct, no over-engineering, no unnecessary comments"
 ---
 
-
-
 # Clean Code - Pragmatic AI Coding Standards
 
 > **CRITICAL SKILL** - Be **concise, direct, and solution-focused**.
@@ -141,16 +139,6 @@ File to edit: UserService.ts
 ## Verification Scripts (MANDATORY)
 
 > 🔴 **CRITICAL:** Each agent runs ONLY their own skill's scripts after completing work.
-
-This section assumes a Claude-Code environment with companion `frontend-design`,
-`api-patterns`, `database-design`, `vulnerability-scanner`, `testing-patterns`,
-`webapp-testing`, `lint-and-validate`, `i18n-localization`, `performance-profiling`,
-`seo-fundamentals`, `geo-fundamentals` skills installed under `~/.claude/skills/`.
-
-**In this Kilo environment none of those scripts exist.** Treat the table below as
-a reference for what *would* run in a Claude-Code setup. In this workspace, run
-the project's own test/lint/typecheck commands instead (e.g. `python -m pytest`,
-`ruff`, `npm test`).
 
 ### Agent → Script Mapping
 

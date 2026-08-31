@@ -1,27 +1,50 @@
-# APEX Adaptive Operations Mega Skill
+# APEX Adaptive Operations
 
 ## Mission
 
-Coordinate an evidence-backed operational response when changing signals may require a decision, a guarded recurring route, or a follow-on capability-improvement proposal. This Mega Skill remains bounded: it plans and governs the response; it does not activate an external effect without a separately approved execution route.
+Mission-wide coordination of observed signals, readiness, approved operational responses, guarded run records, feedback proposals, and recoverable state without implying automatic external execution.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `capability-readiness` before any advanced route | Maintains mission-wide readiness, state, and recovery. |
-| `long-horizon-core` | `signal-to-decision-loop` when a signal may change the plan | Reconciles decision records with durable mission state. |
-| `long-horizon-core` | `automation-control` and `guarded-automation-loop` only after architecture and approval exist | Coordinates guarded run records, evidence, and recovery across repeated cycles. |
-| `long-horizon-core` | `evidence-to-evolution-loop` when repeated evidence justifies improvement | Preserves an improvement proposal without silently changing active behavior. |
+- Required combos: `long-horizon-core`, `signal-to-decision-loop`
+- Conditional combos: `capability-readiness`, `automation-control`, `guarded-automation-loop`, `evidence-to-evolution-loop`
 
-## Route algorithm
+## Execution protocol
 
-1. Initialize durable state using `long-horizon-core` and define the signal, authority, stop condition, and delivery boundary.
-2. Run `capability-readiness` whenever the candidate route has unverified prerequisites, access, runtime, data, or claim scope.
-3. Convert each material signal into `SIGNAL_DECISION_RECORD.md`; select no action until the decision record names its authority and evidence.
-4. If recurring or event-driven execution is appropriate, assess architecture with `automation-control`, obtain required approval, then produce `GUARDED_RUN_RECORD.md` through `guarded-automation-loop`.
-5. Route repeated evidence through `evidence-to-evolution-loop` only as a review-ready proposal; do not self-modify the active mission.
-6. Reconcile admitted route artifacts, approvals, results, failure state, and next review into `ADAPTIVE_OPERATIONS_MISSION_RECORD.md` and `HANDOFF.md`.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `ADAPTIVE_OPERATIONS_MISSION_RECORD.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` record the mission source of truth. The mission artifact is `ADAPTIVE_OPERATIONS_MISSION_RECORD.md`.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `ADAPTIVE_OPERATIONS_MISSION_RECORD.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `ADAPTIVE_OPERATIONS_MISSION_RECORD.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

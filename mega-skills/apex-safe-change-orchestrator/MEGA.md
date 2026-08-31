@@ -1,29 +1,50 @@
-# APEX Safe Change Orchestrator Mega Skill
+# APEX Safe Change Orchestrator
 
 ## Mission
 
-Coordinate a recoverable code or configuration change from uncertain scope through evidence-backed decision, bounded repair or change execution, verification, and handoff. This Mega Skill does not deploy, force-push, or create external effects; it orchestrates the approved change route and records exactly what occurred.
+Cross-Combo control of repository scope, route admission, decision evidence, bounded repair or change execution, verification, approval status, and exact recovery state.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `recon-and-map` when repository role or change scope is unclear | Sets a verified source-of-truth and non-destructive boundary. |
-| `long-horizon-core` | `capability-readiness` before a specialized repair or automation route | Confirms tools, workspace, tests, and authority before selection. |
-| `long-horizon-core` | `signal-to-decision-loop` when findings require a change choice | Preserves alternatives, evidence, and decision authority. |
-| `long-horizon-core` | `closed-loop-code-repair` when a bounded failing-test repair route is admitted | Integrates repair evidence and quality results into the mission record. |
-| `long-horizon-core` | `guarded-automation-loop` only after separate approval for recurring execution | Maintains idempotency, effect, and recovery controls. |
+- Required combos: `long-horizon-core`, `signal-to-decision-loop`
+- Conditional combos: `capability-readiness`, `recon-and-map`, `closed-loop-code-repair`, `guarded-automation-loop`
 
-## Route algorithm
+## Execution protocol
 
-1. Start `long-horizon-core` and define repository revision, allowed paths, test command, maximum change boundary, approval state, and rollback/recovery route.
-2. Use `recon-and-map` whenever source-of-truth, scope, or ownership is uncertain; do not change an unverified target.
-3. Run `capability-readiness` before selecting repair tools, runtime-dependent checks, or any route with unverified prerequisites.
-4. Convert findings into `SIGNAL_DECISION_RECORD.md`; select the minimal approved change route and preserve alternatives.
-5. If a failing-test repair route is admitted, use `closed-loop-code-repair`; accept only its named execution record and independently gate the result.
-6. Use `guarded-automation-loop` only for an approved recurring implementation path; otherwise retain a manual, reviewable work packet.
-7. Reconcile change scope, evidence, tests, approval, recovery, and next action into `SAFE_CHANGE_MISSION_RECORD.md` and `HANDOFF.md`.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `SAFE_CHANGE_MISSION_RECORD.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` remain the source of truth. The final mission artifact is `SAFE_CHANGE_MISSION_RECORD.md`.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `SAFE_CHANGE_MISSION_RECORD.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `SAFE_CHANGE_MISSION_RECORD.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

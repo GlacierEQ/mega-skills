@@ -1,0 +1,1 @@
+# Dependencies for alphafold-database-fetch-and-analyze

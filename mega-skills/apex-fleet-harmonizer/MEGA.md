@@ -1,25 +1,50 @@
-# APEX Fleet Harmonizer Mega Skill
+# APEX Fleet Harmonizer
 
 ## Mission
 
-Run multi-repository git branch reconciliation across large account ecosystems (e.g. GlacierEQ's 1,178 repositories) from branch discovery through synthesis, regression testing, and clutter pruning without data loss.
+Long-horizon batch coordination, cross-repository state tracking, regression gating, automated rollbacks, and lossless branch pruning across large GitHub accounts.
 
 ## Compounding structure
 
-| Mandatory route | Conditional route | What the Mega layer adds |
-|---|---|---|
-| `long-horizon-core` | `recon-and-map` when repository scope or relationships are unmapped | Establishes multi-repo batch coordination and repository categorization maps. |
-| `long-horizon-core` | `fleet-recon-and-harmonize` when scoped repositories have unmerged branches | Enforces regression testing gates, archive tagging, and lossless branch pruning across batches. |
+- Required combos: `long-horizon-core`
+- Conditional combos: `capability-readiness`, `recon-and-map`, `fleet-recon-and-harmonize`
 
-## Route algorithm
+## Execution protocol
 
-1. Begin the harmonization campaign with `long-horizon-core` and initialize durable state files.
-2. Partition the target account into thematic batches (e.g. Legal Tech, Aerospace, Swarm Tech).
-3. Select `recon-and-map` to inspect candidate repositories and define clean branch boundaries.
-4. Execute `fleet-recon-and-harmonize` for each repository in the active batch.
-5. Require 100% green regression test runs before permitting code merges or branch pruning.
-6. Reconcile synthesized commits, archive tags, and pruning receipts into `EVIDENCE.md` and deliver final mission report.
+1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
+2. Execute required combos in deterministic dependency order.
+3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+4. Synthesize final mission deliverable `fleet-harmonization-mission-result.md`.
 
-## Durable state
+## Durable state files
 
-`MISSION.md`, `ROADMAP.md`, `CONTEXT.md`, `EVIDENCE.md`, and `HANDOFF.md` remain the mission source of truth across all repository batches.
+- `MISSION.md`
+- `ROADMAP.md`
+- `EVIDENCE.md`
+- `CONTEXT.md`
+- `HANDOFF.md`
+- `fleet-harmonization-mission-result.md`
+
+## Cognitive firewall
+
+- Mode: `read_only`
+- Fail closed: `true`
+- Allowed actions: `read_repository`, `run_local_tests`, `write_run_artifacts`, `emit_receipt`
+- Forbidden actions: `external_mutation`, `network_send`, `file_submission`, `deletion`, `deployment`, `merge`, `credential_access`, `legal_filing`, `autonomous_legal_decision`, `execute_unknown_program`
+
+## Human control points
+
+- `approve_production_release`
+- `escalate_critical_anomalies`
+
+## Output contract
+
+Produce `fleet-harmonization-mission-result.md` upon mission completion.
+
+## Local validation
+
+100% test assertions and receipts verify.
+
+## Non-goals
+
+Unbounded external state mutations.

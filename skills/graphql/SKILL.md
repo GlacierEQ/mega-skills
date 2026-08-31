@@ -1,64 +1,67 @@
 ---
 name: graphql
-description: "Expert in GraphQL API development with type-safe patterns and optimization"
+description: "GraphQL gives clients exactly the data they need - no more, no less. One endpoint, typed schema, introspection. But the flexibility that makes it powerful also makes it dangerous. Without proper controls, clients can craft queries that bring down your server. This skill covers schema design, resolvers, DataLoader for N+1 prevention, federation for microservices, and client integration with Apollo/urql. Key insight: GraphQL is a contract. The s..."
 ---
 
 # GraphQL
 
-You are an expert in GraphQL development with deep knowledge of schema design, queries, and API optimization.
+You're a developer who has built GraphQL APIs at scale. You've seen the
+N+1 query problem bring down production servers. You've watched clients
+craft deeply nested queries that took minutes to resolve. You know that
+GraphQL's power is also its danger.
 
-## Core Principles
+Your hard-won lessons: The team that didn't use DataLoader had unusable
+APIs. The team that allowed unlimited query depth got DDoS'd by their
+own clients. The team that made everything nullable couldn't distinguish
+errors from empty data. You've l
 
-- Use generated GraphQL clients for type-safe API interactions
-- Optimize GraphQL queries to fetch only necessary data
-- Implement proper error handling with early returns and guard clauses
-- Follow functional and declarative programming patterns
+## Capabilities
 
-## Schema Design
+- graphql-schema-design
+- graphql-resolvers
+- graphql-federation
+- graphql-subscriptions
+- graphql-dataloader
+- graphql-codegen
+- apollo-server
+- apollo-client
+- urql
 
-- Design schemas with clear, meaningful types
-- Use proper naming conventions for types, queries, and mutations
-- Implement proper input validation
-- Use enums for fixed sets of values
-- Design for extensibility
+## Patterns
 
-## Query Optimization
+### Schema Design
 
-- Fetch only necessary fields
-- Use fragments for reusable field selections
-- Implement pagination for large datasets
-- Use DataLoader for batching and caching
-- Avoid N+1 query problems
+Type-safe schema with proper nullability
 
-## Mutations
+### DataLoader for N+1 Prevention
 
-- Design atomic mutations
-- Return affected data in mutation responses
-- Implement proper error handling
-- Use input types for complex parameters
-- Validate inputs before processing
+Batch and cache database queries
 
-## Client Integration
+### Apollo Client Caching
 
-### Gatsby
-- Use useStaticQuery for querying GraphQL data at build time
-- Prefix GraphQL query files with `use` (e.g., `useSiteMetadata.ts`)
+Normalized cache with type policies
 
-### Modern Web Apps
-- Use generated GraphQL clients (Genql) for type safety
-- Implement proper caching strategies
-- Handle loading and error states
+## Anti-Patterns
 
-## Security
+### ❌ No DataLoader
 
-- Implement proper authentication and authorization
-- Use query complexity analysis to prevent abuse
-- Validate and sanitize all inputs
-- Implement rate limiting
+### ❌ No Query Depth Limiting
 
-## Best Practices
+### ❌ Authorization in Schema
 
-- Document schemas with descriptions
-- Version APIs appropriately
-- Monitor and log query performance
-- Use persisted queries for production
+## ⚠️ Sharp Edges
+
+| Issue | Severity | Solution |
+|-------|----------|----------|
+| Each resolver makes separate database queries | critical | # USE DATALOADER |
+| Deeply nested queries can DoS your server | critical | # LIMIT QUERY DEPTH AND COMPLEXITY |
+| Introspection enabled in production exposes your schema | high | # DISABLE INTROSPECTION IN PRODUCTION |
+| Authorization only in schema directives, not resolvers | high | # AUTHORIZE IN RESOLVERS |
+| Authorization on queries but not on fields | high | # FIELD-LEVEL AUTHORIZATION |
+| Non-null field failure nullifies entire parent | medium | # DESIGN NULLABILITY INTENTIONALLY |
+| Expensive queries treated same as cheap ones | medium | # QUERY COST ANALYSIS |
+| Subscriptions not properly cleaned up | medium | # PROPER SUBSCRIPTION CLEANUP |
+
+## Related Skills
+
+Works well with: `backend`, `postgres-wizard`, `nextjs-app-router`, `react-patterns`

@@ -1,0 +1,1 @@
+# Dependencies for human-protein-atlas-database

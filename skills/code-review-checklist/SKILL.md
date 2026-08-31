@@ -3,8 +3,6 @@ name: code-review-checklist
 description: "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability"
 ---
 
-
-
 # Code Review Checklist
 
 ## Overview

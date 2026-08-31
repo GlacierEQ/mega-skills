@@ -1240,6 +1240,131 @@
       }
     },
     {
+      "id": "cybersecurity-threat-analysis",
+      "display_name": "Cybersecurity Threat Analysis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/cybersecurity-threat-analysis",
+      "entrypoint": "combo-skills/cybersecurity-threat-analysis/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Red-team penetration testing, privilege escalation modeling, and attack surface defense audit are required."
+        ],
+        "do_not_use_when": [
+          "General non-security software features are being built."
+        ]
+      },
+      "members": [
+        {
+          "id": "red-team-tools",
+          "kind": "skill",
+          "role": "Execute non-destructive penetration modeling and scan vectors.",
+          "required": true
+        },
+        {
+          "id": "privilege-escalation-methods",
+          "kind": "skill",
+          "role": "Model privilege boundaries and audit permission elevation risks.",
+          "required": true
+        },
+        {
+          "id": "security-review",
+          "kind": "skill",
+          "role": "Synthesize vulnerability mitigation plan and defense audit receipt.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "red-team-tools",
+            "consumes": [
+              "System architecture",
+              "Threat boundary"
+            ],
+            "produces": [
+              "red-team-threat-vector.json"
+            ],
+            "validation": "Threat vectors mapped without unhandled exceptions."
+          },
+          {
+            "step": 2,
+            "member_id": "privilege-escalation-methods",
+            "consumes": [
+              "red-team-threat-vector.json"
+            ],
+            "produces": [
+              "privilege-boundary-audit.json"
+            ],
+            "validation": "Zero unmitigated privilege escalation paths verified."
+          },
+          {
+            "step": 3,
+            "member_id": "security-review",
+            "consumes": [
+              "privilege-boundary-audit.json"
+            ],
+            "produces": [
+              "THREAT_MITIGATION_REPORT.md"
+            ],
+            "validation": "Security review verifies all risk remediations pass."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "red-team-tools",
+            "to_member": "privilege-escalation-methods",
+            "required_inputs": [
+              "red-team-threat-vector.json"
+            ],
+            "accepted_outputs": [
+              "privilege-boundary-audit.json"
+            ],
+            "failure_owner": "red-team-tools"
+          },
+          {
+            "from_member": "privilege-escalation-methods",
+            "to_member": "security-review",
+            "required_inputs": [
+              "privilege-boundary-audit.json"
+            ],
+            "accepted_outputs": [
+              "THREAT_MITIGATION_REPORT.md"
+            ],
+            "failure_owner": "privilege-escalation-methods"
+          }
+        ],
+        "evidence_requirements": [
+          "Deterministic threat scan output",
+          "Privilege audit logs"
+        ],
+        "risk_boundaries": [
+          "No live destructive exploitation on external unowned networks"
+        ],
+        "quality_gates": [
+          "100% green test assertions on security simulation"
+        ],
+        "state_updates": [
+          "EVIDENCE.md update with threat SHA-256 hashes"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Penetration tool vectors",
+          "Privilege escalation modeling"
+        ],
+        "adds": "End-to-end cybersecurity threat mitigation synthesis",
+        "compound_artifact": "THREAT_MITIGATION_REPORT.md",
+        "next_layer_ready_when": [
+          "Security audit completes and remediation report is validated"
+        ]
+      }
+    },
+    {
       "id": "epistemic-verification-chain",
       "display_name": "Epistemic Verification Chain",
       "ownership": "glaciereq",
@@ -2079,6 +2204,131 @@
       }
     },
     {
+      "id": "growth-analytics-optimization",
+      "display_name": "Growth Analytics Optimization",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/growth-analytics-optimization",
+      "entrypoint": "combo-skills/growth-analytics-optimization/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Growth funnel optimization, competitive intelligence extraction, and A/B test analytics are needed."
+        ],
+        "do_not_use_when": [
+          "Pure systems kernel programming without growth/conversion requirements."
+        ]
+      },
+      "members": [
+        {
+          "id": "competitive-ads-extractor",
+          "kind": "skill",
+          "role": "Extract competitive positioning, ad hooks, and audience signals.",
+          "required": true
+        },
+        {
+          "id": "ab-test-setup",
+          "kind": "skill",
+          "role": "Configure statistical A/B test hypotheses, sample size, and variants.",
+          "required": true
+        },
+        {
+          "id": "analytics-tracking",
+          "kind": "skill",
+          "role": "Instrument event telemetry, conversion funnels, and statistical reporting.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "competitive-ads-extractor",
+            "consumes": [
+              "Market positioning",
+              "Competitor URLs"
+            ],
+            "produces": [
+              "competitive-intel-summary.json"
+            ],
+            "validation": "Signals extracted with confidence scores."
+          },
+          {
+            "step": 2,
+            "member_id": "ab-test-setup",
+            "consumes": [
+              "competitive-intel-summary.json"
+            ],
+            "produces": [
+              "ab-test-variant-manifest.json"
+            ],
+            "validation": "Sample size power calculation reaches 80%+ statistical power."
+          },
+          {
+            "step": 3,
+            "member_id": "analytics-tracking",
+            "consumes": [
+              "ab-test-variant-manifest.json"
+            ],
+            "produces": [
+              "GROWTH_EXPERIMENT_RECORD.md"
+            ],
+            "validation": "Telemetry pipelines capture conversion funnel events."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "competitive-ads-extractor",
+            "to_member": "ab-test-setup",
+            "required_inputs": [
+              "competitive-intel-summary.json"
+            ],
+            "accepted_outputs": [
+              "ab-test-variant-manifest.json"
+            ],
+            "failure_owner": "competitive-ads-extractor"
+          },
+          {
+            "from_member": "ab-test-setup",
+            "to_member": "analytics-tracking",
+            "required_inputs": [
+              "ab-test-variant-manifest.json"
+            ],
+            "accepted_outputs": [
+              "GROWTH_EXPERIMENT_RECORD.md"
+            ],
+            "failure_owner": "ab-test-setup"
+          }
+        ],
+        "evidence_requirements": [
+          "Statistical power calculation logs",
+          "Event tracking schemas"
+        ],
+        "risk_boundaries": [
+          "No live ad spend charging or unauthorized user spam"
+        ],
+        "quality_gates": [
+          "Hypothesis test assertions pass with p < 0.05 criteria"
+        ],
+        "state_updates": [
+          "EVIDENCE.md update with experiment hashes"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Competitive intelligence",
+          "A/B test hypothesis modeling"
+        ],
+        "adds": "Complete statistical growth experiment record",
+        "compound_artifact": "GROWTH_EXPERIMENT_RECORD.md",
+        "next_layer_ready_when": [
+          "Analytics tracking validates and experiment manifest is ready"
+        ]
+      }
+    },
+    {
       "id": "guarded-automation-loop",
       "display_name": "Guarded Automation Loop",
       "ownership": "glaciereq",
@@ -2490,6 +2740,131 @@
       }
     },
     {
+      "id": "interactive-media-3d-pipeline",
+      "display_name": "Interactive Media 3D Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/interactive-media-3d-pipeline",
+      "entrypoint": "combo-skills/interactive-media-3d-pipeline/COMBO.md",
+      "selection": {
+        "use_when": [
+          "WebGL 3D rendering, canvas algorithmic art, and generative UI previews are required."
+        ],
+        "do_not_use_when": [
+          "Headless command-line operations without visual render pipelines are executed."
+        ]
+      },
+      "members": [
+        {
+          "id": "canvas-design",
+          "kind": "skill",
+          "role": "Define 2D/3D canvas layouts, viewports, and render buffers.",
+          "required": true
+        },
+        {
+          "id": "algorithmic-art",
+          "kind": "skill",
+          "role": "Generate procedural shader mathematics and geometry transforms.",
+          "required": true
+        },
+        {
+          "id": "generative-ui",
+          "kind": "skill",
+          "role": "Compile live interactive UI prototypes and artifact carousels.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "canvas-design",
+            "consumes": [
+              "Canvas spec",
+              "Viewport parameters"
+            ],
+            "produces": [
+              "canvas-scene-manifest.json"
+            ],
+            "validation": "Canvas dimensions and context bind cleanly."
+          },
+          {
+            "step": 2,
+            "member_id": "algorithmic-art",
+            "consumes": [
+              "canvas-scene-manifest.json"
+            ],
+            "produces": [
+              "shader-pipeline-bundle.json"
+            ],
+            "validation": "Mathematical shader formulas evaluate without NaN."
+          },
+          {
+            "step": 3,
+            "member_id": "generative-ui",
+            "consumes": [
+              "shader-pipeline-bundle.json"
+            ],
+            "produces": [
+              "INTERACTIVE_SCENE_RECORD.md"
+            ],
+            "validation": "Interactive UI renders at target frame rate."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "canvas-design",
+            "to_member": "algorithmic-art",
+            "required_inputs": [
+              "canvas-scene-manifest.json"
+            ],
+            "accepted_outputs": [
+              "shader-pipeline-bundle.json"
+            ],
+            "failure_owner": "canvas-design"
+          },
+          {
+            "from_member": "algorithmic-art",
+            "to_member": "generative-ui",
+            "required_inputs": [
+              "shader-pipeline-bundle.json"
+            ],
+            "accepted_outputs": [
+              "INTERACTIVE_SCENE_RECORD.md"
+            ],
+            "failure_owner": "algorithmic-art"
+          }
+        ],
+        "evidence_requirements": [
+          "Canvas frame timing benchmarks",
+          "Shader compilation logs"
+        ],
+        "risk_boundaries": [
+          "No GPU memory overflow or unbounded texture allocations"
+        ],
+        "quality_gates": [
+          "60 FPS performance benchmark assertions pass"
+        ],
+        "state_updates": [
+          "EVIDENCE.md update with render hashes"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Canvas viewport binding",
+          "Procedural math shaders"
+        ],
+        "adds": "Live interactive generative scene synthesis",
+        "compound_artifact": "INTERACTIVE_SCENE_RECORD.md",
+        "next_layer_ready_when": [
+          "Scene bundle validates and passes performance benchmark"
+        ]
+      }
+    },
+    {
       "id": "long-horizon-core",
       "display_name": "Long-Horizon Core",
       "ownership": "glaciereq",
@@ -2705,6 +3080,132 @@
         "next_layer_ready_when": [
           "All seven state artifacts are consistent.",
           "The next mission route can consume named evidence and no raw hidden context."
+        ]
+      }
+    },
+    {
+      "id": "multi-agent-orchestration-mesh",
+      "display_name": "Multi-Agent Orchestration Mesh",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/multi-agent-orchestration-mesh",
+      "entrypoint": "combo-skills/multi-agent-orchestration-mesh/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Multi-agent team coordination, tool building, dynamic routing, and dialectic consensus are required."
+        ],
+        "do_not_use_when": [
+          "Single-threaded atomic scripts without agent collaboration are running."
+        ]
+      },
+      "members": [
+        {
+          "id": "ai-agents-architect",
+          "kind": "skill",
+          "role": "Architect multi-agent topology and assign specialist boundaries.",
+          "required": true
+        },
+        {
+          "id": "agent-tool-builder",
+          "kind": "skill",
+          "role": "Synthesize dynamic tool schemas and invocation contracts.",
+          "required": true
+        },
+        {
+          "id": "chunk-power",
+          "kind": "skill",
+          "role": "Execute sequential thinking, branch exploration, and synthesis gates.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "ai-agents-architect",
+            "consumes": [
+              "Task mandate",
+              "Agent topology spec"
+            ],
+            "produces": [
+              "agent-mesh-topology.json"
+            ],
+            "validation": "Agent roles and supervisor boundaries are strictly defined."
+          },
+          {
+            "step": 2,
+            "member_id": "agent-tool-builder",
+            "consumes": [
+              "agent-mesh-topology.json"
+            ],
+            "produces": [
+              "tool-manifest.json"
+            ],
+            "validation": "Tool schemas conform to strict JSON-schema specs."
+          },
+          {
+            "step": 3,
+            "member_id": "chunk-power",
+            "consumes": [
+              "tool-manifest.json"
+            ],
+            "produces": [
+              "SWARM_CONSENSUS_RECORD.md"
+            ],
+            "validation": "Synthesis gate verifies 100% alignment across agents."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "ai-agents-architect",
+            "to_member": "agent-tool-builder",
+            "required_inputs": [
+              "agent-mesh-topology.json"
+            ],
+            "accepted_outputs": [
+              "tool-manifest.json"
+            ],
+            "failure_owner": "ai-agents-architect"
+          },
+          {
+            "from_member": "agent-tool-builder",
+            "to_member": "chunk-power",
+            "required_inputs": [
+              "tool-manifest.json"
+            ],
+            "accepted_outputs": [
+              "SWARM_CONSENSUS_RECORD.md"
+            ],
+            "failure_owner": "agent-tool-builder"
+          }
+        ],
+        "evidence_requirements": [
+          "Agent topology graph",
+          "Tool schema definitions",
+          "Synthesis hashes"
+        ],
+        "risk_boundaries": [
+          "No unbounded recursive agent spawning"
+        ],
+        "quality_gates": [
+          "Zero tool execution runtime failures"
+        ],
+        "state_updates": [
+          "EVIDENCE.md update with consensus hash"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Agent topology",
+          "Tool compilation contracts"
+        ],
+        "adds": "Dialectic swarm consensus and sequential synthesis",
+        "compound_artifact": "SWARM_CONSENSUS_RECORD.md",
+        "next_layer_ready_when": [
+          "All agent steps complete and synthesis gate is signed"
         ]
       }
     },
@@ -3917,6 +4418,131 @@
         "next_layer_ready_when": [
           "Upstream commits fetched and merged.",
           "Protected overlays remain cryptographically unmodified."
+        ]
+      }
+    },
+    {
+      "id": "vercel-fullstack-deployment",
+      "display_name": "Vercel Fullstack Deployment",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/vercel-fullstack-deployment",
+      "selection": {
+        "use_when": [
+          "Next.js applications, Turbopack bundling, and edge function deployments to Vercel are needed."
+        ],
+        "do_not_use_when": [
+          "Non-web embedded or desktop firmware is being compiled."
+        ]
+      },
+      "entrypoint": "combo-skills/vercel-fullstack-deployment/COMBO.md",
+      "members": [
+        {
+          "id": "nextjs-ecosystem",
+          "kind": "skill",
+          "role": "Compile Next.js server components and layout routing.",
+          "required": true
+        },
+        {
+          "id": "turbopack",
+          "kind": "skill",
+          "role": "Execute high-speed incremental bundler compilation.",
+          "required": true
+        },
+        {
+          "id": "vercel-platform-ops",
+          "kind": "skill",
+          "role": "Orchestrate zero-downtime edge deployment and preview verification.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "nextjs-ecosystem",
+            "consumes": [
+              "Workspace source",
+              "Route layout"
+            ],
+            "produces": [
+              "nextjs-build-manifest.json"
+            ],
+            "validation": "App router tree validates without cyclic links."
+          },
+          {
+            "step": 2,
+            "member_id": "turbopack",
+            "consumes": [
+              "nextjs-build-manifest.json"
+            ],
+            "produces": [
+              "turbopack-bundle-receipt.json"
+            ],
+            "validation": "Incremental bundle produces zero compilation warnings."
+          },
+          {
+            "step": 3,
+            "member_id": "vercel-platform-ops",
+            "consumes": [
+              "turbopack-bundle-receipt.json"
+            ],
+            "produces": [
+              "VERCEL_DEPLOYMENT_MANIFEST.md"
+            ],
+            "validation": "Deployment manifest verifies edge functions and routes."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "nextjs-ecosystem",
+            "to_member": "turbopack",
+            "required_inputs": [
+              "nextjs-build-manifest.json"
+            ],
+            "accepted_outputs": [
+              "turbopack-bundle-receipt.json"
+            ],
+            "failure_owner": "nextjs-ecosystem"
+          },
+          {
+            "from_member": "turbopack",
+            "to_member": "vercel-platform-ops",
+            "required_inputs": [
+              "turbopack-bundle-receipt.json"
+            ],
+            "accepted_outputs": [
+              "VERCEL_DEPLOYMENT_MANIFEST.md"
+            ],
+            "failure_owner": "turbopack"
+          }
+        ],
+        "evidence_requirements": [
+          "Bundle hash output",
+          "Edge function telemetry"
+        ],
+        "risk_boundaries": [
+          "No live destructive database drops or unapproved DNS mutations"
+        ],
+        "quality_gates": [
+          "All Next.js and Vercel route assertions green"
+        ],
+        "state_updates": [
+          "EVIDENCE.md update with deployment SHA-256 hashes"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "App router layouts",
+          "Turbopack bundle optimizations"
+        ],
+        "adds": "Verified fullstack edge deployment manifest",
+        "compound_artifact": "VERCEL_DEPLOYMENT_MANIFEST.md",
+        "next_layer_ready_when": [
+          "Build succeeds and deployment manifest is cryptographically verified"
         ]
       }
     },

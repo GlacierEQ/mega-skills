@@ -1,0 +1,1 @@
+# Dependencies for bigquery-data-transfer-service

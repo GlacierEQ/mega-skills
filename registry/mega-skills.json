@@ -1,6 +1,5 @@
 {
   "schema_version": 2,
-  "layer": "mega-skills",
   "entries": [
     {
       "id": "apex-accelerated-compute-mesh",
@@ -30,217 +29,8 @@
       "adds": "Hardware-accelerated machine learning control plane: coordinates neural network quantization on Apple Neural Engine, latent attention routing on DeepSeek MoE, and compiler graph execution across AWS Trainium and xAI Colossus superclusters.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-accelerated-compute-mesh",
         "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-accelerated-compute-mesh"
-      }
-    },
-    {
-      "id": "apex-adaptive-operations",
-      "display_name": "APEX Adaptive Operations",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "mega-skills/apex-adaptive-operations",
-      "entrypoint": "mega-skills/apex-adaptive-operations/MEGA.md",
-      "required_combos": [
-        "long-horizon-core",
-        "signal-to-decision-loop"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "automation-control",
-        "guarded-automation-loop",
-        "evidence-to-evolution-loop"
-      ],
-      "mission_output": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "CONTEXT.md",
-        "EVIDENCE.md",
-        "HANDOFF.md"
-      ],
-      "adds": "Mission-wide coordination of observed signals, readiness, approved operational responses, guarded run records, feedback proposals, and recoverable state without implying automatic external execution.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-adaptive-operations"
-      }
-    },
-    {
-      "id": "apex-aerospace-sim",
-      "display_name": "APEX Aerospace Simulation",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "mega-skills/apex-aerospace-sim",
-      "entrypoint": "mega-skills/apex-aerospace-sim/MEGA.md",
-      "required_combos": [
-        "long-horizon-core"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "aerospace-mission-simulation",
-        "automation-control"
-      ],
-      "mission_output": "aerospace-mission-result.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "CONTEXT.md",
-        "EVIDENCE.md",
-        "HANDOFF.md"
-      ],
-      "adds": "Orchestration of multi-vehicle aerospace simulations spanning orbital dynamics, Lambert transfer targeting, cryogenic boil-off, and countdown abort gates.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-aerospace-sim"
-      }
-    },
-    {
-      "id": "apex-always-on-core",
-      "display_name": "Apex Always-On Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "mega-skills/apex-always-on-core",
-      "entrypoint": "mega-skills/apex-always-on-core/MEGA.md",
-      "required_combos": [
-        "long-horizon-core",
-        "guarded-automation-loop",
-        "signal-to-decision-loop"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "evidence-to-evolution-loop",
-        "frontier-orbit-synthesis"
-      ],
-      "mission_output": "ALWAYS_ON_CORE_MISSION_RESULT.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "EVIDENCE.md",
-        "CONTEXT.md",
-        "HANDOFF.md",
-        "ALWAYS_ON_CORE_RECEIPT.md"
-      ],
-      "adds": "Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, and estate watchdog health.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "mega_id": "apex-always-on-core",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -278,7 +68,340 @@
           "failure_record"
         ],
         "human_control": "required"
-      }
+      },
+      "combos": [
+        "long-horizon-core",
+        "hardware-accelerated-inference"
+      ]
+    },
+    {
+      "id": "apex-adaptive-operations",
+      "display_name": "APEX Adaptive Operations",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-adaptive-operations",
+      "entrypoint": "mega-skills/apex-adaptive-operations/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "automation-control",
+        "guarded-automation-loop",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "ADAPTIVE_OPERATIONS_MISSION_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Mission-wide coordination of observed signals, readiness, approved operational responses, guarded run records, feedback proposals, and recoverable state without implying automatic external execution.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-adaptive-operations",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "signal-to-decision-loop"
+      ]
+    },
+    {
+      "id": "apex-aerospace-sim",
+      "display_name": "APEX Aerospace Simulation",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-aerospace-sim",
+      "entrypoint": "mega-skills/apex-aerospace-sim/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "aerospace-mission-simulation",
+        "automation-control"
+      ],
+      "mission_output": "aerospace-mission-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Orchestration of multi-vehicle aerospace simulations spanning orbital dynamics, Lambert transfer targeting, cryogenic boil-off, and countdown abort gates.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-aerospace-sim",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
+    },
+    {
+      "id": "apex-agent-architect-core",
+      "display_name": "APEX Agent Architect Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-agent-architect-core",
+      "entrypoint": "mega-skills/apex-agent-architect-core/MEGA.md",
+      "purpose": "End-to-end autonomous AI agent design, multi-agent mesh topology synthesis, dynamic tool generation, and dialectic swarm consensus.",
+      "combos": [
+        "long-horizon-core",
+        "multi-agent-orchestration-mesh",
+        "autonomous-agent-foundry"
+      ],
+      "required_combos": [
+        "long-horizon-core",
+        "multi-agent-orchestration-mesh",
+        "autonomous-agent-foundry"
+      ],
+      "conditional_combos": [
+        "capability-readiness"
+      ],
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "AGENT_ARCHITECT_RECORD.md"
+      ],
+      "input_contract": [
+        "Agent operational mandate, tool specifications, and swarm coordination topology"
+      ],
+      "output_contract": [
+        "AGENT_ARCHITECT_RECORD.md"
+      ],
+      "local_validation": [
+        "Multi-agent dialectic consensus reaches mathematical convergence with zero hallucinated tool calls."
+      ],
+      "does_not_own": [
+        "Unbounded recursive agent spawning without supervisor depth bounds"
+      ],
+      "firewall_policy": {
+        "mode": "read_only",
+        "fail_closed": true,
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "forbidden_actions": [
+          "merge",
+          "network_send",
+          "deletion",
+          "deployment",
+          "unbounded_recursion"
+        ],
+        "human_control_points": [
+          "approve_swarm_topology",
+          "authorize_external_agent_delegation"
+        ]
+      },
+      "mission_output": "AGENT_ARCHITECT_RECORD.md",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-agent-architect-core",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "adds": "Autonomous multi-agent architecture control plane: coordinates multi-agent topology design, dynamic tool generation, gateway routing, and dialectic swarm consensus."
+    },
+    {
+      "id": "apex-always-on-core",
+      "display_name": "Apex Always-On Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-always-on-core",
+      "entrypoint": "mega-skills/apex-always-on-core/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "guarded-automation-loop",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "evidence-to-evolution-loop",
+        "frontier-orbit-synthesis"
+      ],
+      "mission_output": "ALWAYS_ON_CORE_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "ALWAYS_ON_CORE_RECEIPT.md"
+      ],
+      "adds": "Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, and estate watchdog health.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-always-on-core",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "guarded-automation-loop",
+        "signal-to-decision-loop"
+      ]
     },
     {
       "id": "apex-architectural-evolution-engine",
@@ -309,6 +432,7 @@
       "adds": "Continuous autonomous codebase modernization: diagnoses architectural bottlenecks, designs formal Architecture Decision Records, conducts clean refactoring with AST self-healing, and enforces Google Senior Staff engineering invariants across the estate.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-architectural-evolution-engine",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -346,9 +470,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-architectural-evolution-engine"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "architectural-refactoring-engine"
+      ]
     },
     {
       "id": "apex-autonomous-agent-foundry",
@@ -379,6 +506,7 @@
       "adds": "End-to-end agent manufacturing mission control: orchestrates multi-agent system architecture, persistent memory topology, statistical evaluation pipelines, and release certification across long-horizon development sprints.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-autonomous-agent-foundry",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -416,9 +544,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-autonomous-agent-foundry"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "autonomous-agent-foundry"
+      ]
     },
     {
       "id": "apex-autonomous-software-engineering",
@@ -452,8 +583,8 @@
       "adds": "Orchestrates the entire software engineering lifecycle across architecture mapping, syntax-aware refactoring, automated test synthesis, security scanning, performance profiling, and Tower of Babel verification into an evidence-backed delivery receipt.",
       "firewall": {
         "schema_version": 1,
-        "mode": "read_only",
         "mega_id": "apex-autonomous-software-engineering",
+        "mode": "read_only",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -491,7 +622,13 @@
           "failure_record"
         ],
         "human_control": "required"
-      }
+      },
+      "combos": [
+        "long-horizon-core",
+        "closed-loop-code-repair",
+        "architectural-refactoring-engine",
+        "guarded-automation-loop"
+      ]
     },
     {
       "id": "apex-backend-infrastructure-engine",
@@ -523,8 +660,8 @@
       "adds": "Colossal backend infrastructure across PostgreSQL / Supabase, Cap'n Proto RPC, DuckDB, and Rclone multi-cloud storage.",
       "firewall": {
         "schema_version": 1,
-        "mode": "read_only",
         "mega_id": "apex-backend-infrastructure-engine",
+        "mode": "read_only",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -562,7 +699,12 @@
           "failure_record"
         ],
         "human_control": "required"
-      }
+      },
+      "combos": [
+        "long-horizon-core",
+        "closed-loop-code-repair",
+        "guarded-automation-loop"
+      ]
     },
     {
       "id": "apex-capability-foundry",
@@ -593,145 +735,8 @@
       "adds": "A controlled mission sequence that converts repeated evidence into a reusable, governed capability increment with repository, registry, validation, release, and recovery evidence.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-capability-foundry",
         "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-capability-foundry"
-      }
-    },
-    {
-      "id": "apex-dev-fork-orchestrator",
-      "display_name": "APEX Dev Fork Orchestrator",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "mega-skills/apex-dev-fork-orchestrator",
-      "entrypoint": "mega-skills/apex-dev-fork-orchestrator/MEGA.md",
-      "required_combos": [
-        "long-horizon-core"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "upstream-fork-harmonization",
-        "automation-control"
-      ],
-      "mission_output": "dev-fork-orchestration-result.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "CONTEXT.md",
-        "EVIDENCE.md",
-        "HANDOFF.md"
-      ],
-      "adds": "Automated weekly synchronization, overlay layer shielding, and regression test gatekeeping across all 513 repository forks in GlacierEQ.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-dev-fork-orchestrator"
-      }
-    },
-    {
-      "id": "apex-docgen-synthesis",
-      "display_name": "Apex DocGen Synthesis",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "mega-skills/apex-docgen-synthesis",
-      "entrypoint": "mega-skills/apex-docgen-synthesis/MEGA.md",
-      "required_combos": [
-        "long-horizon-core",
-        "architectural-refactoring-engine"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "frontier-orbit-synthesis"
-      ],
-      "mission_output": "DOCGEN_SYNTHESIS_MISSION_RECORD.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "EVIDENCE.md",
-        "CONTEXT.md",
-        "HANDOFF.md",
-        "DOCGEN_RECEIPT.md"
-      ],
-      "adds": "Living architectural codex generation, AST docstring extraction, and OpenAPI contract synthesis.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "mega_id": "apex-docgen-synthesis",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -769,35 +774,81 @@
           "failure_record"
         ],
         "human_control": "required"
-      }
+      },
+      "combos": [
+        "long-horizon-core",
+        "evidence-to-evolution-loop",
+        "skill-forge"
+      ]
     },
     {
-      "id": "apex-fleet-harmonizer",
-      "display_name": "APEX Fleet Harmonizer",
+      "id": "apex-cybersecurity-sentinel",
+      "display_name": "APEX Cybersecurity Sentinel",
       "ownership": "glaciereq",
       "maturity": "active",
-      "version": "1.0.0",
-      "path": "mega-skills/apex-fleet-harmonizer",
-      "entrypoint": "mega-skills/apex-fleet-harmonizer/MEGA.md",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-cybersecurity-sentinel",
+      "entrypoint": "mega-skills/apex-cybersecurity-sentinel/MEGA.md",
+      "purpose": "Autonomous enterprise cybersecurity defense, red-team penetration modeling, privilege escalation detection, and zero-trust perimeter auditing.",
+      "combos": [
+        "long-horizon-core",
+        "cybersecurity-threat-analysis",
+        "secure-service-deployment"
+      ],
       "required_combos": [
-        "long-horizon-core"
+        "long-horizon-core",
+        "cybersecurity-threat-analysis",
+        "secure-service-deployment"
       ],
       "conditional_combos": [
         "capability-readiness",
-        "recon-and-map",
-        "fleet-recon-and-harmonize"
+        "epistemic-verification-chain"
       ],
-      "mission_output": "fleet-harmonization-mission-result.md",
       "durable_state": [
         "MISSION.md",
         "ROADMAP.md",
-        "CONTEXT.md",
         "EVIDENCE.md",
-        "HANDOFF.md"
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "CYBERSECURITY_SENTINEL_RECORD.md"
       ],
-      "adds": "Long-horizon batch coordination, cross-repository state tracking, regression gating, automated rollbacks, and lossless branch pruning across large GitHub accounts.",
+      "input_contract": [
+        "System architecture spec, authentication topology, and threat model parameters"
+      ],
+      "output_contract": [
+        "CYBERSECURITY_SENTINEL_RECORD.md"
+      ],
+      "local_validation": [
+        "Full threat simulation verifies zero privilege escalation vulnerabilities and produces cryptographically hashed audit receipts."
+      ],
+      "does_not_own": [
+        "Live destructive intrusion against unowned infrastructure or unapproved production mutations"
+      ],
+      "firewall_policy": {
+        "mode": "read_only",
+        "fail_closed": true,
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "forbidden_actions": [
+          "merge",
+          "network_send",
+          "deletion",
+          "deployment",
+          "privilege_escalation"
+        ],
+        "human_control_points": [
+          "approve_security_patches",
+          "escalate_critical_vulnerabilities"
+        ]
+      },
+      "mission_output": "CYBERSECURITY_SENTINEL_RECORD.md",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-cybersecurity-sentinel",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -835,9 +886,224 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-fleet-harmonizer"
-      }
+        "human_control": "required"
+      },
+      "adds": "Autonomous enterprise cybersecurity defense: coordinates red-team threat modeling, privilege escalation detection, zero-trust boundary verification, and verified mitigation receipts."
+    },
+    {
+      "id": "apex-dev-fork-orchestrator",
+      "display_name": "APEX Dev Fork Orchestrator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-dev-fork-orchestrator",
+      "entrypoint": "mega-skills/apex-dev-fork-orchestrator/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "upstream-fork-harmonization",
+        "automation-control"
+      ],
+      "mission_output": "dev-fork-orchestration-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Automated weekly synchronization, overlay layer shielding, and regression test gatekeeping across all 513 repository forks in GlacierEQ.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-dev-fork-orchestrator",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
+    },
+    {
+      "id": "apex-docgen-synthesis",
+      "display_name": "Apex DocGen Synthesis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-docgen-synthesis",
+      "entrypoint": "mega-skills/apex-docgen-synthesis/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "architectural-refactoring-engine"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "frontier-orbit-synthesis"
+      ],
+      "mission_output": "DOCGEN_SYNTHESIS_MISSION_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "DOCGEN_RECEIPT.md"
+      ],
+      "adds": "Living architectural codex generation, AST docstring extraction, and OpenAPI contract synthesis.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-docgen-synthesis",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "architectural-refactoring-engine"
+      ]
+    },
+    {
+      "id": "apex-fleet-harmonizer",
+      "display_name": "APEX Fleet Harmonizer",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-fleet-harmonizer",
+      "entrypoint": "mega-skills/apex-fleet-harmonizer/MEGA.md",
+      "required_combos": [
+        "long-horizon-core"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "recon-and-map",
+        "fleet-recon-and-harmonize"
+      ],
+      "mission_output": "fleet-harmonization-mission-result.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Long-horizon batch coordination, cross-repository state tracking, regression gating, automated rollbacks, and lossless branch pruning across large GitHub accounts.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-fleet-harmonizer",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-forensic-litigation-sentinel",
@@ -868,78 +1134,8 @@
       "adds": "Autonomous legal prosecution and investigative warfare: dissects judicial dockets, aligns minute-by-minute transcripts against official records, detects 39-second impossibilities, and outputs verified impeachment traps for state and federal courts.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-forensic-litigation-sentinel",
         "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required",
-        "mega_id": "apex-forensic-litigation-sentinel"
-      }
-    },
-    {
-      "id": "apex-legal-forensic-powerhouse",
-      "display_name": "Apex Legal Forensic Powerhouse",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "mega-skills/apex-legal-forensic-powerhouse",
-      "entrypoint": "mega-skills/apex-legal-forensic-powerhouse/MEGA.md",
-      "required_combos": [
-        "long-horizon-core",
-        "guarded-automation-loop",
-        "signal-to-decision-loop"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "evidence-to-evolution-loop"
-      ],
-      "mission_output": "LEGAL_FORENSIC_POWERHOUSE_RECORD.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "EVIDENCE.md",
-        "CONTEXT.md",
-        "HANDOFF.md",
-        "LEGAL_POWERHOUSE_RECEIPT.md"
-      ],
-      "adds": "Autonomous legal warfare and electronic cyber forensics command center enforcing FRE 902(13)/(14) manifests.",
-      "firewall": {
-        "schema_version": 1,
-        "mode": "read_only",
-        "mega_id": "apex-legal-forensic-powerhouse",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -977,7 +1173,302 @@
           "failure_record"
         ],
         "human_control": "required"
-      }
+      },
+      "combos": [
+        "long-horizon-core",
+        "forensic-docket-intelligence"
+      ]
+    },
+    {
+      "id": "apex-growth-intelligence",
+      "display_name": "APEX Growth Intelligence",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-growth-intelligence",
+      "entrypoint": "mega-skills/apex-growth-intelligence/MEGA.md",
+      "purpose": "Data-driven growth engineering, automated conversion rate optimization (CRO), competitive positioning extraction, and statistical A/B experimentation.",
+      "combos": [
+        "long-horizon-core",
+        "growth-analytics-optimization",
+        "signal-to-decision-loop"
+      ],
+      "required_combos": [
+        "long-horizon-core",
+        "growth-analytics-optimization",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness"
+      ],
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "GROWTH_INTELLIGENCE_RECORD.md"
+      ],
+      "input_contract": [
+        "Market domain, user conversion funnel metrics, and target experiment hypotheses"
+      ],
+      "output_contract": [
+        "GROWTH_INTELLIGENCE_RECORD.md"
+      ],
+      "local_validation": [
+        "A/B sample size power calculations verify statistical significance thresholds with zero p-hacking."
+      ],
+      "does_not_own": [
+        "Unauthorized email dispatch, dark patterns, or real ad credit charging"
+      ],
+      "firewall_policy": {
+        "mode": "read_only",
+        "fail_closed": true,
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "forbidden_actions": [
+          "merge",
+          "network_send",
+          "deletion",
+          "deployment",
+          "ad_spend"
+        ],
+        "human_control_points": [
+          "approve_live_campaign",
+          "authorize_ad_budget_allocation"
+        ]
+      },
+      "mission_output": "GROWTH_INTELLIGENCE_RECORD.md",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-growth-intelligence",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "adds": "Data-driven growth intelligence control plane: coordinates competitive audience extraction, statistical A/B test power modeling, CRO funnel tuning, and verified event tracking telemetry."
+    },
+    {
+      "id": "apex-interactive-engine",
+      "display_name": "APEX Interactive Engine",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-interactive-engine",
+      "entrypoint": "mega-skills/apex-interactive-engine/MEGA.md",
+      "purpose": "Interactive 2D/3D media engineering, WebGL canvas rendering, procedural generative mathematics, and low-latency interactive experiences.",
+      "combos": [
+        "long-horizon-core",
+        "interactive-media-3d-pipeline",
+        "closed-loop-code-repair"
+      ],
+      "required_combos": [
+        "long-horizon-core",
+        "interactive-media-3d-pipeline",
+        "closed-loop-code-repair"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "web-build-foundation"
+      ],
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "INTERACTIVE_ENGINE_RECORD.md"
+      ],
+      "input_contract": [
+        "Interactive scene requirements, asset graph, and performance target budget"
+      ],
+      "output_contract": [
+        "INTERACTIVE_ENGINE_RECORD.md"
+      ],
+      "local_validation": [
+        "Render loop maintains 60 FPS under simulated load with zero memory leaks."
+      ],
+      "does_not_own": [
+        "Direct native GPU firmware manipulation or audio driver overrides"
+      ],
+      "firewall_policy": {
+        "mode": "read_only",
+        "fail_closed": true,
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "forbidden_actions": [
+          "merge",
+          "network_send",
+          "deletion",
+          "deployment"
+        ],
+        "human_control_points": [
+          "approve_asset_publishing",
+          "release_interactive_build"
+        ]
+      },
+      "mission_output": "INTERACTIVE_ENGINE_RECORD.md",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-interactive-engine",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "adds": "Interactive media and 3D graphics control plane: coordinates WebGL scene graphs, procedural shader mathematics, canvas viewport rendering, and 60 FPS performance benchmarks."
+    },
+    {
+      "id": "apex-legal-forensic-powerhouse",
+      "display_name": "Apex Legal Forensic Powerhouse",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-legal-forensic-powerhouse",
+      "entrypoint": "mega-skills/apex-legal-forensic-powerhouse/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "guarded-automation-loop",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "LEGAL_FORENSIC_POWERHOUSE_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "LEGAL_POWERHOUSE_RECEIPT.md"
+      ],
+      "adds": "Autonomous legal warfare and electronic cyber forensics command center enforcing FRE 902(13)/(14) manifests.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-legal-forensic-powerhouse",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "guarded-automation-loop",
+        "signal-to-decision-loop"
+      ]
     },
     {
       "id": "apex-legal-warfare",
@@ -1006,6 +1497,7 @@
       "adds": "End-to-end litigation campaign orchestration, durable case evidence tracking, court filing deadlines, exhibit tethering, and cross-jurisdictional state synchronization.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-legal-warfare",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1043,9 +1535,11 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-legal-warfare"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-omniversal-memory",
@@ -1074,6 +1568,7 @@
       "adds": "Large-scale cross-cloud semantic memory indexing across 291k+ files with subword n-gram vector spaces and dynamic Hebbian synaptic reinforcement.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-omniversal-memory",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1111,9 +1606,11 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-omniversal-memory"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-polyglot-rosetta",
@@ -1142,6 +1639,7 @@
       "adds": "Multi-language systems compilation, translation, zero-copy IPC integration, and formal truth verification across 51 Tower of Babel floors.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-polyglot-rosetta",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1179,9 +1677,11 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-polyglot-rosetta"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-safe-change-orchestrator",
@@ -1212,6 +1712,7 @@
       "adds": "Cross-Combo control of repository scope, route admission, decision evidence, bounded repair or change execution, verification, approval status, and exact recovery state.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-safe-change-orchestrator",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1249,9 +1750,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-safe-change-orchestrator"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "signal-to-decision-loop"
+      ]
     },
     {
       "id": "apex-secure-cloud-foundry",
@@ -1282,6 +1786,7 @@
       "adds": "Long-horizon cloud microservice lifecycle engineering: unifies typed API integration, multi-stage Docker containerization, OWASP security auditing, and MCP gateway registration into verified, production-ready deployments.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-secure-cloud-foundry",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1319,9 +1824,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-secure-cloud-foundry"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "secure-service-deployment"
+      ]
     },
     {
       "id": "apex-self-healing-forge",
@@ -1350,6 +1858,7 @@
       "adds": "Autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-self-healing-forge",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1387,9 +1896,11 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-self-healing-forge"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-sovereign-runtime",
@@ -1420,6 +1931,7 @@
       "adds": "Unified control plane for native desktop embodiment, stacked multi-connector pipelines, automated self-healing, and absolute epistemic proof across local and cloud horizons.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-sovereign-runtime",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1457,9 +1969,120 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-sovereign-runtime"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
+    },
+    {
+      "id": "apex-vercel-web-foundry",
+      "display_name": "APEX Vercel Web Foundry",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-vercel-web-foundry",
+      "entrypoint": "mega-skills/apex-vercel-web-foundry/MEGA.md",
+      "purpose": "Full-stack modern web engineering foundry spanning Next.js, Turbopack, edge functions, serverless KV storage, and continuous Vercel deployment.",
+      "combos": [
+        "long-horizon-core",
+        "vercel-fullstack-deployment",
+        "web-build-foundation"
+      ],
+      "required_combos": [
+        "long-horizon-core",
+        "vercel-fullstack-deployment",
+        "web-build-foundation"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "closed-loop-code-repair"
+      ],
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "VERCEL_WEB_FOUNDRY_RECORD.md"
+      ],
+      "input_contract": [
+        "Full-stack web application source, API schemas, and deployment environment keys"
+      ],
+      "output_contract": [
+        "VERCEL_WEB_FOUNDRY_RECORD.md"
+      ],
+      "local_validation": [
+        "Turbopack build, edge function routes, and responsive UI layout tests pass 100%."
+      ],
+      "does_not_own": [
+        "Destructive database drops or unauthorized live DNS alterations"
+      ],
+      "firewall_policy": {
+        "mode": "read_only",
+        "fail_closed": true,
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "forbidden_actions": [
+          "merge",
+          "network_send",
+          "deletion",
+          "deployment",
+          "unauthorized_billing"
+        ],
+        "human_control_points": [
+          "approve_production_deployment",
+          "approve_domain_rebinding"
+        ]
+      },
+      "mission_output": "VERCEL_WEB_FOUNDRY_RECORD.md",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-vercel-web-foundry",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "adds": "Full-stack modern web engineering control plane: coordinates Next.js app router trees, Turbopack incremental bundling, edge function routing, and zero-downtime Vercel deployments."
     },
     {
       "id": "apex-voice-forensics",
@@ -1488,6 +2111,7 @@
       "adds": "Evidentiary audio processing for Apple Voice Memos and court recordings with ENF acoustic grid analysis, WhisperX phonetic alignment, and 17-point court transcripts.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-voice-forensics",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1525,9 +2149,11 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-voice-forensics"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     },
     {
       "id": "apex-web-build-system",
@@ -1555,6 +2181,7 @@
       "adds": "Mission-wide routing from repository reconnaissance through visual direction, browser implementation, justified full-stack escalation, readiness gating, validation evidence, approval state, and recoverable handoff.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "apex-web-build-system",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1592,9 +2219,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "apex-web-build-system"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "web-build-foundation"
+      ]
     },
     {
       "id": "far-away-party",
@@ -1627,6 +2257,7 @@
       "adds": "Conditional selection of Compounding Combo Skills, durable state, phase gates, safe resumption, and evidence-backed integration across a long-horizon mission.",
       "firewall": {
         "schema_version": 1,
+        "mega_id": "far-away-party",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -1664,9 +2295,12 @@
           "output_manifest",
           "failure_record"
         ],
-        "human_control": "required",
-        "mega_id": "far-away-party"
-      }
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core"
+      ]
     }
-  ]
+  ],
+  "layer": "mega-skills"
 }

@@ -1,14 +1,14 @@
 ---
 name: glaciereq-nervous-system
-description: "Cross-platform GlacierEQ master composition kernel for complex missions that must recover prior state, route through existing skills and connectors, bind the active model capability plane, apply Tower of Babel technology placement and proof, execute authorized changes, verify outcomes, and persist receipts and continuation state. Use for estate-wide work, continuation across sessions or models, multi-repository operations, and connector-heavy workflows."
+description: "Cross-platform GlacierEQ master composition kernel for complex missions that must recover prior state, route through existing skills and connectors, bind the active model capability plane, apply Tower of Babel technology placement and proof, execute authorized changes, verify outcomes, and persist receipts and continuation state. Use for estate-wide work, continuation across sessions or models, multi-repository operations, and connector-heavy ..."
 ---
 
 # GlacierEQ Nervous System — Host Projection
 
 This file is a **projection**, not a competing authority.
 
-Innovation source: `GlacierEQ/antigravity-awesome-skills/skills/glaciereq-nervous-system/`
-Innovation merge commit: `6e3bcf71e8d79c682dbe8993a012b761d0a19390`
+Canonical source: `GlacierEQ/antigravity-awesome-skills/skills/glaciereq-nervous-system/`
+Canonical merge commit: `6e3bcf71e8d79c682dbe8993a012b761d0a19390`
 
 ## Dispatch
 
@@ -39,4 +39,4 @@ For complex GlacierEQ missions, enter through:
 
 ## Authority rule
 
-This projection may adapt paths and host-specific invocation syntax. It may not redefine the masterskill lifecycle, promote itself above the innovation source, duplicate downstream specialist doctrine, or claim completion without verification and persistence.
+This projection may adapt paths and host-specific invocation syntax. It may not redefine the masterskill lifecycle, promote itself above the canonical source, duplicate downstream specialist doctrine, or claim completion without verification and persistence.
