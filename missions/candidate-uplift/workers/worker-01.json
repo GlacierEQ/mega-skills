@@ -34,77 +34,100 @@
       "recommended_action": "repair_instruction_contract"
     },
     {
-      "id": "mega-skills-test-runner",
+      "id": "pipeline-compositor",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
-      "body_chars": 2965,
+      "description": "Directed Acyclic Graph (DAG) pipeline composition engine for stacking connectors, skills, and agents with typed edges, backpressure, checkpoint/resume, and parallel execution.",
+      "body_chars": 1387,
       "reasons": [
-        "3 explicit implementation stub(s)"
+        "6 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/before_running.py",
-          "scripts/failure_diagnostic.py",
+          "scripts/backpressure_controller.py",
+          "scripts/checkpoint_manager.py",
+          "scripts/dag_parser.py",
+          "scripts/manifest_synthesizer.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
           "scripts/purpose.py",
-          "scripts/report_emitter.py",
-          "scripts/revision_recorder.py",
-          "scripts/run_checks.py",
-          "scripts/standard_workflow.py",
+          "scripts/stage_executor.py",
+          "scripts/topology_validator.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_skills_test_runner.py"
+          "tests/test_pipeline_compositor.py"
         ],
-        "references": [
-          "references/checks.md"
-        ],
+        "references": [],
         "assets": [
-          "resources/checks.md",
-          "resources/mega_skills_test_runner_config.yaml",
-          "resources/mega_skills_test_runner_schema.json",
-          "resources/standard_tree.md"
+          "resources/edge_type_registry.json",
+          "resources/pipeline_compositor_config.yaml",
+          "resources/pipeline_compositor_schema.json",
+          "resources/pipeline_def_schema.yaml"
         ]
       },
       "stub_files": [
-        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
-        "skills/mega-skills-test-runner/scripts/report_emitter.py",
-        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
+        "skills/pipeline-compositor/scripts/backpressure_controller.py",
+        "skills/pipeline-compositor/scripts/manifest_synthesizer.py",
+        "skills/pipeline-compositor/scripts/stage_executor.py",
+        "skills/pipeline-compositor/scripts/dag_parser.py",
+        "skills/pipeline-compositor/scripts/topology_validator.py",
+        "skills/pipeline-compositor/scripts/checkpoint_manager.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
+        "skills/pipeline-compositor/tests/test_pipeline_compositor.py"
       ],
-      "real_implementation_files": [
-        "skills/mega-skills-test-runner/scripts/run_checks.py"
-      ],
+      "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "cross-app-pipeline",
+      "id": "fork-overlay-core",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.",
-      "body_chars": 1594,
+      "description": "Dev Fork Doctrine automated upstream synchronization, custom overlay shielding, and regression test gatekeeping across repository forks.",
+      "body_chars": 1130,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
-          "pipeline.py"
+          "__init__.py",
+          "scripts/merge_engine.py",
+          "scripts/output_contract.py",
+          "scripts/overlay_isolator.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/push_verifier.py",
+          "scripts/regression_gate.py",
+          "scripts/upstream_fetcher.py",
+          "skill.py"
         ],
-        "tests": [],
+        "tests": [
+          "tests/test_fork_overlay_core.py"
+        ],
         "references": [],
-        "assets": []
+        "assets": [
+          "resources/fork_overlay_core_config.yaml",
+          "resources/fork_overlay_core_schema.json",
+          "resources/overlay_protection_rules.yaml",
+          "resources/sync_audit_schema.yaml"
+        ]
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
+      "structural_tests": [
+        "skills/fork-overlay-core/tests/test_fork_overlay_core.py"
+      ],
       "real_implementation_files": [
-        "skills/cross-app-pipeline/pipeline.py"
+        "skills/fork-overlay-core/scripts/merge_engine.py",
+        "skills/fork-overlay-core/scripts/regression_gate.py",
+        "skills/fork-overlay-core/scripts/overlay_isolator.py",
+        "skills/fork-overlay-core/scripts/upstream_fetcher.py",
+        "skills/fork-overlay-core/scripts/push_verifier.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

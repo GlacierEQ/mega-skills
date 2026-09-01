@@ -1,151 +1,80 @@
 {
   "worker": 7,
   "workers": 8,
-  "assigned": 3,
+  "assigned": 2,
   "findings": [
     {
-      "id": "forensic-evidence-chain-core",
+      "id": "mega-skills-test-runner",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
-      "body_chars": 1301,
+      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
+      "body_chars": 2965,
       "reasons": [
-        "6 explicit implementation stub(s)"
+        "3 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/anomaly_scanner.py",
-          "scripts/bates_stamper.py",
-          "scripts/manifest_emitter.py",
-          "scripts/output_contract.py",
-          "scripts/pii_scrubber.py",
-          "scripts/procedure.py",
+          "scripts/before_running.py",
+          "scripts/failure_diagnostic.py",
           "scripts/purpose.py",
-          "scripts/sha256_digester.py",
-          "scripts/timestamp_verifier.py",
+          "scripts/report_emitter.py",
+          "scripts/revision_recorder.py",
+          "scripts/run_checks.py",
+          "scripts/standard_workflow.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_forensic_evidence_chain_core.py"
+          "tests/test_mega_skills_test_runner.py"
         ],
-        "references": [],
+        "references": [
+          "references/checks.md"
+        ],
         "assets": [
-          "resources/bates_serial_schema.yaml",
-          "resources/forensic_evidence_chain_core_config.yaml",
-          "resources/forensic_evidence_chain_core_schema.json",
-          "resources/fre_902_compliance.md"
+          "resources/checks.md",
+          "resources/mega_skills_test_runner_config.yaml",
+          "resources/mega_skills_test_runner_schema.json",
+          "resources/standard_tree.md"
         ]
       },
       "stub_files": [
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
-        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
-        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
-        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
-        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
       ],
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-skills-test-runner/scripts/run_checks.py"
+      ],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "computer-user-core",
+      "id": "cross-app-pipeline",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI event simulation, window state inspection, and process lifecycle supervision.",
-      "body_chars": 1344,
+      "description": "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.",
+      "body_chars": 1594,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
-          "__init__.py",
-          "scripts/cleanup.py",
-          "scripts/gui_automator.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/process_inspector.py",
-          "scripts/purpose.py",
-          "scripts/screen_capture.py",
-          "scripts/state_verifier.py",
-          "skill.py"
+          "pipeline.py"
         ],
-        "tests": [
-          "tests/test_computer_user_core.py"
-        ],
+        "tests": [],
         "references": [],
-        "assets": [
-          "resources/applescript_templates.applescript",
-          "resources/computer_user_core_config.yaml",
-          "resources/computer_user_core_schema.json",
-          "resources/window_bounds_schema.json"
-        ]
+        "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [
-        "skills/computer-user-core/tests/test_computer_user_core.py"
-      ],
+      "structural_tests": [],
       "real_implementation_files": [
-        "skills/computer-user-core/scripts/cleanup.py",
-        "skills/computer-user-core/scripts/process_inspector.py",
-        "skills/computer-user-core/scripts/state_verifier.py",
-        "skills/computer-user-core/scripts/screen_capture.py",
-        "skills/computer-user-core/scripts/gui_automator.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "resource-preflight",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Verify the environment, dependencies, access, data, approvals, and validation resources required by a capability before it is selected. Use when a route names tools, scripts, models, datasets, credentials, services, hardware, or runtime assumptions.",
-      "body_chars": 1493,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/availability_checker.py",
-          "scripts/classifier.py",
-          "scripts/fallback_identifier.py",
-          "scripts/inventory_builder.py",
-          "scripts/output_contract.py",
-          "scripts/preflight_emitter.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_resource_preflight.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/prerequisite_types.yaml",
-          "resources/resource_preflight_config.yaml",
-          "resources/resource_preflight_schema.json",
-          "resources/verification_methods.yaml"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/resource-preflight/tests/test_resource_preflight.py"
-      ],
-      "real_implementation_files": [
-        "skills/resource-preflight/scripts/fallback_identifier.py",
-        "skills/resource-preflight/scripts/preflight_emitter.py",
-        "skills/resource-preflight/scripts/classifier.py",
-        "skills/resource-preflight/scripts/inventory_builder.py",
-        "skills/resource-preflight/scripts/availability_checker.py"
+        "skills/cross-app-pipeline/pipeline.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }
