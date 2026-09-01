@@ -59,3 +59,19 @@ Unbounded external state mutations.
 6. **No premature mission close.** A mission does not close while a materially executable route remains, unless the mission boundary expressly excludes it.
 7. **Legal lifecycle projection.** For full-case missions, route from evidence recovery through pleadings, exhibits, discovery, hearing, enforcement, and post-ruling preservation while keeping filing/service as separately receipted external acts.
 8. **User-authorized durable writes are additive by default.** Prefer new ledgers/overlays/history records to destructive replacement of source-bearing files.
+
+## Hidden Caveat Routing
+
+**Mandatory conditional Skill:** `hidden-caveat-detector`
+
+Activate when the mission involves:
+- legal allegations or pleadings;
+- evidence or source records;
+- regularly kept journals/chat exports;
+- operator firsthand facts;
+- source compaction/summarization;
+- contradiction resolution;
+- durable status changes;
+- mission closure with unresolved proof.
+
+The Skill audits semantic effect, not keywords. Its output `HIDDEN_CAVEAT_AUDIT.md` becomes gate evidence for the affected phase.
