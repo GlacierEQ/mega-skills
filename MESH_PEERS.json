@@ -1,0 +1,30 @@
+{
+  "schema": "glaciereq.peer-mesh-pointer.v1",
+  "self": {
+    "repo": "GlacierEQ/mega-skills",
+    "role": "capability_and_procedure_brain",
+    "entrypoints": [
+      "skills/master/SKILL.md",
+      "registry/skills.json",
+      "registry/combo-skills.json",
+      "registry/mega-skills.json"
+    ]
+  },
+  "mesh_contract": {
+    "repo": "GlacierEQ/apex-control-plane",
+    "path": "integration/cognitive_mesh.json",
+    "branch": "main"
+  },
+  "peers": [
+    "GlacierEQ/the-tower-of-babel",
+    "GlacierEQ/aspen-grove-core",
+    "GlacierEQ/apex-control-plane"
+  ],
+  "law": [
+    "standalone first",
+    "route instead of copy",
+    "preserve specialist authority",
+    "exchange artifacts, provenance, blockers, and receipts",
+    "live source state outranks stale projections"
+  ]
+}
