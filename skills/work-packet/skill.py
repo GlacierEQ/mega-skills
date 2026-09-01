@@ -1,37 +1,26 @@
 #!/usr/bin/env python3
-"""
-work-packet. 
-Entry point for work-packet skill.
-"""
-
+"""Executable dispatcher for work-packet backed by the shared long-horizon runtime."""
 import sys
 from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
-
-def main():
-    """Main entry point - dispatches to appropriate script based on args."""
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+from long_horizon_atomic_runtime import cli
+OPERATIONS = {
+    "acceptance-tester": "acceptance_tester",
+    "boundary-enforcer": "boundary_enforcer",
+    "input-lister": "input_lister",
+    "objective-namer": "objective_namer",
+    "output-specifier": "output_specifier",
+    "state-updater": "state_updater",
+}
+def main() -> int:
     if len(sys.argv) < 2:
-        print(f"Usage: work-packet <command> [args...]")
-        print("Available commands:")
-        for sn in ['objective_namer.py', 'input_lister.py', 'output_specifier.py', 'acceptance_tester.py', 'boundary_enforcer.py', 'state_updater.py']:
-            print(f"  {sn.replace('.py', '')}")
+        print("Usage: work-packet <acceptance-tester|boundary-enforcer|input-lister|objective-namer|output-specifier|state-updater> --input payload.json")
         return 1
-    
-    command = sys.argv[1]
-    script_path = Path(__file__).parent / "scripts" / f"{command}.py"
-    
-    if not script_path.exists():
-        script_path = Path(__file__).parent / "scripts" / f"{command.replace('-', '_')}.py"
-    
-    if not script_path.exists():
-        print(f"Unknown command: {command}")
+    op=OPERATIONS.get(sys.argv[1])
+    if not op:
+        print("Unknown command: "+sys.argv[1])
         return 1
-    
-    exec_globals = {"__name__": "__main__"}
-    exec(script_path.read_text(), exec_globals)
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+    sys.argv=[sys.argv[0],*sys.argv[2:]]
+    return cli("work-packet",op)
+if __name__=="__main__":
+    raise SystemExit(main())
