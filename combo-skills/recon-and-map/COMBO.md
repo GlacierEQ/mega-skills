@@ -18,3 +18,12 @@ Use this Combo when repository roles, boundaries, or relationships are uncertain
 | 4 | `quality-gate` | Accepts the map only when every candidate is resolved or explicitly unresolved. |
 
 The output is `repository-context-map.md`, including source locations, role boundaries, tensions, and the smallest next verification. It is ready for a Mega Skill only after no repository selection depends on implicit assumption or uninspected evidence.
+
+## Identity and source expansion rule — 2026-08-31
+
+Recon must search beyond exact identifiers.
+- Expand obvious spelling, OCR, alias, filename, and transliteration variants.
+- Use an **event fingerprint** (dates, actors, locations, quotes, property, report numbers, contact data) to connect likely same-matter records.
+- Do not stop because an extra/missing letter appears in a name.
+- Do not merge same/similar names when surrounding event/source fingerprints diverge.
+- Preserve every candidate hit and record the identity-resolution rationale or unresolved status.
