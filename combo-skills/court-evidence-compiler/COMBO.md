@@ -54,3 +54,17 @@ The Combo is complete only when every exhibit file has a deterministic SHA-256 d
 1. Every exhibit has a verifiable SHA-256 digest.
 2. Bates stamping is contiguous and collision-free.
 3. FRE 902(13)/(14) self-authenticating affidavits are signed.
+
+## State-law and journal-source correction — 2026-08-31
+
+This Combo is **not limited to federal FRE 902(13)/(14)**. For a state-court mission, the governing state evidence rules and foundation methods control. Federal self-authentication methods may be useful analogies or separate federal routes but must not be represented as automatically controlling state admissibility.
+
+For chat exports / regularly kept journal material:
+- preserve the original journal/export file unchanged;
+- assign hashes/source IDs to the original;
+- create transcripts, OCR, Bates copies, excerpts, and redactions only as derivatives;
+- keep exact pointers from every derivative excerpt to the original entry/context;
+- do not let an evidentiary packet rewrite the source wording;
+- treat authentication, hearsay, original-record/best-evidence issues, and business/journal-record theories as separate legal questions under the governing jurisdiction.
+
+Bates numbering applies to exhibit **copies/derivatives**, not by altering original media.

@@ -48,3 +48,14 @@ Produce `ALWAYS_ON_CORE_MISSION_RESULT.md` upon mission completion.
 ## Non-goals
 
 Unbounded external state mutations.
+
+## Always-On Source Integrity — 2026-08-31
+
+The always-on core continuously enforces:
+- **source ≠ summary**: context compaction may reference original material but cannot become a substitute source;
+- **nonreview ≠ contradiction**: lack of reinspection in one run does not demote an existing source assertion;
+- **journal continuity**: historical chats/exports used as a regularly kept journal remain verbatim source records;
+- **alias expansion**: spelling/OCR variants expand retrieval rather than stopping it;
+- **contradiction routing**: conflicts create evidence-acquisition work packets instead of silent fact deletion;
+- **forward persistence**: every complex run should leave a durable delta and exact resume point;
+- **no false completion**: close only when remaining gaps are explicitly blocked/assigned or mission criteria are satisfied.

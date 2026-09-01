@@ -1,0 +1,128 @@
+{
+  "worker": 2,
+  "workers": 8,
+  "assigned": 3,
+  "findings": [
+    {
+      "id": "aerospace-trajectory-core",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "SpaceX orbital dynamics, Keplerian propagation, Lambert transfer boundary value solvers, and thermodynamic cryogenic boil-off equations.",
+      "body_chars": 1283,
+      "reasons": [
+        "4 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/boiloff_calc.py",
+          "scripts/conjunction_analyzer.py",
+          "scripts/lambert_solver.py",
+          "scripts/orbital_propagator.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_aerospace_trajectory_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/aerospace_trajectory_core_config.yaml",
+          "resources/aerospace_trajectory_core_schema.json",
+          "resources/orbital_constants.json",
+          "resources/tank_thermal_models.yaml"
+        ]
+      },
+      "stub_files": [
+        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
+        "skills/aerospace-trajectory-core/scripts/lambert_solver.py",
+        "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
+        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/aerospace-trajectory-core/tests/test_aerospace_trajectory_core.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "polyglot-rosetta-core",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages.",
+      "body_chars": 1199,
+      "reasons": [
+        "5 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/ast_inspector.py",
+          "scripts/code_synthesizer.py",
+          "scripts/cross_compiler.py",
+          "scripts/floor_selector.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/proof_generator.py",
+          "scripts/purpose.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_polyglot_rosetta_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/floor_catalog.yaml",
+          "resources/invariant_spec_schema.yaml",
+          "resources/polyglot_rosetta_core_config.yaml",
+          "resources/polyglot_rosetta_core_schema.json"
+        ]
+      },
+      "stub_files": [
+        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
+        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
+        "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
+        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "gmail-orchestrator",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Headless browser-based Gmail control for triage, drafting, and forensic extraction.",
+      "body_chars": 1166,
+      "reasons": [
+        "no actionable procedure/capability language",
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "orchestrator.py"
+        ],
+        "tests": [],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "real_implementation_files": [
+        "skills/gmail-orchestrator/orchestrator.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    }
+  ]
+}

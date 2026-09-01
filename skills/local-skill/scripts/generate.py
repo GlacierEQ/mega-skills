@@ -1,316 +1,240 @@
 #!/usr/bin/env python3
-"""
-Generate a complete new skill directory from patterns and a name + description.
-Part of local-skill.
-"""
+"""Generate a truthful candidate skill package from repository conventions."""
+from __future__ import annotations
 
-import sys
+import argparse
 import json
+import re
 import textwrap
 from pathlib import Path
-from datetime import datetime, timezone
 
-TEMPLATES = {
-    "SKILL.md": textwrap.dedent("""\
-    ---
-    name: {name}
-    description: "{description}"
-    ---
 
-    # {title}
+SKILL_TEMPLATE = textwrap.dedent("""\
+---
+name: {name}
+description: "{description}"
+---
 
-    ## Use this skill when
+# {title}
 
-    {use_when}
+## Purpose
 
-    ## Decision gate
+{description}
 
-    Proceed only when:
-    1. The requested operational envelope is clearly bounded and input parameters are verified.
-    2. Execution adheres to baseline Epistemic Tier L2 (Behavioral Proof & Unit Assertions).
-    3. Safety invariants and cognitive firewall rules are satisfied.
+## Use When
 
-    ## Creation workflow
+Use this skill when the requested task matches the capability described above and this package is the most specific available skill.
 
-    1. **Inspect context**: Verify environmental invariants and prerequisite schemas.
-    2. **Draft contract**: Confirm parameters against `resources/{name}_schema.json`.
-    3. **Execute domain scripts**: Run focused procedures under `scripts/`.
-    4. **Verify assertions**: Confirm 100% green test assertions and cryptographic receipts.
-    5. **Emit deliverable**: Emit structured output artifact with SHA-256 hash.
+## Operating Method
 
-    ## Epistemic Tier & Verification Proofs
+1. Inspect the relevant inputs and current project state.
+2. Implement the domain operation in scripts/run.py or replace that candidate entrypoint with focused scripts.
+3. Add deterministic tests that exercise the stated domain behavior, not merely file existence.
+4. Run the package tests and the repository readiness assay.
+5. Describe the skill as executable only after behavioral evidence supports that claim.
 
-    - **Operational Baseline**: $\\mathcal{{L}}_2$ (Unit & Behavioral Proof)
-    - **Verification Command**: `python3 -m unittest discover -s tests -v` or `pytest tests/ -v`
-    - **Integrity**: Deterministic execution, zero side-channel leakage, cryptographic provenance.
+## Progressive Disclosure
 
-    ## APEX Cognitive Firewall & Safety Invariants
+Keep this file concise. Put detailed references in references/, reusable code in scripts/, and output assets/templates in assets/ or resources/.
 
-    - **Invariant 1 (Read-Only Default)**: Read and analyze prior to any state mutation. External mutations require explicit authority.
-    - **Invariant 2 (Bounded Execution)**: Bounded batching, explicit timeouts, and zero infinite loops.
-    - **Invariant 3 (Fail-Closed Gate)**: Any schema violation, missing dependency, or test failure halts execution immediately.
+## Generated State
 
-    ## Resources
+This package is generated as a candidate scaffold. Generation proves package structure only; it does not prove domain execution.
 
-    | Resource | Use |
-    |---|---|
-    | `resources/{name}_config.yaml` | Runtime configuration parameters. |
-    | `resources/{name}_schema.json` | Input and output validation schema. |
+## Commands
 
-    ## Commands
+- {name} this-skill
+- {name} run
 
-    ```bash
-    {name} this-skill
-    {name} run
-    ```
-    """),
+## Verification
 
-    "skill.py": textwrap.dedent("""\
-    #!/usr/bin/env python3
-    \"\"\"
-    {name}.
-    Entry point for {name} skill.
-    \"\"\"
+The self-description command reports candidate/L1 until domain implementation and behavioral tests exist. The run command fails with execution_unavailable until it is replaced by real domain logic.
+""")
 
-    import sys
-    from pathlib import Path
+SKILL_PY_TEMPLATE = textwrap.dedent("""\
+#!/usr/bin/env python3
+import subprocess
+import sys
+from pathlib import Path
 
-    sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+COMMANDS = {{
+    "this-skill": "this_skill.py",
+    "this_skill": "this_skill.py",
+    "run": "run.py",
+}}
 
-    def main():
-        if len(sys.argv) < 2:
-            print(f"Usage: {name} <command> [args...]")
-            print("Available commands:")
-            for sn in {commands!r}:
-                print(f"  {{sn.replace('.py', '')}}")
-            return 1
-
-        command = sys.argv[1]
-        script_path = Path(__file__).parent / "scripts" / f"{{command}}.py"
-        if not script_path.exists():
-            script_path = Path(__file__).parent / "scripts" / f"{{command.replace('-', '_')}}.py"
-        if not script_path.exists():
-            print(f"Unknown command: {{command}}")
-            return 1
-
-        exec_globals = {{\"__name__\": \"__main__\"}}
-        exec(script_path.read_text(), exec_globals)
-        return 0
-
-    if __name__ == "__main__":
-        sys.exit(main())
-    """),
-
-    "__init__.py": '"""Package init for {name}."""\n',
-
-    "requirements.txt": "pyyaml\njsonschema\n",
-
-    "scripts/this_skill.py": textwrap.dedent("""\
-    #!/usr/bin/env python3
-    \"\"\"
-    Self-description / readiness for {name}.
-    \"\"\"
-
-    import sys
-    import json
-    from pathlib import Path
-
-    def main():
-        print(json.dumps({{
-            "skill": "{name}",
-            "status": "ready",
-            "epistemic_tier": "L2",
-            "firewall_active": True,
-            "generated_by": "local-skill",
-            "timestamp": "{timestamp}",
-        }}, indent=2))
-        return 0
-
-    if __name__ == "__main__":
-        sys.exit(main())
-    """),
-
-    "scripts/run.py": textwrap.dedent("""\
-    #!/usr/bin/env python3
-    \"\"\"
-    Primary execution entry for {name}.
-    \"\"\"
-
-    import sys
-    import json
-    import hashlib
-    from pathlib import Path
-
-    def main():
-        skill_name = "{name}"
-        data = {{
-            "skill": skill_name,
-            "status": "success",
-            "epistemic_tier": "L2",
-            "firewall": "verified",
-            "execution": "completed",
-        }}
-        payload = json.dumps(data, sort_keys=True)
-        sha256_hash = hashlib.sha256(payload.encode("utf-8")).hexdigest()
-        data["sha256"] = sha256_hash
-        print(json.dumps(data, indent=2))
-        return 0
-
-    if __name__ == "__main__":
-        sys.exit(main())
-    """),
-
-    "resources/config.yaml": textwrap.dedent("""\
-    # Configuration for {name}
-    version: '1.0.0'
-    enabled: true
-    epistemic_tier: 'L2'
-    settings:
-      strict_validation: true
-      firewall_enforced: true
-    """),
-
-    "resources/schema.json": textwrap.dedent("""\
-    {{
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "title": "{title}",
-      "type": "object",
-      "properties": {{
-        "skill": {{"type": "string"}},
-        "status": {{"type": "string"}},
-        "epistemic_tier": {{"type": "string"}},
-        "firewall": {{"type": "string"}},
-        "sha256": {{"type": "string"}}
-      }},
-      "required": ["skill", "status", "epistemic_tier"]
-    }}
-    """),
-
-    "tests/test_skill.py": textwrap.dedent("""\
-    #!/usr/bin/env python3
-    \"\"\"
-    L2 Behavioral tests for {name}.
-    \"\"\"
-
-    import sys
-    import json
-    import unittest
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-
-    class Test{class_name}(unittest.TestCase):
-        def setUp(self):
-            self.root = Path(__file__).parent.parent
-
-        def test_skill_entry_point_exists_and_executable(self):
-            skill_py = self.root / "skill.py"
-            self.assertTrue(skill_py.exists())
-            self.assertTrue(bool(skill_py.stat().st_mode & 0o111))
-
-        def test_scripts_exist_and_executable(self):
-            scripts_dir = self.root / "scripts"
-            for script in {commands!r}:
-                p = scripts_dir / script
-                self.assertTrue(p.exists(), f"Missing script: {{script}}")
-                self.assertTrue(bool(p.stat().st_mode & 0o111), f"Script not executable: {{script}}")
-
-        def test_resources_exist(self):
-            resources_dir = self.root / "resources"
-            self.assertTrue((resources_dir / "{name}_config.yaml").exists() or (resources_dir / "config.yaml").exists())
-            self.assertTrue((resources_dir / "{name}_schema.json").exists() or (resources_dir / "schema.json").exists())
-
-        def test_requirements_exist(self):
-            self.assertTrue((self.root / "requirements.txt").exists())
-
-        def test_skill_md_contract(self):
-            skill_md = self.root / "SKILL.md"
-            text = skill_md.read_text(encoding="utf-8")
-            self.assertTrue(text.startswith("---"))
-            self.assertIn("name: {name}", text)
-            self.assertIn("Cognitive Firewall", text)
-            self.assertIn("Epistemic Tier", text)
-
-    if __name__ == "__main__":
-        unittest.main()
-    """),
-}
-
-def to_class_name(name: str) -> str:
-    return "".join(part.capitalize() for part in name.replace("-", "_").split("_"))
-
-def main():
-    if len(sys.argv) < 3:
-        print("Usage: generate <skill-name> <short description...>")
-        print("Example: generate my-new-skill 'Does the thing with evidence.'")
+def main() -> int:
+    if len(sys.argv) < 2:
+        print("Usage: {name} <this-skill|run> [args...]")
         return 1
-
-    name = sys.argv[1].strip().lower().replace("_", "-")
-    description = " ".join(sys.argv[2:]).strip()
-    title = name.replace("-", " ").title()
-    class_name = to_class_name(name)
-    timestamp = datetime.now(timezone.utc).isoformat()
-
-    commands = ["this_skill.py", "run.py"]
-
-    # Target directory: sibling under skills/
-    here = Path(__file__).resolve()
-    skills_root = here.parents[2]  # skills/local-skill/scripts -> skills/
-    target = skills_root / name
-
-    if target.exists():
-        print(f"Refusing to overwrite existing skill at {target}")
-        print("Delete it first or choose a different name.")
+    script = COMMANDS.get(sys.argv[1])
+    if not script:
+        print(f"Unknown command: {{sys.argv[1]}}")
         return 1
+    path = Path(__file__).parent / "scripts" / script
+    return subprocess.run([sys.executable, str(path), *sys.argv[2:]], check=False).returncode
 
-    target.mkdir(parents=True)
-    (target / "scripts").mkdir()
-    (target / "resources").mkdir()
-    (target / "tests").mkdir()
+if __name__ == "__main__":
+    raise SystemExit(main())
+""")
 
-    ctx = {
-        "name": name,
-        "title": title,
-        "description": description,
-        "use_when": f"Use this skill when you need: {description}",
-        "commands": commands,
-        "class_name": class_name,
-        "timestamp": timestamp,
-    }
+THIS_SKILL_TEMPLATE = textwrap.dedent("""\
+#!/usr/bin/env python3
+import json
 
-    # Write core files
-    (target / "SKILL.md").write_text(TEMPLATES["SKILL.md"].format(**ctx))
-    (target / "skill.py").write_text(TEMPLATES["skill.py"].format(**ctx))
-    (target / "skill.py").chmod(0o755)
-    (target / "__init__.py").write_text(TEMPLATES["__init__.py"].format(**ctx))
-    (target / "requirements.txt").write_text(TEMPLATES["requirements.txt"])
-
-    # Scripts
-    for scr_name, tmpl_key in [("this_skill.py", "scripts/this_skill.py"), ("run.py", "scripts/run.py")]:
-        p = target / "scripts" / scr_name
-        p.write_text(TEMPLATES[tmpl_key].format(**ctx))
-        p.chmod(0o755)
-
-    # Resources (use skill-prefixed names for clarity)
-    (target / "resources" / f"{name}_config.yaml").write_text(
-        TEMPLATES["resources/config.yaml"].format(**ctx)
-    )
-    (target / "resources" / f"{name}_schema.json").write_text(
-        TEMPLATES["resources/schema.json"].format(**ctx)
-    )
-
-    # Tests
-    test_path = target / "tests" / f"test_{name.replace('-', '_')}.py"
-    test_path.write_text(TEMPLATES["tests/test_skill.py"].format(**ctx))
-    test_path.chmod(0o755)
-
-    print(f"Generated skill: {target}")
-    print("Files:")
-    for p in sorted(target.rglob("*")):
-        if p.is_file():
-            print(f"  {p.relative_to(skills_root)}")
-    print("\nNext: review SKILL.md, implement real logic in scripts/run.py, then commit.")
+def main() -> int:
+    print(json.dumps({{
+        "skill": "{name}",
+        "status": "candidate",
+        "epistemic_tier": "L1",
+        "capability_executed": False,
+        "generated_by": "local-skill",
+        "reason": "Package structure exists; domain behavior has not yet earned L2 proof."
+    }}, indent=2, sort_keys=True))
     return 0
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
+""")
+
+RUN_TEMPLATE = textwrap.dedent("""\
+#!/usr/bin/env python3
+import json
+
+def main() -> int:
+    print(json.dumps({{
+        "skill": "{name}",
+        "status": "execution_unavailable",
+        "capability_executed": False,
+        "reason": "Replace scripts/run.py with real domain implementation and add behavioral tests before activation."
+    }}, indent=2, sort_keys=True))
+    return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+""")
+
+TEST_TEMPLATE = textwrap.dedent("""\
+#!/usr/bin/env python3
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+def test_candidate_self_description_is_truthful():
+    result = subprocess.run([sys.executable, str(ROOT / "scripts" / "this_skill.py")], text=True, capture_output=True, check=False)
+    assert result.returncode == 0
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "candidate"
+    assert payload["epistemic_tier"] == "L1"
+    assert payload["capability_executed"] is False
+
+def test_unimplemented_run_fails_clearly():
+    result = subprocess.run([sys.executable, str(ROOT / "scripts" / "run.py")], text=True, capture_output=True, check=False)
+    assert result.returncode == 2
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "execution_unavailable"
+    assert payload["capability_executed"] is False
+""")
+
+CONFIG_TEMPLATE = textwrap.dedent("""\
+version: '1.0.0'
+enabled: true
+generated_state: candidate
+epistemic_tier: L1
+settings:
+  strict_validation: true
+  false_ready_forbidden: true
+""")
+
+SCHEMA_TEMPLATE = """{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "{title}",
+  "type": "object",
+  "properties": {
+    "skill": {"type": "string"},
+    "status": {"type": "string"},
+    "capability_executed": {"type": "boolean"}
+  },
+  "required": ["skill", "status", "capability_executed"]
+}
+"""
+
+
+def normalize_name(raw: str) -> str:
+    name = raw.strip().lower().replace("_", "-")
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+        raise ValueError("skill name must be lowercase kebab-case")
+    return name
+
+
+def generate_skill(name: str, description: str, output_root: Path) -> Path:
+    name = normalize_name(name)
+    description = description.strip()
+    if not description:
+        raise ValueError("description is required")
+    target = output_root / name
+    if target.exists():
+        raise FileExistsError(f"refusing to overwrite existing skill at {target}")
+
+    for directory in ("scripts", "resources", "tests"):
+        (target / directory).mkdir(parents=True, exist_ok=True)
+
+    title = name.replace("-", " ").title()
+    files = {
+        "SKILL.md": SKILL_TEMPLATE.format(name=name, title=title, description=description),
+        "skill.py": SKILL_PY_TEMPLATE.format(name=name),
+        "__init__.py": f'"""Package init for {name}."""\n',
+        "requirements.txt": "",
+        "scripts/this_skill.py": THIS_SKILL_TEMPLATE.format(name=name),
+        "scripts/run.py": RUN_TEMPLATE.format(name=name),
+        f"resources/{name}_config.yaml": CONFIG_TEMPLATE,
+        f"resources/{name}_schema.json": json.dumps({
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": title,
+            "type": "object",
+            "properties": {
+                "skill": {"type": "string"},
+                "status": {"type": "string"},
+                "capability_executed": {"type": "boolean"},
+            },
+            "required": ["skill", "status", "capability_executed"],
+        }, indent=2) + "\n",
+        f"tests/test_{name.replace('-', '_')}.py": TEST_TEMPLATE,
+    }
+    for relative, content in files.items():
+        path = target / relative
+        path.write_text(content, encoding="utf-8")
+        if path.suffix == ".py":
+            path.chmod(0o755)
+    return target
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("name")
+    parser.add_argument("description", nargs="+")
+    parser.add_argument("--output-root", type=Path)
+    args = parser.parse_args()
+
+    here = Path(__file__).resolve()
+    skills_root = args.output_root.resolve() if args.output_root else here.parents[2]
+    try:
+        target = generate_skill(args.name, " ".join(args.description), skills_root)
+    except (ValueError, FileExistsError) as exc:
+        print(str(exc))
+        return 1
+
+    print(json.dumps({
+        "status": "candidate_generated",
+        "skill": target.name,
+        "path": str(target),
+        "next": "implement domain behavior, add behavioral tests, then run readiness assay"
+    }, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

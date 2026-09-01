@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
-"""
-ROADMAP.md with ordered phases, gates, risks, chunks, next action
-Part of roadmap-builder skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for roadmap_emitter.py."""
-    # TODO: Implement ROADMAP.md with ordered phases, gates, risks, chunks, next action
-    print(f"Executing roadmap_emitter.py for roadmap-builder")
-    print("Status: STUB - implement per skill contract")
-    return 0
-
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+from long_horizon_atomic_runtime import cli
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(cli("roadmap-builder", "roadmap_emitter"))

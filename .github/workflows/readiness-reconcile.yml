@@ -1,0 +1,54 @@
+name: Two-Pass Readiness Reconciliation
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/readiness_assay.py
+      - scripts/build_all_workspace_skills.py
+      - skills/mega-skills-test-runner/scripts/run_checks.py
+      - .github/workflows/readiness-reconcile.yml
+concurrency:
+  group: mega-skills-mutator
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Configure commit identity
+        run: |
+          git config user.name "GlacierEQ Readiness"
+          git config user.email "actions@users.noreply.github.com"
+      - name: "Run 1: repair false-ready execution surfaces"
+        run: |
+          python scripts/readiness_assay.py --pass 1 --apply --report readiness/pass1.json
+          python skills/mega-skills-test-runner/scripts/run_checks.py --repo . --report readiness/pass1-checks.json
+      - name: Persist run 1
+        run: |
+          git add skills registry/skill-readiness.json readiness
+          if ! git diff --cached --quiet; then
+            git commit -m "readiness: pass 1 repair false-ready surfaces"
+            git push origin HEAD:main
+          fi
+      - name: "Run 2: reconcile maturity tags to evidence"
+        run: |
+          python scripts/readiness_assay.py --pass 2 --apply --report readiness/pass2.json
+          python scripts/validate_hierarchy.py
+          python -m unittest discover -s tests -v
+      - name: Persist run 2
+        run: |
+          git add registry readiness
+          if ! git diff --cached --quiet; then
+            git commit -m "readiness: pass 2 align maturity with evidence"
+            git push origin HEAD:main
+          fi

@@ -37,3 +37,13 @@ This Combo turns seven independent governance Skills into one repeatable operati
 **Artifact:** `long-horizon-run-state.md`, comprising the five durable state files plus the current work packet and gate record.
 
 **Ready for Mega Skill integration when:** the state files agree on scope and next action, every open assumption has a review trigger, and the next route can consume named evidence rather than raw conversation history.
+
+## Source-preservation handoff invariant — 2026-08-31
+
+The compound state is an **index and execution layer**, not a replacement archive.
+
+- `EVIDENCE.md` must point to original source records and distinguish source-access state from proposition truth state.
+- `CONTEXT.md` may compact history only after stable source IDs/paths preserve the original wording and provenance.
+- `HANDOFF.md` must carry any operator/source correction that changes retrieval or interpretation rules.
+- A failed or incomplete verification pass may add a retrieval task; it may not erase an existing source assertion.
+- For journal/chat sources, preserve original text outside the capsule and label it `REGULARLY KEPT JOURNAL — ORIGINAL WORDING PRESERVED` when that is the mission's source treatment.

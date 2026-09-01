@@ -50,3 +50,19 @@ verified atomic artifact → reusable capability chain → compound artifact
 ```
 
 Do not mutate a lower-level contract during an active mission without a decision record and fresh validation of dependent Combo and Mega entries.
+
+## Cross-layer source preservation invariant — 2026-08-31
+
+No higher layer may gain convenience by destroying lower-layer source meaning.
+
+```text
+original source / journal / evidence
+        ↓ immutable provenance
+Skill artifact
+        ↓ additive method
+Combo artifact
+        ↓ additive integration
+Mega mission state
+```
+
+A Combo or Mega Skill may compact, route, rank, annotate, or supersede an **analysis artifact**, but it may not silently rewrite the underlying source. If a later layer discovers an error, preserve the old artifact/proposition and record the correction, evidence, and effective supersession explicitly.

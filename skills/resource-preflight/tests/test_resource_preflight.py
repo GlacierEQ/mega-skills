@@ -1,44 +1,22 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for resource-preflight.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
-import sys
+import json, subprocess, sys, tempfile, unittest
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-class TestResourcePreflight:
-    """L2 tests for resource-preflight - Inventory completeness, classification accuracy, fallback existence, resource-bound output"""
-    
-    def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
-        assert skill_py.exists()
-        assert skill_py.stat().st_mode & 0o111
-    
-    def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = ['inventory_builder.py', 'availability_checker.py', 'classifier.py', 'fallback_identifier.py', 'preflight_emitter.py']
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
-    
-    def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = ['prerequisite_types.yaml', 'verification_methods.yaml']
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-    
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Inventory completeness, classification accuracy, fallback existence, resource-bound output
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+ROOT=Path(__file__).resolve().parents[1]
+class ResourcePreflightBehavior(unittest.TestCase):
+    def run_payload(self,payload):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/"input.json"; source.write_text(json.dumps(payload),encoding="utf-8")
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"preflight-emitter","--input",str(source)],text=True,capture_output=True,check=False)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            return json.loads(result.stdout)
+    def test_existing_file_is_ready(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            f=Path(tmp)/"present.txt"; f.write_text("ok",encoding="utf-8")
+            output=self.run_payload({"prerequisites":[{"id":"file","type":"file","identifier":str(f),"required":True,"verification_method":"file_exists"}]})
+            self.assertEqual(output["result"],"ready")
+            self.assertTrue(output["ready"])
+    def test_missing_required_file_blocks(self):
+        output=self.run_payload({"prerequisites":[{"id":"file","type":"file","identifier":"/definitely/not/here","required":True,"verification_method":"file_exists","fallback":"provide local fixture"}]})
+        self.assertEqual(output["result"],"blocked")
+        self.assertFalse(output["ready"])
+if __name__=="__main__": unittest.main()

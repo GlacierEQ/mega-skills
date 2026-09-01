@@ -30,3 +30,13 @@ The capsule passes when a new operator can begin the next chunk after reading it
 ## Non-goals
 
 Do not use the capsule as a full transcript, a decision archive, or a substitute for evidence registration.
+
+## Compaction Cannot Destroy Source Meaning — 2026-08-31
+
+Context compaction is lossy by design; therefore it is never authoritative over the source layer.
+
+- Before replacing historical narration with IDs, verify that the IDs point to preserved source wording/provenance.
+- Carry forward controlling operator/source corrections even when they are not needed for the next technical step.
+- If a compacted statement conflicts with a preserved source, flag the capsule as stale and repair the capsule; do not "correct" the source to match the capsule.
+- For identity retrieval, retain known aliases/OCR variants and the event fingerprint needed to resume broad search.
+- For legal/investigative missions, carry the current allegation universe, highest-value evidence targets, and unresolved contradictions without pruning them merely to save context.

@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
-"""
-Related chunks -> phases with measurable entry/exit gates
-Part of roadmap-builder skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for phase_grouper.py."""
-    # TODO: Implement Related chunks -> phases with measurable entry/exit gates
-    print(f"Executing phase_grouper.py for roadmap-builder")
-    print("Status: STUB - implement per skill contract")
-    return 0
-
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+from long_horizon_atomic_runtime import cli
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(cli("roadmap-builder", "phase_grouper"))

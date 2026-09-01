@@ -1,17 +1,7 @@
 #!/usr/bin/env python3
-"""
-Output contract.
-Part of roadmap-builder skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for output_contract.py."""
-    print(f"Executing output_contract.py for roadmap-builder")
-    return 0
-
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+from long_horizon_atomic_runtime import cli
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(cli("roadmap-builder", "output_contract"))
