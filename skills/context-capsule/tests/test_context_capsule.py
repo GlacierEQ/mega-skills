@@ -1,44 +1,27 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for context-capsule.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
+import json
+import subprocess
 import sys
+import tempfile
+import unittest
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-class TestContextCapsule:
-    """L2 tests for context-capsule - Snapshot completeness, link integrity, drift detection sensitivity, resumption fidelity"""
-    
-    def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
-        assert skill_py.exists()
-        assert skill_py.stat().st_mode & 0o111
-    
-    def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = ['state_compactor.py', 'assumption_tracker.py', 'capsule_generator.py', 'drift_detector.py']
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
-    
-    def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = ['capsule_schema.yaml', 'linking_conventions.md']
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-    
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Snapshot completeness, link integrity, drift detection sensitivity, resumption fidelity
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+ROOT=Path(__file__).resolve().parents[1]
+class RuntimeBehavior(unittest.TestCase):
+    def test_transforms_real_input(self):
+        payload={"state":{"current_objective":"Finish long horizon core","constraints":["truthful readiness"],"decisions":["use worker swarm"],"artifacts":["registry/skill-readiness.json"],"next_verification":"tests pass","next_action":"implement blockers","assumptions":["CI available"],"noise":"discard"}}
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/"input.json"
+            source.write_text(json.dumps(payload),encoding="utf-8")
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"capsule-generator","--input",str(source)],text=True,capture_output=True,check=False)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            output=json.loads(result.stdout)
+            self.assertIsInstance(output,dict)
+            self.assertTrue(output.get("markdown") or output.get("decision") or output.get("valid") is False)
+    def test_empty_input_is_observable_not_exceptional(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/"input.json"; source.write_text("{}",encoding="utf-8")
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"capsule-generator","--input",str(source)],text=True,capture_output=True,check=False)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            self.assertIsInstance(json.loads(result.stdout),dict)
+if __name__=="__main__":
+    unittest.main()

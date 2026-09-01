@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
-"""
-Closing state update: evidence, decision, risk, next action
-Part of work-packet skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for state_updater.py."""
-    # TODO: Implement Closing state update: evidence, decision, risk, next action
-    print(f"Executing state_updater.py for work-packet")
-    print("Status: STUB - implement per skill contract")
-    return 0
-
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+from long_horizon_atomic_runtime import cli
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(cli("work-packet", "state_updater"))

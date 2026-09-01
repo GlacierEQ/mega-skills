@@ -1,37 +1,24 @@
 #!/usr/bin/env python3
-"""
-context-capsule. 
-Entry point for context-capsule skill.
-"""
-
+"""Executable dispatcher for context-capsule backed by the shared long-horizon runtime."""
 import sys
 from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
-
-def main():
-    """Main entry point - dispatches to appropriate script based on args."""
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+from long_horizon_atomic_runtime import cli
+OPERATIONS = {
+    "assumption-tracker": "assumption_tracker",
+    "capsule-generator": "capsule_generator",
+    "drift-detector": "drift_detector",
+    "state-compactor": "state_compactor",
+}
+def main() -> int:
     if len(sys.argv) < 2:
-        print(f"Usage: context-capsule <command> [args...]")
-        print("Available commands:")
-        for sn in ['state_compactor.py', 'assumption_tracker.py', 'capsule_generator.py', 'drift_detector.py']:
-            print(f"  {sn.replace('.py', '')}")
+        print("Usage: context-capsule <assumption-tracker|capsule-generator|drift-detector|state-compactor> --input payload.json")
         return 1
-    
-    command = sys.argv[1]
-    script_path = Path(__file__).parent / "scripts" / f"{command}.py"
-    
-    if not script_path.exists():
-        script_path = Path(__file__).parent / "scripts" / f"{command.replace('-', '_')}.py"
-    
-    if not script_path.exists():
-        print(f"Unknown command: {command}")
+    op=OPERATIONS.get(sys.argv[1])
+    if not op:
+        print("Unknown command: "+sys.argv[1])
         return 1
-    
-    exec_globals = {"__name__": "__main__"}
-    exec(script_path.read_text(), exec_globals)
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+    sys.argv=[sys.argv[0],*sys.argv[2:]]
+    return cli("context-capsule",op)
+if __name__=="__main__":
+    raise SystemExit(main())
