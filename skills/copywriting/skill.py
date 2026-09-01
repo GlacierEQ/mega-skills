@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""copywriting execution dispatcher."""
-
+"""Compatibility adapter for copywriting; package discovery only, not domain execution."""
 import json
 import sys
-import hashlib
 
-def main():
+def main() -> int:
+    wants_execute = "--execute" in sys.argv[1:]
     payload = {
         "skill": "copywriting",
-        "status": "ready",
-        "epistemic_tier": "L2",
-        "firewall_active": True
+        "adapter": True,
+        "capability_executed": False,
+        "status": "execution_unavailable" if wants_execute else "adapter_ready",
+        "reason": (
+            "Generic compatibility adapter has no domain execution implementation. Use SKILL.md or a substantive package entrypoint."
+            if wants_execute else "Compatibility adapter is installed and discoverable."
+        ),
     }
-    if len(sys.argv) > 1 and sys.argv[1] == "--execute":
-        payload["status"] = "executed"
-        payload["sha256"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
-    print(json.dumps(payload, indent=2))
-    return 0
+    print(json.dumps(payload, indent=2, sort_keys=True))
+    return 2 if wants_execute else 0
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
