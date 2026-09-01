@@ -86,3 +86,16 @@ doctrine in the workspace.** When in doubt, fetch the live source.
 - `apex-sovereign-runtime` — for receipt-chain authority
 - `mastermind` — for the underlying runtime
 - `security-review` — for any change touching auth, secrets, or external services
+
+## Case-Source Preservation Law — 2026-08-31
+
+For operator-owned cases and firsthand events:
+
+1. Treat the operator's firsthand account as an operative case proposition to preserve and build around. Do not erase or demote it because the current pass has not reopened the exhibit.
+2. Distinguish **source proposition**, **source-access state**, and **external legal characterization**.
+3. Preserve regularly kept journal/chat-export wording verbatim and use it as a chronology/source-lineage layer. Assess authentication/hearsay/admissibility separately.
+4. Search aliases/OCR variants and event fingerprints across the estate before concluding material is missing.
+5. When sources conflict, retain both and build the evidence test that can resolve the conflict.
+6. Build the strongest supportable affirmative case and the strongest anticipated defense. Defense testing hardens the affirmative case; it does not silently prune the user's factual record.
+7. Full-case missions include evidence → facts → allegations/elements → authorities → defenses/rebuttals → damages/remedies → discovery → motions/petitions/declarations/exhibits → hearing/trial → enforcement → post-ruling/appeal preservation.
+8. No criminal charge, judicial finding, filing, service, or external act is claimed without actual authority/receipt.
