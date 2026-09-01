@@ -66,6 +66,15 @@ def validate_skills(data: dict) -> set[str]:
         expect(f"name: {entry['id']}" in frontmatter[1], f"{entry['id']}: registry and SKILL.md name differ")
         resolved.add(entry["id"])
     expect(len(resolved) >= 2, "skills.json: the initial graph needs more than one atomic Skill")
+    readiness_path = REGISTRY / "skill-readiness.json"
+    if readiness_path.is_file():
+        readiness = json.loads(readiness_path.read_text(encoding="utf-8"))
+        by_id = {item["id"]: item for item in readiness.get("skills", [])}
+        for entry in data.get("entries", []):
+            state = by_id.get(entry["id"])
+            expect(state is not None, f'{entry["id"]}: missing readiness record')
+            if entry.get("maturity") == "active":
+                expect(state.get("ready") is True, f'{entry["id"]}: active skill lacks readiness evidence')
     return resolved
 
 
