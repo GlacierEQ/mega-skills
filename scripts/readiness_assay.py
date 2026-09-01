@@ -75,7 +75,7 @@ def substantive_instruction(skill_md: Path) -> tuple[bool, list[str]]:
     reasons = []
     if len(body) < 180:
         reasons.append("instruction body too small")
-    if not any(t in body.lower() for t in ("use","purpose","procedure","workflow","when to","capabilit","steps","pattern","role")):
+    if not any(t in body.lower() for t in ("use","purpose","procedure","workflow","when to","capabilit","steps","pattern","role","method","sequence","framework")):
         reasons.append("no actionable procedure/capability language")
     if "TODO: Add reference documentation" in body and len(body) < 600:
         reasons.append("placeholder reference content")
