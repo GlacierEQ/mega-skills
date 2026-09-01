@@ -1,6 +1,6 @@
 ---
 name: local-skill
-description: "Meta-skill that inspects the mega-skills repository, extracts structural and behavioral patterns from existing skills, and generates complete, ready-to-commit new skills (or mega-skills) on demand. Use when asked to create, scaffold, or bootstrap any new skill that must conform to the GlacierEQ mega-skills conventions."
+description: "Meta-skill that inspects the mega-skills repository, extracts structural and behavioral patterns from existing skills, and generates truthful candidate skill packages (or mega-skill foundations) on demand. Use when asked to create, scaffold, or bootstrap any new skill that must conform to the GlacierEQ mega-skills conventions."
 ---
 
 
@@ -35,7 +35,7 @@ If any condition fails, emit a missing-precondition report and stop.
    - `tests/test_<name>.py` — L2 structural + behavioral smoke tests.
    - `__init__.py` and `requirements.txt`.
 5. **Validate hierarchy.** Confirm the generated tree is self-consistent, executable bits are set, and the new skill can be discovered by the same mechanisms that discover every other skill.
-6. **Emit ready-to-commit.** Produce the full directory tree as files (or a single commit via the GitHub tools). Never leave partial scaffolds.
+6. **Emit truthful candidate state.** Produce the complete structural package, but do not label it executable until domain logic and behavioral tests actually exist.
 
 ## Modification workflow
 
@@ -47,7 +47,7 @@ A successful run of local-skill produces a skill that:
 
 - Passes the same structural tests every other skill is expected to pass.
 - Contains a non-empty, actionable SKILL.md that an operator can follow without reading the generator source.
-- Ships at least one real script that does more than `print("hello")`.
+- Never fabricates L2 or execution state. Generic generation emits candidate/L1 until real domain logic and behavioral tests are supplied.
 - Leaves no temporary or partial files in the repository.
 
 ## Resources
