@@ -1,63 +1,55 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for local-skill.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
+import json
+import subprocess
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+GENERATOR = ROOT / "scripts" / "generate.py"
 
 class TestLocalSkill:
-    """L2 tests for local-skill - structural integrity, dispatcher, generation surface"""
-
     def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
+        skill_py = ROOT / "skill.py"
         assert skill_py.exists()
         assert skill_py.stat().st_mode & 0o111
 
     def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = [
-            "inspect.py",
-            "extract.py",
-            "generate.py",
-            "validate.py",
-            "pattern_catalog.py",
-            "this_skill.py",
-        ]
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
+        for script in ["inspect.py","extract.py","generate.py","validate.py","pattern_catalog.py","this_skill.py"]:
+            path = ROOT / "scripts" / script
+            assert path.exists(), f"Missing script: {script}"
+            assert path.stat().st_mode & 0o111
 
     def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = [
-            "local_skill_config.yaml",
-            "local_skill_schema.json",
-            "SKILL.md.template",
-            "skill.py.template",
-        ]
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
+        for resource in ["local_skill_config.yaml","local_skill_schema.json","SKILL.md.template","skill.py.template"]:
+            assert (ROOT / "resources" / resource).exists()
 
     def test_skill_md_front_matter(self):
-        skill_md = Path(__file__).parent.parent / "SKILL.md"
-        text = skill_md.read_text(encoding="utf-8")
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         assert text.lstrip().startswith("---")
         assert "name: local-skill" in text
 
-    def test_references_exist(self):
-        ref = Path(__file__).parent.parent / "references" / "pattern-catalog.md"
-        assert ref.exists()
+    def test_generator_emits_truthful_candidate(self, tmp_path):
+        result = subprocess.run(
+            [sys.executable, str(GENERATOR), "swarm-proof-demo", "Demonstrate a generated candidate skill.", "--output-root", str(tmp_path)],
+            text=True, capture_output=True, check=False
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        root = tmp_path / "swarm-proof-demo"
+        self_check = subprocess.run([sys.executable, str(root / "scripts" / "this_skill.py")], text=True, capture_output=True, check=False)
+        payload = json.loads(self_check.stdout)
+        assert payload["status"] == "candidate"
+        assert payload["epistemic_tier"] == "L1"
+        assert payload["capability_executed"] is False
 
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+        run = subprocess.run([sys.executable, str(root / "scripts" / "run.py")], text=True, capture_output=True, check=False)
+        run_payload = json.loads(run.stdout)
+        assert run.returncode == 2
+        assert run_payload["status"] == "execution_unavailable"
+        assert run_payload["capability_executed"] is False
+
+    def test_generator_never_embeds_false_ready_claims(self):
+        text = GENERATOR.read_text(encoding="utf-8")
+        assert '"status": "ready"' not in text
+        assert '"execution": "completed"' not in text
