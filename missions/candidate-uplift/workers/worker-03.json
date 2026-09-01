@@ -1,235 +1,363 @@
 {
   "worker": 3,
   "workers": 8,
-  "assigned": 18,
+  "assigned": 17,
   "findings": [
     {
-      "id": "remove-wall-of-text",
-      "state": "contract_incomplete",
+      "id": "audio-forensic-core",
+      "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Compress bloated prose into dense outcome-first replies. Use when user says too long, wall of text, or after dense dumps.",
-      "body_chars": 601,
+      "description": "Sovereign evidentiary audio processing, WhisperX phonetic alignment, speaker diarization, Electric Network Frequency (ENF) validation, and 17-point court transcripts.",
+      "body_chars": 1307,
       "reasons": [
-        "no actionable procedure/capability language"
+        "6 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
+          "__init__.py",
+          "scripts/bates_stamper.py",
+          "scripts/enf_extractor.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/sha256_audit.py",
+          "scripts/speaker_diarize.py",
+          "scripts/transcript_formatter.py",
+          "scripts/whisperx_align.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_audio_forensic_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/audio_forensic_core_config.yaml",
+          "resources/audio_forensic_core_schema.json",
+          "resources/court_rules_hi_family.yaml",
+          "resources/enf_regional_db.yaml"
+        ]
+      },
+      "stub_files": [
+        "skills/audio-forensic-core/scripts/whisperx_align.py",
+        "skills/audio-forensic-core/scripts/enf_extractor.py",
+        "skills/audio-forensic-core/scripts/transcript_formatter.py",
+        "skills/audio-forensic-core/scripts/sha256_audit.py",
+        "skills/audio-forensic-core/scripts/bates_stamper.py",
+        "skills/audio-forensic-core/scripts/speaker_diarize.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/audio-forensic-core/tests/test_audio_forensic_core.py"
+      ],
+      "real_implementation_files": [
+        "skills/audio-forensic-core/skill.py",
+        "skills/audio-forensic-core/scripts/output_contract.py",
+        "skills/audio-forensic-core/scripts/purpose.py",
+        "skills/audio-forensic-core/scripts/procedure.py"
+      ],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "mega-skills-test-runner",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
+      "body_chars": 2965,
+      "reasons": [
+        "3 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/before_running.py",
+          "scripts/failure_diagnostic.py",
+          "scripts/purpose.py",
+          "scripts/report_emitter.py",
+          "scripts/revision_recorder.py",
+          "scripts/run_checks.py",
+          "scripts/standard_workflow.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_skills_test_runner.py"
+        ],
+        "references": [
+          "references/checks.md"
+        ],
+        "assets": [
+          "resources/checks.md",
+          "resources/mega_skills_test_runner_config.yaml",
+          "resources/mega_skills_test_runner_schema.json",
+          "resources/standard_tree.md"
+        ]
+      },
+      "stub_files": [
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-skills-test-runner/skill.py",
+        "skills/mega-skills-test-runner/scripts/run_checks.py",
+        "skills/mega-skills-test-runner/scripts/before_running.py",
+        "skills/mega-skills-test-runner/scripts/purpose.py",
+        "skills/mega-skills-test-runner/scripts/standard_workflow.py"
+      ],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "agent-memory-mcp",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "A hybrid memory system that provides persistent, searchable knowledge management for AI agents (Architecture, Patterns, Decisions).",
+      "body_chars": 1901,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/capabilities_mcp_tools.py",
+          "scripts/prerequisites.py",
           "scripts/run.py",
+          "scripts/setup.py",
           "scripts/this_skill.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_remove_wall_of_text.py"
+          "tests/test_agent_memory_mcp.py"
         ],
         "references": [],
-        "assets": []
+        "assets": [
+          "resources/agent_memory_mcp_config.yaml",
+          "resources/agent_memory_mcp_schema.json"
+        ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/remove-wall-of-text/tests/test_remove_wall_of_text.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "repair_instruction_contract"
-    },
-    {
-      "id": "forensic-evidence-chain-core",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
-      "body_chars": 1301,
-      "reasons": [
-        "6 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/anomaly_scanner.py",
-          "scripts/bates_stamper.py",
-          "scripts/manifest_emitter.py",
-          "scripts/output_contract.py",
-          "scripts/pii_scrubber.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/sha256_digester.py",
-          "scripts/timestamp_verifier.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_forensic_evidence_chain_core.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/bates_serial_schema.yaml",
-          "resources/forensic_evidence_chain_core_config.yaml",
-          "resources/forensic_evidence_chain_core_schema.json",
-          "resources/fre_902_compliance.md"
-        ]
-      },
-      "stub_files": [
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
-        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
-        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
-        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
-        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+        "skills/agent-memory-mcp/tests/test_agent_memory_mcp.py"
       ],
       "real_implementation_files": [
-        "skills/forensic-evidence-chain-core/skill.py",
-        "skills/forensic-evidence-chain-core/scripts/output_contract.py",
-        "skills/forensic-evidence-chain-core/scripts/purpose.py",
-        "skills/forensic-evidence-chain-core/scripts/procedure.py"
+        "skills/agent-memory-mcp/scripts/setup.py",
+        "skills/agent-memory-mcp/scripts/prerequisites.py",
+        "skills/agent-memory-mcp/scripts/capabilities_mcp_tools.py"
       ],
-      "recommended_action": "finish_domain_implementation"
+      "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "roadmap-builder",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Convert a mission contract into a dependency-aware sequence of verifiable work chunks. Use when work must be planned across phases, artifacts, risks, or specialist handoffs.",
-      "body_chars": 1462,
-      "reasons": [
-        "6 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/artifact_lister.py",
-          "scripts/chunk_definer.py",
-          "scripts/dependency_optimizer.py",
-          "scripts/output_contract.py",
-          "scripts/parallelism_validator.py",
-          "scripts/phase_grouper.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/roadmap_emitter.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_roadmap_builder.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/chunk_packet_schema.yaml",
-          "resources/phase_gate_schema.yaml",
-          "resources/roadmap_builder_config.yaml",
-          "resources/roadmap_builder_schema.json"
-        ]
-      },
-      "stub_files": [
-        "skills/roadmap-builder/scripts/chunk_definer.py",
-        "skills/roadmap-builder/scripts/dependency_optimizer.py",
-        "skills/roadmap-builder/scripts/parallelism_validator.py",
-        "skills/roadmap-builder/scripts/roadmap_emitter.py",
-        "skills/roadmap-builder/scripts/artifact_lister.py",
-        "skills/roadmap-builder/scripts/phase_grouper.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/roadmap-builder/tests/test_roadmap_builder.py"
-      ],
-      "real_implementation_files": [
-        "skills/roadmap-builder/skill.py",
-        "skills/roadmap-builder/scripts/output_contract.py",
-        "skills/roadmap-builder/scripts/purpose.py",
-        "skills/roadmap-builder/scripts/procedure.py"
-      ],
-      "recommended_action": "finish_domain_implementation"
-    },
-    {
-      "id": "apex-integrations",
+      "id": "apple-ane-kv-quantizer",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Operating inside the Apex Integrations service-connector family at /root/projects/apex-integrations. Use when wiring API bridges between legal, memory, and runtime systems, or when adding a new connector to the APEX stack.",
-      "body_chars": 1218,
+      "description": "Operating inside the Apple ANE KV-Quantizer job-app portfolio repo at github.com/GlacierEQ/apple-ane-kv-quantizer. Targets the Apple Neural Engine + KV-cache quantization orbit.",
+      "body_chars": 787,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/apex_integrations_reporter.py",
-          "scripts/apex_integrations_validator.py",
+          "scripts/apple_ane_kv_quantizer_reporter.py",
+          "scripts/apple_ane_kv_quantizer_validator.py",
           "scripts/quick_rules.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_apex_integrations.py"
+          "tests/test_apple_ane_kv_quantizer.py"
         ],
         "references": [],
         "assets": [
-          "resources/apex_integrations_config.yaml",
-          "resources/apex_integrations_schema.json"
+          "resources/apple_ane_kv_quantizer_config.yaml",
+          "resources/apple_ane_kv_quantizer_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/apex-integrations/tests/test_apex_integrations.py"
+        "skills/apple-ane-kv-quantizer/tests/test_apple_ane_kv_quantizer.py"
       ],
       "real_implementation_files": [
-        "skills/apex-integrations/skill.py",
-        "skills/apex-integrations/scripts/apex_integrations_reporter.py",
-        "skills/apex-integrations/scripts/quick_rules.py",
-        "skills/apex-integrations/scripts/apex_integrations_validator.py"
+        "skills/apple-ane-kv-quantizer/skill.py",
+        "skills/apple-ane-kv-quantizer/scripts/quick_rules.py",
+        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_reporter.py",
+        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_validator.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "brain",
+      "id": "code-review-checklist",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Use when working with the Quantum Nexus brain system, unified case brain, autonomous decision engine, threat intelligence, case timeline, memory orchestration, memory tagging, case 1FDV-23-0001009, KEKOA, evidence processing, threat detection, judicial fraud patterns, judge movements, HPD escalations, retaliation triggers, JEFS email analysis, court filing analysis, threat level assessment, case stage routing, decision matrix, priority matrix, intelligence feeds, supermemory integration, memory categories, CATACLYSM evidence processing, SUPERLUMINAL intelligence fusion, JEFS court system monitoring, timeline tracking, chronological record, motion sequencing, filing deadlines, flip cascade, custody restoration, evidence chain, knowledge graph, context retrieval, decision logic, emergency response, filing decisions, strategic decisions, threat response, due process violations, void ab initio, RICO complaint, bar complaint, judicial conduct, criminal referral, FOIA requests, witness co...",
-      "body_chars": 15285,
+      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability",
+      "body_chars": 11417,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/architecture.py",
-          "scripts/keywords.py",
-          "scripts/memory_layers.py",
+          "scripts/run.py",
+          "scripts/step_understand_context.py",
+          "scripts/this_skill.py",
+          "scripts/works.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_brain.py"
+          "tests/test_code_review_checklist.py"
         ],
         "references": [],
         "assets": [
-          "resources/brain_config.yaml",
-          "resources/brain_schema.json"
+          "resources/code_review_checklist_config.yaml",
+          "resources/code_review_checklist_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/brain/tests/test_brain.py"
+        "skills/code-review-checklist/tests/test_code_review_checklist.py"
       ],
       "real_implementation_files": [
-        "skills/brain/skill.py",
-        "skills/brain/scripts/architecture.py",
-        "skills/brain/scripts/memory_layers.py",
-        "skills/brain/scripts/keywords.py"
+        "skills/code-review-checklist/scripts/works.py",
+        "skills/code-review-checklist/scripts/step_understand_context.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "conversation-memory",
+      "id": "deepseek-mla-moe-sentinel",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory Use when: conversation memory, remember, memory persistence, long-term memory, chat history.",
-      "body_chars": 1465,
+      "description": "Operating inside the DeepSeek MLA MoE Sentinel job-app portfolio repo at github.com/GlacierEQ/deepseek-mla-moe-sentinel. Targets the DeepSeek V3/R1 attention-orbit.",
+      "body_chars": 812,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/deepseek_mla_moe_sentinel_reporter.py",
+          "scripts/deepseek_mla_moe_sentinel_validator.py",
+          "scripts/quick_rules.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_deepseek_mla_moe_sentinel.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/deepseek_mla_moe_sentinel_config.yaml",
+          "resources/deepseek_mla_moe_sentinel_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/deepseek-mla-moe-sentinel/tests/test_deepseek_mla_moe_sentinel.py"
+      ],
+      "real_implementation_files": [
+        "skills/deepseek-mla-moe-sentinel/skill.py",
+        "skills/deepseek-mla-moe-sentinel/scripts/quick_rules.py",
+        "skills/deepseek-mla-moe-sentinel/scripts/deepseek_mla_moe_sentinel_validator.py",
+        "skills/deepseek-mla-moe-sentinel/scripts/deepseek_mla_moe_sentinel_reporter.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "forks",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Operating inside one of the 513 GlacierEQ private inbound forks. These are private copies of public upstream projects, kept for reference, contribution, or downstream packaging. Use this skill when working in any repo under github.com/GlacierEQ/ that has fork=true.",
+      "body_chars": 2575,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/estate_shape_audit.py",
+          "scripts/forks_differ_from.py",
+          "scripts/working_fork.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_forks.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/forks_config.yaml",
+          "resources/forks_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/forks/tests/test_forks.py"
+      ],
+      "real_implementation_files": [
+        "skills/forks/skill.py",
+        "skills/forks/scripts/working_fork.py",
+        "skills/forks/scripts/estate_shape_audit.py",
+        "skills/forks/scripts/forks_differ_from.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "long-horizon-core",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "The 7-stage resilient long-horizon operating loop: mission-contract - roadmap-builder - evidence-register - context-capsule - work-packet - quality-gate - handoff-record. Generates and maintains the 5 durable state files (MISSION.md, ROADMAP.md, CONTEXT.md, EVIDENCE.md, HANDOFF.md) for zero-drift execution.",
+      "body_chars": 2089,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/7-stage_execution_loop.py",
+          "scripts/invariant_laws.py",
+          "scripts/stage_contracts.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_long_horizon_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/long_horizon_core_config.yaml",
+          "resources/long_horizon_core_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/long-horizon-core/tests/test_long_horizon_core.py"
+      ],
+      "real_implementation_files": [
+        "skills/long-horizon-core/skill.py",
+        "skills/long-horizon-core/scripts/7-stage_execution_loop.py",
+        "skills/long-horizon-core/scripts/stage_contracts.py",
+        "skills/long-horizon-core/scripts/invariant_laws.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-agent-memory-systems",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Agent Memory Systems",
+      "body_chars": 2919,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
@@ -237,510 +365,361 @@
         "scripts": [
           "__init__.py",
           "scripts/capabilities.py",
+          "scripts/memory_type_architecture.py",
           "scripts/patterns.py",
-          "scripts/run.py",
-          "scripts/this_skill.py",
-          "scripts/tiered_memory_system.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_conversation_memory.py"
+          "tests/test_mega_agent_memory_systems.py"
         ],
         "references": [],
         "assets": [
-          "resources/conversation_memory_config.yaml",
-          "resources/conversation_memory_schema.json"
+          "resources/mega_agent_memory_systems_config.yaml",
+          "resources/mega_agent_memory_systems_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/conversation-memory/tests/test_conversation_memory.py"
+        "skills/mega-agent-memory-systems/tests/test_mega_agent_memory_systems.py"
       ],
       "real_implementation_files": [
-        "skills/conversation-memory/scripts/tiered_memory_system.py",
-        "skills/conversation-memory/scripts/patterns.py",
-        "skills/conversation-memory/scripts/capabilities.py"
+        "skills/mega-agent-memory-systems/skill.py",
+        "skills/mega-agent-memory-systems/scripts/patterns.py",
+        "skills/mega-agent-memory-systems/scripts/capabilities.py",
+        "skills/mega-agent-memory-systems/scripts/memory_type_architecture.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "far-away-party",
+      "id": "mega-architecture",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Governing long-horizon autonomous missions from high ambiguity to evidence-backed delivery without context drift. Coordinates Long-Horizon Core with conditional specialist loops (capability-readiness, signal-to-decision, guarded-automation, evidence-to-evolution, recon-and-map, skill-forge, automation-control).",
-      "body_chars": 3278,
+      "description": "Architecture Decision Framework",
+      "body_chars": 1821,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/activate.py",
-          "scripts/compounding_route_matrix.py",
-          "scripts/immutable_durable_state.py",
+          "scripts/core_principle.py",
+          "scripts/selective_reading_rule.py",
+          "scripts/validation_checklist.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_far_away_party.py"
+          "tests/test_mega_architecture.py"
         ],
         "references": [],
         "assets": [
-          "resources/far_away_party_config.yaml",
-          "resources/far_away_party_schema.json"
+          "resources/mega_architecture_config.yaml",
+          "resources/mega_architecture_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/far-away-party/tests/test_far_away_party.py"
+        "skills/mega-architecture/tests/test_mega_architecture.py"
       ],
       "real_implementation_files": [
-        "skills/far-away-party/skill.py",
-        "skills/far-away-party/scripts/compounding_route_matrix.py",
-        "skills/far-away-party/scripts/immutable_durable_state.py",
-        "skills/far-away-party/scripts/activate.py"
+        "skills/mega-architecture/skill.py",
+        "skills/mega-architecture/scripts/selective_reading_rule.py",
+        "skills/mega-architecture/scripts/core_principle.py",
+        "skills/mega-architecture/scripts/validation_checklist.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "job-app-portfolio",
+      "id": "mega-codemaster",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Operating inside the GlacierEQ job-app portfolio estate (~50+ repos at github.com/GlacierEQ/ targeting specific employer orbits). Use when working in any *-sentinel, *-quantizer, *-sentinel, *-control-plane, *-singularity, or similar orbit-targeted portfolio repo. The individual repos are templated; this skill is the family contract.",
-      "body_chars": 3733,
+      "description": "CodeMaster \u2014 The Coding Playbook (v2)",
+      "body_chars": 7800,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/estate_shape.py",
-          "scripts/existing_per-repo_skills.py",
-          "scripts/pattern_recognition.py",
+          "scripts/environment_reality_read.py",
+          "scripts/project_table_canonical.py",
+          "scripts/recipes.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_job_app_portfolio.py"
+          "tests/test_mega_codemaster.py"
         ],
         "references": [],
         "assets": [
-          "resources/job_app_portfolio_config.yaml",
-          "resources/job_app_portfolio_schema.json"
+          "resources/mega_codemaster_config.yaml",
+          "resources/mega_codemaster_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/job-app-portfolio/tests/test_job_app_portfolio.py"
+        "skills/mega-codemaster/tests/test_mega_codemaster.py"
       ],
       "real_implementation_files": [
-        "skills/job-app-portfolio/skill.py",
-        "skills/job-app-portfolio/scripts/pattern_recognition.py",
-        "skills/job-app-portfolio/scripts/estate_shape.py",
-        "skills/job-app-portfolio/scripts/existing_per-repo_skills.py"
+        "skills/mega-codemaster/skill.py",
+        "skills/mega-codemaster/scripts/project_table_canonical.py",
+        "skills/mega-codemaster/scripts/recipes.py",
+        "skills/mega-codemaster/scripts/environment_reality_read.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "mega-agent-core-operations",
+      "id": "mega-flagships",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Consolidated mega skill encompassing 7 sub-skills.",
-      "body_chars": 32054,
+      "description": "Flagships (GlacierEQ)",
+      "body_chars": 4269,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/mandatory_procedure.py",
-          "scripts/sub-skill_accidental-data-loss-prevention.py",
-          "scripts/sub-skill_enforcing-resource-attribution.py",
+          "scripts/flagship_roster.py",
+          "scripts/tier_apex_core.py",
+          "scripts/tier_apex_family.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_agent_core_operations.py"
+          "tests/test_mega_flagships.py"
         ],
         "references": [],
         "assets": [
-          "resources/mega_agent_core_operations_config.yaml",
-          "resources/mega_agent_core_operations_schema.json"
+          "resources/mega_flagships_config.yaml",
+          "resources/mega_flagships_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-agent-core-operations/tests/test_mega_agent_core_operations.py"
+        "skills/mega-flagships/tests/test_mega_flagships.py"
       ],
       "real_implementation_files": [
-        "skills/mega-agent-core-operations/skill.py",
-        "skills/mega-agent-core-operations/scripts/sub-skill_accidental-data-loss-prevention.py",
-        "skills/mega-agent-core-operations/scripts/sub-skill_enforcing-resource-attribution.py",
-        "skills/mega-agent-core-operations/scripts/mandatory_procedure.py"
+        "skills/mega-flagships/skill.py",
+        "skills/mega-flagships/scripts/tier_apex_family.py",
+        "skills/mega-flagships/scripts/flagship_roster.py",
+        "skills/mega-flagships/scripts/tier_apex_core.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "mega-apex-sovereign-runtime",
+      "id": "mega-legal-powerhouse",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "\ud83c\udfdb\ufe0f The APEX Sovereign Runtime Instruct",
-      "body_chars": 21000,
+      "description": "Legal Powerhouse Skill \u2014 Legal Case Management & Court Automation",
+      "body_chars": 8592,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/immovable_force.py",
-          "scripts/pro_code_philosophy.py",
-          "scripts/pro_methodology_why.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_apex_sovereign_runtime.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_apex_sovereign_runtime_config.yaml",
-          "resources/mega_apex_sovereign_runtime_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-apex-sovereign-runtime/tests/test_mega_apex_sovereign_runtime.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-apex-sovereign-runtime/skill.py",
-        "skills/mega-apex-sovereign-runtime/scripts/immovable_force.py",
-        "skills/mega-apex-sovereign-runtime/scripts/pro_code_philosophy.py",
-        "skills/mega-apex-sovereign-runtime/scripts/pro_methodology_why.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-cc-skill-security-review",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Security Review Skill",
-      "body_chars": 12052,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/activate.py",
-          "scripts/secrets_management.py",
-          "scripts/security_checklist.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_cc_skill_security_review.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_cc_skill_security_review_config.yaml",
-          "resources/mega_cc_skill_security_review_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-cc-skill-security-review/tests/test_mega_cc_skill_security_review.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-cc-skill-security-review/skill.py",
-        "skills/mega-cc-skill-security-review/scripts/security_checklist.py",
-        "skills/mega-cc-skill-security-review/scripts/activate.py",
-        "skills/mega-cc-skill-security-review/scripts/secrets_management.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-docker-devops",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Docker & DevOps Skill \u2014 Container Infrastructure & Deployment",
-      "body_chars": 9915,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/container_management.py",
-          "scripts/docker_commands.py",
+          "scripts/architecture.py",
+          "scripts/courtlistener_api.py",
           "scripts/keywords.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_docker_devops.py"
+          "tests/test_mega_legal_powerhouse.py"
         ],
         "references": [],
         "assets": [
-          "resources/mega_docker_devops_config.yaml",
-          "resources/mega_docker_devops_schema.json"
+          "resources/mega_legal_powerhouse_config.yaml",
+          "resources/mega_legal_powerhouse_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-docker-devops/tests/test_mega_docker_devops.py"
+        "skills/mega-legal-powerhouse/tests/test_mega_legal_powerhouse.py"
       ],
       "real_implementation_files": [
-        "skills/mega-docker-devops/skill.py",
-        "skills/mega-docker-devops/scripts/docker_commands.py",
-        "skills/mega-docker-devops/scripts/container_management.py",
-        "skills/mega-docker-devops/scripts/keywords.py"
+        "skills/mega-legal-powerhouse/skill.py",
+        "skills/mega-legal-powerhouse/scripts/architecture.py",
+        "skills/mega-legal-powerhouse/scripts/courtlistener_api.py",
+        "skills/mega-legal-powerhouse/scripts/keywords.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "mega-job-app-portfolio",
+      "id": "mega-model-expansion-engine",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Job-App Portfolio (GlacierEQ)",
-      "body_chars": 3851,
+      "description": "Universal multi-model expansion engine encompassing 5 sub-skills (OpenRouter, OpenCode Zen, KiloCode).",
+      "body_chars": 4878,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/estate_shape.py",
-          "scripts/existing_per-repo_skills.py",
-          "scripts/pattern_recognition.py",
+          "scripts/dispatch_workflow_via.py",
+          "scripts/free_model_roster.py",
+          "scripts/sub-skill_openrouter-free-tier-dispatch.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_job_app_portfolio.py"
+          "tests/test_mega_model_expansion_engine.py"
         ],
         "references": [],
         "assets": [
-          "resources/mega_job_app_portfolio_config.yaml",
-          "resources/mega_job_app_portfolio_schema.json"
+          "resources/mega_model_expansion_engine_config.yaml",
+          "resources/mega_model_expansion_engine_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-job-app-portfolio/tests/test_mega_job_app_portfolio.py"
+        "skills/mega-model-expansion-engine/tests/test_mega_model_expansion_engine.py"
       ],
       "real_implementation_files": [
-        "skills/mega-job-app-portfolio/skill.py",
-        "skills/mega-job-app-portfolio/scripts/pattern_recognition.py",
-        "skills/mega-job-app-portfolio/scripts/estate_shape.py",
-        "skills/mega-job-app-portfolio/scripts/existing_per-repo_skills.py"
+        "skills/mega-model-expansion-engine/skill.py",
+        "skills/mega-model-expansion-engine/scripts/free_model_roster.py",
+        "skills/mega-model-expansion-engine/scripts/dispatch_workflow_via.py",
+        "skills/mega-model-expansion-engine/scripts/sub-skill_openrouter-free-tier-dispatch.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "mega-mermicorn-grove",
+      "id": "mega-supabase-ecosystem",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Mermicorn Grove",
-      "body_chars": 1228,
+      "description": "Consolidated mega skill encompassing 5 sub-skills.",
+      "body_chars": 17032,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/mega_mermicorn_grove_reporter.py",
-          "scripts/mega_mermicorn_grove_validator.py",
+          "scripts/core_principles.py",
+          "scripts/sub-skill_supabase.py",
+          "scripts/supabase_cli.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_supabase_ecosystem.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_supabase_ecosystem_config.yaml",
+          "resources/mega_supabase_ecosystem_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-supabase-ecosystem/tests/test_mega_supabase_ecosystem.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-supabase-ecosystem/skill.py",
+        "skills/mega-supabase-ecosystem/scripts/sub-skill_supabase.py",
+        "skills/mega-supabase-ecosystem/scripts/core_principles.py",
+        "skills/mega-supabase-ecosystem/scripts/supabase_cli.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "meta-llama-collective-sentinel",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Operating inside the Meta Llama Collective Sentinel job-app portfolio repo at github.com/GlacierEQ/meta-llama-collective-sentinel. Targets the Meta FAIR collective-comms orbit.",
+      "body_chars": 788,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/meta_llama_collective_sentinel_reporter.py",
+          "scripts/meta_llama_collective_sentinel_validator.py",
           "scripts/quick_rules.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_mermicorn_grove.py"
+          "tests/test_meta_llama_collective_sentinel.py"
         ],
         "references": [],
         "assets": [
-          "resources/mega_mermicorn_grove_config.yaml",
-          "resources/mega_mermicorn_grove_schema.json"
+          "resources/meta_llama_collective_sentinel_config.yaml",
+          "resources/meta_llama_collective_sentinel_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-mermicorn-grove/tests/test_mega_mermicorn_grove.py"
+        "skills/meta-llama-collective-sentinel/tests/test_meta_llama_collective_sentinel.py"
       ],
       "real_implementation_files": [
-        "skills/mega-mermicorn-grove/skill.py",
-        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_reporter.py",
-        "skills/mega-mermicorn-grove/scripts/quick_rules.py",
-        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_validator.py"
+        "skills/meta-llama-collective-sentinel/skill.py",
+        "skills/meta-llama-collective-sentinel/scripts/meta_llama_collective_sentinel_validator.py",
+        "skills/meta-llama-collective-sentinel/scripts/quick_rules.py",
+        "skills/meta-llama-collective-sentinel/scripts/meta_llama_collective_sentinel_reporter.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "mega-reasoning-variants",
+      "id": "resource-preflight",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Reasoning Variants",
-      "body_chars": 5544,
+      "description": "Verify the environment, dependencies, access, data, approvals, and validation resources required by a capability before it is selected. Use when a route names tools, scripts, models, datasets, credentials, services, hardware, or runtime assumptions.",
+      "body_chars": 1493,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/per-strategy_references.py",
-          "scripts/selector_decision_tree.py",
-          "scripts/six_strategies.py",
+          "scripts/availability_checker.py",
+          "scripts/classifier.py",
+          "scripts/fallback_identifier.py",
+          "scripts/inventory_builder.py",
+          "scripts/output_contract.py",
+          "scripts/preflight_emitter.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_reasoning_variants.py"
+          "tests/test_resource_preflight.py"
         ],
         "references": [],
         "assets": [
-          "resources/mega_reasoning_variants_config.yaml",
-          "resources/mega_reasoning_variants_schema.json"
+          "resources/prerequisite_types.yaml",
+          "resources/resource_preflight_config.yaml",
+          "resources/resource_preflight_schema.json",
+          "resources/verification_methods.yaml"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-reasoning-variants/tests/test_mega_reasoning_variants.py"
+        "skills/resource-preflight/tests/test_resource_preflight.py"
       ],
       "real_implementation_files": [
-        "skills/mega-reasoning-variants/skill.py",
-        "skills/mega-reasoning-variants/scripts/selector_decision_tree.py",
-        "skills/mega-reasoning-variants/scripts/per-strategy_references.py",
-        "skills/mega-reasoning-variants/scripts/six_strategies.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-xai-colossus-2",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "xAI Colossus 2",
-      "body_chars": 1513,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/mega_xai_colossus_2_reporter.py",
-          "scripts/mega_xai_colossus_2_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_xai_colossus_2.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_xai_colossus_2_config.yaml",
-          "resources/mega_xai_colossus_2_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-xai-colossus-2/tests/test_mega_xai_colossus_2.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-xai-colossus-2/skill.py",
-        "skills/mega-xai-colossus-2/scripts/mega_xai_colossus_2_reporter.py",
-        "skills/mega-xai-colossus-2/scripts/quick_rules.py",
-        "skills/mega-xai-colossus-2/scripts/mega_xai_colossus_2_validator.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "quantum-nexus",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operating inside the Quantum Legal Intelligence System at /root/quantum_nexus. Vault, memory, CourtListener integration, MCP server, and the buckets (identity, legal, technical, memory, services, cloud). Use when working on legal intelligence, vault, or the memory bucket system.",
-      "body_chars": 1404,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/quantum_nexus_reporter.py",
-          "scripts/quantum_nexus_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_quantum_nexus.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/quantum_nexus_config.yaml",
-          "resources/quantum_nexus_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/quantum-nexus/tests/test_quantum_nexus.py"
-      ],
-      "real_implementation_files": [
-        "skills/quantum-nexus/skill.py",
-        "skills/quantum-nexus/scripts/quick_rules.py",
-        "skills/quantum-nexus/scripts/quantum_nexus_validator.py",
-        "skills/quantum-nexus/scripts/quantum_nexus_reporter.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "xai-colossus-2",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operating inside xAI Colossus 2 at GlacierEQ/xai-colossus-2. The end-to-end Colossus infrastructure project \u2014 CLI, mastermind sidecar, devops, and the AKOS portfolio. Use when working on Colossus integration.",
-      "body_chars": 1398,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/quick_rules.py",
-          "scripts/xai_colossus_2_reporter.py",
-          "scripts/xai_colossus_2_validator.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_xai_colossus_2.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/xai_colossus_2_config.yaml",
-          "resources/xai_colossus_2_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/xai-colossus-2/tests/test_xai_colossus_2.py"
-      ],
-      "real_implementation_files": [
-        "skills/xai-colossus-2/skill.py",
-        "skills/xai-colossus-2/scripts/quick_rules.py",
-        "skills/xai-colossus-2/scripts/xai_colossus_2_validator.py",
-        "skills/xai-colossus-2/scripts/xai_colossus_2_reporter.py"
+        "skills/resource-preflight/skill.py",
+        "skills/resource-preflight/scripts/fallback_identifier.py",
+        "skills/resource-preflight/scripts/preflight_emitter.py",
+        "skills/resource-preflight/scripts/classifier.py",
+        "skills/resource-preflight/scripts/output_contract.py",
+        "skills/resource-preflight/scripts/inventory_builder.py",
+        "skills/resource-preflight/scripts/purpose.py",
+        "skills/resource-preflight/scripts/availability_checker.py",
+        "skills/resource-preflight/scripts/procedure.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }
