@@ -1,7 +1,7 @@
 {
   "worker": 2,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
       "id": "aerospace-trajectory-core",
@@ -50,124 +50,96 @@
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "mega-skill-forge",
+      "id": "omni-memory-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill.",
-      "body_chars": 5760,
+      "description": "291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement.",
+      "body_chars": 1191,
       "reasons": [
-        "8 explicit implementation stub(s)"
+        "5 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/combo_selector.py",
-          "scripts/contract_author.py",
-          "scripts/creation_workflow.py",
-          "scripts/decision_gate.py",
-          "scripts/hierarchy_validator.py",
-          "scripts/mission_drafter.py",
-          "scripts/readiness_gate.py",
-          "scripts/registry_publisher.py",
-          "scripts/release_coordinator.py",
-          "scripts/repo_inspector.py",
-          "scripts/this_skill.py",
+          "scripts/cosine_engine.py",
+          "scripts/file_traverser.py",
+          "scripts/hebbian_reinforcer.py",
+          "scripts/memory_exporter.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/vectorizer.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_skill_forge.py"
+          "tests/test_omni_memory_core.py"
         ],
-        "references": [
-          "references/mega-contract.md",
-          "references/release-checklist.md"
-        ],
+        "references": [],
         "assets": [
-          "resources/MEGA.md.template",
-          "resources/mega-contract.md",
-          "resources/mega-registry-entry.json.template",
-          "resources/mega_skill_forge_config.yaml",
-          "resources/mega_skill_forge_schema.json",
-          "resources/release-checklist.md"
+          "resources/cloud_paths.yaml",
+          "resources/omni_memory_core_config.yaml",
+          "resources/omni_memory_core_schema.json",
+          "resources/vocab_params.yaml"
         ]
       },
       "stub_files": [
-        "skills/mega-skill-forge/scripts/repo_inspector.py",
-        "skills/mega-skill-forge/scripts/readiness_gate.py",
-        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
-        "skills/mega-skill-forge/scripts/combo_selector.py",
-        "skills/mega-skill-forge/scripts/mission_drafter.py",
-        "skills/mega-skill-forge/scripts/contract_author.py",
-        "skills/mega-skill-forge/scripts/registry_publisher.py",
-        "skills/mega-skill-forge/scripts/release_coordinator.py"
+        "skills/omni-memory-core/scripts/file_traverser.py",
+        "skills/omni-memory-core/scripts/memory_exporter.py",
+        "skills/omni-memory-core/scripts/vectorizer.py",
+        "skills/omni-memory-core/scripts/cosine_engine.py",
+        "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-skill-forge/tests/test_mega_skill_forge.py"
+        "skills/omni-memory-core/tests/test_omni_memory_core.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "apex-ast-sentinel",
+      "id": "epistemic-gate",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "AST-level syntactic invariant validator and defect sentinel for zero-regression code generation.",
-      "body_chars": 1884,
+      "description": "6-Tier Epistemic Ladder (L0 to L6) verification gate enforcing mathematical, empirical, and cryptographic proof standards across all operations.",
+      "body_chars": 1883,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/run.py",
-          "scripts/this_skill.py",
+          "scripts/gate_enforcer.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/receipt_generator.py",
+          "scripts/sha256_verifier.py",
+          "scripts/tier_evaluator.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_apex_ast_sentinel.py"
+          "tests/test_epistemic_gate.py"
         ],
         "references": [],
         "assets": [
-          "resources/apex-ast-sentinel_config.yaml",
-          "resources/apex-ast-sentinel_schema.json"
+          "resources/epistemic_gate_config.yaml",
+          "resources/epistemic_gate_schema.json",
+          "resources/epistemic_spectrum.yaml",
+          "resources/forbidden_patterns.yaml"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/apex-ast-sentinel/tests/test_apex_ast_sentinel.py"
+        "skills/epistemic-gate/tests/test_epistemic_gate.py"
       ],
       "real_implementation_files": [
-        "skills/apex-ast-sentinel/scripts/this_skill.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "gmail-orchestrator",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Headless browser-based Gmail control for triage, drafting, and forensic extraction.",
-      "body_chars": 1166,
-      "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "orchestrator.py"
-        ],
-        "tests": [],
-        "references": [],
-        "assets": []
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "real_implementation_files": [
-        "skills/gmail-orchestrator/orchestrator.py"
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/gate_enforcer.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

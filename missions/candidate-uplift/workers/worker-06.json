@@ -1,175 +1,135 @@
 {
   "worker": 6,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
-      "id": "context-capsule",
+      "id": "fleet-git-harmonizer-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Create a compact, current-state capsule that preserves the information needed for the next work chunk without replaying full history. Use before handoffs, resumption, context compaction, delegation, or any complex step requiring focused inputs.",
-      "body_chars": 1249,
-      "reasons": [
-        "4 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/assumption_tracker.py",
-          "scripts/capsule_generator.py",
-          "scripts/drift_detector.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/state_compactor.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_context_capsule.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/capsule_schema.yaml",
-          "resources/context_capsule_config.yaml",
-          "resources/context_capsule_schema.json",
-          "resources/linking_conventions.md"
-        ]
-      },
-      "stub_files": [
-        "skills/context-capsule/scripts/state_compactor.py",
-        "skills/context-capsule/scripts/assumption_tracker.py",
-        "skills/context-capsule/scripts/drift_detector.py",
-        "skills/context-capsule/scripts/capsule_generator.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/context-capsule/tests/test_context_capsule.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "finish_domain_implementation"
-    },
-    {
-      "id": "pipeline-compositor",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Directed Acyclic Graph (DAG) pipeline composition engine for stacking connectors, skills, and agents with typed edges, backpressure, checkpoint/resume, and parallel execution.",
-      "body_chars": 1387,
+      "description": "Autonomous git history analysis, branch divergence reconciliation, and clutter pruning across repositories.",
+      "body_chars": 1333,
       "reasons": [
         "6 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/backpressure_controller.py",
-          "scripts/checkpoint_manager.py",
-          "scripts/dag_parser.py",
-          "scripts/manifest_synthesizer.py",
+          "scripts/archive_tagger.py",
+          "scripts/ast_diff_extractor.py",
+          "scripts/branch_pruner.py",
+          "scripts/commit_synthesizer.py",
+          "scripts/divergence_auditor.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
           "scripts/purpose.py",
-          "scripts/stage_executor.py",
-          "scripts/topology_validator.py",
+          "scripts/regression_gate.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_pipeline_compositor.py"
+          "tests/test_fleet_git_harmonizer_core.py"
         ],
         "references": [],
         "assets": [
-          "resources/edge_type_registry.json",
-          "resources/pipeline_compositor_config.yaml",
-          "resources/pipeline_compositor_schema.json",
-          "resources/pipeline_def_schema.yaml"
+          "resources/archive_tag_schema.yaml",
+          "resources/fleet_git_harmonizer_core_config.yaml",
+          "resources/fleet_git_harmonizer_core_schema.json",
+          "resources/regression_adapters.json"
         ]
       },
       "stub_files": [
-        "skills/pipeline-compositor/scripts/backpressure_controller.py",
-        "skills/pipeline-compositor/scripts/manifest_synthesizer.py",
-        "skills/pipeline-compositor/scripts/stage_executor.py",
-        "skills/pipeline-compositor/scripts/dag_parser.py",
-        "skills/pipeline-compositor/scripts/topology_validator.py",
-        "skills/pipeline-compositor/scripts/checkpoint_manager.py"
+        "skills/fleet-git-harmonizer-core/scripts/commit_synthesizer.py",
+        "skills/fleet-git-harmonizer-core/scripts/ast_diff_extractor.py",
+        "skills/fleet-git-harmonizer-core/scripts/archive_tagger.py",
+        "skills/fleet-git-harmonizer-core/scripts/regression_gate.py",
+        "skills/fleet-git-harmonizer-core/scripts/divergence_auditor.py",
+        "skills/fleet-git-harmonizer-core/scripts/branch_pruner.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/pipeline-compositor/tests/test_pipeline_compositor.py"
+        "skills/fleet-git-harmonizer-core/tests/test_fleet_git_harmonizer_core.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "cross-app-pipeline",
+      "id": "ast-repair-core",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.",
-      "body_chars": 1594,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "pipeline.py"
-        ],
-        "tests": [],
-        "references": [],
-        "assets": []
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "real_implementation_files": [
-        "skills/cross-app-pipeline/pipeline.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "resource-preflight",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Verify the environment, dependencies, access, data, approvals, and validation resources required by a capability before it is selected. Use when a route names tools, scripts, models, datasets, credentials, services, hardware, or runtime assumptions.",
-      "body_chars": 1493,
+      "description": "Closed-loop AST traceback parsing, pinpoint defect localization, and surgical automated code patching to achieve 100% green test assertions.",
+      "body_chars": 1271,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/availability_checker.py",
-          "scripts/classifier.py",
-          "scripts/fallback_identifier.py",
-          "scripts/inventory_builder.py",
+          "scripts/ast_chunker.py",
           "scripts/output_contract.py",
-          "scripts/preflight_emitter.py",
+          "scripts/patch_applier.py",
+          "scripts/patch_synthesizer.py",
           "scripts/procedure.py",
           "scripts/purpose.py",
+          "scripts/traceback_parser.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_resource_preflight.py"
+          "tests/test_ast_repair_core.py"
         ],
         "references": [],
         "assets": [
-          "resources/prerequisite_types.yaml",
-          "resources/resource_preflight_config.yaml",
-          "resources/resource_preflight_schema.json",
-          "resources/verification_methods.yaml"
+          "resources/ast_repair_core_config.yaml",
+          "resources/ast_repair_core_schema.json",
+          "resources/repair_prompts.md",
+          "resources/test_adapters.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/resource-preflight/tests/test_resource_preflight.py"
+        "skills/ast-repair-core/tests/test_ast_repair_core.py"
       ],
       "real_implementation_files": [
-        "skills/resource-preflight/scripts/fallback_identifier.py",
-        "skills/resource-preflight/scripts/preflight_emitter.py",
-        "skills/resource-preflight/scripts/classifier.py",
-        "skills/resource-preflight/scripts/inventory_builder.py",
-        "skills/resource-preflight/scripts/availability_checker.py"
+        "skills/ast-repair-core/scripts/patch_synthesizer.py",
+        "skills/ast-repair-core/scripts/ast_chunker.py",
+        "skills/ast-repair-core/scripts/traceback_parser.py",
+        "skills/ast-repair-core/scripts/patch_applier.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-web",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Ceiling web engineering: distinctive UI, human copy, real browser proof, Vercel-grade React/a11y when the stack is React. Use when the user says mega web, ceiling web, hire page, public site, recruiter surface, landing, frontend, make this look elite, or /mega-web. Do NOT use for visual DESIGN.md-only work (design-blueprint) or native mobile (vercel-react-native-skills).",
+      "body_chars": 2216,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_web.py"
+        ],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-web/tests/test_mega_web.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-web/skill.py",
+        "skills/mega-web/scripts/run.py",
+        "skills/mega-web/scripts/this_skill.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }
