@@ -188,7 +188,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/aerospace-trajectory-core/skill.py",
@@ -216,7 +216,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/agent-evaluation/scripts/patterns.py",
@@ -262,7 +262,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/agent-memory-mcp/scripts/setup.py",
@@ -288,7 +288,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/agent-memory-systems/scripts/patterns.py",
@@ -374,7 +374,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/ai-agents-architect/scripts/patterns.py",
@@ -420,7 +420,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/ai-deal-finder/skill.py",
@@ -723,7 +723,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/apex-ast-sentinel/skill.py",
@@ -745,7 +745,7 @@
       "layer": "skill",
       "ready": false,
       "state": "behavior_verified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [
         "skills/apex-boot-core/skill.py",
@@ -808,7 +808,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/apex-integrations/skill.py",
@@ -951,7 +951,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/apex-sovereign-runtime/skill.py",
@@ -1034,7 +1034,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/api-integration/skill.py",
@@ -1157,7 +1157,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/apple-ane-kv-quantizer/skill.py",
@@ -1180,7 +1180,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/architecture/scripts/selective_reading_rule.py",
@@ -1266,7 +1266,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/aspen-grove/skill.py",
@@ -1353,7 +1353,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/ast-repair-core/skill.py",
@@ -1380,7 +1380,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -1402,7 +1402,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/audio-forensic-core/skill.py",
@@ -1721,7 +1721,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/aws-trainium-neuron-sentinel/skill.py",
@@ -1984,7 +1984,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/brain/skill.py",
@@ -2347,7 +2347,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/capability-admission/skill.py",
@@ -2434,7 +2434,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -2497,7 +2497,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/cc-skill-security-review/scripts/security_checklist.py",
@@ -2523,7 +2523,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -2667,7 +2667,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/claim-calibration/skill.py",
@@ -2735,7 +2735,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/clean-code/scripts/core_principles.py",
@@ -2881,7 +2881,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/code-review-checklist/scripts/works.py",
@@ -2906,7 +2906,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/codemaster/skill.py",
@@ -3010,7 +3010,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/composio/skill.py",
@@ -3053,7 +3053,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/computer-user-core/skill.py",
@@ -3121,7 +3121,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -3144,7 +3144,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/connector-bridge/skill.py",
@@ -3213,7 +3213,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/context-capsule/skill.py",
@@ -3261,7 +3261,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/conversation-memory/scripts/tiered_memory_system.py",
@@ -3447,7 +3447,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/cross-app-pipeline/pipeline.py"
@@ -3685,7 +3685,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/data-analysis/skill.py",
@@ -3888,7 +3888,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/deepseek-mla-moe-sentinel/skill.py",
@@ -4031,7 +4031,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -4153,7 +4153,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/docker-devops/skill.py",
@@ -4416,7 +4416,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/engineering-innovations/skill.py",
@@ -4539,7 +4539,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/epistemic-gate/skill.py",
@@ -4586,7 +4586,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/evidence-register/skill.py",
@@ -4693,7 +4693,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/far-away-party/skill.py",
@@ -5116,7 +5116,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/flagships/skill.py",
@@ -5139,7 +5139,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/fleet-git-harmonizer-core/skill.py",
@@ -5409,7 +5409,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/forensic-evidence-chain-core/skill.py",
@@ -5439,7 +5439,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/fork-overlay-core/skill.py",
@@ -5467,7 +5467,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/forks/skill.py",
@@ -6110,7 +6110,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/genesis-prime/skill.py",
@@ -6233,7 +6233,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/github-power/skill.py",
@@ -6296,7 +6296,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [
         "skills/gmail-orchestrator/orchestrator.py"
@@ -6415,7 +6415,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/handoff-record/skill.py",
@@ -6624,7 +6624,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [
         "skills/icloud-voice-memos/harvester.py"
@@ -6943,7 +6943,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/job-app-portfolio/skill.py",
@@ -7186,7 +7186,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/legacy-estate/skill.py",
@@ -7249,7 +7249,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/legal-powerhouse/skill.py",
@@ -7496,7 +7496,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/long-horizon-core/skill.py",
@@ -7539,7 +7539,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/make-it-heavy/scripts/memory_architecture.py",
@@ -7665,7 +7665,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/master/skill.py",
@@ -7688,7 +7688,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mastermind/skill.py",
@@ -7751,7 +7751,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -7793,7 +7793,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mcp-master-server/skill.py",
@@ -7836,7 +7836,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-agent-core-operations/skill.py",
@@ -7859,7 +7859,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-agent-evaluation/skill.py",
@@ -7882,7 +7882,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-agent-memory-mcp/skill.py",
@@ -7905,7 +7905,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-agent-memory-systems/skill.py",
@@ -7928,7 +7928,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-ai-agents-architect/skill.py",
@@ -7951,7 +7951,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-ai-deal-finder/skill.py",
@@ -7974,7 +7974,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-apex-integrations/skill.py",
@@ -7997,7 +7997,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-apex-sovereign-mastermind/skill.py",
@@ -8020,7 +8020,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-apex-sovereign-runtime/skill.py",
@@ -8043,7 +8043,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-api-integration/skill.py",
@@ -8066,7 +8066,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-apple-ane-kv-quantizer/skill.py",
@@ -8089,7 +8089,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-architecture/skill.py",
@@ -8112,7 +8112,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-aspen-grove/skill.py",
@@ -8135,7 +8135,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-aspen-grove-connectors/skill.py",
@@ -8158,7 +8158,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-aws-trainium-neuron-sentinel/skill.py",
@@ -8181,7 +8181,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-brain/skill.py",
@@ -8204,7 +8204,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-cc-skill-security-review/skill.py",
@@ -8227,7 +8227,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-clean-code/skill.py",
@@ -8250,7 +8250,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-code-review-checklist/skill.py",
@@ -8273,7 +8273,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-codemaster/skill.py",
@@ -8296,7 +8296,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-composio/skill.py",
@@ -8319,7 +8319,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-conversation-memory/skill.py",
@@ -8342,7 +8342,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-data-analysis/skill.py",
@@ -8365,7 +8365,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-deepseek-mla-moe-sentinel/skill.py",
@@ -8388,7 +8388,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-docker-devops/skill.py",
@@ -8411,7 +8411,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-engineering-innovations/skill.py",
@@ -8434,7 +8434,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-filesystem-omni-engine/skill.py",
@@ -8457,7 +8457,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-flagships/skill.py",
@@ -8480,7 +8480,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-forks/skill.py",
@@ -8503,7 +8503,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-gcp-data-engineering/skill.py",
@@ -8526,7 +8526,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-genesis-prime/skill.py",
@@ -8549,7 +8549,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-github-power/skill.py",
@@ -8572,7 +8572,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-job-app-portfolio/skill.py",
@@ -8595,7 +8595,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-legacy-estate/skill.py",
@@ -8618,7 +8618,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-legal-forensic-engine/skill.py",
@@ -8641,7 +8641,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-legal-powerhouse/skill.py",
@@ -8664,7 +8664,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-make-it-heavy/skill.py",
@@ -8687,7 +8687,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-master/skill.py",
@@ -8710,7 +8710,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-mastermind/skill.py",
@@ -8733,7 +8733,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-mcp-master-server/skill.py",
@@ -8756,7 +8756,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-mermicorn-grove/skill.py",
@@ -8779,7 +8779,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-mermicorn-mega-boot/skill.py",
@@ -8802,7 +8802,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-meta-llama-collective-sentinel/skill.py",
@@ -8825,7 +8825,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-model-expansion-engine/skill.py",
@@ -8848,7 +8848,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-monolith/skill.py",
@@ -8871,7 +8871,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-openai-reasoning-kv-sentinel/skill.py",
@@ -8894,7 +8894,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-primordial-mesh/skill.py",
@@ -8937,7 +8937,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-quantum-nexus/skill.py",
@@ -8960,7 +8960,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-reasoning-variants/skill.py",
@@ -8983,7 +8983,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-research-study-act/skill.py",
@@ -9006,7 +9006,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-skill-forge/skill.py",
@@ -9038,7 +9038,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-skills-test-runner/skill.py",
@@ -9066,7 +9066,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-spacex-mission-control/skill.py",
@@ -9089,7 +9089,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-supabase-ecosystem/skill.py",
@@ -9112,7 +9112,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-token-saver/skill.py",
@@ -9135,7 +9135,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-tower-of-babel/skill.py",
@@ -9158,7 +9158,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-vercel-ecosystem/skill.py",
@@ -9181,7 +9181,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-web/skill.py",
@@ -9203,7 +9203,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-xai-colossus-2/skill.py",
@@ -9306,7 +9306,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mermicorn-grove/skill.py",
@@ -9329,7 +9329,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mermicorn-mega-boot/skill.py",
@@ -9352,7 +9352,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/meta-llama-collective-sentinel/skill.py",
@@ -9535,7 +9535,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mission-contract/skill.py",
@@ -9665,7 +9665,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/monolith/skill.py",
@@ -10008,7 +10008,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/omni-memory-core/skill.py",
@@ -10057,7 +10057,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/openai-reasoning-kv-sentinel/skill.py",
@@ -10440,7 +10440,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/pipeline-compositor/skill.py",
@@ -10590,7 +10590,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/polyglot-rosetta-core/skill.py",
@@ -10819,7 +10819,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/primordial-mesh/skill.py",
@@ -11322,7 +11322,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/quality-gate/skill.py",
@@ -11370,7 +11370,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/quantum-nexus/skill.py",
@@ -11533,7 +11533,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/reasoning-variants/skill.py",
@@ -11676,7 +11676,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -11858,7 +11858,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/research-study-act/skill.py",
@@ -11881,7 +11881,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/resource-preflight/skill.py",
@@ -11909,7 +11909,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -11931,7 +11931,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -11953,7 +11953,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -12035,7 +12035,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/roadmap-builder/skill.py",
@@ -12265,7 +12265,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/security-review/skill.py",
@@ -12388,7 +12388,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -12804,7 +12804,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/spacex-mission-control/skill.py",
@@ -13027,7 +13027,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -13269,7 +13269,7 @@
       "layer": "skill",
       "ready": false,
       "state": "contract_incomplete",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
@@ -13351,7 +13351,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/token-saver/skill.py",
@@ -13414,7 +13414,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/tower-of-babel/skill.py",
@@ -14417,7 +14417,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_partial",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/work-packet/skill.py",
@@ -14567,7 +14567,7 @@
       "layer": "skill",
       "ready": false,
       "state": "implementation_unverified",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/xai-colossus-2/skill.py",
@@ -14732,7 +14732,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: aerospace-trajectory-core",
@@ -14744,7 +14744,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: architecture",
         "required skill not ready: clean-code",
@@ -14758,7 +14758,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: roadmap-builder",
@@ -14771,7 +14771,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: ai-agents-architect",
         "required skill not ready: agent-memory-mcp",
@@ -14784,7 +14784,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: capability-admission",
         "required skill not ready: resource-preflight",
@@ -14797,7 +14797,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: ast-repair-core",
@@ -14809,7 +14809,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: forensic-evidence-chain-core",
@@ -14821,7 +14821,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: omni-memory-core",
@@ -14833,7 +14833,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: security-review"
       ]
@@ -14843,7 +14843,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: epistemic-gate",
         "required skill not ready: evidence-register",
@@ -14855,7 +14855,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: evidence-register",
         "required skill not ready: claim-calibration",
@@ -14869,7 +14869,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: fleet-git-harmonizer-core",
@@ -14881,7 +14881,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: legal-powerhouse",
         "required skill not ready: audio-forensic-core",
@@ -14895,7 +14895,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: job-app-portfolio",
         "required skill not ready: quality-gate"
@@ -14914,7 +14914,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: capability-admission",
         "required skill not ready: resource-preflight",
@@ -14928,7 +14928,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: apple-ane-kv-quantizer",
         "required skill not ready: deepseek-mla-moe-sentinel",
@@ -14950,7 +14950,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: roadmap-builder",
@@ -14966,7 +14966,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: ai-agents-architect"
       ]
@@ -14976,7 +14976,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: pipeline-compositor",
         "required skill not ready: connector-bridge",
@@ -14988,7 +14988,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: polyglot-rosetta-core",
@@ -15000,7 +15000,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: evidence-register",
@@ -15012,7 +15012,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: computer-user-core",
         "required skill not ready: connector-bridge",
@@ -15024,7 +15024,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: api-integration",
         "required skill not ready: docker-devops",
@@ -15038,7 +15038,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: evidence-register",
@@ -15052,7 +15052,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: evidence-register",
@@ -15064,7 +15064,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: fork-overlay-core",
@@ -15084,7 +15084,7 @@
       "layer": "combo",
       "ready": false,
       "state": "composition_candidate",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required skill not ready: mission-contract",
         "required skill not ready: audio-forensic-core",
@@ -15124,7 +15124,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: hardware-accelerated-inference"
@@ -15148,7 +15148,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15159,7 +15159,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: multi-agent-orchestration-mesh",
@@ -15172,7 +15172,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: guarded-automation-loop",
@@ -15185,7 +15185,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: architectural-refactoring-engine"
@@ -15197,7 +15197,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: autonomous-agent-foundry"
@@ -15209,7 +15209,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: closed-loop-code-repair",
@@ -15223,7 +15223,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: closed-loop-code-repair",
@@ -15249,7 +15249,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: cybersecurity-threat-analysis",
@@ -15262,7 +15262,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15273,7 +15273,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: architectural-refactoring-engine"
@@ -15285,7 +15285,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15296,7 +15296,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: forensic-docket-intelligence"
@@ -15308,7 +15308,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: signal-to-decision-loop"
@@ -15320,7 +15320,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: closed-loop-code-repair"
@@ -15332,7 +15332,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: guarded-automation-loop",
@@ -15345,7 +15345,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15356,7 +15356,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15367,7 +15367,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15390,7 +15390,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: secure-service-deployment"
@@ -15402,7 +15402,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15413,7 +15413,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15424,7 +15424,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core",
         "required combo not ready: web-build-foundation"
@@ -15436,7 +15436,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
@@ -15459,12 +15459,11 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: long-horizon-core"
       ]
     }
   ],
-  "pass": 1,
-  "pass1_adapter_repairs": 1707
+  "pass": 2
 }
