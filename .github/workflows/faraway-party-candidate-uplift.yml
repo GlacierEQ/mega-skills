@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: faraway-party-candidate-uplift
+  group: mega-skills-mutator
   cancel-in-progress: false
 
 jobs:
