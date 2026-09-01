@@ -14,6 +14,9 @@ READINESS_REGISTRY = REGISTRY / "skill-readiness.json"
 GENERIC_MARKERS = ('"epistemic_tier": "L2"', '"firewall_active": True', 'payload["status"] = "executed"')
 EXPLICIT_STUB_MARKERS = ("Status: STUB - implement per skill contract", "# TODO: Implement")
 BEHAVIOR_TODO_MARKERS = ("TODO: Add actual behavioral tests", "TODO: implement actual behavioral tests")
+PRINT_SCAFFOLD_MARKERS = ("Main implementation for ", 'print(f"Executing ', "return 0")
+FALSE_L2_RECEIPT_MARKERS = ('"status": "success"', '"epistemic_tier": "L2"', '"firewall": "verified"', '"execution": "completed"')
+GENERIC_CONTRACT_MARKERS = ("Execute domain scripts", "Epistemic Tier & Verification Proofs", "Cognitive Firewall")
 SOURCE_SUFFIXES = {".py",".js",".mjs",".cjs",".ts",".tsx",".sh",".go",".rs",".jl"}
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -25,6 +28,20 @@ def dump_json(path: Path, value: Any) -> None:
 
 def is_generic_adapter(text: str) -> bool:
     return all(marker in text for marker in GENERIC_MARKERS)
+
+def is_generated_scaffold(text: str) -> bool:
+    return (
+        all(marker in text for marker in PRINT_SCAFFOLD_MARKERS)
+        or all(marker in text for marker in FALSE_L2_RECEIPT_MARKERS)
+    )
+
+def is_dispatch_adapter(text: str) -> bool:
+    return (
+        "Available commands:" in text
+        and "script_path" in text
+        and ("exec(script_path.read_text()" in text or "subprocess.run(" in text)
+        and len(text) < 2600
+    )
 
 def generic_adapter_text(skill_id: str) -> str:
     return f'''#!/usr/bin/env python3
@@ -84,7 +101,7 @@ def substantive_instruction(skill_md: Path) -> tuple[bool, list[str]]:
 def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
     root = ROOT / entry["path"]
     instruction_ok, reasons = substantive_instruction(root / "SKILL.md")
-    stubs, real_impl, adapters, test_files = [], [], [], []
+    stubs, real_impl, adapters, scaffolds, test_files = [], [], [], [], []
     for path in root.rglob("*"):
         if not path.is_file():
             continue
@@ -98,6 +115,8 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
             adapters.append(rel); continue
         if any(m in text for m in EXPLICIT_STUB_MARKERS):
             stubs.append(rel); continue
+        if is_generated_scaffold(text) or is_dispatch_adapter(text):
+            scaffolds.append(rel); continue
         if len(re.sub(r"\s+","",text)) >= 160 and path.name != "__init__.py":
             real_impl.append(rel)
 
@@ -112,7 +131,9 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
         invokes = any(t in text for t in ("subprocess.run","main(","run(","execute(","result","output","sha256","conservation","conver","parse(","validate_"))
         (behavioral if assertions >= 2 and invokes and assertions > existence_bias else structural).append(rel)
 
-    execution_intent = bool(stubs or real_impl)
+    skill_text = (root / "SKILL.md").read_text(encoding="utf-8", errors="replace") if (root / "SKILL.md").is_file() else ""
+    generated_contract = all(marker in skill_text for marker in GENERIC_CONTRACT_MARKERS)
+    execution_intent = bool(stubs or real_impl or (scaffolds and generated_contract))
     reasons = list(reasons)
     if stubs:
         state, ready = "implementation_partial", False
@@ -122,6 +143,9 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
     elif execution_intent and real_impl:
         state, ready = "implementation_unverified", False
         reasons.append("implementation exists without behavioral verification")
+    elif scaffolds and generated_contract:
+        state, ready = "implementation_missing", False
+        reasons.append("generated execution scaffolds exist but no domain implementation is present")
     elif instruction_ok:
         state, ready = "instruction_ready", True
     else:
@@ -130,7 +154,7 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
         "id": entry["id"], "layer":"skill", "ready":ready, "state":state,
         "declared_maturity":entry.get("maturity"), "instruction_ready":instruction_ok,
         "real_implementation_files":real_impl, "generic_adapter_files":adapters,
-        "stub_files":stubs, "behavioral_tests":behavioral, "structural_tests":structural,
+        "scaffold_files":scaffolds, "stub_files":stubs, "behavioral_tests":behavioral, "structural_tests":structural,
         "reasons":reasons
     }
 
