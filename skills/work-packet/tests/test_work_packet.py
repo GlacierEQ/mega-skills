@@ -12,15 +12,15 @@ class RuntimeBehavior(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             source=Path(tmp)/"input.json"
             source.write_text(json.dumps(payload),encoding="utf-8")
-            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"output-specifier","--input",str(source)],text=True,capture_output=True,check=False)
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"emit","--input",str(source)],text=True,capture_output=True,check=False)
             self.assertEqual(result.returncode,0,result.stdout+result.stderr)
             output=json.loads(result.stdout)
-            self.assertIsInstance(output,dict)
-            self.assertTrue(output.get("markdown") or output.get("decision") or output.get("valid") is False)
+            self.assertTrue(output.get("markdown"))
+            self.assertTrue(output.get("artifact"))
     def test_empty_input_is_observable_not_exceptional(self):
         with tempfile.TemporaryDirectory() as tmp:
             source=Path(tmp)/"input.json"; source.write_text("{}",encoding="utf-8")
-            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"output-specifier","--input",str(source)],text=True,capture_output=True,check=False)
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"emit","--input",str(source)],text=True,capture_output=True,check=False)
             self.assertEqual(result.returncode,0,result.stdout+result.stderr)
             self.assertIsInstance(json.loads(result.stdout),dict)
 if __name__=="__main__":

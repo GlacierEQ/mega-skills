@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 from long_horizon_atomic_runtime import cli
 OPERATIONS = {
+    "emit": "emit",
     "acceptance-tester": "acceptance_tester",
     "boundary-enforcer": "boundary_enforcer",
     "input-lister": "input_lister",
