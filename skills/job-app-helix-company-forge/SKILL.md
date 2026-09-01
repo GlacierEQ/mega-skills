@@ -20,6 +20,43 @@ GlacierEQ/automation-hub/workflows/job-app-helix/workflow.yaml
 Product/output plane:
 GlacierEQ/job-app-helix
 
+
+## Personal weight first
+
+Before inventing anything new, inspect whether the work already exists.
+
+Search:
+- personal memory and prior conversations;
+- ChatGPT Library and uploaded files;
+- live GitHub/Supabase/Dropbox/Notion/Mem/Drive/Box state;
+- prior Helix company-memory packets and intelligence receipts;
+- prior company dossiers, bottlenecks, implementations, benchmarks, deployments, and recruiter packages.
+
+Build an inherited context packet from the useful state.
+
+Use:
+**INHERIT → VERIFY → REFRESH → EXTEND**
+
+not:
+**FORGET → RECREATE → DUPLICATE**
+
+Personal history carries the user's accumulated strategy, corrections, prior experiments, strengths, and failures. It must materially influence the next technical decision.
+
+Do not let personal memory override live code/runtime truth; reconcile remembered intent with durable source state.
+
+## Dynamic impact adjustment
+
+Continuously re-score the next action as conditions change.
+
+Evaluate objective fit, victory/failure impact, urgency, delay cost, leverage, uncertainty, evidence access, reversibility, undershoot/overshoot risk, second-order effects, company relevance, technical depth, hiring signal, reusability, dependency unlock, connector availability, and new personal/external information.
+
+Loop:
+**OBSERVE → RETRIEVE → REWEIGHT → EXECUTE → VERIFY → PRESERVE → REWEIGHT**
+
+Use heavy sequential/swarm process only when it raises expected result quality or speed.
+
+Every additional iteration must earn its cost through material improvement.
+
 ## Hard loop
 
 Every major wave:
