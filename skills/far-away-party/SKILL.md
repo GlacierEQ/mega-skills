@@ -55,3 +55,29 @@ Far Away Party maintains five durable files as the absolute mission source of tr
 6. **Update Context Capsule**: Refresh `CONTEXT.md` with the new reality; discard obsolete intermediate steps.
 7. **Write Handoff Record**: Update `HANDOFF.md` with exact next steps so any crash or turn boundary can resume instantly.
 8. **Final Mission Verification**: Close only when all `MISSION.md` criteria map to verified evidence and zero open assumptions remain.
+
+## Source Fidelity / Case Mission Upgrade — 2026-08-31
+
+For evidence-heavy, legal, investigative, journal-based, or life-history missions, Far Away Party must preserve two separate layers:
+
+### Source layer — immutable meaning
+- Preserve original evidence, historical wording, regularly kept journal/chat-export language, timestamps, speaker sequence, paths, hashes, and prior source assertions.
+- A later summary, verification pass, context capsule, or model interpretation may annotate the source layer but must not silently replace it.
+- "Not reopened in this pass" is a retrieval state, not contrary evidence.
+- Existing material assertions remain in the mission graph unless stronger evidence establishes a specific reason to supersede them. Preserve superseded provenance.
+
+### Analysis layer — additive structure
+Add fact IDs, allegation IDs, confidence/evidence state, authority mapping, contradiction records, defenses, rebuttals, damages, discovery targets, and lifecycle work product around preserved sources.
+
+### Retrieval expansion law
+A spelling/OCR/name variation is normally a reason to widen retrieval, not terminate it. Use event fingerprints, relationships, dates, addresses, contact data, and source continuity to resolve identity. Conversely, do not merge distinct people or matters merely because names resemble each other.
+
+### Contradiction law
+Contradiction → preserve both propositions → identify discriminating evidence → resolve when evidence permits.
+Never: contradiction → silently delete/downgrade the operator/source account.
+
+### Full-lifecycle legal mission rule
+When the mission explicitly requests full casebuilding, do not stop at research or an outline while materially executable lanes remain. Drive through source recovery, fact/event architecture, current-law verification, allegations/elements, opposition modeling, damages/remedies, discovery, motions/petitions/declarations/exhibits, hearing strategy, enforcement, post-ruling preservation, and exact handoff state. External filing/service still requires its own authority and receipt.
+
+### Completion semantics
+"Complete" means the mission criteria are materially exhausted or every remaining item is a named blocked dependency with owner, acquisition route, and next executable action. It never means "first useful answer produced."
