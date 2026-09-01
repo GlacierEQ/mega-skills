@@ -30,3 +30,12 @@ The procedure passes only when 100% of candidate files have verified SHA-256 dig
 ## Non-goals
 
 Do not alter original evidentiary media. Do not include unredacted sensitive PII. Do not fabricate exhibit provenance.
+
+## Original-Media and Journal Integrity Upgrade — 2026-08-31
+
+- Never Bates-stamp, redact, rename-in-place, normalize, transcode, or otherwise modify the sole original evidentiary object.
+- Hash and register the original first; perform stamping/redaction/transcription/OCR on derivative copies.
+- Preserve original chat/journal exports as ordered source containers. Excerpt extraction must retain source file, message/order locator, speaker and surrounding context.
+- A derived transcript/OCR result cannot silently supersede the original audio/image/message.
+- If OCR/transcription conflicts with source inspection or later corrected reading, preserve the derivative and add a correction record.
+- Evidence-chain procedure is jurisdiction-neutral; admissibility/certification must be mapped to the governing court's current evidence rules rather than assuming FRE 902 applies everywhere.
