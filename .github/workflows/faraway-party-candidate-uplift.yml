@@ -1,0 +1,54 @@
+name: Far Away Party Candidate Uplift
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/faraway_party_candidate_swarm.py
+      - .github/workflows/faraway-party-candidate-uplift.yml
+      - missions/candidate-uplift/MISSION.md
+
+permissions:
+  contents: write
+
+concurrency:
+  group: faraway-party-candidate-uplift
+  cancel-in-progress: false
+
+jobs:
+  swarm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Configure durable worker identity
+        run: |
+          git config user.name "GlacierEQ Far Away Party"
+          git config user.email "actions@users.noreply.github.com"
+      - name: Activate Far Away Party and Always-On worker swarm
+        run: python scripts/faraway_party_candidate_swarm.py --workers 8 --repair
+      - name: Recalculate readiness
+        run: python scripts/readiness_assay.py --pass 2 --apply --report missions/candidate-uplift/readiness-after.json
+      - name: Verify repaired estate
+        run: |
+          python scripts/validate_hierarchy.py
+          python -m unittest discover -s tests -v
+          git diff --check
+      - name: Persist mission progress
+        run: |
+          git add skills registry missions/candidate-uplift
+          if ! git diff --cached --quiet; then
+            git commit -m "faraway: uplift candidate skills with worker swarm"
+            git push origin HEAD:main
+          else
+            echo "No evidence-supported changes this cycle."
+          fi
