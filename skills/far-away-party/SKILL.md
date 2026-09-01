@@ -81,3 +81,13 @@ When the mission explicitly requests full casebuilding, do not stop at research 
 
 ### Completion semantics
 "Complete" means the mission criteria are materially exhausted or every remaining item is a named blocked dependency with owner, acquisition route, and next executable action. It never means "first useful answer produced."
+
+## Hidden Caveat Gate
+
+For legal, investigative, evidence-heavy, journal-based, and source-sensitive missions, activate `hidden-caveat-detector` at three checkpoints:
+
+1. **Before source-bearing durable mutation** — detect whether a proposed rewrite, status label, qualifier, or compaction changes source meaning.
+2. **Before phase/final quality gate** — detect hidden scope reduction, burden shifting, remedy suppression, caveat propagation, or premature completion.
+3. **Before mission closure** — verify no executable lane is being concealed behind caution or "not verified" language.
+
+A failed hidden-caveat audit returns the artifact to the work owner. It does not silently advance.
