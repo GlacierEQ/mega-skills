@@ -5,14 +5,14 @@
     "skills": 707,
     "combos": 32,
     "megas": 29,
-    "ready_total": 570,
-    "not_ready_total": 198,
+    "ready_total": 573,
+    "not_ready_total": 195,
     "skill_states": {
-      "instruction_ready": 561,
+      "instruction_ready": 564,
       "implementation_partial": 16,
       "implementation_unverified": 119,
       "behavior_verified": 7,
-      "contract_incomplete": 4
+      "contract_incomplete": 1
     },
     "combo_states": {
       "composition_candidate": 29,
@@ -7738,10 +7738,10 @@
     {
       "id": "mcp-architect",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/mcp-architect/skill.py",
@@ -7753,9 +7753,7 @@
       "structural_tests": [
         "skills/mcp-architect/tests/test_mcp_architect.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "mcp-builder",
@@ -11663,10 +11661,10 @@
     {
       "id": "remove-wall-of-text",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/remove-wall-of-text/skill.py",
@@ -11678,9 +11676,7 @@
       "structural_tests": [
         "skills/remove-wall-of-text/tests/test_remove_wall_of_text.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "repo-operator",
@@ -12369,10 +12365,10 @@
     {
       "id": "sequential-thinking",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/sequential-thinking/skill.py",
@@ -12384,9 +12380,7 @@
       "structural_tests": [
         "skills/sequential-thinking/tests/test_sequential_thinking.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "server-management",
