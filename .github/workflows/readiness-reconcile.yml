@@ -7,6 +7,10 @@ on:
       - scripts/build_all_workspace_skills.py
       - skills/mega-skills-test-runner/scripts/run_checks.py
       - .github/workflows/readiness-reconcile.yml
+concurrency:
+  group: mega-skills-mutator
+  cancel-in-progress: false
+
 permissions:
   contents: write
 jobs:
