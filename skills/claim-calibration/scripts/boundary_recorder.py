@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
-"""
-Produce CLAIM_BOUNDARIES.md with escalation tracking
-Part of claim-calibration skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for boundary_recorder.py."""
-    # TODO: Implement Produce CLAIM_BOUNDARIES.md with escalation tracking
-    print(f"Executing boundary_recorder.py for claim-calibration")
-    print("Status: STUB - implement per skill contract")
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+sys.path.insert(0,str(Path(__file__).resolve().parents[3]/"scripts"))
+from always_on_atomic_runtime import cli
+if __name__=="__main__":
+    raise SystemExit(cli("claim-calibration","boundary_recorder"))

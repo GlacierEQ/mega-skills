@@ -1,44 +1,20 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for claim-calibration.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
-import sys
+import json, subprocess, sys, tempfile, unittest
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-class TestClaimCalibration:
-    """L2 tests for claim-calibration - Claim classification accuracy, evidence mapping completeness, scoping transformation, escalation detection"""
-    
-    def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
-        assert skill_py.exists()
-        assert skill_py.stat().st_mode & 0o111
-    
-    def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = ['claim_extractor.py', 'evidence_mapper.py', 'scope_enforcer.py', 'boundary_recorder.py']
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
-    
-    def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = ['claim_classification_taxonomy.yaml', 'escalation_keywords.yaml']
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-    
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Claim classification accuracy, evidence mapping completeness, scoping transformation, escalation detection
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+ROOT=Path(__file__).resolve().parents[1]
+class ClaimCalibrationBehavior(unittest.TestCase):
+    def run_payload(self,payload):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/"input.json"; source.write_text(json.dumps(payload),encoding="utf-8")
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"boundary-recorder","--input",str(source)],text=True,capture_output=True,check=False)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            return json.loads(result.stdout)
+    def test_tested_claim_keeps_scoped_wording(self):
+        output=self.run_payload({"claims":[{"claim":"The parser rejects malformed input.","classification":"tested_behavior","evidence":["test-1"]}]})
+        self.assertEqual(output["claims"][0]["approved_wording"],"The parser rejects malformed input.")
+        self.assertTrue(output["valid"])
+    def test_high_consequence_unqualified_claim_escalates(self):
+        output=self.run_payload({"claims":[{"claim":"System is legally certified.","classification":"design_intent","evidence":[],"high_consequence":True,"qualified_evidence":False}]})
+        self.assertIn("CL-001",output["escalations"])
+        self.assertTrue(output["claims"][0]["approved_wording"].startswith("Not established:"))
+if __name__=="__main__": unittest.main()
