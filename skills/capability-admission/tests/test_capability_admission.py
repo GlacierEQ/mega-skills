@@ -1,44 +1,20 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for capability-admission.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
-import sys
+import json, subprocess, sys, tempfile, unittest
 from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-class TestCapabilityAdmission:
-    """L2 tests for capability-admission - Prerequisite extraction, fallback identification, decision traceability, review trigger"""
-    
-    def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
-        assert skill_py.exists()
-        assert skill_py.stat().st_mode & 0o111
-    
-    def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = ['admission_evaluator.py', 'preflight_integration.py', 'decision_recorder.py']
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
-    
-    def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = ['admission_criteria.yaml', 'prerequisite_templates.json']
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-    
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Prerequisite extraction, fallback identification, decision traceability, review trigger
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+ROOT=Path(__file__).resolve().parents[1]
+class CapabilityAdmissionBehavior(unittest.TestCase):
+    def run_payload(self,payload):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/"input.json"; source.write_text(json.dumps(payload),encoding="utf-8")
+            result=subprocess.run([sys.executable,str(ROOT/"skill.py"),"decision-recorder","--input",str(source)],text=True,capture_output=True,check=False)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            return json.loads(result.stdout)
+    def test_admits_only_verified_route(self):
+        output=self.run_payload({"capability_id":"demo","mission_scope":"test mission","prerequisites":[{"id":"tool","required":True,"status":"verified"}],"claim_boundary_passed":True,"approval_required":False,"fallback":"manual route"})
+        self.assertEqual(output["decision"],"admitted")
+        self.assertTrue(output["valid"])
+    def test_missing_prerequisite_stays_candidate(self):
+        output=self.run_payload({"capability_id":"demo","mission_scope":"test mission","prerequisites":[{"id":"tool","required":True,"status":"missing"}],"claim_boundary_passed":True})
+        self.assertEqual(output["decision"],"candidate")
+        self.assertFalse(output["valid"])
+if __name__=="__main__": unittest.main()

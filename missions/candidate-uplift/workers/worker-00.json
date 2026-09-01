@@ -1,0 +1,137 @@
+{
+  "worker": 0,
+  "workers": 8,
+  "assigned": 3,
+  "findings": [
+    {
+      "id": "apex-boot-core",
+      "state": "behavior_verified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Bootstrap, health watchdog, and environment normalizer for the APEX Estate. Validates POSIX toolchain permissions, MCP server availability, dev fork overlay status, and system invariants on startup.",
+      "body_chars": 702,
+      "reasons": [
+        "no actionable procedure/capability language"
+      ],
+      "package": {
+        "scripts": [
+          "scripts/boot_watchdog.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_apex_boot_core.py"
+        ],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/apex-boot-core/tests/test_apex_boot_core.py"
+      ],
+      "structural_tests": [],
+      "real_implementation_files": [
+        "skills/apex-boot-core/skill.py",
+        "skills/apex-boot-core/scripts/run.py",
+        "skills/apex-boot-core/scripts/this_skill.py",
+        "skills/apex-boot-core/scripts/boot_watchdog.py"
+      ],
+      "recommended_action": "inspect"
+    },
+    {
+      "id": "omni-memory-core",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement.",
+      "body_chars": 1191,
+      "reasons": [
+        "5 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/cosine_engine.py",
+          "scripts/file_traverser.py",
+          "scripts/hebbian_reinforcer.py",
+          "scripts/memory_exporter.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/vectorizer.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_omni_memory_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/cloud_paths.yaml",
+          "resources/omni_memory_core_config.yaml",
+          "resources/omni_memory_core_schema.json",
+          "resources/vocab_params.yaml"
+        ]
+      },
+      "stub_files": [
+        "skills/omni-memory-core/scripts/file_traverser.py",
+        "skills/omni-memory-core/scripts/memory_exporter.py",
+        "skills/omni-memory-core/scripts/vectorizer.py",
+        "skills/omni-memory-core/scripts/cosine_engine.py",
+        "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/omni-memory-core/tests/test_omni_memory_core.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "epistemic-gate",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "6-Tier Epistemic Ladder (L0 to L6) verification gate enforcing mathematical, empirical, and cryptographic proof standards across all operations.",
+      "body_chars": 1883,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/gate_enforcer.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/receipt_generator.py",
+          "scripts/sha256_verifier.py",
+          "scripts/tier_evaluator.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_epistemic_gate.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/epistemic_gate_config.yaml",
+          "resources/epistemic_gate_schema.json",
+          "resources/epistemic_spectrum.yaml",
+          "resources/forbidden_patterns.yaml"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/epistemic-gate/tests/test_epistemic_gate.py"
+      ],
+      "real_implementation_files": [
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/gate_enforcer.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    }
+  ]
+}

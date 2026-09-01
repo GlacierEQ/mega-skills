@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "repo": "/home/runner/work/mega-skills/mega-skills",
+  "checks": [
+    {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "scripts/validate_hierarchy.py"
+      ],
+      "returncode": 0,
+      "stdout": "Mega Skills hierarchy validation passed.\n",
+      "stderr": "",
+      "required": true
+    },
+    {
+      "command": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_approval_boundary_escalates_without_release (pipeline_simulation_tests.PipelineSimulationTests.test_approval_boundary_escalates_without_release) ... ok\ntest_failed_handoff_has_recovery_evidence (pipeline_simulation_tests.PipelineSimulationTests.test_failed_handoff_has_recovery_evidence) ... ok\ntest_happy_path_routes_all_core_specialists_and_releases (pipeline_simulation_tests.PipelineSimulationTests.test_happy_path_routes_all_core_specialists_and_releases) ... ok\ntest_security_block_prevents_quality_gate_and_release (pipeline_simulation_tests.PipelineSimulationTests.test_security_block_prevents_quality_gate_and_release) ... ok\ntest_tower_route_preserves_mandated_order (pipeline_simulation_tests.PipelineSimulationTests.test_tower_route_preserves_mandated_order) ... ok\ntest_unknown_scenario_fails_closed (pipeline_simulation_tests.PipelineSimulationTests.test_unknown_scenario_fails_closed) ... ok\ntest_every_mega_has_complete_read_only_firewall (test_firewall_and_mission.FirewallAndMissionTests.test_every_mega_has_complete_read_only_firewall) ... ok\ntest_layer_copy_files_are_absent (test_firewall_and_mission.FirewallAndMissionTests.test_layer_copy_files_are_absent) ... ok\ntest_malformed_policy_cannot_be_used_to_bypass_guard (test_firewall_and_mission.FirewallAndMissionTests.test_malformed_policy_cannot_be_used_to_bypass_guard) ... ok\ntest_mission_runner_completes_required_route_and_receipt_hashes (test_firewall_and_mission.FirewallAndMissionTests.test_mission_runner_completes_required_route_and_receipt_hashes) ... ok\ntest_mission_runner_exercises_conditional_route_when_requested (test_firewall_and_mission.FirewallAndMissionTests.test_mission_runner_exercises_conditional_route_when_requested) ... ok\ntest_runtime_sync_does_not_recreate_source_layer_copies (test_firewall_and_mission.FirewallAndMissionTests.test_runtime_sync_does_not_recreate_source_layer_copies) ... ok\ntest_runtime_sync_installs_adapter_outside_source_layer (test_firewall_and_mission.FirewallAndMissionTests.test_runtime_sync_installs_adapter_outside_source_layer) ... ok\ntest_capability_readiness_has_its_atomic_foundations (test_hierarchy.HierarchyFoundationTests.test_capability_readiness_has_its_atomic_foundations) ... ok\ntest_external_skills_are_metadata_only (test_hierarchy.HierarchyFoundationTests.test_external_skills_are_metadata_only) ... ok\ntest_far_away_party_exposes_feedback_loops (test_hierarchy.HierarchyFoundationTests.test_far_away_party_exposes_feedback_loops) ... ok\ntest_feedback_loops_have_guarded_outputs_and_resolved_members (test_hierarchy.HierarchyFoundationTests.test_feedback_loops_have_guarded_outputs_and_resolved_members) ... ok\ntest_initial_atomic_skill_set_is_independent_and_complete (test_hierarchy.HierarchyFoundationTests.test_initial_atomic_skill_set_is_independent_and_complete) ... ok\ntest_long_horizon_combo_composes_all_atomic_skills (test_hierarchy.HierarchyFoundationTests.test_long_horizon_combo_composes_all_atomic_skills) ... ok\ntest_mega_layer_requires_but_does_not_duplicate_core_contracts (test_hierarchy.HierarchyFoundationTests.test_mega_layer_requires_but_does_not_duplicate_core_contracts) ... ok\ntest_new_end_to_end_megas_require_multiple_resolved_combos (test_hierarchy.HierarchyFoundationTests.test_new_end_to_end_megas_require_multiple_resolved_combos) ... ok\ntest_skill_descriptions_match_sub_skill_headings (test_hierarchy.HierarchyFoundationTests.test_skill_descriptions_match_sub_skill_headings) ... ok\ntest_skill_docs_do_not_hardcode_clone_root_or_missing_legal_cli (test_hierarchy.HierarchyFoundationTests.test_skill_docs_do_not_hardcode_clone_root_or_missing_legal_cli) ... ok\ntest_validator_passes_for_the_expanded_graph (test_hierarchy.HierarchyFoundationTests.test_validator_passes_for_the_expanded_graph) ... ok\ntest_web_build_foundation_composes_five_lifecycle_members (test_hierarchy.HierarchyFoundationTests.test_web_build_foundation_composes_five_lifecycle_members) ... ok\ntest_generic_adapter_never_claims_execution (test_readiness_assay.ReadinessAssayTests.test_generic_adapter_never_claims_execution) ... ok\ntest_known_explicit_stub_is_not_ready (test_readiness_assay.ReadinessAssayTests.test_known_explicit_stub_is_not_ready) ... ok\ntest_report_covers_registered_layers (test_readiness_assay.ReadinessAssayTests.test_report_covers_registered_layers) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 1.137s\n\nOK\n",
+      "required": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "required": true
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "returncode": 0,
+      "stdout": "## main...origin/main\n M readiness/pass1.json\n M registry/skill-readiness.json\n",
+      "stderr": "",
+      "required": false
+    }
+  ]
+}

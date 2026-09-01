@@ -1,0 +1,105 @@
+{
+  "worker": 5,
+  "workers": 8,
+  "assigned": 2,
+  "findings": [
+    {
+      "id": "forensic-evidence-chain-core",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
+      "body_chars": 2191,
+      "reasons": [
+        "6 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/anomaly_scanner.py",
+          "scripts/bates_stamper.py",
+          "scripts/manifest_emitter.py",
+          "scripts/output_contract.py",
+          "scripts/pii_scrubber.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/sha256_digester.py",
+          "scripts/timestamp_verifier.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_forensic_evidence_chain_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/bates_serial_schema.yaml",
+          "resources/forensic_evidence_chain_core_config.yaml",
+          "resources/forensic_evidence_chain_core_schema.json",
+          "resources/fre_902_compliance.md"
+        ]
+      },
+      "stub_files": [
+        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
+        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
+        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
+        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
+        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
+        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "computer-user-core",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI event simulation, window state inspection, and process lifecycle supervision.",
+      "body_chars": 1344,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/cleanup.py",
+          "scripts/gui_automator.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/process_inspector.py",
+          "scripts/purpose.py",
+          "scripts/screen_capture.py",
+          "scripts/state_verifier.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_computer_user_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/applescript_templates.applescript",
+          "resources/computer_user_core_config.yaml",
+          "resources/computer_user_core_schema.json",
+          "resources/window_bounds_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/computer-user-core/tests/test_computer_user_core.py"
+      ],
+      "real_implementation_files": [
+        "skills/computer-user-core/scripts/cleanup.py",
+        "skills/computer-user-core/scripts/process_inspector.py",
+        "skills/computer-user-core/scripts/state_verifier.py",
+        "skills/computer-user-core/scripts/screen_capture.py",
+        "skills/computer-user-core/scripts/gui_automator.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    }
+  ]
+}

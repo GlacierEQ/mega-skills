@@ -7,7 +7,7 @@ Conditional selection of Compounding Combo Skills, durable state, phase gates, s
 ## Compounding structure
 
 - Required combos: `long-horizon-core`
-- Conditional combos: `capability-readiness`, `signal-to-decision-loop`, `guarded-automation-loop`, `evidence-to-evolution-loop`, `recon-and-map`, `skill-forge`, `automation-control`
+- Conditional combos: `capability-readiness`, `signal-to-decision-loop`, `mission-aware-operating-loop`, `guarded-automation-loop`, `evidence-to-evolution-loop`, `recon-and-map`, `skill-forge`, `automation-control`
 
 ## Execution protocol
 
@@ -48,3 +48,30 @@ Produce `evidence-backed-mission-result.md` upon mission completion.
 ## Non-goals
 
 Unbounded external state mutations.
+
+## Source-Preserving Mission Invariants — 2026-08-31
+
+1. **Original sources outrank compaction.** Durable state files summarize mission state; they never supersede original evidence, journal text, prior source assertions, or provenance.
+2. **Source state and truth state are separate.** "Not reopened this pass" may be recorded as a source-access state but must not be converted into "false," "weak," "quarantined," or "removed."
+3. **Journal preservation.** When chat/export history functions as a regularly kept journal, preserve original wording, timestamp/order, speaker, path, and context; analyses are overlays.
+4. **Alias expansion.** Name/OCR variants widen search. Identity resolution uses event/source continuity; same-name unrelated matters remain separate until linkage is proved.
+5. **Contradictions become work.** Preserve both sides and create a discriminating-evidence task.
+6. **No premature mission close.** A mission does not close while a materially executable route remains, unless the mission boundary expressly excludes it.
+7. **Legal lifecycle projection.** For full-case missions, route from evidence recovery through pleadings, exhibits, discovery, hearing, enforcement, and post-ruling preservation while keeping filing/service as separately receipted external acts.
+8. **User-authorized durable writes are additive by default.** Prefer new ledgers/overlays/history records to destructive replacement of source-bearing files.
+
+## Hidden Caveat Routing
+
+**Mandatory conditional Skill:** `hidden-caveat-detector`
+
+Activate when the mission involves:
+- legal allegations or pleadings;
+- evidence or source records;
+- regularly kept journals/chat exports;
+- operator firsthand facts;
+- source compaction/summarization;
+- contradiction resolution;
+- durable status changes;
+- mission closure with unresolved proof.
+
+The Skill audits semantic effect, not keywords. Its output `HIDDEN_CAVEAT_AUDIT.md` becomes gate evidence for the affected phase.

@@ -3,104 +3,44 @@ name: test-runner
 description: "Run test suites across GlacierEQ repos with standardized output. Supports mastermind, colossus, and custom repos."
 ---
 
-# Test Runner Skill
+# Test Runner
 
-Standardized test execution across the APEX ecosystem.
+## Purpose
 
-## Quick Start
+Run test suites across GlacierEQ repos with standardized output. Supports mastermind, colossus, and custom repos.
 
-```bash
-# Run mastermind tests
-test-runner mastermind
+## Use When
 
-# Run colossus tests
-test-runner colossus
+Use this skill when the requested task matches the capability described above and this is the most specific available skill for the work.
 
-# Run all colossus subsystems
-test-runner colossus-all
+## Operating Method
 
-# Run tests for specific repo
-test-runner ~/xai-colossus-cooling
+1. Identify the concrete outcome, inputs, and constraints.
+2. Inspect relevant project state or artifacts before making changes.
+3. Load only the bundled resources needed for the current task.
+4. Execute the narrowest complete workflow that produces the requested outcome.
+5. Verify the result with observable output, tests, or source-backed evidence.
+6. Report the produced artifact or exact resulting state. Never claim execution that did not occur.
 
-# Run with verbose output
-test-runner mastermind --verbose
-```
+## Progressive Disclosure
 
-## Supported Targets
+Keep the core procedure concise. Load detailed references, scripts, and tests only when they are needed.
 
-| Target | Path | Test Command |
-|--------|------|--------------|
-| `mastermind` | `~/mastermind` | `python3 -m pytest tests/ --tb=no -q` |
-| `colossus` | `~/xai-colossus-2` | `python3 tests/test_end_to_end.py && python3 tests/test_cli.py` |
-| `colossus-cooling` | `~/xai-colossus-cooling` | `python3 -m pytest tests/ -q` |
-| `colossus-energy` | `~/xai-colossus-energy` | `python3 -m pytest tests/ -q` |
-| `colossus-security` | `~/xai-colossus-security` | `python3 -m pytest tests/ -q` |
-| `colossus-nanosphere` | `~/xai-colossus-nanosphere` | `python3 -m pytest tests/ -q` |
-| `colossus-all` | all colossus repos | run each sequentially |
+### Scripts
+- scripts/run.py
+- scripts/this_skill.py
+- skill.py
 
-## Implementation
+### Tests
+- tests/test_test_runner.py
 
-```bash
-#!/bin/bash
-# test-runner.sh — Standardized test execution
-set -euo pipefail
+## Verification
 
-TARGET="${1:-mastermind}"
-VERBOSE=false
-[[ "${2:-}" == "--verbose" ]] && VERBOSE=true
+Instruction readiness and executable readiness are separate. Scripts and integrations must earn behavioral proof through the repository readiness assay before they are described as executed or behavior-verified.
 
-run_tests() {
-  local name="$1" path="$2" cmd="$3"
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  echo "🧪 $name"
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  
-  if [ ! -d "$path" ]; then
-    echo "  ❌ Directory not found: $path"
-    return 1
-  fi
-  
-  cd "$path"
-  if $VERBOSE; then
-    eval "$cmd" 2>&1
-  else
-    eval "$cmd" 2>&1 | tail -5
-  fi
-  echo ""
-}
+## Boundaries
 
-case "$TARGET" in
-  mastermind)
-    run_tests "Mastermind" ~/mastermind "python3 -m pytest tests/ --tb=no -q"
-    ;;
-  colossus)
-    run_tests "Colossus Core" ~/xai-colossus-2 "python3 tests/test_end_to_end.py 2>&1 && python3 tests/test_cli.py 2>&1"
-    ;;
-  colossus-all)
-    run_tests "Colossus Core" ~/xai-colossus-2 "python3 tests/test_end_to_end.py 2>&1 && python3 tests/test_cli.py 2>&1"
-    for sub in cooling energy security nanosphere; do
-      run_tests "Colossus $sub" ~/xai-colossus-$sub "python3 -m pytest tests/ -q 2>&1"
-    done
-    ;;
-  colossus-*)
-    sub="${TARGET#colossus-}"
-    run_tests "Colossus $sub" ~/xai-colossus-$sub "python3 -m pytest tests/ -q 2>&1"
-    ;;
-  *)
-    # Treat as custom path
-    if [ -d ~/"$TARGET" ]; then
-      run_tests "$TARGET" ~/"$TARGET" "python3 -m pytest tests/ -q 2>&1"
-    else
-      echo "Unknown target: $TARGET"
-      echo "Available: mastermind, colossus, colossus-all, colossus-{cooling,energy,security,nanosphere}"
-      exit 1
-    fi
-    ;;
-esac
-```
-
-## Evidence
-
-- Mastermind pytest: 11 invocations in trajectory
-- Colossus test suite: 10 invocations in trajectory
-- Each invocation saves ~80 tokens vs manual cd + command construction
+- Do not invent missing implementation.
+- A package-discovery adapter is not evidence of domain execution.
+- Preserve upstream provenance and existing project semantics.
+- Report unavailable credentials, services, or destructive dependencies precisely instead of fabricating success.

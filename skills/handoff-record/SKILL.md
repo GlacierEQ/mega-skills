@@ -30,3 +30,17 @@ The handoff passes when an uninvolved operator can verify the environment, load 
 ## Non-goals
 
 Do not close a handoff with vague statements such as “continue later” or conceal failed attempts that could be repeated unsafely.
+
+## Lossless Legal / Evidence Handoff — 2026-08-31
+
+For evidence-heavy missions, the handoff must additionally record:
+- controlling preservation rules and operator corrections;
+- original-source locations for regularly kept journal/chat evidence;
+- known aliases/OCR variants and event fingerprints;
+- existing allegations that remain active even when native proof has not been reopened;
+- every contradiction and its discriminating-evidence target;
+- every source that was located but could not be directly inspected;
+- lifecycle artifacts already drafted versus externally filed/sent/served;
+- exact blocked dependency for every unfinished P0 item.
+
+Never leave a future operator with a handoff that can reasonably be misread as "not verified this run = not part of the case."

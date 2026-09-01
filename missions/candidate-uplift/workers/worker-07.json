@@ -1,0 +1,82 @@
+{
+  "worker": 7,
+  "workers": 8,
+  "assigned": 2,
+  "findings": [
+    {
+      "id": "mega-skills-test-runner",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
+      "body_chars": 2965,
+      "reasons": [
+        "3 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/before_running.py",
+          "scripts/failure_diagnostic.py",
+          "scripts/purpose.py",
+          "scripts/report_emitter.py",
+          "scripts/revision_recorder.py",
+          "scripts/run_checks.py",
+          "scripts/standard_workflow.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_skills_test_runner.py"
+        ],
+        "references": [
+          "references/checks.md"
+        ],
+        "assets": [
+          "resources/checks.md",
+          "resources/mega_skills_test_runner_config.yaml",
+          "resources/mega_skills_test_runner_schema.json",
+          "resources/standard_tree.md"
+        ]
+      },
+      "stub_files": [
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-skills-test-runner/scripts/run_checks.py"
+      ],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "cross-app-pipeline",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.",
+      "body_chars": 1594,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "pipeline.py"
+        ],
+        "tests": [],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "real_implementation_files": [
+        "skills/cross-app-pipeline/pipeline.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    }
+  ]
+}

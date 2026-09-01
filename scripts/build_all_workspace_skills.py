@@ -97,15 +97,15 @@ def sync_skills() -> None:
             entry = {
                 "id": skill_id,
                 "display_name": cs["display_name"],
-                "ownership": "glaciereq",
-                "maturity": "active",
+                "ownership": "candidate",
+                "maturity": "candidate",
                 "version": "0.1.0",
                 "path": f"skills/{skill_id}",
                 "entrypoint": f"skills/{skill_id}/SKILL.md",
                 "purpose": cs["description"][:120] if cs["description"] else f"Execute {skill_id} workflows.",
                 "input_contract": ["Task specification", "Context artifacts"],
-                "output_contract": [f"{skill_id.upper()}_OUTPUT.md", "Execution receipt"],
-                "local_validation": ["Passes local test harness and verified criteria"],
+                "output_contract": ["Skill-defined output per SKILL.md"],
+                "local_validation": ["Readiness not yet established; run scripts/readiness_assay.py before activation."],
                 "does_not_own": ["Cross-system mission orchestration", "Unverified external mutations"],
             }
             existing_entries[skill_id] = entry
