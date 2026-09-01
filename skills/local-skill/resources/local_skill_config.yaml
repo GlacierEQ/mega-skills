@@ -5,3 +5,6 @@ settings:
   strict_validation: true
   default_exemplar: mega-skill-forge
   allow_overwrite: false
+
+  default_generated_maturity: candidate
+  false_ready_forbidden: true
