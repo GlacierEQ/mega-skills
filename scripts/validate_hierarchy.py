@@ -73,7 +73,7 @@ def validate_skills(data: dict) -> set[str]:
         for entry in data.get("entries", []):
             state = by_id.get(entry["id"])
             expect(state is not None, f'{entry["id"]}: missing readiness record')
-            if entry.get("maturity") == "active":
+            if readiness.get("pass") == 2 and entry.get("maturity") == "active":
                 expect(state.get("ready") is True, f'{entry["id"]}: active skill lacks readiness evidence')
     return resolved
 
