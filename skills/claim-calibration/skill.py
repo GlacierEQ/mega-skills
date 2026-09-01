@@ -1,37 +1,22 @@
 #!/usr/bin/env python3
-"""
-claim-calibration. 
-Entry point for claim-calibration skill.
-"""
-
+"""Executable claim-calibration dispatcher for the Always-On worker runtime."""
 import sys
 from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
-
-def main():
-    """Main entry point - dispatches to appropriate script based on args."""
-    if len(sys.argv) < 2:
-        print(f"Usage: claim-calibration <command> [args...]")
-        print("Available commands:")
-        for sn in ['claim_extractor.py', 'evidence_mapper.py', 'scope_enforcer.py', 'boundary_recorder.py']:
-            print(f"  {sn.replace('.py', '')}")
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/"scripts"))
+from always_on_atomic_runtime import cli
+OPERATIONS={
+    "boundary-recorder": "boundary_recorder",
+    "claim-extractor": "claim_extractor",
+    "evidence-mapper": "evidence_mapper",
+    "scope-enforcer": "scope_enforcer",
+}
+def main()->int:
+    if len(sys.argv)<2:
+        print("Available commands: "+", ".join(sorted(OPERATIONS)))
         return 1
-    
-    command = sys.argv[1]
-    script_path = Path(__file__).parent / "scripts" / f"{command}.py"
-    
-    if not script_path.exists():
-        script_path = Path(__file__).parent / "scripts" / f"{command.replace('-', '_')}.py"
-    
-    if not script_path.exists():
-        print(f"Unknown command: {command}")
-        return 1
-    
-    exec_globals = {"__name__": "__main__"}
-    exec(script_path.read_text(), exec_globals)
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+    op=OPERATIONS.get(sys.argv[1])
+    if not op:
+        print("Unknown command: "+sys.argv[1]); return 1
+    sys.argv=[sys.argv[0],*sys.argv[2:]]
+    return cli("claim-calibration",op)
+if __name__=="__main__": raise SystemExit(main())

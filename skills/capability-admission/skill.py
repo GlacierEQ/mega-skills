@@ -1,37 +1,21 @@
 #!/usr/bin/env python3
-"""
-capability-admission. 
-Entry point for capability-admission skill.
-"""
-
+"""Executable capability-admission dispatcher for the Always-On worker runtime."""
 import sys
 from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts"))
-
-def main():
-    """Main entry point - dispatches to appropriate script based on args."""
-    if len(sys.argv) < 2:
-        print(f"Usage: capability-admission <command> [args...]")
-        print("Available commands:")
-        for sn in ['admission_evaluator.py', 'preflight_integration.py', 'decision_recorder.py']:
-            print(f"  {sn.replace('.py', '')}")
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/"scripts"))
+from always_on_atomic_runtime import cli
+OPERATIONS={
+    "admission-evaluator": "admission_evaluator",
+    "decision-recorder": "decision_recorder",
+    "preflight-integration": "preflight_integration",
+}
+def main()->int:
+    if len(sys.argv)<2:
+        print("Available commands: "+", ".join(sorted(OPERATIONS)))
         return 1
-    
-    command = sys.argv[1]
-    script_path = Path(__file__).parent / "scripts" / f"{command}.py"
-    
-    if not script_path.exists():
-        script_path = Path(__file__).parent / "scripts" / f"{command.replace('-', '_')}.py"
-    
-    if not script_path.exists():
-        print(f"Unknown command: {command}")
-        return 1
-    
-    exec_globals = {"__name__": "__main__"}
-    exec(script_path.read_text(), exec_globals)
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+    op=OPERATIONS.get(sys.argv[1])
+    if not op:
+        print("Unknown command: "+sys.argv[1]); return 1
+    sys.argv=[sys.argv[0],*sys.argv[2:]]
+    return cli("capability-admission",op)
+if __name__=="__main__": raise SystemExit(main())

@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
-"""
-Invoke resource-preflight for unverified prerequisites
-Part of capability-admission skill.
-"""
-
 import sys
-import json
 from pathlib import Path
-
-def main():
-    """Main implementation for preflight_integration.py."""
-    # TODO: Implement Invoke resource-preflight for unverified prerequisites
-    print(f"Executing preflight_integration.py for capability-admission")
-    print("Status: STUB - implement per skill contract")
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+sys.path.insert(0,str(Path(__file__).resolve().parents[3]/"scripts"))
+from always_on_atomic_runtime import cli
+if __name__=="__main__":
+    raise SystemExit(cli("capability-admission","preflight_integration"))
