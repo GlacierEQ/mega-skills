@@ -2,13 +2,13 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 707,
+    "skills": 708,
     "combos": 32,
     "megas": 29,
-    "ready_total": 725,
+    "ready_total": 726,
     "not_ready_total": 43,
     "skill_states": {
-      "instruction_ready": 670,
+      "instruction_ready": 671,
       "implementation_partial": 9,
       "implementation_unverified": 10,
       "behavior_verified": 17,
@@ -6716,6 +6716,21 @@
       "structural_tests": [
         "skills/help/tests/test_help.py"
       ],
+      "reasons": []
+    },
+    {
+      "id": "hidden-caveat-detector",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
       "reasons": []
     },
     {

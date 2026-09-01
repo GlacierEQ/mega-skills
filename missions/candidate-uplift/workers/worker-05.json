@@ -9,7 +9,7 @@
       "ready": false,
       "declared_maturity": "candidate",
       "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
-      "body_chars": 1301,
+      "body_chars": 2191,
       "reasons": [
         "6 explicit implementation stub(s)"
       ],
