@@ -1,0 +1,787 @@
+{
+  "worker": 0,
+  "workers": 8,
+  "assigned": 19,
+  "findings": [
+    {
+      "id": "apex-boot-core",
+      "state": "behavior_verified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Bootstrap, health watchdog, and environment normalizer for the APEX Estate. Validates POSIX toolchain permissions, MCP server availability, dev fork overlay status, and system invariants on startup.",
+      "body_chars": 702,
+      "reasons": [
+        "no actionable procedure/capability language"
+      ],
+      "package": {
+        "scripts": [
+          "scripts/boot_watchdog.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_apex_boot_core.py"
+        ],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/apex-boot-core/tests/test_apex_boot_core.py"
+      ],
+      "structural_tests": [],
+      "real_implementation_files": [
+        "skills/apex-boot-core/skill.py",
+        "skills/apex-boot-core/scripts/run.py",
+        "skills/apex-boot-core/scripts/this_skill.py",
+        "skills/apex-boot-core/scripts/boot_watchdog.py"
+      ],
+      "recommended_action": "inspect"
+    },
+    {
+      "id": "resume-claude",
+      "state": "contract_incomplete",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Resume or continue work from a recent Claude Code session. Use when the user switched from Claude Code, says \\\"continue from Claude\\\" or \\\"resume my Claude session\\\", or names a Claude session by description, path, or native ID.",
+      "body_chars": 181,
+      "reasons": [
+        "no actionable procedure/capability language"
+      ],
+      "package": {
+        "scripts": [
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_resume_claude.py"
+        ],
+        "references": [],
+        "assets": []
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/resume-claude/tests/test_resume_claude.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "repair_instruction_contract"
+    },
+    {
+      "id": "capability-admission",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Decide whether a proposed capability may be selected for a specific mission. Use before activating a new, advanced, externally dependent, high-consequence, or strongly claimed Skill, Combo Skill, or Mega Skill.",
+      "body_chars": 1557,
+      "reasons": [
+        "3 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/admission_evaluator.py",
+          "scripts/decision_recorder.py",
+          "scripts/output_contract.py",
+          "scripts/preflight_integration.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_capability_admission.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/admission_criteria.yaml",
+          "resources/capability_admission_config.yaml",
+          "resources/capability_admission_schema.json",
+          "resources/prerequisite_templates.json"
+        ]
+      },
+      "stub_files": [
+        "skills/capability-admission/scripts/decision_recorder.py",
+        "skills/capability-admission/scripts/preflight_integration.py",
+        "skills/capability-admission/scripts/admission_evaluator.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/capability-admission/tests/test_capability_admission.py"
+      ],
+      "real_implementation_files": [
+        "skills/capability-admission/skill.py",
+        "skills/capability-admission/scripts/output_contract.py",
+        "skills/capability-admission/scripts/purpose.py",
+        "skills/capability-admission/scripts/procedure.py"
+      ],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "mission-contract",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Convert a request into a bounded, testable mission contract. Use when work has material scope, dependencies, risk, approvals, multiple deliverables, or ambiguity that must be resolved before execution.",
+      "body_chars": 1469,
+      "reasons": [
+        "6 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/assumption_bounder.py",
+          "scripts/constraint_mapper.py",
+          "scripts/contract_emitter.py",
+          "scripts/criteria_definer.py",
+          "scripts/outcome_framer.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/purpose.py",
+          "scripts/scope_separator.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mission_contract.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/exclusion_patterns.yaml",
+          "resources/mission_contract_config.yaml",
+          "resources/mission_contract_schema.json",
+          "resources/mission_schema.yaml"
+        ]
+      },
+      "stub_files": [
+        "skills/mission-contract/scripts/outcome_framer.py",
+        "skills/mission-contract/scripts/assumption_bounder.py",
+        "skills/mission-contract/scripts/constraint_mapper.py",
+        "skills/mission-contract/scripts/scope_separator.py",
+        "skills/mission-contract/scripts/contract_emitter.py",
+        "skills/mission-contract/scripts/criteria_definer.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mission-contract/tests/test_mission_contract.py"
+      ],
+      "real_implementation_files": [
+        "skills/mission-contract/skill.py",
+        "skills/mission-contract/scripts/output_contract.py",
+        "skills/mission-contract/scripts/purpose.py",
+        "skills/mission-contract/scripts/procedure.py"
+      ],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "agent-memory-systems",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: short-term (context window), long-term (vector stores), and the cognitive architectures that organize them. Key insight: Memory isn't just storage - it's retrieval. A million stored facts mean nothing if you can't find the right one. Chunking, embedding, and retrieval strategies determine whether ...",
+      "body_chars": 1709,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/capabilities.py",
+          "scripts/memory_type_architecture.py",
+          "scripts/patterns.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_agent_memory_systems.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/agent_memory_systems_config.yaml",
+          "resources/agent_memory_systems_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/agent-memory-systems/tests/test_agent_memory_systems.py"
+      ],
+      "real_implementation_files": [
+        "skills/agent-memory-systems/scripts/patterns.py",
+        "skills/agent-memory-systems/scripts/capabilities.py",
+        "skills/agent-memory-systems/scripts/memory_type_architecture.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "architecture",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design.",
+      "body_chars": 1507,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/core_principle.py",
+          "scripts/run.py",
+          "scripts/selective_reading_rule.py",
+          "scripts/this_skill.py",
+          "scripts/validation_checklist.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_architecture.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/architecture_config.yaml",
+          "resources/architecture_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/architecture/tests/test_architecture.py"
+      ],
+      "real_implementation_files": [
+        "skills/architecture/scripts/selective_reading_rule.py",
+        "skills/architecture/scripts/core_principle.py",
+        "skills/architecture/scripts/validation_checklist.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "codemaster",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "The coding-orchestration playbook. Recipes for the recurring task types: add a feature, fix a bug, refactor, review a PR, debug a test failure. Each recipe is a procedure with pre-flight, in-flight, and post-flight rituals. Use this when you start any coding work that involves more than one trivial edit, when you don't know which skill to load, or when you want a single source of truth for 'how we do code here.",
+      "body_chars": 7689,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/environment_reality_read.py",
+          "scripts/project_table_canonical.py",
+          "scripts/recipes.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_codemaster.py"
+        ],
+        "references": [
+          "references/00-shared-rituals.md",
+          "references/01-add-a-feature.md",
+          "references/02-fix-a-bug.md",
+          "references/03-refactor.md",
+          "references/04-review-a-pr.md",
+          "references/05-debug-a-test-failure.md"
+        ],
+        "assets": [
+          "resources/codemaster_config.yaml",
+          "resources/codemaster_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/codemaster/tests/test_codemaster.py"
+      ],
+      "real_implementation_files": [
+        "skills/codemaster/skill.py",
+        "skills/codemaster/scripts/project_table_canonical.py",
+        "skills/codemaster/scripts/recipes.py",
+        "skills/codemaster/scripts/environment_reality_read.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "docker-devops",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Use when working with Docker, Docker Compose, container management, health checks, deployments, CI/CD pipelines, infrastructure automation, Kubernetes, Docker Swarm, container orchestration, image building, multi-stage builds, Docker networks, Docker volumes, bind mounts, named volumes, container security, vulnerability scanning, secrets management, environment variables, container monitoring, log aggregation, resource limits, memory constraints, CPU limits, restart policies, container labeling, container profiling, service mesh, load balancing, reverse proxy, nginx, traefik, port mapping, port forwarding, Docker registry, container registry, GitHub Actions, GitLab CI, Jenkins, Travis CI, CircleCI, build automation, test automation, deployment automation, blue-green deployment, rolling update, canary deployment, infrastructure as code, terraform, ansible, pulumi, cloud deployment, AWS ECS, Google Cloud Run, Azure Container Instances, container networking, overlay networks, bridge ne...",
+      "body_chars": 9801,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/container_management.py",
+          "scripts/docker_commands.py",
+          "scripts/keywords.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_docker_devops.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/docker_devops_config.yaml",
+          "resources/docker_devops_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/docker-devops/tests/test_docker_devops.py"
+      ],
+      "real_implementation_files": [
+        "skills/docker-devops/skill.py",
+        "skills/docker-devops/scripts/docker_commands.py",
+        "skills/docker-devops/scripts/container_management.py",
+        "skills/docker-devops/scripts/keywords.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "genesis-prime",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Operating inside Genesis Prime at /root/genesis-prime. Memory integration, document processing, and the AI pipeline that ingests external sources. Use when wiring document ingestion or extending the AI pipeline.",
+      "body_chars": 1324,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/genesis_prime_reporter.py",
+          "scripts/genesis_prime_validator.py",
+          "scripts/quick_rules.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_genesis_prime.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/genesis_prime_config.yaml",
+          "resources/genesis_prime_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/genesis-prime/tests/test_genesis_prime.py"
+      ],
+      "real_implementation_files": [
+        "skills/genesis-prime/skill.py",
+        "skills/genesis-prime/scripts/genesis_prime_reporter.py",
+        "skills/genesis-prime/scripts/genesis_prime_validator.py",
+        "skills/genesis-prime/scripts/quick_rules.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "make-it-heavy",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Deep-cognitive, exhaustive execution framework. Designed for maximum logical depth, multi-dimensional verification, and rigorous structure in high-stakes environments.",
+      "body_chars": 1437,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/key_commands.py",
+          "scripts/memory_architecture.py",
+          "scripts/project_layout.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_make_it_heavy.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/make_it_heavy_config.yaml",
+          "resources/make_it_heavy_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/make-it-heavy/tests/test_make_it_heavy.py"
+      ],
+      "real_implementation_files": [
+        "skills/make-it-heavy/scripts/memory_architecture.py",
+        "skills/make-it-heavy/scripts/key_commands.py",
+        "skills/make-it-heavy/scripts/project_layout.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-ai-agents-architect",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "AI Agents Architect",
+      "body_chars": 3465,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/capabilities.py",
+          "scripts/patterns.py",
+          "scripts/requirements.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_ai_agents_architect.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_ai_agents_architect_config.yaml",
+          "resources/mega_ai_agents_architect_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-ai-agents-architect/tests/test_mega_ai_agents_architect.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-ai-agents-architect/skill.py",
+        "skills/mega-ai-agents-architect/scripts/patterns.py",
+        "skills/mega-ai-agents-architect/scripts/requirements.py",
+        "skills/mega-ai-agents-architect/scripts/capabilities.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-aspen-grove",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Aspen Grove Connectors Skill \u2014 Multi-Service Integration",
+      "body_chars": 8919,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/architecture.py",
+          "scripts/connector_list.py",
+          "scripts/keywords.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_aspen_grove.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_aspen_grove_config.yaml",
+          "resources/mega_aspen_grove_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-aspen-grove/tests/test_mega_aspen_grove.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-aspen-grove/skill.py",
+        "skills/mega-aspen-grove/scripts/connector_list.py",
+        "skills/mega-aspen-grove/scripts/architecture.py",
+        "skills/mega-aspen-grove/scripts/keywords.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-composio",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Composio",
+      "body_chars": 4911,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/choose_job.py",
+          "scripts/choose_product.py",
+          "scripts/load_only_relevant.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_composio.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_composio_config.yaml",
+          "resources/mega_composio_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-composio/tests/test_mega_composio.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-composio/skill.py",
+        "skills/mega-composio/scripts/choose_job.py",
+        "skills/mega-composio/scripts/choose_product.py",
+        "skills/mega-composio/scripts/load_only_relevant.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-forks",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Forks (GlacierEQ)",
+      "body_chars": 2681,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/estate_shape_audit.py",
+          "scripts/forks_differ_from.py",
+          "scripts/working_fork.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_forks.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_forks_config.yaml",
+          "resources/mega_forks_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-forks/tests/test_mega_forks.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-forks/skill.py",
+        "skills/mega-forks/scripts/working_fork.py",
+        "skills/mega-forks/scripts/estate_shape_audit.py",
+        "skills/mega-forks/scripts/forks_differ_from.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-make-it-heavy",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Make-It-Heavy Skill",
+      "body_chars": 3949,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/key_commands.py",
+          "scripts/memory_architecture.py",
+          "scripts/project_layout.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_make_it_heavy.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_make_it_heavy_config.yaml",
+          "resources/mega_make_it_heavy_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-make-it-heavy/tests/test_mega_make_it_heavy.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-make-it-heavy/skill.py",
+        "skills/mega-make-it-heavy/scripts/memory_architecture.py",
+        "skills/mega-make-it-heavy/scripts/key_commands.py",
+        "skills/mega-make-it-heavy/scripts/project_layout.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-monolith",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Monolith Skill",
+      "body_chars": 4296,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/entry_points.py",
+          "scripts/project_layout.py",
+          "scripts/test_command.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_monolith.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_monolith_config.yaml",
+          "resources/mega_monolith_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-monolith/tests/test_mega_monolith.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-monolith/skill.py",
+        "skills/mega-monolith/scripts/entry_points.py",
+        "skills/mega-monolith/scripts/test_command.py",
+        "skills/mega-monolith/scripts/project_layout.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "mega-token-saver",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Token Saver",
+      "body_chars": 2085,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/mega_token_saver_reporter.py",
+          "scripts/quick_rules.py",
+          "scripts/this_skill_does.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_mega_token_saver.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/mega_token_saver_config.yaml",
+          "resources/mega_token_saver_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/mega-token-saver/tests/test_mega_token_saver.py"
+      ],
+      "real_implementation_files": [
+        "skills/mega-token-saver/skill.py",
+        "skills/mega-token-saver/scripts/this_skill_does.py",
+        "skills/mega-token-saver/scripts/quick_rules.py",
+        "skills/mega-token-saver/scripts/mega_token_saver_reporter.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "monolith",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Operating inside the Monolith meta-layer at /root/projects/monolith. Use when working with the catalog, the integration fabric, mega-skills, or the propagation contract. Monolith is upstream of all other projects; updates here propagate via the contract, not via direct edits downstream.",
+      "body_chars": 4187,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/entry_points.py",
+          "scripts/project_layout.py",
+          "scripts/test_command.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_monolith.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/monolith_config.yaml",
+          "resources/monolith_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/monolith/tests/test_monolith.py"
+      ],
+      "real_implementation_files": [
+        "skills/monolith/skill.py",
+        "skills/monolith/scripts/entry_points.py",
+        "skills/monolith/scripts/test_command.py",
+        "skills/monolith/scripts/project_layout.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    },
+    {
+      "id": "security-review",
+      "state": "implementation_unverified",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.",
+      "body_chars": 11927,
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/activate.py",
+          "scripts/secrets_management.py",
+          "scripts/security_checklist.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/test_security_review.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/security_review_config.yaml",
+          "resources/security_review_schema.json"
+        ]
+      },
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/security-review/tests/test_security_review.py"
+      ],
+      "real_implementation_files": [
+        "skills/security-review/skill.py",
+        "skills/security-review/scripts/security_checklist.py",
+        "skills/security-review/scripts/activate.py",
+        "skills/security-review/scripts/secrets_management.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
+    }
+  ]
+}
