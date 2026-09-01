@@ -1,7 +1,7 @@
 {
   "worker": 5,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
       "id": "claim-calibration",
@@ -50,148 +50,65 @@
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "omni-memory-core",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement.",
-      "body_chars": 1191,
-      "reasons": [
-        "5 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/cosine_engine.py",
-          "scripts/file_traverser.py",
-          "scripts/hebbian_reinforcer.py",
-          "scripts/memory_exporter.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/vectorizer.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_omni_memory_core.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/cloud_paths.yaml",
-          "resources/omni_memory_core_config.yaml",
-          "resources/omni_memory_core_schema.json",
-          "resources/vocab_params.yaml"
-        ]
-      },
-      "stub_files": [
-        "skills/omni-memory-core/scripts/file_traverser.py",
-        "skills/omni-memory-core/scripts/memory_exporter.py",
-        "skills/omni-memory-core/scripts/vectorizer.py",
-        "skills/omni-memory-core/scripts/cosine_engine.py",
-        "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/omni-memory-core/tests/test_omni_memory_core.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "finish_domain_implementation"
-    },
-    {
-      "id": "connector-bridge",
+      "id": "apex-ast-sentinel",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Unified, typed interface for connecting and stacking multi-cloud services (Supabase, GitHub API, OpenRouter, Google Drive, Dropbox, OneDrive) with exponential backoff and rate-limiting.",
-      "body_chars": 1339,
+      "description": "AST-level syntactic invariant validator and defect sentinel for zero-regression code generation.",
+      "body_chars": 1884,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/circuit_breaker.py",
-          "scripts/credential_resolver.py",
-          "scripts/dispatcher.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/protocol_serializer.py",
-          "scripts/purpose.py",
-          "scripts/rate_limiter.py",
-          "scripts/telemetry_recorder.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_connector_bridge.py"
+          "tests/test_apex_ast_sentinel.py"
         ],
         "references": [],
         "assets": [
-          "resources/connector_bridge_config.yaml",
-          "resources/connector_bridge_schema.json",
-          "resources/endpoint_profiles.yaml",
-          "resources/schema_registry.json"
+          "resources/apex-ast-sentinel_config.yaml",
+          "resources/apex-ast-sentinel_schema.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/connector-bridge/tests/test_connector_bridge.py"
+        "skills/apex-ast-sentinel/tests/test_apex_ast_sentinel.py"
       ],
       "real_implementation_files": [
-        "skills/connector-bridge/scripts/protocol_serializer.py",
-        "skills/connector-bridge/scripts/circuit_breaker.py",
-        "skills/connector-bridge/scripts/dispatcher.py",
-        "skills/connector-bridge/scripts/rate_limiter.py",
-        "skills/connector-bridge/scripts/credential_resolver.py",
-        "skills/connector-bridge/scripts/telemetry_recorder.py"
+        "skills/apex-ast-sentinel/scripts/this_skill.py"
       ],
       "recommended_action": "design_behavioral_verification"
     },
     {
-      "id": "quality-gate",
+      "id": "icloud-voice-memos",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Verify that a phase, artifact, or mission outcome satisfies its stated contract before work advances. Use at phase boundaries, before irreversible actions, after specialist handoffs, and before final delivery.",
-      "body_chars": 1344,
+      "description": "Extracts transcripts, GPS/location metadata, and audio timestamps from iCloud Voice Memos.",
+      "body_chars": 1054,
       "reasons": [
+        "no actionable procedure/capability language",
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
-          "__init__.py",
-          "scripts/artifact_inspector.py",
-          "scripts/criteria_reader.py",
-          "scripts/decision_recorder.py",
-          "scripts/failure_classifier.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/verifier_coordinator.py",
-          "skill.py"
+          "harvester.py"
         ],
-        "tests": [
-          "tests/test_quality_gate.py"
-        ],
+        "tests": [],
         "references": [],
-        "assets": [
-          "resources/conditional_pass_schema.yaml",
-          "resources/gate_checklist.yaml",
-          "resources/quality_gate_config.yaml",
-          "resources/quality_gate_schema.json"
-        ]
+        "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [
-        "skills/quality-gate/tests/test_quality_gate.py"
-      ],
+      "structural_tests": [],
       "real_implementation_files": [
-        "skills/quality-gate/scripts/verifier_coordinator.py",
-        "skills/quality-gate/scripts/decision_recorder.py",
-        "skills/quality-gate/scripts/criteria_reader.py",
-        "skills/quality-gate/scripts/failure_classifier.py",
-        "skills/quality-gate/scripts/artifact_inspector.py"
+        "skills/icloud-voice-memos/harvester.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

@@ -5,22 +5,22 @@
     "skills": 707,
     "combos": 32,
     "megas": 29,
-    "ready_total": 712,
-    "not_ready_total": 56,
+    "ready_total": 725,
+    "not_ready_total": 43,
     "skill_states": {
       "instruction_ready": 670,
-      "implementation_partial": 11,
-      "implementation_unverified": 11,
-      "behavior_verified": 14,
+      "implementation_partial": 9,
+      "implementation_unverified": 10,
+      "behavior_verified": 17,
       "contract_incomplete": 1
     },
     "combo_states": {
-      "composition_candidate": 18,
-      "composition_ready": 14
+      "composition_candidate": 14,
+      "composition_ready": 18
     },
     "mega_states": {
-      "mission_contract_ready": 15,
-      "mission_candidate": 14
+      "mission_contract_ready": 21,
+      "mission_candidate": 8
     }
   },
   "skills": [
@@ -2436,30 +2436,27 @@
     {
       "id": "capability-admission",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [
+      "real_implementation_files": [
         "skills/capability-admission/skill.py",
-        "skills/capability-admission/scripts/output_contract.py",
-        "skills/capability-admission/scripts/purpose.py",
-        "skills/capability-admission/scripts/procedure.py"
-      ],
-      "stub_files": [
         "skills/capability-admission/scripts/decision_recorder.py",
         "skills/capability-admission/scripts/preflight_integration.py",
-        "skills/capability-admission/scripts/admission_evaluator.py"
+        "skills/capability-admission/scripts/output_contract.py",
+        "skills/capability-admission/scripts/purpose.py",
+        "skills/capability-admission/scripts/admission_evaluator.py",
+        "skills/capability-admission/scripts/procedure.py"
       ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/capability-admission/tests/test_capability_admission.py"
       ],
-      "reasons": [
-        "3 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "cc-skill-backend-patterns",
@@ -2763,31 +2760,28 @@
     {
       "id": "claim-calibration",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [
+      "real_implementation_files": [
         "skills/claim-calibration/skill.py",
+        "skills/claim-calibration/scripts/evidence_mapper.py",
         "skills/claim-calibration/scripts/output_contract.py",
+        "skills/claim-calibration/scripts/scope_enforcer.py",
+        "skills/claim-calibration/scripts/claim_extractor.py",
+        "skills/claim-calibration/scripts/boundary_recorder.py",
         "skills/claim-calibration/scripts/purpose.py",
         "skills/claim-calibration/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/claim-calibration/scripts/evidence_mapper.py",
-        "skills/claim-calibration/scripts/scope_enforcer.py",
-        "skills/claim-calibration/scripts/claim_extractor.py",
-        "skills/claim-calibration/scripts/boundary_recorder.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/claim-calibration/tests/test_claim_calibration.py"
       ],
-      "reasons": [
-        "4 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "claude-code-guide",
@@ -12226,11 +12220,12 @@
     {
       "id": "resource-preflight",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/resource-preflight/skill.py",
         "skills/resource-preflight/scripts/fallback_identifier.py",
         "skills/resource-preflight/scripts/preflight_emitter.py",
         "skills/resource-preflight/scripts/classifier.py",
@@ -12239,19 +12234,16 @@
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
-        "skills/resource-preflight/skill.py",
         "skills/resource-preflight/scripts/output_contract.py",
         "skills/resource-preflight/scripts/purpose.py",
         "skills/resource-preflight/scripts/procedure.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/resource-preflight/tests/test_resource_preflight.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "resume-claude",
@@ -15226,14 +15218,10 @@
     {
       "id": "capability-readiness",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: capability-admission",
-        "required skill not ready: resource-preflight",
-        "required skill not ready: claim-calibration"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "closed-loop-code-repair",
@@ -15286,12 +15274,10 @@
     {
       "id": "evidence-to-evolution-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: claim-calibration"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "fleet-recon-and-harmonize",
@@ -15334,13 +15320,10 @@
     {
       "id": "guarded-automation-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: capability-admission",
-        "required skill not ready: resource-preflight"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "hardware-accelerated-inference",
@@ -15425,12 +15408,10 @@
     {
       "id": "signal-to-decision-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: claim-calibration"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "skill-forge",
@@ -15500,13 +15481,11 @@
     {
       "id": "apex-adaptive-operations",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-aerospace-sim",
@@ -15529,14 +15508,11 @@
     {
       "id": "apex-always-on-core",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: guarded-automation-loop",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-architectural-evolution-engine",
@@ -15567,8 +15543,7 @@
       "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: closed-loop-code-repair",
-        "required combo not ready: architectural-refactoring-engine",
-        "required combo not ready: guarded-automation-loop"
+        "required combo not ready: architectural-refactoring-engine"
       ]
     },
     {
@@ -15579,20 +15554,17 @@
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
       "reasons": [
-        "required combo not ready: closed-loop-code-repair",
-        "required combo not ready: guarded-automation-loop"
+        "required combo not ready: closed-loop-code-repair"
       ]
     },
     {
       "id": "apex-capability-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: evidence-to-evolution-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-cybersecurity-sentinel",
@@ -15646,13 +15618,11 @@
     {
       "id": "apex-growth-intelligence",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-interactive-engine",
@@ -15668,14 +15638,11 @@
     {
       "id": "apex-legal-forensic-powerhouse",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: guarded-automation-loop",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-legal-warfare",
@@ -15707,13 +15674,11 @@
     {
       "id": "apex-safe-change-orchestrator",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-secure-cloud-foundry",

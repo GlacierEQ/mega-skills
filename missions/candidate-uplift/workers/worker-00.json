@@ -1,7 +1,7 @@
 {
   "worker": 0,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
       "id": "apex-boot-core",
@@ -40,148 +40,111 @@
       "recommended_action": "inspect"
     },
     {
-      "id": "forensic-evidence-chain-core",
+      "id": "mega-skill-forge",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
-      "body_chars": 1301,
+      "description": "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill.",
+      "body_chars": 5760,
       "reasons": [
-        "6 explicit implementation stub(s)"
+        "8 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/anomaly_scanner.py",
-          "scripts/bates_stamper.py",
-          "scripts/manifest_emitter.py",
-          "scripts/output_contract.py",
-          "scripts/pii_scrubber.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/sha256_digester.py",
-          "scripts/timestamp_verifier.py",
+          "scripts/combo_selector.py",
+          "scripts/contract_author.py",
+          "scripts/creation_workflow.py",
+          "scripts/decision_gate.py",
+          "scripts/hierarchy_validator.py",
+          "scripts/mission_drafter.py",
+          "scripts/readiness_gate.py",
+          "scripts/registry_publisher.py",
+          "scripts/release_coordinator.py",
+          "scripts/repo_inspector.py",
+          "scripts/this_skill.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_forensic_evidence_chain_core.py"
+          "tests/test_mega_skill_forge.py"
         ],
-        "references": [],
+        "references": [
+          "references/mega-contract.md",
+          "references/release-checklist.md"
+        ],
         "assets": [
-          "resources/bates_serial_schema.yaml",
-          "resources/forensic_evidence_chain_core_config.yaml",
-          "resources/forensic_evidence_chain_core_schema.json",
-          "resources/fre_902_compliance.md"
+          "resources/MEGA.md.template",
+          "resources/mega-contract.md",
+          "resources/mega-registry-entry.json.template",
+          "resources/mega_skill_forge_config.yaml",
+          "resources/mega_skill_forge_schema.json",
+          "resources/release-checklist.md"
         ]
       },
       "stub_files": [
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
-        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
-        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
-        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
-        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
+        "skills/mega-skill-forge/scripts/repo_inspector.py",
+        "skills/mega-skill-forge/scripts/readiness_gate.py",
+        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
+        "skills/mega-skill-forge/scripts/combo_selector.py",
+        "skills/mega-skill-forge/scripts/mission_drafter.py",
+        "skills/mega-skill-forge/scripts/contract_author.py",
+        "skills/mega-skill-forge/scripts/registry_publisher.py",
+        "skills/mega-skill-forge/scripts/release_coordinator.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+        "skills/mega-skill-forge/tests/test_mega_skill_forge.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "roadmap-builder",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Convert a mission contract into a dependency-aware sequence of verifiable work chunks. Use when work must be planned across phases, artifacts, risks, or specialist handoffs.",
-      "body_chars": 1462,
-      "reasons": [
-        "6 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/artifact_lister.py",
-          "scripts/chunk_definer.py",
-          "scripts/dependency_optimizer.py",
-          "scripts/output_contract.py",
-          "scripts/parallelism_validator.py",
-          "scripts/phase_grouper.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/roadmap_emitter.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_roadmap_builder.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/chunk_packet_schema.yaml",
-          "resources/phase_gate_schema.yaml",
-          "resources/roadmap_builder_config.yaml",
-          "resources/roadmap_builder_schema.json"
-        ]
-      },
-      "stub_files": [
-        "skills/roadmap-builder/scripts/chunk_definer.py",
-        "skills/roadmap-builder/scripts/dependency_optimizer.py",
-        "skills/roadmap-builder/scripts/parallelism_validator.py",
-        "skills/roadmap-builder/scripts/roadmap_emitter.py",
-        "skills/roadmap-builder/scripts/artifact_lister.py",
-        "skills/roadmap-builder/scripts/phase_grouper.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/roadmap-builder/tests/test_roadmap_builder.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "finish_domain_implementation"
-    },
-    {
-      "id": "evidence-register",
+      "id": "connector-bridge",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Build a traceable register of sources, tests, artifacts, claims, and uncertainty. Use when conclusions, implementation decisions, or deliverables must be verified, cited, audited, or safely resumed.",
-      "body_chars": 1302,
+      "description": "Unified, typed interface for connecting and stacking multi-cloud services (Supabase, GitHub API, OpenRouter, Google Drive, Dropbox, OneDrive) with exponential backoff and rate-limiting.",
+      "body_chars": 1339,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/claim_tracer.py",
-          "scripts/id_assigner.py",
-          "scripts/integrity_checker.py",
+          "scripts/circuit_breaker.py",
+          "scripts/credential_resolver.py",
+          "scripts/dispatcher.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
+          "scripts/protocol_serializer.py",
           "scripts/purpose.py",
-          "scripts/register_updater.py",
+          "scripts/rate_limiter.py",
+          "scripts/telemetry_recorder.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_evidence_register.py"
+          "tests/test_connector_bridge.py"
         ],
         "references": [],
         "assets": [
-          "resources/claim_type_taxonomy.yaml",
-          "resources/evidence_register_config.yaml",
-          "resources/evidence_register_schema.json",
-          "resources/evidence_schema.yaml"
+          "resources/connector_bridge_config.yaml",
+          "resources/connector_bridge_schema.json",
+          "resources/endpoint_profiles.yaml",
+          "resources/schema_registry.json"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/evidence-register/tests/test_evidence_register.py"
+        "skills/connector-bridge/tests/test_connector_bridge.py"
       ],
       "real_implementation_files": [
-        "skills/evidence-register/scripts/id_assigner.py",
-        "skills/evidence-register/scripts/claim_tracer.py",
-        "skills/evidence-register/scripts/register_updater.py",
-        "skills/evidence-register/scripts/integrity_checker.py"
+        "skills/connector-bridge/scripts/protocol_serializer.py",
+        "skills/connector-bridge/scripts/circuit_breaker.py",
+        "skills/connector-bridge/scripts/dispatcher.py",
+        "skills/connector-bridge/scripts/rate_limiter.py",
+        "skills/connector-bridge/scripts/credential_resolver.py",
+        "skills/connector-bridge/scripts/telemetry_recorder.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

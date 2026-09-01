@@ -1,7 +1,7 @@
 {
   "worker": 1,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
       "id": "attio",
@@ -34,148 +34,77 @@
       "recommended_action": "repair_instruction_contract"
     },
     {
-      "id": "handoff-record",
+      "id": "mega-skills-test-runner",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Preserve an exact, safe recovery point for unfinished or transferred work. Use before interruption, delegation, compaction, environment changes, phase transitions, or any mission that must resume without re-discovering its critical state.",
-      "body_chars": 1273,
+      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
+      "body_chars": 2965,
       "reasons": [
-        "5 explicit implementation stub(s)"
+        "3 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/assumption_separator.py",
-          "scripts/dead_end_recorder.py",
-          "scripts/environment_capturer.py",
-          "scripts/next_action_encoder.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
+          "scripts/before_running.py",
+          "scripts/failure_diagnostic.py",
           "scripts/purpose.py",
-          "scripts/resume_point_encoder.py",
+          "scripts/report_emitter.py",
+          "scripts/revision_recorder.py",
+          "scripts/run_checks.py",
+          "scripts/standard_workflow.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_handoff_record.py"
+          "tests/test_mega_skills_test_runner.py"
         ],
-        "references": [],
+        "references": [
+          "references/checks.md"
+        ],
         "assets": [
-          "resources/handoff_record_config.yaml",
-          "resources/handoff_record_schema.json",
-          "resources/handoff_schema.yaml",
-          "resources/recovery_checklist.md"
+          "resources/checks.md",
+          "resources/mega_skills_test_runner_config.yaml",
+          "resources/mega_skills_test_runner_schema.json",
+          "resources/standard_tree.md"
         ]
       },
       "stub_files": [
-        "skills/handoff-record/scripts/resume_point_encoder.py",
-        "skills/handoff-record/scripts/dead_end_recorder.py",
-        "skills/handoff-record/scripts/next_action_encoder.py",
-        "skills/handoff-record/scripts/environment_capturer.py",
-        "skills/handoff-record/scripts/assumption_separator.py"
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/handoff-record/tests/test_handoff_record.py"
+        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
       ],
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-skills-test-runner/scripts/run_checks.py"
+      ],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "work-packet",
-      "state": "implementation_partial",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Define a bounded, testable assignment for a specialist, agent, or sequential work chunk. Use when work must be delegated, handed off, isolated for verification, or performed without relying on implicit conversational context.",
-      "body_chars": 1317,
-      "reasons": [
-        "6 explicit implementation stub(s)"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/acceptance_tester.py",
-          "scripts/boundary_enforcer.py",
-          "scripts/input_lister.py",
-          "scripts/objective_namer.py",
-          "scripts/output_contract.py",
-          "scripts/output_specifier.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/state_updater.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_work_packet.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/escalation_matrix.yaml",
-          "resources/packet_schema.yaml",
-          "resources/work_packet_config.yaml",
-          "resources/work_packet_schema.json"
-        ]
-      },
-      "stub_files": [
-        "skills/work-packet/scripts/boundary_enforcer.py",
-        "skills/work-packet/scripts/objective_namer.py",
-        "skills/work-packet/scripts/state_updater.py",
-        "skills/work-packet/scripts/input_lister.py",
-        "skills/work-packet/scripts/output_specifier.py",
-        "skills/work-packet/scripts/acceptance_tester.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/work-packet/tests/test_work_packet.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "finish_domain_implementation"
-    },
-    {
-      "id": "fork-overlay-core",
+      "id": "cross-app-pipeline",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Dev Fork Doctrine automated upstream synchronization, custom overlay shielding, and regression test gatekeeping across repository forks.",
-      "body_chars": 1130,
+      "description": "Master orchestration connecting iCloud Voice Memos, Gmail, Notion, and THE_CATACLYSM evidence vault.",
+      "body_chars": 1594,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
-          "__init__.py",
-          "scripts/merge_engine.py",
-          "scripts/output_contract.py",
-          "scripts/overlay_isolator.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/push_verifier.py",
-          "scripts/regression_gate.py",
-          "scripts/upstream_fetcher.py",
-          "skill.py"
+          "pipeline.py"
         ],
-        "tests": [
-          "tests/test_fork_overlay_core.py"
-        ],
+        "tests": [],
         "references": [],
-        "assets": [
-          "resources/fork_overlay_core_config.yaml",
-          "resources/fork_overlay_core_schema.json",
-          "resources/overlay_protection_rules.yaml",
-          "resources/sync_audit_schema.yaml"
-        ]
+        "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [
-        "skills/fork-overlay-core/tests/test_fork_overlay_core.py"
-      ],
+      "structural_tests": [],
       "real_implementation_files": [
-        "skills/fork-overlay-core/scripts/merge_engine.py",
-        "skills/fork-overlay-core/scripts/regression_gate.py",
-        "skills/fork-overlay-core/scripts/overlay_isolator.py",
-        "skills/fork-overlay-core/scripts/upstream_fetcher.py",
-        "skills/fork-overlay-core/scripts/push_verifier.py"
+        "skills/cross-app-pipeline/pipeline.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

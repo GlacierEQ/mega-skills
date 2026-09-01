@@ -1,7 +1,7 @@
 {
   "worker": 4,
   "workers": 8,
-  "assigned": 4,
+  "assigned": 3,
   "findings": [
     {
       "id": "capability-admission",
@@ -48,134 +48,77 @@
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "mission-contract",
+      "id": "polyglot-rosetta-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Convert a request into a bounded, testable mission contract. Use when work has material scope, dependencies, risk, approvals, multiple deliverables, or ambiguity that must be resolved before execution.",
-      "body_chars": 1469,
+      "description": "51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages.",
+      "body_chars": 1199,
       "reasons": [
-        "6 explicit implementation stub(s)"
+        "5 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/assumption_bounder.py",
-          "scripts/constraint_mapper.py",
-          "scripts/contract_emitter.py",
-          "scripts/criteria_definer.py",
-          "scripts/outcome_framer.py",
+          "scripts/ast_inspector.py",
+          "scripts/code_synthesizer.py",
+          "scripts/cross_compiler.py",
+          "scripts/floor_selector.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
+          "scripts/proof_generator.py",
           "scripts/purpose.py",
-          "scripts/scope_separator.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mission_contract.py"
+          "tests/test_polyglot_rosetta_core.py"
         ],
         "references": [],
         "assets": [
-          "resources/exclusion_patterns.yaml",
-          "resources/mission_contract_config.yaml",
-          "resources/mission_contract_schema.json",
-          "resources/mission_schema.yaml"
+          "resources/floor_catalog.yaml",
+          "resources/invariant_spec_schema.yaml",
+          "resources/polyglot_rosetta_core_config.yaml",
+          "resources/polyglot_rosetta_core_schema.json"
         ]
       },
       "stub_files": [
-        "skills/mission-contract/scripts/outcome_framer.py",
-        "skills/mission-contract/scripts/assumption_bounder.py",
-        "skills/mission-contract/scripts/constraint_mapper.py",
-        "skills/mission-contract/scripts/scope_separator.py",
-        "skills/mission-contract/scripts/contract_emitter.py",
-        "skills/mission-contract/scripts/criteria_definer.py"
+        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
+        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
+        "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
+        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mission-contract/tests/test_mission_contract.py"
+        "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "computer-user-core",
+      "id": "gmail-orchestrator",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Native macOS desktop and runtime orchestration via AppleScript, screencapture, GUI event simulation, window state inspection, and process lifecycle supervision.",
-      "body_chars": 1344,
+      "description": "Headless browser-based Gmail control for triage, drafting, and forensic extraction.",
+      "body_chars": 1166,
       "reasons": [
+        "no actionable procedure/capability language",
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
-          "__init__.py",
-          "scripts/cleanup.py",
-          "scripts/gui_automator.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/process_inspector.py",
-          "scripts/purpose.py",
-          "scripts/screen_capture.py",
-          "scripts/state_verifier.py",
-          "skill.py"
+          "orchestrator.py"
         ],
-        "tests": [
-          "tests/test_computer_user_core.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/applescript_templates.applescript",
-          "resources/computer_user_core_config.yaml",
-          "resources/computer_user_core_schema.json",
-          "resources/window_bounds_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/computer-user-core/tests/test_computer_user_core.py"
-      ],
-      "real_implementation_files": [
-        "skills/computer-user-core/scripts/cleanup.py",
-        "skills/computer-user-core/scripts/process_inspector.py",
-        "skills/computer-user-core/scripts/state_verifier.py",
-        "skills/computer-user-core/scripts/screen_capture.py",
-        "skills/computer-user-core/scripts/gui_automator.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-web",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Ceiling web engineering: distinctive UI, human copy, real browser proof, Vercel-grade React/a11y when the stack is React. Use when the user says mega web, ceiling web, hire page, public site, recruiter surface, landing, frontend, make this look elite, or /mega-web. Do NOT use for visual DESIGN.md-only work (design-blueprint) or native mobile (vercel-react-native-skills).",
-      "body_chars": 2216,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "scripts/run.py",
-          "scripts/this_skill.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_web.py"
-        ],
+        "tests": [],
         "references": [],
         "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-web/tests/test_mega_web.py"
-      ],
+      "structural_tests": [],
       "real_implementation_files": [
-        "skills/mega-web/skill.py",
-        "skills/mega-web/scripts/run.py",
-        "skills/mega-web/scripts/this_skill.py"
+        "skills/gmail-orchestrator/orchestrator.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }
