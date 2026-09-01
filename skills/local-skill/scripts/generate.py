@@ -191,7 +191,17 @@ def generate_skill(name: str, description: str, output_root: Path) -> Path:
         "scripts/this_skill.py": THIS_SKILL_TEMPLATE.format(name=name),
         "scripts/run.py": RUN_TEMPLATE.format(name=name),
         f"resources/{name}_config.yaml": CONFIG_TEMPLATE,
-        f"resources/{name}_schema.json": SCHEMA_TEMPLATE.format(title=title),
+        f"resources/{name}_schema.json": json.dumps({
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": title,
+            "type": "object",
+            "properties": {
+                "skill": {"type": "string"},
+                "status": {"type": "string"},
+                "capability_executed": {"type": "boolean"},
+            },
+            "required": ["skill", "status", "capability_executed"],
+        }, indent=2) + "\n",
         f"tests/test_{name.replace('-', '_')}.py": TEST_TEMPLATE,
     }
     for relative, content in files.items():
