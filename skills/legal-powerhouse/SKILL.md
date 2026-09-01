@@ -99,3 +99,15 @@ For operator-owned cases and firsthand events:
 6. Build the strongest supportable affirmative case and the strongest anticipated defense. Defense testing hardens the affirmative case; it does not silently prune the user's factual record.
 7. Full-case missions include evidence → facts → allegations/elements → authorities → defenses/rebuttals → damages/remedies → discovery → motions/petitions/declarations/exhibits → hearing/trial → enforcement → post-ruling/appeal preservation.
 8. No criminal charge, judicial finding, filing, service, or external act is claimed without actual authority/receipt.
+
+## Mandatory Hidden Caveat Audit
+
+For major legal work, run `hidden-caveat-detector`:
+
+- before changing the status or wording of an existing factual/source proposition;
+- before pruning an allegation/remedy from the active universe;
+- before converting journal/chat material into a synthesized chronology;
+- before finalizing a pleading, declaration, referral, or handoff;
+- before stating that a case-building phase is complete.
+
+If a caveat is genuinely required by current law, evidence, jurisdiction, safety, or tool reality, localize it to the exact legal/analytical field it governs. Do not let it rewrite the source proposition or spread into unrelated allegations.
