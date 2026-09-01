@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Two-pass readiness reconciliation for GlacierEQ mega-skills."""
-# reconciliation-version: 2
+# reconciliation-version: 3
 from __future__ import annotations
 import argparse, json, re
 from collections import Counter
