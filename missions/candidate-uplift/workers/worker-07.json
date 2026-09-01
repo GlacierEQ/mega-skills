@@ -1,7 +1,7 @@
 {
   "worker": 7,
   "workers": 8,
-  "assigned": 17,
+  "assigned": 3,
   "findings": [
     {
       "id": "fleet-git-harmonizer-core",
@@ -50,12 +50,7 @@
       "structural_tests": [
         "skills/fleet-git-harmonizer-core/tests/test_fleet_git_harmonizer_core.py"
       ],
-      "real_implementation_files": [
-        "skills/fleet-git-harmonizer-core/skill.py",
-        "skills/fleet-git-harmonizer-core/scripts/output_contract.py",
-        "skills/fleet-git-harmonizer-core/scripts/purpose.py",
-        "skills/fleet-git-harmonizer-core/scripts/procedure.py"
-      ],
+      "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
@@ -103,626 +98,52 @@
       "structural_tests": [
         "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
       ],
-      "real_implementation_files": [
-        "skills/polyglot-rosetta-core/skill.py",
-        "skills/polyglot-rosetta-core/scripts/output_contract.py",
-        "skills/polyglot-rosetta-core/scripts/purpose.py",
-        "skills/polyglot-rosetta-core/scripts/procedure.py"
-      ],
+      "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "apex-ast-sentinel",
+      "id": "epistemic-gate",
       "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "AST-level syntactic invariant validator and defect sentinel for zero-regression code generation.",
-      "body_chars": 1884,
+      "description": "6-Tier Epistemic Ladder (L0 to L6) verification gate enforcing mathematical, empirical, and cryptographic proof standards across all operations.",
+      "body_chars": 1883,
       "reasons": [
         "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/run.py",
-          "scripts/this_skill.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_apex_ast_sentinel.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/apex-ast-sentinel_config.yaml",
-          "resources/apex-ast-sentinel_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/apex-ast-sentinel/tests/test_apex_ast_sentinel.py"
-      ],
-      "real_implementation_files": [
-        "skills/apex-ast-sentinel/skill.py",
-        "skills/apex-ast-sentinel/scripts/run.py",
-        "skills/apex-ast-sentinel/scripts/this_skill.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "aws-trainium-neuron-sentinel",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operating inside the AWS Trainium Neuron Sentinel job-app portfolio repo at github.com/GlacierEQ/aws-trainium-neuron-sentinel. Targets the AWS Trainium2/Inferentia2 NeuronCore ring-orbit.",
-      "body_chars": 833,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/aws_trainium_neuron_sentinel_reporter.py",
-          "scripts/aws_trainium_neuron_sentinel_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_aws_trainium_neuron_sentinel.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/aws_trainium_neuron_sentinel_config.yaml",
-          "resources/aws_trainium_neuron_sentinel_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/aws-trainium-neuron-sentinel/tests/test_aws_trainium_neuron_sentinel.py"
-      ],
-      "real_implementation_files": [
-        "skills/aws-trainium-neuron-sentinel/skill.py",
-        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_reporter.py",
-        "skills/aws-trainium-neuron-sentinel/scripts/quick_rules.py",
-        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_validator.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "connector-bridge",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Unified, typed interface for connecting and stacking multi-cloud services (Supabase, GitHub API, OpenRouter, Google Drive, Dropbox, OneDrive) with exponential backoff and rate-limiting.",
-      "body_chars": 1339,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/circuit_breaker.py",
-          "scripts/credential_resolver.py",
-          "scripts/dispatcher.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/protocol_serializer.py",
-          "scripts/purpose.py",
-          "scripts/rate_limiter.py",
-          "scripts/telemetry_recorder.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_connector_bridge.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/connector_bridge_config.yaml",
-          "resources/connector_bridge_schema.json",
-          "resources/endpoint_profiles.yaml",
-          "resources/schema_registry.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/connector-bridge/tests/test_connector_bridge.py"
-      ],
-      "real_implementation_files": [
-        "skills/connector-bridge/skill.py",
-        "skills/connector-bridge/scripts/protocol_serializer.py",
-        "skills/connector-bridge/scripts/circuit_breaker.py",
-        "skills/connector-bridge/scripts/output_contract.py",
-        "skills/connector-bridge/scripts/dispatcher.py",
-        "skills/connector-bridge/scripts/rate_limiter.py",
-        "skills/connector-bridge/scripts/credential_resolver.py",
-        "skills/connector-bridge/scripts/purpose.py",
-        "skills/connector-bridge/scripts/procedure.py",
-        "skills/connector-bridge/scripts/telemetry_recorder.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "evidence-register",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Build a traceable register of sources, tests, artifacts, claims, and uncertainty. Use when conclusions, implementation decisions, or deliverables must be verified, cited, audited, or safely resumed.",
-      "body_chars": 1302,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/claim_tracer.py",
-          "scripts/id_assigner.py",
-          "scripts/integrity_checker.py",
+          "scripts/gate_enforcer.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
           "scripts/purpose.py",
-          "scripts/register_updater.py",
+          "scripts/receipt_generator.py",
+          "scripts/sha256_verifier.py",
+          "scripts/tier_evaluator.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_evidence_register.py"
+          "tests/test_epistemic_gate.py"
         ],
         "references": [],
         "assets": [
-          "resources/claim_type_taxonomy.yaml",
-          "resources/evidence_register_config.yaml",
-          "resources/evidence_register_schema.json",
-          "resources/evidence_schema.yaml"
+          "resources/epistemic_gate_config.yaml",
+          "resources/epistemic_gate_schema.json",
+          "resources/epistemic_spectrum.yaml",
+          "resources/forbidden_patterns.yaml"
         ]
       },
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/evidence-register/tests/test_evidence_register.py"
+        "skills/epistemic-gate/tests/test_epistemic_gate.py"
       ],
       "real_implementation_files": [
-        "skills/evidence-register/skill.py",
-        "skills/evidence-register/scripts/id_assigner.py",
-        "skills/evidence-register/scripts/output_contract.py",
-        "skills/evidence-register/scripts/claim_tracer.py",
-        "skills/evidence-register/scripts/register_updater.py",
-        "skills/evidence-register/scripts/purpose.py",
-        "skills/evidence-register/scripts/procedure.py",
-        "skills/evidence-register/scripts/integrity_checker.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "icloud-voice-memos",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Extracts transcripts, GPS/location metadata, and audio timestamps from iCloud Voice Memos.",
-      "body_chars": 1054,
-      "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "harvester.py"
-        ],
-        "tests": [],
-        "references": [],
-        "assets": []
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "real_implementation_files": [
-        "skills/icloud-voice-memos/harvester.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mcp-master-server",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operating inside the MCP Master Server at /root/mcp-master-server. Unified tool interface and server orchestration. Use when wiring new MCP servers or debugging the orchestrator.",
-      "body_chars": 1392,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/mcp_master_server_reporter.py",
-          "scripts/mcp_master_server_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mcp_master_server.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mcp_master_server_config.yaml",
-          "resources/mcp_master_server_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mcp-master-server/tests/test_mcp_master_server.py"
-      ],
-      "real_implementation_files": [
-        "skills/mcp-master-server/skill.py",
-        "skills/mcp-master-server/scripts/mcp_master_server_validator.py",
-        "skills/mcp-master-server/scripts/mcp_master_server_reporter.py",
-        "skills/mcp-master-server/scripts/quick_rules.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-apex-sovereign-mastermind",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Consolidated mega skill encompassing 8 sub-skills.",
-      "body_chars": 31485,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/lean_mode_token.py",
-          "scripts/mode_selection.py",
-          "scripts/sub-skill_apex-execution-modes.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_apex_sovereign_mastermind.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_apex_sovereign_mastermind_config.yaml",
-          "resources/mega_apex_sovereign_mastermind_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-apex-sovereign-mastermind/tests/test_mega_apex_sovereign_mastermind.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-apex-sovereign-mastermind/skill.py",
-        "skills/mega-apex-sovereign-mastermind/scripts/lean_mode_token.py",
-        "skills/mega-apex-sovereign-mastermind/scripts/sub-skill_apex-execution-modes.py",
-        "skills/mega-apex-sovereign-mastermind/scripts/mode_selection.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-brain",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Brain Skill \u2014 Unified Case Intelligence",
-      "body_chars": 15391,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/architecture.py",
-          "scripts/keywords.py",
-          "scripts/memory_layers.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_brain.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_brain_config.yaml",
-          "resources/mega_brain_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-brain/tests/test_mega_brain.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-brain/skill.py",
-        "skills/mega-brain/scripts/architecture.py",
-        "skills/mega-brain/scripts/memory_layers.py",
-        "skills/mega-brain/scripts/keywords.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-deepseek-mla-moe-sentinel",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "DeepSeek MLA MoE Sentinel (job-app portfolio)",
-      "body_chars": 938,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/mega_deepseek_mla_moe_sentinel_reporter.py",
-          "scripts/mega_deepseek_mla_moe_sentinel_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_deepseek_mla_moe_sentinel.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_deepseek_mla_moe_sentinel_config.yaml",
-          "resources/mega_deepseek_mla_moe_sentinel_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-deepseek-mla-moe-sentinel/tests/test_mega_deepseek_mla_moe_sentinel.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-deepseek-mla-moe-sentinel/skill.py",
-        "skills/mega-deepseek-mla-moe-sentinel/scripts/quick_rules.py",
-        "skills/mega-deepseek-mla-moe-sentinel/scripts/mega_deepseek_mla_moe_sentinel_reporter.py",
-        "skills/mega-deepseek-mla-moe-sentinel/scripts/mega_deepseek_mla_moe_sentinel_validator.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-github-power",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "GitHub Power Skill \u2014 Maximum GitHub Productivity",
-      "body_chars": 6837,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/keywords.py",
-          "scripts/management.py",
-          "scripts/quick_commands.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_github_power.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_github_power_config.yaml",
-          "resources/mega_github_power_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-github-power/tests/test_mega_github_power.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-github-power/skill.py",
-        "skills/mega-github-power/scripts/quick_commands.py",
-        "skills/mega-github-power/scripts/management.py",
-        "skills/mega-github-power/scripts/keywords.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-mcp-master-server",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "MCP Master Server",
-      "body_chars": 1510,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/mega_mcp_master_server_reporter.py",
-          "scripts/mega_mcp_master_server_validator.py",
-          "scripts/quick_rules.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_mcp_master_server.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_mcp_master_server_config.yaml",
-          "resources/mega_mcp_master_server_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-mcp-master-server/tests/test_mega_mcp_master_server.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-mcp-master-server/skill.py",
-        "skills/mega-mcp-master-server/scripts/mega_mcp_master_server_reporter.py",
-        "skills/mega-mcp-master-server/scripts/mega_mcp_master_server_validator.py",
-        "skills/mega-mcp-master-server/scripts/quick_rules.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-quantum-nexus",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Quantum Nexus Skill \u2014 Sovereign Intelligence System",
-      "body_chars": 10443,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/architecture.py",
-          "scripts/keywords.py",
-          "scripts/quick_commands.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_quantum_nexus.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/mega_quantum_nexus_config.yaml",
-          "resources/mega_quantum_nexus_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-quantum-nexus/tests/test_mega_quantum_nexus.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-quantum-nexus/skill.py",
-        "skills/mega-quantum-nexus/scripts/quick_commands.py",
-        "skills/mega-quantum-nexus/scripts/architecture.py",
-        "skills/mega-quantum-nexus/scripts/keywords.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "mega-web",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Ceiling web engineering: distinctive UI, human copy, real browser proof, Vercel-grade React/a11y when the stack is React. Use when the user says mega web, ceiling web, hire page, public site, recruiter surface, landing, frontend, make this look elite, or /mega-web. Do NOT use for visual DESIGN.md-only work (design-blueprint) or native mobile (vercel-react-native-skills).",
-      "body_chars": 2216,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "scripts/run.py",
-          "scripts/this_skill.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_mega_web.py"
-        ],
-        "references": [],
-        "assets": []
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/mega-web/tests/test_mega_web.py"
-      ],
-      "real_implementation_files": [
-        "skills/mega-web/skill.py",
-        "skills/mega-web/scripts/run.py",
-        "skills/mega-web/scripts/this_skill.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "quality-gate",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Verify that a phase, artifact, or mission outcome satisfies its stated contract before work advances. Use at phase boundaries, before irreversible actions, after specialist handoffs, and before final delivery.",
-      "body_chars": 1344,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/artifact_inspector.py",
-          "scripts/criteria_reader.py",
-          "scripts/decision_recorder.py",
-          "scripts/failure_classifier.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/verifier_coordinator.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_quality_gate.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/conditional_pass_schema.yaml",
-          "resources/gate_checklist.yaml",
-          "resources/quality_gate_config.yaml",
-          "resources/quality_gate_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/quality-gate/tests/test_quality_gate.py"
-      ],
-      "real_implementation_files": [
-        "skills/quality-gate/skill.py",
-        "skills/quality-gate/scripts/verifier_coordinator.py",
-        "skills/quality-gate/scripts/decision_recorder.py",
-        "skills/quality-gate/scripts/output_contract.py",
-        "skills/quality-gate/scripts/criteria_reader.py",
-        "skills/quality-gate/scripts/failure_classifier.py",
-        "skills/quality-gate/scripts/purpose.py",
-        "skills/quality-gate/scripts/procedure.py",
-        "skills/quality-gate/scripts/artifact_inspector.py"
-      ],
-      "recommended_action": "design_behavioral_verification"
-    },
-    {
-      "id": "tower-of-babel",
-      "state": "implementation_unverified",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operating inside the Tower of Babel polyglot technology authority at /root/projects/GlacierEQ_Swarm/the-tower-of-babel. Use when changing the registry, adding a floor, updating exhibits, changing proof state, or generating surface artifacts. Tower has its own doctrine and a mandatory preflight \u2014 violations break the evidence chain.",
-      "body_chars": 6034,
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ],
-      "package": {
-        "scripts": [
-          "__init__.py",
-          "scripts/entry_points_cli.py",
-          "scripts/project_layout.py",
-          "scripts/test_command.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_tower_of_babel.py"
-        ],
-        "references": [],
-        "assets": [
-          "resources/tower_of_babel_config.yaml",
-          "resources/tower_of_babel_schema.json"
-        ]
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/tower-of-babel/tests/test_tower_of_babel.py"
-      ],
-      "real_implementation_files": [
-        "skills/tower-of-babel/skill.py",
-        "skills/tower-of-babel/scripts/test_command.py",
-        "skills/tower-of-babel/scripts/entry_points_cli.py",
-        "skills/tower-of-babel/scripts/project_layout.py"
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/gate_enforcer.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }
