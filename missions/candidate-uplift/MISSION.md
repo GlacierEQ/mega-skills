@@ -1,5 +1,11 @@
 # MISSION — Candidate Uplift
 
-Activate Far Away Party, the endurance swarm protocol, APEX Always-On Core, Skill Creator, Distributed Processing, Subagent-Driven Development, and Readiness Assay against the current candidate-skill backlog.
+Activated capability stack:
+- Far Away Party for durable mission state and resumption
+- Faraway Party endurance protocol for wide parallel inspection
+- APEX Always-On Core for recurring continuation
+- Skill Creator for concise contract repair
+- Distributed Processing and Subagent-Driven Development for worker partitioning
+- Readiness Assay as the sole promotion authority
 
-First target: repair contract-incomplete skills from existing evidence, shard the remaining backlog, then recalculate readiness.
+Objective: turn candidate skills into truthfully usable capabilities without inventing missing implementation.

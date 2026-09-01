@@ -5,14 +5,14 @@
     "skills": 707,
     "combos": 32,
     "megas": 29,
-    "ready_total": 561,
-    "not_ready_total": 207,
+    "ready_total": 570,
+    "not_ready_total": 198,
     "skill_states": {
-      "instruction_ready": 552,
+      "instruction_ready": 561,
       "implementation_partial": 16,
       "implementation_unverified": 119,
       "behavior_verified": 7,
-      "contract_incomplete": 13
+      "contract_incomplete": 4
     },
     "combo_states": {
       "composition_candidate": 29,
@@ -2432,10 +2432,10 @@
     {
       "id": "cc-skill-continuous-learning",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/cc-skill-continuous-learning/skill.py",
@@ -2447,10 +2447,7 @@
       "structural_tests": [
         "skills/cc-skill-continuous-learning/tests/test_cc_skill_continuous_learning.py"
       ],
-      "reasons": [
-        "instruction body too small",
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "cc-skill-frontend-patterns",
@@ -2521,10 +2518,10 @@
     {
       "id": "cc-skill-strategic-compact",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/cc-skill-strategic-compact/skill.py",
@@ -2536,10 +2533,7 @@
       "structural_tests": [
         "skills/cc-skill-strategic-compact/tests/test_cc_skill_strategic_compact.py"
       ],
-      "reasons": [
-        "instruction body too small",
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "chat-sdk",
@@ -3119,10 +3113,10 @@
     {
       "id": "connectivity-hub",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/connectivity-hub/skill.py",
@@ -3134,10 +3128,7 @@
       "structural_tests": [
         "skills/connectivity-hub/tests/test_connectivity_hub.py"
       ],
-      "reasons": [
-        "instruction body too small",
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "connector-bridge",
@@ -4029,10 +4020,10 @@
     {
       "id": "digital-law-library-master",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/digital-law-library-master/skill.py",
@@ -4044,9 +4035,7 @@
       "structural_tests": [
         "skills/digital-law-library-master/tests/test_digital_law_library_master.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "discord-bot-architect",
@@ -11907,10 +11896,10 @@
     {
       "id": "resume-claude",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/resume-claude/skill.py",
@@ -11922,17 +11911,15 @@
       "structural_tests": [
         "skills/resume-claude/tests/test_resume_claude.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "resume-codex",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/resume-codex/skill.py",
@@ -11944,17 +11931,15 @@
       "structural_tests": [
         "skills/resume-codex/tests/test_resume_codex.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "resume-cursor",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/resume-cursor/skill.py",
@@ -11966,9 +11951,7 @@
       "structural_tests": [
         "skills/resume-cursor/tests/test_resume_cursor.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "review",
@@ -13025,10 +13008,10 @@
     {
       "id": "super-agent-orchestrator",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/super-agent-orchestrator/skill.py",
@@ -13040,9 +13023,7 @@
       "structural_tests": [
         "skills/super-agent-orchestrator/tests/test_super_agent_orchestrator.py"
       ],
-      "reasons": [
-        "instruction body too small"
-      ]
+      "reasons": []
     },
     {
       "id": "super-research",
@@ -13267,10 +13248,10 @@
     {
       "id": "test-runner",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/test-runner/skill.py",
@@ -13282,9 +13263,7 @@
       "structural_tests": [
         "skills/test-runner/tests/test_test_runner.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "testing-patterns",

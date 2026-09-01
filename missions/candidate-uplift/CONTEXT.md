@@ -1,3 +1,9 @@
 # CONTEXT — Candidate Uplift
 
-Baseline: 707 atomic skills with a measured candidate backlog. Worker reports become the durable backlog map; do not restart discovery each run.
+Atomic skills: 707
+Combos: 32
+Megas: 29
+Ready total before this run: 561
+Not ready before this run: 207
+Workers: 8
+Instruction contracts repaired: 9
