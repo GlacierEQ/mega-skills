@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """Far Away Party candidate-uplift swarm."""
 from __future__ import annotations
-import argparse, json, re
+import argparse, json, re, sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from readiness_assay import substantive_instruction
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry"
 SKILLS = ROOT / "skills"
 MISSION_DIR = ROOT / "missions" / "candidate-uplift"
 WORKERS_DIR = MISSION_DIR / "workers"
-ACTIONABLE = ("use","workflow","procedure","when","build","create","analyze","review","debug","manage","route","connect","generate","verify")
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -64,18 +66,17 @@ def worker_job(states,worker,workers):
         findings.append(r)
     return {"worker":worker,"workers":workers,"assigned":len(assigned),"findings":findings}
 
-def contract_body(sid,desc,pkg):
+def contract_body(sid,desc,pkg,existing_body=""):
     resource=[]
     for label,key in (("Scripts","scripts"),("References","references"),("Tests","tests")):
         vals=pkg[key][:12]
         if vals:
             resource.append("### "+label+"\n"+"\n".join("- "+v for v in vals))
     resource_text="\n\n".join(resource) if resource else "No bundled resources are required by the current package."
-    return f"""# {sid.replace('-', ' ').title()}
-
-## Purpose
-
-{desc}
+    heading=f"# {sid.replace('-', ' ').title()}\n\n## Purpose\n\n{desc}"
+    if existing_body.strip():
+        heading=existing_body.strip()+"\n\n## Contract Completion\n\nThe original instructions above are preserved verbatim; the sections below complete the skill contract."
+    return f"""{heading}
 
 ## Use When
 
@@ -112,9 +113,9 @@ def repair_contract(record):
     if record["state"]!="contract_incomplete": return False
     sid=record["id"]; path=SKILLS/sid/"SKILL.md"
     if not path.is_file() or not record.get("description"): return False
+    if substantive_instruction(path)[0]: return False
     text=path.read_text(encoding="utf-8",errors="replace"); front,body=split_md(text)
-    if len(body)>=180 and any(w in body.lower() for w in ACTIONABLE): return False
-    new=front.rstrip()+"\n\n"+contract_body(sid,record["description"],record["package"]).rstrip()+"\n"
+    new=front.rstrip()+"\n\n"+contract_body(sid,record["description"],record["package"],body).rstrip()+"\n"
     if new==text: return False
     path.write_text(new,encoding="utf-8")
     return True

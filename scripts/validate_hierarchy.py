@@ -50,6 +50,19 @@ def validate_common(entry: dict, expected_layer: str) -> None:
     expect(entrypoint.is_file(), f"{entry['id']}: missing entrypoint")
 
 
+def unregistered_packages(layer_dir: Path, registered: set[str], manifest: str) -> list[str]:
+    return sorted(
+        path.parent.name
+        for path in layer_dir.glob(f"*/{manifest}")
+        if path.parent.name != "_template" and path.parent.name not in registered
+    )
+
+
+def expect_all_registered(layer_dir: Path, registered: set[str], manifest: str, registry_name: str) -> None:
+    missing = unregistered_packages(layer_dir, registered, manifest)
+    expect(not missing, f"{registry_name}: packages on disk but not registered: {', '.join(missing)}")
+
+
 def validate_skills(data: dict) -> set[str]:
     expect(data.get("schema_version") == 1, "skills.json: unsupported schema version")
     expect(data.get("layer") == "skills", "skills.json: invalid layer")
@@ -66,6 +79,7 @@ def validate_skills(data: dict) -> set[str]:
         expect(f"name: {entry['id']}" in frontmatter[1], f"{entry['id']}: registry and SKILL.md name differ")
         resolved.add(entry["id"])
     expect(len(resolved) >= 2, "skills.json: the initial graph needs more than one atomic Skill")
+    expect_all_registered(ROOT / "skills", resolved, "SKILL.md", "skills.json")
     readiness_path = REGISTRY / "skill-readiness.json"
     if readiness_path.is_file():
         readiness = json.loads(readiness_path.read_text(encoding="utf-8"))
@@ -149,6 +163,7 @@ def validate_combos(data: dict, skill_ids: set[str], external: set[str]) -> set[
         expect(nonempty_strings(compounding.get("inherits")) and bool(compounding.get("adds")) and bool(compounding.get("compound_artifact")) and nonempty_strings(compounding.get("next_layer_ready_when")), f"{entry['id']}: compounding contract is incomplete")
         combo_ids.add(entry["id"])
     expect(combo_ids, "combo-skills.json: at least one Combo Skill is required")
+    expect_all_registered(ROOT / "combo-skills", combo_ids, "COMBO.md", "combo-skills.json")
     return combo_ids
 
 
@@ -187,6 +202,7 @@ def validate_mega(data: dict, combo_ids: set[str]) -> None:
         expect(len(entry.get("durable_state", [])) >= 5, f"{entry['id']}: durable state contract is incomplete")
         expect(bool(entry.get("mission_output")) and bool(entry.get("adds")), f"{entry['id']}: mission integration contract is incomplete")
         seen.add(entry["id"])
+    expect_all_registered(ROOT / "mega-skills", seen, "MEGA.md", "mega-skills.json")
 
 
 def main() -> int:

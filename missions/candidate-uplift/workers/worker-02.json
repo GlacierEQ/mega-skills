@@ -4,98 +4,93 @@
   "assigned": 3,
   "findings": [
     {
-      "id": "aerospace-trajectory-core",
+      "id": "audio-forensic-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "SpaceX orbital dynamics, Keplerian propagation, Lambert transfer boundary value solvers, and thermodynamic cryogenic boil-off equations.",
-      "body_chars": 1283,
+      "description": "Sovereign evidentiary audio processing, WhisperX phonetic alignment, speaker diarization, Electric Network Frequency (ENF) validation, and 17-point court transcripts.",
+      "body_chars": 1307,
       "reasons": [
-        "4 explicit implementation stub(s)"
+        "6 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/boiloff_calc.py",
-          "scripts/conjunction_analyzer.py",
-          "scripts/lambert_solver.py",
-          "scripts/orbital_propagator.py",
+          "scripts/bates_stamper.py",
+          "scripts/enf_extractor.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
           "scripts/purpose.py",
+          "scripts/run.py",
+          "scripts/sha256_audit.py",
+          "scripts/speaker_diarize.py",
+          "scripts/transcript_formatter.py",
+          "scripts/whisperx_align.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_aerospace_trajectory_core.py"
+          "tests/__pycache__/test_audio_forensic_core.cpython-311.pyc",
+          "tests/test_audio_forensic_core.py"
         ],
         "references": [],
         "assets": [
-          "resources/aerospace_trajectory_core_config.yaml",
-          "resources/aerospace_trajectory_core_schema.json",
-          "resources/orbital_constants.json",
-          "resources/tank_thermal_models.yaml"
+          "resources/audio_forensic_core_config.yaml",
+          "resources/audio_forensic_core_schema.json",
+          "resources/court_rules_hi_family.yaml",
+          "resources/enf_regional_db.yaml"
         ]
       },
       "stub_files": [
-        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
-        "skills/aerospace-trajectory-core/scripts/lambert_solver.py",
-        "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
-        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py"
+        "skills/audio-forensic-core/scripts/bates_stamper.py",
+        "skills/audio-forensic-core/scripts/whisperx_align.py",
+        "skills/audio-forensic-core/scripts/transcript_formatter.py",
+        "skills/audio-forensic-core/scripts/sha256_audit.py",
+        "skills/audio-forensic-core/scripts/speaker_diarize.py",
+        "skills/audio-forensic-core/scripts/enf_extractor.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/aerospace-trajectory-core/tests/test_aerospace_trajectory_core.py"
+        "skills/audio-forensic-core/tests/test_audio_forensic_core.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
-      "id": "polyglot-rosetta-core",
-      "state": "implementation_partial",
+      "id": "apex-ast-sentinel",
+      "state": "implementation_unverified",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages.",
-      "body_chars": 1199,
+      "description": "AST-level syntactic invariant validator and defect sentinel for zero-regression code generation.",
+      "body_chars": 1884,
       "reasons": [
-        "5 explicit implementation stub(s)"
+        "implementation exists without behavioral verification"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/ast_inspector.py",
-          "scripts/code_synthesizer.py",
-          "scripts/cross_compiler.py",
-          "scripts/floor_selector.py",
-          "scripts/output_contract.py",
-          "scripts/procedure.py",
-          "scripts/proof_generator.py",
-          "scripts/purpose.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_polyglot_rosetta_core.py"
+          "tests/__pycache__/test_apex_ast_sentinel.cpython-311.pyc",
+          "tests/test_apex_ast_sentinel.py"
         ],
         "references": [],
         "assets": [
-          "resources/floor_catalog.yaml",
-          "resources/invariant_spec_schema.yaml",
-          "resources/polyglot_rosetta_core_config.yaml",
-          "resources/polyglot_rosetta_core_schema.json"
+          "resources/apex-ast-sentinel_config.yaml",
+          "resources/apex-ast-sentinel_schema.json"
         ]
       },
-      "stub_files": [
-        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
-        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
-        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
-        "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
-        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py"
-      ],
+      "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
+        "skills/apex-ast-sentinel/tests/test_apex_ast_sentinel.py"
       ],
-      "real_implementation_files": [],
-      "recommended_action": "finish_domain_implementation"
+      "real_implementation_files": [
+        "skills/apex-ast-sentinel/scripts/this_skill.py"
+      ],
+      "recommended_action": "design_behavioral_verification"
     },
     {
       "id": "gmail-orchestrator",
@@ -110,15 +105,21 @@
       ],
       "package": {
         "scripts": [
-          "orchestrator.py"
+          "orchestrator.py",
+          "scripts/run.py"
         ],
-        "tests": [],
+        "tests": [
+          "tests/__pycache__/test_gmail_orchestrator.cpython-311.pyc",
+          "tests/test_gmail_orchestrator.py"
+        ],
         "references": [],
         "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
+      "structural_tests": [
+        "skills/gmail-orchestrator/tests/test_gmail_orchestrator.py"
+      ],
       "real_implementation_files": [
         "skills/gmail-orchestrator/orchestrator.py"
       ],

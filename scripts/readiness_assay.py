@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Two-pass readiness reconciliation for GlacierEQ mega-skills."""
-# reconciliation-version: 3
+# reconciliation-version: 4
 from __future__ import annotations
 import argparse, json, re
 from collections import Counter
@@ -14,7 +14,9 @@ READINESS_REGISTRY = REGISTRY / "skill-readiness.json"
 GENERIC_MARKERS = ('"epistemic_tier": "L2"', '"firewall_active": True', 'payload["status"] = "executed"')
 EXPLICIT_STUB_MARKERS = ("Status: STUB - implement per skill contract", "# TODO: Implement")
 BEHAVIOR_TODO_MARKERS = ("TODO: Add actual behavioral tests", "TODO: implement actual behavioral tests")
+STRUCTURAL_TEMPLATE_MARKERS = ("Unit Test Harness: ", "Standard: L2 Epistemic Verification")
 PRINT_SCAFFOLD_MARKERS = ("Main implementation for ", 'print(f"Executing ', "return 0")
+RECEIPT_ONLY_RUNNER_MARKERS = ("Capability Dispatcher: ", "Zero-stub POSIX Execution", '"status": "VERIFIED"')
 FALSE_L2_RECEIPT_MARKERS = ('"status": "success"', '"epistemic_tier": "L2"', '"firewall": "verified"', '"execution": "completed"')
 GENERIC_CONTRACT_MARKERS = ("Execute domain scripts", "Epistemic Tier & Verification Proofs", "Cognitive Firewall")
 SOURCE_SUFFIXES = {".py",".js",".mjs",".cjs",".ts",".tsx",".sh",".go",".rs",".jl"}
@@ -33,6 +35,7 @@ def is_generated_scaffold(text: str) -> bool:
     return (
         all(marker in text for marker in PRINT_SCAFFOLD_MARKERS)
         or all(marker in text for marker in FALSE_L2_RECEIPT_MARKERS)
+        or all(marker in text for marker in RECEIPT_ONLY_RUNNER_MARKERS)
     )
 
 def is_dispatch_adapter(text: str) -> bool:
@@ -124,7 +127,7 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
     for path in test_files:
         text = path.read_text(encoding="utf-8", errors="replace")
         rel = path.relative_to(ROOT).as_posix()
-        if any(m in text for m in BEHAVIOR_TODO_MARKERS):
+        if any(m in text for m in BEHAVIOR_TODO_MARKERS) or all(m in text for m in STRUCTURAL_TEMPLATE_MARKERS):
             structural.append(rel); continue
         assertions = len(re.findall(r"\bassert\b|self\.assert", text))
         existence_bias = text.count(".exists()") + text.count("stat().st_mode") + text.count("assertIn(")
