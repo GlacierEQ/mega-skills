@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
-"""
-Parse pipeline definition, verify step deps and edge types
-Part of pipeline-compositor skill.
-"""
-
-import sys
-import json
+"""Parse and validate a pipeline definition."""
+from __future__ import annotations
+import argparse, json, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from engine import PipelineError, canonical_sha256, load_pipeline
 
-def main():
-    """Main implementation for dag_parser.py."""
-    # TODO: Implement Parse pipeline definition, verify step deps and edge types
-    print(f"Executing dag_parser.py for pipeline-compositor")
-    print("Status: STUB - implement per skill contract")
+def main() -> int:
+    p=argparse.ArgumentParser()
+    p.add_argument("pipeline", type=Path)
+    args=p.parse_args()
+    try:
+        spec=load_pipeline(args.pipeline)
+    except (PipelineError, OSError, ValueError) as exc:
+        print(json.dumps({"status":"INVALID","error":str(exc)}, indent=2))
+        return 2
+    print(json.dumps({
+        "status":"VALID",
+        "pipeline_id":spec["id"],
+        "stages":len(spec["stages"]),
+        "artifacts":len(spec.get("artifacts",{})),
+        "spec_sha256":canonical_sha256(spec),
+    }, indent=2, sort_keys=True))
     return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__=="__main__":
+    raise SystemExit(main())
