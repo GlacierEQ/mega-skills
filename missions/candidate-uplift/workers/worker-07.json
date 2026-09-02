@@ -4,52 +4,53 @@
   "assigned": 2,
   "findings": [
     {
-      "id": "mega-skills-test-runner",
+      "id": "omni-memory-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
-      "body_chars": 2965,
+      "description": "291k-File cross-cloud vector indexing, subword n-gram TF-IDF cosine metrics, and dynamic Hebbian synaptic weight reinforcement.",
+      "body_chars": 1191,
       "reasons": [
-        "3 explicit implementation stub(s)"
+        "5 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/before_running.py",
-          "scripts/failure_diagnostic.py",
+          "scripts/cosine_engine.py",
+          "scripts/file_traverser.py",
+          "scripts/hebbian_reinforcer.py",
+          "scripts/memory_exporter.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
           "scripts/purpose.py",
-          "scripts/report_emitter.py",
-          "scripts/revision_recorder.py",
-          "scripts/run_checks.py",
-          "scripts/standard_workflow.py",
+          "scripts/run.py",
+          "scripts/vectorizer.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_skills_test_runner.py"
+          "tests/__pycache__/test_omni_memory_core.cpython-311.pyc",
+          "tests/test_omni_memory_core.py"
         ],
-        "references": [
-          "references/checks.md"
-        ],
+        "references": [],
         "assets": [
-          "resources/checks.md",
-          "resources/mega_skills_test_runner_config.yaml",
-          "resources/mega_skills_test_runner_schema.json",
-          "resources/standard_tree.md"
+          "resources/cloud_paths.yaml",
+          "resources/omni_memory_core_config.yaml",
+          "resources/omni_memory_core_schema.json",
+          "resources/vocab_params.yaml"
         ]
       },
       "stub_files": [
-        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
-        "skills/mega-skills-test-runner/scripts/report_emitter.py",
-        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
+        "skills/omni-memory-core/scripts/cosine_engine.py",
+        "skills/omni-memory-core/scripts/hebbian_reinforcer.py",
+        "skills/omni-memory-core/scripts/vectorizer.py",
+        "skills/omni-memory-core/scripts/file_traverser.py",
+        "skills/omni-memory-core/scripts/memory_exporter.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
+        "skills/omni-memory-core/tests/test_omni_memory_core.py"
       ],
-      "real_implementation_files": [
-        "skills/mega-skills-test-runner/scripts/run_checks.py"
-      ],
+      "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
     },
     {
@@ -64,15 +65,21 @@
       ],
       "package": {
         "scripts": [
-          "pipeline.py"
+          "pipeline.py",
+          "scripts/run.py"
         ],
-        "tests": [],
+        "tests": [
+          "tests/__pycache__/test_cross_app_pipeline.cpython-311.pyc",
+          "tests/test_cross_app_pipeline.py"
+        ],
         "references": [],
         "assets": []
       },
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
+      "structural_tests": [
+        "skills/cross-app-pipeline/tests/test_cross_app_pipeline.py"
+      ],
       "real_implementation_files": [
         "skills/cross-app-pipeline/pipeline.py"
       ],

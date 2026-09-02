@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+      - name: Compile every Python source on the pinned interpreter
+        run: python -m compileall -q scripts tests skills
       - name: Validate capability hierarchy
         run: python scripts/validate_hierarchy.py
       - name: Run regression tests

@@ -109,7 +109,7 @@ Run the complete local quality gate before every merge:
 python skills/mega-skills-test-runner/scripts/run_checks.py --repo .
 ```
 
-The runner executes the hierarchy validator, full regression suite, and `git diff --check` in that order. To preserve a machine-readable result outside the source tree, use:
+The runner byte-compiles `scripts/` and `tests/` on the running interpreter, then executes the hierarchy validator, full regression suite, and `git diff --check` in that order. To preserve a machine-readable result outside the source tree, use:
 
 ```bash
 python skills/mega-skills-test-runner/scripts/run_checks.py \

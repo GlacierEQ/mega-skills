@@ -11,7 +11,7 @@ def run(cmd, cwd):
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--repo",type=Path,default=Path.cwd()); ap.add_argument("--report",type=Path); a=ap.parse_args()
     repo=a.repo.resolve()
-    specs=[([sys.executable,"scripts/validate_hierarchy.py"],True),([sys.executable,"-m","unittest","discover","-s","tests","-v"],True),(["git","diff","--check"],True),(["git","status","--short","--branch"],False)]
+    specs=[([sys.executable,"-m","compileall","-q","scripts","tests"],True),([sys.executable,"scripts/validate_hierarchy.py"],True),([sys.executable,"-m","unittest","discover","-s","tests","-v"],True),(["git","diff","--check"],True),(["git","status","--short","--branch"],False)]
     records=[]; ok=True
     for cmd,required in specs:
         r=run(cmd,repo); r["required"]=required; records.append(r)
