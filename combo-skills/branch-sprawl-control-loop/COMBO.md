@@ -2,8 +2,8 @@
 id: branch-sprawl-control-loop
 display_name: Branch Sprawl Control Loop
 schema: ../../schemas/combo-skill.schema.json
-version: 0.1.0
-status: active
+version: 0.1.1
+status: candidate
 ---
 
 # Branch Sprawl Control Loop
