@@ -23,6 +23,18 @@ Do **not** use it as a blanket stale-branch deleter. Age and naming are routing 
 | 3 | `finishing-a-development-branch` | Verified completion state and healthy PR/integration evidence | Merge/PR/keep/cleanup integration decision | Development work receives an explicit closure route rather than spawning another unbound branch. |
 | 4 | `branch-lifecycle-intelligence` | Post-integration repository state | Final cleanup plan and hashed lifecycle receipt | Every deletion is re-proven immediately before mutation; divergent siblings remain preserved or routed to consolidation review. |
 
+## Dynamic control law
+
+No member may treat an earlier classification, branch-family lead, preservation decision, or cleanup candidate as permanently valid. Each handoff must reassess the current repository state and downstream impact.
+
+The loop optimizes dynamically for the best current outcome:
+
+1. preserve and harvest useful divergence,
+2. integrate stronger capabilities into the surviving system,
+3. deny destructive action when evidence or impact is uncertain,
+4. retire only work that remains redundant after fresh re-evaluation,
+5. reverse or block a prior recommendation whenever new evidence changes the result.
+
 ## Handoff contract
 
 The first lifecycle pass is an evidence map, not permission to delete. ACTIVE branches pass to `pr-babysit`; verified completion passes to `finishing-a-development-branch`; the integration result returns to `branch-lifecycle-intelligence` for a fresh post-merge classification.
