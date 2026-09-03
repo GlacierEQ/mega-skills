@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "anthropic-applied-ai-readiness",
+  "description": "Durable evidence pipeline for Anthropic Applied AI / forward-deployed career positioning.",
+  "max_parallel": 2,
+  "manifest": "missions/anthropic-applied-ai/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "compile-target",
+      "command": ["{python}", "scripts/target_role_evidence_projection.py", "--target", "missions/anthropic-applied-ai/target-role.json", "--output", "missions/anthropic-applied-ai/target-competency-map.json"],
+      "consumes": ["missions/anthropic-applied-ai/target-role.json"],
+      "produces": ["missions/anthropic-applied-ai/target-competency-map.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-target",
+      "needs": ["compile-target"],
+      "command": ["{python}", "-c", "import json; p='missions/anthropic-applied-ai/target-competency-map.json'; d=json.load(open(p)); assert len(d['competency_domains']) >= 8; print('target-contract-ok')"],
+      "consumes": ["missions/anthropic-applied-ai/target-competency-map.json"],
+      "produces": [],
+      "resume_safe": false
+    }
+  ]
+}
