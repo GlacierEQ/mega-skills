@@ -5640,28 +5640,35 @@
     },
     {
       "id": "fleet-git-harmonizer-core",
-      "display_name": "Fleet Git Harmonizer Core",
+      "display_name": "Fleet Git Harmonizer Core — Harmonious Merge Protocol",
       "ownership": "glaciereq",
       "maturity": "candidate",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "skills/fleet-git-harmonizer-core",
       "entrypoint": "skills/fleet-git-harmonizer-core/SKILL.md",
-      "purpose": "Audit branch divergence, synthesize commits into main, apply archive tags, and prune clutter.",
+      "purpose": "Preserve main as the living baseline; selectively integrate unique beneficial branch behavior, validate it on main, and retire branches only after their value is accounted for.",
       "input_contract": [
-        "Repository scope or path",
-        "Target branch (default: main)",
-        "Regression test command"
+        "Repository scope and canonical baseline (default: main)",
+        "Included branches and tags plus justified exclusions",
+        "Project validation commands and required checks",
+        "Security constraints, including known exposed paths or credentials",
+        "Approval boundary for integration, ref retirement, and history rewrites"
       ],
       "output_contract": [
-        "fleet-divergence-audit.json"
+        "harmonious-merge-audit.json"
       ],
       "local_validation": [
-        "Zero data loss verified via archive tags",
-        "Regression tests pass 100% green before merge"
+        "Every discovered branch/tag has an evidence-backed disposition",
+        "All accepted integrations pass required validation on main",
+        "Every retired ref has a preservation-or-rejection record and approval receipt",
+        "Main remains the verified canonical result",
+        "No new ref preserves known credential-bearing history"
       ],
       "does_not_own": [
-        "Multi-repo mission state",
-        "Unrelated repo mutations"
+        "Replacing, resetting, deleting, or treating main as disposable",
+        "Blind bulk merges or unapproved branch deletion",
+        "Credential rotation or unapproved force-push/history rewrite",
+        "Multi-repository mission state"
       ]
     },
     {
