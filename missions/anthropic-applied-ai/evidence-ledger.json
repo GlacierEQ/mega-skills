@@ -165,7 +165,6 @@
       "source_kind": "source_and_tests",
       "independence_group": "helix-hiring-system",
       "competencies": [
-        "customer discovery and problem decomposition",
         "evaluation, observability, and reliability",
         "ambiguous-environment execution"
       ],
@@ -189,7 +188,6 @@
       "source_kind": "source_and_tests",
       "independence_group": "helix-hiring-system",
       "competencies": [
-        "customer discovery and problem decomposition",
         "ambiguous-environment execution",
         "field leadership and technical communication"
       ],
@@ -907,22 +905,14 @@
       "weight": 1.25,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "proof_strength": 0.92,
-      "coverage_percent": 92,
-      "status": "SATISFIED",
+      "proof_strength": 0.07,
+      "coverage_percent": 7,
+      "status": "PARTIAL",
       "evidence_ids": [
-        "ev_6f53b25e7abcf6dd",
-        "ev_e5f0e22324e43cc6",
         "ev_b0748b6b15795138"
       ],
-      "verified_evidence_ids": [
-        "ev_6f53b25e7abcf6dd",
-        "ev_e5f0e22324e43cc6"
-      ],
-      "public_safe_evidence_ids": [
-        "ev_6f53b25e7abcf6dd",
-        "ev_e5f0e22324e43cc6"
-      ],
+      "verified_evidence_ids": [],
+      "public_safe_evidence_ids": [],
       "independent_groups": [
         "helix-hiring-system"
       ]
@@ -1356,6 +1346,18 @@
       "evidence_ids": []
     },
     {
+      "requirement_id": "customer_discovery",
+      "label": "Customer discovery and workflow problem decomposition",
+      "status": "PARTIAL",
+      "hard_gate": true,
+      "proof_strength": 0.07,
+      "minimum_strength": 0.58,
+      "priority": 0.9563,
+      "evidence_ids": [
+        "ev_b0748b6b15795138"
+      ]
+    },
+    {
       "requirement_id": "deployment_adoption",
       "label": "Customer deployment support, adoption, and lifecycle expansion",
       "status": "PARTIAL",
@@ -1374,9 +1376,9 @@
     "verified_records": 20,
     "public_safe_records": 19,
     "requirements_total": 12,
-    "requirements_satisfied": 10,
-    "hard_gates_open": 2,
-    "evidence_coverage_score": 80.4
+    "requirements_satisfied": 9,
+    "hard_gates_open": 3,
+    "evidence_coverage_score": 72.4
   },
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit."
 }
