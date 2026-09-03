@@ -24,6 +24,30 @@
       "freshness_state": "FRESH"
     },
     {
+      "source_id": "anthropic-safety-monitor",
+      "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+      "url": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "role": "agent safety and approval boundary",
+      "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
+      "state": "VERIFIED",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "public_safe": true,
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
+      "url": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "role": "agent orchestration",
+      "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
+      "state": "SUPPORTED",
+      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    },
+    {
       "source_id": "spacex-autonomy",
       "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
       "url": "https://github.com/GlacierEQ/spacex-autonomy",
@@ -95,52 +119,76 @@
   ],
   "proof_points": [
     {
-      "evidence_id": "ev_64a0b788",
-      "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
-      "source_id": "job-application",
-      "proof_strength": 0.72
+      "evidence_id": "ev_6361aeb477c5bcfb",
+      "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
+      "source_id": "anthropic-safety-monitor",
+      "proof_strength": 1
     },
     {
-      "evidence_id": "ev_a86272a5",
+      "evidence_id": "ev_a2c1fa1d957b76e1",
+      "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
+      "source_id": "anthropic-safety-monitor",
+      "proof_strength": 1
+    },
+    {
+      "evidence_id": "ev_3d5ecbd0ba619288",
       "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
       "source_id": "job-application",
       "proof_strength": 0.72
     },
     {
-      "evidence_id": "ev_538a7379",
-      "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
-      "source_id": "spacex-autonomy",
+      "evidence_id": "ev_ba8f3d3f576ca3af",
+      "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
+      "source_id": "job-application",
       "proof_strength": 0.72
     },
     {
-      "evidence_id": "ev_8f52e5bb",
+      "evidence_id": "ev_06770a0211a04cf6",
       "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
       "source_id": "spacex-autonomy",
       "proof_strength": 0.72
     },
     {
-      "evidence_id": "ev_9885b7d7",
-      "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
-      "source_id": "tower-of-babel",
+      "evidence_id": "ev_702d2f4f31493281",
+      "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
+      "source_id": "spacex-autonomy",
       "proof_strength": 0.72
     },
     {
-      "evidence_id": "ev_3fab6fe7",
+      "evidence_id": "ev_323cd33f76847367",
       "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
       "source_id": "tower-of-babel",
       "proof_strength": 0.72
     },
     {
-      "evidence_id": "ev_8c1cb019",
+      "evidence_id": "ev_5ebdbcecbf04de24",
+      "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
+      "source_id": "tower-of-babel",
+      "proof_strength": 0.72
+    },
+    {
+      "evidence_id": "ev_ee0d59994bba6d3f",
+      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+      "source_id": "anthropic-agent-coordinator",
+      "proof_strength": 0.6624
+    },
+    {
+      "evidence_id": "ev_5169c37850dc70b1",
+      "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
+      "source_id": "xai-colossus-cooling",
+      "proof_strength": 0.576
+    },
+    {
+      "evidence_id": "ev_65b623eed3905e02",
       "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
       "source_id": "xai-colossus-cooling",
       "proof_strength": 0.576
     },
     {
-      "evidence_id": "ev_51f06c4a",
-      "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
-      "source_id": "xai-colossus-cooling",
-      "proof_strength": 0.576
+      "evidence_id": "ev_afff26aa032bf88c",
+      "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
+      "source_id": "anthropic-agent-coordinator",
+      "proof_strength": 0.5299
     }
   ],
   "metrics": [
@@ -173,14 +221,48 @@
       "state": "VERIFIED",
       "source_kind": "readme_verified",
       "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_test_executions",
+      "value": 153,
+      "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_failures",
+      "value": 0,
+      "scope": "failures/errors/skips reported by the documented verification matrix",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
     }
   ],
   "gap_queue": [
+    {
+      "requirement_id": "production_llm_delivery",
+      "label": "Production LLM and agent application delivery",
+      "status": "MISSING",
+      "priority": 1.131,
+      "hard_gate": true
+    },
     {
       "requirement_id": "customer_discovery",
       "label": "Customer discovery and workflow problem decomposition",
       "status": "PARTIAL",
       "priority": 0.9563,
+      "hard_gate": true
+    },
+    {
+      "requirement_id": "deployment_adoption",
+      "label": "Customer deployment support, adoption, and lifecycle expansion",
+      "status": "PARTIAL",
+      "priority": 0.7763,
       "hard_gate": true
     },
     {
@@ -191,7 +273,7 @@
       "hard_gate": true
     }
   ],
-  "evidence_coverage_score": 79.5,
+  "evidence_coverage_score": 65.2,
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit.",
   "projection_rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
 }
