@@ -14,6 +14,7 @@ from typing import Any
 
 SCHEMA = "glaciereq.branch-lifecycle-plan.v1"
 INVENTORY_SCHEMA = "glaciereq.branch-inventory.v1"
+ADMISSION_SCHEMA = "glaciereq.branch-admission-request.v1"
 DEFAULT_POLICY = Path(__file__).resolve().parents[1] / "resources" / "policy.json"
 
 def canonical_json(value: Any) -> str:
@@ -261,6 +262,218 @@ def build_plan(inventory: dict[str, Any], policy: dict[str, Any]) -> dict[str, A
     plan_core["plan_sha256"] = sha256(plan_core)
     return plan_core
 
+
+def validate_admission_request(payload: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if payload.get("schema") != ADMISSION_SCHEMA:
+        errors.append(f"schema must be {ADMISSION_SCHEMA}")
+    for field in ("requested_branch", "workstream_id"):
+        value = payload.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{field} is required")
+    continuation = payload.get("continuation_of")
+    if continuation is not None and (not isinstance(continuation, str) or not continuation.strip()):
+        errors.append("continuation_of must be a non-empty string or null")
+    bindings = payload.get("bindings", [])
+    if not isinstance(bindings, list):
+        errors.append("bindings must be an array")
+    else:
+        for index, row in enumerate(bindings):
+            if not isinstance(row, dict):
+                errors.append(f"bindings[{index}] must be an object")
+                continue
+            if not isinstance(row.get("workstream_id"), str) or not row["workstream_id"].strip():
+                errors.append(f"bindings[{index}].workstream_id is required")
+            if not isinstance(row.get("branch"), str) or not row["branch"].strip():
+                errors.append(f"bindings[{index}].branch is required")
+    return errors
+
+
+def build_admission_decision(
+    lifecycle_plan: dict[str, Any],
+    request: dict[str, Any],
+    policy: dict[str, Any],
+) -> dict[str, Any]:
+    errors = validate_admission_request(request)
+    if errors:
+        raise ValueError("; ".join(errors))
+    if lifecycle_plan.get("schema") != SCHEMA:
+        raise ValueError(f"lifecycle plan schema must be {SCHEMA}")
+
+    rows = lifecycle_plan.get("branches")
+    if not isinstance(rows, list):
+        raise ValueError("lifecycle plan branches must be an array")
+    by_branch = {
+        row.get("branch"): row
+        for row in rows
+        if isinstance(row, dict) and isinstance(row.get("branch"), str)
+    }
+
+    requested = request["requested_branch"].strip()
+    workstream_id = request["workstream_id"].strip()
+    continuation = request.get("continuation_of")
+    continuation = continuation.strip() if isinstance(continuation, str) else None
+    bindings = [
+        row
+        for row in request.get("bindings", [])
+        if row.get("workstream_id") == workstream_id and row.get("branch") in by_branch
+    ]
+
+    live_states = {"ACTIVE", "DIVERGENT_PRESERVE", "STALE_REVIEW"}
+    closed_states = {"MERGED_REDUNDANT", "REACHABLE_REDUNDANT"}
+    blocked_states = {"PROTECTED", "UNKNOWN_BLOCKED"}
+
+    live_bound = [
+        row["branch"]
+        for row in bindings
+        if by_branch[row["branch"]].get("state") in live_states
+    ]
+    closed_bound = [
+        row["branch"]
+        for row in bindings
+        if by_branch[row["branch"]].get("state") in closed_states
+    ]
+
+    def emit(
+        action: str,
+        *,
+        allow_create: bool,
+        target_branch: str | None,
+        reason: str,
+        evidence: dict[str, Any],
+    ) -> dict[str, Any]:
+        result = {
+            "schema": "glaciereq.branch-admission-decision.v1",
+            "repository": lifecycle_plan.get("repository"),
+            "workstream_id": workstream_id,
+            "requested_branch": requested,
+            "action": action,
+            "allow_create": allow_create,
+            "target_branch": target_branch,
+            "reason": reason,
+            "evidence": evidence,
+        }
+        result["decision_sha256"] = sha256(result)
+        return result
+
+    if len(live_bound) > 1:
+        return emit(
+            "REVIEW_CONSOLIDATE",
+            allow_create=False,
+            target_branch=None,
+            reason="multiple live branches are explicitly bound to the same workstream",
+            evidence={
+                "explicit_live_bindings": sorted(live_bound),
+                "explicit_closed_bindings": sorted(closed_bound),
+            },
+        )
+
+    if continuation:
+        row = by_branch.get(continuation)
+        if row is None:
+            return emit(
+                "BLOCK",
+                allow_create=False,
+                target_branch=None,
+                reason="explicit continuation branch is not present in lifecycle evidence",
+                evidence={"continuation_of": continuation},
+            )
+        state = row.get("state")
+        if state in live_states:
+            if live_bound and live_bound[0] != continuation:
+                return emit(
+                    "REVIEW_CONSOLIDATE",
+                    allow_create=False,
+                    target_branch=None,
+                    reason="continuation request conflicts with the explicit live workstream binding",
+                    evidence={
+                        "continuation_of": continuation,
+                        "explicit_live_binding": live_bound[0],
+                    },
+                )
+            return emit(
+                "REUSE_EXISTING",
+                allow_create=False,
+                target_branch=continuation,
+                reason="explicit continuation points to a live branch in the same workstream",
+                evidence={"continuation_state": state},
+            )
+        if state in closed_states:
+            return emit(
+                "CREATE_NEW",
+                allow_create=True,
+                target_branch=requested,
+                reason="explicit continuation branch lifecycle is already closed",
+                evidence={"continuation_of": continuation, "continuation_state": state},
+            )
+        if state in blocked_states:
+            return emit(
+                "BLOCK",
+                allow_create=False,
+                target_branch=None,
+                reason="explicit continuation branch is protected or evidence-blocked",
+                evidence={"continuation_of": continuation, "continuation_state": state},
+            )
+
+    if len(live_bound) == 1:
+        target = live_bound[0]
+        return emit(
+            "REUSE_EXISTING",
+            allow_create=False,
+            target_branch=target,
+            reason="exact workstream binding already has one live branch",
+            evidence={
+                "explicit_live_binding": target,
+                "state": by_branch[target].get("state"),
+            },
+        )
+
+    requested_family = family_key(requested, policy)
+    family_collisions = sorted(
+        row["branch"]
+        for row in rows
+        if isinstance(row, dict)
+        and row.get("branch") != requested
+        and row.get("state") in live_states
+        and family_key(str(row.get("branch")), policy) == requested_family
+    )
+    if family_collisions:
+        return emit(
+            "CREATE_NEW_WITH_FAMILY_WARNING",
+            allow_create=True,
+            target_branch=requested,
+            reason="similar live branch family exists, but naming alone is not semantic-equivalence proof",
+            evidence={
+                "family": requested_family,
+                "similar_live_branches": family_collisions,
+            },
+        )
+
+    return emit(
+        "CREATE_NEW",
+        allow_create=True,
+        target_branch=requested,
+        reason="no explicit live workstream binding or proven continuation exists",
+        evidence={
+            "explicit_closed_bindings": sorted(closed_bound),
+            "family": requested_family,
+        },
+    )
+
+
+def cmd_admit(args: argparse.Namespace) -> int:
+    lifecycle_plan = load_json(args.plan)
+    request = load_json(args.request)
+    policy = load_policy(args.policy)
+    decision_payload = build_admission_decision(lifecycle_plan, request, policy)
+    rendered = json.dumps(decision_payload, indent=2, sort_keys=True) + "\n"
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(rendered, encoding="utf-8")
+    else:
+        print(rendered, end="")
+    return 0
+
 def cmd_validate(args: argparse.Namespace) -> int:
     payload = load_json(args.snapshot)
     errors = validate_inventory(payload)
@@ -293,6 +506,12 @@ def parser() -> argparse.ArgumentParser:
     plan.add_argument("--policy", type=Path)
     plan.add_argument("--output", type=Path)
     plan.set_defaults(func=cmd_plan)
+    admit = sub.add_parser("admit")
+    admit.add_argument("plan", type=Path)
+    admit.add_argument("request", type=Path)
+    admit.add_argument("--policy", type=Path)
+    admit.add_argument("--output", type=Path)
+    admit.set_defaults(func=cmd_admit)
     return root
 
 def main() -> int:
