@@ -7,7 +7,7 @@ description: "Evidence-first Git branch lifecycle intelligence for collapsing br
 
 ## Mission
 
-Turn branch sprawl into a compact, inspectable lifecycle without sacrificing useful work.
+Turn branch sprawl into a compact, inspectable lifecycle without sacrificing useful work, and prevent unnecessary new refs through explicit workstream admission.
 
 The governing rule is:
 
@@ -124,12 +124,40 @@ Always emit a durable receipt containing:
 
 No cleanup run is "successful" merely because branches disappeared. Success means the receipt proves what was deleted and why.
 
+## Branch admission
+
+Use explicit workstream identity before creating a new branch.
+
+Admission decisions:
+
+- `REUSE_EXISTING` — one exact live workstream binding exists; update it instead of minting another ref.
+- `REVIEW_CONSOLIDATE` — multiple live branches are explicitly bound to the same workstream; stop branch creation and consolidate.
+- `CREATE_NEW` — no live workstream binding exists, or an explicitly continued lifecycle is already closed.
+- `CREATE_NEW_WITH_FAMILY_WARNING` — a similar branch family exists but naming alone cannot prove equivalence.
+- `BLOCK` — explicit continuation points to a protected, missing, or evidence-blocked ref.
+
+See `references/admission-protocol.md` and `resources/branch-admission.schema.json`.
+
+## Compounded lifecycle
+
+For repository-wide missions, route through the active Combo:
+
+`combo-skills/branch-sprawl-control-loop/COMBO.md`
+
+It composes:
+
+1. `branch-lifecycle-intelligence` — inventory, classification, redundancy proof, families;
+2. `pr-babysit` — protect and complete live PR work;
+3. `finishing-a-development-branch` — choose integration closure;
+4. `branch-lifecycle-intelligence` again — refresh evidence and clean only post-integration residue.
+
 ## Commands
 
 ```bash
 python skills/branch-lifecycle-intelligence/skill.py plan snapshot.json
 python skills/branch-lifecycle-intelligence/skill.py plan snapshot.json --policy resources/policy.json --output plan.json
 python skills/branch-lifecycle-intelligence/skill.py validate snapshot.json
+python skills/branch-lifecycle-intelligence/skill.py admit plan.json branch-admission-request.json --output admission-decision.json
 ```
 
 ## Reusable workflow
@@ -163,7 +191,9 @@ Recommended operating cadence:
 |---|---|
 | `resources/policy.json` | Default protection, confidence, and staleness policy. |
 | `resources/branch-inventory.schema.json` | Normalized inventory contract. |
+| `resources/branch-admission.schema.json` | Explicit workstream admission request contract. |
 | `references/decision-model.md` | Classification and consolidation rationale. |
+| `references/admission-protocol.md` | Branch creation/reuse/consolidation decision law. |
 | `templates/caller-workflow.yml` | Thin target-repository caller. |
 | `scripts/branch_lifecycle.py` | Deterministic classifier and planner. |
 | `tests/test_branch_lifecycle.py` | Adversarial lifecycle tests. |
