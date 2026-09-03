@@ -112,7 +112,11 @@
         "{python}",
         "-m",
         "unittest",
-        "tests.test_career_evidence_backbone",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_career_evidence_backbone.py",
         "-v"
       ],
       "consumes": [
