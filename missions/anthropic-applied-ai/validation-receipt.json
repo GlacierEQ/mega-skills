@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "validation_scope": "isolated local harness before repository persistence",
+  "pipeline_id": "anthropic-applied-ai-readiness",
+  "pipeline_spec_sha256": "d0f6a5d079d1edd7fb36561925de423e15a8f5435448d912e9dff7dc9d4332ab",
+  "behavioral_tests": {
+    "cycle_rejection": "PASS",
+    "deterministic_topological_layers": "PASS",
+    "subprocess_execution": "PASS",
+    "checkpoint_persistence": "PASS",
+    "resume_validation": "PASS"
+  },
+  "pipeline_execution": {
+    "status": "COMPLETE",
+    "stages": 2,
+    "succeeded": 2,
+    "failed": 0,
+    "terminal_stdout": "target-contract-ok"
+  },
+  "ci_status": "NOT CLAIMED — GitHub Actions runner assignment was failing independently of this pipeline at validation time"
+}
