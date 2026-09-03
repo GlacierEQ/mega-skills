@@ -56,6 +56,52 @@
       "public_safe": true
     },
     {
+      "evidence_id": "ev_1730e5c164f12f8f",
+      "claim": "The runtime preserved unavailable provider routes as explicit failures and counted two rendering modes from one provider as one provider success rather than fabricating multi-provider consensus.",
+      "source": "https://github.com/GlacierEQ/Pro-DOCTOR-STRANGE",
+      "source_id": "doctor-strange-receipt-zero",
+      "artifact": "apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.json@80a5773fad72ca4d3f5ab28482902fbf57faaf0e; apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.source.txt@0d169a1207558de2269e1da855874bda1f61e8ab",
+      "verification": "Receipt replayed 2026-09-02 HST against current main: bounded source SHA-256 matched bfe45e3e3bccc89ce6a860d2312a84343abb397ca3f8f04f10dc971d62e3e13e; technical output SHA-256 matched 1276b12310a82f5f9e713b16d2f1d2d48908f6c16a93065fdedf21824813ca16; executive output SHA-256 matched a7711c5c2bc861c92a4aeffbb1f3fc9413d0d85e718e62096c58f70c6ded96a9; character counts matched. Receipt records one genuine external model-backed provider success through henry-ships-sparkforge.smart_summarize, queued_capability authorization, correlation ID aaabf92b-e9db-41b8-8b42-1508c90883f9, 16035 ms gateway latency, and explicitly no fabricated multi-provider consensus.",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "independence_group": "doctor-strange-sparkforge-runtime",
+      "competencies": [
+        "production LLM application delivery",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 1,
+      "freshness_state": "FRESH",
+      "age_days": 29,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
+      "evidence_id": "ev_a29a900a6c38a832",
+      "claim": "Delivered a genuine external model-backed evaluation path through a queued capability and preserved the execution as an immutable receipt with provider identity, correlation ID, latency, source hash, response hashes, raw outputs, and explicit truth boundaries.",
+      "source": "https://github.com/GlacierEQ/Pro-DOCTOR-STRANGE",
+      "source_id": "doctor-strange-receipt-zero",
+      "artifact": "apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.json@80a5773fad72ca4d3f5ab28482902fbf57faaf0e; apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.source.txt@0d169a1207558de2269e1da855874bda1f61e8ab",
+      "verification": "Receipt replayed 2026-09-02 HST against current main: bounded source SHA-256 matched bfe45e3e3bccc89ce6a860d2312a84343abb397ca3f8f04f10dc971d62e3e13e; technical output SHA-256 matched 1276b12310a82f5f9e713b16d2f1d2d48908f6c16a93065fdedf21824813ca16; executive output SHA-256 matched a7711c5c2bc861c92a4aeffbb1f3fc9413d0d85e718e62096c58f70c6ded96a9; character counts matched. Receipt records one genuine external model-backed provider success through henry-ships-sparkforge.smart_summarize, queued_capability authorization, correlation ID aaabf92b-e9db-41b8-8b42-1508c90883f9, 16035 ms gateway latency, and explicitly no fabricated multi-provider consensus.",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "independence_group": "doctor-strange-sparkforge-runtime",
+      "competencies": [
+        "production LLM application delivery",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 1,
+      "freshness_state": "FRESH",
+      "age_days": 29,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
       "evidence_id": "ev_13cc9d27b676bb75",
       "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
       "source": "https://github.com/GlacierEQ/computer-user",
@@ -124,7 +170,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 5,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -148,7 +194,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 5,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -218,7 +264,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 1,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -242,7 +288,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 1,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -580,6 +626,29 @@
       "gap": "Narrative/candidate-routing evidence does not establish completed external customer engagements.",
       "next_strengthening_action": "Retrieve independent deployment/customer evidence or build a public case study with explicit operator/customer context and outcomes.",
       "public_safe": false
+    },
+    {
+      "evidence_id": "ev_d076716a2ba94194",
+      "claim": "Built and deployed a zero-secret edge relay that obtains request-scoped Vercel OIDC and reaches the AI Gateway; the model invocation is currently blocked by Vercel customer verification, so no completion is claimed from this path.",
+      "source": "https://github.com/GlacierEQ/chatgpt-vercel",
+      "source_id": "chatgpt-vercel-ai-gateway-blocker",
+      "artifact": "production deployment dpl_F39gZLpiFvg7AMknedYLkbSSPyk7 @ dc7027f359439e4d434efd56a1011b2cc3f5346e; stable runtime commit b680e98c34142b5a6c02d1b1bc5a421e28705a30",
+      "verification": "Production deployment built frozen and reached READY. Live /api/health returned ok=true, route=vercel-ai-gateway, request_scoped_oidc=true with no OpenAI or AI Gateway API key. A gated real completion attempt reached Vercel AI Gateway but returned HTTP 403 customer_verification_required because the Vercel team has no valid credit card on file. No model completion is claimed. Temporary proof endpoint was removed immediately after the receipt.",
+      "state": "BLOCKED",
+      "source_kind": "runtime_receipt",
+      "independence_group": "chatgpt-vercel-ai-gateway",
+      "competencies": [
+        "production LLM application delivery",
+        "enterprise integration and security"
+      ],
+      "hiring_signal": 3,
+      "proof_strength": 0,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "AI Gateway returned 403 customer_verification_required before model execution.",
+      "next_strengthening_action": "Use an authorized provider path or satisfy Vercel customer verification, then rerun and preserve a successful completion receipt.",
+      "public_safe": false
     }
   ],
   "metrics": [
@@ -778,6 +847,30 @@
       "public_safe": true,
       "source_kind": "source_and_tests",
       "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "doctor-strange-receipt-zero",
+      "name": "Doctor Strange Convergence — Receipt-Backed External Model Execution",
+      "url": "https://github.com/GlacierEQ/Pro-DOCTOR-STRANGE",
+      "role": "production LLM runtime evidence",
+      "summary": "Immutable runtime receipt for a genuine external model-backed evaluation with source/output hashes and explicit failure/consensus boundaries.",
+      "state": "VERIFIED",
+      "artifact": "apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.json@80a5773fad72ca4d3f5ab28482902fbf57faaf0e; apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.source.txt@0d169a1207558de2269e1da855874bda1f61e8ab",
+      "public_safe": false,
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "chatgpt-vercel-ai-gateway-blocker",
+      "name": "chatgpt-vercel — Zero-Secret AI Gateway Relay",
+      "url": "https://github.com/GlacierEQ/chatgpt-vercel",
+      "role": "blocked production LLM path",
+      "summary": "Real edge relay with request-scoped Vercel OIDC; inference currently blocked at Vercel customer verification.",
+      "state": "BLOCKED",
+      "artifact": "production deployment dpl_F39gZLpiFvg7AMknedYLkbSSPyk7 @ dc7027f359439e4d434efd56a1011b2cc3f5346e; stable runtime commit b680e98c34142b5a6c02d1b1bc5a421e28705a30",
+      "public_safe": false,
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
     }
   ],
   "source_health": [
@@ -884,7 +977,7 @@
       "source_id": "glaciereq-mcp-stack",
       "independence_group": "glaciereq-mcp-stack",
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 5,
       "freshness_factor": 1,
       "state": "VERIFIED",
       "source_kind": "source_and_tests"
@@ -893,10 +986,28 @@
       "source_id": "microsoft-identity-zero-trust",
       "independence_group": "microsoft-identity-zero-trust",
       "freshness_state": "FRESH",
-      "age_days": 0,
+      "age_days": 1,
       "freshness_factor": 1,
       "state": "VERIFIED",
       "source_kind": "source_and_tests"
+    },
+    {
+      "source_id": "doctor-strange-receipt-zero",
+      "independence_group": "doctor-strange-sparkforge-runtime",
+      "freshness_state": "FRESH",
+      "age_days": 29,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt"
+    },
+    {
+      "source_id": "chatgpt-vercel-ai-gateway-blocker",
+      "independence_group": "chatgpt-vercel-ai-gateway",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "BLOCKED",
+      "source_kind": "runtime_receipt"
     }
   ],
   "requirements": {
@@ -1037,6 +1148,7 @@
       "evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_1730e5c164f12f8f",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
@@ -1050,11 +1162,13 @@
         "ev_daad683d6ffdf3a4",
         "ev_d7ccc5b0c5f93be7",
         "ev_5169c37850dc70b1",
-        "ev_80e6d1870a57872e"
+        "ev_80e6d1870a57872e",
+        "ev_d076716a2ba94194"
       ],
       "verified_evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_1730e5c164f12f8f",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
@@ -1085,7 +1199,9 @@
       "independent_groups": [
         "anthropic-agent-coordinator",
         "anthropic-safety-monitor",
+        "chatgpt-vercel-ai-gateway",
         "computer-user",
+        "doctor-strange-sparkforge-runtime",
         "glaciereq-mcp-stack",
         "helix-hiring-system",
         "mega-skills",
@@ -1106,6 +1222,7 @@
       "evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_a29a900a6c38a832",
         "ev_21b7e54fc3edb92f",
         "ev_468f0323d353e27e",
         "ev_6f53b25e7abcf6dd",
@@ -1121,6 +1238,7 @@
       "verified_evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_a29a900a6c38a832",
         "ev_21b7e54fc3edb92f",
         "ev_468f0323d353e27e",
         "ev_6f53b25e7abcf6dd",
@@ -1149,6 +1267,7 @@
         "anthropic-agent-coordinator",
         "anthropic-safety-monitor",
         "computer-user",
+        "doctor-strange-sparkforge-runtime",
         "glaciereq-mcp-stack",
         "helix-hiring-system",
         "mega-skills",
@@ -1163,13 +1282,23 @@
       "weight": 1.3,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "proof_strength": 0,
-      "coverage_percent": 0,
-      "status": "MISSING",
-      "evidence_ids": [],
-      "verified_evidence_ids": [],
+      "proof_strength": 1,
+      "coverage_percent": 100,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_1730e5c164f12f8f",
+        "ev_a29a900a6c38a832",
+        "ev_d076716a2ba94194"
+      ],
+      "verified_evidence_ids": [
+        "ev_1730e5c164f12f8f",
+        "ev_a29a900a6c38a832"
+      ],
       "public_safe_evidence_ids": [],
-      "independent_groups": []
+      "independent_groups": [
+        "chatgpt-vercel-ai-gateway",
+        "doctor-strange-sparkforge-runtime"
+      ]
     },
     "deployment_adoption": {
       "label": "Customer deployment support, adoption, and lifecycle expansion",
@@ -1280,6 +1409,7 @@
       "evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_1730e5c164f12f8f",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
         "ev_19a92b5a84973875",
@@ -1296,6 +1426,7 @@
       "verified_evidence_ids": [
         "ev_2683a44bc479221a",
         "ev_6913037c125fd85e",
+        "ev_1730e5c164f12f8f",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
         "ev_19a92b5a84973875",
@@ -1324,6 +1455,7 @@
         "anthropic-agent-coordinator",
         "anthropic-safety-monitor",
         "computer-user",
+        "doctor-strange-sparkforge-runtime",
         "glaciereq-mcp-stack",
         "helix-hiring-system",
         "mega-skills",
@@ -1335,16 +1467,6 @@
     }
   },
   "gap_queue": [
-    {
-      "requirement_id": "production_llm_delivery",
-      "label": "Production LLM and agent application delivery",
-      "status": "MISSING",
-      "hard_gate": true,
-      "proof_strength": 0,
-      "minimum_strength": 0.58,
-      "priority": 1.131,
-      "evidence_ids": []
-    },
     {
       "requirement_id": "customer_discovery",
       "label": "Customer discovery and workflow problem decomposition",
@@ -1371,14 +1493,14 @@
     }
   ],
   "summary": {
-    "sources": 13,
-    "records": 24,
-    "verified_records": 20,
+    "sources": 15,
+    "records": 27,
+    "verified_records": 22,
     "public_safe_records": 19,
     "requirements_total": 12,
-    "requirements_satisfied": 9,
-    "hard_gates_open": 3,
-    "evidence_coverage_score": 72.4
+    "requirements_satisfied": 10,
+    "hard_gates_open": 2,
+    "evidence_coverage_score": 82.2
   },
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit."
 }
