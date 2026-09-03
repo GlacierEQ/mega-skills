@@ -168,8 +168,19 @@ jobs:
               return value || name.toLowerCase();
             }
 
+            function canonicalize(value) {
+              if (Array.isArray(value)) return value.map(canonicalize);
+              if (value && typeof value === "object") {
+                return Object.keys(value).sort().reduce((out, key) => {
+                  out[key] = canonicalize(value[key]);
+                  return out;
+                }, {});
+              }
+              return value;
+            }
+
             function digest(value) {
-              return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
+              return crypto.createHash("sha256").update(JSON.stringify(canonicalize(value))).digest("hex");
             }
 
             async function paginate(method, params) {
@@ -221,13 +232,15 @@ jobs:
                 let changedFiles = [];
                 const branchPulls = pullsByBranch.get(name) || [];
                 const hasOpenPr = branchPulls.some(pr => pr.state === "open");
-                const hasMergedPr = branchPulls.some(pr => Boolean(pr.merged_at));
+                const hasMergedCurrentHeadPr = branchPulls.some(
+                  pr => Boolean(pr.merged_at) && pr.head?.sha === branch.commit.sha
+                );
 
                 if (name === defaultBranch) {
                   aheadBy = 0;
                   behindBy = 0;
                   compareStatus = "identical";
-                } else if (!hasOpenPr && !hasMergedPr) {
+                } else if (!hasOpenPr && !hasMergedCurrentHeadPr) {
                   try {
                     const comparison = await github.rest.repos.compareCommitsWithBasehead({
                       owner,
@@ -266,7 +279,12 @@ jobs:
                   behind_by: behindBy,
                   compare_status: compareStatus,
                   open_prs: branchPulls.filter(pr => pr.state === "open").map(pr => ({ number: pr.number, url: pr.html_url })),
-                  merged_prs: branchPulls.filter(pr => Boolean(pr.merged_at)).map(pr => ({ number: pr.number, merged_at: pr.merged_at, url: pr.html_url })),
+                  merged_prs: branchPulls.filter(pr => Boolean(pr.merged_at)).map(pr => ({
+                    number: pr.number,
+                    merged_at: pr.merged_at,
+                    head_sha: pr.head?.sha || null,
+                    url: pr.html_url,
+                  })),
                   closed_unmerged_prs: branchPulls.filter(pr => pr.state === "closed" && !pr.merged_at).map(pr => ({ number: pr.number, closed_at: pr.closed_at, url: pr.html_url })),
                   changed_files: changedFiles,
                   evidence_errors: evidenceErrors,
@@ -289,10 +307,12 @@ jobs:
                 branch.protected ||
                 protectedByPattern(branch.name);
               const age = ageDays(branch.head_committed_at);
+              const mergedCurrentHeadPrs = branch.merged_prs.filter(pr => pr.head_sha === branch.sha);
               const evidence = {
                 protected: isProtected,
                 open_pr_count: branch.open_prs.length,
                 merged_pr_count: branch.merged_prs.length,
+                merged_current_head_pr_count: mergedCurrentHeadPrs.length,
                 closed_unmerged_pr_count: branch.closed_unmerged_prs.length,
                 ahead_by: branch.ahead_by,
                 behind_by: branch.behind_by,
@@ -314,7 +334,7 @@ jobs:
               if (isProtected) return result("PROTECTED", "KEEP", 0, "reserved or protected branch");
               if (branch.open_prs.length) return result("ACTIVE", "KEEP", 0, "open pull request proves active review");
               if (branch.evidence_errors.length) return result("UNKNOWN_BLOCKED", "BLOCK", 0, "incomplete evidence fails closed");
-              if (branch.merged_prs.length) return result("MERGED_REDUNDANT", "DELETE", 100, "merged pull request proves lifecycle completion");
+              if (mergedCurrentHeadPrs.length) return result("MERGED_REDUNDANT", "DELETE", 100, "current branch head exactly matches a merged pull-request head");
               if (branch.ahead_by === 0) return result("REACHABLE_REDUNDANT", "DELETE", 98, "branch contributes zero commits ahead of default");
               if (Number.isInteger(branch.ahead_by) && branch.ahead_by > 0) {
                 if (age !== null && age >= staleDays) {
@@ -462,14 +482,16 @@ jobs:
                   }
 
                   if (item.state === "MERGED_REDUNDANT") {
-                    const mergedPr = (pullsByBranch.get(item.branch) || []).find(pr => Boolean(pr.merged_at));
+                    const mergedPr = (pullsByBranch.get(item.branch) || []).find(
+                      pr => Boolean(pr.merged_at) && pr.head?.sha === item.sha
+                    );
                     if (!mergedPr) {
                       executionBlocked.push({ branch: item.branch, reason: "merged_pr_evidence_missing_at_execution" });
                       continue;
                     }
                     const livePr = await github.rest.pulls.get({ owner, repo, pull_number: mergedPr.number });
-                    if (!livePr.data.merged_at) {
-                      executionBlocked.push({ branch: item.branch, reason: "merged_pr_no_longer_verified" });
+                    if (!livePr.data.merged_at || livePr.data.head?.sha !== item.sha) {
+                      executionBlocked.push({ branch: item.branch, reason: "merged_pr_current_head_no_longer_verified" });
                       continue;
                     }
                   } else if (item.state === "REACHABLE_REDUNDANT") {
@@ -505,6 +527,9 @@ jobs:
               ? await paginate(github.rest.repos.listBranches, { owner, repo })
               : allBranches;
 
+            const actualDeletedCount = deleted.filter(row => !row.already_absent).length;
+            const alreadyAbsentCount = deleted.filter(row => row.already_absent).length;
+
             const receipt = {
               schema: "glaciereq.branch-lifecycle-receipt.v1",
               repository: fullName,
@@ -518,7 +543,9 @@ jobs:
               after_branch_count: afterBranches.length,
               delete_budget: maxDeletes,
               delete_candidate_count: deleteCandidates.length,
-              deleted_count: deleted.length,
+              deleted_count: actualDeletedCount,
+              already_absent_count: alreadyAbsentCount,
+              resolved_cleanup_count: deleted.length,
               deferred_delete_candidates: deferredDeleteCandidates,
               plan_sha256: planCore.plan_sha256,
               inventory_sha256: planCore.inventory_sha256,
@@ -558,7 +585,9 @@ jobs:
                 ["Inspected branches", String(branches.length)],
                 ["After branches", String(afterBranches.length)],
                 ["Delete candidates", String(deleteCandidates.length)],
-                ["Deleted", String(deleted.length)],
+                ["Deleted by this run", String(actualDeletedCount)],
+                ["Already absent", String(alreadyAbsentCount)],
+                ["Resolved cleanup refs", String(deleted.length)],
                 ["Deferred by delete budget", String(deferredDeleteCandidates.length)],
                 ["Preserved divergent/active", String(receipt.preserved_divergent.length)],
                 ["Blocked", String(receipt.blocked.length + executionBlocked.length)],
