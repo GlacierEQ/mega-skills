@@ -1,21 +1,45 @@
 {
   "schema_version": 1,
-  "validation_scope": "isolated local harness before repository persistence",
   "pipeline_id": "anthropic-applied-ai-readiness",
-  "pipeline_spec_sha256": "d0f6a5d079d1edd7fb36561925de423e15a8f5435448d912e9dff7dc9d4332ab",
-  "behavioral_tests": {
-    "cycle_rejection": "PASS",
-    "deterministic_topological_layers": "PASS",
-    "subprocess_execution": "PASS",
-    "checkpoint_persistence": "PASS",
-    "resume_validation": "PASS"
+  "compositor_validation": {
+    "scope": "isolated local harness before repository persistence",
+    "behavioral_tests": {
+      "cycle_rejection": "PASS",
+      "deterministic_topological_layers": "PASS",
+      "subprocess_execution": "PASS",
+      "checkpoint_persistence": "PASS",
+      "resume_validation": "PASS"
+    },
+    "historical_pipeline_execution": {
+      "status": "COMPLETE",
+      "stages": 2,
+      "succeeded": 2,
+      "failed": 0,
+      "terminal_stdout": "target-contract-ok"
+    }
   },
-  "pipeline_execution": {
-    "status": "COMPLETE",
-    "stages": 2,
-    "succeeded": 2,
-    "failed": 0,
-    "terminal_stdout": "target-contract-ok"
+  "career_evidence_backbone_validation": {
+    "scope": "isolated local compiler using the persisted source/target contract",
+    "build": "PASS",
+    "verify": {
+      "status": "VALID",
+      "records": 11
+    },
+    "project": "PASS",
+    "summary": {
+      "sources": 6,
+      "verified_records": 10,
+      "public_safe_records": 9,
+      "competencies_with_evidence": 7,
+      "competencies_total": 10,
+      "defensible_metrics": 3
+    },
+    "coverage_gaps": [
+      "ambiguous-environment execution",
+      "customer discovery and problem decomposition",
+      "enterprise integration and security"
+    ]
   },
-  "ci_status": "NOT CLAIMED — GitHub Actions runner assignment was failing independently of this pipeline at validation time"
+  "updated_pipeline_execution": "NOT CLAIMED — the newly expanded seven-stage repository DAG has not been executed end-to-end on GitHub Actions.",
+  "ci_status": "NOT CLAIMED — GitHub Actions runner assignment was failing independently of this pipeline at prior validation time."
 }
