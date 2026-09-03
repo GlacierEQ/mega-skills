@@ -7,48 +7,141 @@
   "stages": [
     {
       "id": "compile-target",
-      "command": ["{python}", "scripts/target_role_evidence_projection.py", "--target", "missions/anthropic-applied-ai/target-role.json", "--output", "missions/anthropic-applied-ai/target-competency-map.json"],
-      "consumes": ["missions/anthropic-applied-ai/target-role.json"],
-      "produces": ["missions/anthropic-applied-ai/target-competency-map.json"],
+      "command": [
+        "{python}",
+        "scripts/target_role_evidence_projection.py",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--output",
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
       "resume_safe": true
     },
     {
       "id": "verify-target",
-      "needs": ["compile-target"],
-      "command": ["{python}", "-c", "import json; p='missions/anthropic-applied-ai/target-competency-map.json'; d=json.load(open(p)); assert len(d['competency_domains']) >= 8; print('target-contract-ok')"],
-      "consumes": ["missions/anthropic-applied-ai/target-competency-map.json"],
+      "needs": [
+        "compile-target"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; p='missions/anthropic-applied-ai/target-competency-map.json'; d=json.load(open(p)); assert len(d['competency_domains']) >= 8; print('target-contract-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
       "produces": [],
       "resume_safe": false
     },
     {
       "id": "build-evidence",
-      "needs": ["verify-target"],
-      "command": ["{python}", "scripts/career_evidence_backbone.py", "build", "--target", "missions/anthropic-applied-ai/target-role.json", "--sources", "missions/anthropic-applied-ai/evidence-sources.json", "--output", "missions/anthropic-applied-ai/evidence-ledger.json"],
-      "consumes": ["missions/anthropic-applied-ai/target-role.json", "missions/anthropic-applied-ai/evidence-sources.json"],
-      "produces": ["missions/anthropic-applied-ai/evidence-ledger.json"],
+      "needs": [
+        "verify-target"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "build",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--sources",
+        "missions/anthropic-applied-ai/evidence-sources.json",
+        "--output",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-sources.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
       "resume_safe": true
     },
     {
       "id": "verify-evidence",
-      "needs": ["build-evidence"],
-      "command": ["{python}", "scripts/career_evidence_backbone.py", "verify", "--target", "missions/anthropic-applied-ai/target-role.json", "--ledger", "missions/anthropic-applied-ai/evidence-ledger.json"],
-      "consumes": ["missions/anthropic-applied-ai/target-role.json", "missions/anthropic-applied-ai/evidence-ledger.json"],
+      "needs": [
+        "build-evidence"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "verify",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
       "produces": [],
       "resume_safe": false
     },
     {
       "id": "project-linkedin",
-      "needs": ["verify-evidence"],
-      "command": ["{python}", "scripts/career_evidence_backbone.py", "project", "--target", "missions/anthropic-applied-ai/target-role.json", "--ledger", "missions/anthropic-applied-ai/evidence-ledger.json", "--output", "missions/anthropic-applied-ai/linkedin-backbone.json", "--markdown", "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"],
-      "consumes": ["missions/anthropic-applied-ai/target-role.json", "missions/anthropic-applied-ai/evidence-ledger.json"],
-      "produces": ["missions/anthropic-applied-ai/linkedin-backbone.json", "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"],
+      "needs": [
+        "verify-evidence"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "project",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json",
+        "--output",
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "--markdown",
+        "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"
+      ],
       "resume_safe": true
     },
     {
       "id": "verify-linkedin",
-      "needs": ["project-linkedin"],
-      "command": ["{python}", "-c", "import json; p='missions/anthropic-applied-ai/linkedin-backbone.json'; d=json.load(open(p)); assert len(d['featured_projects']) >= 4; assert all(x['source_id'] != 'mega-skills' for x in d['featured_projects']); assert len(d['metrics']) >= 3; print('linkedin-backbone-ok')"],
-      "consumes": ["missions/anthropic-applied-ai/linkedin-backbone.json"],
+      "needs": [
+        "project-linkedin"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; p='missions/anthropic-applied-ai/linkedin-backbone.json'; d=json.load(open(p)); assert len(d['featured_projects']) >= 4; assert all(x['source_id'] != 'mega-skills' for x in d['featured_projects']); assert len(d['metrics']) >= 3; print('linkedin-backbone-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-backbone.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-linkedin-activation",
+      "needs": [
+        "verify-linkedin"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; p='missions/anthropic-applied-ai/linkedin-activation.json'; d=json.load(open(p)); assert d['portfolio_gateway']['status']=='READY'; assert d['recommendations']['status']=='OPERATOR_ACTION_REQUIRED'; assert len(d['technical_activity']['topics']) >= 4; print('linkedin-activation-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-activation.json"
+      ],
       "produces": [],
       "resume_safe": false
     }
