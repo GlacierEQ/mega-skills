@@ -74,6 +74,31 @@ class BranchLifecycleTests(unittest.TestCase):
         self.assertEqual(row["evidence"]["merged_pr_count"], 1)
         self.assertEqual(row["evidence"]["merged_current_head_pr_count"], 0)
 
+    def test_dynamic_assessment_marks_redundant_for_removal(self):
+        plan = module.build_plan(inventory([branch("fix/redundant", ahead=0)]), POLICY)
+        row = by_name(plan)["fix/redundant"]
+        assessment = row["dynamic_assessment"]
+        self.assertEqual(assessment["recommended_effect"], "REMOVE_REDUNDANT")
+        self.assertEqual(assessment["value_signal"], "REDUNDANT")
+        self.assertTrue(assessment["reassess_before_mutation"])
+        self.assertFalse(assessment["static_label_authoritative"])
+
+    def test_dynamic_assessment_marks_unique_work_for_harvest(self):
+        plan = module.build_plan(inventory([
+            branch("feat/valuable", ahead=3, committed="2026-09-02T00:00:00Z"),
+        ]), POLICY)
+        row = by_name(plan)["feat/valuable"]
+        assessment = row["dynamic_assessment"]
+        self.assertEqual(assessment["recommended_effect"], "PRESERVE_AND_HARVEST")
+        self.assertEqual(assessment["value_signal"], "HIGH")
+        self.assertFalse(assessment["reassess_before_mutation"])
+
+    def test_plan_has_expiring_dynamic_assessment_window(self):
+        plan = module.build_plan(inventory([branch("fix/redundant", ahead=0)]), POLICY)
+        self.assertTrue(plan["dynamic_assessment_required"])
+        self.assertEqual(plan["assessment_ttl_seconds"], 300)
+        self.assertEqual(plan["assessment_valid_until"], "2026-09-02T12:05:00Z")
+
     def test_zero_ahead_is_redundant(self):
         plan = module.build_plan(inventory([branch("fix/already-contained", ahead=0)]), POLICY)
         row = by_name(plan)["fix/already-contained"]
