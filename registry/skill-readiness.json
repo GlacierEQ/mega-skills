@@ -5,19 +5,19 @@
     "skills": 709,
     "combos": 33,
     "megas": 29,
-    "ready_total": 726,
-    "not_ready_total": 45,
+    "ready_total": 728,
+    "not_ready_total": 43,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
-      "implementation_unverified": 11,
-      "behavior_verified": 17,
+      "implementation_unverified": 10,
+      "behavior_verified": 18,
       "contract_incomplete": 1
     },
     "combo_states": {
       "composition_candidate": 14,
-      "composition_ready": 18,
-      "blocked_by_dependency": 1
+      "composition_ready": 19,
+      "blocked_by_dependency": 0
     },
     "mega_states": {
       "mission_contract_ready": 21,
@@ -2122,9 +2122,9 @@
     {
       "id": "branch-lifecycle-intelligence",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py",
@@ -2139,14 +2139,12 @@
         "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
       ],
       "structural_tests": [],
-      "reasons": [
-        "Current v0.2.0 admission and exact-current-head hardening postdate the last successful behavioral proof.",
-        "Repository Actions currently fails before runner step initialization on both current and pre-skill baseline commits, so fresh behavioral verification cannot be claimed."
-      ],
+      "reasons": [],
       "verification_evidence": [
-        "Core v0.1.1: 8/8 exact-source adversarial tests passed.",
-        "v0.2.0: exact GitHub source/readback completed for planner, workflow, schemas, protocol, and 14-test suite.",
-        "v0.2.0 fresh execution pending external runner recovery."
+        "18/18 exact BLI tests passed in GitHub-hosted Python 3.12 run 33738035380.",
+        "Live dynamic mutation run 33737915863 succeeded with a recorded fresh reclassification immediately before deletion and post-delete absence verification.",
+        "Negative protected-ref run 33736515190 succeeded with action KEEP and zero deletion.",
+        "Production report-only sweeps succeeded in job-application (33736612899) and job-app-helix (33736617358)."
       ]
     },
     {
@@ -15264,12 +15262,10 @@
     {
       "id": "branch-sprawl-control-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "blocked_by_dependency",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "Required member branch-lifecycle-intelligence v0.2.0 is pending fresh behavioral verification."
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "capability-readiness",
