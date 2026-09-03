@@ -1,1 +1,850 @@
-{"company":"Anthropic","coverage":{"AI systems architecture":{"evidence_ids":["ev_ba8f3d3f576ca3af","ev_18823a21ca59236f","ev_323cd33f76847367","ev_5ebdbcecbf04de24","ev_80e6d1870a57872e"],"max_hiring_signal":5,"record_count":5,"verified_count":4},"agents, MCP, tools, and context engineering":{"evidence_ids":["ev_18823a21ca59236f"],"max_hiring_signal":5,"record_count":1,"verified_count":1},"ambiguous-environment execution":{"evidence_ids":[],"max_hiring_signal":0,"record_count":0,"verified_count":0},"customer discovery and problem decomposition":{"evidence_ids":[],"max_hiring_signal":0,"record_count":0,"verified_count":0},"enterprise integration and security":{"evidence_ids":[],"max_hiring_signal":0,"record_count":0,"verified_count":0},"evaluation, observability, and reliability":{"evidence_ids":["ev_3d5ecbd0ba619288","ev_18823a21ca59236f","ev_06770a0211a04cf6","ev_702d2f4f31493281","ev_5ebdbcecbf04de24","ev_65b623eed3905e02"],"max_hiring_signal":5,"record_count":6,"verified_count":6},"field leadership and technical communication":{"evidence_ids":["ev_ba8f3d3f576ca3af","ev_5169c37850dc70b1"],"max_hiring_signal":5,"record_count":2,"verified_count":2},"hands-on Python and production engineering":{"evidence_ids":["ev_702d2f4f31493281","ev_323cd33f76847367","ev_65b623eed3905e02"],"max_hiring_signal":5,"record_count":3,"verified_count":3},"reusable patterns and product feedback":{"evidence_ids":["ev_ba8f3d3f576ca3af","ev_5ebdbcecbf04de24","ev_d7ccc5b0c5f93be7"],"max_hiring_signal":5,"record_count":3,"verified_count":3},"safe and human-directed deployment":{"evidence_ids":["ev_3d5ecbd0ba619288","ev_18823a21ca59236f","ev_06770a0211a04cf6","ev_702d2f4f31493281","ev_d7ccc5b0c5f93be7","ev_5169c37850dc70b1","ev_80e6d1870a57872e"],"max_hiring_signal":5,"record_count":7,"verified_count":6}},"identity":"Forward Deployed AI Architect","metrics":[{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","name":"technology_floors","scope":"governed technology floors documented by the current README","source_id":"tower-of-babel","state":"VERIFIED","value":40},{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","name":"linked_exhibits","scope":"easy + advanced exhibits documented by the current README","source_id":"tower-of-babel","state":"VERIFIED","value":80},{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","name":"behavioral_proof_floors","scope":"behavioral proof floors documented by the current README","source_id":"tower-of-babel","state":"VERIFIED","value":17}],"primary_role":"Applied AI Architect","projects":[{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","name":"The Tower of Babel — Cross-Language Systems Architecture","public_safe":true,"role":"architecture","source_id":"tower-of-babel","state":"VERIFIED","summary":"Executable technology-selection, interoperability, and proof system for multi-language engineering.","url":"https://github.com/GlacierEQ/the-tower-of-babel"},{"artifact":"README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151","name":"Mega-Skills — Agent Capability Control Plane","public_safe":false,"role":"orchestration substrate","source_id":"mega-skills","state":"VERIFIED","summary":"Private monolithic control plane for a compounding Skills → Combo Skills → Mega Skills capability hierarchy.","url":"https://github.com/GlacierEQ/mega-skills"},{"artifact":"README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f","name":"SpaceX Autonomy — Mission-State & Operational Decision Logic","public_safe":true,"role":"applied system","source_id":"spacex-autonomy","state":"VERIFIED","summary":"Deterministic Python/Go simulation toolkit with bounded decisions, failure handling, quorum logic, and native verification.","url":"https://github.com/GlacierEQ/spacex-autonomy"},{"artifact":"README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7","name":"Hiring System — Evidence & Release Control Plane","public_safe":true,"role":"evidence/release control","source_id":"job-application","state":"VERIFIED","summary":"Public presentation layer compiled from Helix-governed, evidence-bound portfolio truth.","url":"https://github.com/GlacierEQ/job-application"},{"artifact":"README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df","name":"xAI Colossus Cooling — Thermal Capacity & Bounded Control","public_safe":true,"role":"applied system","source_id":"xai-colossus-cooling","state":"VERIFIED","summary":"Independent simulation/testbed for thermal classification, zone aggregation, bounded cooling decisions, and explicit evidence boundaries.","url":"https://github.com/GlacierEQ/xai-colossus-cooling"},{"artifact":"README.md@486ba98e833063131ab10ec81f483ff07ab83f1d","name":"Mission Thread Quorum","public_safe":true,"role":"bounded consequential system","source_id":"mission-thread-quorum","state":"SUPPORTED","summary":"Reference mechanism for weighted GO/HOLD decision logic with explicit hold reasons.","url":"https://github.com/GlacierEQ/spacex-mission-thread-quorum"}],"records":[{"artifact":"README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7","claim":"The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.","competencies":["evaluation, observability, and reliability","safe and human-directed deployment"],"evidence_id":"ev_3d5ecbd0ba619288","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/job-application","source_id":"job-application","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7","claim":"Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.","competencies":["AI systems architecture","reusable patterns and product feedback","field leadership and technical communication"],"evidence_id":"ev_ba8f3d3f576ca3af","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/job-application","source_id":"job-application","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151","claim":"Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.","competencies":["AI systems architecture","agents, MCP, tools, and context engineering","evaluation, observability, and reliability","safe and human-directed deployment"],"evidence_id":"ev_18823a21ca59236f","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":false,"source":"https://github.com/GlacierEQ/mega-skills","source_id":"mega-skills","state":"VERIFIED","verification":"Private repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f","claim":"The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.","competencies":["safe and human-directed deployment","evaluation, observability, and reliability"],"evidence_id":"ev_06770a0211a04cf6","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/spacex-autonomy","source_id":"spacex-autonomy","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f","claim":"Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.","competencies":["hands-on Python and production engineering","evaluation, observability, and reliability","safe and human-directed deployment"],"evidence_id":"ev_702d2f4f31493281","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/spacex-autonomy","source_id":"spacex-autonomy","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","claim":"The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.","competencies":["AI systems architecture","hands-on Python and production engineering"],"evidence_id":"ev_323cd33f76847367","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/the-tower-of-babel","source_id":"tower-of-babel","state":"VERIFIED","verification":"GitHub README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@4135dec62239a215601ca55a5a06228a1ad7a321","claim":"Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.","competencies":["AI systems architecture","evaluation, observability, and reliability","reusable patterns and product feedback"],"evidence_id":"ev_5ebdbcecbf04de24","gap":"","hiring_signal":5,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/the-tower-of-babel","source_id":"tower-of-babel","state":"VERIFIED","verification":"GitHub README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151","claim":"The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.","competencies":["reusable patterns and product feedback","safe and human-directed deployment"],"evidence_id":"ev_d7ccc5b0c5f93be7","gap":"","hiring_signal":4,"next_strengthening_action":"","public_safe":false,"source":"https://github.com/GlacierEQ/mega-skills","source_id":"mega-skills","state":"VERIFIED","verification":"Private repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df","claim":"The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.","competencies":["safe and human-directed deployment","field leadership and technical communication"],"evidence_id":"ev_5169c37850dc70b1","gap":"","hiring_signal":4,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/xai-colossus-cooling","source_id":"xai-colossus-cooling","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df","claim":"Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.","competencies":["hands-on Python and production engineering","evaluation, observability, and reliability"],"evidence_id":"ev_65b623eed3905e02","gap":"","hiring_signal":4,"next_strengthening_action":"","public_safe":true,"source":"https://github.com/GlacierEQ/xai-colossus-cooling","source_id":"xai-colossus-cooling","state":"VERIFIED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST."},{"artifact":"README.md@486ba98e833063131ab10ec81f483ff07ab83f1d","claim":"Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.","competencies":["safe and human-directed deployment","AI systems architecture"],"evidence_id":"ev_80e6d1870a57872e","gap":"Reference mechanism rather than production system.","hiring_signal":3,"next_strengthening_action":"Add executable behavioral receipt and integration proof.","public_safe":true,"source":"https://github.com/GlacierEQ/spacex-mission-thread-quorum","source_id":"mission-thread-quorum","state":"SUPPORTED","verification":"Public repository README fetched from main and inspected 2026-09-02 HST; repository labels itself a leveled reference mechanism."}],"role_family":"Applied AI","schema_version":1,"summary":{"competencies_total":10,"competencies_with_evidence":7,"public_safe_records":9,"records":11,"sources":6,"verified_records":10}}
+{
+  "schema_version": 2,
+  "backbone_version": "2.0.0",
+  "as_of": "2026-09-02",
+  "company": "Anthropic",
+  "role_family": "Applied AI",
+  "primary_role": "Applied AI Architect",
+  "identity": "Forward Deployed AI Architect",
+  "records": [
+    {
+      "evidence_id": "ev_4cd956ea",
+      "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
+      "source": "https://github.com/GlacierEQ/computer-user",
+      "source_id": "computer-user",
+      "artifact": "README.md@e953c7e23073ec17923f6a0e062964cad3712b56",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "competencies": [
+        "enterprise integration and security",
+        "hands-on Python and production engineering",
+        "production LLM application delivery"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [
+        "Private repository; do not expose implementation detail as public proof without a public-safe derivative."
+      ],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
+      "evidence_id": "ev_c69ebde1",
+      "claim": "The execution kernel enforces explicit approved/exact-target authority, idempotency, token protection for non-loopback service binding, read-only defaults, raw-secret rejection, and hash-only action receipts.",
+      "source": "https://github.com/GlacierEQ/computer-user",
+      "source_id": "computer-user",
+      "artifact": "README.md@e953c7e23073ec17923f6a0e062964cad3712b56",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "competencies": [
+        "enterprise integration and security",
+        "safe and human-directed deployment",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [
+        "Security properties are scoped to the documented kernel and automation boundaries, not a general enterprise certification."
+      ],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
+      "evidence_id": "ev_64a0b788",
+      "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
+      "source": "https://github.com/GlacierEQ/job-application",
+      "source_id": "job-application",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "AI systems architecture",
+        "reusable patterns and product feedback",
+        "field leadership and technical communication"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_a86272a5",
+      "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
+      "source": "https://github.com/GlacierEQ/job-application",
+      "source_id": "job-application",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "evaluation, observability, and reliability",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_92762059",
+      "claim": "Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.",
+      "source": "https://github.com/GlacierEQ/mega-skills",
+      "source_id": "mega-skills",
+      "artifact": "README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "AI systems architecture",
+        "agents, MCP, tools, and context engineering",
+        "evaluation, observability, and reliability",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
+      "evidence_id": "ev_538a7379",
+      "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
+      "source": "https://github.com/GlacierEQ/spacex-autonomy",
+      "source_id": "spacex-autonomy",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "hands-on Python and production engineering",
+        "evaluation, observability, and reliability",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_8f52e5bb",
+      "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
+      "source": "https://github.com/GlacierEQ/spacex-autonomy",
+      "source_id": "spacex-autonomy",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "safe and human-directed deployment",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_9885b7d7",
+      "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
+      "source": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "AI systems architecture",
+        "evaluation, observability, and reliability",
+        "reusable patterns and product feedback"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_3fab6fe7",
+      "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
+      "source": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "AI systems architecture",
+        "hands-on Python and production engineering"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_ed85e3eb",
+      "claim": "The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.",
+      "source": "https://github.com/GlacierEQ/mega-skills",
+      "source_id": "mega-skills",
+      "artifact": "README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "reusable patterns and product feedback",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.576,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": false
+    },
+    {
+      "evidence_id": "ev_8c1cb019",
+      "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
+      "source": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "source_id": "xai-colossus-cooling",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "hands-on Python and production engineering",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.576,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_51f06c4a",
+      "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
+      "source": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "source_id": "xai-colossus-cooling",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "safe and human-directed deployment",
+        "field leadership and technical communication"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.576,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_1869da5f",
+      "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
+      "source": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
+      "source_id": "mission-thread-quorum",
+      "artifact": "README.md@486ba98e833063131ab10ec81f483ff07ab83f1d",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST; repository labels itself a leveled reference mechanism.",
+      "state": "SUPPORTED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "safe and human-directed deployment",
+        "AI systems architecture"
+      ],
+      "hiring_signal": 3,
+      "proof_strength": 0.311,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "Reference mechanism rather than production system.",
+      "next_strengthening_action": "Add executable behavioral receipt and integration proof.",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_2d74f91c",
+      "claim": "Candidate positioning explicitly defines the forward-deployed motion as workflow discovery, bottleneck mapping, architecture, integration, verification, adoption, and iterative expansion.",
+      "source": "https://github.com/GlacierEQ/job-app-helix",
+      "source_id": "helix-role-power-matrix",
+      "artifact": "hire_package/casey-barton/ROLE_POWER_MATRIX.md@a7449fecd900d5fa490aed80589eb08088cfb3a3",
+      "verification": "Job-App Helix candidate-routing artifact fetched from main and inspected 2026-09-02 HST. It is a positioning artifact, not independent proof of customer deployment.",
+      "state": "CANDIDATE",
+      "source_kind": "candidate_narrative",
+      "competencies": [
+        "customer discovery and problem decomposition",
+        "ambiguous-environment execution",
+        "customer adoption and deployment support"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.07,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "Narrative/candidate-routing evidence does not establish completed external customer engagements.",
+      "next_strengthening_action": "Retrieve independent deployment/customer evidence or build a public case study with explicit operator/customer context and outcomes.",
+      "public_safe": false
+    }
+  ],
+  "metrics": [
+    {
+      "name": "technology_floors",
+      "value": 40,
+      "scope": "governed technology floors documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "linked_exhibits",
+      "value": 80,
+      "scope": "easy + advanced exhibits documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "behavioral_proof_floors",
+      "value": 17,
+      "scope": "behavioral proof floors documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    }
+  ],
+  "projects": [
+    {
+      "source_id": "tower-of-babel",
+      "name": "The Tower of Babel — Cross-Language Systems Architecture",
+      "url": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "role": "architecture",
+      "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering.",
+      "state": "VERIFIED",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "public_safe": true,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "mega-skills",
+      "name": "Mega-Skills — Agent Capability Control Plane",
+      "url": "https://github.com/GlacierEQ/mega-skills",
+      "role": "orchestration substrate",
+      "summary": "Private monolithic control plane for a compounding Skills → Combo Skills → Mega Skills capability hierarchy.",
+      "state": "VERIFIED",
+      "artifact": "README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151",
+      "public_safe": false,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "spacex-autonomy",
+      "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
+      "url": "https://github.com/GlacierEQ/spacex-autonomy",
+      "role": "applied system",
+      "summary": "Deterministic Python/Go simulation toolkit with bounded decisions, failure handling, quorum logic, and native verification.",
+      "state": "VERIFIED",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "public_safe": true,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "job-application",
+      "name": "Hiring System — Evidence & Release Control Plane",
+      "url": "https://github.com/GlacierEQ/job-application",
+      "role": "evidence/release control",
+      "summary": "Public presentation layer compiled from Helix-governed, evidence-bound portfolio truth.",
+      "state": "VERIFIED",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "public_safe": true,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "xai-colossus-cooling",
+      "name": "xAI Colossus Cooling — Thermal Capacity & Bounded Control",
+      "url": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "role": "applied system",
+      "summary": "Independent simulation/testbed for thermal classification, zone aggregation, bounded cooling decisions, and explicit evidence boundaries.",
+      "state": "VERIFIED",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "public_safe": true,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "mission-thread-quorum",
+      "name": "Mission Thread Quorum",
+      "url": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
+      "role": "bounded consequential system",
+      "summary": "Reference mechanism for weighted GO/HOLD decision logic with explicit hold reasons.",
+      "state": "SUPPORTED",
+      "artifact": "README.md@486ba98e833063131ab10ec81f483ff07ab83f1d",
+      "public_safe": true,
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "computer-user",
+      "name": "Computer User — Governed Execution Kernel",
+      "url": "https://github.com/GlacierEQ/computer-user",
+      "role": "enterprise execution and integration substrate",
+      "summary": "Durable HTTP/CLI execution kernel with connector dispatch, authority envelopes, readiness probes, authenticated non-loopback service mode, task queues, and receipts.",
+      "state": "VERIFIED",
+      "artifact": "README.md@e953c7e23073ec17923f6a0e062964cad3712b56",
+      "public_safe": false,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    }
+  ],
+  "source_health": [
+    {
+      "source_id": "tower-of-babel",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "mega-skills",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "spacex-autonomy",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "job-application",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "xai-colossus-cooling",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "mission-thread-quorum",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "SUPPORTED",
+      "source_kind": "readme_verified"
+    },
+    {
+      "source_id": "computer-user",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests"
+    },
+    {
+      "source_id": "helix-role-power-matrix",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "CANDIDATE",
+      "source_kind": "candidate_narrative"
+    }
+  ],
+  "requirements": {
+    "customer_discovery": {
+      "label": "Customer discovery and workflow problem decomposition",
+      "weight": 1.25,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "proof_strength": 0.07,
+      "coverage_percent": 7,
+      "status": "PARTIAL",
+      "evidence_ids": [
+        "ev_2d74f91c"
+      ],
+      "verified_evidence_ids": [],
+      "public_safe_evidence_ids": []
+    },
+    "architecture": {
+      "label": "AI systems architecture from technical discovery through deployment",
+      "weight": 1.2,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "proof_strength": 0.9958,
+      "coverage_percent": 99.6,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_64a0b788",
+        "ev_92762059",
+        "ev_9885b7d7",
+        "ev_3fab6fe7",
+        "ev_1869da5f"
+      ],
+      "verified_evidence_ids": [
+        "ev_64a0b788",
+        "ev_92762059",
+        "ev_9885b7d7",
+        "ev_3fab6fe7"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_64a0b788",
+        "ev_9885b7d7",
+        "ev_3fab6fe7",
+        "ev_1869da5f"
+      ]
+    },
+    "production_engineering": {
+      "label": "Hands-on Python and production engineering",
+      "weight": 1.2,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "proof_strength": 0.9973,
+      "coverage_percent": 99.7,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_4cd956ea",
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ],
+      "verified_evidence_ids": [
+        "ev_4cd956ea",
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ]
+    },
+    "agents_mcp": {
+      "label": "Agents, MCP servers, sub-agents, skills, tools, and context engineering",
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "proof_strength": 0.72,
+      "coverage_percent": 72,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_92762059"
+      ],
+      "verified_evidence_ids": [
+        "ev_92762059"
+      ],
+      "public_safe_evidence_ids": []
+    },
+    "enterprise_integration_security": {
+      "label": "Enterprise integration, authority boundaries, security, and reliability",
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "proof_strength": 1,
+      "coverage_percent": 100,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_4cd956ea",
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_ed85e3eb",
+        "ev_51f06c4a",
+        "ev_1869da5f"
+      ],
+      "verified_evidence_ids": [
+        "ev_4cd956ea",
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_ed85e3eb",
+        "ev_51f06c4a"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_a86272a5",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_51f06c4a",
+        "ev_1869da5f"
+      ]
+    },
+    "evals_reliability": {
+      "label": "Evaluation, observability, reliability, and explicit failure behavior",
+      "weight": 1.1,
+      "hard_gate": true,
+      "minimum_strength": 0.6,
+      "proof_strength": 0.9999,
+      "coverage_percent": 100,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_9885b7d7",
+        "ev_8c1cb019"
+      ],
+      "verified_evidence_ids": [
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_9885b7d7",
+        "ev_8c1cb019"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_a86272a5",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_9885b7d7",
+        "ev_8c1cb019"
+      ]
+    },
+    "production_llm_delivery": {
+      "label": "Production LLM and agent application delivery",
+      "weight": 1.3,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "proof_strength": 0.9973,
+      "coverage_percent": 99.7,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_4cd956ea",
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ],
+      "verified_evidence_ids": [
+        "ev_4cd956ea",
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_538a7379",
+        "ev_3fab6fe7",
+        "ev_8c1cb019"
+      ]
+    },
+    "deployment_adoption": {
+      "label": "Customer deployment support, adoption, and lifecycle expansion",
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.56,
+      "proof_strength": 0.8896,
+      "coverage_percent": 89,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a",
+        "ev_2d74f91c"
+      ],
+      "verified_evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a"
+      ]
+    },
+    "ambiguity_high_agency": {
+      "label": "High-agency execution in ambiguous environments",
+      "weight": 1.05,
+      "hard_gate": true,
+      "minimum_strength": 0.55,
+      "proof_strength": 0.07,
+      "coverage_percent": 7,
+      "status": "PARTIAL",
+      "evidence_ids": [
+        "ev_2d74f91c"
+      ],
+      "verified_evidence_ids": [],
+      "public_safe_evidence_ids": []
+    },
+    "repeatable_patterns": {
+      "label": "Codify reusable deployment patterns and feed field insight back to product",
+      "weight": 0.9,
+      "hard_gate": false,
+      "minimum_strength": 0.5,
+      "proof_strength": 0.9668,
+      "coverage_percent": 96.7,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_64a0b788",
+        "ev_9885b7d7",
+        "ev_ed85e3eb"
+      ],
+      "verified_evidence_ids": [
+        "ev_64a0b788",
+        "ev_9885b7d7",
+        "ev_ed85e3eb"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_64a0b788",
+        "ev_9885b7d7"
+      ]
+    },
+    "technical_communication": {
+      "label": "Technical communication and cross-functional field leadership",
+      "weight": 0.9,
+      "hard_gate": false,
+      "minimum_strength": 0.5,
+      "proof_strength": 0.8813,
+      "coverage_percent": 88.1,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a"
+      ],
+      "verified_evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_64a0b788",
+        "ev_51f06c4a"
+      ]
+    },
+    "safe_deployment": {
+      "label": "Safety, reliability, provenance, and human-directed deployment",
+      "weight": 1,
+      "hard_gate": true,
+      "minimum_strength": 0.6,
+      "proof_strength": 0.9999,
+      "coverage_percent": 100,
+      "status": "SATISFIED",
+      "evidence_ids": [
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_ed85e3eb",
+        "ev_51f06c4a",
+        "ev_1869da5f"
+      ],
+      "verified_evidence_ids": [
+        "ev_c69ebde1",
+        "ev_a86272a5",
+        "ev_92762059",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_ed85e3eb",
+        "ev_51f06c4a"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_a86272a5",
+        "ev_538a7379",
+        "ev_8f52e5bb",
+        "ev_51f06c4a",
+        "ev_1869da5f"
+      ]
+    }
+  },
+  "gap_queue": [
+    {
+      "requirement_id": "customer_discovery",
+      "label": "Customer discovery and workflow problem decomposition",
+      "status": "PARTIAL",
+      "hard_gate": true,
+      "proof_strength": 0.07,
+      "minimum_strength": 0.58,
+      "priority": 0.9563,
+      "evidence_ids": [
+        "ev_2d74f91c"
+      ]
+    },
+    {
+      "requirement_id": "ambiguity_high_agency",
+      "label": "High-agency execution in ambiguous environments",
+      "status": "PARTIAL",
+      "hard_gate": true,
+      "proof_strength": 0.07,
+      "minimum_strength": 0.55,
+      "priority": 0.756,
+      "evidence_ids": [
+        "ev_2d74f91c"
+      ]
+    }
+  ],
+  "summary": {
+    "sources": 8,
+    "records": 14,
+    "verified_records": 12,
+    "public_safe_records": 9,
+    "requirements_total": 12,
+    "requirements_satisfied": 10,
+    "hard_gates_open": 2,
+    "evidence_coverage_score": 79.5
+  },
+  "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit."
+}
