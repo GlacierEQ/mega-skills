@@ -288,6 +288,13 @@
       "hard_gate": true
     },
     {
+      "requirement_id": "customer_discovery",
+      "label": "Customer discovery and workflow problem decomposition",
+      "status": "PARTIAL",
+      "priority": 0.9563,
+      "hard_gate": true
+    },
+    {
       "requirement_id": "deployment_adoption",
       "label": "Customer deployment support, adoption, and lifecycle expansion",
       "status": "PARTIAL",
@@ -295,7 +302,7 @@
       "hard_gate": true
     }
   ],
-  "evidence_coverage_score": 80.4,
+  "evidence_coverage_score": 72.4,
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit.",
   "projection_rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
 }
