@@ -15,6 +15,7 @@ from typing import Any
 SCHEMA = "glaciereq.branch-lifecycle-plan.v1"
 INVENTORY_SCHEMA = "glaciereq.branch-inventory.v1"
 ADMISSION_SCHEMA = "glaciereq.branch-admission-request.v1"
+REPOSITORY_POLICY_SCHEMA = "glaciereq.branch-lifecycle-repository-policy.v1"
 DEFAULT_POLICY = Path(__file__).resolve().parents[1] / "resources" / "policy.json"
 
 def canonical_json(value: Any) -> str:
@@ -54,6 +55,52 @@ def load_policy(path: Path | None) -> dict[str, Any]:
     if missing:
         raise ValueError(f"policy missing fields: {', '.join(missing)}")
     return policy
+
+
+def load_repository_policy(path: Path | None) -> dict[str, Any] | None:
+    if path is None:
+        return None
+    payload = load_json(path)
+    if payload.get("schema") != REPOSITORY_POLICY_SCHEMA:
+        raise ValueError(f"repository policy schema must be {REPOSITORY_POLICY_SCHEMA}")
+    for field in ("protected_branches", "protected_patterns", "preservations"):
+        value = payload.get(field, [])
+        if not isinstance(value, list):
+            raise ValueError(f"repository policy {field} must be an array")
+    return payload
+
+
+def merge_repository_policy(
+    policy: dict[str, Any],
+    repository_policy: dict[str, Any] | None,
+) -> dict[str, Any]:
+    merged = dict(policy)
+    merged["protected_patterns"] = list(policy.get("protected_patterns", []))
+    merged["protected_branches"] = list(policy.get("protected_branches", []))
+    merged["preservation_reasons"] = dict(policy.get("preservation_reasons", {}))
+
+    if repository_policy is None:
+        return merged
+
+    for name in repository_policy.get("protected_branches", []):
+        if isinstance(name, str) and name.strip() and name not in merged["protected_branches"]:
+            merged["protected_branches"].append(name)
+    for pattern in repository_policy.get("protected_patterns", []):
+        if isinstance(pattern, str) and pattern.strip() and pattern not in merged["protected_patterns"]:
+            merged["protected_patterns"].append(pattern)
+    for entry in repository_policy.get("preservations", []):
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("name")
+        if not isinstance(name, str) or not name.strip():
+            continue
+        if name not in merged["protected_branches"]:
+            merged["protected_branches"].append(name)
+        reason = entry.get("reason")
+        if isinstance(reason, str) and reason.strip():
+            merged["preservation_reasons"][name] = reason
+    merged["repository_policy_schema"] = repository_policy.get("schema")
+    return merged
 
 def validate_inventory(payload: dict[str, Any]) -> list[str]:
     errors: list[str] = []
@@ -96,6 +143,8 @@ def validate_inventory(payload: dict[str, Any]) -> list[str]:
 
 def is_protected(name: str, branch: dict[str, Any], default_branch: str, policy: dict[str, Any]) -> bool:
     if name == default_branch or bool(branch.get("protected")):
+        return True
+    if name in set(policy.get("protected_branches", [])):
         return True
     return any(fnmatch.fnmatchcase(name, pattern) for pattern in policy["protected_patterns"])
 
@@ -473,7 +522,10 @@ def build_admission_decision(
 def cmd_admit(args: argparse.Namespace) -> int:
     lifecycle_plan = load_json(args.plan)
     request = load_json(args.request)
-    policy = load_policy(args.policy)
+    policy = merge_repository_policy(
+        load_policy(args.policy),
+        load_repository_policy(args.repository_policy),
+    )
     decision_payload = build_admission_decision(lifecycle_plan, request, policy)
     rendered = json.dumps(decision_payload, indent=2, sort_keys=True) + "\n"
     if args.output:
@@ -494,7 +546,10 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 def cmd_plan(args: argparse.Namespace) -> int:
     inventory = load_json(args.snapshot)
-    policy = load_policy(args.policy)
+    policy = merge_repository_policy(
+        load_policy(args.policy),
+        load_repository_policy(args.repository_policy),
+    )
     plan = build_plan(inventory, policy)
     rendered = json.dumps(plan, indent=2, sort_keys=True) + "\n"
     if args.output:
@@ -513,12 +568,14 @@ def parser() -> argparse.ArgumentParser:
     plan = sub.add_parser("plan")
     plan.add_argument("snapshot", type=Path)
     plan.add_argument("--policy", type=Path)
+    plan.add_argument("--repository-policy", type=Path)
     plan.add_argument("--output", type=Path)
     plan.set_defaults(func=cmd_plan)
     admit = sub.add_parser("admit")
     admit.add_argument("plan", type=Path)
     admit.add_argument("request", type=Path)
     admit.add_argument("--policy", type=Path)
+    admit.add_argument("--repository-policy", type=Path)
     admit.add_argument("--output", type=Path)
     admit.set_defaults(func=cmd_admit)
     return root
