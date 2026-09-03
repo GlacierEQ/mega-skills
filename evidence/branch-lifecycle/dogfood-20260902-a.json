@@ -1,0 +1,46 @@
+{
+  "schema": "glaciereq.branch-lifecycle-dogfood-receipt.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "recorded_at": "2026-09-03T08:41:00Z",
+  "test": {
+    "pull_request": 7,
+    "branch": "test/branch-lifecycle-dogfood-20260902-a",
+    "branch_sha": "add70ca639d8a10568add085e2740ba3f3acf25b",
+    "merge_commit_sha": "d63d79a1cba3dfcf24cb55c0baf1430d0ba69b6a",
+    "merged_at": "2026-09-03T08:38:46Z",
+    "github_actions_run_id": 33734477913,
+    "github_actions_status": "queued_before_runner_start"
+  },
+  "exact_source": {
+    "planner_blob_sha": "a8a1264f148ccef55136258a1e3a7edb887d03bc",
+    "tests_blob_sha": "bbaf7b72fd012d326981724699a66ba13c4570b0",
+    "behavioral_tests": {
+      "ran": 14,
+      "passed": 14,
+      "failed": 0
+    }
+  },
+  "live_evidence": {
+    "protected": false,
+    "ahead_by": 0,
+    "behind_by": 1,
+    "compare_status": "behind",
+    "merged_pr_head_sha": "add70ca639d8a10568add085e2740ba3f3acf25b",
+    "merged_current_head_match": true,
+    "open_pr_count": 0
+  },
+  "planner_result": {
+    "state": "MERGED_REDUNDANT",
+    "action": "DELETE",
+    "cleanup_confidence": 100,
+    "reason": "current branch head exactly matches a merged pull-request head",
+    "inventory_sha256": "00423f553a0fd05334ede15e3f139b789b879125e2a98a1daf17abe4a450003b",
+    "plan_sha256": "bddef3e9ecdfc06a596dbe629372bbd9c66527eab3d3ecd3f44b8e9dde92ea46"
+  },
+  "mutation": {
+    "workflow_wired": true,
+    "direct_connector_delete_ref_available": false,
+    "branch_deleted": false,
+    "blocker": "GitHub Actions execution plane has not assigned a runner; connector lacks delete-ref mutation."
+  }
+}
