@@ -2,51 +2,64 @@
 
 ## Current state
 
-The generic `pipeline-compositor` runtime is implemented and the first Anthropic target-contract pipeline is present.
+The generic `pipeline-compositor` runtime is implemented. The Anthropic mission now has a versioned target contract, typed evidence registry, compiled evidence ledger, LinkedIn proof projection, and LinkedIn activation-state contract.
 
 ## Expansion sequence
 
 1. **Target contract** — COMPLETE
-   - Anthropic
-   - Applied AI
-   - Applied AI Architect primary role
+   - Anthropic / Applied AI
+   - Applied AI Architect primary target
    - Forward Deployed AI Architect operating identity
 
 2. **Target normalization** — COMPLETE
-   - competency domains
+   - 10 competency domains
    - evidence states
    - projection surfaces
 
-3. **Evidence inventory** — NEXT
-   - inspect Job App Helix
-   - inspect public portfolio repositories
-   - inspect Mega-Skills / Tower of Babel / agent infrastructure
-   - emit one evidence record per material capability claim
+3. **Evidence inventory** — COMPLETE (first pass)
+   - 6 inspected source systems
+   - 11 evidence records
+   - 10 VERIFIED records
+   - 9 public-safe records
+   - source artifact SHA retained on each source
+   - private Mega-Skills evidence excluded from outward publication
 
-4. **Competency mapping**
-   - map evidence to each Anthropic competency domain
-   - preserve source and verification lineage
-   - identify unsupported and weakly supported claims
+4. **Competency mapping** — COMPLETE (first pass)
+   - 7 / 10 target competency domains currently carry evidence
+   - current uncovered domains:
+     - customer discovery and problem decomposition
+     - enterprise integration and security
+     - ambiguous-environment execution
 
-5. **Gap analysis**
-   - rank missing proof by Anthropic relevance × hiring impact × build cost × time-to-demonstrate
-   - convert gaps into engineering work packets
+5. **LinkedIn backbone** — COMPLETE (baseline)
+   - evidence-ranked Featured / Projects order
+   - evidence-bound proof points
+   - skill ontology
+   - defensible metrics
+   - public/private projection law
+   - portfolio gateway
+   - recommendations / endorsements / Open-to-Work / verification / activity state tracked separately
 
-6. **Proof builds**
-   - implement the highest-impact missing capability
+6. **Gap closure** — NEXT
+   - search existing Helix, portfolio, Tower, Mega-Skills, connector, and deployment artifacts for evidence covering the 3 open competencies
+   - add real evidence before inventing new proof builds
+   - if a competency remains unsupported, create a bounded proof-build work packet
+
+7. **Proof builds**
+   - implement highest-impact missing capability only where retrieval cannot satisfy the gap
    - test, benchmark, document, and preserve receipts
 
-7. **Projection**
-   - LinkedIn
+8. **Projection expansion**
    - résumé
-   - Featured portfolio ordering
-   - interview stories
-   - Job App Helix application package
+   - interview story bank
+   - application package
+   - recruiter/hiring-manager variants
+   - LinkedIn technical-post queue
 
-8. **Feedback loop**
+9. **Feedback loop**
    - ingest new role requirements, recruiter feedback, project evidence, and interview outcomes
    - reweight the next action without restarting the mission
 
 ## Completion criterion
 
-A single evidence graph can regenerate every outward career artifact while preserving the distinction between VERIFIED, SUPPORTED, CANDIDATE, UNVERIFIED, and BLOCKED claims.
+One evidence graph regenerates every outward career artifact while preserving VERIFIED, SUPPORTED, CANDIDATE, UNVERIFIED, and BLOCKED states and preventing private evidence from leaking into public surfaces.
