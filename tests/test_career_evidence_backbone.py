@@ -50,6 +50,19 @@ class CareerEvidenceBackboneTests(unittest.TestCase):
         self.assertFalse(any(x["source_id"]=="private" for x in p["featured_projects"]))
         self.assertFalse(any(x["source_id"]=="private" for x in p["proof_points"]))
 
+
+    def test_correlated_claims_do_not_double_count(self):
+        src={"sources":[
+            {"source_id":"a","independence_group":"same","state":"VERIFIED","source_kind":"source_and_tests","observed_at":"2026-09-02","locator":"x","artifact":"a@1","verification":"tested","claims":[
+                {"claim":"built one","competencies":["architecture"],"hiring_signal":5,"public_safe":True},
+                {"claim":"built two","competencies":["architecture"],"hiring_signal":5,"public_safe":True}
+            ]}
+        ]}
+        ledger=m.build(self.target(),src,"2026-09-02")
+        req=ledger["requirements"]["architecture"]
+        self.assertAlmostEqual(req["proof_strength"],0.92,places=4)
+        self.assertEqual(req["independent_groups"],["same"])
+
     def test_target_freshness_fails_stale_snapshot(self):
         t=self.target()
         result=m.target_check(t,"2026-10-01")
