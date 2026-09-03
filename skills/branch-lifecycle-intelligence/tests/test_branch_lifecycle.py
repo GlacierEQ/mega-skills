@@ -107,6 +107,85 @@ class BranchLifecycleTests(unittest.TestCase):
         self.assertTrue(family["consolidation_recommended"])
         self.assertEqual(len(family["divergent_members"]), 2)
 
+
+    def test_admission_reuses_exact_live_workstream_binding(self):
+        plan = module.build_plan(inventory([
+            branch("feat/router-live", ahead=2, committed="2026-09-02T00:00:00Z"),
+        ]), POLICY)
+        request = {
+            "schema": "glaciereq.branch-admission-request.v1",
+            "requested_branch": "feat/router-next",
+            "workstream_id": "router",
+            "bindings": [{"workstream_id": "router", "branch": "feat/router-live"}],
+        }
+        decision = module.build_admission_decision(plan, request, POLICY)
+        self.assertEqual(decision["action"], "REUSE_EXISTING")
+        self.assertFalse(decision["allow_create"])
+        self.assertEqual(decision["target_branch"], "feat/router-live")
+
+    def test_admission_blocks_new_branch_for_duplicate_explicit_workstream(self):
+        plan = module.build_plan(inventory([
+            branch("feat/router-a", ahead=2, committed="2026-09-02T00:00:00Z"),
+            branch("feat/router-b", ahead=3, committed="2026-09-02T01:00:00Z"),
+        ]), POLICY)
+        request = {
+            "schema": "glaciereq.branch-admission-request.v1",
+            "requested_branch": "feat/router-c",
+            "workstream_id": "router",
+            "bindings": [
+                {"workstream_id": "router", "branch": "feat/router-a"},
+                {"workstream_id": "router", "branch": "feat/router-b"},
+            ],
+        }
+        decision = module.build_admission_decision(plan, request, POLICY)
+        self.assertEqual(decision["action"], "REVIEW_CONSOLIDATE")
+        self.assertFalse(decision["allow_create"])
+
+    def test_admission_name_similarity_warns_but_does_not_fake_equivalence(self):
+        plan = module.build_plan(inventory([
+            branch("apex/job-restore-router-20260901", ahead=2, committed="2026-09-02T00:00:00Z"),
+        ]), POLICY)
+        request = {
+            "schema": "glaciereq.branch-admission-request.v1",
+            "requested_branch": "apex/job-restore-router-20260902",
+            "workstream_id": "different-stream",
+            "bindings": [],
+        }
+        decision = module.build_admission_decision(plan, request, POLICY)
+        self.assertEqual(decision["action"], "CREATE_NEW_WITH_FAMILY_WARNING")
+        self.assertTrue(decision["allow_create"])
+
+    def test_admission_closed_continuation_can_start_new_lifecycle(self):
+        plan = module.build_plan(inventory([
+            branch("feat/router-old", ahead=0),
+        ]), POLICY)
+        request = {
+            "schema": "glaciereq.branch-admission-request.v1",
+            "requested_branch": "feat/router-v2",
+            "workstream_id": "router-v2",
+            "continuation_of": "feat/router-old",
+            "bindings": [],
+        }
+        decision = module.build_admission_decision(plan, request, POLICY)
+        self.assertEqual(decision["action"], "CREATE_NEW")
+        self.assertTrue(decision["allow_create"])
+        self.assertEqual(decision["target_branch"], "feat/router-v2")
+
+    def test_admission_protected_continuation_fails_closed(self):
+        plan = module.build_plan(inventory([
+            branch("release/2026.09", ahead=0),
+        ]), POLICY)
+        request = {
+            "schema": "glaciereq.branch-admission-request.v1",
+            "requested_branch": "feat/release-followup",
+            "workstream_id": "release-followup",
+            "continuation_of": "release/2026.09",
+            "bindings": [],
+        }
+        decision = module.build_admission_decision(plan, request, POLICY)
+        self.assertEqual(decision["action"], "BLOCK")
+        self.assertFalse(decision["allow_create"])
+
     def test_plan_is_deterministic(self):
         payload = inventory([
             branch("feat/a", ahead=0),
