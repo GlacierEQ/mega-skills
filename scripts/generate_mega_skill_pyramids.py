@@ -41,12 +41,17 @@ def render(data): return json.dumps(data,indent=2,ensure_ascii=False)+'\n'
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--check',action='store_true'); args=ap.parse_args()
-    text=render(build())
+    data=build()
     if args.check:
-        if not OUT.exists() or OUT.read_text()!=text:
-            print('registry/mega-skill-pyramids.json is stale; run scripts/generate_mega_skill_pyramids.py',file=sys.stderr); return 1
-    else: OUT.write_text(text)
-    data=json.loads(text)
+        if not OUT.exists():
+            print('missing registry/mega-skill-pyramids.json',file=sys.stderr); return 1
+        try: current=json.loads(OUT.read_text())
+        except json.JSONDecodeError as exc:
+            print(f'invalid registry/mega-skill-pyramids.json: {exc}',file=sys.stderr); return 1
+        if current!=data:
+            print('registry/mega-skill-pyramids.json is semantically stale; run scripts/generate_mega_skill_pyramids.py',file=sys.stderr); return 1
+    else:
+        OUT.write_text(render(data))
     print(json.dumps({'ok':True,'counts':data['counts'],'pyramids':len(data['entries']),'mode':'check' if args.check else 'write'},indent=2))
     return 0
 if __name__=='__main__': raise SystemExit(main())
