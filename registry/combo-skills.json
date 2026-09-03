@@ -687,8 +687,8 @@
       "id": "branch-sprawl-control-loop",
       "display_name": "Branch Sprawl Control Loop",
       "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.1",
+      "maturity": "active",
+      "version": "0.2.0",
       "path": "combo-skills/branch-sprawl-control-loop",
       "entrypoint": "combo-skills/branch-sprawl-control-loop/COMBO.md",
       "selection": {
@@ -832,9 +832,9 @@
           "Do not force-push or auto-merge sibling branches as a cleanup shortcut."
         ],
         "quality_gates": [
-          "Automatic delete candidates must be merged-redundant or zero-ahead reachable-redundant and meet the configured confidence threshold.",
-          "Apply mode must re-check exact head SHA, protection, open PRs, and redundancy evidence immediately before deletion.",
-          "A lifecycle run is incomplete without a durable receipt."
+          "Automatic delete candidates must remain merged-redundant or zero-ahead reachable-redundant after a fresh mutation-time reclassification and meet the configured confidence threshold.",
+          "Every handoff must dynamically reassess current repository state, value, risk, evidence quality, reversibility, and downstream impact.",
+          "A lifecycle run is incomplete without a durable receipt recording reassessments and transactional outcome."
         ],
         "state_updates": [
           "Update branch family lead and divergent-member review state after each integration.",
@@ -848,7 +848,7 @@
           "PR health and review completion",
           "Development-branch integration closure"
         ],
-        "adds": "A closed-loop branch-spread control system that protects live work, integrates completed work, removes proven residue, surfaces divergent families for synthesis, and feeds future branch-admission decisions.",
+        "adds": "A closed-loop branch-spread control system that dynamically reassesses every decision, preserves and harvests useful work, integrates completed value, removes only freshly proven residue, surfaces divergent families for synthesis, and feeds future branch-admission decisions.",
         "compound_artifact": "BRANCH_SPRAWL_CONTROL_RECORD.json",
         "next_layer_ready_when": [
           "Every automatic deletion has fresh high-confidence redundancy proof.",
