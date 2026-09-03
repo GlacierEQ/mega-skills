@@ -30,9 +30,45 @@
       "role": "agent safety and approval boundary",
       "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
       "state": "VERIFIED",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "public_safe": true,
       "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+      "url": "https://github.com/GlacierEQ/job-app-helix",
+      "role": "customer discovery / ambiguity execution",
+      "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts.",
+      "state": "VERIFIED",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+      "url": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "role": "enterprise integration / security",
+      "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages.",
+      "state": "VERIFIED",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
+      "url": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "role": "enterprise security",
+      "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries.",
+      "state": "VERIFIED",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
       "freshness_state": "FRESH"
     },
     {
@@ -42,9 +78,9 @@
       "role": "agent orchestration",
       "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
       "state": "SUPPORTED",
-      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
       "public_safe": true,
-      "source_kind": "source_and_tests",
+      "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
     },
     {
@@ -119,16 +155,58 @@
   ],
   "proof_points": [
     {
-      "evidence_id": "ev_6361aeb477c5bcfb",
+      "evidence_id": "ev_2683a44bc479221a",
       "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
       "source_id": "anthropic-safety-monitor",
       "proof_strength": 1
     },
     {
-      "evidence_id": "ev_a2c1fa1d957b76e1",
+      "evidence_id": "ev_6913037c125fd85e",
       "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
       "source_id": "anthropic-safety-monitor",
       "proof_strength": 1
+    },
+    {
+      "evidence_id": "ev_2f7e0709053f0e34",
+      "claim": "Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.",
+      "source_id": "glaciereq-mcp-stack",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_468f0323d353e27e",
+      "claim": "Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.",
+      "source_id": "glaciereq-mcp-stack",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_6f53b25e7abcf6dd",
+      "claim": "Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.",
+      "source_id": "job-app-helix-intelligence",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_e5f0e22324e43cc6",
+      "claim": "Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.",
+      "source_id": "job-app-helix-intelligence",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_19a92b5a84973875",
+      "claim": "Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.",
+      "source_id": "microsoft-identity-zero-trust",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_1f25e9848323179d",
+      "claim": "Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.",
+      "source_id": "microsoft-identity-zero-trust",
+      "proof_strength": 0.92
+    },
+    {
+      "evidence_id": "ev_6286994c2eaec763",
+      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+      "source_id": "anthropic-agent-coordinator",
+      "proof_strength": 0.72
     },
     {
       "evidence_id": "ev_3d5ecbd0ba619288",
@@ -147,48 +225,6 @@
       "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
       "source_id": "spacex-autonomy",
       "proof_strength": 0.72
-    },
-    {
-      "evidence_id": "ev_702d2f4f31493281",
-      "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
-      "source_id": "spacex-autonomy",
-      "proof_strength": 0.72
-    },
-    {
-      "evidence_id": "ev_323cd33f76847367",
-      "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
-      "source_id": "tower-of-babel",
-      "proof_strength": 0.72
-    },
-    {
-      "evidence_id": "ev_5ebdbcecbf04de24",
-      "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
-      "source_id": "tower-of-babel",
-      "proof_strength": 0.72
-    },
-    {
-      "evidence_id": "ev_ee0d59994bba6d3f",
-      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
-      "source_id": "anthropic-agent-coordinator",
-      "proof_strength": 0.6624
-    },
-    {
-      "evidence_id": "ev_5169c37850dc70b1",
-      "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
-      "source_id": "xai-colossus-cooling",
-      "proof_strength": 0.576
-    },
-    {
-      "evidence_id": "ev_65b623eed3905e02",
-      "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
-      "source_id": "xai-colossus-cooling",
-      "proof_strength": 0.576
-    },
-    {
-      "evidence_id": "ev_afff26aa032bf88c",
-      "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
-      "source_id": "anthropic-agent-coordinator",
-      "proof_strength": 0.5299
     }
   ],
   "metrics": [
@@ -227,7 +263,7 @@
       "value": 153,
       "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
@@ -237,7 +273,7 @@
       "value": 0,
       "scope": "failures/errors/skips reported by the documented verification matrix",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
@@ -252,28 +288,14 @@
       "hard_gate": true
     },
     {
-      "requirement_id": "customer_discovery",
-      "label": "Customer discovery and workflow problem decomposition",
-      "status": "PARTIAL",
-      "priority": 0.9563,
-      "hard_gate": true
-    },
-    {
       "requirement_id": "deployment_adoption",
       "label": "Customer deployment support, adoption, and lifecycle expansion",
       "status": "PARTIAL",
       "priority": 0.7763,
       "hard_gate": true
-    },
-    {
-      "requirement_id": "ambiguity_high_agency",
-      "label": "High-agency execution in ambiguous environments",
-      "status": "PARTIAL",
-      "priority": 0.756,
-      "hard_gate": true
     }
   ],
-  "evidence_coverage_score": 65.2,
-  "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit.",
+  "evidence_coverage_score": 80.4,
+  "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit.",
   "projection_rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
 }
