@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "generated_from": {
+    "ledger_backbone_version": "2.0.0",
+    "ledger_as_of": "2026-09-02",
+    "evidence_coverage_score": 65.2
+  },
+  "queue": [
+    {
+      "id": "evidence-retrieval:production_llm_delivery",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 113.1,
+      "requirement_id": "production_llm_delivery",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Production LLM and agent application delivery. Preserve source lineage; do not upgrade narrative into proof.",
+      "completion": "At least one stronger typed evidence source is added and the ledger is regenerated, or retrieval is exhausted with an explicit NO_EVIDENCE_FOUND result."
+    },
+    {
+      "id": "proof-build:production_llm_delivery",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 101.8,
+      "requirement_id": "production_llm_delivery",
+      "instruction": "If retrieval cannot satisfy Production LLM and agent application delivery, create the smallest credible proof build that demonstrates the missing behavior with executable verification and a public-safe case study.",
+      "completion": "Executable proof + receipt + bounded public artifact exists and is ingested into evidence-sources.json."
+    },
+    {
+      "id": "evidence-retrieval:customer_discovery",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 95.6,
+      "requirement_id": "customer_discovery",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Customer discovery and workflow problem decomposition. Preserve source lineage; do not upgrade narrative into proof.",
+      "completion": "At least one stronger typed evidence source is added and the ledger is regenerated, or retrieval is exhausted with an explicit NO_EVIDENCE_FOUND result."
+    },
+    {
+      "id": "proof-build:customer_discovery",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 86.1,
+      "requirement_id": "customer_discovery",
+      "instruction": "If retrieval cannot satisfy Customer discovery and workflow problem decomposition, create the smallest credible proof build that demonstrates the missing behavior with executable verification and a public-safe case study.",
+      "completion": "Executable proof + receipt + bounded public artifact exists and is ingested into evidence-sources.json."
+    },
+    {
+      "id": "evidence-retrieval:deployment_adoption",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 77.6,
+      "requirement_id": "deployment_adoption",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Customer deployment support, adoption, and lifecycle expansion. Preserve source lineage; do not upgrade narrative into proof.",
+      "completion": "At least one stronger typed evidence source is added and the ledger is regenerated, or retrieval is exhausted with an explicit NO_EVIDENCE_FOUND result."
+    },
+    {
+      "id": "evidence-retrieval:ambiguity_high_agency",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 75.6,
+      "requirement_id": "ambiguity_high_agency",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: High-agency execution in ambiguous environments. Preserve source lineage; do not upgrade narrative into proof.",
+      "completion": "At least one stronger typed evidence source is added and the ledger is regenerated, or retrieval is exhausted with an explicit NO_EVIDENCE_FOUND result."
+    },
+    {
+      "id": "linkedin:recommendations",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "OPERATOR_ACTION_REQUIRED",
+      "priority": 72,
+      "instruction": "Request up to 5 recommendations from real first-degree connections who can truthfully cover distinct dimensions: technical depth, systems thinking, problem solving and execution, reliability and follow-through, technical communication.",
+      "completion": "Recommendations are visible on LinkedIn or explicitly declined/unavailable."
+    },
+    {
+      "id": "proof-build:deployment_adoption",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 69.9,
+      "requirement_id": "deployment_adoption",
+      "instruction": "If retrieval cannot satisfy Customer deployment support, adoption, and lifecycle expansion, create the smallest credible proof build that demonstrates the missing behavior with executable verification and a public-safe case study.",
+      "completion": "Executable proof + receipt + bounded public artifact exists and is ingested into evidence-sources.json."
+    },
+    {
+      "id": "linkedin:open-to-work-preferences",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "NEEDS_INPUT",
+      "priority": 68,
+      "instruction": "Set real location, workplace-type, and employment-type preferences. Do not infer them.",
+      "completion": "All three preference groups are explicitly populated."
+    },
+    {
+      "id": "proof-build:ambiguity_high_agency",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 68,
+      "requirement_id": "ambiguity_high_agency",
+      "instruction": "If retrieval cannot satisfy High-agency execution in ambiguous environments, create the smallest credible proof build that demonstrates the missing behavior with executable verification and a public-safe case study.",
+      "completion": "Executable proof + receipt + bounded public artifact exists and is ingested into evidence-sources.json."
+    },
+    {
+      "id": "linkedin:identity-verification",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "OPERATOR_ACTION_REQUIRED",
+      "priority": 55,
+      "instruction": "Complete LinkedIn identity verification if eligible and desired.",
+      "completion": "LinkedIn confirms verification, or status records unavailable/declined."
+    },
+    {
+      "id": "linkedin:verify-banner",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "PROPOSED_NOT_VERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn banner against the current career positioning.",
+      "completion": "banner status becomes VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-contact-info",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn contact info against the current career positioning.",
+      "completion": "contact_info status becomes VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-custom-url",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn custom url against the current career positioning.",
+      "completion": "custom_url status becomes VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-profile-photo",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn profile photo against the current career positioning.",
+      "completion": "profile_photo status becomes VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:technical-post:1",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 40,
+      "instruction": "Publish an evidence-linked technical post: Technology selection as an executable proof problem, not a language popularity contest",
+      "evidence_source": "tower-of-babel",
+      "completion": "Post is published and linked back to its evidence source without inflating claims."
+    },
+    {
+      "id": "linkedin:technical-post:2",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 38,
+      "instruction": "Publish an evidence-linked technical post: Fail-closed autonomy: preserving conflicting votes instead of averaging them away",
+      "evidence_source": "spacex-autonomy",
+      "completion": "Post is published and linked back to its evidence source without inflating claims."
+    },
+    {
+      "id": "linkedin:technical-post:3",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 36,
+      "instruction": "Publish an evidence-linked technical post: Claim → behavior → implementation → verification → receipt → promotion",
+      "evidence_source": "job-application",
+      "completion": "Post is published and linked back to its evidence source without inflating claims."
+    },
+    {
+      "id": "linkedin:technical-post:4",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 34,
+      "instruction": "Publish an evidence-linked technical post: How to separate simulated infrastructure control from unverified production claims",
+      "evidence_source": "xai-colossus-cooling",
+      "completion": "Post is published and linked back to its evidence source without inflating claims."
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "system": 8,
+    "operator": 11,
+    "ready": 8
+  }
+}
