@@ -124,6 +124,14 @@ def classify(
     evidence_errors = [str(x) for x in branch.get("evidence_errors", [])]
     open_prs = branch.get("open_prs", [])
     merged_prs = branch.get("merged_prs", [])
+    branch_sha = str(branch.get("sha", "")).lower()
+    merged_current_head_prs = [
+        pr
+        for pr in merged_prs
+        if isinstance(pr, dict)
+        and isinstance(pr.get("head_sha"), str)
+        and pr["head_sha"].lower() == branch_sha
+    ]
     ahead = branch.get("ahead_by")
     protected = is_protected(name, branch, default_branch, policy)
     committed_at = parse_time(branch.get("head_committed_at"))
@@ -135,6 +143,7 @@ def classify(
         "protected": protected,
         "open_pr_count": len(open_prs),
         "merged_pr_count": len(merged_prs),
+        "merged_current_head_pr_count": len(merged_current_head_prs),
         "closed_unmerged_pr_count": len(branch.get("closed_unmerged_prs", [])),
         "ahead_by": ahead,
         "behind_by": branch.get("behind_by"),
@@ -149,8 +158,8 @@ def classify(
         return decision(name, "ACTIVE", "KEEP", 0, "open pull request proves active review", evidence)
     if evidence_errors and policy.get("fail_closed_on_evidence_error", True):
         return decision(name, "UNKNOWN_BLOCKED", "BLOCK", 0, "incomplete evidence fails closed", evidence)
-    if merged_prs:
-        return decision(name, "MERGED_REDUNDANT", "DELETE", 100, "merged pull request proves lifecycle completion", evidence)
+    if merged_current_head_prs:
+        return decision(name, "MERGED_REDUNDANT", "DELETE", 100, "current branch head exactly matches a merged pull-request head", evidence)
     if ahead == 0:
         return decision(name, "REACHABLE_REDUNDANT", "DELETE", 98, "branch contributes zero commits ahead of default", evidence)
     if isinstance(ahead, int) and ahead > 0:
