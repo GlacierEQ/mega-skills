@@ -418,7 +418,9 @@
           "public_safe": true
         }
       ],
-      "independence_group": "job-app-helix-intelligence"
+      "independence_group": "job-app-helix-target-intelligence",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "glaciereq-mcp-stack",
@@ -453,7 +455,9 @@
           "public_safe": true
         }
       ],
-      "independence_group": "glaciereq-mcp-stack"
+      "independence_group": "glaciereq-mcp-stack",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-08-28"
     },
     {
       "source_id": "microsoft-identity-zero-trust",
@@ -488,7 +492,9 @@
           "public_safe": true
         }
       ],
-      "independence_group": "microsoft-identity-zero-trust"
+      "independence_group": "microsoft-identity-zero-trust",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-01"
     }
   ]
 }
