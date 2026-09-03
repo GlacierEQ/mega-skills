@@ -52,12 +52,27 @@ def by_name(plan):
 class BranchLifecycleTests(unittest.TestCase):
     def test_merged_pr_is_high_confidence_cleanup_even_if_branch_has_unique_tip(self):
         plan = module.build_plan(inventory([
-            branch("feat/squash-merge", ahead=3, merged_prs=[{"number": 7}]),
+            branch("feat/squash-merge", ahead=3, merged_prs=[{"number": 7, "head_sha": "a" * 40}]),
         ]), POLICY)
         row = by_name(plan)["feat/squash-merge"]
         self.assertEqual(row["state"], "MERGED_REDUNDANT")
         self.assertEqual(row["action"], "DELETE")
         self.assertEqual(row["cleanup_confidence"], 100)
+
+    def test_historical_merge_does_not_delete_reused_branch(self):
+        plan = module.build_plan(inventory([
+            branch(
+                "feat/reused-after-merge",
+                ahead=2,
+                merged_prs=[{"number": 7, "head_sha": "b" * 40}],
+                committed="2026-09-02T00:00:00Z",
+            ),
+        ]), POLICY)
+        row = by_name(plan)["feat/reused-after-merge"]
+        self.assertEqual(row["state"], "DIVERGENT_PRESERVE")
+        self.assertEqual(row["action"], "KEEP")
+        self.assertEqual(row["evidence"]["merged_pr_count"], 1)
+        self.assertEqual(row["evidence"]["merged_current_head_pr_count"], 0)
 
     def test_zero_ahead_is_redundant(self):
         plan = module.build_plan(inventory([branch("fix/already-contained", ahead=0)]), POLICY)
