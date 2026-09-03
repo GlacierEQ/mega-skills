@@ -1,65 +1,82 @@
-# ROADMAP — Anthropic Applied AI
+# ROADMAP — Anthropic Applied AI Career Control Plane
 
 ## Current state
 
-The generic `pipeline-compositor` runtime is implemented. The Anthropic mission now has a versioned target contract, typed evidence registry, compiled evidence ledger, LinkedIn proof projection, and LinkedIn activation-state contract.
+The mission is now a weighted, freshness-aware, correlation-aware career evidence control plane rather than a static LinkedIn draft.
 
-## Expansion sequence
+### Target contract — COMPLETE v2
 
-1. **Target contract** — COMPLETE
-   - Anthropic / Applied AI
-   - Applied AI Architect primary target
-   - Forward Deployed AI Architect operating identity
+- Anthropic Applied AI role family.
+- Primary external target: Applied AI Architect.
+- Adjacent target: Forward Deployed Engineer.
+- Operating identity: Forward Deployed AI Architect.
+- 4 current Anthropic/Greenhouse role sources snapshot-dated 2026-09-02.
+- 12 weighted requirements with explicit hard gates and minimum proof strengths.
+- target freshness gate prevents silently using an old hiring contract.
 
-2. **Target normalization** — COMPLETE
-   - 10 competency domains
-   - evidence states
-   - projection surfaces
+### Evidence graph — CURRENT
 
-3. **Evidence inventory** — COMPLETE (first pass)
-   - 6 inspected source systems
-   - 11 evidence records
-   - 10 VERIFIED records
-   - 9 public-safe records
-   - source artifact SHA retained on each source
-   - private Mega-Skills evidence excluded from outward publication
+- **13 typed source systems**
+- **24 evidence records**
+- **20 VERIFIED records**
+- **19 public-safe records**
+- source-strength classes and freshness decay
+- correlation collapsed by independence group before scores compound
+- direct runtime/test receipts retained where available
+- private evidence excluded from public projection
 
-4. **Competency mapping** — COMPLETE (first pass)
-   - 7 / 10 target competency domains currently carry evidence
-   - current uncovered domains:
-     - customer discovery and problem decomposition
-     - enterprise integration and security
-     - ambiguous-environment execution
+Current strict evidence coverage:
 
-5. **LinkedIn backbone** — COMPLETE (baseline)
-   - evidence-ranked Featured / Projects order
-   - evidence-bound proof points
-   - skill ontology
-   - defensible metrics
-   - public/private projection law
-   - portfolio gateway
-   - recommendations / endorsements / Open-to-Work / verification / activity state tracked separately
+- **72.4 / 100**
+- **9 / 12 requirements satisfied**
+- **3 hard gates open**
 
-6. **Gap closure** — NEXT
-   - search existing Helix, portfolio, Tower, Mega-Skills, connector, and deployment artifacts for evidence covering the 3 open competencies
-   - add real evidence before inventing new proof builds
-   - if a competency remains unsupported, create a bounded proof-build work packet
+The score is evidence coverage only. It is not hiring probability, seniority, or employer fit.
 
-7. **Proof builds**
-   - implement highest-impact missing capability only where retrieval cannot satisfy the gap
-   - test, benchmark, document, and preserve receipts
+### LinkedIn release system — COMPLETE baseline
 
-8. **Projection expansion**
-   - résumé
-   - interview story bank
-   - application package
-   - recruiter/hiring-manager variants
-   - LinkedIn technical-post queue
+- operator-authored source preserved: `LINKEDIN_PROFILE_SOURCE.md`
+- machine projection: `linkedin-backbone.json`
+- human projection: `LINKEDIN_BACKBONE.md`
+- sentence/claim audit: `linkedin-claim-audit.json`
+- manual LinkedIn state: `linkedin-activation.json`
+- prioritized action queue: `linkedin-action-queue.json`
+- deterministic release compiler: `scripts/linkedin_release_compiler.py`
+- current publication pack: `linkedin-publication-pack.json`
+- career authority map: `career-control-plane.json`
 
-9. **Feedback loop**
-   - ingest new role requirements, recruiter feedback, project evidence, and interview outcomes
-   - reweight the next action without restarting the mission
+## Open hard gates — ordered
+
+1. **Production LLM and agent application delivery** — MISSING
+2. **Customer discovery and workflow problem decomposition** — PARTIAL; narrative only
+3. **Customer deployment support, adoption, and lifecycle expansion** — PARTIAL; narrative only
+
+Company/role intelligence is deliberately **not** treated as customer discovery.
+
+## Gap-closing law
+
+For every open gate:
+
+`RETRIEVE EXISTING PROOF → VERIFY → INGEST → RESCORE`
+
+Only if no qualifying evidence exists:
+
+`ACTIVATE BOUNDED PROOF PACKET → EXECUTE → VERIFY → RECEIPT → PUBLIC-SAFE CASE STUDY → INGEST`
+
+Prepared proof packets remain `BLOCKED_ON_RETRIEVAL`:
+
+- `work-packets/production-llm-delivery.json`
+- `work-packets/customer-discovery.json`
+- `work-packets/deployment-adoption.json`
+
+## Next engineering frontier
+
+1. Exhaust estate retrieval for a genuinely provider-connected/deployed LLM application.
+2. Exhaust retrieval for real external stakeholder/workflow discovery evidence.
+3. Exhaust retrieval for real external deployment/adoption evidence.
+4. Activate only the packets that remain unsupported.
+5. Regenerate LinkedIn, résumé, portfolio, and interview projections from the strengthened evidence graph.
 
 ## Completion criterion
 
-One evidence graph regenerates every outward career artifact while preserving VERIFIED, SUPPORTED, CANDIDATE, UNVERIFIED, and BLOCKED states and preventing private evidence from leaking into public surfaces.
+One retained evidence graph regenerates target-specific outward career surfaces while preserving operator wording authority, private/public boundaries, proof ceilings, freshness, and real-customer evidence requirements.
