@@ -104,6 +104,25 @@ class BranchLifecycleTests(unittest.TestCase):
         self.assertEqual(row["state"], "STALE_REVIEW")
         self.assertEqual(row["action"], "REVIEW_CONSOLIDATE")
 
+    def test_repository_policy_overrides_redundant_topology(self):
+        repository_policy = {
+            "schema": "glaciereq.branch-lifecycle-repository-policy.v1",
+            "preservations": [
+                {
+                    "name": "feat/recovery-evidence",
+                    "reason": "restored after failed cleanup transaction",
+                }
+            ],
+        }
+        merged_policy = module.merge_repository_policy(POLICY, repository_policy)
+        plan = module.build_plan(
+            inventory([branch("feat/recovery-evidence", ahead=0)]),
+            merged_policy,
+        )
+        row = by_name(plan)["feat/recovery-evidence"]
+        self.assertEqual(row["state"], "PROTECTED")
+        self.assertEqual(row["action"], "KEEP")
+
     def test_protected_pattern_never_deletes(self):
         plan = module.build_plan(inventory([
             branch("release/2026.09", ahead=0),
