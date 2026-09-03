@@ -2265,35 +2265,6 @@
       ]
     },
     {
-      "id": "branch-lifecycle-intelligence",
-      "display_name": "Branch Lifecycle Intelligence",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.3.0",
-      "path": "skills/branch-lifecycle-intelligence",
-      "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
-      "purpose": "Dynamic, evidence-first branch lifecycle intelligence that continuously reassesses current value and impact, preserves and harvests useful divergence, proves redundancy before cleanup, groups related work for synthesis, and emits transactional receipts.",
-      "input_contract": [
-        "Normalized branch inventory or live GitHub repository context",
-        "Branch lifecycle policy and protection patterns"
-      ],
-      "output_contract": [
-        "Dynamic branch lifecycle plan with value/risk/evidence posture and expiring assessment window",
-        "Transactional cleanup receipt with fresh mutation-time reassessments, hashes, deletions, preserved divergence, blocked refs, rollback state, and consolidation families"
-      ],
-      "local_validation": [
-        "18/18 exact Branch Lifecycle Intelligence adversarial tests passed under Python 3.12 in sandbox run 33738035380.",
-        "Dynamic apply run 33737915863 reclassified the branch immediately before mutation, recorded prior_state=MERGED_REDUNDANT and fresh_state=MERGED_REDUNDANT with head_stable=true, then deleted and verified absence.",
-        "Protected-namespace negative run 33736515190 completed successfully with zero delete candidates and zero deletions.",
-        "Production full report runs 33736612899 (job-application) and 33736617358 (job-app-helix) completed successfully without historical mutation."
-      ],
-      "does_not_own": [
-        "Semantic equivalence claims based only on branch names",
-        "Automatic deletion of divergent or evidence-incomplete work",
-        "Automatic merging of branch families"
-      ]
-    },
-    {
       "id": "brand-guidelines-anthropic",
       "display_name": "Brand Guidelines Anthropic",
       "ownership": "glaciereq",
@@ -2646,6 +2617,32 @@
       "does_not_own": [
         "Unverified capability promotion",
         "Specialist route execution"
+      ]
+    },
+    {
+      "id": "casebuild-mesh-organization",
+      "display_name": "Casebuild Mesh Organization",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/casebuild-mesh-organization",
+      "entrypoint": "skills/casebuild-mesh-organization/SKILL.md",
+      "purpose": "Organize a legal matter across repository and cloud nodes with stable evidence identity, provenance, integrity, navigation, reconciliation, review routing, and an exact resume point.",
+      "input_contract": [
+        "Matter identity, jurisdiction, scope, constraints, and authorization boundaries",
+        "Accessible repository/cloud nodes and existing indexes, checkpoints, manifests, and source receipts"
+      ],
+      "output_contract": [
+        "CASEBUILD_MESH_REGISTER.md with node graph, evidence integrity state, linked views, gaps, work packets, completion scorecard, and exact resume point"
+      ],
+      "local_validation": [
+        "Reviewer can traverse matter to issue/event to evidence ID to exact source to integrity receipt",
+        "Originals remain unchanged; derivatives retain parent and transformation provenance",
+        "Contradictions, unknowns, attorney decisions, and external-action approvals remain explicit"
+      ],
+      "does_not_own": [
+        "Persuasive legal writing, litigation strategy, legal filing, privilege waiver, or unapproved external mutation",
+        "Canonicalization or forced consolidation of peer repositories and cloud nodes"
       ]
     },
     {
