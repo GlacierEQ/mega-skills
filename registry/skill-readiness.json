@@ -3,9 +3,9 @@
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
     "skills": 709,
-    "combos": 32,
+    "combos": 33,
     "megas": 29,
-    "ready_total": 727,
+    "ready_total": 728,
     "not_ready_total": 43,
     "skill_states": {
       "instruction_ready": 671,
@@ -16,7 +16,7 @@
     },
     "combo_states": {
       "composition_candidate": 14,
-      "composition_ready": 18
+      "composition_ready": 19
     },
     "mega_states": {
       "mission_contract_ready": 21,
@@ -15258,6 +15258,14 @@
       "reasons": []
     },
     {
+      "id": "branch-sprawl-control-loop",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "capability-readiness",
       "layer": "combo",
       "ready": true,
@@ -15392,6 +15400,14 @@
       "reasons": []
     },
     {
+      "id": "mission-aware-operating-loop",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "multi-agent-orchestration-mesh",
       "layer": "combo",
       "ready": true,
@@ -15500,14 +15516,6 @@
       "reasons": [
         "required skill not ready: mega-skills-test-runner"
       ]
-    },
-    {
-      "id": "mission-aware-operating-loop",
-      "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
-      "declared_maturity": "active",
-      "reasons": []
     }
   ],
   "megas": [
