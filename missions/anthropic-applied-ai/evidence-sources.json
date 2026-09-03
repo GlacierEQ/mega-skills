@@ -374,6 +374,108 @@
           ]
         }
       ]
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/job-app-helix",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "verification": "Current main source/tests inspected. Repository README identifies job-app-helix as a VERIFIED anchor. APEX Estate Non-Regression run 33737806112 succeeded at e8b12f678f8cf9b20a8e94069230637e30edaf1a; broad CI on that head is separately failing and is not claimed here.",
+      "project": {
+        "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+        "role": "customer discovery / ambiguity execution",
+        "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts."
+      },
+      "claims": [
+        {
+          "claim": "Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.",
+          "competencies": [
+            "customer discovery and problem decomposition",
+            "evaluation, observability, and reliability",
+            "ambiguous-environment execution"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.",
+          "competencies": [
+            "customer discovery and problem decomposition",
+            "ambiguous-environment execution",
+            "field leadership and technical communication"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "verification": "Current README inspected. CI run 33135067808 and Public Truth Gate run 33135067576 both succeeded at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18.",
+      "project": {
+        "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+        "role": "enterprise integration / security",
+        "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages."
+      },
+      "claims": [
+        {
+          "claim": "Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.",
+          "competencies": [
+            "enterprise integration and security",
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.",
+          "competencies": [
+            "enterprise integration and security",
+            "agents, MCP, tools, and context engineering",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "verification": "Current README inspected. CI run 33519708554 succeeded at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41.",
+      "project": {
+        "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
+        "role": "enterprise security",
+        "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "AI systems architecture"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
     }
   ]
 }
