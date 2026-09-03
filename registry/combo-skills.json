@@ -1858,37 +1858,38 @@
     },
     {
       "id": "fleet-recon-and-harmonize",
-      "display_name": "Fleet Recon and Harmonize",
+      "display_name": "Fleet Recon and Harmonize — Harmonious Merge Route",
       "ownership": "glaciereq",
       "maturity": "candidate",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "combo-skills/fleet-recon-and-harmonize",
       "entrypoint": "combo-skills/fleet-recon-and-harmonize/COMBO.md",
       "selection": {
         "use_when": [
-          "Unmerged branch clutter across repositories must be audited, synthesized into main, and safely pruned without data loss."
+          "Branches across repositories must be converged without replacing main: unique beneficial behavior needs evidence-backed integration and ref retirement must be deliberate."
         ],
         "do_not_use_when": [
-          "The work is a simple local git commit or single-file edit."
+          "The work is a simple local git commit or single-file edit.",
+          "The requested outcome is a blind bulk merge, automatic cleanup, or preservation of known credential-bearing history."
         ]
       },
       "members": [
         {
           "id": "mission-contract",
           "kind": "skill",
-          "role": "Set harmonization scope and safety gates.",
+          "role": "Set canonical baseline, scope, approvals, and security constraints.",
           "required": true
         },
         {
           "id": "fleet-git-harmonizer-core",
           "kind": "skill",
-          "role": "Audit divergence, synthesize, tag, and prune.",
+          "role": "Create per-ref dispositions and selectively preserve beneficial behavior on main.",
           "required": true
         },
         {
           "id": "quality-gate",
           "kind": "skill",
-          "role": "Verify regression suites and pruning receipts.",
+          "role": "Verify required checks on main and retirement-readiness receipts.",
           "required": true
         }
       ],
@@ -1899,12 +1900,13 @@
             "member_id": "mission-contract",
             "consumes": [
               "Repository scopes",
-              "Target branch"
+              "Target branch",
+              "Security constraints"
             ],
             "produces": [
               "MISSION.md"
             ],
-            "validation": "Non-destructive boundaries are explicit."
+            "validation": "Main, ref scope, checks, and non-destructive boundaries are explicit."
           },
           {
             "step": 2,
@@ -1914,21 +1916,21 @@
               "Repository paths"
             ],
             "produces": [
-              "fleet-divergence-audit.json"
+              "harmonious-merge-audit.json"
             ],
-            "validation": "Zero data loss verified via archive tags."
+            "validation": "Every scoped branch/tag has an evidence-backed disposition."
           },
           {
             "step": 3,
             "member_id": "quality-gate",
             "consumes": [
               "Test outputs",
-              "Archive tags"
+              "Harmonious Merge Audit"
             ],
             "produces": [
               "Gate record"
             ],
-            "validation": "Regression test suites pass 100% green before branch deletion."
+            "validation": "Required checks pass on main and no ref is deleted without approval."
           }
         ]
       },
@@ -1939,10 +1941,11 @@
             "to_member": "fleet-git-harmonizer-core",
             "required_inputs": [
               "Repository scopes",
-              "Branch retention rules"
+              "Baseline SHA",
+              "Branch retention and security rules"
             ],
             "accepted_outputs": [
-              "Verified divergence manifest and synthesis diffs"
+              "Verified semantic divergence manifest and disposition plan"
             ],
             "failure_owner": "mission owner"
           },
@@ -1950,27 +1953,29 @@
             "from_member": "fleet-git-harmonizer-core",
             "to_member": "quality-gate",
             "required_inputs": [
-              "Synthesized tree",
+              "Updated main",
+              "Integration provenance",
               "Test results",
-              "Archive tags"
+              "Ref dispositions"
             ],
             "accepted_outputs": [
-              "Verified gate record"
+              "Verified gate record and retirement-readiness decision"
             ],
             "failure_owner": "execution owner"
           }
         ],
         "evidence_requirements": [
-          "Record all commit SHAs, divergence counts, archive tag names, and test outputs."
+          "Record baseline and final main SHAs, complete ref inventory, per-ref dispositions, source commits, test outputs, security findings, and approval receipts."
         ],
         "risk_boundaries": [
-          "Do not force push to remote branches or delete unarchived branches."
+          "Do not reset, delete, or replace main.",
+          "Do not force-push, rewrite history, create secret-preserving archive refs, or delete a branch without required approval."
         ],
         "quality_gates": [
-          "Every pruned branch has a verified archive tag; tests pass 100% green."
+          "Every scoped ref has a disposition; accepted integrations pass on main; every retirement has preservation-or-rejection evidence and approval."
         ],
         "state_updates": [
-          "Record synthesized commits, archive tags, and pruned branches after each batch."
+          "Record integration receipts, deferred decisions, security escalations, and approved ref-retirement outcomes after each batch."
         ]
       },
       "compounding": {
@@ -1979,11 +1984,12 @@
           "Git divergence analysis",
           "Regression gating"
         ],
-        "adds": "A repeatable inspect-and-harmonize route that audits branch divergence, synthesizes features into main, applies archive tags, runs test assertions, and prunes clutter.",
-        "compound_artifact": "fleet-harmonization-record.md",
+        "adds": "A repeatable Harmonious Merge route that preserves main, selectively integrates unique beneficial behavior, records branch dispositions, and keeps credential remediation separate from ref-retirement actions.",
+        "compound_artifact": "harmonious-merge-audit.json",
         "next_layer_ready_when": [
-          "Every pruned branch has an archive tag.",
-          "Regression tests pass with zero regressions."
+          "Main remains the verified canonical baseline.",
+          "Every scoped ref has an evidence-backed disposition.",
+          "Any credential exposure is escalated through rotation and separately authorized history cleanup."
         ]
       }
     },
