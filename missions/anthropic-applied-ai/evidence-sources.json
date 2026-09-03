@@ -400,7 +400,6 @@
         {
           "claim": "Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.",
           "competencies": [
-            "customer discovery and problem decomposition",
             "evaluation, observability, and reliability",
             "ambiguous-environment execution"
           ],
@@ -410,7 +409,6 @@
         {
           "claim": "Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.",
           "competencies": [
-            "customer discovery and problem decomposition",
             "ambiguous-environment execution",
             "field leadership and technical communication"
           ],
