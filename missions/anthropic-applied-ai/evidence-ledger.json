@@ -8,14 +8,15 @@
   "identity": "Forward Deployed AI Architect",
   "records": [
     {
-      "evidence_id": "ev_6361aeb477c5bcfb",
+      "evidence_id": "ev_2683a44bc479221a",
       "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
       "source": "https://github.com/GlacierEQ/anthropic-safety-monitor",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
-      "verification": "Public README inspected 2026-09-02 HST; repository reports current TEST evidence at canonical promotion c7ab52e0e70a5cd449f9335f90030059d254325f with 51 tests on Python 3.11, 3.12, and 3.13 (153 executions), 0 failures/errors/skips.",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
+      "verification": "Direct verification receipt inspected 2026-09-02 HST: workflow run 30645777132 success; Python 3.11/3.12/3.13; 51 tests each, 153 total executions; zero failures/errors/skips; receipt carries per-version JUnit and artifact SHA-256 values plus explicit nonclaims.",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
+      "independence_group": "anthropic-safety-monitor",
       "competencies": [
         "agents, MCP, tools, and context engineering",
         "safe and human-directed deployment",
@@ -31,14 +32,15 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_a2c1fa1d957b76e1",
+      "evidence_id": "ev_6913037c125fd85e",
       "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
       "source": "https://github.com/GlacierEQ/anthropic-safety-monitor",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
-      "verification": "Public README inspected 2026-09-02 HST; repository reports current TEST evidence at canonical promotion c7ab52e0e70a5cd449f9335f90030059d254325f with 51 tests on Python 3.11, 3.12, and 3.13 (153 executions), 0 failures/errors/skips.",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
+      "verification": "Direct verification receipt inspected 2026-09-02 HST: workflow run 30645777132 success; Python 3.11/3.12/3.13; 51 tests each, 153 total executions; zero failures/errors/skips; receipt carries per-version JUnit and artifact SHA-256 values plus explicit nonclaims.",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
+      "independence_group": "anthropic-safety-monitor",
       "competencies": [
         "enterprise integration and security",
         "evaluation, observability, and reliability",
@@ -62,6 +64,7 @@
       "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
       "state": "VERIFIED",
       "source_kind": "source_and_tests",
+      "independence_group": "computer-user",
       "competencies": [
         "enterprise integration and security",
         "hands-on Python and production engineering"
@@ -86,6 +89,7 @@
       "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
       "state": "VERIFIED",
       "source_kind": "source_and_tests",
+      "independence_group": "computer-user",
       "competencies": [
         "enterprise integration and security",
         "safe and human-directed deployment",
@@ -120,7 +124,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 5,
+      "age_days": 0,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -144,7 +148,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 5,
+      "age_days": 0,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -216,7 +220,7 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 1,
+      "age_days": 0,
       "limitations": [],
       "gap": "",
       "next_strengthening_action": "",
@@ -240,8 +244,34 @@
       "hiring_signal": 5,
       "proof_strength": 0.92,
       "freshness_state": "FRESH",
-      "age_days": 1,
+      "age_days": 0,
       "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_6286994c2eaec763",
+      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+      "source": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "source_id": "anthropic-agent-coordinator",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
+      "verification": "Direct promotion receipt inspected 2026-09-02 HST: exact-revision commit 87438f57bdfd2cb380730cf51140611963d7c95b; 62 collected/executed/passed; zero failed/errored/skipped; receipt explicitly blocks hosted matrix, provider-call, production-scale, and deployment claims.",
+      "state": "SUPPORTED",
+      "source_kind": "runtime_receipt",
+      "independence_group": "anthropic-agent-coordinator",
+      "competencies": [
+        "agents, MCP, tools, and context engineering",
+        "AI systems architecture",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [
+        "Strongest executed proof is historical exact-revision evidence and does not automatically establish current-head behavior."
+      ],
       "gap": "",
       "next_strengthening_action": "",
       "public_safe": true
@@ -255,6 +285,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "helix-hiring-system",
       "competencies": [
         "evaluation, observability, and reliability",
         "safe and human-directed deployment"
@@ -277,6 +308,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "helix-hiring-system",
       "competencies": [
         "AI systems architecture",
         "reusable patterns and product feedback",
@@ -300,6 +332,7 @@
       "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "mega-skills",
       "competencies": [
         "AI systems architecture",
         "agents, MCP, tools, and context engineering",
@@ -324,6 +357,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "spacex-autonomy",
       "competencies": [
         "safe and human-directed deployment",
         "evaluation, observability, and reliability"
@@ -346,6 +380,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "spacex-autonomy",
       "competencies": [
         "hands-on Python and production engineering",
         "evaluation, observability, and reliability",
@@ -369,6 +404,7 @@
       "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "tower-of-babel",
       "competencies": [
         "AI systems architecture",
         "hands-on Python and production engineering"
@@ -391,6 +427,7 @@
       "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "tower-of-babel",
       "competencies": [
         "AI systems architecture",
         "evaluation, observability, and reliability",
@@ -406,25 +443,25 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_ee0d59994bba6d3f",
-      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+      "evidence_id": "ev_daad683d6ffdf3a4",
+      "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
       "source": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
       "source_id": "anthropic-agent-coordinator",
-      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
-      "verification": "Public README inspected 2026-09-02 HST; historical exact-revision receipt documents 62/62 passing tests at commit 87438f57bdfd2cb380730cf51140611963d7c95b. Current-head execution is not promoted.",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
+      "verification": "Direct promotion receipt inspected 2026-09-02 HST: exact-revision commit 87438f57bdfd2cb380730cf51140611963d7c95b; 62 collected/executed/passed; zero failed/errored/skipped; receipt explicitly blocks hosted matrix, provider-call, production-scale, and deployment claims.",
       "state": "SUPPORTED",
-      "source_kind": "source_and_tests",
+      "source_kind": "runtime_receipt",
+      "independence_group": "anthropic-agent-coordinator",
       "competencies": [
         "agents, MCP, tools, and context engineering",
-        "AI systems architecture",
-        "evaluation, observability, and reliability"
+        "safe and human-directed deployment"
       ],
-      "hiring_signal": 5,
-      "proof_strength": 0.6624,
+      "hiring_signal": 4,
+      "proof_strength": 0.576,
       "freshness_state": "FRESH",
       "age_days": 0,
       "limitations": [
-        "Strongest executed proof is historical exact-revision evidence and does not automatically establish current-head behavior."
+        "Proposal handoff is not tool execution or provider deployment."
       ],
       "gap": "",
       "next_strengthening_action": "",
@@ -439,6 +476,7 @@
       "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "mega-skills",
       "competencies": [
         "reusable patterns and product feedback",
         "safe and human-directed deployment"
@@ -461,6 +499,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "xai-colossus-cooling",
       "competencies": [
         "safe and human-directed deployment",
         "field leadership and technical communication"
@@ -483,6 +522,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "independence_group": "xai-colossus-cooling",
       "competencies": [
         "hands-on Python and production engineering",
         "evaluation, observability, and reliability"
@@ -497,30 +537,6 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_afff26aa032bf88c",
-      "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
-      "source": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
-      "source_id": "anthropic-agent-coordinator",
-      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
-      "verification": "Public README inspected 2026-09-02 HST; historical exact-revision receipt documents 62/62 passing tests at commit 87438f57bdfd2cb380730cf51140611963d7c95b. Current-head execution is not promoted.",
-      "state": "SUPPORTED",
-      "source_kind": "source_and_tests",
-      "competencies": [
-        "agents, MCP, tools, and context engineering",
-        "safe and human-directed deployment"
-      ],
-      "hiring_signal": 4,
-      "proof_strength": 0.5299,
-      "freshness_state": "FRESH",
-      "age_days": 0,
-      "limitations": [
-        "Proposal handoff is not tool execution or provider deployment."
-      ],
-      "gap": "",
-      "next_strengthening_action": "",
-      "public_safe": true
-    },
-    {
       "evidence_id": "ev_80e6d1870a57872e",
       "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
       "source": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
@@ -529,6 +545,7 @@
       "verification": "Public repository README fetched from main and inspected 2026-09-02 HST; repository labels itself a leveled reference mechanism.",
       "state": "SUPPORTED",
       "source_kind": "readme_verified",
+      "independence_group": "mission-thread-quorum",
       "competencies": [
         "safe and human-directed deployment",
         "AI systems architecture"
@@ -551,6 +568,7 @@
       "verification": "Job-App Helix candidate-routing artifact fetched from main and inspected 2026-09-02 HST. It is a positioning artifact, not independent proof of customer deployment.",
       "state": "CANDIDATE",
       "source_kind": "candidate_narrative",
+      "independence_group": "helix-hiring-system",
       "competencies": [
         "customer discovery and problem decomposition",
         "ambiguous-environment execution",
@@ -602,7 +620,7 @@
       "value": 153,
       "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
@@ -612,7 +630,7 @@
       "value": 0,
       "scope": "failures/errors/skips reported by the documented verification matrix",
       "source_id": "anthropic-safety-monitor",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "state": "VERIFIED",
       "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
@@ -710,7 +728,7 @@
       "role": "agent safety and approval boundary",
       "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
       "state": "VERIFIED",
-      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
       "public_safe": true,
       "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
@@ -722,9 +740,9 @@
       "role": "agent orchestration",
       "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
       "state": "SUPPORTED",
-      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
       "public_safe": true,
-      "source_kind": "source_and_tests",
+      "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
     },
     {
@@ -767,6 +785,7 @@
   "source_health": [
     {
       "source_id": "tower-of-babel",
+      "independence_group": "tower-of-babel",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -775,6 +794,7 @@
     },
     {
       "source_id": "mega-skills",
+      "independence_group": "mega-skills",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -783,6 +803,7 @@
     },
     {
       "source_id": "spacex-autonomy",
+      "independence_group": "spacex-autonomy",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -791,6 +812,7 @@
     },
     {
       "source_id": "job-application",
+      "independence_group": "helix-hiring-system",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -799,6 +821,7 @@
     },
     {
       "source_id": "xai-colossus-cooling",
+      "independence_group": "xai-colossus-cooling",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -807,6 +830,7 @@
     },
     {
       "source_id": "mission-thread-quorum",
+      "independence_group": "mission-thread-quorum",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -815,6 +839,7 @@
     },
     {
       "source_id": "computer-user",
+      "independence_group": "computer-user",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -823,6 +848,7 @@
     },
     {
       "source_id": "helix-role-power-matrix",
+      "independence_group": "helix-hiring-system",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -831,6 +857,7 @@
     },
     {
       "source_id": "anthropic-safety-monitor",
+      "independence_group": "anthropic-safety-monitor",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
@@ -839,11 +866,12 @@
     },
     {
       "source_id": "anthropic-agent-coordinator",
+      "independence_group": "anthropic-agent-coordinator",
       "freshness_state": "FRESH",
       "age_days": 0,
       "freshness_factor": 1,
       "state": "SUPPORTED",
-      "source_kind": "source_and_tests"
+      "source_kind": "runtime_receipt"
     },
     {
       "source_id": "job-app-helix-intelligence",
@@ -858,7 +886,7 @@
       "source_id": "glaciereq-mcp-stack",
       "independence_group": "glaciereq-mcp-stack",
       "freshness_state": "FRESH",
-      "age_days": 5,
+      "age_days": 0,
       "freshness_factor": 1,
       "state": "VERIFIED",
       "source_kind": "source_and_tests"
@@ -867,7 +895,7 @@
       "source_id": "microsoft-identity-zero-trust",
       "independence_group": "microsoft-identity-zero-trust",
       "freshness_state": "FRESH",
-      "age_days": 1,
+      "age_days": 0,
       "freshness_factor": 1,
       "state": "VERIFIED",
       "source_kind": "source_and_tests"
@@ -879,8 +907,8 @@
       "weight": 1.25,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "proof_strength": 0.9256,
-      "coverage_percent": 92.6,
+      "proof_strength": 0.92,
+      "coverage_percent": 92,
       "status": "SATISFIED",
       "evidence_ids": [
         "ev_6f53b25e7abcf6dd",
@@ -896,8 +924,7 @@
         "ev_e5f0e22324e43cc6"
       ],
       "independent_groups": [
-        "helix-hiring-system",
-        "helix-role-power-matrix"
+        "helix-hiring-system"
       ]
     },
     "architecture": {
@@ -905,16 +932,16 @@
       "weight": 1.2,
       "hard_gate": true,
       "minimum_strength": 0.62,
-      "proof_strength": 0.9996,
+      "proof_strength": 0.9997,
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
         "ev_1f25e9848323179d",
+        "ev_6286994c2eaec763",
         "ev_ba8f3d3f576ca3af",
         "ev_18823a21ca59236f",
         "ev_323cd33f76847367",
         "ev_5ebdbcecbf04de24",
-        "ev_ee0d59994bba6d3f",
         "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
@@ -926,15 +953,15 @@
       ],
       "public_safe_evidence_ids": [
         "ev_1f25e9848323179d",
+        "ev_6286994c2eaec763",
         "ev_ba8f3d3f576ca3af",
         "ev_323cd33f76847367",
         "ev_5ebdbcecbf04de24",
-        "ev_ee0d59994bba6d3f",
         "ev_80e6d1870a57872e"
       ],
       "independent_groups": [
         "anthropic-agent-coordinator",
-        "job-application",
+        "helix-hiring-system",
         "mega-skills",
         "microsoft-identity-zero-trust",
         "mission-thread-quorum",
@@ -982,25 +1009,25 @@
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_6361aeb477c5bcfb",
+        "ev_2683a44bc479221a",
         "ev_2f7e0709053f0e34",
         "ev_468f0323d353e27e",
+        "ev_6286994c2eaec763",
         "ev_18823a21ca59236f",
-        "ev_ee0d59994bba6d3f",
-        "ev_afff26aa032bf88c"
+        "ev_daad683d6ffdf3a4"
       ],
       "verified_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
+        "ev_2683a44bc479221a",
         "ev_2f7e0709053f0e34",
         "ev_468f0323d353e27e",
         "ev_18823a21ca59236f"
       ],
       "public_safe_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
+        "ev_2683a44bc479221a",
         "ev_2f7e0709053f0e34",
         "ev_468f0323d353e27e",
-        "ev_ee0d59994bba6d3f",
-        "ev_afff26aa032bf88c"
+        "ev_6286994c2eaec763",
+        "ev_daad683d6ffdf3a4"
       ],
       "independent_groups": [
         "anthropic-agent-coordinator",
@@ -1018,8 +1045,8 @@
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
@@ -1030,14 +1057,14 @@
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
+        "ev_daad683d6ffdf3a4",
         "ev_d7ccc5b0c5f93be7",
         "ev_5169c37850dc70b1",
-        "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
@@ -1052,8 +1079,8 @@
         "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_2f7e0709053f0e34",
         "ev_468f0323d353e27e",
         "ev_19a92b5a84973875",
@@ -1061,8 +1088,8 @@
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
+        "ev_daad683d6ffdf3a4",
         "ev_5169c37850dc70b1",
-        "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
       ],
       "independent_groups": [
@@ -1070,7 +1097,7 @@
         "anthropic-safety-monitor",
         "computer-user",
         "glaciereq-mcp-stack",
-        "job-application",
+        "helix-hiring-system",
         "mega-skills",
         "microsoft-identity-zero-trust",
         "mission-thread-quorum",
@@ -1087,23 +1114,23 @@
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_21b7e54fc3edb92f",
         "ev_468f0323d353e27e",
         "ev_6f53b25e7abcf6dd",
         "ev_19a92b5a84973875",
+        "ev_6286994c2eaec763",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
         "ev_5ebdbcecbf04de24",
-        "ev_ee0d59994bba6d3f",
         "ev_65b623eed3905e02"
       ],
       "verified_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_21b7e54fc3edb92f",
         "ev_468f0323d353e27e",
         "ev_6f53b25e7abcf6dd",
@@ -1116,16 +1143,16 @@
         "ev_65b623eed3905e02"
       ],
       "public_safe_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_468f0323d353e27e",
         "ev_6f53b25e7abcf6dd",
         "ev_19a92b5a84973875",
+        "ev_6286994c2eaec763",
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
         "ev_5ebdbcecbf04de24",
-        "ev_ee0d59994bba6d3f",
         "ev_65b623eed3905e02"
       ],
       "independent_groups": [
@@ -1134,7 +1161,6 @@
         "computer-user",
         "glaciereq-mcp-stack",
         "helix-hiring-system",
-        "job-application",
         "mega-skills",
         "microsoft-identity-zero-trust",
         "spacex-autonomy",
@@ -1169,7 +1195,7 @@
       "verified_evidence_ids": [],
       "public_safe_evidence_ids": [],
       "independent_groups": [
-        "helix-role-power-matrix"
+        "helix-hiring-system"
       ]
     },
     "ambiguity_high_agency": {
@@ -1177,8 +1203,8 @@
       "weight": 1.05,
       "hard_gate": true,
       "minimum_strength": 0.55,
-      "proof_strength": 0.9256,
-      "coverage_percent": 92.6,
+      "proof_strength": 0.92,
+      "coverage_percent": 92,
       "status": "SATISFIED",
       "evidence_ids": [
         "ev_6f53b25e7abcf6dd",
@@ -1194,8 +1220,7 @@
         "ev_e5f0e22324e43cc6"
       ],
       "independent_groups": [
-        "helix-hiring-system",
-        "helix-role-power-matrix"
+        "helix-hiring-system"
       ]
     },
     "repeatable_patterns": {
@@ -1221,7 +1246,7 @@
         "ev_5ebdbcecbf04de24"
       ],
       "independent_groups": [
-        "job-application",
+        "helix-hiring-system",
         "mega-skills",
         "tower-of-babel"
       ]
@@ -1231,8 +1256,8 @@
       "weight": 0.9,
       "hard_gate": false,
       "minimum_strength": 0.5,
-      "proof_strength": 0.9905,
-      "coverage_percent": 99.1,
+      "proof_strength": 0.9661,
+      "coverage_percent": 96.6,
       "status": "SATISFIED",
       "evidence_ids": [
         "ev_e5f0e22324e43cc6",
@@ -1251,7 +1276,6 @@
       ],
       "independent_groups": [
         "helix-hiring-system",
-        "job-application",
         "xai-colossus-cooling"
       ]
     },
@@ -1264,8 +1288,8 @@
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
         "ev_19a92b5a84973875",
@@ -1274,14 +1298,14 @@
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
+        "ev_daad683d6ffdf3a4",
         "ev_d7ccc5b0c5f93be7",
         "ev_5169c37850dc70b1",
-        "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_21b7e54fc3edb92f",
         "ev_2f7e0709053f0e34",
         "ev_19a92b5a84973875",
@@ -1294,16 +1318,16 @@
         "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
-        "ev_6361aeb477c5bcfb",
-        "ev_a2c1fa1d957b76e1",
+        "ev_2683a44bc479221a",
+        "ev_6913037c125fd85e",
         "ev_2f7e0709053f0e34",
         "ev_19a92b5a84973875",
         "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
+        "ev_daad683d6ffdf3a4",
         "ev_5169c37850dc70b1",
-        "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
       ],
       "independent_groups": [
@@ -1311,7 +1335,7 @@
         "anthropic-safety-monitor",
         "computer-user",
         "glaciereq-mcp-stack",
-        "job-application",
+        "helix-hiring-system",
         "mega-skills",
         "microsoft-identity-zero-trust",
         "mission-thread-quorum",
@@ -1352,7 +1376,7 @@
     "requirements_total": 12,
     "requirements_satisfied": 10,
     "hard_gates_open": 2,
-    "evidence_coverage_score": 80.7
+    "evidence_coverage_score": 80.4
   },
-  "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit."
+  "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit."
 }
