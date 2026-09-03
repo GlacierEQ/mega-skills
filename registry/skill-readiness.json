@@ -5,13 +5,13 @@
     "skills": 709,
     "combos": 33,
     "megas": 29,
-    "ready_total": 728,
-    "not_ready_total": 43,
+    "ready_total": 727,
+    "not_ready_total": 44,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
-      "implementation_unverified": 10,
-      "behavior_verified": 18,
+      "implementation_unverified": 11,
+      "behavior_verified": 17,
       "contract_incomplete": 1
     },
     "combo_states": {
@@ -2121,9 +2121,9 @@
     {
       "id": "branch-lifecycle-intelligence",
       "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py",
@@ -2138,11 +2138,14 @@
         "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
       ],
       "structural_tests": [],
-      "reasons": [],
+      "reasons": [
+        "Current v0.2.0 admission and exact-current-head hardening postdate the last successful behavioral proof.",
+        "Repository Actions currently fails before runner step initialization on both current and pre-skill baseline commits, so fresh behavioral verification cannot be claimed."
+      ],
       "verification_evidence": [
-        "8/8 adversarial unittest assertions passed from exact committed GitHub source",
-        "Reusable workflow and policy files are present on main",
-        "GitHub hierarchy CI remains independently unavailable at runner initialization, including baseline commits before this skill"
+        "Core v0.1.1: 8/8 exact-source adversarial tests passed.",
+        "v0.2.0: exact GitHub source/readback completed for planner, workflow, schemas, protocol, and 14-test suite.",
+        "v0.2.0 fresh execution pending external runner recovery."
       ]
     },
     {
