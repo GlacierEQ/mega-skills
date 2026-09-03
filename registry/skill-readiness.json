@@ -2,15 +2,15 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 708,
+    "skills": 709,
     "combos": 32,
     "megas": 29,
     "ready_total": 726,
-    "not_ready_total": 43,
+    "not_ready_total": 44,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
-      "implementation_unverified": 10,
+      "implementation_unverified": 11,
       "behavior_verified": 17,
       "contract_incomplete": 1
     },
@@ -2117,6 +2117,30 @@
         "skills/brainstorming/tests/test_brainstorming.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "branch-lifecycle-intelligence",
+      "layer": "skill",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py",
+        ".github/workflows/branch-lifecycle-intelligence.yml"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/branch-lifecycle-intelligence/skill.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
+      ],
+      "structural_tests": [],
+      "reasons": [
+        "behavioral verification pending repository CI"
+      ]
     },
     {
       "id": "brand-guidelines-anthropic",
