@@ -1,9 +1,56 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "company": "Anthropic",
   "role_family": "Applied AI",
   "primary_role": "Applied AI Architect",
   "identity": "Forward Deployed AI Architect",
+  "snapshot_date": "2026-09-02",
+  "freshness": {
+    "max_target_age_days": 14,
+    "max_source_age_days": 30
+  },
+  "market_sources": [
+    {
+      "id": "anthropic-fde-us",
+      "title": "Forward Deployed Engineer",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5302966008",
+      "retrieved_date": "2026-09-02",
+      "role_track": "forward_deployed_engineer"
+    },
+    {
+      "id": "anthropic-aia-strategic-enterprise",
+      "title": "Applied AI Architect, Strategic Enterprise Tech",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5409008008",
+      "retrieved_date": "2026-09-02",
+      "role_track": "applied_ai_architect"
+    },
+    {
+      "id": "anthropic-aia-commercial",
+      "title": "Applied AI Architect, Commercial",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5192805008",
+      "retrieved_date": "2026-09-02",
+      "role_track": "applied_ai_architect"
+    },
+    {
+      "id": "anthropic-aia-startups",
+      "title": "Applied AI Architect, Startups",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5387827008",
+      "retrieved_date": "2026-09-02",
+      "role_track": "applied_ai_architect"
+    }
+  ],
+  "role_tracks": {
+    "applied_ai_architect": {
+      "external_title": "Applied AI Architect",
+      "operating_mode": "trusted technical advisor / pre-sales architect",
+      "core_motion": "technical discovery -> architecture -> evaluation -> deployment -> adoption"
+    },
+    "forward_deployed_engineer": {
+      "external_title": "Forward Deployed Engineer",
+      "operating_mode": "embedded builder in strategic customer environments",
+      "core_motion": "workflow discovery -> production build -> integration -> deployment support -> repeatable pattern extraction"
+    }
+  },
   "competency_domains": [
     "customer discovery and problem decomposition",
     "AI systems architecture",
@@ -14,6 +61,123 @@
     "field leadership and technical communication",
     "reusable patterns and product feedback",
     "safe and human-directed deployment",
-    "ambiguous-environment execution"
-  ]
+    "ambiguous-environment execution",
+    "production LLM application delivery",
+    "customer adoption and deployment support"
+  ],
+  "requirements": [
+    {
+      "id": "customer_discovery",
+      "label": "Customer discovery and workflow problem decomposition",
+      "competencies": ["customer discovery and problem decomposition"],
+      "weight": 1.25,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise", "anthropic-aia-startups"]
+    },
+    {
+      "id": "architecture",
+      "label": "AI systems architecture from technical discovery through deployment",
+      "competencies": ["AI systems architecture"],
+      "weight": 1.2,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "source_basis": ["anthropic-aia-strategic-enterprise", "anthropic-aia-commercial"]
+    },
+    {
+      "id": "production_engineering",
+      "label": "Hands-on Python and production engineering",
+      "competencies": ["hands-on Python and production engineering"],
+      "weight": 1.2,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "source_basis": ["anthropic-fde-us"]
+    },
+    {
+      "id": "agents_mcp",
+      "label": "Agents, MCP servers, sub-agents, skills, tools, and context engineering",
+      "competencies": ["agents, MCP, tools, and context engineering"],
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "source_basis": ["anthropic-fde-us"]
+    },
+    {
+      "id": "enterprise_integration_security",
+      "label": "Enterprise integration, authority boundaries, security, and reliability",
+      "competencies": ["enterprise integration and security", "safe and human-directed deployment"],
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.58,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
+    },
+    {
+      "id": "evals_reliability",
+      "label": "Evaluation, observability, reliability, and explicit failure behavior",
+      "competencies": ["evaluation, observability, and reliability"],
+      "weight": 1.1,
+      "hard_gate": true,
+      "minimum_strength": 0.6,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
+    },
+    {
+      "id": "production_llm_delivery",
+      "label": "Production LLM and agent application delivery",
+      "competencies": ["production LLM application delivery", "hands-on Python and production engineering"],
+      "weight": 1.3,
+      "hard_gate": true,
+      "minimum_strength": 0.62,
+      "source_basis": ["anthropic-fde-us"]
+    },
+    {
+      "id": "deployment_adoption",
+      "label": "Customer deployment support, adoption, and lifecycle expansion",
+      "competencies": ["customer adoption and deployment support", "field leadership and technical communication"],
+      "weight": 1.15,
+      "hard_gate": true,
+      "minimum_strength": 0.56,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
+    },
+    {
+      "id": "ambiguity_high_agency",
+      "label": "High-agency execution in ambiguous environments",
+      "competencies": ["ambiguous-environment execution"],
+      "weight": 1.05,
+      "hard_gate": true,
+      "minimum_strength": 0.55,
+      "source_basis": ["anthropic-fde-us"]
+    },
+    {
+      "id": "repeatable_patterns",
+      "label": "Codify reusable deployment patterns and feed field insight back to product",
+      "competencies": ["reusable patterns and product feedback"],
+      "weight": 0.9,
+      "hard_gate": false,
+      "minimum_strength": 0.5,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-commercial"]
+    },
+    {
+      "id": "technical_communication",
+      "label": "Technical communication and cross-functional field leadership",
+      "competencies": ["field leadership and technical communication"],
+      "weight": 0.9,
+      "hard_gate": false,
+      "minimum_strength": 0.5,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
+    },
+    {
+      "id": "safe_deployment",
+      "label": "Safety, reliability, provenance, and human-directed deployment",
+      "competencies": ["safe and human-directed deployment"],
+      "weight": 1.0,
+      "hard_gate": true,
+      "minimum_strength": 0.6,
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
+    }
+  ],
+  "non_evidence_constraints": {
+    "fde_us_experience_signal": "4+ years in a technical customer-facing role or software engineering with consulting experience; former technical founders encouraged",
+    "fde_travel": "potential travel to customer sites, estimated 25%",
+    "availability_and_location": "must be supplied by operator and never inferred"
+  }
 }
