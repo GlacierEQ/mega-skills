@@ -687,8 +687,8 @@
       "id": "branch-sprawl-control-loop",
       "display_name": "Branch Sprawl Control Loop",
       "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
+      "maturity": "candidate",
+      "version": "0.1.1",
       "path": "combo-skills/branch-sprawl-control-loop",
       "entrypoint": "combo-skills/branch-sprawl-control-loop/COMBO.md",
       "selection": {
