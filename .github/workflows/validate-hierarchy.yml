@@ -19,6 +19,8 @@ jobs:
           python-version: "3.11"
       - name: Validate capability hierarchy
         run: python scripts/validate_hierarchy.py
+      - name: Validate Mega-Skill pyramids
+        run: python scripts/generate_mega_skill_pyramids.py --check
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
       - name: Validate local skill creator behavior
