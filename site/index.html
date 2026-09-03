@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mega-Skills — Compounding AI Agent Capability Systems</title>
+  <meta name="description" content="A control-plane architecture for turning atomic AI procedures into reusable capability chains and durable, evidence-backed mission systems." />
+  <meta name="theme-color" content="#071018" />
+  <style>
+    :root{
+      --bg:#071018;--panel:#0b1722;--panel2:#0f1e2b;--text:#eef8ff;--muted:#98adbc;
+      --line:#203747;--ice:#6ee7ff;--combo:#9da8ff;--mega:#7af0b4;--amber:#ffd166;--violet:#c69cff;
+      --max:1180px;--r:18px;--shadow:0 24px 70px rgba(0,0,0,.35)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    body{margin:0;background:
+      radial-gradient(900px 500px at 50% -120px,rgba(110,231,255,.11),transparent 60%),
+      radial-gradient(700px 520px at 90% 10%,rgba(198,156,255,.08),transparent 65%),
+      var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;
+      mask-image:radial-gradient(circle at 50% 20%,black,transparent 75%)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(7,16,24,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(110,231,255,.12)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+    .mark{width:30px;height:30px;border:1px solid rgba(110,231,255,.45);border-radius:9px;display:grid;place-items:center;box-shadow:0 0 25px rgba(110,231,255,.13)}
+    .mark span{width:11px;height:11px;border:2px solid var(--ice);transform:rotate(45deg)}
+    .navlinks{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:14px}
+    .navlinks a:hover{color:var(--text)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--mega);box-shadow:0 0 12px var(--mega)}
+    .hero{padding:100px 0 72px;min-height:78vh;display:flex;align-items:center}
+    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:58px;align-items:center}
+    h1{font-size:clamp(52px,8vw,102px);line-height:.93;letter-spacing:-.06em;margin:20px 0 24px;max-width:900px}
+    .grad{background:linear-gradient(100deg,#fff 8%,var(--ice) 55%,#fff 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lede{font-size:clamp(18px,2.2vw,24px);color:var(--muted);max-width:760px}
+    .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{padding:13px 17px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:9px}
+    .btn.primary{background:var(--ice);color:#04202b;border-color:transparent;box-shadow:0 12px 40px rgba(110,231,255,.16)}
+    .btn:hover{transform:translateY(-1px)}
+    .heroCard,.panel{background:linear-gradient(180deg,rgba(16,32,46,.92),rgba(10,22,32,.92));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+    .heroCard{padding:24px;position:relative;overflow:hidden}
+    .heroCard:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(110,231,255,.06);filter:blur(20px);right:-130px;top:-140px}
+    .mono{font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .flow{display:grid;gap:10px;margin-top:20px}
+    .node{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.018)}
+    .node .num{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font:800 11px ui-monospace;background:rgba(110,231,255,.08);color:var(--ice)}
+    .node strong{font-size:14px}.node small{color:var(--muted)}
+    .arrow{color:var(--ice);opacity:.7}
+    section{padding:88px 0;border-top:1px solid rgba(255,255,255,.055)}
+    .sectionHead{max-width:800px;margin-bottom:42px}
+    .eyebrow{display:flex;align-items:center;gap:12px}
+    .eyebrow:before{content:"";width:34px;height:1px;background:var(--ice)}
+    h2{font-size:clamp(34px,5vw,56px);line-height:1.02;letter-spacing:-.045em;margin:14px 0}
+    .sub{color:var(--muted);font-size:18px}
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tier{padding:26px;min-height:350px;position:relative;overflow:hidden;transition:.25s}
+    .tier:hover{transform:translateY(-4px);border-color:rgba(110,231,255,.4)}
+    .tier h3{font-size:28px;margin:16px 0 8px;letter-spacing:-.03em}.tier p{color:var(--muted)}
+    .chip{display:inline-flex;padding:7px 9px;border-radius:999px;border:1px solid var(--line);font:700 10px ui-monospace;letter-spacing:.1em;text-transform:uppercase}
+    .skill{color:var(--ice);border-color:rgba(110,231,255,.34);background:rgba(110,231,255,.07)}
+    .combo{color:var(--combo);border-color:rgba(157,168,255,.34);background:rgba(157,168,255,.07)}
+    .mega{color:var(--mega);border-color:rgba(122,240,180,.34);background:rgba(122,240,180,.07)}
+    .rule{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+    .rule b{display:block;font:700 11px ui-monospace;color:var(--text);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+    .snow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:stretch}
+    .stage{padding:18px 16px;position:relative;min-height:170px}
+    .stage:not(:last-child):after{content:"→";position:absolute;right:-13px;top:50%;z-index:3;color:var(--ice);font-weight:900}
+    .stage .n{color:var(--ice);font:800 11px ui-monospace}.stage h3{font-size:17px;line-height:1.15;margin:10px 0}.stage p{font-size:13px;color:var(--muted)}
+    .quote{margin-top:24px;padding:22px;border-left:2px solid var(--ice);background:rgba(110,231,255,.035);font-size:22px;font-weight:700}
+    .loopGrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px}
+    .loopViz{aspect-ratio:1;border-radius:50%;position:relative;margin:auto;max-width:430px;background:radial-gradient(circle at 50% 50%,rgba(110,231,255,.09),transparent 52%)}
+    .ring{position:absolute;inset:11%;border:1px dashed rgba(110,231,255,.42);border-radius:50%;animation:spin 24s linear infinite}
+    .core{position:absolute;inset:34%;display:grid;place-items:center;text-align:center;border:1px solid var(--line);border-radius:50%;background:var(--panel);font:800 12px ui-monospace;letter-spacing:.08em}
+    .steps{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .step{padding:15px 16px;display:flex;gap:12px;align-items:flex-start}
+    .step span{font:800 11px ui-monospace;color:var(--ice)}.step b{font-size:14px}.step p{font-size:13px;color:var(--muted);margin:4px 0 0}
+    .features{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .feature{padding:20px;min-height:150px}.feature .icon{font:900 18px ui-monospace;color:var(--ice)}.feature h3{font-size:15px;margin:16px 0 6px}.feature p{font-size:13px;color:var(--muted);margin:0}
+    .readiness{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px}
+    .states{display:grid;gap:10px}.state{padding:18px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.state p{color:var(--muted);font-size:13px;margin:4px 0 0}
+    .pipe{display:grid;gap:10px}.pipeItem{padding:18px;display:grid;grid-template-columns:34px 1fr;gap:12px}.pipeItem span{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(110,231,255,.08);color:var(--ice);font:800 11px ui-monospace}
+    .missions{display:grid;grid-template-columns:1fr 1fr;gap:14px}.mission{padding:24px}.mission h3{font-size:22px;margin:12px 0 8px}.mission p{color:var(--muted)}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    .provenance{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.prov{padding:16px 12px;text-align:center;font-size:12px}.prov b{display:block;margin-bottom:7px;color:var(--ice)}.prov:not(:last-child){position:relative}.prov:not(:last-child):after{content:"→";position:absolute;right:-9px;top:46%;color:var(--muted)}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}.col{padding:26px}.col h3{font-size:24px;margin-top:0}.bad h3{color:#ff9b9b}.good h3{color:var(--mega)}.check{list-style:none;padding:0;margin:20px 0 0}.check li{padding:10px 0;border-top:1px solid var(--line);color:var(--muted)}.check b{color:var(--text)}
+    .final{text-align:center;padding:110px 0}.final h2{max-width:920px;margin:12px auto 18px}.final .sub{max-width:720px;margin:auto}
+    footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 44px;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:980px){
+      .heroGrid,.loopGrid,.readiness{grid-template-columns:1fr}.tiers{grid-template-columns:1fr}.snow{grid-template-columns:1fr 1fr 1fr}.features{grid-template-columns:1fr 1fr 1fr}.provenance{grid-template-columns:1fr}.prov:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-13px}.navlinks{display:none}
+    }
+    @media(max-width:650px){
+      .wrap{width:min(var(--max),calc(100% - 24px))}.hero{padding:70px 0 54px}.snow,.features,.missions,.compare,.steps{grid-template-columns:1fr}.stage:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-14px}.node{grid-template-columns:34px 1fr}.node .arrow{display:none}section{padding:70px 0}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#top" aria-label="Mega-Skills home"><span class="mark"><span></span></span> Mega-Skills</a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#architecture">Architecture</a><a href="#operating-model">Operating model</a><a href="#readiness">Readiness</a><a href="#missions">Mission systems</a><a href="#why">Why</a>
+      </nav>
+      <span class="pill"><span class="dot"></span> evidence-first</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <span class="pill">GlacierEQ capability control plane</span>
+          <h1>Capability that <span class="grad">compounds.</span></h1>
+          <p class="lede">Mega-Skills turns isolated AI procedures into reusable capability chains and durable mission systems—without flattening everything into one giant prompt.</p>
+          <div class="ctas">
+            <a class="btn primary" href="#architecture">Explore the architecture <span>→</span></a>
+            <a class="btn" href="#operating-model">See the operating model</a>
+          </div>
+        </div>
+        <aside class="heroCard" aria-label="Compounding capability path">
+          <div class="mono">Compounding path</div>
+          <div class="flow">
+            <div class="node"><span class="num">01</span><div><strong>Skill</strong><br><small>verified atomic procedure</small></div><span class="arrow">↓</span></div>
+            <div class="node"><span class="num">02</span><div><strong>Combo Skill</strong><br><small>reusable capability chain</small></div><span class="arrow">↓</span></div>
+            <div class="node"><span class="num">03</span><div><strong>Mega Skill</strong><br><small>durable mission system</small></div><span class="arrow">↓</span></div>
+            <div class="node"><span class="num">04</span><div><strong>Evidence</strong><br><small>receipts, gates, provenance</small></div><span class="arrow">↓</span></div>
+            <div class="node"><span class="num">05</span><div><strong>Evolution</strong><br><small>better future capability</small></div><span class="arrow">↺</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">01 / architecture</div><h2>The capability hierarchy</h2><p class="sub">Every layer has a distinct job. Higher layers integrate verified outputs from lower layers; they do not silently copy, blur, or replace them.</p></div>
+        <div class="tiers">
+          <article class="panel tier"><span class="chip skill">Skill</span><h3>Precise method.</h3><p>The smallest maintained, independently useful procedure. A Skill owns its trigger, inputs, outputs, method, atomic artifact, and local validation.</p><div class="rule"><b>Must own</b><p>Procedure + local acceptance check.</p></div><div class="rule"><b>Must not do</b><p>Orchestrate unrelated work or depend on higher-layer mission logic.</p></div></article>
+          <article class="panel tier"><span class="chip combo">Combo Skill</span><h3>Reusable chain.</h3><p>An explicit repeated route across multiple Skills. It owns ordering, dependency contracts, handoffs, and the compound artifact created by the chain.</p><div class="rule"><b>Must own</b><p>Composition + boundary contracts.</p></div><div class="rule"><b>Must not do</b><p>Copy member methods or silently replace the Skills it composes.</p></div></article>
+          <article class="panel tier"><span class="chip mega">Mega Skill</span><h3>Mission system.</h3><p>A conditional long-horizon system that selects routes, maintains durable state, enforces phase gates, integrates evidence, and handles recovery.</p><div class="rule"><b>Must own</b><p>Routing + durable state + cross-artifact integration.</p></div><div class="rule"><b>Must not do</b><p>Invoke unrelated capability or duplicate lower-layer procedures.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="snowball">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">02 / snowball rule</div><h2>Every layer must add new value.</h2><p class="sub">The unit above a Skill carries forward a real, reviewable asset from the unit below it. Capability gets stronger because integration compounds—not because the prompt gets longer.</p></div>
+        <div class="snow">
+          <article class="panel stage"><span class="n">01</span><h3>Verified atomic artifact</h3><p>A narrow procedure runs and passes its local acceptance check.</p></article>
+          <article class="panel stage"><span class="n">02</span><h3>Reusable capability chain</h3><p>A repeated route is ordered and its handoffs are explicit.</p></article>
+          <article class="panel stage"><span class="n">03</span><h3>Compound artifact</h3><p>The chain emits an integrated asset with traceable dependencies.</p></article>
+          <article class="panel stage"><span class="n">04</span><h3>Conditional mission route</h3><p>Mission conditions determine which proven chain should run.</p></article>
+          <article class="panel stage"><span class="n">05</span><h3>Durable state + integration</h3><p>Phase gates, recovery points, and mission state survive the next turn.</p></article>
+          <article class="panel stage"><span class="n">06</span><h3>Evidence → evolution</h3><p>Receipts and outcomes improve future Skill and Combo design.</p></article>
+        </div>
+        <div class="quote">“Nothing gets bigger merely by repeating instructions.”</div>
+      </div>
+    </section>
+
+    <section id="operating-model">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">03 / operating model</div><h2>Long-horizon work without context drift.</h2><p class="sub">Mega Skills coordinate a repeatable mission loop while keeping active context lean, boundaries explicit, and recovery exact.</p></div>
+        <div class="loopGrid">
+          <div class="loopViz panel" aria-label="Mission operating loop"><div class="ring"></div><div class="core">LEAN ACTIVE<br>CONTEXT</div></div>
+          <div class="steps">
+            <div class="panel step"><span>01</span><div><b>Orient / parse</b><p>Lock outcome, constraints, authority, and acceptance criteria.</p></div></div>
+            <div class="panel step"><span>02</span><div><b>Inspect</b><p>Retrieve current state, relevant layers, and live evidence.</p></div></div>
+            <div class="panel step"><span>03</span><div><b>Research unresolved facts</b><p>Acquire only what materially blocks a sound decision.</p></div></div>
+            <div class="panel step"><span>04</span><div><b>Decide route + boundary</b><p>Select the smallest capable route and approval surface.</p></div></div>
+            <div class="panel step"><span>05</span><div><b>Execute bounded chunk</b><p>Perform concrete work against explicit inputs and tests.</p></div></div>
+            <div class="panel step"><span>06</span><div><b>Verify</b><p>Check the artifact, evidence, criteria, and external effect.</p></div></div>
+            <div class="panel step"><span>07</span><div><b>Assimilate evidence</b><p>Update durable state with receipts, contradictions, and outcomes.</p></div></div>
+            <div class="panel step"><span>08</span><div><b>Handoff / continue</b><p>Persist the exact recovery point and strongest next action.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inspectability">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">04 / inspectability</div><h2>Built to be inspected, resumed, and challenged.</h2><p class="sub">The architecture favors bounded work products and explicit state over invisible orchestration.</p></div>
+        <div class="features">
+          <article class="panel feature"><div class="icon">MC</div><h3>Mission contracts</h3><p>Bounded intent, non-negotiable criteria, exclusions.</p></article>
+          <article class="panel feature"><div class="icon">PG</div><h3>Phase gates</h3><p>Dependency order and explicit validation at each boundary.</p></article>
+          <article class="panel feature"><div class="icon">CC</div><h3>Context capsules</h3><p>Lean operational state without reloading the entire history.</p></article>
+          <article class="panel feature"><div class="icon">WP</div><h3>Work packets</h3><p>Owner, output, authority, constraints, and test made explicit.</p></article>
+          <article class="panel feature"><div class="icon">ER</div><h3>Evidence registers</h3><p>Claims, sources, tests, artifacts, and provenance stay linked.</p></article>
+          <article class="panel feature"><div class="icon">QG</div><h3>Quality gates</h3><p>Acceptance decisions are reproducible rather than implied.</p></article>
+          <article class="panel feature"><div class="icon">HR</div><h3>Handoff records</h3><p>The safe resumption point is durable and exact.</p></article>
+          <article class="panel feature"><div class="icon">VR</div><h3>Validation receipts</h3><p>Observed outputs distinguish what actually ran from what was planned.</p></article>
+          <article class="panel feature"><div class="icon">FB</div><h3>Fallback routes</h3><p>Missing dependencies become bounded next actions, not invented success.</p></article>
+          <article class="panel feature"><div class="icon">SP</div><h3>Source preservation</h3><p>Higher layers add interpretation without destroying source meaning.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="readiness">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">05 / readiness</div><h2>Readiness before claims.</h2><p class="sub">A capability is not “active” because a document says it exists. It becomes active when prerequisites are present and its named validation can be reproduced.</p></div>
+        <div class="readiness">
+          <div class="states">
+            <div class="panel state"><div><span class="chip">candidate</span><p>Concept, design, or unverified procedure.</p></div><span class="mono">proposed</span></div>
+            <div class="panel state"><div><span class="chip mega">active</span><p>Repeatable in the declared environment with validation evidence.</p></div><span class="mono">validated</span></div>
+            <div class="panel state"><div><span class="chip combo">conditional</span><p>Usable only when named preflight checks pass.</p></div><span class="mono">preflight</span></div>
+            <div class="panel state"><div><span class="chip">deprecated</span><p>Retained for compatibility, not future selection.</p></div><span class="mono">retire</span></div>
+          </div>
+          <div class="pipe">
+            <div class="panel pipeItem"><span>1</span><div><b>Claim boundary</b><p>State what can actually be done now—and what is not proven.</p></div></div>
+            <div class="panel pipeItem"><span>2</span><div><b>Dependency inventory</b><p>Identify tools, scripts, models, data, accounts, licenses, hardware, and approvals.</p></div></div>
+            <div class="panel pipeItem"><span>3</span><div><b>Resource preflight</b><p>Verify that required items exist, are accessible, compatible, and permitted.</p></div></div>
+            <div class="panel pipeItem"><span>4</span><div><b>Validation evidence</b><p>Run or inspect the local acceptance check and preserve the result.</p></div></div>
+            <div class="panel pipeItem"><span>5</span><div><b>Fallback</b><p>When validation fails, record the blocker and return a safe next action.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="missions">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">06 / mission systems</div><h2>Patterns for end-to-end coordination.</h2><p class="sub">Mega Skills earn their layer by coordinating distinct capability chains, adding mission-wide sequencing and recovery, and emitting a result one Combo alone cannot produce.</p></div>
+        <div class="missions">
+          <article class="panel mission"><span class="chip mega">Mega pattern</span><h3>Adaptive Operations</h3><p>Observe changing conditions, reconcile signals, select bounded routes, apply quality control, and preserve the evidence that drove each transition.</p><div class="meta"><span class="pill">signals</span><span class="pill">routing</span><span class="pill">evidence</span></div></article>
+          <article class="panel mission"><span class="chip mega">Mega pattern</span><h3>Capability Foundry</h3><p>Convert proven recurring work into review-ready capability-system increments by inventorying evidence, resolving dependencies, and validating the graph.</p><div class="meta"><span class="pill">recon</span><span class="pill">forge</span><span class="pill">validation</span></div></article>
+          <article class="panel mission"><span class="chip mega">Mega pattern</span><h3>Safe Change Orchestrator</h3><p>Inspect, decide, change or repair, verify, and preserve a recoverable change record across repository and automation boundaries.</p><div class="meta"><span class="pill">change</span><span class="pill">quality gate</span><span class="pill">recovery</span></div></article>
+          <article class="panel mission"><span class="chip mega">Mega pattern</span><h3>Far Away Party</h3><p>Govern long-horizon missions from ambiguity to evidence-backed delivery while protecting state, phase gates, and continuity against context drift.</p><div class="meta"><span class="pill">long horizon</span><span class="pill">durable state</span><span class="pill">handoff</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="provenance">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">07 / provenance</div><h2>Source meaning survives every layer.</h2><p class="sub">Integration is additive. Higher layers can compact, route, rank, annotate, or supersede analysis artifacts, but they do not silently rewrite the underlying source.</p></div>
+        <div class="provenance">
+          <div class="panel prov"><b>Source</b>original evidence / journal</div>
+          <div class="panel prov"><b>Provenance</b>identity + origin + lineage</div>
+          <div class="panel prov"><b>Skill</b>atomic artifact</div>
+          <div class="panel prov"><b>Method</b>additive procedure</div>
+          <div class="panel prov"><b>Combo</b>compound artifact</div>
+          <div class="panel prov"><b>Integration</b>additive synthesis</div>
+          <div class="panel prov"><b>Mega</b>durable mission state</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap">
+        <div class="sectionHead"><div class="eyebrow mono">08 / why mega-skills</div><h2>From prompt pile to capability graph.</h2><p class="sub">The point is not to make agents sound smarter. The point is to make capability composable, inspectable, recoverable, and increasingly reusable.</p></div>
+        <div class="compare">
+          <article class="panel col bad"><h3>Ad-hoc prompt pile</h3><ul class="check"><li><b>Implicit state</b> trapped in the current conversation</li><li><b>Duplicated instructions</b> spread across agents and prompts</li><li><b>Unclear authority</b> and approval boundaries</li><li><b>Weak handoffs</b> that require reconstructing work</li><li><b>Success claims</b> without provider-side receipts</li><li><b>Context growth</b> mistaken for capability growth</li></ul></article>
+          <article class="panel col good"><h3>Capability control plane</h3><ul class="check"><li><b>Durable state</b> with exact recovery points</li><li><b>Composable contracts</b> across Skills and Combos</li><li><b>Bounded work</b> with explicit ownership and tests</li><li><b>Verifiable handoffs</b> and reproducible gates</li><li><b>Evidence-linked receipts</b> for actual execution</li><li><b>Evolution</b> driven by observed outcomes</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <div class="eyebrow mono" style="justify-content:center">09 / compound forward</div>
+        <h2>Build capability that survives the next turn.</h2>
+        <p class="sub">Turn repeated work into tested, composable, recoverable mission systems—where every higher layer adds real integration value and every claim remains tied to evidence.</p>
+        <div class="ctas" style="justify-content:center"><a class="btn primary" href="#architecture">Start with the hierarchy →</a><a class="btn" href="#top">Back to top</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot"><strong>GlacierEQ Mega-Skills</strong><span>Skills · Combo Skills · Mega Skills · Evidence · Verification · Recovery</span></div>
+  </footer>
+</body>
+</html>
