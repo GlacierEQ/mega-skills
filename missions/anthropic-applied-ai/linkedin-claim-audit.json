@@ -185,12 +185,23 @@
         "ev_b0748b6b15795138"
       ],
       "note": "Current evidence is candidate narrative only. Do not claim customer deployment/adoption history without real external evidence."
+    },
+    {
+      "claim_id": "gap.customer-discovery",
+      "source_section": "Potential future strengthening",
+      "source_text": "customer discovery and workflow problem decomposition",
+      "status": "BLOCKED",
+      "requirement_id": "customer_discovery",
+      "evidence_ids": [
+        "ev_b0748b6b15795138"
+      ],
+      "note": "Current qualifying evidence is candidate positioning narrative only. Company/market intelligence does not establish real customer or stakeholder discovery."
     }
   ],
   "summary": {
-    "audited_claim_groups": 13,
-    "public_or_mixed_supported": 10,
-    "operator_attested_or_caution": 1,
-    "blocked_strengthening_claims": 2
+    "audited_claim_groups": 14,
+    "public_or_mixed_supported": 9,
+    "operator_attested_or_caution": 2,
+    "blocked_strengthening_claims": 3
   }
 }
