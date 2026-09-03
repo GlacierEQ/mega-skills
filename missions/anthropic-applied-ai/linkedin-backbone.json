@@ -24,66 +24,6 @@
       "freshness_state": "FRESH"
     },
     {
-      "source_id": "anthropic-safety-monitor",
-      "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
-      "url": "https://github.com/GlacierEQ/anthropic-safety-monitor",
-      "role": "agent safety and approval boundary",
-      "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
-      "state": "VERIFIED",
-      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
-      "public_safe": true,
-      "source_kind": "runtime_receipt",
-      "freshness_state": "FRESH"
-    },
-    {
-      "source_id": "job-app-helix-intelligence",
-      "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
-      "url": "https://github.com/GlacierEQ/job-app-helix",
-      "role": "customer discovery / ambiguity execution",
-      "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts.",
-      "state": "VERIFIED",
-      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
-      "public_safe": true,
-      "source_kind": "source_and_tests",
-      "freshness_state": "FRESH"
-    },
-    {
-      "source_id": "glaciereq-mcp-stack",
-      "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
-      "url": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
-      "role": "enterprise integration / security",
-      "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages.",
-      "state": "VERIFIED",
-      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
-      "public_safe": true,
-      "source_kind": "source_and_tests",
-      "freshness_state": "FRESH"
-    },
-    {
-      "source_id": "microsoft-identity-zero-trust",
-      "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
-      "url": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
-      "role": "enterprise security",
-      "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries.",
-      "state": "VERIFIED",
-      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
-      "public_safe": true,
-      "source_kind": "source_and_tests",
-      "freshness_state": "FRESH"
-    },
-    {
-      "source_id": "anthropic-agent-coordinator",
-      "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
-      "url": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
-      "role": "agent orchestration",
-      "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
-      "state": "SUPPORTED",
-      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
-      "public_safe": true,
-      "source_kind": "runtime_receipt",
-      "freshness_state": "FRESH"
-    },
-    {
       "source_id": "spacex-autonomy",
       "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
       "url": "https://github.com/GlacierEQ/spacex-autonomy",
@@ -281,13 +221,6 @@
   ],
   "gap_queue": [
     {
-      "requirement_id": "production_llm_delivery",
-      "label": "Production LLM and agent application delivery",
-      "status": "MISSING",
-      "priority": 1.131,
-      "hard_gate": true
-    },
-    {
       "requirement_id": "customer_discovery",
       "label": "Customer discovery and workflow problem decomposition",
       "status": "PARTIAL",
@@ -302,7 +235,7 @@
       "hard_gate": true
     }
   ],
-  "evidence_coverage_score": 72.4,
+  "evidence_coverage_score": 82.2,
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit.",
   "projection_rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
 }
