@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "company": "Anthropic",
+  "role_family": "Applied AI",
+  "primary_role": "Applied AI Architect",
+  "identity": "Forward Deployed AI Architect",
+  "competency_domains": [
+    "customer discovery and problem decomposition",
+    "AI systems architecture",
+    "hands-on Python and production engineering",
+    "agents, MCP, tools, and context engineering",
+    "enterprise integration and security",
+    "evaluation, observability, and reliability",
+    "field leadership and technical communication",
+    "reusable patterns and product feedback",
+    "safe and human-directed deployment",
+    "ambiguous-environment execution"
+  ]
+}
