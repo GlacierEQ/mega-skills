@@ -493,6 +493,71 @@
       "independence_group": "microsoft-identity-zero-trust",
       "source_kind": "source_and_tests",
       "observed_at": "2026-09-01"
+    },
+    {
+      "source_id": "doctor-strange-receipt-zero",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-08-04",
+      "independence_group": "doctor-strange-sparkforge-runtime",
+      "locator": "https://github.com/GlacierEQ/Pro-DOCTOR-STRANGE",
+      "artifact": "apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.json@80a5773fad72ca4d3f5ab28482902fbf57faaf0e; apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.source.txt@0d169a1207558de2269e1da855874bda1f61e8ab",
+      "verification": "Receipt replayed 2026-09-02 HST against current main: bounded source SHA-256 matched bfe45e3e3bccc89ce6a860d2312a84343abb397ca3f8f04f10dc971d62e3e13e; technical output SHA-256 matched 1276b12310a82f5f9e713b16d2f1d2d48908f6c16a93065fdedf21824813ca16; executive output SHA-256 matched a7711c5c2bc861c92a4aeffbb1f3fc9413d0d85e718e62096c58f70c6ded96a9; character counts matched. Receipt records one genuine external model-backed provider success through henry-ships-sparkforge.smart_summarize, queued_capability authorization, correlation ID aaabf92b-e9db-41b8-8b42-1508c90883f9, 16035 ms gateway latency, and explicitly no fabricated multi-provider consensus.",
+      "project": {
+        "name": "Doctor Strange Convergence — Receipt-Backed External Model Execution",
+        "role": "production LLM runtime evidence",
+        "summary": "Immutable runtime receipt for a genuine external model-backed evaluation with source/output hashes and explicit failure/consensus boundaries.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Delivered a genuine external model-backed evaluation path through a queued capability and preserved the execution as an immutable receipt with provider identity, correlation ID, latency, source hash, response hashes, raw outputs, and explicit truth boundaries.",
+          "competencies": [
+            "production LLM application delivery",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false
+        },
+        {
+          "claim": "The runtime preserved unavailable provider routes as explicit failures and counted two rendering modes from one provider as one provider success rather than fabricating multi-provider consensus.",
+          "competencies": [
+            "production LLM application delivery",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false
+        }
+      ]
+    },
+    {
+      "source_id": "chatgpt-vercel-ai-gateway-blocker",
+      "state": "BLOCKED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-09-02",
+      "independence_group": "chatgpt-vercel-ai-gateway",
+      "locator": "https://github.com/GlacierEQ/chatgpt-vercel",
+      "artifact": "production deployment dpl_F39gZLpiFvg7AMknedYLkbSSPyk7 @ dc7027f359439e4d434efd56a1011b2cc3f5346e; stable runtime commit b680e98c34142b5a6c02d1b1bc5a421e28705a30",
+      "verification": "Production deployment built frozen and reached READY. Live /api/health returned ok=true, route=vercel-ai-gateway, request_scoped_oidc=true with no OpenAI or AI Gateway API key. A gated real completion attempt reached Vercel AI Gateway but returned HTTP 403 customer_verification_required because the Vercel team has no valid credit card on file. No model completion is claimed. Temporary proof endpoint was removed immediately after the receipt.",
+      "project": {
+        "name": "chatgpt-vercel — Zero-Secret AI Gateway Relay",
+        "role": "blocked production LLM path",
+        "summary": "Real edge relay with request-scoped Vercel OIDC; inference currently blocked at Vercel customer verification.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built and deployed a zero-secret edge relay that obtains request-scoped Vercel OIDC and reaches the AI Gateway; the model invocation is currently blocked by Vercel customer verification, so no completion is claimed from this path.",
+          "competencies": [
+            "production LLM application delivery",
+            "enterprise integration and security"
+          ],
+          "hiring_signal": 3,
+          "public_safe": false,
+          "gap": "AI Gateway returned 403 customer_verification_required before model execution.",
+          "next_strengthening_action": "Use an authorized provider path or satisfy Vercel customer verification, then rerun and preserve a successful completion receipt."
+        }
+      ]
     }
   ]
 }
