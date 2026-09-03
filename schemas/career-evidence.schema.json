@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GlacierEQ Career Evidence Source Registry",
+  "type": "object",
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "state", "locator", "artifact", "verification", "claims"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "state": {"enum": ["VERIFIED", "SUPPORTED", "CANDIDATE", "UNVERIFIED", "BLOCKED"]},
+          "locator": {"type": "string", "minLength": 1},
+          "artifact": {"type": "string", "minLength": 1},
+          "verification": {"type": "string", "minLength": 1},
+          "project": {"type": "object"},
+          "metrics": {
+            "type": "array",
+            "items": {"type": "object", "required": ["name", "value", "scope"]}
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["claim", "competencies", "hiring_signal"],
+              "properties": {
+                "claim": {"type": "string", "minLength": 1},
+                "competencies": {"type": "array", "items": {"type": "string"}},
+                "hiring_signal": {"type": "integer", "minimum": 1, "maximum": 5},
+                "public_safe": {"type": "boolean"},
+                "gap": {"type": "string"},
+                "next_strengthening_action": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
