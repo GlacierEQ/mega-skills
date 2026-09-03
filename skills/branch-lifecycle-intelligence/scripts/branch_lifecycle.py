@@ -8,7 +8,7 @@ import hashlib
 import json
 import re
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -198,6 +198,7 @@ def classify(
         "behind_by": branch.get("behind_by"),
         "compare_status": branch.get("compare_status"),
         "age_days": age_days,
+        "changed_file_count": len(branch.get("changed_files", [])),
         "evidence_errors": evidence_errors,
     }
 
@@ -217,6 +218,55 @@ def classify(
         return decision(name, "DIVERGENT_PRESERVE", "KEEP", 0, "unique commits require preservation", evidence)
     return decision(name, "UNKNOWN_BLOCKED", "BLOCK", 0, "comparison evidence is insufficient", evidence)
 
+def dynamic_assessment(state: str, action: str, evidence: dict[str, Any]) -> dict[str, Any]:
+    evidence_errors = evidence.get("evidence_errors") or []
+    ahead = evidence.get("ahead_by")
+    changed_files = evidence.get("changed_file_count")
+    open_pr_count = int(evidence.get("open_pr_count") or 0)
+    protected = bool(evidence.get("protected"))
+
+    if evidence_errors:
+        evidence_quality = "INCOMPLETE"
+    elif protected or open_pr_count or isinstance(ahead, int):
+        evidence_quality = "STRONG"
+    else:
+        evidence_quality = "PARTIAL"
+
+    if state in {"ACTIVE", "DIVERGENT_PRESERVE"}:
+        value_signal = "HIGH"
+        recommended_effect = "PRESERVE_AND_HARVEST"
+    elif state == "STALE_REVIEW":
+        value_signal = "POTENTIAL"
+        recommended_effect = "CONSOLIDATE_AFTER_HARVEST"
+    elif state == "PROTECTED":
+        value_signal = "POLICY_RESERVED"
+        recommended_effect = "DENY_REMOVAL"
+    elif state in {"MERGED_REDUNDANT", "REACHABLE_REDUNDANT"}:
+        value_signal = "REDUNDANT"
+        recommended_effect = "REMOVE_REDUNDANT"
+    else:
+        value_signal = "UNKNOWN"
+        recommended_effect = "BLOCK_UNCERTAIN"
+
+    if protected or open_pr_count or evidence_errors:
+        risk_signal = "HIGH"
+    elif state in {"DIVERGENT_PRESERVE", "STALE_REVIEW"}:
+        risk_signal = "MEDIUM"
+    else:
+        risk_signal = "LOW"
+
+    return {
+        "evidence_quality": evidence_quality,
+        "value_signal": value_signal,
+        "risk_signal": risk_signal,
+        "recommended_effect": recommended_effect,
+        "unique_commit_count": ahead if isinstance(ahead, int) else None,
+        "changed_file_count": changed_files if isinstance(changed_files, int) else None,
+        "reassess_before_mutation": action == "DELETE",
+        "static_label_authoritative": False,
+    }
+
+
 def decision(name: str, state: str, action: str, confidence: int, reason: str, evidence: dict[str, Any]) -> dict[str, Any]:
     return {
         "branch": name,
@@ -225,6 +275,7 @@ def decision(name: str, state: str, action: str, confidence: int, reason: str, e
         "cleanup_confidence": confidence,
         "reason": reason,
         "evidence": evidence,
+        "dynamic_assessment": dynamic_assessment(state, action, evidence),
     }
 
 def family_rank(item: dict[str, Any], original: dict[str, Any]) -> tuple[Any, ...]:
@@ -305,11 +356,15 @@ def build_plan(inventory: dict[str, Any], policy: dict[str, Any]) -> dict[str, A
     counts = Counter(item["state"] for item in decisions)
     action_counts = Counter(item["action"] for item in decisions)
     inventory_digest = sha256(inventory)
+    assessment_ttl_seconds = int(policy.get("assessment_ttl_seconds", 300))
     plan_core = {
         "schema": SCHEMA,
         "repository": inventory["repository"],
         "default_branch": default_branch,
         "generated_at": inventory["generated_at"],
+        "assessment_ttl_seconds": assessment_ttl_seconds,
+        "assessment_valid_until": (generated_at + timedelta(seconds=assessment_ttl_seconds)).isoformat().replace("+00:00", "Z"),
+        "dynamic_assessment_required": True,
         "policy_version": policy["version"],
         "inventory_sha256": inventory_digest,
         "classifications": dict(sorted(counts.items())),
