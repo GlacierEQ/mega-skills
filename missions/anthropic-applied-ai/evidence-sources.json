@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "sources": [
     {
       "source_id": "tower-of-babel",
@@ -13,24 +13,45 @@
         "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering."
       },
       "metrics": [
-        {"name": "technology_floors", "value": 40, "scope": "governed technology floors documented by the current README"},
-        {"name": "linked_exhibits", "value": 80, "scope": "easy + advanced exhibits documented by the current README"},
-        {"name": "behavioral_proof_floors", "value": 17, "scope": "behavioral proof floors documented by the current README"}
+        {
+          "name": "technology_floors",
+          "value": 40,
+          "scope": "governed technology floors documented by the current README"
+        },
+        {
+          "name": "linked_exhibits",
+          "value": 80,
+          "scope": "easy + advanced exhibits documented by the current README"
+        },
+        {
+          "name": "behavioral_proof_floors",
+          "value": 17,
+          "scope": "behavioral proof floors documented by the current README"
+        }
       ],
       "claims": [
         {
           "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
-          "competencies": ["AI systems architecture", "evaluation, observability, and reliability", "reusable patterns and product feedback"],
+          "competencies": [
+            "AI systems architecture",
+            "evaluation, observability, and reliability",
+            "reusable patterns and product feedback"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         },
         {
           "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
-          "competencies": ["AI systems architecture", "hands-on Python and production engineering"],
+          "competencies": [
+            "AI systems architecture",
+            "hands-on Python and production engineering"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         }
-      ]
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "mega-skills",
@@ -47,17 +68,27 @@
       "claims": [
         {
           "claim": "Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.",
-          "competencies": ["AI systems architecture", "agents, MCP, tools, and context engineering", "evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "competencies": [
+            "AI systems architecture",
+            "agents, MCP, tools, and context engineering",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
           "hiring_signal": 5,
           "public_safe": false
         },
         {
           "claim": "The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.",
-          "competencies": ["reusable patterns and product feedback", "safe and human-directed deployment"],
+          "competencies": [
+            "reusable patterns and product feedback",
+            "safe and human-directed deployment"
+          ],
           "hiring_signal": 4,
           "public_safe": false
         }
-      ]
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "spacex-autonomy",
@@ -73,17 +104,26 @@
       "claims": [
         {
           "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
-          "competencies": ["hands-on Python and production engineering", "evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "competencies": [
+            "hands-on Python and production engineering",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         },
         {
           "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
-          "competencies": ["safe and human-directed deployment", "evaluation, observability, and reliability"],
+          "competencies": [
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         }
-      ]
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "job-application",
@@ -99,17 +139,26 @@
       "claims": [
         {
           "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
-          "competencies": ["AI systems architecture", "reusable patterns and product feedback", "field leadership and technical communication"],
+          "competencies": [
+            "AI systems architecture",
+            "reusable patterns and product feedback",
+            "field leadership and technical communication"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         },
         {
           "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
-          "competencies": ["evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "competencies": [
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
           "hiring_signal": 5,
           "public_safe": true
         }
-      ]
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "xai-colossus-cooling",
@@ -125,17 +174,25 @@
       "claims": [
         {
           "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
-          "competencies": ["hands-on Python and production engineering", "evaluation, observability, and reliability"],
+          "competencies": [
+            "hands-on Python and production engineering",
+            "evaluation, observability, and reliability"
+          ],
           "hiring_signal": 4,
           "public_safe": true
         },
         {
           "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
-          "competencies": ["safe and human-directed deployment", "field leadership and technical communication"],
+          "competencies": [
+            "safe and human-directed deployment",
+            "field leadership and technical communication"
+          ],
           "hiring_signal": 4,
           "public_safe": true
         }
-      ]
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
     },
     {
       "source_id": "mission-thread-quorum",
@@ -151,11 +208,82 @@
       "claims": [
         {
           "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
-          "competencies": ["safe and human-directed deployment", "AI systems architecture"],
+          "competencies": [
+            "safe and human-directed deployment",
+            "AI systems architecture"
+          ],
           "hiring_signal": 3,
           "public_safe": true,
           "gap": "Reference mechanism rather than production system.",
           "next_strengthening_action": "Add executable behavioral receipt and integration proof."
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02"
+    },
+    {
+      "source_id": "computer-user",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/computer-user",
+      "artifact": "README.md@e953c7e23073ec17923f6a0e062964cad3712b56",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
+      "project": {
+        "name": "Computer User — Governed Execution Kernel",
+        "role": "enterprise execution and integration substrate",
+        "summary": "Durable HTTP/CLI execution kernel with connector dispatch, authority envelopes, readiness probes, authenticated non-loopback service mode, task queues, and receipts.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
+          "competencies": [
+            "enterprise integration and security",
+            "hands-on Python and production engineering",
+            "production LLM application delivery"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false,
+          "limitations": [
+            "Private repository; do not expose implementation detail as public proof without a public-safe derivative."
+          ]
+        },
+        {
+          "claim": "The execution kernel enforces explicit approved/exact-target authority, idempotency, token protection for non-loopback service binding, read-only defaults, raw-secret rejection, and hash-only action receipts.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false,
+          "limitations": [
+            "Security properties are scoped to the documented kernel and automation boundaries, not a general enterprise certification."
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "helix-role-power-matrix",
+      "state": "CANDIDATE",
+      "source_kind": "candidate_narrative",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/job-app-helix",
+      "artifact": "hire_package/casey-barton/ROLE_POWER_MATRIX.md@a7449fecd900d5fa490aed80589eb08088cfb3a3",
+      "verification": "Job-App Helix candidate-routing artifact fetched from main and inspected 2026-09-02 HST. It is a positioning artifact, not independent proof of customer deployment.",
+      "claims": [
+        {
+          "claim": "Candidate positioning explicitly defines the forward-deployed motion as workflow discovery, bottleneck mapping, architecture, integration, verification, adoption, and iterative expansion.",
+          "competencies": [
+            "customer discovery and problem decomposition",
+            "ambiguous-environment execution",
+            "customer adoption and deployment support"
+          ],
+          "hiring_signal": 4,
+          "public_safe": false,
+          "gap": "Narrative/candidate-routing evidence does not establish completed external customer engagements.",
+          "next_strengthening_action": "Retrieve independent deployment/customer evidence or build a public case study with explicit operator/customer context and outcomes."
         }
       ]
     }
