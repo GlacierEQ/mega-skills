@@ -1,1 +1,46 @@
-PLACEHOLDER_WILL_BE_REPLACED
+{
+  "schema_version": 1,
+  "ontology": "mega-skill-pyramid-index",
+  "resolution": {
+    "level_0": "registry/mega-skills.json",
+    "level_1": "registry/combo-skills.json",
+    "level_2": "registry/skills.json",
+    "external": "registry/external-skills.json"
+  },
+  "counts": {
+    "atomic_skills": 709,
+    "compound_skills": 33,
+    "mega_skills": 29
+  },
+  "entries": [
+    {"id":"apex-accelerated-compute-mesh","required_compound_skills":["long-horizon-core","hardware-accelerated-inference"],"conditional_compound_skills":["capability-readiness","polyglot-systems-verification","automation-control"]},
+    {"id":"apex-adaptive-operations","required_compound_skills":["long-horizon-core","signal-to-decision-loop"],"conditional_compound_skills":["capability-readiness","automation-control","guarded-automation-loop","evidence-to-evolution-loop","mission-aware-operating-loop"]},
+    {"id":"apex-aerospace-sim","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","aerospace-mission-simulation","automation-control"]},
+    {"id":"apex-agent-architect-core","required_compound_skills":["long-horizon-core","multi-agent-orchestration-mesh","autonomous-agent-foundry"],"conditional_compound_skills":["capability-readiness"]},
+    {"id":"apex-always-on-core","required_compound_skills":["long-horizon-core","guarded-automation-loop","signal-to-decision-loop"],"conditional_compound_skills":["capability-readiness","evidence-to-evolution-loop","frontier-orbit-synthesis","fleet-recon-and-harmonize"]},
+    {"id":"apex-architectural-evolution-engine","required_compound_skills":["long-horizon-core","architectural-refactoring-engine"],"conditional_compound_skills":["capability-readiness","closed-loop-code-repair","upstream-fork-harmonization","recon-and-map"]},
+    {"id":"apex-autonomous-agent-foundry","required_compound_skills":["long-horizon-core","autonomous-agent-foundry"],"conditional_compound_skills":["capability-readiness","skill-forge","automation-control","guarded-automation-loop"]},
+    {"id":"apex-autonomous-software-engineering","required_compound_skills":["long-horizon-core","closed-loop-code-repair","architectural-refactoring-engine","guarded-automation-loop"],"conditional_compound_skills":["capability-readiness","frontier-orbit-synthesis","polyglot-systems-verification","secure-service-deployment"]},
+    {"id":"apex-backend-infrastructure-engine","required_compound_skills":["long-horizon-core","closed-loop-code-repair","guarded-automation-loop"],"conditional_compound_skills":["capability-readiness","polyglot-systems-verification","secure-service-deployment"]},
+    {"id":"apex-capability-foundry","required_compound_skills":["long-horizon-core","evidence-to-evolution-loop","skill-forge"],"conditional_compound_skills":["capability-readiness","recon-and-map","signal-to-decision-loop"]},
+    {"id":"apex-cybersecurity-sentinel","required_compound_skills":["long-horizon-core","cybersecurity-threat-analysis","secure-service-deployment"],"conditional_compound_skills":["capability-readiness","epistemic-verification-chain"]},
+    {"id":"apex-dev-fork-orchestrator","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","upstream-fork-harmonization","automation-control"]},
+    {"id":"apex-docgen-synthesis","required_compound_skills":["long-horizon-core","architectural-refactoring-engine"],"conditional_compound_skills":["capability-readiness","frontier-orbit-synthesis"]},
+    {"id":"apex-fleet-harmonizer","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","recon-and-map","fleet-recon-and-harmonize"]},
+    {"id":"apex-forensic-litigation-sentinel","required_compound_skills":["long-horizon-core","forensic-docket-intelligence"],"conditional_compound_skills":["capability-readiness","court-evidence-compiler","voice-evidence-authenticator","automation-control"]},
+    {"id":"apex-growth-intelligence","required_compound_skills":["long-horizon-core","growth-analytics-optimization","signal-to-decision-loop"],"conditional_compound_skills":["capability-readiness"]},
+    {"id":"apex-interactive-engine","required_compound_skills":["long-horizon-core","interactive-media-3d-pipeline","closed-loop-code-repair"],"conditional_compound_skills":["capability-readiness","web-build-foundation"]},
+    {"id":"apex-legal-forensic-powerhouse","required_compound_skills":["long-horizon-core","guarded-automation-loop","signal-to-decision-loop"],"conditional_compound_skills":["capability-readiness","evidence-to-evolution-loop"]},
+    {"id":"apex-legal-warfare","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","court-evidence-compiler","automation-control"]},
+    {"id":"apex-omniversal-memory","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","cross-cloud-memory-synthesis","recon-and-map"]},
+    {"id":"apex-polyglot-rosetta","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","polyglot-systems-verification","skill-forge"]},
+    {"id":"apex-safe-change-orchestrator","required_compound_skills":["long-horizon-core","signal-to-decision-loop"],"conditional_compound_skills":["capability-readiness","recon-and-map","closed-loop-code-repair","guarded-automation-loop"]},
+    {"id":"apex-secure-cloud-foundry","required_compound_skills":["long-horizon-core","secure-service-deployment"],"conditional_compound_skills":["capability-readiness","pipeline-orchestration","runtime-operations","automation-control"]},
+    {"id":"apex-self-healing-forge","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","closed-loop-code-repair","skill-forge"]},
+    {"id":"apex-sovereign-runtime","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["runtime-operations","epistemic-verification-chain","pipeline-orchestration","closed-loop-code-repair","capability-readiness"]},
+    {"id":"apex-vercel-web-foundry","required_compound_skills":["long-horizon-core","vercel-fullstack-deployment","web-build-foundation"],"conditional_compound_skills":["capability-readiness","closed-loop-code-repair"]},
+    {"id":"apex-voice-forensics","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","voice-evidence-authenticator","court-evidence-compiler"]},
+    {"id":"apex-web-build-system","required_compound_skills":["long-horizon-core","web-build-foundation"],"conditional_compound_skills":["capability-readiness"]},
+    {"id":"far-away-party","required_compound_skills":["long-horizon-core"],"conditional_compound_skills":["capability-readiness","signal-to-decision-loop","guarded-automation-loop","evidence-to-evolution-loop","recon-and-map","skill-forge","automation-control","mission-aware-operating-loop"]}
+  ]
+}
