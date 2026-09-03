@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "source_authority": "missions/anthropic-applied-ai/LINKEDIN_PROFILE_SOURCE.md",
+  "audit_policy": {
+    "public_supported": "May publish as written when the wording stays within the cited evidence ceiling.",
+    "private_supported": "May describe at a bounded systems level; do not expose private implementation details or imply public inspectability.",
+    "operator_attested": "Firsthand/operator fact. Preserve as operator-supplied but verify dates or externally checkable details before publication where specified.",
+    "caution": "Wording is not false on current evidence, but can be misread as an external customer/deployment claim; preserve the narrower meaning.",
+    "blocked": "Do not add or strengthen this claim until qualifying evidence exists."
+  },
+  "claims": [
+    {
+      "claim_id": "positioning.control-plane",
+      "source_section": "Positioning / About opening",
+      "source_text": "Forward-Deployed AI Architect who builds control planes for reliable, inspectable, human-directed AI workflows.",
+      "status": "PUBLIC_SUPPORTED",
+      "evidence_ids": [
+        "ev_2f7e0709053f0e34",
+        "ev_2683a44bc479221a",
+        "ev_3d5ecbd0ba619288",
+        "ev_5ebdbcecbf04de24"
+      ],
+      "note": "Supported across MCP execution authority, tool-use safety, evidence-controlled release, and technology proof architecture."
+    },
+    {
+      "claim_id": "about.reliable-agentic-mechanisms",
+      "source_section": "About",
+      "source_text": "work decomposition, capability-based routing, tool coordination, persistent state, provenance, verification, and bounded failure behavior",
+      "status": "PUBLIC_SUPPORTED",
+      "evidence_ids": [
+        "ev_6286994c2eaec763",
+        "ev_2f7e0709053f0e34",
+        "ev_6913037c125fd85e",
+        "ev_3d5ecbd0ba619288"
+      ],
+      "private_evidence_ids": [
+        "ev_18823a21ca59236f",
+        "ev_13cc9d27b676bb75"
+      ],
+      "note": "The public evidence supports decomposition/routing, tool authority, provenance, verification, and fail-closed behavior. Private evidence adds durable execution/state."
+    },
+    {
+      "claim_id": "about.bounded-work-state-machine",
+      "source_section": "About",
+      "source_text": "agents receive bounded work, use connected tools, preserve state, produce evidence-linked receipts, and advance, retry, escalate, or fail closed through explicit verification",
+      "status": "MIXED_PUBLIC_PRIVATE_SUPPORTED",
+      "evidence_ids": [
+        "ev_6286994c2eaec763",
+        "ev_2683a44bc479221a",
+        "ev_468f0323d353e27e",
+        "ev_3d5ecbd0ba619288"
+      ],
+      "private_evidence_ids": [
+        "ev_13cc9d27b676bb75",
+        "ev_21b7e54fc3edb92f"
+      ],
+      "note": "Keep as a systems-design/implementation statement. Do not reinterpret it as proof of a production customer agent deployment."
+    },
+    {
+      "claim_id": "about.independent-rd-since-2023",
+      "source_section": "About / Experience",
+      "source_text": "Since 2023, I’ve built and operated an independent distributed AI R&D environment",
+      "status": "OPERATOR_ATTESTED_VERIFY_DATE",
+      "evidence_ids": [
+        "ev_5ebdbcecbf04de24",
+        "ev_2f7e0709053f0e34",
+        "ev_2683a44bc479221a"
+      ],
+      "private_evidence_ids": [
+        "ev_18823a21ca59236f",
+        "ev_13cc9d27b676bb75"
+      ],
+      "note": "Current repos strongly support the built/operated R&D system claim. The 2023 start date is operator-authored and should be independently/date-source verified before publication."
+    },
+    {
+      "claim_id": "about.recent-work",
+      "source_section": "About",
+      "source_text": "cross-language orchestration, release control, agent dispatch, thermal modeling, and bounded mission/actuation logic",
+      "status": "PUBLIC_SUPPORTED",
+      "evidence_ids": [
+        "ev_5ebdbcecbf04de24",
+        "ev_3d5ecbd0ba619288",
+        "ev_6286994c2eaec763",
+        "ev_65b623eed3905e02",
+        "ev_06770a0211a04cf6"
+      ]
+    },
+    {
+      "claim_id": "about.connected-systems",
+      "source_section": "What I build — Connected systems",
+      "source_text": "interfaces between models, runtimes, APIs, files, browsers, business tools, and human approval points",
+      "status": "MIXED_PUBLIC_PRIVATE_SUPPORTED",
+      "evidence_ids": [
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
+        "ev_19a92b5a84973875",
+        "ev_2683a44bc479221a"
+      ],
+      "private_evidence_ids": [
+        "ev_13cc9d27b676bb75",
+        "ev_21b7e54fc3edb92f"
+      ],
+      "note": "Public proof is strongest for MCP/business-tool integration, authority and approval boundaries. Browser execution is currently strongest in private computer-user evidence."
+    },
+    {
+      "claim_id": "about.adoption",
+      "source_section": "What I build — Adoption",
+      "source_text": "practical operating patterns that make powerful systems understandable, repeatable, and accountable in real work",
+      "status": "CAUTION",
+      "evidence_ids": [
+        "ev_3d5ecbd0ba619288",
+        "ev_ba8f3d3f576ca3af",
+        "ev_6f53b25e7abcf6dd"
+      ],
+      "note": "Safe as an operating-pattern/design claim. Do not expand it into external customer adoption, lifecycle expansion, or production rollout claims; that remains a hard evidence gap."
+    },
+    {
+      "claim_id": "experience.private-distributed-environment",
+      "source_section": "Experience",
+      "source_text": "Built and operated a private distributed AI R&D environment for long-running orchestration, multi-agent routing, connected-tool coordination, persistent context, and human-directed decision support.",
+      "status": "PRIVATE_SUPPORTED_PLUS_OPERATOR_ATTESTATION",
+      "evidence_ids": [
+        "ev_2f7e0709053f0e34",
+        "ev_2683a44bc479221a"
+      ],
+      "private_evidence_ids": [
+        "ev_18823a21ca59236f",
+        "ev_13cc9d27b676bb75"
+      ],
+      "note": "Do not imply the private estate is publicly inspectable. 'Operated' is supported by execution-oriented private artifacts but should remain bounded to the independent R&D environment."
+    },
+    {
+      "claim_id": "experience.provenance-verification-recovery",
+      "source_section": "Experience",
+      "source_text": "Implemented provenance, receipt, verification, and failure-recovery mechanisms so behavior can be inspected against what actually ran.",
+      "status": "PUBLIC_SUPPORTED",
+      "evidence_ids": [
+        "ev_6913037c125fd85e",
+        "ev_3d5ecbd0ba619288",
+        "ev_19a92b5a84973875",
+        "ev_06770a0211a04cf6"
+      ]
+    },
+    {
+      "claim_id": "experience.portfolio-artifacts",
+      "source_section": "Experience",
+      "source_text": "reliable agent dispatch, cross-language responsibility boundaries, thermal-capacity modeling, bounded actuation, mission-thread quorum logic, and explicit GO/HOLD/NO-GO/INCOMPLETE states",
+      "status": "PUBLIC_SUPPORTED",
+      "evidence_ids": [
+        "ev_6286994c2eaec763",
+        "ev_5ebdbcecbf04de24",
+        "ev_65b623eed3905e02",
+        "ev_06770a0211a04cf6",
+        "ev_80e6d1870a57872e"
+      ]
+    },
+    {
+      "claim_id": "featured.company-independence",
+      "source_section": "About / Featured",
+      "source_text": "company names in project titles do not indicate affiliation or deployment",
+      "status": "PUBLIC_SUPPORTED_BOUNDARY",
+      "evidence_ids": [
+        "ev_06770a0211a04cf6",
+        "ev_5169c37850dc70b1",
+        "ev_2683a44bc479221a"
+      ],
+      "note": "Keep this boundary. Several public READMEs explicitly state independent portfolio status and non-affiliation."
+    },
+    {
+      "claim_id": "gap.production-llm",
+      "source_section": "Potential future strengthening",
+      "source_text": "production LLM / Claude application delivery",
+      "status": "BLOCKED",
+      "requirement_id": "production_llm_delivery",
+      "evidence_ids": [],
+      "note": "Do not add a production Claude/LLM delivery claim until a qualifying provider-connected, deployed, receipted artifact exists."
+    },
+    {
+      "claim_id": "gap.customer-deployment-adoption",
+      "source_section": "Potential future strengthening",
+      "source_text": "customer deployment support, adoption, and lifecycle expansion",
+      "status": "BLOCKED",
+      "requirement_id": "deployment_adoption",
+      "evidence_ids": [
+        "ev_b0748b6b15795138"
+      ],
+      "note": "Current evidence is candidate narrative only. Do not claim customer deployment/adoption history without real external evidence."
+    }
+  ],
+  "summary": {
+    "audited_claim_groups": 13,
+    "public_or_mixed_supported": 10,
+    "operator_attested_or_caution": 1,
+    "blocked_strengthening_claims": 2
+  }
+}
