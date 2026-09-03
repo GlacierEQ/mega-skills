@@ -15,6 +15,31 @@ The governing rule is:
 
 This skill owns branch classification, cleanup confidence, family grouping, preservation decisions, and lifecycle receipts. It is intentionally stricter than a generic "delete stale branches" script.
 
+## Dynamic Assessment Law
+
+Every state and recommendation is provisional. The system must reassess against the latest observable state whenever new evidence arrives and immediately before any mutation.
+
+Each branch decision carries a dynamic posture:
+
+- `PRESERVE_AND_HARVEST` — unique or active value exists; keep it and treat it as a donor for synthesis.
+- `CONSOLIDATE_AFTER_HARVEST` — likely value exists across stale/divergent work; extract and integrate useful differences before retiring anything.
+- `DENY_REMOVAL` — policy, protection, recovery evidence, or active constraints make removal inappropriate.
+- `REMOVE_REDUNDANT` — current evidence proves the ref contributes no unique value.
+- `BLOCK_UNCERTAIN` — evidence is incomplete, contradictory, or stale; do nothing destructive.
+
+A static classification is never authoritative by itself. Plans expire after the configured assessment TTL, and apply mode performs a fresh live reclassification before every delete.
+
+Assess dynamically across:
+
+- current branch SHA and topology,
+- open/closed/merged PR state,
+- unique commit count,
+- changed-file surface,
+- repository-local preservation policy,
+- evidence quality and missing data,
+- reversibility and rollback path,
+- downstream impact and current workstream context.
+
 ## State machine
 
 Every non-default branch must resolve to exactly one lifecycle state:
@@ -90,7 +115,7 @@ Emit one action per branch:
 - `REVIEW_CONSOLIDATE`
 - `BLOCK`
 
-Every action includes state, confidence, evidence, family, and rationale.
+Every action includes state, confidence, evidence, family, rationale, and a dynamic assessment describing value, risk, evidence quality, and the recommended effect.
 
 ### Phase 6 — Apply bounded cleanup
 
@@ -103,7 +128,7 @@ Apply mode may delete only when all are true:
 - no open PR exists at execution time,
 - deletion API call succeeds against the exact ref.
 
-Re-check the branch immediately before deletion in live automation.
+Reclassify the branch from fresh GitHub state immediately before deletion. If the head, protection, PR state, or unique-commit topology changed, the previous decision expires and mutation is denied until a new assessment supports it.
 
 ### Phase 7 — Receipt
 
@@ -183,6 +208,9 @@ Recommended operating cadence:
 - Missing comparison evidence fails closed.
 - Default/protected/reserved refs are never auto-deleted.
 - Apply mode must produce the same classification semantics as report mode.
+- Every destructive decision expires and must be dynamically reassessed immediately before mutation.
+- Static labels are observations, never permanent truth.
+- New evidence may strengthen, weaken, reverse, or block a prior recommendation.
 - A cleanup rule must reduce future branch production where possible, not merely sweep symptoms.
 
 ## Resources
