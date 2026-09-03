@@ -1,2 +1,11 @@
-# Hawaii Family Court Rule 3 transcript formatting
-# TODO: Add YAML content
+# Transcript formatting parameters — Hawaii Family Court proceedings
+schema_version: 1
+court: "Family Court of the First Circuit, State of Hawaii"
+transcript:
+  lines_per_page: 25
+  line_width: 72
+  speaker_delimiter: ":"
+  require_case_caption: true
+  require_certification_block: true
+  timestamp_format: "bracketed_hh_mm_ss"
+notes: "Configurable format contract. Confirm the current court reporting requirements for the specific matter before certification."
