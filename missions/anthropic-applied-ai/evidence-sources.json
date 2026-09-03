@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "source_id": "tower-of-babel",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "The Tower of Babel — Cross-Language Systems Architecture",
+        "role": "architecture",
+        "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering."
+      },
+      "metrics": [
+        {"name": "technology_floors", "value": 40, "scope": "governed technology floors documented by the current README"},
+        {"name": "linked_exhibits", "value": 80, "scope": "easy + advanced exhibits documented by the current README"},
+        {"name": "behavioral_proof_floors", "value": 17, "scope": "behavioral proof floors documented by the current README"}
+      ],
+      "claims": [
+        {
+          "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
+          "competencies": ["AI systems architecture", "evaluation, observability, and reliability", "reusable patterns and product feedback"],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
+          "competencies": ["AI systems architecture", "hands-on Python and production engineering"],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "mega-skills",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/mega-skills",
+      "artifact": "README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "Mega-Skills — Agent Capability Control Plane",
+        "role": "orchestration substrate",
+        "summary": "Private monolithic control plane for a compounding Skills → Combo Skills → Mega Skills capability hierarchy.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.",
+          "competencies": ["AI systems architecture", "agents, MCP, tools, and context engineering", "evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "hiring_signal": 5,
+          "public_safe": false
+        },
+        {
+          "claim": "The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.",
+          "competencies": ["reusable patterns and product feedback", "safe and human-directed deployment"],
+          "hiring_signal": 4,
+          "public_safe": false
+        }
+      ]
+    },
+    {
+      "source_id": "spacex-autonomy",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/spacex-autonomy",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
+        "role": "applied system",
+        "summary": "Deterministic Python/Go simulation toolkit with bounded decisions, failure handling, quorum logic, and native verification."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
+          "competencies": ["hands-on Python and production engineering", "evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
+          "competencies": ["safe and human-directed deployment", "evaluation, observability, and reliability"],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "job-application",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/job-application",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "Hiring System — Evidence & Release Control Plane",
+        "role": "evidence/release control",
+        "summary": "Public presentation layer compiled from Helix-governed, evidence-bound portfolio truth."
+      },
+      "claims": [
+        {
+          "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
+          "competencies": ["AI systems architecture", "reusable patterns and product feedback", "field leadership and technical communication"],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
+          "competencies": ["evaluation, observability, and reliability", "safe and human-directed deployment"],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "xai-colossus-cooling",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "xAI Colossus Cooling — Thermal Capacity & Bounded Control",
+        "role": "applied system",
+        "summary": "Independent simulation/testbed for thermal classification, zone aggregation, bounded cooling decisions, and explicit evidence boundaries."
+      },
+      "claims": [
+        {
+          "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
+          "competencies": ["hands-on Python and production engineering", "evaluation, observability, and reliability"],
+          "hiring_signal": 4,
+          "public_safe": true
+        },
+        {
+          "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
+          "competencies": ["safe and human-directed deployment", "field leadership and technical communication"],
+          "hiring_signal": 4,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "mission-thread-quorum",
+      "state": "SUPPORTED",
+      "locator": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
+      "artifact": "README.md@486ba98e833063131ab10ec81f483ff07ab83f1d",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST; repository labels itself a leveled reference mechanism.",
+      "project": {
+        "name": "Mission Thread Quorum",
+        "role": "bounded consequential system",
+        "summary": "Reference mechanism for weighted GO/HOLD decision logic with explicit hold reasons."
+      },
+      "claims": [
+        {
+          "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
+          "competencies": ["safe and human-directed deployment", "AI systems architecture"],
+          "hiring_signal": 3,
+          "public_safe": true,
+          "gap": "Reference mechanism rather than production system.",
+          "next_strengthening_action": "Add executable behavioral receipt and integration proof."
+        }
+      ]
+    }
+  ]
+}
