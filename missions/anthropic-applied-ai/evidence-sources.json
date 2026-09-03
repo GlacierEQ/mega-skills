@@ -390,7 +390,7 @@
       "state": "VERIFIED",
       "locator": "https://github.com/GlacierEQ/job-app-helix",
       "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
-      "verification": "Current main source/tests inspected. Repository README identifies job-app-helix as a VERIFIED anchor. APEX Estate Non-Regression run 33737806112 succeeded at e8b12f678f8cf9b20a8e94069230637e30edaf1a; broad CI on that head is separately failing and is not claimed here.",
+      "verification": "Current source/tests inspected. GitHub Actions APEX Estate Non-Regression run 33737806112 completed successfully at head e8b12f678f8cf9b20a8e94069230637e30edaf1a. Broad CI status is separately bounded and not implied.",
       "project": {
         "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
         "role": "customer discovery / ambiguity execution",
@@ -418,7 +418,7 @@
           "public_safe": true
         }
       ],
-      "independence_group": "job-app-helix-target-intelligence",
+      "independence_group": "helix-hiring-system",
       "source_kind": "source_and_tests",
       "observed_at": "2026-09-02"
     },
@@ -427,7 +427,7 @@
       "state": "VERIFIED",
       "locator": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
       "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
-      "verification": "Current README inspected. CI run 33135067808 and Public Truth Gate run 33135067576 both succeeded at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18.",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33135067808 and Public Truth Gate run 33135067576 both completed successfully at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18. Live external-provider connectivity remains outside the claim boundary unless separately receipted.",
       "project": {
         "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
         "role": "enterprise integration / security",
@@ -464,7 +464,7 @@
       "state": "VERIFIED",
       "locator": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
       "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
-      "verification": "Current README inspected. CI run 33519708554 succeeded at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41.",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33519708554 completed successfully at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41. Claims remain scoped to the deterministic identity/authorization model and its tested contracts.",
       "project": {
         "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
         "role": "enterprise security",
