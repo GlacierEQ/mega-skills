@@ -126,6 +126,7 @@ def build(target: dict[str, Any], sources: dict[str, Any], as_of: str | None = N
         sid = src["source_id"]
         source_health.append({
             "source_id": sid,
+            "independence_group": src.get("independence_group", sid),
             "freshness_state": fresh_state,
             "age_days": age_days,
             "freshness_factor": fresh_factor,
@@ -174,6 +175,7 @@ def build(target: dict[str, Any], sources: dict[str, Any], as_of: str | None = N
                 "verification": src["verification"],
                 "state": src["state"],
                 "source_kind": src.get("source_kind", "readme_verified"),
+                "independence_group": src.get("independence_group", sid),
                 "competencies": claim.get("competencies", []),
                 "hiring_signal": int(claim["hiring_signal"]),
                 "proof_strength": strength,
@@ -191,7 +193,11 @@ def build(target: dict[str, Any], sources: dict[str, Any], as_of: str | None = N
     for req in target_requirements(target):
         competencies = set(req.get("competencies", []))
         matched = [r for r in records if competencies.intersection(r["competencies"])]
-        strength = combined_strength([r["proof_strength"] for r in matched])
+        grouped = {}
+        for r in matched:
+            group = r.get("independence_group", r["source_id"])
+            grouped[group] = max(grouped.get(group, 0.0), r["proof_strength"])
+        strength = combined_strength(list(grouped.values()))
         minimum = float(req.get("minimum_strength", 0.45))
         status = "SATISFIED" if strength >= minimum else ("PARTIAL" if strength > 0 else "MISSING")
         requirements[req["id"]] = {
@@ -204,7 +210,8 @@ def build(target: dict[str, Any], sources: dict[str, Any], as_of: str | None = N
             "status": status,
             "evidence_ids": [r["evidence_id"] for r in matched],
             "verified_evidence_ids": [r["evidence_id"] for r in matched if r["state"] == "VERIFIED"],
-            "public_safe_evidence_ids": [r["evidence_id"] for r in matched if r["public_safe"]]
+            "public_safe_evidence_ids": [r["evidence_id"] for r in matched if r["public_safe"]],
+            "independent_groups": sorted(grouped)
         }
 
     total_weight = sum(x["weight"] for x in requirements.values()) or 1.0
@@ -254,7 +261,7 @@ def build(target: dict[str, Any], sources: dict[str, Any], as_of: str | None = N
             "hard_gates_open": sum(x["hard_gate"] and x["status"] != "SATISFIED" for x in requirements.values()),
             "evidence_coverage_score": coverage_score
         },
-        "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit."
+        "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit."
     }
 
 def verify(target: dict[str, Any], ledger: dict[str, Any]) -> dict[str, Any]:
