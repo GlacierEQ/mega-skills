@@ -1,6 +1,10 @@
 name: Branch Lifecycle Intelligence
 
 on:
+  pull_request:
+    types: [closed]
+  schedule:
+    - cron: "23 7 * * 0"
   workflow_call:
     inputs:
       mode:
@@ -89,13 +93,14 @@ concurrency:
 
 jobs:
   lifecycle:
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - name: Inventory, classify, synthesize, and optionally clean
         uses: actions/github-script@v8
         env:
-          MODE: ${{ inputs.mode || 'report' }}
+          MODE: ${{ inputs.mode || (github.event_name == 'pull_request' && 'apply') || 'report' }}
           SCOPE: ${{ inputs.scope || 'auto' }}
           STALE_DAYS: ${{ inputs.stale_days || '30' }}
           MIN_DELETE_CONFIDENCE: ${{ inputs.minimum_delete_confidence || '95' }}
