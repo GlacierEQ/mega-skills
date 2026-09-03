@@ -240,8 +240,7 @@
           "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
           "competencies": [
             "enterprise integration and security",
-            "hands-on Python and production engineering",
-            "production LLM application delivery"
+            "hands-on Python and production engineering"
           ],
           "hiring_signal": 5,
           "public_safe": false,
@@ -284,6 +283,95 @@
           "public_safe": false,
           "gap": "Narrative/candidate-routing evidence does not establish completed external customer engagements.",
           "next_strengthening_action": "Retrieve independent deployment/customer evidence or build a public case study with explicit operator/customer context and outcomes."
+        }
+      ]
+    },
+    {
+      "source_id": "anthropic-safety-monitor",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "verification": "Public README inspected 2026-09-02 HST; repository reports current TEST evidence at canonical promotion c7ab52e0e70a5cd449f9335f90030059d254325f with 51 tests on Python 3.11, 3.12, and 3.13 (153 executions), 0 failures/errors/skips.",
+      "project": {
+        "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+        "role": "agent safety and approval boundary",
+        "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims."
+      },
+      "metrics": [
+        {
+          "name": "safety_monitor_test_executions",
+          "value": 153,
+          "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion"
+        },
+        {
+          "name": "safety_monitor_failures",
+          "value": 0,
+          "scope": "failures/errors/skips reported by the documented verification matrix"
+        }
+      ],
+      "claims": [
+        {
+          "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
+          "competencies": [
+            "enterprise integration and security",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ]
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "state": "SUPPORTED",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "verification": "Public README inspected 2026-09-02 HST; historical exact-revision receipt documents 62/62 passing tests at commit 87438f57bdfd2cb380730cf51140611963d7c95b. Current-head execution is not promoted.",
+      "project": {
+        "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
+        "role": "agent orchestration",
+        "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "AI systems architecture",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true,
+          "limitations": [
+            "Strongest executed proof is historical exact-revision evidence and does not automatically establish current-head behavior."
+          ]
+        },
+        {
+          "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 4,
+          "public_safe": true,
+          "limitations": [
+            "Proposal handoff is not tool execution or provider deployment."
+          ]
         }
       ]
     }
