@@ -8,16 +8,18 @@ Reduce branch count and future branch accumulation while retaining every branch 
 
 Strongest to weakest:
 
-1. GitHub reports a PR from the branch as merged.
+1. GitHub reports a PR as merged **and that PR's head SHA exactly matches the branch's current head SHA**.
 2. Default-vs-branch comparison reports `ahead_by == 0`.
 3. Open PR lineage proves active review.
 4. Unique commits (`ahead_by > 0`) prove divergence, not value or uselessness.
 5. Age is a review signal only.
 6. Name similarity is a grouping hint only.
 
-## Why merged PR beats ancestry
+## Why exact merged-head proof beats ancestry
 
-Squash and rebase merges can make a merged branch tip non-ancestral to the default branch even though its reviewed work has been incorporated. Therefore merged PR lineage is sufficient lifecycle proof for deleting the branch ref, subject to protection checks.
+Squash and rebase merges can make an unchanged merged branch tip non-ancestral to the default branch even though its reviewed work has been incorporated. Exact PR head SHA equality solves that: if the current branch head is the same SHA that GitHub records as the merged PR head, the branch lifecycle is complete even when ancestry does not show it.
+
+A historical merged PR is **not** enough when the branch has moved afterward. If the current branch SHA differs from the merged PR head SHA, the system falls back to live default-vs-branch comparison and preserves new divergence.
 
 ## Why divergence is preserved
 
