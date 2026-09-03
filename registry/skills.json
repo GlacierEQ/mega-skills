@@ -2268,24 +2268,24 @@
       "id": "branch-lifecycle-intelligence",
       "display_name": "Branch Lifecycle Intelligence",
       "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.2.0",
+      "maturity": "active",
+      "version": "0.3.0",
       "path": "skills/branch-lifecycle-intelligence",
       "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
-      "purpose": "Evidence-first branch lifecycle planning that proves redundancy before cleanup, preserves divergent work, groups related branches into synthesis families, and emits deterministic cleanup receipts.",
+      "purpose": "Dynamic, evidence-first branch lifecycle intelligence that continuously reassesses current value and impact, preserves and harvests useful divergence, proves redundancy before cleanup, groups related work for synthesis, and emits transactional receipts.",
       "input_contract": [
         "Normalized branch inventory or live GitHub repository context",
         "Branch lifecycle policy and protection patterns"
       ],
       "output_contract": [
-        "Deterministic branch lifecycle plan",
-        "Branch cleanup receipt with hashes, deletions, preserved divergence, blocked refs, and consolidation families"
+        "Dynamic branch lifecycle plan with value/risk/evidence posture and expiring assessment window",
+        "Transactional cleanup receipt with fresh mutation-time reassessments, hashes, deletions, preserved divergence, blocked refs, rollback state, and consolidation families"
       ],
       "local_validation": [
-        "Core v0.1.1 classifier/planner: 8/8 adversarial unittest assertions passed from exact committed GitHub bytes before the admission/current-head hardening wave",
-        "Current v0.2.0 source, workflow, schema, admission protocol, and 14-test suite have exact GitHub readback",
-        "Fresh v0.2.0 behavioral execution is pending because the repository Actions job fails before runner step initialization, including commits predating this skill",
-        "Automatic delete logic now requires exact merged-PR head SHA equality or zero-ahead reachability and re-proves the condition at execution time"
+        "18/18 exact Branch Lifecycle Intelligence adversarial tests passed under Python 3.12 in sandbox run 33738035380.",
+        "Dynamic apply run 33737915863 reclassified the branch immediately before mutation, recorded prior_state=MERGED_REDUNDANT and fresh_state=MERGED_REDUNDANT with head_stable=true, then deleted and verified absence.",
+        "Protected-namespace negative run 33736515190 completed successfully with zero delete candidates and zero deletions.",
+        "Production full report runs 33736612899 (job-application) and 33736617358 (job-app-helix) completed successfully without historical mutation."
       ],
       "does_not_own": [
         "Semantic equivalence claims based only on branch names",
