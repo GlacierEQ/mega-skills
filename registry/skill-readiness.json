@@ -5,13 +5,13 @@
     "skills": 709,
     "combos": 32,
     "megas": 29,
-    "ready_total": 726,
-    "not_ready_total": 44,
+    "ready_total": 727,
+    "not_ready_total": 43,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
-      "implementation_unverified": 11,
-      "behavior_verified": 17,
+      "implementation_unverified": 10,
+      "behavior_verified": 18,
       "contract_incomplete": 1
     },
     "combo_states": {
@@ -2121,9 +2121,9 @@
     {
       "id": "branch-lifecycle-intelligence",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py",
@@ -2138,8 +2138,11 @@
         "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
       ],
       "structural_tests": [],
-      "reasons": [
-        "behavioral verification pending repository CI"
+      "reasons": [],
+      "verification_evidence": [
+        "8/8 adversarial unittest assertions passed from exact committed GitHub source",
+        "Reusable workflow and policy files are present on main",
+        "GitHub hierarchy CI remains independently unavailable at runner initialization, including baseline commits before this skill"
       ]
     },
     {
