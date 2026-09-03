@@ -8,7 +8,53 @@
   "identity": "Forward Deployed AI Architect",
   "records": [
     {
-      "evidence_id": "ev_4cd956ea",
+      "evidence_id": "ev_6361aeb477c5bcfb",
+      "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
+      "source": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "verification": "Public README inspected 2026-09-02 HST; repository reports current TEST evidence at canonical promotion c7ab52e0e70a5cd449f9335f90030059d254325f with 51 tests on Python 3.11, 3.12, and 3.13 (153 executions), 0 failures/errors/skips.",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "competencies": [
+        "agents, MCP, tools, and context engineering",
+        "safe and human-directed deployment",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 1,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_a2c1fa1d957b76e1",
+      "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
+      "source": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "verification": "Public README inspected 2026-09-02 HST; repository reports current TEST evidence at canonical promotion c7ab52e0e70a5cd449f9335f90030059d254325f with 51 tests on Python 3.11, 3.12, and 3.13 (153 executions), 0 failures/errors/skips.",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "competencies": [
+        "enterprise integration and security",
+        "evaluation, observability, and reliability",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 1,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_13cc9d27b676bb75",
       "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
       "source": "https://github.com/GlacierEQ/computer-user",
       "source_id": "computer-user",
@@ -18,8 +64,7 @@
       "source_kind": "source_and_tests",
       "competencies": [
         "enterprise integration and security",
-        "hands-on Python and production engineering",
-        "production LLM application delivery"
+        "hands-on Python and production engineering"
       ],
       "hiring_signal": 5,
       "proof_strength": 0.92,
@@ -33,7 +78,7 @@
       "public_safe": false
     },
     {
-      "evidence_id": "ev_c69ebde1",
+      "evidence_id": "ev_21b7e54fc3edb92f",
       "claim": "The execution kernel enforces explicit approved/exact-target authority, idempotency, token protection for non-loopback service binding, read-only defaults, raw-secret rejection, and hash-only action receipts.",
       "source": "https://github.com/GlacierEQ/computer-user",
       "source_id": "computer-user",
@@ -58,7 +103,29 @@
       "public_safe": false
     },
     {
-      "evidence_id": "ev_64a0b788",
+      "evidence_id": "ev_3d5ecbd0ba619288",
+      "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
+      "source": "https://github.com/GlacierEQ/job-application",
+      "source_id": "job-application",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "evaluation, observability, and reliability",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_ba8f3d3f576ca3af",
       "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
       "source": "https://github.com/GlacierEQ/job-application",
       "source_id": "job-application",
@@ -81,29 +148,7 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_a86272a5",
-      "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
-      "source": "https://github.com/GlacierEQ/job-application",
-      "source_id": "job-application",
-      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
-      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
-      "state": "VERIFIED",
-      "source_kind": "readme_verified",
-      "competencies": [
-        "evaluation, observability, and reliability",
-        "safe and human-directed deployment"
-      ],
-      "hiring_signal": 5,
-      "proof_strength": 0.72,
-      "freshness_state": "FRESH",
-      "age_days": 0,
-      "limitations": [],
-      "gap": "",
-      "next_strengthening_action": "",
-      "public_safe": true
-    },
-    {
-      "evidence_id": "ev_92762059",
+      "evidence_id": "ev_18823a21ca59236f",
       "claim": "Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.",
       "source": "https://github.com/GlacierEQ/mega-skills",
       "source_id": "mega-skills",
@@ -127,7 +172,29 @@
       "public_safe": false
     },
     {
-      "evidence_id": "ev_538a7379",
+      "evidence_id": "ev_06770a0211a04cf6",
+      "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
+      "source": "https://github.com/GlacierEQ/spacex-autonomy",
+      "source_id": "spacex-autonomy",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "safe and human-directed deployment",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.72,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_702d2f4f31493281",
       "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
       "source": "https://github.com/GlacierEQ/spacex-autonomy",
       "source_id": "spacex-autonomy",
@@ -150,17 +217,17 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_8f52e5bb",
-      "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
-      "source": "https://github.com/GlacierEQ/spacex-autonomy",
-      "source_id": "spacex-autonomy",
-      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
-      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "evidence_id": "ev_323cd33f76847367",
+      "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
+      "source": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
       "competencies": [
-        "safe and human-directed deployment",
-        "evaluation, observability, and reliability"
+        "AI systems architecture",
+        "hands-on Python and production engineering"
       ],
       "hiring_signal": 5,
       "proof_strength": 0.72,
@@ -172,7 +239,7 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_9885b7d7",
+      "evidence_id": "ev_5ebdbcecbf04de24",
       "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
       "source": "https://github.com/GlacierEQ/the-tower-of-babel",
       "source_id": "tower-of-babel",
@@ -195,29 +262,32 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_3fab6fe7",
-      "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
-      "source": "https://github.com/GlacierEQ/the-tower-of-babel",
-      "source_id": "tower-of-babel",
-      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
-      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
-      "state": "VERIFIED",
-      "source_kind": "readme_verified",
+      "evidence_id": "ev_ee0d59994bba6d3f",
+      "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+      "source": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "source_id": "anthropic-agent-coordinator",
+      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "verification": "Public README inspected 2026-09-02 HST; historical exact-revision receipt documents 62/62 passing tests at commit 87438f57bdfd2cb380730cf51140611963d7c95b. Current-head execution is not promoted.",
+      "state": "SUPPORTED",
+      "source_kind": "source_and_tests",
       "competencies": [
+        "agents, MCP, tools, and context engineering",
         "AI systems architecture",
-        "hands-on Python and production engineering"
+        "evaluation, observability, and reliability"
       ],
       "hiring_signal": 5,
-      "proof_strength": 0.72,
+      "proof_strength": 0.6624,
       "freshness_state": "FRESH",
       "age_days": 0,
-      "limitations": [],
+      "limitations": [
+        "Strongest executed proof is historical exact-revision evidence and does not automatically establish current-head behavior."
+      ],
       "gap": "",
       "next_strengthening_action": "",
       "public_safe": true
     },
     {
-      "evidence_id": "ev_ed85e3eb",
+      "evidence_id": "ev_d7ccc5b0c5f93be7",
       "claim": "The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.",
       "source": "https://github.com/GlacierEQ/mega-skills",
       "source_id": "mega-skills",
@@ -239,29 +309,7 @@
       "public_safe": false
     },
     {
-      "evidence_id": "ev_8c1cb019",
-      "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
-      "source": "https://github.com/GlacierEQ/xai-colossus-cooling",
-      "source_id": "xai-colossus-cooling",
-      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
-      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
-      "state": "VERIFIED",
-      "source_kind": "readme_verified",
-      "competencies": [
-        "hands-on Python and production engineering",
-        "evaluation, observability, and reliability"
-      ],
-      "hiring_signal": 4,
-      "proof_strength": 0.576,
-      "freshness_state": "FRESH",
-      "age_days": 0,
-      "limitations": [],
-      "gap": "",
-      "next_strengthening_action": "",
-      "public_safe": true
-    },
-    {
-      "evidence_id": "ev_51f06c4a",
+      "evidence_id": "ev_5169c37850dc70b1",
       "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
       "source": "https://github.com/GlacierEQ/xai-colossus-cooling",
       "source_id": "xai-colossus-cooling",
@@ -283,7 +331,53 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_1869da5f",
+      "evidence_id": "ev_65b623eed3905e02",
+      "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
+      "source": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "source_id": "xai-colossus-cooling",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "competencies": [
+        "hands-on Python and production engineering",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.576,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_afff26aa032bf88c",
+      "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
+      "source": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "source_id": "anthropic-agent-coordinator",
+      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "verification": "Public README inspected 2026-09-02 HST; historical exact-revision receipt documents 62/62 passing tests at commit 87438f57bdfd2cb380730cf51140611963d7c95b. Current-head execution is not promoted.",
+      "state": "SUPPORTED",
+      "source_kind": "source_and_tests",
+      "competencies": [
+        "agents, MCP, tools, and context engineering",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 4,
+      "proof_strength": 0.5299,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [
+        "Proposal handoff is not tool execution or provider deployment."
+      ],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_80e6d1870a57872e",
       "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
       "source": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
       "source_id": "mission-thread-quorum",
@@ -305,7 +399,7 @@
       "public_safe": true
     },
     {
-      "evidence_id": "ev_2d74f91c",
+      "evidence_id": "ev_b0748b6b15795138",
       "claim": "Candidate positioning explicitly defines the forward-deployed motion as workflow discovery, bottleneck mapping, architecture, integration, verification, adoption, and iterative expansion.",
       "source": "https://github.com/GlacierEQ/job-app-helix",
       "source_id": "helix-role-power-matrix",
@@ -357,6 +451,26 @@
       "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
       "state": "VERIFIED",
       "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_test_executions",
+      "value": 153,
+      "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_failures",
+      "value": 0,
+      "scope": "failures/errors/skips reported by the documented verification matrix",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
       "freshness_state": "FRESH"
     }
   ],
@@ -444,6 +558,30 @@
       "public_safe": false,
       "source_kind": "source_and_tests",
       "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "anthropic-safety-monitor",
+      "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+      "url": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "role": "agent safety and approval boundary",
+      "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
+      "state": "VERIFIED",
+      "artifact": "README.md@3decbd69db27d3cef7ed792957cd48ee00439779",
+      "public_safe": true,
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
+      "url": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "role": "agent orchestration",
+      "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
+      "state": "SUPPORTED",
+      "artifact": "README.md@517883c0eea8a2a29d747954b4b490f19062f587",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
     }
   ],
   "source_health": [
@@ -510,6 +648,22 @@
       "freshness_factor": 1,
       "state": "CANDIDATE",
       "source_kind": "candidate_narrative"
+    },
+    {
+      "source_id": "anthropic-safety-monitor",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt"
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "SUPPORTED",
+      "source_kind": "source_and_tests"
     }
   ],
   "requirements": {
@@ -522,7 +676,7 @@
       "coverage_percent": 7,
       "status": "PARTIAL",
       "evidence_ids": [
-        "ev_2d74f91c"
+        "ev_b0748b6b15795138"
       ],
       "verified_evidence_ids": [],
       "public_safe_evidence_ids": []
@@ -532,27 +686,29 @@
       "weight": 1.2,
       "hard_gate": true,
       "minimum_strength": 0.62,
-      "proof_strength": 0.9958,
-      "coverage_percent": 99.6,
+      "proof_strength": 0.9986,
+      "coverage_percent": 99.9,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_64a0b788",
-        "ev_92762059",
-        "ev_9885b7d7",
-        "ev_3fab6fe7",
-        "ev_1869da5f"
+        "ev_ba8f3d3f576ca3af",
+        "ev_18823a21ca59236f",
+        "ev_323cd33f76847367",
+        "ev_5ebdbcecbf04de24",
+        "ev_ee0d59994bba6d3f",
+        "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
-        "ev_64a0b788",
-        "ev_92762059",
-        "ev_9885b7d7",
-        "ev_3fab6fe7"
+        "ev_ba8f3d3f576ca3af",
+        "ev_18823a21ca59236f",
+        "ev_323cd33f76847367",
+        "ev_5ebdbcecbf04de24"
       ],
       "public_safe_evidence_ids": [
-        "ev_64a0b788",
-        "ev_9885b7d7",
-        "ev_3fab6fe7",
-        "ev_1869da5f"
+        "ev_ba8f3d3f576ca3af",
+        "ev_323cd33f76847367",
+        "ev_5ebdbcecbf04de24",
+        "ev_ee0d59994bba6d3f",
+        "ev_80e6d1870a57872e"
       ]
     },
     "production_engineering": {
@@ -564,21 +720,21 @@
       "coverage_percent": 99.7,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_4cd956ea",
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
+        "ev_13cc9d27b676bb75",
+        "ev_702d2f4f31493281",
+        "ev_323cd33f76847367",
+        "ev_65b623eed3905e02"
       ],
       "verified_evidence_ids": [
-        "ev_4cd956ea",
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
+        "ev_13cc9d27b676bb75",
+        "ev_702d2f4f31493281",
+        "ev_323cd33f76847367",
+        "ev_65b623eed3905e02"
       ],
       "public_safe_evidence_ids": [
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
+        "ev_702d2f4f31493281",
+        "ev_323cd33f76847367",
+        "ev_65b623eed3905e02"
       ]
     },
     "agents_mcp": {
@@ -586,16 +742,24 @@
       "weight": 1.15,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "proof_strength": 0.72,
-      "coverage_percent": 72,
+      "proof_strength": 1,
+      "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_92762059"
+        "ev_6361aeb477c5bcfb",
+        "ev_18823a21ca59236f",
+        "ev_ee0d59994bba6d3f",
+        "ev_afff26aa032bf88c"
       ],
       "verified_evidence_ids": [
-        "ev_92762059"
+        "ev_6361aeb477c5bcfb",
+        "ev_18823a21ca59236f"
       ],
-      "public_safe_evidence_ids": []
+      "public_safe_evidence_ids": [
+        "ev_6361aeb477c5bcfb",
+        "ev_ee0d59994bba6d3f",
+        "ev_afff26aa032bf88c"
+      ]
     },
     "enterprise_integration_security": {
       "label": "Enterprise integration, authority boundaries, security, and reliability",
@@ -606,32 +770,40 @@
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_4cd956ea",
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_ed85e3eb",
-        "ev_51f06c4a",
-        "ev_1869da5f"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_13cc9d27b676bb75",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_d7ccc5b0c5f93be7",
+        "ev_5169c37850dc70b1",
+        "ev_afff26aa032bf88c",
+        "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
-        "ev_4cd956ea",
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_ed85e3eb",
-        "ev_51f06c4a"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_13cc9d27b676bb75",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_d7ccc5b0c5f93be7",
+        "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
-        "ev_a86272a5",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_51f06c4a",
-        "ev_1869da5f"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_3d5ecbd0ba619288",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_5169c37850dc70b1",
+        "ev_afff26aa032bf88c",
+        "ev_80e6d1870a57872e"
       ]
     },
     "evals_reliability": {
@@ -639,82 +811,68 @@
       "weight": 1.1,
       "hard_gate": true,
       "minimum_strength": 0.6,
-      "proof_strength": 0.9999,
+      "proof_strength": 1,
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_9885b7d7",
-        "ev_8c1cb019"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_5ebdbcecbf04de24",
+        "ev_ee0d59994bba6d3f",
+        "ev_65b623eed3905e02"
       ],
       "verified_evidence_ids": [
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_9885b7d7",
-        "ev_8c1cb019"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_5ebdbcecbf04de24",
+        "ev_65b623eed3905e02"
       ],
       "public_safe_evidence_ids": [
-        "ev_a86272a5",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_9885b7d7",
-        "ev_8c1cb019"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_3d5ecbd0ba619288",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_5ebdbcecbf04de24",
+        "ev_ee0d59994bba6d3f",
+        "ev_65b623eed3905e02"
       ]
     },
     "production_llm_delivery": {
       "label": "Production LLM and agent application delivery",
       "weight": 1.3,
       "hard_gate": true,
-      "minimum_strength": 0.62,
-      "proof_strength": 0.9973,
-      "coverage_percent": 99.7,
-      "status": "SATISFIED",
-      "evidence_ids": [
-        "ev_4cd956ea",
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
-      ],
-      "verified_evidence_ids": [
-        "ev_4cd956ea",
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
-      ],
-      "public_safe_evidence_ids": [
-        "ev_538a7379",
-        "ev_3fab6fe7",
-        "ev_8c1cb019"
-      ]
+      "minimum_strength": 0.58,
+      "proof_strength": 0,
+      "coverage_percent": 0,
+      "status": "MISSING",
+      "evidence_ids": [],
+      "verified_evidence_ids": [],
+      "public_safe_evidence_ids": []
     },
     "deployment_adoption": {
       "label": "Customer deployment support, adoption, and lifecycle expansion",
       "weight": 1.15,
       "hard_gate": true,
-      "minimum_strength": 0.56,
-      "proof_strength": 0.8896,
-      "coverage_percent": 89,
-      "status": "SATISFIED",
+      "minimum_strength": 0.52,
+      "proof_strength": 0.07,
+      "coverage_percent": 7,
+      "status": "PARTIAL",
       "evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a",
-        "ev_2d74f91c"
+        "ev_b0748b6b15795138"
       ],
-      "verified_evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a"
-      ],
-      "public_safe_evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a"
-      ]
+      "verified_evidence_ids": [],
+      "public_safe_evidence_ids": []
     },
     "ambiguity_high_agency": {
       "label": "High-agency execution in ambiguous environments",
@@ -725,7 +883,7 @@
       "coverage_percent": 7,
       "status": "PARTIAL",
       "evidence_ids": [
-        "ev_2d74f91c"
+        "ev_b0748b6b15795138"
       ],
       "verified_evidence_ids": [],
       "public_safe_evidence_ids": []
@@ -739,18 +897,18 @@
       "coverage_percent": 96.7,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_64a0b788",
-        "ev_9885b7d7",
-        "ev_ed85e3eb"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5ebdbcecbf04de24",
+        "ev_d7ccc5b0c5f93be7"
       ],
       "verified_evidence_ids": [
-        "ev_64a0b788",
-        "ev_9885b7d7",
-        "ev_ed85e3eb"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5ebdbcecbf04de24",
+        "ev_d7ccc5b0c5f93be7"
       ],
       "public_safe_evidence_ids": [
-        "ev_64a0b788",
-        "ev_9885b7d7"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5ebdbcecbf04de24"
       ]
     },
     "technical_communication": {
@@ -762,16 +920,16 @@
       "coverage_percent": 88.1,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5169c37850dc70b1"
       ],
       "verified_evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
-        "ev_64a0b788",
-        "ev_51f06c4a"
+        "ev_ba8f3d3f576ca3af",
+        "ev_5169c37850dc70b1"
       ]
     },
     "safe_deployment": {
@@ -779,38 +937,56 @@
       "weight": 1,
       "hard_gate": true,
       "minimum_strength": 0.6,
-      "proof_strength": 0.9999,
+      "proof_strength": 1,
       "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_ed85e3eb",
-        "ev_51f06c4a",
-        "ev_1869da5f"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_d7ccc5b0c5f93be7",
+        "ev_5169c37850dc70b1",
+        "ev_afff26aa032bf88c",
+        "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
-        "ev_c69ebde1",
-        "ev_a86272a5",
-        "ev_92762059",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_ed85e3eb",
-        "ev_51f06c4a"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_21b7e54fc3edb92f",
+        "ev_3d5ecbd0ba619288",
+        "ev_18823a21ca59236f",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_d7ccc5b0c5f93be7",
+        "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
-        "ev_a86272a5",
-        "ev_538a7379",
-        "ev_8f52e5bb",
-        "ev_51f06c4a",
-        "ev_1869da5f"
+        "ev_6361aeb477c5bcfb",
+        "ev_a2c1fa1d957b76e1",
+        "ev_3d5ecbd0ba619288",
+        "ev_06770a0211a04cf6",
+        "ev_702d2f4f31493281",
+        "ev_5169c37850dc70b1",
+        "ev_afff26aa032bf88c",
+        "ev_80e6d1870a57872e"
       ]
     }
   },
   "gap_queue": [
+    {
+      "requirement_id": "production_llm_delivery",
+      "label": "Production LLM and agent application delivery",
+      "status": "MISSING",
+      "hard_gate": true,
+      "proof_strength": 0,
+      "minimum_strength": 0.58,
+      "priority": 1.131,
+      "evidence_ids": []
+    },
     {
       "requirement_id": "customer_discovery",
       "label": "Customer discovery and workflow problem decomposition",
@@ -820,7 +996,19 @@
       "minimum_strength": 0.58,
       "priority": 0.9563,
       "evidence_ids": [
-        "ev_2d74f91c"
+        "ev_b0748b6b15795138"
+      ]
+    },
+    {
+      "requirement_id": "deployment_adoption",
+      "label": "Customer deployment support, adoption, and lifecycle expansion",
+      "status": "PARTIAL",
+      "hard_gate": true,
+      "proof_strength": 0.07,
+      "minimum_strength": 0.52,
+      "priority": 0.7763,
+      "evidence_ids": [
+        "ev_b0748b6b15795138"
       ]
     },
     {
@@ -832,19 +1020,19 @@
       "minimum_strength": 0.55,
       "priority": 0.756,
       "evidence_ids": [
-        "ev_2d74f91c"
+        "ev_b0748b6b15795138"
       ]
     }
   ],
   "summary": {
-    "sources": 8,
-    "records": 14,
-    "verified_records": 12,
-    "public_safe_records": 9,
+    "sources": 10,
+    "records": 18,
+    "verified_records": 14,
+    "public_safe_records": 13,
     "requirements_total": 12,
-    "requirements_satisfied": 10,
-    "hard_gates_open": 2,
-    "evidence_coverage_score": 79.5
+    "requirements_satisfied": 8,
+    "hard_gates_open": 4,
+    "evidence_coverage_score": 65.2
   },
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit."
 }
