@@ -2268,8 +2268,8 @@
       "id": "branch-lifecycle-intelligence",
       "display_name": "Branch Lifecycle Intelligence",
       "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.1",
+      "maturity": "candidate",
+      "version": "0.2.0",
       "path": "skills/branch-lifecycle-intelligence",
       "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
       "purpose": "Evidence-first branch lifecycle planning that proves redundancy before cleanup, preserves divergent work, groups related branches into synthesis families, and emits deterministic cleanup receipts.",
@@ -2282,10 +2282,10 @@
         "Branch cleanup receipt with hashes, deletions, preserved divergence, blocked refs, and consolidation families"
       ],
       "local_validation": [
-        "Eight adversarial unittest lifecycle assertions passed against the exact committed planner and test bytes",
-        "Plan and inventory SHA-256 receipts are deterministic",
-        "Automatic delete actions are restricted to merged or zero-ahead redundant branches",
-        "Live apply workflow re-checks branch SHA, protection, open PR state, and redundancy evidence immediately before deletion"
+        "Core v0.1.1 classifier/planner: 8/8 adversarial unittest assertions passed from exact committed GitHub bytes before the admission/current-head hardening wave",
+        "Current v0.2.0 source, workflow, schema, admission protocol, and 14-test suite have exact GitHub readback",
+        "Fresh v0.2.0 behavioral execution is pending because the repository Actions job fails before runner step initialization, including commits predating this skill",
+        "Automatic delete logic now requires exact merged-PR head SHA equality or zero-ahead reachability and re-proves the condition at execution time"
       ],
       "does_not_own": [
         "Semantic equivalence claims based only on branch names",
