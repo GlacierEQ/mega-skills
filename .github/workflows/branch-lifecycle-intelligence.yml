@@ -8,6 +8,11 @@ on:
         required: false
         default: report
         type: string
+      scope:
+        description: auto, full, or event_head
+        required: false
+        default: auto
+        type: string
       stale_days:
         description: Age threshold for divergent branch consolidation review
         required: false
@@ -22,6 +27,11 @@ on:
         description: Fail closed if repository exceeds this branch count
         required: false
         default: 500
+        type: number
+      max_deletes:
+        description: Maximum branch deletions in one apply run
+        required: false
+        default: 100
         type: number
       protected_patterns:
         description: Newline-delimited protected branch patterns; /* means prefix family
@@ -62,6 +72,11 @@ on:
         required: true
         default: "500"
         type: string
+      max_deletes:
+        description: Maximum deletions in one apply run
+        required: true
+        default: "100"
+        type: string
 
 permissions:
   contents: write
@@ -81,9 +96,11 @@ jobs:
         uses: actions/github-script@v8
         env:
           MODE: ${{ inputs.mode || 'report' }}
+          SCOPE: ${{ inputs.scope || 'auto' }}
           STALE_DAYS: ${{ inputs.stale_days || '30' }}
           MIN_DELETE_CONFIDENCE: ${{ inputs.minimum_delete_confidence || '95' }}
           MAX_BRANCHES: ${{ inputs.max_branches || '500' }}
+          MAX_DELETES: ${{ inputs.max_deletes || '100' }}
           PROTECTED_PATTERNS: ${{ inputs.protected_patterns || 'main\nmaster\ndevelop\ndevelopment\nproduction\nprod\nstaging\nrelease/*\nhotfix/*' }}
         with:
           github-token: ${{ github.token }}
@@ -97,14 +114,17 @@ jobs:
               return;
             }
 
+            const requestedScope = String(process.env.SCOPE || "auto").toLowerCase();
             const staleDays = Number(process.env.STALE_DAYS || 30);
             const minimumDeleteConfidence = Number(process.env.MIN_DELETE_CONFIDENCE || 95);
             const maxBranches = Number(process.env.MAX_BRANCHES || 500);
+            const maxDeletes = Number(process.env.MAX_DELETES || 100);
             if (!Number.isFinite(staleDays) || staleDays < 0) throw new Error("invalid stale_days");
             if (!Number.isFinite(minimumDeleteConfidence) || minimumDeleteConfidence < 0 || minimumDeleteConfidence > 100) {
               throw new Error("invalid minimum_delete_confidence");
             }
             if (!Number.isInteger(maxBranches) || maxBranches < 1) throw new Error("invalid max_branches");
+            if (!Number.isInteger(maxDeletes) || maxDeletes < 0 || maxDeletes > 500) throw new Error("invalid max_deletes");
 
             const protectedPatterns = String(process.env.PROTECTED_PATTERNS || "")
               .split(/\r?\n/)
@@ -116,6 +136,14 @@ jobs:
             const fullName = `${owner}/${repo}`;
             const repoMeta = await github.rest.repos.get({ owner, repo });
             const defaultBranch = repoMeta.data.default_branch;
+            const eventPr = context.payload.pull_request || null;
+            const scope = requestedScope === "auto"
+              ? (context.eventName === "pull_request" && eventPr?.head?.repo?.full_name === fullName ? "event_head" : "full")
+              : requestedScope;
+            if (!["full", "event_head"].includes(scope)) throw new Error(`invalid scope: ${scope}`);
+            if (scope === "event_head" && (!eventPr || eventPr.head?.repo?.full_name !== fullName)) {
+              throw new Error("event_head scope requires a same-repository pull_request event");
+            }
 
             function protectedByPattern(name) {
               return protectedPatterns.some(pattern => {
@@ -148,19 +176,24 @@ jobs:
               return await github.paginate(method, { ...params, per_page: 100 });
             }
 
-            const branches = await paginate(github.rest.repos.listBranches, { owner, repo });
-            if (branches.length > maxBranches) {
-              core.setFailed(`Fail closed: ${branches.length} branches exceeds max_branches=${maxBranches}`);
+            const allBranches = await paginate(github.rest.repos.listBranches, { owner, repo });
+            if (allBranches.length > maxBranches) {
+              core.setFailed(`Fail closed: ${allBranches.length} branches exceeds max_branches=${maxBranches}`);
               return;
             }
+            const branches = scope === "event_head"
+              ? allBranches.filter(branch => branch.name === eventPr.head.ref)
+              : allBranches;
 
-            const pulls = await paginate(github.rest.pulls.list, {
-              owner,
-              repo,
-              state: "all",
-              sort: "updated",
-              direction: "desc",
-            });
+            const pulls = scope === "event_head"
+              ? [eventPr]
+              : await paginate(github.rest.pulls.list, {
+                  owner,
+                  repo,
+                  state: "all",
+                  sort: "created",
+                  direction: "asc",
+                });
 
             const pullsByBranch = new Map();
             for (const pr of pulls) {
@@ -172,7 +205,7 @@ jobs:
 
             const inventory = new Array(branches.length);
             let cursor = 0;
-            const workerCount = Math.min(6, Math.max(1, branches.length));
+            const workerCount = Math.min(4, Math.max(1, branches.length));
 
             async function inspectWorker() {
               while (true) {
@@ -186,15 +219,15 @@ jobs:
                 let behindBy = null;
                 let compareStatus = null;
                 let changedFiles = [];
+                const branchPulls = pullsByBranch.get(name) || [];
+                const hasOpenPr = branchPulls.some(pr => pr.state === "open");
+                const hasMergedPr = branchPulls.some(pr => Boolean(pr.merged_at));
 
-                try {
-                  const commit = await github.rest.repos.getCommit({ owner, repo, ref: branch.commit.sha });
-                  headCommittedAt = commit.data.commit?.committer?.date || commit.data.commit?.author?.date || null;
-                } catch (error) {
-                  evidenceErrors.push(`commit_lookup:${error.status || "error"}`);
-                }
-
-                if (name !== defaultBranch) {
+                if (name === defaultBranch) {
+                  aheadBy = 0;
+                  behindBy = 0;
+                  compareStatus = "identical";
+                } else if (!hasOpenPr && !hasMergedPr) {
                   try {
                     const comparison = await github.rest.repos.compareCommitsWithBasehead({
                       owner,
@@ -206,16 +239,24 @@ jobs:
                     behindBy = comparison.data.behind_by;
                     compareStatus = comparison.data.status;
                     changedFiles = (comparison.data.files || []).slice(0, 100).map(file => file.filename);
+
+                    if (Number.isInteger(aheadBy) && aheadBy > 0) {
+                      const comparedHead = (comparison.data.commits || []).find(commit => commit.sha === branch.commit.sha);
+                      headCommittedAt = comparedHead?.commit?.committer?.date || comparedHead?.commit?.author?.date || null;
+                      if (!headCommittedAt) {
+                        try {
+                          const commit = await github.rest.repos.getCommit({ owner, repo, ref: branch.commit.sha });
+                          headCommittedAt = commit.data.commit?.committer?.date || commit.data.commit?.author?.date || null;
+                        } catch (error) {
+                          evidenceErrors.push(`commit_lookup:${error.status || "error"}`);
+                        }
+                      }
+                    }
                   } catch (error) {
                     evidenceErrors.push(`compare:${error.status || "error"}`);
                   }
-                } else {
-                  aheadBy = 0;
-                  behindBy = 0;
-                  compareStatus = "identical";
                 }
 
-                const branchPulls = pullsByBranch.get(name) || [];
                 inventory[index] = {
                   name,
                   sha: branch.commit.sha,
@@ -368,6 +409,8 @@ jobs:
               default_branch: defaultBranch,
               generated_at: generatedAt.toISOString(),
               mode,
+              scope,
+              native_delete_branch_on_merge: Boolean(repoMeta.data.delete_branch_on_merge),
               stale_days: staleDays,
               minimum_delete_confidence: minimumDeleteConfidence,
               protected_patterns: protectedPatterns,
@@ -382,9 +425,19 @@ jobs:
             const deleted = [];
             const executionBlocked = [];
             const executionErrors = [];
+            const deleteCandidates = decisions
+              .filter(row => row.action === "DELETE")
+              .sort((a, b) => b.cleanup_confidence - a.cleanup_confidence || a.branch.localeCompare(b.branch));
+            const executeCandidates = deleteCandidates.slice(0, maxDeletes);
+            const deferredDeleteCandidates = deleteCandidates.slice(maxDeletes).map(item => ({
+              branch: item.branch,
+              state: item.state,
+              confidence: item.cleanup_confidence,
+              reason: "delete_budget_exhausted",
+            }));
 
             if (mode === "apply") {
-              for (const item of decisions.filter(row => row.action === "DELETE")) {
+              for (const item of executeCandidates) {
                 try {
                   const live = await github.rest.repos.getBranch({ owner, repo, branch: item.branch });
                   if (live.data.name === defaultBranch || live.data.protected || protectedByPattern(live.data.name)) {
@@ -437,6 +490,7 @@ jobs:
 
                   await github.rest.git.deleteRef({ owner, repo, ref: `heads/${item.branch}` });
                   deleted.push({ branch: item.branch, sha: item.sha, state: item.state, confidence: item.cleanup_confidence });
+                  await new Promise(resolve => setTimeout(resolve, 1100));
                 } catch (error) {
                   if (error.status === 404) {
                     deleted.push({ branch: item.branch, sha: item.sha, state: item.state, confidence: item.cleanup_confidence, already_absent: true });
@@ -449,7 +503,7 @@ jobs:
 
             const afterBranches = mode === "apply"
               ? await paginate(github.rest.repos.listBranches, { owner, repo })
-              : branches;
+              : allBranches;
 
             const receipt = {
               schema: "glaciereq.branch-lifecycle-receipt.v1",
@@ -457,9 +511,15 @@ jobs:
               default_branch: defaultBranch,
               generated_at: new Date().toISOString(),
               mode,
-              before_branch_count: branches.length,
+              scope,
+              native_delete_branch_on_merge: Boolean(repoMeta.data.delete_branch_on_merge),
+              before_branch_count: allBranches.length,
+              inspected_branch_count: branches.length,
               after_branch_count: afterBranches.length,
+              delete_budget: maxDeletes,
+              delete_candidate_count: deleteCandidates.length,
               deleted_count: deleted.length,
+              deferred_delete_candidates: deferredDeleteCandidates,
               plan_sha256: planCore.plan_sha256,
               inventory_sha256: planCore.inventory_sha256,
               deleted,
@@ -492,9 +552,14 @@ jobs:
               .addTable([
                 [{ data: "Metric", header: true }, { data: "Value", header: true }],
                 ["Mode", mode],
-                ["Before branches", String(branches.length)],
+                ["Scope", scope],
+                ["Native delete-on-merge", String(Boolean(repoMeta.data.delete_branch_on_merge))],
+                ["Before branches", String(allBranches.length)],
+                ["Inspected branches", String(branches.length)],
                 ["After branches", String(afterBranches.length)],
+                ["Delete candidates", String(deleteCandidates.length)],
                 ["Deleted", String(deleted.length)],
+                ["Deferred by delete budget", String(deferredDeleteCandidates.length)],
                 ["Preserved divergent/active", String(receipt.preserved_divergent.length)],
                 ["Blocked", String(receipt.blocked.length + executionBlocked.length)],
                 ["Consolidation families", String(receipt.consolidation_families.length)],
