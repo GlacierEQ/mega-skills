@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "proof-customer-discovery",
+  "requirement_id": "customer_discovery",
+  "status": "BLOCKED_ON_RETRIEVAL",
+  "objective": "Produce truthful evidence of real external workflow/stakeholder discovery and problem decomposition before solution design.",
+  "truth_rules": [
+    "Company research, job-post analysis, market intelligence, and candidate targeting are not customer discovery.",
+    "A real external participant must exist; label the relationship exactly (customer, pilot user, collaborator, tester, team, organization).",
+    "Do not invent interviews, pain points, stakeholder quotes, workflow observations, requirements, or outcomes.",
+    "Discovery evidence must precede or be independently separable from the final solution so the problem was not reverse-engineered from the artifact."
+  ],
+  "phases": [
+    {
+      "id": "context",
+      "evidence": [
+        "participant relationship and permission boundary",
+        "workflow context",
+        "current tools/systems",
+        "stakeholders or roles"
+      ]
+    },
+    {
+      "id": "discovery",
+      "evidence": [
+        "interview/observation notes",
+        "jobs-to-be-done or workflow map",
+        "pain/friction statements",
+        "constraints",
+        "failure paths"
+      ]
+    },
+    {
+      "id": "decomposition",
+      "evidence": [
+        "root problem vs symptoms",
+        "ranked opportunities",
+        "integration constraints",
+        "security/authority boundaries",
+        "explicit non-goals"
+      ]
+    },
+    {
+      "id": "acceptance",
+      "evidence": [
+        "success criteria",
+        "measurement plan",
+        "participant confirmation or correction of the problem framing"
+      ]
+    }
+  ],
+  "acceptance": [
+    "At least one real external participant provides or validates workflow information.",
+    "The exact relationship to the participant is recorded without inflating it to 'customer'.",
+    "Raw discovery notes or a permission-safe derivative exist.",
+    "A current-state workflow/problem map and ranked bottleneck/opportunity set are produced.",
+    "Constraints, non-goals, authority boundaries, and success criteria are explicit.",
+    "At least one participant correction, clarification, or validation of the problem framing is recorded.",
+    "A public-safe case study is created only from information permitted for publication.",
+    "Evidence is ingested into evidence-sources.json with lineage and limitations."
+  ],
+  "outputs": [
+    "private discovery packet",
+    "problem-decomposition artifact",
+    "acceptance criteria",
+    "public-safe discovery case study",
+    "evidence-sources.json record"
+  ],
+  "claim_ceiling": "This packet can establish real external discovery/problem decomposition. It does not establish deployment, adoption, customer success, or production operation unless those are separately observed and receipted."
+}
