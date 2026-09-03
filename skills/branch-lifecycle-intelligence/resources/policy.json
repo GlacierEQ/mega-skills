@@ -31,5 +31,6 @@
     "MERGED_REDUNDANT",
     "REACHABLE_REDUNDANT"
   ],
-  "fail_closed_on_evidence_error": true
+  "fail_closed_on_evidence_error": true,
+  "assessment_ttl_seconds": 300
 }
