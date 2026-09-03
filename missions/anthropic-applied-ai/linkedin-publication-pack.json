@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generation_state": "SEEDED_FROM_VERIFIED_LIVE_GIT_BLOB_REFS",
+  "generation_state": "SEEDED_FROM_VERIFIED_LIVE_GIT_BLOB_REFS_STRICT_CUSTOMER_DISCOVERY",
   "source_authority": "missions/anthropic-applied-ai/LINKEDIN_PROFILE_SOURCE.md",
   "publication_decision": "READY_WITH_BOUNDED_GAPS",
   "identity": "Forward Deployed AI Architect",
@@ -189,16 +189,21 @@
         "claim_id": "gap.customer-deployment-adoption",
         "requirement_id": "deployment_adoption",
         "reason": "Current evidence is candidate narrative only. Do not claim customer deployment/adoption history without real external evidence."
+      },
+      {
+        "claim_id": "gap.customer-discovery",
+        "requirement_id": "customer_discovery",
+        "reason": "Current qualifying evidence is candidate positioning narrative only. Company/market intelligence does not establish real customer or stakeholder discovery."
       }
     ],
     "rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
   },
   "evidence_status": {
-    "coverage_score": 80.4,
+    "coverage_score": 72.4,
     "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit.",
-    "requirements_satisfied": 10,
+    "requirements_satisfied": 9,
     "requirements_total": 12,
-    "hard_gates_open": 2,
+    "hard_gates_open": 3,
     "open_gaps": [
       {
         "requirement_id": "production_llm_delivery",
@@ -209,6 +214,18 @@
         "minimum_strength": 0.58,
         "priority": 1.131,
         "evidence_ids": []
+      },
+      {
+        "requirement_id": "customer_discovery",
+        "label": "Customer discovery and workflow problem decomposition",
+        "status": "PARTIAL",
+        "hard_gate": true,
+        "proof_strength": 0.07,
+        "minimum_strength": 0.58,
+        "priority": 0.9563,
+        "evidence_ids": [
+          "ev_b0748b6b15795138"
+        ]
       },
       {
         "requirement_id": "deployment_adoption",
