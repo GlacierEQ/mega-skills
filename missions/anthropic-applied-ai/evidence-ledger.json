@@ -103,6 +103,150 @@
       "public_safe": false
     },
     {
+      "evidence_id": "ev_2f7e0709053f0e34",
+      "claim": "Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.",
+      "source": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "source_id": "glaciereq-mcp-stack",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33135067808 and Public Truth Gate run 33135067576 both completed successfully at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18. Live external-provider connectivity remains outside the claim boundary unless separately receipted.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "glaciereq-mcp-stack",
+      "competencies": [
+        "enterprise integration and security",
+        "agents, MCP, tools, and context engineering",
+        "safe and human-directed deployment"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 5,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_468f0323d353e27e",
+      "claim": "Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.",
+      "source": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "source_id": "glaciereq-mcp-stack",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33135067808 and Public Truth Gate run 33135067576 both completed successfully at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18. Live external-provider connectivity remains outside the claim boundary unless separately receipted.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "glaciereq-mcp-stack",
+      "competencies": [
+        "enterprise integration and security",
+        "agents, MCP, tools, and context engineering",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 5,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_6f53b25e7abcf6dd",
+      "claim": "Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.",
+      "source": "https://github.com/GlacierEQ/job-app-helix",
+      "source_id": "job-app-helix-intelligence",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "verification": "Current source/tests inspected. GitHub Actions APEX Estate Non-Regression run 33737806112 completed successfully at head e8b12f678f8cf9b20a8e94069230637e30edaf1a. Broad CI status is separately bounded and not implied.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "helix-hiring-system",
+      "competencies": [
+        "customer discovery and problem decomposition",
+        "evaluation, observability, and reliability",
+        "ambiguous-environment execution"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_e5f0e22324e43cc6",
+      "claim": "Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.",
+      "source": "https://github.com/GlacierEQ/job-app-helix",
+      "source_id": "job-app-helix-intelligence",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "verification": "Current source/tests inspected. GitHub Actions APEX Estate Non-Regression run 33737806112 completed successfully at head e8b12f678f8cf9b20a8e94069230637e30edaf1a. Broad CI status is separately bounded and not implied.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "helix-hiring-system",
+      "competencies": [
+        "customer discovery and problem decomposition",
+        "ambiguous-environment execution",
+        "field leadership and technical communication"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_19a92b5a84973875",
+      "claim": "Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.",
+      "source": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "source_id": "microsoft-identity-zero-trust",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33519708554 completed successfully at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41. Claims remain scoped to the deterministic identity/authorization model and its tested contracts.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "microsoft-identity-zero-trust",
+      "competencies": [
+        "enterprise integration and security",
+        "safe and human-directed deployment",
+        "evaluation, observability, and reliability"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 1,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
+      "evidence_id": "ev_1f25e9848323179d",
+      "claim": "Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.",
+      "source": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "source_id": "microsoft-identity-zero-trust",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33519708554 completed successfully at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41. Claims remain scoped to the deterministic identity/authorization model and its tested contracts.",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "independence_group": "microsoft-identity-zero-trust",
+      "competencies": [
+        "enterprise integration and security",
+        "safe and human-directed deployment",
+        "AI systems architecture"
+      ],
+      "hiring_signal": 5,
+      "proof_strength": 0.92,
+      "freshness_state": "FRESH",
+      "age_days": 1,
+      "limitations": [],
+      "gap": "",
+      "next_strengthening_action": "",
+      "public_safe": true
+    },
+    {
       "evidence_id": "ev_3d5ecbd0ba619288",
       "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
       "source": "https://github.com/GlacierEQ/job-application",
@@ -582,6 +726,42 @@
       "public_safe": true,
       "source_kind": "source_and_tests",
       "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+      "url": "https://github.com/GlacierEQ/job-app-helix",
+      "role": "customer discovery / ambiguity execution",
+      "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts.",
+      "state": "VERIFIED",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+      "url": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "role": "enterprise integration / security",
+      "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages.",
+      "state": "VERIFIED",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
+      "url": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "role": "enterprise security",
+      "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries.",
+      "state": "VERIFIED",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "public_safe": true,
+      "source_kind": "source_and_tests",
+      "freshness_state": "FRESH"
     }
   ],
   "source_health": [
@@ -664,6 +844,33 @@
       "freshness_factor": 1,
       "state": "SUPPORTED",
       "source_kind": "source_and_tests"
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "independence_group": "helix-hiring-system",
+      "freshness_state": "FRESH",
+      "age_days": 0,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests"
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "independence_group": "glaciereq-mcp-stack",
+      "freshness_state": "FRESH",
+      "age_days": 5,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests"
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "independence_group": "microsoft-identity-zero-trust",
+      "freshness_state": "FRESH",
+      "age_days": 1,
+      "freshness_factor": 1,
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests"
     }
   ],
   "requirements": {
@@ -672,24 +879,37 @@
       "weight": 1.25,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "proof_strength": 0.07,
-      "coverage_percent": 7,
-      "status": "PARTIAL",
+      "proof_strength": 0.9256,
+      "coverage_percent": 92.6,
+      "status": "SATISFIED",
       "evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6",
         "ev_b0748b6b15795138"
       ],
-      "verified_evidence_ids": [],
-      "public_safe_evidence_ids": []
+      "verified_evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6"
+      ],
+      "independent_groups": [
+        "helix-hiring-system",
+        "helix-role-power-matrix"
+      ]
     },
     "architecture": {
       "label": "AI systems architecture from technical discovery through deployment",
       "weight": 1.2,
       "hard_gate": true,
       "minimum_strength": 0.62,
-      "proof_strength": 0.9986,
-      "coverage_percent": 99.9,
+      "proof_strength": 0.9996,
+      "coverage_percent": 100,
       "status": "SATISFIED",
       "evidence_ids": [
+        "ev_1f25e9848323179d",
         "ev_ba8f3d3f576ca3af",
         "ev_18823a21ca59236f",
         "ev_323cd33f76847367",
@@ -698,17 +918,27 @@
         "ev_80e6d1870a57872e"
       ],
       "verified_evidence_ids": [
+        "ev_1f25e9848323179d",
         "ev_ba8f3d3f576ca3af",
         "ev_18823a21ca59236f",
         "ev_323cd33f76847367",
         "ev_5ebdbcecbf04de24"
       ],
       "public_safe_evidence_ids": [
+        "ev_1f25e9848323179d",
         "ev_ba8f3d3f576ca3af",
         "ev_323cd33f76847367",
         "ev_5ebdbcecbf04de24",
         "ev_ee0d59994bba6d3f",
         "ev_80e6d1870a57872e"
+      ],
+      "independent_groups": [
+        "anthropic-agent-coordinator",
+        "job-application",
+        "mega-skills",
+        "microsoft-identity-zero-trust",
+        "mission-thread-quorum",
+        "tower-of-babel"
       ]
     },
     "production_engineering": {
@@ -735,6 +965,12 @@
         "ev_702d2f4f31493281",
         "ev_323cd33f76847367",
         "ev_65b623eed3905e02"
+      ],
+      "independent_groups": [
+        "computer-user",
+        "spacex-autonomy",
+        "tower-of-babel",
+        "xai-colossus-cooling"
       ]
     },
     "agents_mcp": {
@@ -747,18 +983,30 @@
       "status": "SATISFIED",
       "evidence_ids": [
         "ev_6361aeb477c5bcfb",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
         "ev_18823a21ca59236f",
         "ev_ee0d59994bba6d3f",
         "ev_afff26aa032bf88c"
       ],
       "verified_evidence_ids": [
         "ev_6361aeb477c5bcfb",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
         "ev_18823a21ca59236f"
       ],
       "public_safe_evidence_ids": [
         "ev_6361aeb477c5bcfb",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
         "ev_ee0d59994bba6d3f",
         "ev_afff26aa032bf88c"
+      ],
+      "independent_groups": [
+        "anthropic-agent-coordinator",
+        "anthropic-safety-monitor",
+        "glaciereq-mcp-stack",
+        "mega-skills"
       ]
     },
     "enterprise_integration_security": {
@@ -774,6 +1022,10 @@
         "ev_a2c1fa1d957b76e1",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -788,6 +1040,10 @@
         "ev_a2c1fa1d957b76e1",
         "ev_13cc9d27b676bb75",
         "ev_21b7e54fc3edb92f",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -798,12 +1054,28 @@
       "public_safe_evidence_ids": [
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
+        "ev_2f7e0709053f0e34",
+        "ev_468f0323d353e27e",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
         "ev_5169c37850dc70b1",
         "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
+      ],
+      "independent_groups": [
+        "anthropic-agent-coordinator",
+        "anthropic-safety-monitor",
+        "computer-user",
+        "glaciereq-mcp-stack",
+        "job-application",
+        "mega-skills",
+        "microsoft-identity-zero-trust",
+        "mission-thread-quorum",
+        "spacex-autonomy",
+        "xai-colossus-cooling"
       ]
     },
     "evals_reliability": {
@@ -818,6 +1090,9 @@
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
         "ev_21b7e54fc3edb92f",
+        "ev_468f0323d353e27e",
+        "ev_6f53b25e7abcf6dd",
+        "ev_19a92b5a84973875",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -830,6 +1105,9 @@
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
         "ev_21b7e54fc3edb92f",
+        "ev_468f0323d353e27e",
+        "ev_6f53b25e7abcf6dd",
+        "ev_19a92b5a84973875",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -840,12 +1118,28 @@
       "public_safe_evidence_ids": [
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
+        "ev_468f0323d353e27e",
+        "ev_6f53b25e7abcf6dd",
+        "ev_19a92b5a84973875",
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
         "ev_5ebdbcecbf04de24",
         "ev_ee0d59994bba6d3f",
         "ev_65b623eed3905e02"
+      ],
+      "independent_groups": [
+        "anthropic-agent-coordinator",
+        "anthropic-safety-monitor",
+        "computer-user",
+        "glaciereq-mcp-stack",
+        "helix-hiring-system",
+        "job-application",
+        "mega-skills",
+        "microsoft-identity-zero-trust",
+        "spacex-autonomy",
+        "tower-of-babel",
+        "xai-colossus-cooling"
       ]
     },
     "production_llm_delivery": {
@@ -858,7 +1152,8 @@
       "status": "MISSING",
       "evidence_ids": [],
       "verified_evidence_ids": [],
-      "public_safe_evidence_ids": []
+      "public_safe_evidence_ids": [],
+      "independent_groups": []
     },
     "deployment_adoption": {
       "label": "Customer deployment support, adoption, and lifecycle expansion",
@@ -872,21 +1167,36 @@
         "ev_b0748b6b15795138"
       ],
       "verified_evidence_ids": [],
-      "public_safe_evidence_ids": []
+      "public_safe_evidence_ids": [],
+      "independent_groups": [
+        "helix-role-power-matrix"
+      ]
     },
     "ambiguity_high_agency": {
       "label": "High-agency execution in ambiguous environments",
       "weight": 1.05,
       "hard_gate": true,
       "minimum_strength": 0.55,
-      "proof_strength": 0.07,
-      "coverage_percent": 7,
-      "status": "PARTIAL",
+      "proof_strength": 0.9256,
+      "coverage_percent": 92.6,
+      "status": "SATISFIED",
       "evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6",
         "ev_b0748b6b15795138"
       ],
-      "verified_evidence_ids": [],
-      "public_safe_evidence_ids": []
+      "verified_evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6"
+      ],
+      "public_safe_evidence_ids": [
+        "ev_6f53b25e7abcf6dd",
+        "ev_e5f0e22324e43cc6"
+      ],
+      "independent_groups": [
+        "helix-hiring-system",
+        "helix-role-power-matrix"
+      ]
     },
     "repeatable_patterns": {
       "label": "Codify reusable deployment patterns and feed field insight back to product",
@@ -909,6 +1219,11 @@
       "public_safe_evidence_ids": [
         "ev_ba8f3d3f576ca3af",
         "ev_5ebdbcecbf04de24"
+      ],
+      "independent_groups": [
+        "job-application",
+        "mega-skills",
+        "tower-of-babel"
       ]
     },
     "technical_communication": {
@@ -916,20 +1231,28 @@
       "weight": 0.9,
       "hard_gate": false,
       "minimum_strength": 0.5,
-      "proof_strength": 0.8813,
-      "coverage_percent": 88.1,
+      "proof_strength": 0.9905,
+      "coverage_percent": 99.1,
       "status": "SATISFIED",
       "evidence_ids": [
+        "ev_e5f0e22324e43cc6",
         "ev_ba8f3d3f576ca3af",
         "ev_5169c37850dc70b1"
       ],
       "verified_evidence_ids": [
+        "ev_e5f0e22324e43cc6",
         "ev_ba8f3d3f576ca3af",
         "ev_5169c37850dc70b1"
       ],
       "public_safe_evidence_ids": [
+        "ev_e5f0e22324e43cc6",
         "ev_ba8f3d3f576ca3af",
         "ev_5169c37850dc70b1"
+      ],
+      "independent_groups": [
+        "helix-hiring-system",
+        "job-application",
+        "xai-colossus-cooling"
       ]
     },
     "safe_deployment": {
@@ -944,6 +1267,9 @@
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
         "ev_21b7e54fc3edb92f",
+        "ev_2f7e0709053f0e34",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -957,6 +1283,9 @@
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
         "ev_21b7e54fc3edb92f",
+        "ev_2f7e0709053f0e34",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_18823a21ca59236f",
         "ev_06770a0211a04cf6",
@@ -967,12 +1296,27 @@
       "public_safe_evidence_ids": [
         "ev_6361aeb477c5bcfb",
         "ev_a2c1fa1d957b76e1",
+        "ev_2f7e0709053f0e34",
+        "ev_19a92b5a84973875",
+        "ev_1f25e9848323179d",
         "ev_3d5ecbd0ba619288",
         "ev_06770a0211a04cf6",
         "ev_702d2f4f31493281",
         "ev_5169c37850dc70b1",
         "ev_afff26aa032bf88c",
         "ev_80e6d1870a57872e"
+      ],
+      "independent_groups": [
+        "anthropic-agent-coordinator",
+        "anthropic-safety-monitor",
+        "computer-user",
+        "glaciereq-mcp-stack",
+        "job-application",
+        "mega-skills",
+        "microsoft-identity-zero-trust",
+        "mission-thread-quorum",
+        "spacex-autonomy",
+        "xai-colossus-cooling"
       ]
     }
   },
@@ -988,18 +1332,6 @@
       "evidence_ids": []
     },
     {
-      "requirement_id": "customer_discovery",
-      "label": "Customer discovery and workflow problem decomposition",
-      "status": "PARTIAL",
-      "hard_gate": true,
-      "proof_strength": 0.07,
-      "minimum_strength": 0.58,
-      "priority": 0.9563,
-      "evidence_ids": [
-        "ev_b0748b6b15795138"
-      ]
-    },
-    {
       "requirement_id": "deployment_adoption",
       "label": "Customer deployment support, adoption, and lifecycle expansion",
       "status": "PARTIAL",
@@ -1010,29 +1342,17 @@
       "evidence_ids": [
         "ev_b0748b6b15795138"
       ]
-    },
-    {
-      "requirement_id": "ambiguity_high_agency",
-      "label": "High-agency execution in ambiguous environments",
-      "status": "PARTIAL",
-      "hard_gate": true,
-      "proof_strength": 0.07,
-      "minimum_strength": 0.55,
-      "priority": 0.756,
-      "evidence_ids": [
-        "ev_b0748b6b15795138"
-      ]
     }
   ],
   "summary": {
-    "sources": 10,
-    "records": 18,
-    "verified_records": 14,
-    "public_safe_records": 13,
+    "sources": 13,
+    "records": 24,
+    "verified_records": 20,
+    "public_safe_records": 19,
     "requirements_total": 12,
-    "requirements_satisfied": 8,
-    "hard_gates_open": 4,
-    "evidence_coverage_score": 65.2
+    "requirements_satisfied": 10,
+    "hard_gates_open": 2,
+    "evidence_coverage_score": 80.7
   },
   "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. It is not a hiring probability, seniority rating, or claim of employer fit."
 }
