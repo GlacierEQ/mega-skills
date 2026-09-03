@@ -23,3 +23,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Validate local skill creator behavior
         run: python skills/local-skill/tests/test_local_skill.py -v
+      - name: Validate branch lifecycle intelligence
+        run: python skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
