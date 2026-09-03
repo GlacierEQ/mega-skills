@@ -5,8 +5,8 @@
     "skills": 709,
     "combos": 33,
     "megas": 29,
-    "ready_total": 727,
-    "not_ready_total": 44,
+    "ready_total": 726,
+    "not_ready_total": 45,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
@@ -16,7 +16,8 @@
     },
     "combo_states": {
       "composition_candidate": 14,
-      "composition_ready": 19
+      "composition_ready": 18,
+      "blocked_by_dependency": 1
     },
     "mega_states": {
       "mission_contract_ready": 21,
@@ -15263,10 +15264,12 @@
     {
       "id": "branch-sprawl-control-loop",
       "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
-      "declared_maturity": "active",
-      "reasons": []
+      "ready": false,
+      "state": "blocked_by_dependency",
+      "declared_maturity": "candidate",
+      "reasons": [
+        "Required member branch-lifecycle-intelligence v0.2.0 is pending fresh behavioral verification."
+      ]
     },
     {
       "id": "capability-readiness",
