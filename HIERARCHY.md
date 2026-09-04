@@ -1,93 +1,114 @@
-# Capability Hierarchy and Mega-Skill Pyramid Contract
+# Capability Hierarchy and Recursive Mega-Skill Pyramid Contract
 
 ## Purpose
 
-Mega-Skills is a capability compiler: real Skills compound into larger proper Skills until an end-to-end Mega Skill exists as the apex of a validated workflow pyramid. The hierarchy must increase operational capability without erasing the identity, validation, provenance, or outputs of the Skills below it.
+Mega-Skills is a capability compiler: real Skills compose into larger proper Skills until a complete end-to-end Mega Skill exists as the apex of a validated workflow pyramid. The hierarchy must increase operational capability without erasing the identity, validation, provenance, artifacts, or outputs of the Skills below it.
 
 ## Prime ontology
 
-**Everything in the pyramid is a Skill.** The labels atomic, compound, and mega describe scale and composition, not whether the object is a proper Skill.
+**Everything in the pyramid is a Skill.** Atomic, compound, and mega are scale/composition kinds, not different standards of legitimacy.
 
 ```text
-                           MEGA SKILL
-                 end-to-end workflow / pipeline
-                     /          |          \
-            COMPOUND SKILL  COMPOUND SKILL  COMPOUND SKILL
-              /    |    \       /   \          /   |   \
-          SKILL  SKILL  SKILL  SKILL SKILL     SKILL SKILL SKILL
+                                 MEGA SKILL
+                         complete workflow / pipeline
+                         /          |           \
+              COMPOUND SKILL   COMPOUND SKILL   COMPOUND SKILL
+                /      \              |             /       \
+        ATOMIC SKILL   COMPOUND SKILL  ...     ATOMIC SKILL  ...
+                         /      \
+                  ATOMIC SKILL  ATOMIC SKILL
 ```
 
-A Mega Skill is therefore **not** a flat router over prose stages. It is a hierarchical representation of complete, real capability assembled from real Skill building blocks.
+A Mega Skill is therefore **not** a flat router over prose stages. It is the apex representation of a complete real capability built from recursively composable Skill building blocks.
 
 ## Skill kinds
 
 ### 1. Atomic Skill
 
-An **Atomic Skill** is the smallest maintained, independently useful procedure. It lives under `skills/<skill-id>/`, includes `SKILL.md`, and owns a trigger/use condition, input contract, method, output contract, and local validation.
+An **Atomic Skill** is the smallest maintained, independently useful procedure. It lives under `skills/<skill-id>/`, includes `SKILL.md`, and owns a trigger/use condition, input contract, method, output contract, source identity, and local validation.
 
-### 2. Compound Skill (Combo Skill compatibility layer)
+### 2. Compound Skill
 
-A **Compound Skill** is a proper reusable Skill whose implementation is a bounded composition of lower Skills. Existing `combo-skills/<combo-id>/COMBO.md` manifests are the compatibility/source representation for this class. A Compound Skill must have its own selection condition, ordered execution contract, handoffs, compound artifact, quality gate, and independent acceptance criteria.
+A **Compound Skill** is a proper reusable Skill implemented as a bounded composition of lower Skills. Existing `combo-skills/<combo-id>/COMBO.md` manifests remain the canonical compatibility/source representation for this class.
 
-It does not copy the implementation of its children; it composes them.
+A Compound Skill may contain:
+
+- Atomic Skills (`kind: skill`);
+- other Compound Skills (`kind: compound-skill`);
+- explicitly typed external capability references (`kind: external-skill`).
+
+A Compound Skill owns its selection condition, ordered execution contract, member roles, handoffs, compound artifact, quality gates, state updates, and independent acceptance criteria. It does not copy child implementation.
+
+Recursive Compound-Skill composition must form a **directed acyclic graph (DAG)**. Self-reference and direct or indirect composition cycles are invalid.
 
 ### 3. Mega Skill
 
-A **Mega Skill** is a proper end-to-end Skill at mission scale. It is the apex of a hierarchy of Compound and Atomic Skills. It owns the complete workflow/pipeline contract: mission trigger, route selection, durable state, phase gates, cross-branch integration, recovery, final acceptance, and mission output.
+A **Mega Skill** is a proper end-to-end Skill at mission scale. It is the apex of a hierarchy of Compound and Atomic Skills and owns the complete workflow/pipeline contract: mission trigger, route selection, durable state, phase gates, cross-branch integration, recovery, final acceptance, and mission output.
 
-A Mega Skill is valid only when its full dependency pyramid resolves to real Skill identities (or explicitly typed external Skill references), and every intermediate composition is itself independently valid as a Skill.
+A Mega Skill is valid only when its full recursive dependency graph resolves to real Skill identities or explicitly typed external Skill references, every intermediate Compound node is independently valid as a Skill, and the graph is cycle-free.
 
-## Dependency law
+## Dependency and identity law
 
 ```text
-Atomic Skill ──► Compound Skill ──► Mega Skill
-     │                 │                │
-     └──── proper Skill identity at every level ────┘
+Atomic Skill ──┐
+               ├──► Compound Skill ──┐
+Compound Skill ┘                     ├──► Compound Skill ... ──► Mega Skill
+Atomic Skill ────────────────────────┘
 ```
 
-Composition points upward. No lower Skill depends on the mission-scale parent merely to remain valid. Shared Skills may feed more than one Compound Skill, so the machine representation is a DAG even when the human representation is drawn as a pyramid.
+Composition moves toward greater integrated capability. A child Skill never depends on a parent merely to remain valid.
 
-## Pyramid invariants
+Exact human Skill IDs are preserved. Because an ID may exist in more than one layer, machine projections use a typed key:
+
+```text
+atomic:<id>
+compound:<id>
+mega:<id>
+external:<id>
+```
+
+Typed keys prevent accidental identity collapse while preserving the exact canonical Skill ID.
+
+Shared Skills may feed multiple parents or multiple Mega Skills. Therefore the canonical machine representation is a DAG even when a human-facing view is rendered as a pyramid.
+
+## Recursive composition invariants
 
 1. **Real-node invariant.** Every GlacierEQ-owned node resolves to a canonical registry entry and source path.
-2. **Proper-Skill invariant.** Atomic, Compound, and Mega nodes each own a trigger/use condition, input/output contract, and validation boundary appropriate to their scale.
-3. **No-copy invariant.** Parents reference child Skill IDs and artifacts; they do not duplicate child methods.
-4. **Compounding invariant.** Every parent adds integration capability that no child owns alone.
-5. **Artifact invariant.** Every edge describes a real handoff or dependency and every composition emits a traceable artifact.
-6. **Validation invariant.** A Mega Skill cannot be active if required child Skills or Compound Skills are unresolved or invalid.
-7. **Provenance invariant.** Source identity and lower-layer evidence survive every composition step.
-8. **Context invariant.** Higher scale does not authorize loading unrelated context or silently broadening scope.
+2. **Proper-Skill invariant.** Atomic, Compound, and Mega nodes each own a trigger/use condition, input/output or handoff contract, artifact contract, and validation boundary appropriate to scale.
+3. **Recursive-composition invariant.** A Compound Skill may consume another Compound Skill by exact ID when the child independently satisfies the Compound-Skill contract.
+4. **Acyclicity invariant.** Compound-Skill composition may never create a direct or indirect cycle.
+5. **No-copy invariant.** Parents reference child Skill IDs, roles, contracts, and artifacts; they do not duplicate child methods.
+6. **Compounding invariant.** Every parent adds integration capability that no child owns alone.
+7. **Artifact invariant.** Every composition edge has a meaningful member role/handoff and every composite Skill emits a traceable artifact.
+8. **Validation invariant.** A Mega Skill cannot be active if any required owned descendant is unresolved, invalid, or cyclic.
+9. **Provenance invariant.** Source identity and lower-layer evidence survive every composition step.
+10. **Shared-lineage invariant.** Reused nodes retain all parent/path lineage rather than being flattened into one occurrence.
+11. **Context invariant.** Higher scale does not authorize unrelated context loading or silent scope expansion.
 
-## Machine-readable pyramid
+## Canonical recursive projection
 
-`registry/mega-skill-pyramids.json` is generated from the canonical registries by:
+`registry/mega-skill-pyramids.json` is a generated projection from the canonical registries:
 
 ```bash
 python scripts/generate_mega_skill_pyramids.py
 python scripts/generate_mega_skill_pyramids.py --check
 ```
 
-The generated projection resolves every Mega Skill into:
+`schema/mega-skill-pyramid.schema.json` defines the generated projection contract.
 
-- level 0: one Mega apex Skill;
-- level 1: its required and conditional Compound workflow Skills;
-- level 2: the Atomic or explicitly external Skill building blocks used by those Compound Skills;
-- typed edges describing required/conditional composition and child roles.
+The projection contains:
 
-The projection is generated, not hand-maintained. Canonical ownership remains in `skills.json`, `combo-skills.json`, and `mega-skills.json`.
+- a typed `node_catalog` with the real source identity, artifact contract, maturity, and validation boundary of every node used by a Mega Skill;
+- one graph entry for each Mega apex;
+- recursive `node_refs` with all observed depths;
+- typed edges preserving required/conditional status, member roles, produced artifacts, and execution validation;
+- per-Mega shared-node lineage with all parent keys and root paths;
+- global shared-node lineage showing reuse across Mega Skills;
+- zero unresolved owned references and zero Compound-Skill cycles as generation preconditions.
 
-## Current registry state — 2026-09-03
+There is no fixed maximum layer count. Level 0 is the Mega apex; descendants continue recursively until Atomic or explicit external leaves are reached.
 
-At the revision that introduced the pyramid contract:
-
-- **709** registered Atomic Skills;
-- **33** registered Compound workflow Skills;
-- **29** registered Mega Skills;
-- **123** internal Compound→Atomic Skill references, all resolving to registered Skills;
-- **10** explicitly typed external-skill references;
-- every Mega→Compound reference resolves.
-
-These are registry/object counts, not claims of production deployment or external adoption.
+The projection is generated, never hand-maintained. Canonical ownership remains in `skills.json`, `combo-skills.json`, `mega-skills.json`, and `external-skills.json`.
 
 ## Snowball acceptance test
 
@@ -95,21 +116,26 @@ These are registry/object counts, not claims of production deployment or externa
 |---|---|---|---|
 | Proper Skill identity | Required | Required | Required |
 | Trigger/use condition | Required | Required | Required at mission scope |
-| Input/output contract | Required | Required | Required |
+| Input/output or handoff contract | Required | Required | Required |
 | Reuses child IDs without copying methods | N/A | Required | Required |
+| May recursively compose Compound Skills | N/A | Yes, cycle-free | Through descendants |
 | Adds new value | Procedure | Composition + handoff | End-to-end integration + durable mission state |
 | Traceable artifact | Atomic artifact | Compound artifact | Mission result + durable handoff |
 | Independent validation | Required | Required | Required |
 | Source/provenance preservation | Required | Required | Required |
 
+If a proposed node cannot pass the appropriate acceptance test, it is not promoted merely because a document names it a Skill.
+
 ## Snowball cycle
 
 ```text
-verified atomic Skill artifact
+verified Atomic Skill artifact
         ↓
 proper Compound Skill + explicit handoffs
         ↓
 verified compound workflow artifact
+        ↓
+optional further Compound Skill composition
         ↓
 Mega Skill pyramid + conditional mission integration
         ↓
@@ -129,6 +155,8 @@ Atomic Skill artifact
         ↓ additive method
 Compound Skill artifact
         ↓ additive composition
+Compound Skill artifact (optional recursive levels)
+        ↓ additive integration
 Mega Skill mission state
 ```
 
