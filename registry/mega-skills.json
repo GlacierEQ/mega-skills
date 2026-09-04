@@ -333,7 +333,7 @@
       "display_name": "Apex Always-On Core",
       "ownership": "glaciereq",
       "maturity": "active",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "mega-skills/apex-always-on-core",
       "entrypoint": "mega-skills/apex-always-on-core/MEGA.md",
       "required_combos": [
@@ -344,7 +344,8 @@
       "conditional_combos": [
         "capability-readiness",
         "evidence-to-evolution-loop",
-        "frontier-orbit-synthesis"
+        "frontier-orbit-synthesis",
+        "fleet-recon-and-harmonize"
       ],
       "mission_output": "ALWAYS_ON_CORE_MISSION_RESULT.md",
       "durable_state": [
@@ -353,9 +354,10 @@
         "EVIDENCE.md",
         "CONTEXT.md",
         "HANDOFF.md",
-        "ALWAYS_ON_CORE_RECEIPT.md"
+        "ALWAYS_ON_CORE_RECEIPT.md",
+        "harmonious-merge-watch.json"
       ],
-      "adds": "Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, and estate watchdog health.",
+      "adds": "Continuous always-on cognitive foundation plus a read-only Harmonious Merge Watch that preserves main, detects branch divergence and security-sensitive refs, and emits evidence-backed plans without autonomous mutations.",
       "firewall": {
         "schema_version": 1,
         "mega_id": "apex-always-on-core",

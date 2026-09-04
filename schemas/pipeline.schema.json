@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.local/schemas/pipeline.schema.json",
+  "title": "GlacierEQ Deep-Work Pipeline",
+  "type": "object",
+  "required": ["schema_version", "id", "description", "stages"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string" },
+    "description": { "type": "string", "minLength": 1 },
+    "family": {
+      "type": "string",
+      "enum": [
+        "master",
+        "control-plane",
+        "memory-fleet",
+        "change-swe",
+        "ship-cloud",
+        "agents-foundry",
+        "legal-forensic",
+        "specialized",
+        "mission"
+      ]
+    },
+    "span": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "inception",
+          "readiness",
+          "recon",
+          "design",
+          "build",
+          "verify",
+          "package",
+          "deploy-gate",
+          "handoff",
+          "evolve"
+        ]
+      }
+    },
+    "mega_roots": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_combos": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "deploy_mode": {
+      "type": "string",
+      "enum": ["approval_packet_only", "forbidden"]
+    },
+    "max_parallel": { "type": "integer", "minimum": 1, "maximum": 32 },
+    "manifest": { "type": "string" },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "command"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "phase": { "type": "string" },
+          "needs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "command": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "cwd": { "type": "string" },
+          "env": { "type": "object", "additionalProperties": { "type": "string" } },
+          "consumes": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "produces": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "resume_safe": { "type": "boolean" },
+          "retries": { "type": "integer", "minimum": 0 },
+          "timeout_seconds": { "type": "number", "minimum": 1 },
+          "approval_required": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

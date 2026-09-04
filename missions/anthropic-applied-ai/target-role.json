@@ -2,8 +2,10 @@
   "schema_version": 2,
   "company": "Anthropic",
   "role_family": "Applied AI",
-  "primary_role": "Applied AI Architect",
+  "primary_role": "Forward Deployed Engineer",
+  "secondary_role": "Applied AI Architect",
   "identity": "Forward Deployed AI Architect",
+  "lane_decision_date": "2026-09-03",
   "snapshot_date": "2026-09-02",
   "freshness": {
     "max_target_age_days": 14,
@@ -69,168 +71,110 @@
     {
       "id": "customer_discovery",
       "label": "Customer discovery and workflow problem decomposition",
-      "competencies": [
-        "customer discovery and problem decomposition"
-      ],
+      "competencies": ["customer discovery and problem decomposition"],
       "weight": 1.25,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise",
-        "anthropic-aia-startups"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise", "anthropic-aia-startups"]
     },
     {
       "id": "architecture",
       "label": "AI systems architecture from technical discovery through deployment",
-      "competencies": [
-        "AI systems architecture"
-      ],
+      "competencies": ["AI systems architecture"],
       "weight": 1.2,
       "hard_gate": true,
       "minimum_strength": 0.62,
-      "source_basis": [
-        "anthropic-aia-strategic-enterprise",
-        "anthropic-aia-commercial"
-      ]
+      "source_basis": ["anthropic-aia-strategic-enterprise", "anthropic-aia-commercial"]
     },
     {
       "id": "production_engineering",
       "label": "Hands-on Python and production engineering",
-      "competencies": [
-        "hands-on Python and production engineering"
-      ],
+      "competencies": ["hands-on Python and production engineering"],
       "weight": 1.2,
       "hard_gate": true,
       "minimum_strength": 0.62,
-      "source_basis": [
-        "anthropic-fde-us"
-      ]
+      "source_basis": ["anthropic-fde-us"]
     },
     {
       "id": "agents_mcp",
       "label": "Agents, MCP servers, sub-agents, skills, tools, and context engineering",
-      "competencies": [
-        "agents, MCP, tools, and context engineering"
-      ],
+      "competencies": ["agents, MCP, tools, and context engineering"],
       "weight": 1.15,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "source_basis": [
-        "anthropic-fde-us"
-      ]
+      "source_basis": ["anthropic-fde-us"]
     },
     {
       "id": "enterprise_integration_security",
       "label": "Enterprise integration, authority boundaries, security, and reliability",
-      "competencies": [
-        "enterprise integration and security",
-        "safe and human-directed deployment"
-      ],
+      "competencies": ["enterprise integration and security", "safe and human-directed deployment"],
       "weight": 1.15,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
     },
     {
       "id": "evals_reliability",
       "label": "Evaluation, observability, reliability, and explicit failure behavior",
-      "competencies": [
-        "evaluation, observability, and reliability"
-      ],
+      "competencies": ["evaluation, observability, and reliability"],
       "weight": 1.1,
       "hard_gate": true,
       "minimum_strength": 0.6,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
     },
     {
       "id": "production_llm_delivery",
       "label": "Production LLM and agent application delivery",
-      "competencies": [
-        "production LLM application delivery"
-      ],
+      "competencies": ["production LLM application delivery"],
       "weight": 1.3,
       "hard_gate": true,
       "minimum_strength": 0.58,
-      "source_basis": [
-        "anthropic-fde-us"
-      ]
+      "source_basis": ["anthropic-fde-us"]
     },
     {
       "id": "deployment_adoption",
       "label": "Customer deployment support, adoption, and lifecycle expansion",
-      "competencies": [
-        "customer adoption and deployment support"
-      ],
+      "competencies": ["customer adoption and deployment support"],
       "weight": 1.15,
       "hard_gate": true,
       "minimum_strength": 0.52,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
     },
     {
       "id": "ambiguity_high_agency",
       "label": "High-agency execution in ambiguous environments",
-      "competencies": [
-        "ambiguous-environment execution"
-      ],
+      "competencies": ["ambiguous-environment execution"],
       "weight": 1.05,
       "hard_gate": true,
       "minimum_strength": 0.55,
-      "source_basis": [
-        "anthropic-fde-us"
-      ]
+      "source_basis": ["anthropic-fde-us"]
     },
     {
       "id": "repeatable_patterns",
       "label": "Codify reusable deployment patterns and feed field insight back to product",
-      "competencies": [
-        "reusable patterns and product feedback"
-      ],
+      "competencies": ["reusable patterns and product feedback"],
       "weight": 0.9,
       "hard_gate": false,
       "minimum_strength": 0.5,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-commercial"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-commercial"]
     },
     {
       "id": "technical_communication",
       "label": "Technical communication and cross-functional field leadership",
-      "competencies": [
-        "field leadership and technical communication"
-      ],
+      "competencies": ["field leadership and technical communication"],
       "weight": 0.9,
       "hard_gate": false,
       "minimum_strength": 0.5,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
     },
     {
       "id": "safe_deployment",
       "label": "Safety, reliability, provenance, and human-directed deployment",
-      "competencies": [
-        "safe and human-directed deployment"
-      ],
+      "competencies": ["safe and human-directed deployment"],
       "weight": 1,
       "hard_gate": true,
       "minimum_strength": 0.6,
-      "source_basis": [
-        "anthropic-fde-us",
-        "anthropic-aia-strategic-enterprise"
-      ]
+      "source_basis": ["anthropic-fde-us", "anthropic-aia-strategic-enterprise"]
     }
   ],
   "non_evidence_constraints": {
