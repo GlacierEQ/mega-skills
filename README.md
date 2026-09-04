@@ -1,6 +1,6 @@
 # GlacierEQ Mega Skills
 
-**GlacierEQ Mega Skills** is the canonical private capability repository for building complete AI workflows and pipelines as **hierarchies of real Skills**.
+Mega-Skills is the canonical capability repository for building complete workflows and pipelines as **hierarchies of real Skills**.
 
 ```text
                                  MEGA SKILL
@@ -9,63 +9,46 @@
               COMPOUND SKILL   COMPOUND SKILL   COMPOUND SKILL
                 /      \              |             /       \
         ATOMIC SKILL   COMPOUND SKILL  ...     ATOMIC SKILL  ...
-                         /      \
-                  ATOMIC SKILL  ATOMIC SKILL
 ```
 
-The central rule is simple: **every building block in the pyramid is a proper Skill.** Atomic Skills own precise procedures. Compound Skills (represented by the existing Combo Skill manifests) are proper reusable Skills that own ordering, handoffs, and a compound artifact. Mega Skills are proper mission-scale Skills whose complete dependency pyramid forms an end-to-end workflow or pipeline.
+**Every building block is a proper Skill.** Atomic Skills own precise procedures. Compound Skills are independently valid reusable workflow Skills with ordering, handoffs, artifacts, and validation. Mega Skills are proper mission-scale Skills whose dependency pyramid forms the complete end-to-end workflow/pipeline.
 
-The repository does **not** create capability by flattening instructions into a giant prompt. It composes validated Skill identities and artifacts.
+Existing `combo-skills/` manifests remain canonical and supported; their semantic role is explicit: they are Compound-Skill source manifests, not non-Skill orchestration glue.
 
-> **Snowball rule:** every higher Skill consumes verified artifacts/contracts from lower Skills, adds new integration capability, and emits a more complete decision-ready artifact. Nothing gets bigger merely by repeating instructions.
-
-## Current canonical registries
+## Current registries
 
 | Registry | Role | Current entries |
 |---|---|---:|
 | `registry/skills.json` | Atomic Skills | 709 |
-| `registry/combo-skills.json` | Compound workflow Skills / compatibility manifests | 33 |
+| `registry/combo-skills.json` | Compound workflow Skills | 33 |
 | `registry/mega-skills.json` | Mega apex Skills | 29 |
-| `registry/mega-skill-pyramids.json` | Generated recursive Skill DAG/pyramid projection | 29 pyramids |
+| `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 29 Mega roots |
 
-Counts are repository object counts, not production/adoption claims.
+Counts describe repository objects, not production/adoption claims.
 
-## Canonical ontology
+## Recursive composition
 
-See [`HIERARCHY.md`](HIERARCHY.md).
+Compound Skills may contain Atomic Skills, other validated Compound Skills, and explicit external references. Composition is a DAG: self-reference, direct/indirect cycles, and unresolved owned references fail validation.
 
-- **Atomic Skill** — independently useful procedure with inputs, outputs, method, artifact, and local validation.
-- **Compound Skill** — independently selectable reusable workflow Skill composed from Atomic, recursive Compound, and/or explicit external Skills, with ordered handoffs, a compound artifact, and independent validation.
-- **Mega Skill** — mission-scale Skill whose apex integrates multiple Compound/Atomic Skills into a complete recoverable workflow/pipeline.
+Exact IDs are preserved. Typed machine keys (`atomic:`, `compound:`, `mega:`, `external:`) prevent cross-layer identity collisions while retaining the canonical human Skill ID. Shared Skills remain shared rather than being copied into each parent.
 
-Existing `combo-skills/` manifests remain supported; their semantic role is now explicit: they are the source manifests for **Compound Skills**, not non-Skill orchestration glue.
+See [`HIERARCHY.md`](HIERARCHY.md) for the governing contract.
 
-## Machine-readable pyramids
-
-Generate or verify the full hierarchy projection:
-
-```bash
-python scripts/generate_mega_skill_pyramids.py
-python scripts/generate_mega_skill_pyramids.py --check
-```
-
-The generated registry recursively resolves every Mega apex until Atomic or explicit external leaves are reached. It refuses unresolved owned references and Compound-Skill cycles. Exact IDs are preserved, while typed machine keys (`atomic:`, `compound:`, `mega:`, `external:`) prevent cross-layer identity collisions. Shared lower Skills retain all parent/path lineage; the machine form is therefore a DAG even though the human form is rendered as a pyramid.
-
-## Quality gate
-
-Run before merge:
+## Generate or verify the canonical graph
 
 ```bash
 python scripts/validate_hierarchy.py
+python scripts/generate_mega_skill_pyramids.py
 python scripts/generate_mega_skill_pyramids.py --check
-python -m unittest discover -s tests -v
-git diff --check
+python tests/test_recursive_skill_hierarchy.py -v
 ```
+
+The generated registry stores 29 Mega roots, canonical Compound adjacency, typed leaves, shared-node lineage, and canonical artifact/validation field paths. Any Mega pyramid can therefore be expanded deterministically to real Skill nodes without duplicating the underlying Skill contracts.
 
 ## Public projection
 
-The recruiter-facing/public explanation is projected through Job Application Helix at:
+Job Application Helix projects a recruiter-facing view at:
 
 `https://casey-barton-glaciereq.vercel.app/mega-skills/`
 
-The public surface is a projection only. Canonical Skill identities, composition, validation, and provenance remain in this repository.
+That site is a projection only. Canonical Skill identity, composition, validation, and provenance remain here.
