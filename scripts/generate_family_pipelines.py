@@ -201,6 +201,21 @@ def make_registry() -> dict:
             "runner": "skills/pipeline-compositor/scripts/engine.py",
         }
     )
+    entries.append(
+        {
+            "id": "cultivate-main",
+            "display_name": "Cultivate Main",
+            "ownership": "glaciereq",
+            "maturity": "active",
+            "version": "1.0.0",
+            "path": "pipelines/cultivate-main.json",
+            "family": "change-swe",
+            "span": ["recon", "design", "verify", "package", "deploy-gate", "handoff"],
+            "mega_roots": ["apex-safe-change-orchestrator", "apex-always-on-core"],
+            "deploy_mode": "approval_packet_only",
+            "runner": "scripts/cultivate_main.py",
+        }
+    )
     return {"schema_version": 1, "entries": entries}
 
 
@@ -214,7 +229,13 @@ def write_all(root: Path) -> list[str]:
         written.append(path.as_posix())
     registry = root / "registry" / "pipelines.json"
     registry.parent.mkdir(parents=True, exist_ok=True)
-    registry.write_text(json.dumps(make_registry(), indent=2) + "\n", encoding="utf-8")
+    generated = make_registry()
+    if registry.is_file():
+        existing = json.loads(registry.read_text(encoding="utf-8"))
+        known = {entry["id"] for entry in generated["entries"]}
+        extras = [entry for entry in existing.get("entries", []) if entry.get("id") not in known]
+        generated["entries"].extend(extras)
+    registry.write_text(json.dumps(generated, indent=2) + "\n", encoding="utf-8")
     written.append(registry.as_posix())
     return written
 

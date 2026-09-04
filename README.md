@@ -37,7 +37,7 @@ Pipelines make Mega pyramids executable from **inception through a human-gated d
 | `control-plane` | control-plane | Always-on session and guarded operating loop |
 | `memory-fleet` | memory-fleet | Recon, memory synthesis, fleet map |
 | `change-swe` | change-swe | Bounded repair and verification |
-| `ship-cloud` | ship-cloud | Build/package; deploy stays approval-only |
+| `cultivate-main` | change-swe | Assess/merge unique safe work into living `main` |
 | `anthropic-applied-ai-readiness` | mission | Career evidence backbone |
 
 `deploy_mode` is `approval_packet_only`. Pipelines emit `DEPLOYMENT_DECISION.json` with `READY_PENDING_HUMAN_APPROVAL`. They do not deploy, merge, or send network.

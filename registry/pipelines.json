@@ -173,6 +173,29 @@
       "mega_roots": [],
       "deploy_mode": "approval_packet_only",
       "runner": "skills/pipeline-compositor/scripts/engine.py"
+    },
+    {
+      "id": "cultivate-main",
+      "display_name": "Cultivate Main",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/cultivate-main.json",
+      "family": "change-swe",
+      "span": [
+        "recon",
+        "design",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff"
+      ],
+      "mega_roots": [
+        "apex-safe-change-orchestrator",
+        "apex-always-on-core"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/cultivate_main.py"
     }
   ]
 }
