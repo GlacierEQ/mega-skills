@@ -54,6 +54,7 @@ python tests/test_deep_work_pipelines.py -v
 
 Compound Skills may contain Atomic Skills, other validated Compound Skills, and explicit external references. Composition is a DAG: self-reference, direct/indirect cycles, and unresolved owned references fail validation.
 
+The runner byte-compiles `scripts/` and `tests/` on the running interpreter, then executes the hierarchy validator, full regression suite, and `git diff --check` in that order. To preserve a machine-readable result outside the source tree, use:
 Exact IDs are preserved. Typed machine keys (`atomic:`, `compound:`, `mega:`, `external:`) prevent cross-layer identity collisions while retaining the canonical human Skill ID. Shared Skills remain shared rather than being copied into each parent.
 
 See [`HIERARCHY.md`](HIERARCHY.md) for the governing contract.

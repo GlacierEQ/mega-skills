@@ -177,5 +177,27 @@ class HierarchyFoundationTests(unittest.TestCase):
         self.assertEqual(stale, [], "\n".join(stale))
 
 
+
+class RegistryParityTests(unittest.TestCase):
+    def test_unregistered_packages_are_detected_and_template_is_ignored(self):
+        import importlib.util
+        import tempfile
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        spec = importlib.util.spec_from_file_location("validate_hierarchy", ROOT / "scripts/validate_hierarchy.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as tmp:
+            layer = Path(tmp)
+            for name in ("registered", "orphan", "_template"):
+                (layer / name).mkdir()
+                (layer / name / "SKILL.md").write_text("---\nname: x\ndescription: y\n---\n", encoding="utf-8")
+            (layer / "no-manifest").mkdir()
+            self.assertEqual(module.unregistered_packages(layer, {"registered"}, "SKILL.md"), ["orphan"])
+            with self.assertRaises(ValueError):
+                module.expect_all_registered(layer, {"registered"}, "SKILL.md", "skills.json")
+            module.expect_all_registered(layer, {"registered", "orphan"}, "SKILL.md", "skills.json")
+
+
 if __name__ == "__main__":
     unittest.main()
