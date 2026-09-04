@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GlacierEQ/mega-skills/schemas/mega-skill-pyramid.schema.json",
+  "title": "GlacierEQ Recursive Mega-Skill Pyramid Projection",
+  "description": "Generated DAG projection of proper Skills from a Mega apex through recursively composable Compound Skills to atomic or explicit external leaves.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "ontology",
+    "source_registries",
+    "identity_rule",
+    "counts",
+    "node_catalog",
+    "entries",
+    "global_shared_node_lineage"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "typedKey": {
+      "type": "string",
+      "pattern": "^(atomic|compound|mega|external):[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "nodeRef": {
+      "type": "object",
+      "required": ["key", "id", "skill_kind", "depths"],
+      "additionalProperties": false,
+      "properties": {
+        "key": {"$ref": "#/$defs/typedKey"},
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "skill_kind": {"enum": ["atomic", "compound", "mega", "external"]},
+        "depths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 0}}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["from_key", "from_id", "to_key", "to_id", "relation", "required", "role", "artifact_contract", "validation_boundary"],
+      "properties": {
+        "from_key": {"$ref": "#/$defs/typedKey"},
+        "to_key": {"$ref": "#/$defs/typedKey"},
+        "from_id": {"type": "string"},
+        "to_id": {"type": "string"},
+        "relation": {"enum": ["required", "conditional", "compound-member", "member"]},
+        "required": {"type": "boolean"},
+        "role": {"type": "string", "minLength": 1},
+        "member_kind": {"enum": ["skill", "compound-skill", "external-skill"]},
+        "execution_steps": {"type": "array"},
+        "artifact_contract": {},
+        "validation_boundary": {}
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"const": 2},
+    "ontology": {"const": "recursive-proper-skill-pyramid"},
+    "source_registries": {
+      "type": "object",
+      "required": ["atomic", "compound", "mega", "external"],
+      "additionalProperties": false,
+      "properties": {
+        "atomic": {"type": "string"},
+        "compound": {"type": "string"},
+        "mega": {"type": "string"},
+        "external": {"type": "string"}
+      }
+    },
+    "identity_rule": {"type": "string", "minLength": 20},
+    "counts": {"type": "object"},
+    "node_catalog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["key", "id", "skill_kind", "proper_skill", "display_name", "ownership", "source", "artifact_contract", "validation_boundary"],
+        "properties": {
+          "key": {"$ref": "#/$defs/typedKey"},
+          "id": {"type": "string"},
+          "skill_kind": {"enum": ["atomic", "compound", "mega", "external"]},
+          "proper_skill": {"const": true},
+          "display_name": {"type": "string"},
+          "ownership": {"type": ["string", "null"]},
+          "maturity": {"type": ["string", "null"]},
+          "version": {"type": ["string", "null"]},
+          "source": {"type": ["string", "null"]},
+          "artifact_contract": {},
+          "validation_boundary": {}
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "display_name", "root_key", "root_skill_id", "shape", "machine_shape", "max_depth", "node_refs", "edges", "shared_node_lineage", "validation"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "display_name": {"type": "string"},
+          "root_key": {"$ref": "#/$defs/typedKey"},
+          "root_skill_id": {"type": "string"},
+          "shape": {"const": "hierarchical-pyramid"},
+          "machine_shape": {"const": "directed-acyclic-graph"},
+          "max_depth": {"type": "integer", "minimum": 1},
+          "node_refs": {"type": "array", "items": {"$ref": "#/$defs/nodeRef"}},
+          "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+          "shared_node_lineage": {"type": "array"},
+          "validation": {
+            "type": "object",
+            "required": ["unresolved_owned_references", "compound_cycles"],
+            "properties": {
+              "unresolved_owned_references": {"const": 0},
+              "compound_cycles": {"const": 0}
+            }
+          }
+        }
+      }
+    },
+    "global_shared_node_lineage": {"type": "array"}
+  }
+}
