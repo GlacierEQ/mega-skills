@@ -1,2 +1,12 @@
-# <PREFIX>-<SERIAL_NUMBER> format rules
-# TODO: Add YAML content
+# Bates serial format contract
+schema_version: 1
+pattern: "<PREFIX>-<SERIAL>"
+default_start: 1
+default_width: 6
+prefix:
+  allowed_chars: "A-Z0-9_-"
+  max_length: 32
+invariants:
+  - "Serials are assigned to derivative copies only; original evidentiary media are never modified."
+  - "Serials are strictly contiguous within a production set."
+  - "Serial ranges are recorded in the evidence register alongside SHA-256 digests."

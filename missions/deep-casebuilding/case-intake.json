@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "mission": "deep-casebuilding",
+  "case_number": "1FDV-23-0001009",
+  "caption": "Barton v. Barton",
+  "court": "Family Court of the First Circuit, State of Hawaii",
+  "timezone": "Pacific/Honolulu",
+  "evidence_roots": ["missions/deep-casebuilding/intake"],
+  "audio_roots": ["missions/deep-casebuilding/audio"],
+  "bates_prefix": "CASEBUILD",
+  "notes": "Template intake for the deep casebuilding pipeline. Clone per matter and point the roots at matter-specific evidence directories inside a cloned workspace."
+}

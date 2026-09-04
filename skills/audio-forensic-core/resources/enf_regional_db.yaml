@@ -1,2 +1,24 @@
-# Regional power grid ENF reference databases
-# TODO: Add YAML content
+# Regional power-grid ENF reference parameters
+schema_version: 1
+grids:
+  hawaii:
+    nominal_hz: 60.0
+    tolerance_hz: 0.05
+    splice_jump_hz: 0.02
+    reference: "Hawaiian Electric island grids; isolated 60 Hz operation"
+  us_western:
+    nominal_hz: 60.0
+    tolerance_hz: 0.05
+    splice_jump_hz: 0.02
+    reference: "WECC interconnection, nominal 60 Hz"
+  us_eastern:
+    nominal_hz: 60.0
+    tolerance_hz: 0.05
+    splice_jump_hz: 0.02
+    reference: "Eastern Interconnection, nominal 60 Hz"
+  europe_entsoe:
+    nominal_hz: 50.0
+    tolerance_hz: 0.05
+    splice_jump_hz: 0.02
+    reference: "ENTSO-E synchronous area, nominal 50 Hz"
+notes: "Screening parameters only. Laboratory ENF certification requires grid reference recordings matched to the recording window."

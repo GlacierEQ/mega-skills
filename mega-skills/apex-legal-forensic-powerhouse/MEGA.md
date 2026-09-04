@@ -2,12 +2,12 @@
 
 ## Mission
 
-Autonomous legal warfare and electronic cyber forensics command center enforcing FRE 902(13)/(14) manifests.
+Autonomous legal warfare and electronic cyber forensics command center enforcing FRE 902(13)/(14)-mapped, jurisdiction-neutral manifests.
 
 ## Compounding structure
 
-- Required combos: `long-horizon-core`, `guarded-automation-loop`, `signal-to-decision-loop`
-- Conditional combos: `capability-readiness`, `evidence-to-evolution-loop`
+- Required combos: `long-horizon-core`, `forensic-docket-intelligence`, `court-evidence-compiler`
+- Conditional combos: `capability-readiness`, `voice-evidence-authenticator`, `epistemic-verification-chain`, `evidence-to-evolution-loop`
 
 ## Execution protocol
 
@@ -48,3 +48,7 @@ Produce `LEGAL_FORENSIC_POWERHOUSE_RECORD.md` upon mission completion.
 ## Non-goals
 
 Unbounded external state mutations.
+
+## Rewiring note — 2026-09-03
+
+Compounding routes corrected from generic operating loops (`guarded-automation-loop`, `signal-to-decision-loop`) to the legal-forensic chain (`forensic-docket-intelligence`, `court-evidence-compiler`; conditional `voice-evidence-authenticator`, `epistemic-verification-chain`). The generic loops remain available to other megas; this mission's name now matches its actual route set. The matching registry edit executes through `scripts/casebuilding_activation.py --apply`; see `governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md`.
