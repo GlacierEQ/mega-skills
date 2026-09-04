@@ -8,7 +8,7 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 
 CHUNK_SIZE = 65536  # 64KB per NIST standard
