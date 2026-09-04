@@ -23,8 +23,32 @@ Existing `combo-skills/` manifests remain canonical and supported; their semanti
 | `registry/combo-skills.json` | Compound workflow Skills | 33 |
 | `registry/mega-skills.json` | Mega apex Skills | 29 |
 | `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 29 Mega roots |
+| `registry/pipelines.json` | Executable deep-work DAGs | 6 |
 
 Counts describe repository objects, not production/adoption claims.
+
+## Deep-work pipelines
+
+Pipelines make Mega pyramids executable from **inception through a human-gated deploy packet**.
+
+| Pipeline | Family | Job |
+|---|---|---|
+| `inception-to-deployment` | master | Full span: inception → evolve |
+| `control-plane` | control-plane | Always-on session and guarded operating loop |
+| `memory-fleet` | memory-fleet | Recon, memory synthesis, fleet map |
+| `change-swe` | change-swe | Bounded repair and verification |
+| `ship-cloud` | ship-cloud | Build/package; deploy stays approval-only |
+| `anthropic-applied-ai-readiness` | mission | Career evidence backbone |
+
+`deploy_mode` is `approval_packet_only`. Pipelines emit `DEPLOYMENT_DECISION.json` with `READY_PENDING_HUMAN_APPROVAL`. They do not deploy, merge, or send network.
+
+See [`docs/INCEPTION_TO_DEPLOYMENT.md`](docs/INCEPTION_TO_DEPLOYMENT.md) and [`pipelines/README.md`](pipelines/README.md).
+
+```bash
+python scripts/run_deep_work_pipeline.py --pipeline inception-to-deployment --validate-only
+python scripts/run_deep_work_pipeline.py --pipeline control-plane
+python tests/test_deep_work_pipelines.py -v
+```
 
 ## Recursive composition
 

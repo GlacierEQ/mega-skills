@@ -21,6 +21,17 @@ __pycache__/
 *~
 dist/
 runs/
+.pipeline-state/
+missions/**/pipeline-execution-manifest.json
+missions/**/inception.json
+missions/**/READINESS.json
+missions/**/RECON.json
+missions/**/ROUTE.json
+missions/**/BUILD_PREFLIGHT.json
+missions/**/VERIFY.json
+missions/**/RELEASE_PACKET.json
+missions/**/DEPLOYMENT_DECISION.json
+missions/**/EVOLUTION_BACKLOG.json
 
 # Combo and Mega layers own COMBO.md / MEGA.md, not SKILL.md copies
 combo-skills/**/SKILL.md
