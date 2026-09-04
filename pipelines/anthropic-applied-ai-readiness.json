@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "id": "anthropic-applied-ai-readiness",
+  "description": "Durable evidence pipeline for Anthropic Applied AI / forward-deployed career positioning.",
+  "max_parallel": 2,
+  "manifest": "missions/anthropic-applied-ai/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "check-target-freshness",
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "target-check",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "compile-target",
+      "needs": [
+        "check-target-freshness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/target_role_evidence_projection.py",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--output",
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-target",
+      "needs": [
+        "compile-target"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/target-competency-map.json')); assert d['schema_version']==2; assert len(d['requirements'])>=10; assert len(d['market_sources'])>=3; print('target-contract-v2-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-competency-map.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "build-evidence",
+      "needs": [
+        "verify-target"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "build",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--sources",
+        "missions/anthropic-applied-ai/evidence-sources.json",
+        "--output",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-sources.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-evidence",
+      "needs": [
+        "build-evidence"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "verify",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "test-career-backbone",
+      "needs": [
+        "verify-evidence"
+      ],
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_career_evidence_backbone.py",
+        "-v"
+      ],
+      "consumes": [
+        "scripts/career_evidence_backbone.py",
+        "tests/test_career_evidence_backbone.py"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "project-linkedin",
+      "needs": [
+        "test-career-backbone"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_evidence_backbone.py",
+        "project",
+        "--target",
+        "missions/anthropic-applied-ai/target-role.json",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json",
+        "--output",
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "--markdown",
+        "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/target-role.json",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md"
+      ],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-linkedin",
+      "needs": [
+        "project-linkedin"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/linkedin-backbone.json')); assert d['schema_version']==2; assert isinstance(d['evidence_coverage_score'], (int,float)); assert len(d['featured_projects'])>=5; assert all(x['public_safe'] for x in d['featured_projects']); assert all(x['source_id'] not in {'mega-skills','computer-user'} for x in d['featured_projects']); print('linkedin-backbone-v2-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-backbone.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-linkedin-claim-audit",
+      "needs": [
+        "verify-linkedin"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/linkedin-claim-audit.json')); assert d['summary']['blocked_strengthening_claims']==3; assert sum(x['status']=='BLOCKED' for x in d['claims'])==3; print('linkedin-claim-audit-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-claim-audit.json",
+        "missions/anthropic-applied-ai/LINKEDIN_PROFILE_SOURCE.md"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-linkedin-activation",
+      "needs": [
+        "verify-linkedin-claim-audit"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/linkedin-activation.json')); assert d['portfolio_gateway']['status']=='READY'; assert len(d['technical_activity']['topics'])>=4; print('linkedin-activation-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-activation.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "compile-action-queue",
+      "needs": [
+        "verify-linkedin-activation"
+      ],
+      "command": [
+        "{python}",
+        "scripts/career_action_queue.py",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json",
+        "--activation",
+        "missions/anthropic-applied-ai/linkedin-activation.json",
+        "--output",
+        "missions/anthropic-applied-ai/linkedin-action-queue.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/evidence-ledger.json",
+        "missions/anthropic-applied-ai/linkedin-activation.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/linkedin-action-queue.json"
+      ],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-action-queue",
+      "needs": [
+        "compile-action-queue"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/linkedin-action-queue.json')); assert d['summary']['system']>=2; assert d['summary']['operator']>=3; assert d['queue'][0]['owner']=='system'; print('career-action-queue-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-action-queue.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "compile-linkedin-release",
+      "needs": [
+        "verify-action-queue"
+      ],
+      "command": [
+        "{python}",
+        "scripts/linkedin_release_compiler.py",
+        "--projection",
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "--audit",
+        "missions/anthropic-applied-ai/linkedin-claim-audit.json",
+        "--activation",
+        "missions/anthropic-applied-ai/linkedin-activation.json",
+        "--ledger",
+        "missions/anthropic-applied-ai/evidence-ledger.json",
+        "--output",
+        "missions/anthropic-applied-ai/linkedin-publication-pack.json"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-backbone.json",
+        "missions/anthropic-applied-ai/linkedin-claim-audit.json",
+        "missions/anthropic-applied-ai/linkedin-activation.json",
+        "missions/anthropic-applied-ai/evidence-ledger.json"
+      ],
+      "produces": [
+        "missions/anthropic-applied-ai/linkedin-publication-pack.json"
+      ],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-linkedin-release",
+      "needs": [
+        "compile-linkedin-release"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; d=json.load(open('missions/anthropic-applied-ai/linkedin-publication-pack.json')); assert d['publication_decision']=='READY_WITH_BOUNDED_GAPS'; assert len(d['front_featured'])==5; assert len(d['claim_ceiling']['blocked_claims'])==3; print('linkedin-release-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/linkedin-publication-pack.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-proof-work-packets",
+      "needs": [
+        "verify-linkedin-release"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json; a=json.load(open('missions/anthropic-applied-ai/work-packets/production-llm-delivery.json')); b=json.load(open('missions/anthropic-applied-ai/work-packets/customer-discovery.json')); c=json.load(open('missions/anthropic-applied-ai/work-packets/deployment-adoption.json')); assert all(x['status']=='BLOCKED_ON_RETRIEVAL' for x in (a,b,c)); assert 'Company research' in b['truth_rules'][0]; assert 'Never fabricate' in c['truth_rules'][0]; print('proof-work-packets-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/work-packets/production-llm-delivery.json",
+        "missions/anthropic-applied-ai/work-packets/customer-discovery.json",
+        "missions/anthropic-applied-ai/work-packets/deployment-adoption.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-control-plane",
+      "needs": [
+        "verify-proof-work-packets"
+      ],
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib; d=json.load(open('missions/anthropic-applied-ai/career-control-plane.json')); missing=[p for p in d['authorities'].values() if not pathlib.Path(p).exists()]; assert not missing, missing; print('career-control-plane-ok')"
+      ],
+      "consumes": [
+        "missions/anthropic-applied-ai/career-control-plane.json"
+      ],
+      "produces": [],
+      "resume_safe": false
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "id": "memory-fleet",
+  "display_name": "Memory and Fleet",
+  "description": "Recon, cross-cloud memory synthesis, and fleet harmonization.",
+  "family": "memory-fleet",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "design",
+    "build",
+    "verify",
+    "package",
+    "deploy-gate",
+    "handoff",
+    "evolve"
+  ],
+  "mega_roots": [
+    "apex-omniversal-memory",
+    "apex-fleet-harmonizer",
+    "apex-docgen-synthesis"
+  ],
+  "required_combos": [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 1,
+  "manifest": "missions/memory-fleet/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/memory-fleet/MISSION.md",
+        "missions/memory-fleet/ROADMAP.md",
+        "missions/memory-fleet/CONTEXT.md",
+        "missions/memory-fleet/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/memory-fleet/inception.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/memory-fleet/READINESS.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "design",
+      "phase": "design",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/memory-fleet/RECON.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/ROUTE.json",
+        "missions/memory-fleet/ARCHITECTURE.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/memory-fleet/ROUTE.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/BUILD_PREFLIGHT.json",
+        "missions/memory-fleet/SAFE_CHANGE_PREFLIGHT.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/memory-fleet/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/VERIFY.json",
+        "missions/memory-fleet/EVIDENCE.md"
+      ],
+      "resume_safe": false,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/memory-fleet/VERIFY.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/RELEASE_PACKET.json",
+        "missions/memory-fleet/RELEASE_PACKET.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "deploy-gate",
+      "phase": "deploy-gate",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/memory-fleet/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/DEPLOYMENT_DECISION.json"
+      ],
+      "resume_safe": false,
+      "approval_required": true,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "handoff",
+      "phase": "handoff",
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/memory-fleet/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/memory-fleet/HANDOFF.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "evolve",
+      "phase": "evolve",
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "memory-fleet",
+        "--family",
+        "memory-fleet",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/memory-fleet/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/memory-fleet/EVOLUTION_BACKLOG.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    }
+  ]
+}

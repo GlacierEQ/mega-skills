@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GlacierEQ Career Evidence Source Registry v2",
+  "type": "object",
+  "required": ["schema_version","sources"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id","state","source_kind","observed_at","locator","artifact","verification","claims"],
+        "properties": {
+          "source_id": {"type": "string","minLength": 1},
+          "state": {"enum": ["VERIFIED","SUPPORTED","CANDIDATE","UNVERIFIED","BLOCKED"]},
+          "source_kind": {"enum": ["runtime_receipt","source_and_tests","source_verified","readme_verified","registry_observed","candidate_narrative","operator_attested"]},
+          "observed_at": {"type": "string","format": "date"},
+          "locator": {"type": "string","minLength": 1},
+          "artifact": {"type": "string","minLength": 1},
+          "verification": {"type": "string","minLength": 1},
+          "project": {"type": "object"},
+          "metrics": {"type": "array","items": {"type": "object","required": ["name","value","scope"]}},
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["claim","competencies","hiring_signal"],
+              "properties": {
+                "claim": {"type": "string","minLength": 1},
+                "competencies": {"type": "array","items": {"type": "string"}},
+                "hiring_signal": {"type": "integer","minimum": 1,"maximum": 5},
+                "public_safe": {"type": "boolean"},
+                "limitations": {"type": "array","items": {"type": "string"}},
+                "gap": {"type": "string"},
+                "next_strengthening_action": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

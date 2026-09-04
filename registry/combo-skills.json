@@ -684,6 +684,180 @@
       }
     },
     {
+      "id": "branch-sprawl-control-loop",
+      "display_name": "Branch Sprawl Control Loop",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "combo-skills/branch-sprawl-control-loop",
+      "entrypoint": "combo-skills/branch-sprawl-control-loop/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Branch count is growing faster than useful work is integrating and the repository needs evidence-first cleanup plus lifecycle closure.",
+          "Merged branch residue, active pull requests, and divergent sibling branches must be separated before cleanup.",
+          "Automation needs a repeatable branch-spread prevention and post-merge cleanup route."
+        ],
+        "do_not_use_when": [
+          "The repository has only a simple local commit with no branch lifecycle problem.",
+          "The operator intends to delete divergent work without first proving integration or preservation."
+        ]
+      },
+      "members": [
+        {
+          "id": "branch-lifecycle-intelligence",
+          "kind": "skill",
+          "role": "Inventory branch/PR topology, prove redundancy, group branch families, and emit cleanup plans and receipts.",
+          "required": true
+        },
+        {
+          "id": "pr-babysit",
+          "kind": "skill",
+          "role": "Protect live review work by resolving PR health, CI, review, and merge blockers before lifecycle closure.",
+          "required": true
+        },
+        {
+          "id": "finishing-a-development-branch",
+          "kind": "skill",
+          "role": "Choose and verify the integration closure route so completed work does not remain as indefinite branch residue.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "branch-lifecycle-intelligence",
+            "consumes": [
+              "Repository branch state",
+              "Pull-request lineage",
+              "Lifecycle policy"
+            ],
+            "produces": [
+              "Initial branch lifecycle plan",
+              "Branch family map"
+            ],
+            "validation": "Protected, active, merged-redundant, reachable-redundant, divergent, stale-review, and unknown refs are separated using observed evidence."
+          },
+          {
+            "step": 2,
+            "member_id": "pr-babysit",
+            "consumes": [
+              "ACTIVE branch set",
+              "Open pull requests",
+              "CI and review state"
+            ],
+            "produces": [
+              "PR health and blocker record"
+            ],
+            "validation": "No branch with live review work is treated as cleanup residue."
+          },
+          {
+            "step": 3,
+            "member_id": "finishing-a-development-branch",
+            "consumes": [
+              "PR health record",
+              "Verified implementation state",
+              "Branch family context"
+            ],
+            "produces": [
+              "Integration closure decisions"
+            ],
+            "validation": "Completed work receives an explicit merge, PR, keep, or cleanup path without reflexive new-branch creation."
+          },
+          {
+            "step": 4,
+            "member_id": "branch-lifecycle-intelligence",
+            "consumes": [
+              "Integration closure decisions",
+              "Fresh repository branch state"
+            ],
+            "produces": [
+              "Final lifecycle plan",
+              "BRANCH_SPRAWL_CONTROL_RECORD.json"
+            ],
+            "validation": "Deletion evidence is refreshed immediately before mutation and every divergent branch remains preserved or explicitly routed to consolidation."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "branch-lifecycle-intelligence",
+            "to_member": "pr-babysit",
+            "required_inputs": [
+              "ACTIVE branch identities",
+              "Open PR lineage",
+              "Lifecycle evidence"
+            ],
+            "accepted_outputs": [
+              "PR health, CI, review, conflict, and merge-blocker record"
+            ],
+            "failure_owner": "PR lifecycle owner"
+          },
+          {
+            "from_member": "pr-babysit",
+            "to_member": "finishing-a-development-branch",
+            "required_inputs": [
+              "Healthy or explicitly blocked PR state",
+              "Verified completion evidence"
+            ],
+            "accepted_outputs": [
+              "Explicit integration or preservation decision"
+            ],
+            "failure_owner": "development integration owner"
+          },
+          {
+            "from_member": "finishing-a-development-branch",
+            "to_member": "branch-lifecycle-intelligence",
+            "required_inputs": [
+              "Integration decision",
+              "Merged/closed PR evidence",
+              "Preservation decisions"
+            ],
+            "accepted_outputs": [
+              "Fresh cleanup plan and hashed lifecycle receipt"
+            ],
+            "failure_owner": "branch lifecycle owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record branch SHA, protection, ahead/behind counts, PR state, merged evidence, changed-file sample when available, and evidence errors.",
+          "Record before/after branch counts, every deleted ref, every preserved divergent ref, every blocked ref, and branch-family consolidation candidates.",
+          "Preserve plan and receipt SHA-256 values so cleanup can be reconstructed."
+        ],
+        "risk_boundaries": [
+          "Age alone never authorizes deletion.",
+          "Branch-name similarity never proves semantic equivalence.",
+          "Do not auto-delete divergent, protected, active, or evidence-incomplete work.",
+          "Do not force-push or auto-merge sibling branches as a cleanup shortcut."
+        ],
+        "quality_gates": [
+          "Automatic delete candidates must remain merged-redundant or zero-ahead reachable-redundant after a fresh mutation-time reclassification and meet the configured confidence threshold.",
+          "Every handoff must dynamically reassess current repository state, value, risk, evidence quality, reversibility, and downstream impact.",
+          "A lifecycle run is incomplete without a durable receipt recording reassessments and transactional outcome."
+        ],
+        "state_updates": [
+          "Update branch family lead and divergent-member review state after each integration.",
+          "Close merged ephemeral branch lifecycles immediately.",
+          "Record unresolved duplicate workstreams as consolidation targets rather than creating another branch."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Evidence-first branch classification",
+          "PR health and review completion",
+          "Development-branch integration closure"
+        ],
+        "adds": "A closed-loop branch-spread control system that dynamically reassesses every decision, preserves and harvests useful work, integrates completed value, removes only freshly proven residue, surfaces divergent families for synthesis, and feeds future branch-admission decisions.",
+        "compound_artifact": "BRANCH_SPRAWL_CONTROL_RECORD.json",
+        "next_layer_ready_when": [
+          "Every automatic deletion has fresh high-confidence redundancy proof.",
+          "Every active or divergent branch has a preservation, integration, or consolidation route.",
+          "Future workstreams have a branch-admission rule that prevents reflexive branch multiplication."
+        ]
+      }
+    },
+    {
       "id": "capability-readiness",
       "display_name": "Capability Readiness",
       "ownership": "glaciereq",
@@ -1684,37 +1858,38 @@
     },
     {
       "id": "fleet-recon-and-harmonize",
-      "display_name": "Fleet Recon and Harmonize",
+      "display_name": "Fleet Recon and Harmonize — Harmonious Merge Route",
       "ownership": "glaciereq",
       "maturity": "candidate",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "combo-skills/fleet-recon-and-harmonize",
       "entrypoint": "combo-skills/fleet-recon-and-harmonize/COMBO.md",
       "selection": {
         "use_when": [
-          "Unmerged branch clutter across repositories must be audited, synthesized into main, and safely pruned without data loss."
+          "Branches across repositories must be converged without replacing main: unique beneficial behavior needs evidence-backed integration and ref retirement must be deliberate."
         ],
         "do_not_use_when": [
-          "The work is a simple local git commit or single-file edit."
+          "The work is a simple local git commit or single-file edit.",
+          "The requested outcome is a blind bulk merge, automatic cleanup, or preservation of known credential-bearing history."
         ]
       },
       "members": [
         {
           "id": "mission-contract",
           "kind": "skill",
-          "role": "Set harmonization scope and safety gates.",
+          "role": "Set canonical baseline, scope, approvals, and security constraints.",
           "required": true
         },
         {
           "id": "fleet-git-harmonizer-core",
           "kind": "skill",
-          "role": "Audit divergence, synthesize, tag, and prune.",
+          "role": "Create per-ref dispositions and selectively preserve beneficial behavior on main.",
           "required": true
         },
         {
           "id": "quality-gate",
           "kind": "skill",
-          "role": "Verify regression suites and pruning receipts.",
+          "role": "Verify required checks on main and retirement-readiness receipts.",
           "required": true
         }
       ],
@@ -1725,12 +1900,13 @@
             "member_id": "mission-contract",
             "consumes": [
               "Repository scopes",
-              "Target branch"
+              "Target branch",
+              "Security constraints"
             ],
             "produces": [
               "MISSION.md"
             ],
-            "validation": "Non-destructive boundaries are explicit."
+            "validation": "Main, ref scope, checks, and non-destructive boundaries are explicit."
           },
           {
             "step": 2,
@@ -1740,21 +1916,21 @@
               "Repository paths"
             ],
             "produces": [
-              "fleet-divergence-audit.json"
+              "harmonious-merge-audit.json"
             ],
-            "validation": "Zero data loss verified via archive tags."
+            "validation": "Every scoped branch/tag has an evidence-backed disposition."
           },
           {
             "step": 3,
             "member_id": "quality-gate",
             "consumes": [
               "Test outputs",
-              "Archive tags"
+              "Harmonious Merge Audit"
             ],
             "produces": [
               "Gate record"
             ],
-            "validation": "Regression test suites pass 100% green before branch deletion."
+            "validation": "Required checks pass on main and no ref is deleted without approval."
           }
         ]
       },
@@ -1765,10 +1941,11 @@
             "to_member": "fleet-git-harmonizer-core",
             "required_inputs": [
               "Repository scopes",
-              "Branch retention rules"
+              "Baseline SHA",
+              "Branch retention and security rules"
             ],
             "accepted_outputs": [
-              "Verified divergence manifest and synthesis diffs"
+              "Verified semantic divergence manifest and disposition plan"
             ],
             "failure_owner": "mission owner"
           },
@@ -1776,27 +1953,29 @@
             "from_member": "fleet-git-harmonizer-core",
             "to_member": "quality-gate",
             "required_inputs": [
-              "Synthesized tree",
+              "Updated main",
+              "Integration provenance",
               "Test results",
-              "Archive tags"
+              "Ref dispositions"
             ],
             "accepted_outputs": [
-              "Verified gate record"
+              "Verified gate record and retirement-readiness decision"
             ],
             "failure_owner": "execution owner"
           }
         ],
         "evidence_requirements": [
-          "Record all commit SHAs, divergence counts, archive tag names, and test outputs."
+          "Record baseline and final main SHAs, complete ref inventory, per-ref dispositions, source commits, test outputs, security findings, and approval receipts."
         ],
         "risk_boundaries": [
-          "Do not force push to remote branches or delete unarchived branches."
+          "Do not reset, delete, or replace main.",
+          "Do not force-push, rewrite history, create secret-preserving archive refs, or delete a branch without required approval."
         ],
         "quality_gates": [
-          "Every pruned branch has a verified archive tag; tests pass 100% green."
+          "Every scoped ref has a disposition; accepted integrations pass on main; every retirement has preservation-or-rejection evidence and approval."
         ],
         "state_updates": [
-          "Record synthesized commits, archive tags, and pruned branches after each batch."
+          "Record integration receipts, deferred decisions, security escalations, and approved ref-retirement outcomes after each batch."
         ]
       },
       "compounding": {
@@ -1805,11 +1984,12 @@
           "Git divergence analysis",
           "Regression gating"
         ],
-        "adds": "A repeatable inspect-and-harmonize route that audits branch divergence, synthesizes features into main, applies archive tags, runs test assertions, and prunes clutter.",
-        "compound_artifact": "fleet-harmonization-record.md",
+        "adds": "A repeatable Harmonious Merge route that preserves main, selectively integrates unique beneficial behavior, records branch dispositions, and keeps credential remediation separate from ref-retirement actions.",
+        "compound_artifact": "harmonious-merge-audit.json",
         "next_layer_ready_when": [
-          "Every pruned branch has an archive tag.",
-          "Regression tests pass with zero regressions."
+          "Main remains the verified canonical baseline.",
+          "Every scoped ref has an evidence-backed disposition.",
+          "Any credential exposure is escalated through rotation and separately authorized history cleanup."
         ]
       }
     },
@@ -3080,6 +3260,241 @@
         "next_layer_ready_when": [
           "All seven state artifacts are consistent.",
           "The next mission route can consume named evidence and no raw hidden context."
+        ]
+      }
+    },
+    {
+      "id": "mission-aware-operating-loop",
+      "display_name": "Mission Aware Operating Loop",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/mission-aware-operating-loop",
+      "entrypoint": "combo-skills/mission-aware-operating-loop/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A mission must preserve purpose, context, options, impact, action, outcome, verification, learning, and safe resumption across time or systems."
+        ],
+        "do_not_use_when": [
+          "The task is a simple bounded response with no durable decision, evidence, or learning requirement."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Define mission boundary, authority, and stop condition.",
+          "required": true
+        },
+        {
+          "id": "context-capsule",
+          "kind": "skill",
+          "role": "Carry forward lean context and retrieval locations without reopening raw history.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Separate observations, conclusions, assumptions, unknowns, and contradictions.",
+          "required": true
+        },
+        {
+          "id": "roadmap-builder",
+          "kind": "skill",
+          "role": "Turn context and evidence into alternatives, impact forecasts, and the next route.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Record whether the action is pending, observed, verified, contradicted, blocked, or escalated.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Preserve learnings, strengthening changes, exact resumption point, and review trigger.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Operator mission",
+              "Constraints",
+              "Authority boundary"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Mission outcome, scope, non-goals, stop condition, and acceptance criteria are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "context-capsule",
+            "consumes": [
+              "MISSION.md",
+              "Prior state",
+              "Retrieval map"
+            ],
+            "produces": [
+              "CONTEXT.md"
+            ],
+            "validation": "Known context, operator report, retrieval status, and unresolved questions remain distinct."
+          },
+          {
+            "step": 3,
+            "member_id": "evidence-register",
+            "consumes": [
+              "CONTEXT.md",
+              "Sources",
+              "Observations",
+              "Tests"
+            ],
+            "produces": [
+              "EVIDENCE.md"
+            ],
+            "validation": "Material claims map to evidence or declared assumptions, with gaps and contradictions retained."
+          },
+          {
+            "step": 4,
+            "member_id": "roadmap-builder",
+            "consumes": [
+              "MISSION.md",
+              "CONTEXT.md",
+              "EVIDENCE.md"
+            ],
+            "produces": [
+              "ROADMAP.md",
+              "Options and impact forecast"
+            ],
+            "validation": "Alternatives, dependencies, impact, selected action, and verification conditions are explicit."
+          },
+          {
+            "step": 5,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Action result",
+              "Evidence",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Outcome gate"
+            ],
+            "validation": "The outcome state is grounded in observed verification and is not silently promoted."
+          },
+          {
+            "step": 6,
+            "member_id": "handoff-record",
+            "consumes": [
+              "Outcome gate",
+              "Learnings",
+              "Strengthening proposal"
+            ],
+            "produces": [
+              "HANDOFF.md",
+              "MISSION_OPERATING_LOOP_RECORD.md"
+            ],
+            "validation": "The exact next action and review trigger make the mission safely resumable."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "context-capsule",
+            "required_inputs": [
+              "MISSION.md",
+              "Prior state locations"
+            ],
+            "accepted_outputs": [
+              "Context capsule with retrieval map"
+            ],
+            "failure_owner": "mission owner"
+          },
+          {
+            "from_member": "context-capsule",
+            "to_member": "evidence-register",
+            "required_inputs": [
+              "Known context",
+              "Operator-reported facts",
+              "Retrieval states"
+            ],
+            "accepted_outputs": [
+              "Evidence trace with explicit gaps"
+            ],
+            "failure_owner": "context owner"
+          },
+          {
+            "from_member": "evidence-register",
+            "to_member": "roadmap-builder",
+            "required_inputs": [
+              "Evidence trace",
+              "Unknowns",
+              "Contradictions"
+            ],
+            "accepted_outputs": [
+              "Scoped options and impact forecast"
+            ],
+            "failure_owner": "evidence owner"
+          },
+          {
+            "from_member": "roadmap-builder",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Selected action",
+              "Acceptance criteria",
+              "Verification plan"
+            ],
+            "accepted_outputs": [
+              "Observed or verified outcome gate"
+            ],
+            "failure_owner": "route owner"
+          },
+          {
+            "from_member": "quality-gate",
+            "to_member": "handoff-record",
+            "required_inputs": [
+              "Outcome state",
+              "Failure or success evidence"
+            ],
+            "accepted_outputs": [
+              "Exact recovery and strengthening record"
+            ],
+            "failure_owner": "quality owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record source locations, retrieval status, impact forecast, action result, verification method, learnings, and strengthening changes."
+        ],
+        "risk_boundaries": [
+          "Do not treat absence from the active context as disproof, an observed outcome as verified, or a recommendation as authorization for external mutation."
+        ],
+        "quality_gates": [
+          "The complete mission-to-learning chain is present and every material claim has an evidence state or declared assumption."
+        ],
+        "state_updates": [
+          "Update the context capsule, evidence register, roadmap, and handoff with the verified learning and next review trigger."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission boundary",
+          "Lean context capsule",
+          "Evidence trace",
+          "Dependency-aware roadmap",
+          "Reproducible quality gate",
+          "Exact handoff record"
+        ],
+        "adds": "A mission-aware decision-and-learning spine that carries purpose through action and returns verified learning to the next state without collapsing retrieval uncertainty into truth.",
+        "compound_artifact": "MISSION_OPERATING_LOOP_RECORD.md",
+        "next_layer_ready_when": [
+          "The mission can resume from the record without raw conversation history.",
+          "Outcome, evidence, learning, and strengthening states are explicit and internally consistent."
         ]
       }
     },
@@ -4867,241 +5282,6 @@
         "next_layer_ready_when": [
           "All required outputs are present and the conditional full-stack route is explicitly resolved.",
           "Every handoff names an owner, accepted output, and close condition."
-        ]
-      }
-    },
-    {
-      "id": "mission-aware-operating-loop",
-      "display_name": "Mission Aware Operating Loop",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "combo-skills/mission-aware-operating-loop",
-      "entrypoint": "combo-skills/mission-aware-operating-loop/COMBO.md",
-      "selection": {
-        "use_when": [
-          "A mission must preserve purpose, context, options, impact, action, outcome, verification, learning, and safe resumption across time or systems."
-        ],
-        "do_not_use_when": [
-          "The task is a simple bounded response with no durable decision, evidence, or learning requirement."
-        ]
-      },
-      "members": [
-        {
-          "id": "mission-contract",
-          "kind": "skill",
-          "role": "Define mission boundary, authority, and stop condition.",
-          "required": true
-        },
-        {
-          "id": "context-capsule",
-          "kind": "skill",
-          "role": "Carry forward lean context and retrieval locations without reopening raw history.",
-          "required": true
-        },
-        {
-          "id": "evidence-register",
-          "kind": "skill",
-          "role": "Separate observations, conclusions, assumptions, unknowns, and contradictions.",
-          "required": true
-        },
-        {
-          "id": "roadmap-builder",
-          "kind": "skill",
-          "role": "Turn context and evidence into alternatives, impact forecasts, and the next route.",
-          "required": true
-        },
-        {
-          "id": "quality-gate",
-          "kind": "skill",
-          "role": "Record whether the action is pending, observed, verified, contradicted, blocked, or escalated.",
-          "required": true
-        },
-        {
-          "id": "handoff-record",
-          "kind": "skill",
-          "role": "Preserve learnings, strengthening changes, exact resumption point, and review trigger.",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "mission-contract",
-            "consumes": [
-              "Operator mission",
-              "Constraints",
-              "Authority boundary"
-            ],
-            "produces": [
-              "MISSION.md"
-            ],
-            "validation": "Mission outcome, scope, non-goals, stop condition, and acceptance criteria are explicit."
-          },
-          {
-            "step": 2,
-            "member_id": "context-capsule",
-            "consumes": [
-              "MISSION.md",
-              "Prior state",
-              "Retrieval map"
-            ],
-            "produces": [
-              "CONTEXT.md"
-            ],
-            "validation": "Known context, operator report, retrieval status, and unresolved questions remain distinct."
-          },
-          {
-            "step": 3,
-            "member_id": "evidence-register",
-            "consumes": [
-              "CONTEXT.md",
-              "Sources",
-              "Observations",
-              "Tests"
-            ],
-            "produces": [
-              "EVIDENCE.md"
-            ],
-            "validation": "Material claims map to evidence or declared assumptions, with gaps and contradictions retained."
-          },
-          {
-            "step": 4,
-            "member_id": "roadmap-builder",
-            "consumes": [
-              "MISSION.md",
-              "CONTEXT.md",
-              "EVIDENCE.md"
-            ],
-            "produces": [
-              "ROADMAP.md",
-              "Options and impact forecast"
-            ],
-            "validation": "Alternatives, dependencies, impact, selected action, and verification conditions are explicit."
-          },
-          {
-            "step": 5,
-            "member_id": "quality-gate",
-            "consumes": [
-              "Action result",
-              "Evidence",
-              "Acceptance criteria"
-            ],
-            "produces": [
-              "Outcome gate"
-            ],
-            "validation": "The outcome state is grounded in observed verification and is not silently promoted."
-          },
-          {
-            "step": 6,
-            "member_id": "handoff-record",
-            "consumes": [
-              "Outcome gate",
-              "Learnings",
-              "Strengthening proposal"
-            ],
-            "produces": [
-              "HANDOFF.md",
-              "MISSION_OPERATING_LOOP_RECORD.md"
-            ],
-            "validation": "The exact next action and review trigger make the mission safely resumable."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "mission-contract",
-            "to_member": "context-capsule",
-            "required_inputs": [
-              "MISSION.md",
-              "Prior state locations"
-            ],
-            "accepted_outputs": [
-              "Context capsule with retrieval map"
-            ],
-            "failure_owner": "mission owner"
-          },
-          {
-            "from_member": "context-capsule",
-            "to_member": "evidence-register",
-            "required_inputs": [
-              "Known context",
-              "Operator-reported facts",
-              "Retrieval states"
-            ],
-            "accepted_outputs": [
-              "Evidence trace with explicit gaps"
-            ],
-            "failure_owner": "context owner"
-          },
-          {
-            "from_member": "evidence-register",
-            "to_member": "roadmap-builder",
-            "required_inputs": [
-              "Evidence trace",
-              "Unknowns",
-              "Contradictions"
-            ],
-            "accepted_outputs": [
-              "Scoped options and impact forecast"
-            ],
-            "failure_owner": "evidence owner"
-          },
-          {
-            "from_member": "roadmap-builder",
-            "to_member": "quality-gate",
-            "required_inputs": [
-              "Selected action",
-              "Acceptance criteria",
-              "Verification plan"
-            ],
-            "accepted_outputs": [
-              "Observed or verified outcome gate"
-            ],
-            "failure_owner": "route owner"
-          },
-          {
-            "from_member": "quality-gate",
-            "to_member": "handoff-record",
-            "required_inputs": [
-              "Outcome state",
-              "Failure or success evidence"
-            ],
-            "accepted_outputs": [
-              "Exact recovery and strengthening record"
-            ],
-            "failure_owner": "quality owner"
-          }
-        ],
-        "evidence_requirements": [
-          "Record source locations, retrieval status, impact forecast, action result, verification method, learnings, and strengthening changes."
-        ],
-        "risk_boundaries": [
-          "Do not treat absence from the active context as disproof, an observed outcome as verified, or a recommendation as authorization for external mutation."
-        ],
-        "quality_gates": [
-          "The complete mission-to-learning chain is present and every material claim has an evidence state or declared assumption."
-        ],
-        "state_updates": [
-          "Update the context capsule, evidence register, roadmap, and handoff with the verified learning and next review trigger."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "Mission boundary",
-          "Lean context capsule",
-          "Evidence trace",
-          "Dependency-aware roadmap",
-          "Reproducible quality gate",
-          "Exact handoff record"
-        ],
-        "adds": "A mission-aware decision-and-learning spine that carries purpose through action and returns verified learning to the next state without collapsing retrieval uncertainty into truth.",
-        "compound_artifact": "MISSION_OPERATING_LOOP_RECORD.md",
-        "next_layer_ready_when": [
-          "The mission can resume from the record without raw conversation history.",
-          "Outcome, evidence, learning, and strengthening states are explicit and internally consistent."
         ]
       }
     }

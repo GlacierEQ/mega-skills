@@ -2,19 +2,32 @@
 
 ## Mission
 
-Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, and estate watchdog health.
+Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, estate watchdog health, and safe repository convergence.
 
 ## Compounding structure
 
 - Required combos: `long-horizon-core`, `guarded-automation-loop`, `signal-to-decision-loop`
-- Conditional combos: `capability-readiness`, `evidence-to-evolution-loop`, `frontier-orbit-synthesis`
+- Conditional combos: `capability-readiness`, `evidence-to-evolution-loop`, `frontier-orbit-synthesis`, `fleet-recon-and-harmonize`
 
 ## Execution protocol
 
 1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
 2. Execute required combos in deterministic dependency order.
-3. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
-4. Synthesize final mission deliverable `ALWAYS_ON_CORE_MISSION_RESULT.md`.
+3. Run the **Harmonious Merge Watch** during repository-state observation. It may inventory refs, compare branches to `main`, identify duplicate or security-sensitive history, and emit a disposition plan.
+4. Route to `fleet-recon-and-harmonize` only when the watch finds branch sprawl, unresolved divergent work, overlapping implementations, or security-sensitive refs that require a deliberate convergence plan.
+5. Validate all intermediate evidence hashes and record telemetry in `EVIDENCE.md`.
+6. Synthesize final mission deliverable `ALWAYS_ON_CORE_MISSION_RESULT.md`.
+
+## Harmonious Merge Watch
+
+The watch is a standing read-only control, not an automatic cleanup mechanism.
+
+- **Baseline:** Treat `main` as the living canonical line. Never replace, reset, delete, or demote it because another branch is larger, newer, or noisier.
+- **Observe:** Maintain an evidence-backed inventory of branches and tags, their relationship to `main`, new divergence, check status, and any signs of credential-bearing paths or unsafe preservation refs.
+- **Assess value:** Inspect actual behavior and tests—not names or commit counts—to identify unique beneficial changes, duplicated work, regressions, and blocked reviews.
+- **Prepare:** Emit a `harmonious-merge-audit.json` or an escalation work packet with per-ref dispositions and the smallest proposed integration units.
+- **Do not mutate:** The watch cannot merge, force-push, delete branches/tags, create archive refs, rotate credentials, or rewrite history.
+- **Security escalation:** A known credential exposure triggers immediate rotation/revocation escalation and a separately authorized all-ref history-cleanup plan. Never create a new tag or backup ref that preserves contaminated history.
 
 ## Durable state files
 
@@ -24,6 +37,7 @@ Continuous always-on cognitive foundation fusing sequential thinking, context co
 - `CONTEXT.md`
 - `HANDOFF.md`
 - `ALWAYS_ON_CORE_MISSION_RESULT.md`
+- `harmonious-merge-watch.json` (when repository observation is in scope)
 
 ## Cognitive firewall
 
@@ -35,19 +49,22 @@ Continuous always-on cognitive foundation fusing sequential thinking, context co
 ## Human control points
 
 - `approve_production_release`
+- `approve_harmonious_merge_plan`
+- `approve_ref_retirement`
+- `approve_history_rewrite`
 - `escalate_critical_anomalies`
 
 ## Output contract
 
-Produce `ALWAYS_ON_CORE_MISSION_RESULT.md` upon mission completion.
+Produce `ALWAYS_ON_CORE_MISSION_RESULT.md` upon mission completion. When repository observation is in scope, include or reference the current `harmonious-merge-watch.json`, its evidence, and its next required human decision.
 
 ## Local validation
 
-100% test assertions and receipts verify.
+100% test assertions and receipts verify. The always-on layer passes its repository-convergence guard only when `main` remains the stated baseline, all discovered scoped refs have a recorded state or deliberate deferral, and no mutation occurred without the applicable approval.
 
 ## Non-goals
 
-Unbounded external state mutations.
+Unbounded external state mutations, autonomous branch cleanup, or automatic history rewriting.
 
 ## Always-On Source Integrity — 2026-08-31
 

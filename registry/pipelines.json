@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "inception-to-deployment",
+      "display_name": "Inception to Deployment",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/inception-to-deployment.json",
+      "family": "master",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-always-on-core",
+        "apex-adaptive-operations",
+        "apex-sovereign-runtime",
+        "far-away-party",
+        "apex-omniversal-memory",
+        "apex-fleet-harmonizer",
+        "apex-docgen-synthesis",
+        "apex-safe-change-orchestrator",
+        "apex-self-healing-forge",
+        "apex-autonomous-software-engineering",
+        "apex-architectural-evolution-engine",
+        "apex-dev-fork-orchestrator",
+        "apex-web-build-system",
+        "apex-vercel-web-foundry",
+        "apex-backend-infrastructure-engine",
+        "apex-secure-cloud-foundry"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
+    },
+    {
+      "id": "control-plane",
+      "display_name": "Control Plane",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/control-plane.json",
+      "family": "control-plane",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-always-on-core",
+        "apex-adaptive-operations",
+        "apex-sovereign-runtime",
+        "far-away-party"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
+    },
+    {
+      "id": "memory-fleet",
+      "display_name": "Memory and Fleet",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/memory-fleet.json",
+      "family": "memory-fleet",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-omniversal-memory",
+        "apex-fleet-harmonizer",
+        "apex-docgen-synthesis"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
+    },
+    {
+      "id": "change-swe",
+      "display_name": "Change and Software Engineering",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/change-swe.json",
+      "family": "change-swe",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-safe-change-orchestrator",
+        "apex-self-healing-forge",
+        "apex-autonomous-software-engineering",
+        "apex-architectural-evolution-engine",
+        "apex-dev-fork-orchestrator"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
+    },
+    {
+      "id": "ship-cloud",
+      "display_name": "Ship and Cloud",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/ship-cloud.json",
+      "family": "ship-cloud",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-web-build-system",
+        "apex-vercel-web-foundry",
+        "apex-backend-infrastructure-engine",
+        "apex-secure-cloud-foundry"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
+    },
+    {
+      "id": "anthropic-applied-ai-readiness",
+      "display_name": "Anthropic Applied AI Readiness",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/anthropic-applied-ai-readiness.json",
+      "family": "mission",
+      "span": [
+        "verify",
+        "package"
+      ],
+      "mega_roots": [],
+      "deploy_mode": "approval_packet_only",
+      "runner": "skills/pipeline-compositor/scripts/engine.py"
+    },
+    {
+      "id": "cultivate-main",
+      "display_name": "Cultivate Main",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/cultivate-main.json",
+      "family": "change-swe",
+      "span": [
+        "recon",
+        "design",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff"
+      ],
+      "mega_roots": [
+        "apex-safe-change-orchestrator",
+        "apex-always-on-core"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/cultivate_main.py"
+    }
+  ]
+}

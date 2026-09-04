@@ -2,7 +2,7 @@
 id: forensic-docket-intelligence
 display_name: Forensic Docket Intelligence
 schema: ../../schemas/combo-skill.schema.json
-version: 1.0.0
+version: 1.1.0
 status: active
 ---
 
@@ -68,3 +68,17 @@ Risk boundaries:
 
 1. Master timeline is locked with 100% cryptographic integrity.
 2. Contradiction proofs and Bates manifests are verified by quality-gate.
+
+## State-law and journal-source correction — 2026-09-03
+
+This Combo is **not limited to federal FRE 902(13)/(14)**. For a state-court mission, the governing state evidence rules and foundation methods control. Federal self-authentication methods may be useful analogies or separate federal routes but must not be represented as automatically controlling state admissibility.
+
+For chat exports / regularly kept journal material:
+- preserve the original journal/export file unchanged;
+- assign hashes/source IDs to the original;
+- create transcripts, OCR, Bates copies, excerpts, and redactions only as derivatives;
+- keep exact pointers from every derivative excerpt to the original entry/context;
+- do not let an evidentiary packet rewrite the source wording;
+- treat authentication, hearsay, original-record/best-evidence issues, and business/journal-record theories as separate legal questions under the governing jurisdiction.
+
+Bates numbering applies to exhibit **copies/derivatives**, not by altering original media.

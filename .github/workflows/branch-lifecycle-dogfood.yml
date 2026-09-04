@@ -1,0 +1,22 @@
+name: Branch Lifecycle Dogfood
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+  pull-requests: read
+  actions: read
+
+jobs:
+  cleanup-merged-head:
+    if: ${{ github.event.pull_request.merged == true }}
+    uses: ./.github/workflows/branch-lifecycle-intelligence.yml
+    with:
+      mode: apply
+      scope: event_head
+      stale_days: 30
+      minimum_delete_confidence: 95
+      max_branches: 500
+      max_deletes: 10
