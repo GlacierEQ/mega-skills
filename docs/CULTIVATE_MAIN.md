@@ -9,15 +9,23 @@ replaced because another ref is newer or larger.
 The cultivate-main assessor is allowed to **finish** work that passes
 its gates. Waiting on Casey is not a completion strategy.
 
-Casey is required only for the Casey class:
+## Never force-push
+
+`git push --force`, `push -f`, resetting `main`, and replacing the trunk
+are forbidden. Cultivate by merge commit only.
+
+Casey is required only for:
 
 - history rewrite
 - force-push
-- credential or secret-bearing history
+- secret-bearing files committed in plaintext
 - legal filing / privilege waiver
 - production deploy of an external system
 - deletion of protected refs
 - replacing `main`
+
+Secrets are sealed and bound by `scripts/secret_vault.py`. They are not
+a reason to halt ordinary merges or to demand a human debug the token.
 
 Everything else that is mergeable, additive, and free of those hazards
 is an automatic merge-commit into `main`.

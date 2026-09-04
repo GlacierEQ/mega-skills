@@ -22,6 +22,9 @@ __pycache__/
 dist/
 runs/
 .pipeline-state/
+.seal-wrap
+.sealed-secrets.json
+.env.runtime
 missions/**/pipeline-execution-manifest.json
 missions/**/inception.json
 missions/**/READINESS.json

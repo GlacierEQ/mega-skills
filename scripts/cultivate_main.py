@@ -121,7 +121,7 @@ def assess_change(
 
     if replaces_main or force_push:
         decision = "CASEY"
-        reasons.append("main-replacement or force-push is Casey-class")
+        reasons.append("force-push and main replacement are forbidden")
     elif secrets or buckets["casey"]:
         decision = "CASEY"
         reasons.append("secret or Casey-path hazard")
