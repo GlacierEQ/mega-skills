@@ -19,4 +19,20 @@ class ReadinessAssayTests(unittest.TestCase):
         entry=next(e for e in json.loads((ROOT/"registry/skills.json").read_text())["entries"] if e["id"]=="aerospace-trajectory-core")
         state=MOD.inspect_skill(entry)
         self.assertFalse(state["ready"]); self.assertEqual(state["state"],"implementation_partial"); self.assertTrue(state["stub_files"])
+    def test_receipt_only_runner_is_a_scaffold_not_an_implementation(self):
+        runner=(ROOT/"skills/ai-deal-finder/scripts/run.py").read_text(encoding="utf-8")
+        self.assertIn('"status": "VERIFIED"',runner)
+        self.assertTrue(MOD.is_generated_scaffold(runner))
+        entry=next(e for e in json.loads((ROOT/"registry/skills.json").read_text())["entries"] if e["id"]=="ai-deal-finder")
+        state=MOD.inspect_skill(entry)
+        self.assertIn("skills/ai-deal-finder/scripts/run.py",state["scaffold_files"])
+        self.assertNotIn("skills/ai-deal-finder/scripts/run.py",state["real_implementation_files"])
+        self.assertNotEqual(state["state"],"implementation_unverified")
+    def test_existence_only_test_harness_is_structural_not_behavioral(self):
+        entry=next(e for e in json.loads((ROOT/"registry/skills.json").read_text())["entries"] if e["id"]=="gmail-orchestrator")
+        state=MOD.inspect_skill(entry)
+        harness="skills/gmail-orchestrator/tests/test_gmail_orchestrator.py"
+        self.assertIn(harness,state["structural_tests"])
+        self.assertNotIn(harness,state["behavioral_tests"])
+        self.assertEqual(state["state"],"implementation_unverified")
 if __name__=="__main__": unittest.main()

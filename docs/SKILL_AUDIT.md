@@ -1,5 +1,11 @@
 # Skill Manifest Audit
 
+> **Superseded — 2026-09-02 re-audit.** The snapshot below is historical. Re-running the same
+> checks against all 709 `skills/*/SKILL.md` files on 2026-09-02 found **0 failures**: no
+> unsupported top-level frontmatter keys (`version`, `author`), no description over 1024
+> characters, no missing body, and every `name` matches its directory. `scripts/validate_hierarchy.py`
+> now also fails when a package exists on disk without a registry entry.
+
 This audit evaluates every `skills/**/SKILL.md` against the baseline Manus skill contract: valid YAML frontmatter, required `name` and `description`, supported metadata keys, name format, description limits, a non-empty body, and name-to-directory alignment.
 
 | Metric | Result |

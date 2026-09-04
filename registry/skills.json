@@ -1462,7 +1462,7 @@
       "id": "attio",
       "display_name": "Attio",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "skills/attio",
       "entrypoint": "skills/attio/SKILL.md",
@@ -1635,7 +1635,7 @@
       "id": "automated-performance-profiling",
       "display_name": "Automated Performance Profiling",
       "ownership": "glaciereq",
-      "maturity": "active",
+      "maturity": "candidate",
       "version": "0.1.0",
       "path": "skills/automated-performance-profiling",
       "entrypoint": "skills/automated-performance-profiling/SKILL.md",
@@ -7628,6 +7628,31 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "job-app-helix-company-forge",
+      "display_name": "Job-App Helix Company Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/job-app-helix-company-forge",
+      "entrypoint": "skills/job-app-helix-company-forge/SKILL.md",
+      "purpose": "Full-cycle company-specific innovation forge for Job-App Helix. Always research-study-work; use sequential intelligence, heavy specialist swarms, token-efficient context routing, Pro-Code elite humanized engineering, anti-cookie-cutter architecture, verified deployment, and iterative magnificence.",
+      "input_contract": [
+        "Target company and role",
+        "Operator personal state, priorities, and constraints"
+      ],
+      "output_contract": [
+        "Company-specific deployed engineering artifact with its research, study, and work record",
+        "Durable continuation state for the next cycle"
+      ],
+      "local_validation": [
+        "Readiness not yet established; run scripts/readiness_assay.py before activation."
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {
