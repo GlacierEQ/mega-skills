@@ -1,0 +1,1 @@
+Branch Lifecycle Intelligence dogfood fixture. Safe to merge and retain as test evidence.

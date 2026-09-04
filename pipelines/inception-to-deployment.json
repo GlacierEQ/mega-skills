@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "id": "inception-to-deployment",
+  "display_name": "Inception to Deployment",
+  "description": "Master deep-work pipeline from mission intake through a human-gated deployment packet.",
+  "family": "master",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "design",
+    "build",
+    "verify",
+    "package",
+    "deploy-gate",
+    "handoff",
+    "evolve"
+  ],
+  "mega_roots": [
+    "apex-always-on-core",
+    "apex-adaptive-operations",
+    "apex-sovereign-runtime",
+    "far-away-party",
+    "apex-omniversal-memory",
+    "apex-fleet-harmonizer",
+    "apex-docgen-synthesis",
+    "apex-safe-change-orchestrator",
+    "apex-self-healing-forge",
+    "apex-autonomous-software-engineering",
+    "apex-architectural-evolution-engine",
+    "apex-dev-fork-orchestrator",
+    "apex-web-build-system",
+    "apex-vercel-web-foundry",
+    "apex-backend-infrastructure-engine",
+    "apex-secure-cloud-foundry"
+  ],
+  "required_combos": [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 1,
+  "manifest": "missions/inception-to-deployment/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/inception-to-deployment/MISSION.md",
+        "missions/inception-to-deployment/ROADMAP.md",
+        "missions/inception-to-deployment/CONTEXT.md",
+        "missions/inception-to-deployment/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/inception.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/READINESS.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "design",
+      "phase": "design",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/RECON.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/ROUTE.json",
+        "missions/inception-to-deployment/ARCHITECTURE.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/ROUTE.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/BUILD_PREFLIGHT.json",
+        "missions/inception-to-deployment/SAFE_CHANGE_PREFLIGHT.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/VERIFY.json",
+        "missions/inception-to-deployment/EVIDENCE.md"
+      ],
+      "resume_safe": false,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/VERIFY.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/RELEASE_PACKET.json",
+        "missions/inception-to-deployment/RELEASE_PACKET.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "deploy-gate",
+      "phase": "deploy-gate",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/DEPLOYMENT_DECISION.json"
+      ],
+      "resume_safe": false,
+      "approval_required": true,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "handoff",
+      "phase": "handoff",
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/HANDOFF.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "evolve",
+      "phase": "evolve",
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "inception-to-deployment",
+        "--family",
+        "master",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/inception-to-deployment/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/inception-to-deployment/EVOLUTION_BACKLOG.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    }
+  ]
+}

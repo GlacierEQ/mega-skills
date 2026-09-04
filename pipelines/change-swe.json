@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "id": "change-swe",
+  "display_name": "Change and Software Engineering",
+  "description": "Bounded repair, architectural evolution, and fork control without autonomous merge.",
+  "family": "change-swe",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "design",
+    "build",
+    "verify",
+    "package",
+    "deploy-gate",
+    "handoff",
+    "evolve"
+  ],
+  "mega_roots": [
+    "apex-safe-change-orchestrator",
+    "apex-self-healing-forge",
+    "apex-autonomous-software-engineering",
+    "apex-architectural-evolution-engine",
+    "apex-dev-fork-orchestrator"
+  ],
+  "required_combos": [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 1,
+  "manifest": "missions/change-swe/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/change-swe/MISSION.md",
+        "missions/change-swe/ROADMAP.md",
+        "missions/change-swe/CONTEXT.md",
+        "missions/change-swe/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/change-swe/inception.json"
+      ],
+      "produces": [
+        "missions/change-swe/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/change-swe/READINESS.json"
+      ],
+      "produces": [
+        "missions/change-swe/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "design",
+      "phase": "design",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/change-swe/RECON.json"
+      ],
+      "produces": [
+        "missions/change-swe/ROUTE.json",
+        "missions/change-swe/ARCHITECTURE.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/change-swe/ROUTE.json"
+      ],
+      "produces": [
+        "missions/change-swe/BUILD_PREFLIGHT.json",
+        "missions/change-swe/SAFE_CHANGE_PREFLIGHT.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/change-swe/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/change-swe/VERIFY.json",
+        "missions/change-swe/EVIDENCE.md"
+      ],
+      "resume_safe": false,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/change-swe/VERIFY.json"
+      ],
+      "produces": [
+        "missions/change-swe/RELEASE_PACKET.json",
+        "missions/change-swe/RELEASE_PACKET.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "deploy-gate",
+      "phase": "deploy-gate",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/change-swe/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/change-swe/DEPLOYMENT_DECISION.json"
+      ],
+      "resume_safe": false,
+      "approval_required": true,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "handoff",
+      "phase": "handoff",
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/change-swe/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/change-swe/HANDOFF.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "evolve",
+      "phase": "evolve",
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "change-swe",
+        "--family",
+        "change-swe",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/change-swe/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/change-swe/EVOLUTION_BACKLOG.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    }
+  ]
+}

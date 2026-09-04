@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.example/schemas/branch-lifecycle-repository-policy.v1.json",
+  "title": "GlacierEQ Branch Lifecycle Repository Policy",
+  "type": "object",
+  "required": ["schema"],
+  "properties": {
+    "schema": {"const": "glaciereq.branch-lifecycle-repository-policy.v1"},
+    "protected_branches": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "protected_patterns": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "preservations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "reason"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "source": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

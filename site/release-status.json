@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-03T09:25:00-10:00",
+  "phase": "RECONCILE_BUILD",
+  "canonical": {
+    "repository": "GlacierEQ/mega-skills",
+    "branch": "main",
+    "site_path": "site/index.html",
+    "index_git_blob_sha": "8055675e83cde574e86558ec65aecda14e516dd5",
+    "index_sha256": "182cb2ad1bc64009cfc19ff26a335f4b138b3a03708c091cda390cfb0f02bf65",
+    "source_bytes": 27380
+  },
+  "reconciled_state": {
+    "duplicate_site_trees_detected": false,
+    "canonical_site_files_before_this_release": [
+      "site/index.html",
+      "site/README.md"
+    ],
+    "prior_site_commits": [
+      "3cd855edcc8a993e69bcaf34573ba66a9537f64f",
+      "894f89d64a7e852dcc2d91ac345bdb4ad1d9207a"
+    ],
+    "lovable_project": {
+      "project_id": "05cd1942-ed7c-4d04-9c38-7dd325b0282b",
+      "state": "partial_noncanonical_visual_branch",
+      "continuation_blocker": "Lovable connector authorization lacks projects:write scope"
+    }
+  },
+  "validation": {
+    "local_runtime_status": "passed",
+    "checked": [
+      "internal anchors resolve",
+      "SEO title present",
+      "SEO description present",
+      "required architecture sections present",
+      "prefers-reduced-motion present",
+      "self-contained static assets",
+      "private repository URL not exposed"
+    ],
+    "validator": "scripts/validate_site.py"
+  },
+  "deployment": {
+    "target": "GitHub Pages via repository-native Actions",
+    "workflow": ".github/workflows/mega-skills-site.yml",
+    "status_at_manifest_creation": "workflow_not_yet_observed",
+    "external_host_connector_state": "Netlify/Vercel deployment functions not exposed in the current Code Mode runtime",
+    "completion_definition": "GitHub Actions validation passes and deploy job returns a github-pages URL"
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the GlacierEQ Skills → Combo Skills → Mega Skills hierarchy."""
+"""Validate the GlacierEQ Skills → Compound Skills → Mega Skills hierarchy."""
 
 from __future__ import annotations
 
@@ -8,7 +8,6 @@ import re
 from pathlib import Path
 
 from firewall import REQUIRED_FORBIDDEN, validate_policy
-
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry"
@@ -33,9 +32,7 @@ def expect(condition: bool, message: str) -> None:
 
 
 def nonempty_strings(value: object) -> bool:
-    return isinstance(value, list) and bool(value) and all(
-        isinstance(item, str) and item.strip() for item in value
-    )
+    return isinstance(value, list) and bool(value) and all(isinstance(item, str) and item.strip() for item in value)
 
 
 def validate_common(entry: dict, expected_layer: str) -> None:
@@ -44,10 +41,8 @@ def validate_common(entry: dict, expected_layer: str) -> None:
     expect(bool(ID_PATTERN.fullmatch(entry["id"])), f"{expected_layer}: invalid ID {entry['id']}")
     expect(entry["ownership"] in OWNERSHIP, f"{entry['id']}: invalid ownership")
     expect(bool(re.fullmatch(r"\d+\.\d+\.\d+", entry["version"])), f"{entry['id']}: invalid semantic version")
-    package = ROOT / entry["path"]
-    entrypoint = ROOT / entry["entrypoint"]
-    expect(package.is_dir(), f"{entry['id']}: missing package directory")
-    expect(entrypoint.is_file(), f"{entry['id']}: missing entrypoint")
+    expect((ROOT / entry["path"]).is_dir(), f"{entry['id']}: missing package directory")
+    expect((ROOT / entry["entrypoint"]).is_file(), f"{entry['id']}: missing entrypoint")
 
 
 def validate_skills(data: dict) -> set[str]:
@@ -65,16 +60,16 @@ def validate_skills(data: dict) -> set[str]:
         expect("name:" in frontmatter[1] and "description:" in frontmatter[1], f"{entry['id']}: missing required frontmatter")
         expect(f"name: {entry['id']}" in frontmatter[1], f"{entry['id']}: registry and SKILL.md name differ")
         resolved.add(entry["id"])
-    expect(len(resolved) >= 2, "skills.json: the initial graph needs more than one atomic Skill")
+    expect(len(resolved) >= 2, "skills.json: the graph needs more than one atomic Skill")
     readiness_path = REGISTRY / "skill-readiness.json"
     if readiness_path.is_file():
         readiness = json.loads(readiness_path.read_text(encoding="utf-8"))
         by_id = {item["id"]: item for item in readiness.get("skills", [])}
         for entry in data.get("entries", []):
             state = by_id.get(entry["id"])
-            expect(state is not None, f'{entry["id"]}: missing readiness record')
+            expect(state is not None, f"{entry['id']}: missing readiness record")
             if readiness.get("pass") == 2 and entry.get("maturity") == "active":
-                expect(state.get("ready") is True, f'{entry["id"]}: active skill lacks readiness evidence')
+                expect(state.get("ready") is True, f"{entry['id']}: active skill lacks readiness evidence")
     return resolved
 
 
@@ -101,34 +96,81 @@ def validate_combo_document(entry: dict) -> None:
     expect("status: active" in metadata or "status: candidate" in metadata, f"{entry['id']}: COMBO.md lacks a valid status")
 
 
+def detect_compound_cycle(adjacency: dict[str, list[str]]) -> list[str] | None:
+    state: dict[str, int] = {}
+    stack: list[str] = []
+    def visit(node: str) -> list[str] | None:
+        mark = state.get(node, 0)
+        if mark == 2:
+            return None
+        if mark == 1:
+            start = stack.index(node)
+            return stack[start:] + [node]
+        state[node] = 1
+        stack.append(node)
+        for child in sorted(adjacency.get(node, [])):
+            cycle = visit(child)
+            if cycle:
+                return cycle
+        stack.pop()
+        state[node] = 2
+        return None
+    for node in sorted(adjacency):
+        cycle = visit(node)
+        if cycle:
+            return cycle
+    return None
+
+
+def validate_composition_graph(data: dict, skill_ids: set[str], external: set[str]) -> set[str]:
+    entries = data.get("entries", [])
+    combo_ids = {entry.get("id") for entry in entries if isinstance(entry.get("id"), str)}
+    expect(len(combo_ids) == len(entries), "combo-skills.json: duplicate or invalid combo IDs")
+    adjacency: dict[str, list[str]] = {combo_id: [] for combo_id in combo_ids}
+    for entry in entries:
+        combo_id = entry["id"]
+        for member in entry.get("members", []):
+            member_id = member.get("id")
+            kind = member.get("kind")
+            if kind == "skill":
+                expect(member_id in skill_ids, f"{combo_id}: {member_id} does not resolve as atomic Skill")
+            elif kind == "compound-skill":
+                expect(member_id in combo_ids, f"{combo_id}: {member_id} does not resolve as Compound Skill")
+                adjacency[combo_id].append(member_id)
+            elif kind == "external-skill":
+                expect(member_id in external, f"{combo_id}: {member_id} does not resolve as external Skill")
+            else:
+                raise ValueError(f"{combo_id}: invalid member kind for {member_id}: {kind}")
+    cycle = detect_compound_cycle(adjacency)
+    expect(cycle is None, "compound-skill cycle: " + " -> ".join(cycle or []))
+    return combo_ids
+
+
 def validate_combos(data: dict, skill_ids: set[str], external: set[str]) -> set[str]:
     expect(data.get("schema_version") == 2, "combo-skills.json: unsupported schema version")
     expect(data.get("layer") == "combo-skills", "combo-skills.json: invalid layer")
     expect(data.get("schema") == "../schemas/combo-skill.schema.json", "combo-skills.json: missing canonical schema reference")
     expect(COMBO_SCHEMA.is_file() and COMBO_TEMPLATE.is_file(), "combo schema or template is missing")
-    try:
-        schema = json.loads(COMBO_SCHEMA.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"combo schema is invalid JSON: {exc}") from exc
+    schema = json.loads(COMBO_SCHEMA.read_text(encoding="utf-8"))
     expect("integration" in schema.get("required", []), "combo schema must require integration")
-    combo_ids: set[str] = set()
+    kinds = schema.get("properties", {}).get("members", {}).get("items", {}).get("properties", {}).get("kind", {}).get("enum", [])
+    expect("compound-skill" in kinds, "combo schema must permit recursive compound-skill members")
+    combo_ids = validate_composition_graph(data, skill_ids, external)
     for entry in data.get("entries", []):
         validate_common(entry, "combo skill")
         validate_combo_document(entry)
-        expect(entry["id"] not in combo_ids, f"duplicate combo ID: {entry['id']}")
         selection = entry.get("selection")
         expect(isinstance(selection, dict) and nonempty_strings(selection.get("use_when")) and nonempty_strings(selection.get("do_not_use_when")), f"{entry['id']}: selection contract is incomplete")
         members = entry.get("members")
-        expect(isinstance(members, list) and len(members) >= 2, f"{entry['id']}: a Combo Skill needs at least two members")
+        expect(isinstance(members, list) and len(members) >= 2, f"{entry['id']}: a Compound Skill needs at least two members")
         member_ids: list[str] = []
         for member in members:
             expect(isinstance(member, dict), f"{entry['id']}: member must be an object")
             member_id, kind = member.get("id"), member.get("kind")
             expect(isinstance(member_id, str) and ID_PATTERN.fullmatch(member_id), f"{entry['id']}: invalid member ID")
-            expect(kind in {"skill", "external-skill"}, f"{entry['id']}: invalid member kind for {member_id}")
+            expect(kind in {"skill", "compound-skill", "external-skill"}, f"{entry['id']}: invalid member kind for {member_id}")
             expect(isinstance(member.get("required"), bool) and bool(member.get("role")), f"{entry['id']}: member {member_id} has an incomplete contract")
             expect(member_id not in member_ids, f"{entry['id']}: duplicate member {member_id}")
-            expect(member_id in (skill_ids if kind == "skill" else external), f"{entry['id']}: {member_id} does not resolve as {kind}")
             member_ids.append(member_id)
         steps = entry.get("execution", {}).get("ordered_steps")
         expect(isinstance(steps, list) and len(steps) >= 2, f"{entry['id']}: ordered execution is incomplete")
@@ -147,8 +189,7 @@ def validate_combos(data: dict, skill_ids: set[str], external: set[str]) -> set[
         compounding = entry.get("compounding")
         expect(isinstance(compounding, dict), f"{entry['id']}: compounding object is missing")
         expect(nonempty_strings(compounding.get("inherits")) and bool(compounding.get("adds")) and bool(compounding.get("compound_artifact")) and nonempty_strings(compounding.get("next_layer_ready_when")), f"{entry['id']}: compounding contract is incomplete")
-        combo_ids.add(entry["id"])
-    expect(combo_ids, "combo-skills.json: at least one Combo Skill is required")
+    expect(combo_ids, "combo-skills.json: at least one Compound Skill is required")
     return combo_ids
 
 
@@ -156,10 +197,7 @@ def validate_firewall_contract(policy: object, mega_id: str) -> None:
     expect(isinstance(policy, dict), f"{mega_id}: firewall policy is missing")
     validate_policy(policy, mega_id)
     expect(FIREWALL_SCHEMA.is_file(), "firewall schema is missing")
-    try:
-        schema = json.loads(FIREWALL_SCHEMA.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"firewall schema is invalid JSON: {exc}") from exc
+    schema = json.loads(FIREWALL_SCHEMA.read_text(encoding="utf-8"))
     expect(schema.get("properties", {}).get("mode", {}).get("const") == "read_only", "firewall schema must enforce read_only mode")
     expect(set(REQUIRED_FORBIDDEN).issubset(policy["forbidden_actions"]), f"{mega_id}: mandatory firewall denials are incomplete")
 
@@ -178,11 +216,11 @@ def validate_mega(data: dict, combo_ids: set[str]) -> None:
         expect(entry["id"] not in seen, f"duplicate mega ID: {entry['id']}")
         required = entry.get("required_combos")
         conditional = entry.get("conditional_combos")
-        expect(nonempty_strings(required), f"{entry['id']}: at least one required Combo Skill is required")
+        expect(nonempty_strings(required), f"{entry['id']}: at least one required Compound Skill is required")
         expect(isinstance(conditional, list), f"{entry['id']}: conditional_combos must be a list")
         all_combos = set(required) | set(conditional)
-        expect(all_combos.issubset(combo_ids), f"{entry['id']}: unresolved Combo Skill reference")
-        expect(not set(required).intersection(conditional), f"{entry['id']}: Combo cannot be both required and conditional")
+        expect(all_combos.issubset(combo_ids), f"{entry['id']}: unresolved Compound Skill reference")
+        expect(not set(required).intersection(conditional), f"{entry['id']}: Compound Skill cannot be both required and conditional")
         expect("capability-readiness" in conditional, f"{entry['id']}: must include capability-readiness as a conditional route")
         expect(len(entry.get("durable_state", [])) >= 5, f"{entry['id']}: durable state contract is incomplete")
         expect(bool(entry.get("mission_output")) and bool(entry.get("adds")), f"{entry['id']}: mission integration contract is incomplete")
@@ -198,7 +236,7 @@ def main() -> int:
     except ValueError as exc:
         print(f"ERROR: {exc}")
         return 1
-    print("Mega Skills hierarchy validation passed.")
+    print("Mega Skills recursive hierarchy validation passed.")
     return 0
 
 

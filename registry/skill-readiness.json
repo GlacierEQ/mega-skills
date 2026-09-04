@@ -2,21 +2,22 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 708,
-    "combos": 32,
+    "skills": 709,
+    "combos": 33,
     "megas": 29,
-    "ready_total": 726,
+    "ready_total": 728,
     "not_ready_total": 43,
     "skill_states": {
       "instruction_ready": 671,
       "implementation_partial": 9,
       "implementation_unverified": 10,
-      "behavior_verified": 17,
+      "behavior_verified": 18,
       "contract_incomplete": 1
     },
     "combo_states": {
       "composition_candidate": 14,
-      "composition_ready": 18
+      "composition_ready": 19,
+      "blocked_by_dependency": 0
     },
     "mega_states": {
       "mission_contract_ready": 21,
@@ -2117,6 +2118,34 @@
         "skills/brainstorming/tests/test_brainstorming.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "branch-lifecycle-intelligence",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py",
+        ".github/workflows/branch-lifecycle-intelligence.yml"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/branch-lifecycle-intelligence/skill.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
+      ],
+      "structural_tests": [],
+      "reasons": [],
+      "verification_evidence": [
+        "18/18 exact BLI tests passed in GitHub-hosted Python 3.12 run 33738035380.",
+        "Live dynamic mutation run 33737915863 succeeded with a recorded fresh reclassification immediately before deletion and post-delete absence verification.",
+        "Negative protected-ref run 33736515190 succeeded with action KEEP and zero deletion.",
+        "Production report-only sweeps succeeded in job-application (33736612899) and job-app-helix (33736617358)."
+      ]
     },
     {
       "id": "brand-guidelines-anthropic",
@@ -15231,6 +15260,14 @@
       "reasons": []
     },
     {
+      "id": "branch-sprawl-control-loop",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "capability-readiness",
       "layer": "combo",
       "ready": true,
@@ -15365,6 +15402,14 @@
       "reasons": []
     },
     {
+      "id": "mission-aware-operating-loop",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "multi-agent-orchestration-mesh",
       "layer": "combo",
       "ready": true,
@@ -15473,14 +15518,6 @@
       "reasons": [
         "required skill not ready: mega-skills-test-runner"
       ]
-    },
-    {
-      "id": "mission-aware-operating-loop",
-      "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
-      "declared_maturity": "active",
-      "reasons": []
     }
   ],
   "megas": [

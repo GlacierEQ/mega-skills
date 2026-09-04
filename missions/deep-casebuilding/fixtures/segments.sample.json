@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "segments": [
+    {"speaker": "SPEAKER_1", "start": 0.0, "end": 4.0},
+    {"speaker": "SPEAKER_2", "start": 4.5, "end": 8.0},
+    {"speaker": "SPEAKER_1", "start": 8.5, "end": 10.0}
+  ]
+}
