@@ -1,0 +1,53 @@
+name: Refresh Mega-Skill Pyramids
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "registry/skills.json"
+      - "registry/combo-skills.json"
+      - "registry/mega-skills.json"
+      - "registry/external-skills.json"
+      - "scripts/generate_mega_skill_pyramids.py"
+      - "scripts/validate_hierarchy.py"
+      - "schemas/combo-skill.schema.json"
+      - "schemas/mega-skill-pyramid.schema.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-mega-skill-pyramids
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Validate recursive Skill contracts
+        run: |
+          python scripts/validate_hierarchy.py
+          python tests/test_recursive_skill_hierarchy.py -v
+      - name: Regenerate normalized recursive graph
+        run: |
+          python scripts/generate_mega_skill_pyramids.py
+          python scripts/generate_mega_skill_pyramids.py --check
+      - name: Commit deterministic registry refresh
+        run: |
+          if git diff --quiet -- registry/mega-skill-pyramids.json; then
+            echo "Pyramid registry already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add registry/mega-skill-pyramids.json
+          git commit -m "registry: refresh recursive Mega-Skill pyramids"
+          git push origin HEAD:main

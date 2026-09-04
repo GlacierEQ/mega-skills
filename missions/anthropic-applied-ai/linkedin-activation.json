@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "depends_on": [
+    "missions/anthropic-applied-ai/evidence-ledger.json",
+    "missions/anthropic-applied-ai/linkedin-backbone.json"
+  ],
+  "profile_state": {
+    "positioning": "READY",
+    "evidence_backbone": "READY",
+    "publication": "OPERATOR_ACTION_REQUIRED"
+  },
+  "recommendations": {
+    "status": "OPERATOR_ACTION_REQUIRED",
+    "target_count": 5,
+    "dimensions": [
+      "technical depth",
+      "systems thinking",
+      "problem solving and execution",
+      "reliability and follow-through",
+      "technical communication"
+    ],
+    "rule": "Recommendations must come from real first-degree connections with firsthand basis. Never fabricate or pre-attribute testimony."
+  },
+  "endorsements": {
+    "status": "OPERATOR_ACTION_REQUIRED",
+    "focus_skills": [
+      "AI Systems Architecture",
+      "Applied Artificial Intelligence",
+      "Python",
+      "Agentic AI",
+      "Distributed Systems",
+      "System Design",
+      "AI Infrastructure",
+      "Large Language Model (LLM) Applications",
+      "Systems Integration",
+      "AI Evaluation",
+      "Model Context Protocol (MCP)"
+    ]
+  },
+  "open_to_work": {
+    "status": "PARTIALLY_SPECIFIED",
+    "titles": [
+      "Forward Deployed AI Architect",
+      "AI Systems Architect",
+      "Applied AI Architect",
+      "Applied AI Engineer",
+      "AI Infrastructure Engineer",
+      "Agent Infrastructure Engineer",
+      "Solutions Architect"
+    ],
+    "locations": [],
+    "workplace_types": [],
+    "employment_types": [],
+    "rule": "Do not invent location, workplace, or employment preferences. Populate only from explicit operator choices."
+  },
+  "identity_verification": {
+    "status": "OPERATOR_ACTION_REQUIRED",
+    "rule": "Use LinkedIn's currently available identity-verification flow when eligible; do not represent verification as complete until LinkedIn confirms it."
+  },
+  "portfolio_gateway": {
+    "status": "READY",
+    "url": "https://casey-barton-glaciereq.vercel.app",
+    "source_id": "job-application",
+    "purpose": "Single recruiter conversion surface above individual GitHub repositories."
+  },
+  "technical_activity": {
+    "status": "QUEUE_READY",
+    "topics": [
+      {
+        "topic": "Why resume-safe agent stages require artifact hashes, not stage IDs",
+        "evidence_source": "mega-skills",
+        "publication_state": "PRIVATE_SOURCE_REQUIRES_PUBLIC_SAFE_REFRAMING"
+      },
+      {
+        "topic": "Technology selection as an executable proof problem, not a language popularity contest",
+        "evidence_source": "tower-of-babel",
+        "publication_state": "READY"
+      },
+      {
+        "topic": "Fail-closed autonomy: preserving conflicting votes instead of averaging them away",
+        "evidence_source": "spacex-autonomy",
+        "publication_state": "READY"
+      },
+      {
+        "topic": "Claim → behavior → implementation → verification → receipt → promotion",
+        "evidence_source": "job-application",
+        "publication_state": "READY"
+      },
+      {
+        "topic": "How to separate simulated infrastructure control from unverified production claims",
+        "evidence_source": "xai-colossus-cooling",
+        "publication_state": "READY"
+      }
+    ]
+  },
+  "metrics": {
+    "status": "BACKBONE_ACTIVE",
+    "rule": "Only publish metrics attached to an evidence artifact and explicit scope. Never infer scale from repository names or architecture language."
+  },
+  "manual_profile_checks": {
+    "profile_photo": "UNVERIFIED",
+    "banner": "PROPOSED_NOT_VERIFIED",
+    "contact_info": "UNVERIFIED",
+    "custom_url": "UNVERIFIED"
+  }
+}

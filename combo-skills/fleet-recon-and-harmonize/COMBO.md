@@ -1,56 +1,64 @@
 ---
 id: fleet-recon-and-harmonize
-display_name: Fleet Recon and Harmonize
+display_name: Fleet Recon and Harmonize — Harmonious Merge Route
 schema: ../../schemas/combo-skill.schema.json
-version: 0.1.0
+version: 0.2.0
 status: active
 ---
 
-# Fleet Recon and Harmonize
+# Fleet Recon and Harmonize — Harmonious Merge Route
 
 ## Purpose and selection
 
-Use this Combo Skill when unmerged git branch clutter across one or more repositories must be audited, synthesized into `main`, tested, and safely pruned without data loss. Do **not** use it when the task is a simple local git commit or single-file edit; route to standard git workflows instead.
+Use this Combo Skill when branches across one or more repositories must be converged without discarding the living `main` baseline. It turns raw divergence into a value-preservation plan: identify unique beneficial behavior, selectively integrate it into `main`, verify it there, and retire only refs whose value has been preserved or explicitly rejected.
+
+Do **not** use it for a simple local commit or single-file edit. Do **not** use it to replace `main`, bulk-merge a branch inventory, or preserve known secret-bearing history.
 
 ## Incremental value
 
-This Combo Skill turns raw git history divergence into an evidence-backed synthesis and cleanup plan. It adds branch divergence calculation, regression test gating, and cryptographic archive tagging that no individual member owns.
+The member skills provide scope boundaries, branch analysis, and validation. This Combo adds the durable handoff from branch inventory to an evidence-backed **Harmonious Merge Audit**, with explicit safety gates for branch retirement and credential-exposure remediation.
 
 ## Member contract
 
 | Order | Member ID | Kind | Required | Role in this Combo | Receives | Must produce | Local validation |
 |---:|---|---|---|---|---|---|---|
-| 1 | `mission-contract` | Skill | Yes | Set harmonization scope and safety gates | Target repo scope | `MISSION.md` | Non-destructive boundaries are explicit |
-| 2 | `fleet-git-harmonizer-core` | Skill | Yes | Audit divergence, synthesize, tag, and prune | `MISSION.md` and repository path | `fleet-harmonization-record.md` | Zero data loss verified via archive tags |
-| 3 | `quality-gate` | Skill | Yes | Verify regression suites and pruning receipts | Synthesis record and test results | Gate record | 100% green tests before branch deletion |
+| 1 | `mission-contract` | Skill | Yes | Define repository scope, canonical baseline, approvals, and security constraints | Target repo scope | `MISSION.md` | `main`, ref scope, checks, and non-destructive boundaries are explicit |
+| 2 | `fleet-git-harmonizer-core` | Skill | Yes | Analyze branch value, plan selective integration, and create dispositions | `MISSION.md` and repository path | `harmonious-merge-audit.json` | Every branch/tag has an evidence-backed disposition |
+| 3 | `quality-gate` | Skill | Yes | Verify accepted changes on `main` and validate retirement receipts | Main test results and audit | Gate record | Required checks pass on `main`; no unapproved ref deletion |
 
 ## Ordered execution
 
-1. **Mission boundary — `mission-contract`** consumes candidate repository scopes, produces `MISSION.md`, and passes when safety boundaries and test commands are explicit.
-2. **Divergence and synthesis — `fleet-git-harmonizer-core`** consumes `MISSION.md`, produces `fleet-divergence-audit.json` and synthesized branches, and passes when commits are merged and archive tags applied.
-3. **Regression gate — `quality-gate`** consumes test outputs and synthesis logs, produces a gate record, and passes when test assertions pass 100% green.
+1. **Mission boundary — `mission-contract`:** establish `main` as the canonical baseline; enumerate in-scope branches/tags; declare validation commands, security constraints, and approval boundaries.
+2. **Harmonious analysis and integration — `fleet-git-harmonizer-core`:** compare each ref semantically to `main`, group overlaps by capability, produce a disposition for every ref, and integrate only approved, minimal, compatible behavior.
+3. **Quality gate — `quality-gate`:** confirm all required validation passes on the updated `main`; confirm the audit records preservation or rejection evidence for every retirement candidate.
 
 ## Handoff contracts
 
 | From | To | Required inputs | Accepted output | Failure owner | Close condition |
 |---|---|---|---|---|---|
-| `mission-contract` | `fleet-git-harmonizer-core` | Repository scopes, branch retention rules | Verified divergence manifest and synthesis diffs | mission owner | Scope and safety gates are explicit |
-| `fleet-git-harmonizer-core` | `quality-gate` | Synthesized tree, test results, archive tags | Verified gate record | execution owner | Tests green and archive tags cryptographically verified |
+| `mission-contract` | `fleet-git-harmonizer-core` | Repository scope, baseline SHA, ref inventory, branch-retention and security rules | Verified semantic divergence manifest and disposition plan | Mission owner | Scope, baseline, and safety gates are explicit |
+| `fleet-git-harmonizer-core` | `quality-gate` | Updated `main`, integration provenance, test outputs, ref dispositions | Verified gate record and retirement-readiness decision | Execution owner | Tests green on `main`; all candidates accounted for |
 
-## Evidence, risks, and state
+## Security and ref-retirement gates
 
-The Combo must record all commit SHAs, divergence counts, archive tag names, and test outputs in its evidence register. It must not force-push to remote branches or delete unarchived branches. Update active state after each repository batch completes.
+- `main` must remain the verified canonical result. It may not be reset, deleted, or replaced by a candidate branch.
+- A branch can be retired only after its distinct value is verified on `main` or explicitly rejected, its dependencies are clear, and the configured human approval is recorded.
+- Do not create tags, backup refs, or archive branches that preserve known credential-bearing history.
+- If a tracked credential is discovered: rotate/revoke first, finish the disposition plan, then route any all-ref history rewrite through separately authorized administration. This Combo does not authorize force-pushes or history rewrites.
 
-## Quality gates
+## Evidence, state, and quality gates
 
-The Combo is complete only when all candidate branches are either synthesized into `main` or safely archived, regression tests pass 100% green on `main`, and `fleet-harmonization-record.md` is emitted.
+Record baseline and final `main` SHAs, complete ref inventory, per-ref dispositions, preserved behavior and source commits, test receipts, required approvals, security findings, and any blocked follow-up in the evidence register. Update active state after every repository batch.
+
+The Combo is complete only when every scoped branch/tag has a disposition, all accepted integrations validate on `main`, and every proposed deletion remains pending the required approval or has a recorded completed receipt.
 
 ## Compound output
 
-**Artifact:** `fleet-harmonization-record.md`
+**Artifact:** `harmonious-merge-audit.json`
 
 **Ready for Mega Skill integration when:**
 
-1. Every pruned branch has a verified archive tag.
-2. Regression test suites pass with zero regressions.
-3. Unmerged commits and provenance trailers are documented.
+1. `main` is preserved and has passed required checks after accepted integrations.
+2. Every scoped ref has an evidence-backed disposition.
+3. No branch is deleted merely to reduce clutter.
+4. Any credential exposure is either escalated through the rotation/history-rewrite gate or explicitly confirmed resolved.

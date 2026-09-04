@@ -1,127 +1,79 @@
 # GlacierEQ Mega Skills
 
-**GlacierEQ Mega Skills** is a private, monolithic control-plane repository for a compounding hierarchy of agent capability:
+Mega-Skills is the canonical capability repository for building complete workflows and pipelines as **hierarchies of real Skills**.
 
 ```text
-SKILLS  →  COMBO SKILLS  →  MEGA SKILLS
-atomic      reusable          end-to-end
-method      capability chain  mission system
+                                 MEGA SKILL
+                         complete workflow / pipeline
+                         /          |           \
+              COMPOUND SKILL   COMPOUND SKILL   COMPOUND SKILL
+                /      \              |             /       \
+        ATOMIC SKILL   COMPOUND SKILL  ...     ATOMIC SKILL  ...
 ```
 
-The repository keeps the whole capability graph, governance, tests, and release metadata in one place. It does **not** flatten everything into one giant prompt. Each layer has a distinct job:
+**Every building block is a proper Skill.** Atomic Skills own precise procedures. Compound Skills are independently valid reusable workflow Skills with ordering, handoffs, artifacts, and validation. Mega Skills are proper mission-scale Skills whose dependency pyramid forms the complete end-to-end workflow/pipeline.
 
-| Layer | Unit of reuse | Must own | Must not do |
-|---|---|---|---|
-| **Skills** | A precise capability or procedure | Inputs, outputs, method, local validation | Orchestrate unrelated work or duplicate another skill’s method |
-| **Combo Skills** | A repeated, bounded chain of Skills | Handoff contracts, ordering, compound artifact | Hold the full project state or silently replace members |
-| **Mega Skills** | A long-horizon mission system | Route selection, durable state, phase gates, integration | Copy all lower-layer instructions into itself |
+Existing `combo-skills/` manifests remain canonical and supported; their semantic role is explicit: they are Compound-Skill source manifests, not non-Skill orchestration glue.
 
-> **Snowball rule:** every higher layer consumes verified artifacts from lower layers, adds one new integration capability, and emits a more decision-ready artifact. Nothing gets bigger merely by repeating instructions.
+## Current registries
 
-## Exact repository layout
+| Registry | Role | Current entries |
+|---|---|---:|
+| `registry/skills.json` | Atomic Skills | 709 |
+| `registry/combo-skills.json` | Compound workflow Skills | 33 |
+| `registry/mega-skills.json` | Mega apex Skills | 29 |
+| `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 29 Mega roots |
+| `registry/pipelines.json` | Executable deep-work DAGs | 6 |
 
-```text
-GlacierEQ/mega-skills/
-├── README.md                                 # Repository contract and contributor entry point
-├── HIERARCHY.md                              # Layer rules, dependency direction, and snowball model
-├── OWNERSHIP.md                              # Authorship, provenance, and confidentiality rules
-├── COMPATIBILITY.md                          # Versioning and external-reference update policy
-├── .gitignore                                # Secrets, local state, and generated artifacts
-├── registry/
-│   ├── skills.json                           # Canonical registry for atomic Skills
-│   ├── combo-skills.json                     # Canonical registry for reusable compositions
-│   ├── mega-skills.json                      # Canonical registry for mission systems
-│   └── external-skills.json                  # Installed-platform references, never source copies
-├── skills/
-│   ├── mission-contract/SKILL.md             # Mission boundary and acceptance criteria
-│   ├── roadmap-builder/SKILL.md              # Dependency-aware chunks and gates
-│   ├── evidence-register/SKILL.md            # Source, test, artifact, and claims trace
-│   ├── context-capsule/SKILL.md              # Lean active-state capsule
-│   ├── work-packet/SKILL.md                  # Bounded specialist assignment contract
-│   ├── quality-gate/SKILL.md                 # Reproducible acceptance decision
-│   └── handoff-record/SKILL.md               # Exact recovery point
-├── combo-skills/
-│   ├── _template/COMBO.md                    # Required human-facing integration template
-│   ├── long-horizon-core/COMBO.md            # Required core composition of seven atomic Skills
-│   ├── recon-and-map/COMBO.md
-│   ├── skill-forge/COMBO.md
-│   └── automation-control/COMBO.md
-├── mega-skills/
-│   └── far-away-party/MEGA.md
-├── governance/
-│   ├── CONTRIBUTING.md
-│   └── decision-records/README.md
-├── scripts/validate_hierarchy.py             # Contract and no-copy validator
-├── schemas/combo-skill.schema.json           # Versioned machine-readable Combo integration schema
-├── tests/test_hierarchy.py
-└── .github/
-    ├── CODEOWNERS
-    └── workflows/validate-hierarchy.yml
-```
+Counts describe repository objects, not production/adoption claims.
 
-## The snowball model
+## Deep-work pipelines
 
-The unit above a Skill must carry forward a real, reviewable asset from the unit below it.
+Pipelines make Mega pyramids executable from **inception through a human-gated deploy packet**.
 
-| Step | Input from below | New contribution at this level | Output to the next level |
-|---|---|---|---|
-| **Skill** | A narrow task and source constraints | A precise method and local acceptance check | A verified atomic artifact |
-| **Combo Skill** | Two or more atomic artifacts or capability contracts | A repeated ordering and explicit handoff | A compound work packet with traceable dependencies |
-| **Mega Skill** | One or more Combo outputs | Mission routing, durable context, risk gates, and cross-combo integration | An evidence-backed, end-to-end mission result and resume state |
+| Pipeline | Family | Job |
+|---|---|---|
+| `inception-to-deployment` | master | Full span: inception → evolve |
+| `control-plane` | control-plane | Always-on session and guarded operating loop |
+| `memory-fleet` | memory-fleet | Recon, memory synthesis, fleet map |
+| `change-swe` | change-swe | Bounded repair and verification |
+| `cultivate-main` | change-swe | Assess/merge unique safe work into living `main` |
+| `anthropic-applied-ai-readiness` | mission | Career evidence backbone |
 
-For example, `recon-and-map` does not repeat Far Away Party Core or repository-onboarding instructions. It locks the ordered handoff, produces a project map, and becomes a selectable stage inside the Far Away Party Mega Skill. The Mega layer owns only the long-horizon work: conditional routing, durable state, approval gates, and final integration.
+`deploy_mode` is `approval_packet_only`. Pipelines emit `DEPLOYMENT_DECISION.json` with `READY_PENDING_HUMAN_APPROVAL`. They do not deploy, merge, or send network.
 
-## First graph
-
-```text
-                         ┌─────────────────────────────────┐
-                         │  MEGA: far-away-party            │
-                         │  mission routing + durable state │
-                         └───────────────┬─────────────────┘
-                                         │
-             ┌──────────────────────────┼──────────────────────────┐
-             ▼                          ▼                          ▼
-  COMBO: recon-and-map       COMBO: skill-forge       COMBO: automation-control
-  clarify + topology         design + package         assess + configure + run
-             │                          │                          │
-             ▼                          ▼                          ▼
-  SKILL: far-away-party-core  SKILL: far-away-party-core  SKILL: far-away-party-core
-  EXTERNAL: repository...     EXTERNAL: skill-creator     EXTERNAL: automation/config/runtime
-```
-
-The initial version has seven GlacierEQ-owned atomic Skills—mission framing, planning, evidence, active context, work packets, quality gates, and handoffs. Their required composition is `long-horizon-core`; external/platform references remain separate where a procedure belongs outside this repository. Do not fabricate ownership or create empty internal packages merely to make the graph look full.
-
-## Normal operating progression
-
-Use the same sequence for every non-trivial request: **parse** the outcome and constraints; **inspect** current state and relevant layers; **research** only unresolved facts; **decide** the route and approval boundary; **execute** a bounded, verified chunk; then **assimilate** evidence and the next action. Mega Skills apply the progression across a mission, Combo Skills within a repeated capability chain, and Skills within their narrow procedure.
-
-## Creating the private repository
-
-This package is a foundation draft. It has not created or pushed any repository. After review, initialize it as a private repository and push it:
+See [`docs/INCEPTION_TO_DEPLOYMENT.md`](docs/INCEPTION_TO_DEPLOYMENT.md) and [`pipelines/README.md`](pipelines/README.md).
 
 ```bash
-gh repo create GlacierEQ/mega-skills --private --source /path/to/GlacierEQ-mega-skills-foundation --remote origin --push
+python scripts/run_deep_work_pipeline.py --pipeline inception-to-deployment --validate-only
+python scripts/run_deep_work_pipeline.py --pipeline control-plane
+python tests/test_deep_work_pipelines.py -v
 ```
 
-Run the complete local quality gate before every merge:
+## Recursive composition
 
-```bash
-python skills/mega-skills-test-runner/scripts/run_checks.py --repo .
-```
+Compound Skills may contain Atomic Skills, other validated Compound Skills, and explicit external references. Composition is a DAG: self-reference, direct/indirect cycles, and unresolved owned references fail validation.
 
 The runner byte-compiles `scripts/` and `tests/` on the running interpreter, then executes the hierarchy validator, full regression suite, and `git diff --check` in that order. To preserve a machine-readable result outside the source tree, use:
+Exact IDs are preserved. Typed machine keys (`atomic:`, `compound:`, `mega:`, `external:`) prevent cross-layer identity collisions while retaining the canonical human Skill ID. Shared Skills remain shared rather than being copied into each parent.
 
-```bash
-python skills/mega-skills-test-runner/scripts/run_checks.py \
-  --repo . \
-  --report /tmp/mega-skills-validation.json
-```
+See [`HIERARCHY.md`](HIERARCHY.md) for the governing contract.
 
-To run the checks individually during diagnosis, use:
+## Generate or verify the canonical graph
 
 ```bash
 python scripts/validate_hierarchy.py
-python -m unittest discover -s tests -v
-git diff --check
-git status --short --branch
+python scripts/generate_mega_skill_pyramids.py
+python scripts/generate_mega_skill_pyramids.py --check
+python tests/test_recursive_skill_hierarchy.py -v
 ```
+
+The generated registry stores 29 Mega roots, canonical Compound adjacency, typed leaves, shared-node lineage, and canonical artifact/validation field paths. Any Mega pyramid can therefore be expanded deterministically to real Skill nodes without duplicating the underlying Skill contracts.
+
+## Public projection
+
+Job Application Helix projects a recruiter-facing view at:
+
+`https://casey-barton-glaciereq.vercel.app/mega-skills/`
+
+That site is a projection only. Canonical Skill identity, composition, validation, and provenance remain here.
