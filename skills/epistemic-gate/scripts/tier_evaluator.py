@@ -242,8 +242,9 @@ def evaluate_target(target: Path, required_tier: EpistemicTier = EpistemicTier.L
                 if tier >= required_tier:
                     authorized = False
     
-    # SHA-256 of target
-    all_sha256[str(target)] = compute_sha256(target)
+    # SHA-256 of target (missing targets fail closed through L0 evidence, not a crash)
+    if target.exists():
+        all_sha256[str(target)] = compute_sha256(target)
     
     return VerificationResult(
         tier=achieved_tier,

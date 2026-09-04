@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "id": "ship-cloud",
+  "display_name": "Ship and Cloud",
+  "description": "Web/backend/cloud packaging that stops at a deployment approval packet.",
+  "family": "ship-cloud",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "design",
+    "build",
+    "verify",
+    "package",
+    "deploy-gate",
+    "handoff",
+    "evolve"
+  ],
+  "mega_roots": [
+    "apex-web-build-system",
+    "apex-vercel-web-foundry",
+    "apex-backend-infrastructure-engine",
+    "apex-secure-cloud-foundry"
+  ],
+  "required_combos": [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 1,
+  "manifest": "missions/ship-cloud/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/ship-cloud/MISSION.md",
+        "missions/ship-cloud/ROADMAP.md",
+        "missions/ship-cloud/CONTEXT.md",
+        "missions/ship-cloud/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/ship-cloud/inception.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/ship-cloud/READINESS.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "design",
+      "phase": "design",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/ship-cloud/RECON.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/ROUTE.json",
+        "missions/ship-cloud/ARCHITECTURE.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/ship-cloud/ROUTE.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/BUILD_PREFLIGHT.json",
+        "missions/ship-cloud/SAFE_CHANGE_PREFLIGHT.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/ship-cloud/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/VERIFY.json",
+        "missions/ship-cloud/EVIDENCE.md"
+      ],
+      "resume_safe": false,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/ship-cloud/VERIFY.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/RELEASE_PACKET.json",
+        "missions/ship-cloud/RELEASE_PACKET.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "deploy-gate",
+      "phase": "deploy-gate",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/ship-cloud/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/DEPLOYMENT_DECISION.json"
+      ],
+      "resume_safe": false,
+      "approval_required": true,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "handoff",
+      "phase": "handoff",
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/ship-cloud/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/ship-cloud/HANDOFF.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "evolve",
+      "phase": "evolve",
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "ship-cloud",
+        "--family",
+        "ship-cloud",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/ship-cloud/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/ship-cloud/EVOLUTION_BACKLOG.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    }
+  ]
+}

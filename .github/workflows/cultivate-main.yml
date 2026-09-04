@@ -1,0 +1,54 @@
+name: Cultivate Main
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: report or apply
+        required: true
+        default: apply
+        type: choice
+        options:
+          - report
+          - apply
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: cultivate-main-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  assess-and-cultivate:
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Assess and optionally merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'apply' }}
+        run: |
+          set -eu
+          python tests/test_cultivate_main.py -v
+          if [ "$MODE" = "apply" ]; then
+            python scripts/cultivate_main.py --apply --repo "${{ github.repository }}" --output missions/cultivate-main/ASSESSMENT.json
+          else
+            python scripts/cultivate_main.py --report --repo "${{ github.repository }}" --output missions/cultivate-main/ASSESSMENT.json
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cultivate-main-assessment
+          path: missions/cultivate-main/ASSESSMENT.json
+          if-no-files-found: ignore
