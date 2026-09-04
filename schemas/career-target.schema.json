@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GlacierEQ Career Target Contract v2",
+  "type": "object",
+  "required": ["schema_version","company","role_family","primary_role","identity","snapshot_date","competency_domains","requirements"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "company": {"type": "string","minLength": 1},
+    "role_family": {"type": "string","minLength": 1},
+    "primary_role": {"type": "string","minLength": 1},
+    "identity": {"type": "string","minLength": 1},
+    "snapshot_date": {"type": "string","format": "date"},
+    "freshness": {
+      "type": "object",
+      "properties": {
+        "max_target_age_days": {"type": "integer","minimum": 1},
+        "max_source_age_days": {"type": "integer","minimum": 1}
+      }
+    },
+    "market_sources": {"type": "array","items": {"type": "object"}},
+    "role_tracks": {"type": "object"},
+    "competency_domains": {"type": "array","minItems": 1,"uniqueItems": true,"items": {"type": "string","minLength": 1}},
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id","label","competencies","weight","hard_gate","minimum_strength"],
+        "properties": {
+          "id": {"type": "string","minLength": 1},
+          "label": {"type": "string","minLength": 1},
+          "competencies": {"type": "array","minItems": 1,"items": {"type": "string","minLength": 1}},
+          "weight": {"type": "number","exclusiveMinimum": 0,"maximum": 2},
+          "hard_gate": {"type": "boolean"},
+          "minimum_strength": {"type": "number","minimum": 0,"maximum": 1},
+          "source_basis": {"type": "array","items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

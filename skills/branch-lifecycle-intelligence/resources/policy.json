@@ -1,0 +1,36 @@
+{
+  "schema": "glaciereq.branch-lifecycle-policy.v1",
+  "version": "1.0.0",
+  "stale_days": 30,
+  "minimum_delete_confidence": 95,
+  "protected_patterns": [
+    "main",
+    "master",
+    "develop",
+    "development",
+    "production",
+    "prod",
+    "staging",
+    "release/*",
+    "hotfix/*"
+  ],
+  "family_prefixes": [
+    "apex/",
+    "codex/",
+    "feat/",
+    "feature/",
+    "fix/",
+    "chore/",
+    "repair/",
+    "promote/",
+    "promotion/",
+    "evolve/",
+    "rotor/"
+  ],
+  "automatic_delete_states": [
+    "MERGED_REDUNDANT",
+    "REACHABLE_REDUNDANT"
+  ],
+  "fail_closed_on_evidence_error": true,
+  "assessment_ttl_seconds": 300
+}
