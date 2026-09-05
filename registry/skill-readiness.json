@@ -5,12 +5,12 @@
     "skills": 709,
     "combos": 32,
     "megas": 29,
-    "ready_total": 727,
-    "not_ready_total": 43,
+    "ready_total": 726,
+    "not_ready_total": 44,
     "skill_states": {
-      "instruction_ready": 672,
+      "instruction_ready": 671,
       "implementation_partial": 9,
-      "implementation_unverified": 11,
+      "implementation_unverified": 12,
       "behavior_verified": 17
     },
     "combo_states": {
@@ -15404,7 +15404,7 @@
         "skills/zoominfo/tests/test_zoominfo.py"
       ],
       "reasons": []
-    },{"id":"casebuild-mesh-organization","layer":"skill","ready":true,"state":"instruction_ready","declared_maturity":"active","instruction_ready":true,"real_implementation_files":[],"generic_adapter_files":[],"scaffold_files":[],"stub_files":[],"behavioral_tests":[],"structural_tests":[],"reasons":[]}	], "combos": [
+    },{"id":"casebuild-mesh-organization","layer":"skill","ready":false,"state":"implementation_unverified","declared_maturity":"candidate","instruction_ready":true,"real_implementation_files":[],"generic_adapter_files":[],"scaffold_files":[],"stub_files":[],"behavioral_tests":[],"structural_tests":[],"reasons":["instruction-only package; executable implementation and behavioral verification are not present"]}  ], "combos": [
     {
       "id": "aerospace-mission-simulation",
       "layer": "combo",
