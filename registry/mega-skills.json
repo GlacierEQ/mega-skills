@@ -356,6 +356,13 @@
         "human_control_points": [
           "approve_swarm_topology",
           "authorize_external_agent_delegation"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
         ]
       },
       "mission_output": "AGENT_ARCHITECT_RECORD.md",
@@ -895,30 +902,42 @@
         "mega_id": "apex-casebuild-mesh",
         "mode": "read_only",
         "allowed_actions": [
+          "emit_receipt",
           "read_repository",
-          "read_connected_sources",
           "run_local_tests",
-          "hash_local_artifacts",
-          "write_run_artifacts",
-          "emit_receipt"
+          "write_run_artifacts"
         ],
         "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
+          "autonomous_legal_decision",
+          "credential_access",
+          "deletion",
           "deployment",
+          "execute_unknown_program",
+          "external_mutation",
+          "file_submission",
+          "legal_filing",
           "merge",
-          "credential_access"
+          "network_send"
         ],
         "forbidden_actions": [
-          "legal_filing",
           "autonomous_legal_decision",
-          "privilege_waiver",
-          "public_release",
+          "credential_access",
           "deletion",
-          "execute_unknown_program"
+          "deployment",
+          "execute_unknown_program",
+          "external_mutation",
+          "file_submission",
+          "legal_filing",
+          "merge",
+          "network_send"
         ],
-        "fail_closed": true
+        "required_evidence": [
+          "failure_record",
+          "input_manifest",
+          "output_manifest",
+          "phase_receipts"
+        ],
+        "human_control": "required"
       },
       "human_control_points": [
         "approve_case_scope_and_sensitive_access",
@@ -1000,6 +1019,13 @@
         "human_control_points": [
           "approve_security_patches",
           "escalate_critical_vulnerabilities"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
         ]
       },
       "mission_output": "CYBERSECURITY_SENTINEL_RECORD.md",
@@ -1397,6 +1423,13 @@
         "human_control_points": [
           "approve_live_campaign",
           "authorize_ad_budget_allocation"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
         ]
       },
       "mission_output": "GROWTH_INTELLIGENCE_RECORD.md",
@@ -1505,6 +1538,13 @@
         "human_control_points": [
           "approve_asset_publishing",
           "release_interactive_build"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
         ]
       },
       "mission_output": "INTERACTIVE_ENGINE_RECORD.md",
@@ -2194,6 +2234,13 @@
         "human_control_points": [
           "approve_production_deployment",
           "approve_domain_rebinding"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
         ]
       },
       "mission_output": "VERCEL_WEB_FOUNDRY_RECORD.md",
