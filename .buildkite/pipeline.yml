@@ -7,14 +7,16 @@ steps:
       python3 scripts/validate_hierarchy.py
       python3 -m unittest discover -s tests -v
       python3 -m compileall -q scripts tests
-      rm -rf /tmp/mega-skills-buildkite-run
-      python3 scripts/run_mega_mission.py --output-dir /tmp/mega-skills-buildkite-run
+      export RUN_DIR=/tmp/mega-skills-buildkite-run
+      rm -rf "$RUN_DIR"
+      python3 scripts/run_mega_mission.py --output-dir "$RUN_DIR"
       python3 - <<'PY'
       import hashlib
       import json
+      import os
       from pathlib import Path
 
-      run_dir = Path("/tmp/mega-skills-buildkite-run")
+      run_dir = Path(os.environ["RUN_DIR"])
       receipt = json.loads((run_dir / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
       assert receipt["status"] == "COMPLETED"
       manifest = receipt["output_manifest"]
@@ -29,3 +31,28 @@ steps:
       PY
     artifact_paths:
       - "/tmp/mega-skills-buildkite-run/**/*"
+
+  - label: ":compass: Harmonious Merge Watch (read-only)"
+    key: "harmonious-merge-watch"
+    timeout_in_minutes: 10
+    command: |
+      set -euo pipefail
+      git fetch --quiet --prune origin \
+        '+refs/heads/*:refs/remotes/origin/*' \
+        '+refs/tags/*:refs/tags/*'
+      python3 scripts/harmonious_merge_watch.py \
+        --baseline main \
+        --output .verification-artifacts/harmonious-merge-watch.json
+      python3 - <<'PY'
+      import json
+      from pathlib import Path
+
+      receipt = json.loads(Path(".verification-artifacts/harmonious-merge-watch.json").read_text())
+      assert receipt["schema"] == "glaciereq.harmonious-merge-watch.v1"
+      assert receipt["mode"] == "read_only"
+      assert all(value is False for value in receipt["enforcement"].values() if isinstance(value, bool))
+      assert receipt["baseline"]["name"] == "main"
+      print("Verified read-only Harmonious Merge Watch receipt.")
+      PY
+    artifact_paths:
+      - ".verification-artifacts/harmonious-merge-watch.json"
