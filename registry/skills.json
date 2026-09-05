@@ -16172,5 +16172,5 @@
         "Unbounded operations outside declared domain scope"
       ]
     }
-  ]
+,    {      "id": "branch-lifecycle-intelligence",      "display_name": "Branch Lifecycle Intelligence",      "ownership": "glaciereq",      "maturity": "active",      "version": "0.1.0",      "path": "skills/branch-lifecycle-intelligence",      "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",      "purpose": "Evidence-first Git branch lifecycle intelligence for collapsing branch sprawl without destroying useful work. Inventories branches and PR lineage, proves redundancy, groups related work into synthesis families, preserves divergent value, and emits bounded cleanup plans and receipts.",      "input_contract": [        "Domain mandate and parameters"      ],      "output_contract": [        "Verified task execution receipt and output payload"      ],      "local_validation": [        "18/18 exact BLI tests and repository hierarchy validation pass"      ],      "does_not_own": [        "Unbounded operations outside declared domain scope"      ]    }  ]
 }
