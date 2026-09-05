@@ -1,0 +1,10 @@
+{
+  "mode": "wav_screening",
+  "nominal_hz": 60.0,
+  "frames": 4,
+  "mean_hz": 60.0,
+  "verdict": "continuous",
+  "violations": [],
+  "laboratory_certification": false,
+  "windows": 4
+}
