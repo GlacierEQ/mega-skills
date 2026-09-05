@@ -2,7 +2,8 @@
 """Tests for forensic-evidence-chain-core.
 Structural checks plus L2 behavioral coverage: SHA-256 determinism, manifest
 tamper detection, Bates contiguity, anomaly scanning, timeline inversion
-detection, PII scrubbing, and hash-chain integrity.
+detection, duplicate-timestamp warning tiers and strict escalation, PII
+scrubbing, and hash-chain integrity.
 Run with: python -m unittest discover -s tests -v   (or pytest)
 """
 
@@ -151,7 +152,28 @@ class TestForensicChainBehavior(unittest.TestCase):
             {"id": "b", "timestamp": "2026-07-06T10:00:00+00:00"},
         ]}
         dup_report = timestamp_verifier.verify_events(dupes)
-        self.assertTrue(any(p["kind"] == "duplicate_timestamp" for p in dup_report["problems"]))
+        self.assertTrue(dup_report["verified"])
+        self.assertTrue(any(w["kind"] == "duplicate_timestamp" for w in dup_report["warnings"]))
+        self.assertEqual(dup_report["problems"], [])
+
+    def test_timestamp_cli_strict_mode_escalates_warnings(self):
+        scripts = Path(__file__).parent.parent / "scripts"
+        events_path = self.root / "events.json"
+        events_path.write_text(json.dumps({"events": [
+            {"id": "a", "timestamp": "2026-07-02"},
+            {"id": "b", "timestamp": "2026-07-02"},
+        ]}), encoding="utf-8")
+        relaxed = subprocess.run(
+            [sys.executable, str(scripts / "timestamp_verifier.py"),
+             "--events", str(events_path)],
+            capture_output=True, text=True)
+        self.assertEqual(relaxed.returncode, 0, relaxed.stdout + relaxed.stderr)
+        self.assertTrue(json.loads(relaxed.stdout)["warnings"])
+        strict = subprocess.run(
+            [sys.executable, str(scripts / "timestamp_verifier.py"),
+             "--events", str(events_path), "--strict"],
+            capture_output=True, text=True)
+        self.assertEqual(strict.returncode, 1)
 
     def test_pii_scan_redacts_without_leaking_values(self):
         pii_file = self.root / "filing.txt"
