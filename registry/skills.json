@@ -2272,6 +2272,51 @@
       ]
     },
     {
+      "id": "branch-lifecycle-intelligence",
+      "name": "Branch Lifecycle Intelligence",
+      "status": "active",
+      "family": "engineering-innovations",
+      "tags": [
+        "autonomous"
+      ],
+      "priority": 2,
+      "purpose": "Auto-registered from incoming origin/main branch integration.",
+      "local_validation": [
+        {
+          "type": "test",
+          "value": "tests/test_branch_lifecycle.py passes"
+        }
+      ],
+      "display_name": "Branch Lifecycle Intelligence",
+      "ownership": "glaciereq",
+      "maturity": "development",
+      "version": "1.0.0",
+      "path": "skills/branch-lifecycle-intelligence",
+      "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
+      "input_contract": [
+        {
+          "type": "triggers",
+          "value": [
+            "user_prompt"
+          ]
+        }
+      ],
+      "output_contract": [
+        {
+          "type": "guarantees",
+          "value": [
+            "response"
+          ]
+        }
+      ],
+      "does_not_own": [
+        {
+          "type": "skills",
+          "value": []
+        }
+      ]
+    },
+    {
       "id": "brand-guidelines-anthropic",
       "display_name": "Brand Guidelines Anthropic",
       "ownership": "glaciereq",
@@ -6722,6 +6767,51 @@
       "does_not_own": [
         "Cross-system mission orchestration",
         "Unverified external mutations"
+      ]
+    },
+    {
+      "id": "genius-mastery",
+      "name": "Genius Mastery",
+      "status": "active",
+      "family": "engineering-innovations",
+      "tags": [
+        "autonomous"
+      ],
+      "priority": 2,
+      "purpose": "Auto-registered from incoming origin/main branch integration.",
+      "local_validation": [
+        {
+          "type": "manual",
+          "value": "skill.py exists"
+        }
+      ],
+      "display_name": "Genius Mastery",
+      "ownership": "glaciereq",
+      "maturity": "development",
+      "version": "1.0.0",
+      "path": "skills/genius-mastery",
+      "entrypoint": "skills/genius-mastery/SKILL.md",
+      "input_contract": [
+        {
+          "type": "triggers",
+          "value": [
+            "genius_mastery"
+          ]
+        }
+      ],
+      "output_contract": [
+        {
+          "type": "guarantees",
+          "value": [
+            "response"
+          ]
+        }
+      ],
+      "does_not_own": [
+        {
+          "type": "skills",
+          "value": []
+        }
       ]
     },
     {
