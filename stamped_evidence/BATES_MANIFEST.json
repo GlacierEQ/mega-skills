@@ -1,0 +1,24 @@
+{
+  "title": "Bates Provenance & Chain of Custody Manifest (ENF-TEST)",
+  "compiled_at_utc": 1788618396.251395,
+  "prefix": "ENF-TEST",
+  "total_items": 2,
+  "exhibits": [
+    {
+      "bates_number": "ENF-TEST000001",
+      "original_path": "/private/tmp/enf_test_audio/enf_extraction.json",
+      "stamped_path": "/Users/kcbflux/APEX_SYSTEM/DOMAINS/SWARM_INTELLIGENCE/SWARM_TECH/mega-skills/stamped_evidence/ENF-TEST000001_enf_extraction.json",
+      "sha256_hash": "bce34d3a2db3fa9eba9ceb3bfe85de21e831af19671f25b2229a1f2b9bed33a2",
+      "file_size_bytes": 185,
+      "stamped_at_utc": 1788618396.2438521
+    },
+    {
+      "bates_number": "ENF-TEST000002",
+      "original_path": "/private/tmp/enf_test_audio/recording.wav",
+      "stamped_path": "/Users/kcbflux/APEX_SYSTEM/DOMAINS/SWARM_INTELLIGENCE/SWARM_TECH/mega-skills/stamped_evidence/ENF-TEST000002_recording.wav",
+      "sha256_hash": "6e3d0b347eb92655fce53442c8e886a8f469315d888f0cef5cd1505e84ab7f5a",
+      "file_size_bytes": 64044,
+      "stamped_at_utc": 1788618396.251372
+    }
+  ]
+}

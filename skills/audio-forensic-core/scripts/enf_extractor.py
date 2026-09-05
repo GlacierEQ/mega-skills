@@ -418,7 +418,11 @@ def pitch_to_enf(audio_path: Path, sample_rate: int = DEFAULT_SAMPLE_RATE,
         samples = samples[:, 0]
 
     # Normalize to [-1, 1]
-    samples = samples.astype(np.float64) / np.iinfo(samples.dtype).max
+    
+    if not np.issubdtype(samples.dtype, np.floating):
+        samples = samples.astype(np.float64) / np.iinfo(samples.dtype).max
+    else:
+        samples = samples.astype(np.float64)
 
     frame_size = int(sample_rate * frame_ms / 1000)
     hop_size = frame_size // 2
