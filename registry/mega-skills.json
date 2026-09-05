@@ -824,14 +824,7 @@
           "write_run_artifacts",
           "emit_receipt"
         ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deployment",
-          "merge",
-          "credential_access"
-        ],
+        "approval_required_for": ["external_mutation", "network_send", "file_submission", "deployment", "merge", "credential_access", "legal_filing", "autonomous_legal_decision", "privilege_waiver", "public_release", "deletion", "execute_unknown_program"],
         "forbidden_actions": ["external_mutation", "network_send", "file_submission", "deployment", "merge", "credential_access", "legal_filing", "autonomous_legal_decision", "privilege_waiver", "public_release", "deletion", "execute_unknown_program"],"required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required"
       },
       "human_control_points": [
