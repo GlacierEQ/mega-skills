@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "pipeline_id": "1fdv-deep-casebuilding",
+  "state": "initialized",
+  "stages_completed": [],
+  "last_run_utc": null,
+  "notes": "Durable execution state for resume. Stages record completion here so an interrupted run resumes from the last verified stage."
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "segments": [
+    {"speaker": "SPEAKER_1", "start": 0.0, "end": 4.0, "words": [
+      {"w": "Aloha", "start": 0.0, "end": 0.5},
+      {"w": "court", "start": 0.6, "end": 1.0},
+      {"w": "this", "start": 1.2, "end": 1.5},
+      {"w": "is", "start": 1.6, "end": 1.8},
+      {"w": "Casey", "start": 1.9, "end": 2.4},
+      {"w": "speaking", "start": 2.5, "end": 3.0},
+      {"w": "clearly", "start": 3.1, "end": 3.6},
+      {"w": "today", "start": 3.7, "end": 4.0}
+    ]},
+    {"speaker": "SPEAKER_2", "start": 4.5, "end": 8.0, "words": [
+      {"w": "Response", "start": 4.5, "end": 5.0},
+      {"w": "given", "start": 5.1, "end": 5.4},
+      {"w": "under", "start": 5.5, "end": 5.8},
+      {"w": "oath", "start": 5.9, "end": 6.3},
+      {"w": "and", "start": 6.4, "end": 6.6},
+      {"w": "recorded", "start": 6.7, "end": 7.2},
+      {"w": "fully", "start": 7.3, "end": 7.6},
+      {"w": "here", "start": 7.7, "end": 8.0}
+    ]}
+  ]
+}

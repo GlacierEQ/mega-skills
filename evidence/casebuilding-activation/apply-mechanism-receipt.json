@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "apply-mechanism-proof",
+  "harness": "stub assay + trimmed temp registry; real casebuilding_activation.apply_activation code path",
+  "generated_utc": "2026-09-05T14:00:15.470283+00:00",
+  "checks": [
+    {
+      "name": "apply exit 0",
+      "passed": true
+    },
+    {
+      "name": "receipt applied",
+      "passed": true
+    },
+    {
+      "name": "skills active",
+      "passed": true
+    },
+    {
+      "name": "skill versions bumped",
+      "passed": true
+    },
+    {
+      "name": "combo frontmatter sync (FDI 1.1.0, VEA 0.2.0)",
+      "passed": true
+    },
+    {
+      "name": "powerhouse rewired + 0.2.0",
+      "passed": true
+    },
+    {
+      "name": "rewire flagged in receipt",
+      "passed": true
+    },
+    {
+      "name": "sentinel promoted active + 1.1.0",
+      "passed": true
+    },
+    {
+      "name": "hash-bound receipt (before != after)",
+      "passed": true
+    },
+    {
+      "name": "second apply exit 0",
+      "passed": true
+    },
+    {
+      "name": "idempotent: hashes stable",
+      "passed": true
+    },
+    {
+      "name": "idempotent: no re-rewire flag",
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}
