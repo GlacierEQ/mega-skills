@@ -196,6 +196,46 @@
       ],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/cultivate_main.py"
+    },
+    {
+      "id": "deep-casebuilding",
+      "display_name": "Deep Casebuilding",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/deep-casebuilding.json",
+      "family": "mission",
+      "span": [
+        "recon",
+        "verify",
+        "package"
+      ],
+      "mega_roots": [
+        "apex-forensic-litigation-sentinel",
+        "apex-legal-forensic-powerhouse"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_pipeline.py"
+    },
+    {
+      "id": "1fdv-deep-casebuilding",
+      "display_name": "1FDV-23-0001009 Deep Casebuilding",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/1fdv-deep-casebuilding.json",
+      "family": "mission",
+      "span": [
+        "recon",
+        "verify",
+        "package"
+      ],
+      "mega_roots": [
+        "apex-forensic-litigation-sentinel",
+        "apex-legal-forensic-powerhouse"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_pipeline.py"
     }
   ]
 }
