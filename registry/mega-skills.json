@@ -263,8 +263,7 @@
         "Unbounded recursive agent spawning without supervisor depth bounds"
       ],
       "firewall_policy": {
-        "mode": "read_only",
-        "fail_closed": true,
+        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -821,9 +820,7 @@
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
-          "read_connected_sources",
           "run_local_tests",
-          "hash_local_artifacts",
           "write_run_artifacts",
           "emit_receipt"
         ],
@@ -842,8 +839,7 @@
           "public_release",
           "deletion",
           "execute_unknown_program"
-        ],
-        "fail_closed": true
+        ],"required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required"
       },
       "human_control_points": [
         "approve_case_scope_and_sensitive_access",
@@ -907,8 +903,7 @@
         "Live destructive intrusion against unowned infrastructure or unapproved production mutations"
       ],
       "firewall_policy": {
-        "mode": "read_only",
-        "fail_closed": true,
+        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -1304,8 +1299,7 @@
         "Unauthorized email dispatch, dark patterns, or real ad credit charging"
       ],
       "firewall_policy": {
-        "mode": "read_only",
-        "fail_closed": true,
+        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -1413,8 +1407,7 @@
         "Direct native GPU firmware manipulation or audio driver overrides"
       ],
       "firewall_policy": {
-        "mode": "read_only",
-        "fail_closed": true,
+        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -2101,8 +2094,7 @@
         "Destructive database drops or unauthorized live DNS alterations"
       ],
       "firewall_policy": {
-        "mode": "read_only",
-        "fail_closed": true,
+        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
