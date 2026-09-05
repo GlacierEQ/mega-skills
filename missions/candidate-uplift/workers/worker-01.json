@@ -4,81 +4,99 @@
   "assigned": 3,
   "findings": [
     {
-      "id": "attio",
-      "state": "contract_incomplete",
-      "ready": false,
-      "declared_maturity": "candidate",
-      "description": "Operational capability for attio.",
-      "body_chars": 648,
-      "reasons": [
-        "no actionable procedure/capability language"
-      ],
-      "package": {
-        "scripts": [
-          "scripts/run.py",
-          "scripts/this_skill.py",
-          "skill.py"
-        ],
-        "tests": [
-          "tests/test_attio.py"
-        ],
-        "references": [],
-        "assets": []
-      },
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
-        "skills/attio/tests/test_attio.py"
-      ],
-      "real_implementation_files": [],
-      "recommended_action": "repair_instruction_contract"
-    },
-    {
-      "id": "pipeline-compositor",
+      "id": "aerospace-trajectory-core",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Directed Acyclic Graph (DAG) pipeline composition engine for stacking connectors, skills, and agents with typed edges, backpressure, checkpoint/resume, and parallel execution.",
-      "body_chars": 1387,
+      "description": "SpaceX orbital dynamics, Keplerian propagation, Lambert transfer boundary value solvers, and thermodynamic cryogenic boil-off equations.",
+      "body_chars": 1283,
       "reasons": [
-        "6 explicit implementation stub(s)"
+        "4 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/backpressure_controller.py",
-          "scripts/checkpoint_manager.py",
-          "scripts/dag_parser.py",
-          "scripts/manifest_synthesizer.py",
+          "scripts/boiloff_calc.py",
+          "scripts/conjunction_analyzer.py",
+          "scripts/lambert_solver.py",
+          "scripts/orbital_propagator.py",
           "scripts/output_contract.py",
           "scripts/procedure.py",
           "scripts/purpose.py",
-          "scripts/stage_executor.py",
-          "scripts/topology_validator.py",
+          "scripts/run.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_pipeline_compositor.py"
+          "tests/__pycache__/test_aerospace_trajectory_core.cpython-311.pyc",
+          "tests/test_aerospace_trajectory_core.py"
         ],
         "references": [],
         "assets": [
-          "resources/edge_type_registry.json",
-          "resources/pipeline_compositor_config.yaml",
-          "resources/pipeline_compositor_schema.json",
-          "resources/pipeline_def_schema.yaml"
+          "resources/aerospace_trajectory_core_config.yaml",
+          "resources/aerospace_trajectory_core_schema.json",
+          "resources/orbital_constants.json",
+          "resources/tank_thermal_models.yaml"
         ]
       },
       "stub_files": [
-        "skills/pipeline-compositor/scripts/backpressure_controller.py",
-        "skills/pipeline-compositor/scripts/manifest_synthesizer.py",
-        "skills/pipeline-compositor/scripts/stage_executor.py",
-        "skills/pipeline-compositor/scripts/dag_parser.py",
-        "skills/pipeline-compositor/scripts/topology_validator.py",
-        "skills/pipeline-compositor/scripts/checkpoint_manager.py"
+        "skills/aerospace-trajectory-core/scripts/lambert_solver.py",
+        "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
+        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
+        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/pipeline-compositor/tests/test_pipeline_compositor.py"
+        "skills/aerospace-trajectory-core/tests/test_aerospace_trajectory_core.py"
+      ],
+      "real_implementation_files": [],
+      "recommended_action": "finish_domain_implementation"
+    },
+    {
+      "id": "polyglot-rosetta-core",
+      "state": "implementation_partial",
+      "ready": false,
+      "declared_maturity": "candidate",
+      "description": "51-Floor Polyglot translation, zero-copy Cap'n Proto IPC serialization, and formal truth invariant proofs across systems programming languages.",
+      "body_chars": 1199,
+      "reasons": [
+        "5 explicit implementation stub(s)"
+      ],
+      "package": {
+        "scripts": [
+          "__init__.py",
+          "scripts/ast_inspector.py",
+          "scripts/code_synthesizer.py",
+          "scripts/cross_compiler.py",
+          "scripts/floor_selector.py",
+          "scripts/output_contract.py",
+          "scripts/procedure.py",
+          "scripts/proof_generator.py",
+          "scripts/purpose.py",
+          "scripts/run.py",
+          "skill.py"
+        ],
+        "tests": [
+          "tests/__pycache__/test_polyglot_rosetta_core.cpython-311.pyc",
+          "tests/test_polyglot_rosetta_core.py"
+        ],
+        "references": [],
+        "assets": [
+          "resources/floor_catalog.yaml",
+          "resources/invariant_spec_schema.yaml",
+          "resources/polyglot_rosetta_core_config.yaml",
+          "resources/polyglot_rosetta_core_schema.json"
+        ]
+      },
+      "stub_files": [
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
+        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py",
+        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
+        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
+        "skills/polyglot-rosetta-core/scripts/cross_compiler.py"
+      ],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
@@ -103,10 +121,12 @@
           "scripts/purpose.py",
           "scripts/push_verifier.py",
           "scripts/regression_gate.py",
+          "scripts/run.py",
           "scripts/upstream_fetcher.py",
           "skill.py"
         ],
         "tests": [
+          "tests/__pycache__/test_fork_overlay_core.cpython-311.pyc",
           "tests/test_fork_overlay_core.py"
         ],
         "references": [],
@@ -124,10 +144,10 @@
       ],
       "real_implementation_files": [
         "skills/fork-overlay-core/scripts/merge_engine.py",
-        "skills/fork-overlay-core/scripts/regression_gate.py",
-        "skills/fork-overlay-core/scripts/overlay_isolator.py",
+        "skills/fork-overlay-core/scripts/push_verifier.py",
         "skills/fork-overlay-core/scripts/upstream_fetcher.py",
-        "skills/fork-overlay-core/scripts/push_verifier.py"
+        "skills/fork-overlay-core/scripts/overlay_isolator.py",
+        "skills/fork-overlay-core/scripts/regression_gate.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

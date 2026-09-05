@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-03",
+  "primary_lane": "Forward Deployed Engineering",
+  "public_identity": "Forward Deployed AI Architect",
+  "primary_application_title": "Forward Deployed Engineer",
+  "archetypes": [
+    {
+      "id": "frontier_model_fde",
+      "priority": 1,
+      "fit": "VERY_HIGH",
+      "examples": ["Anthropic", "OpenAI", "Reflection"],
+      "core_motion": "customer workflow discovery -> agent/LLM architecture -> production build -> evaluation -> enterprise integration -> adoption -> reusable pattern -> product/research feedback"
+    },
+    {
+      "id": "agent_platform_fde",
+      "priority": 2,
+      "fit": "VERY_HIGH",
+      "examples": ["LiveKit", "Cognition", "Decagon", "Console", "Reducto"],
+      "core_motion": "customer implementation -> agent integration -> production debugging -> enablement/adoption -> reference implementation -> platform feedback"
+    },
+    {
+      "id": "enterprise_infrastructure_fde",
+      "priority": 3,
+      "fit": "HIGH_WHEN_AI_CENTRAL",
+      "examples": ["Sierra", "Stripe"],
+      "core_motion": "deployment architecture -> IAM/network/integration -> production rollout -> operations/support -> automation/runbooks -> reusable deployment standard"
+    },
+    {
+      "id": "domain_mission_fde",
+      "priority": 4,
+      "fit": "HIGH_WITH_DOMAIN_MATCH",
+      "examples": ["OpenAI Gov", "OpenAI Legal", "OpenAI Healthcare", "Palantir-style deployments"],
+      "core_motion": "domain workflow decomposition -> regulated/mission constraints -> production system -> operator trust -> measurable operational outcome"
+    },
+    {
+      "id": "deployment_lead",
+      "priority": 5,
+      "fit": "FUTURE_PROGRESSION",
+      "examples": ["Technical Deployment Lead", "Agent Product Manager", "Deployment Strategist"],
+      "core_motion": "outcome definition -> scope -> sequencing -> cross-functional delivery -> adoption/change management -> ROI -> expansion"
+    }
+  ],
+  "current_verified_position": {
+    "sources": 15,
+    "evidence_records": 27,
+    "verified_records": 22,
+    "requirements_satisfied": 10,
+    "requirements_total": 12,
+    "hard_gates_open": 2,
+    "evidence_coverage_score": 82.2,
+    "open_hard_gates": [
+      "Customer discovery and workflow problem decomposition",
+      "Customer deployment support, adoption, and lifecycle expansion"
+    ]
+  },
+  "market_sources": [
+    {
+      "company": "Anthropic",
+      "role": "Forward Deployed Engineer",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5302966008",
+      "signal": "Production Claude applications, MCP servers, sub-agents, skills, white-glove deployment, repeatable patterns, lifecycle expansion, 25% travel."
+    },
+    {
+      "company": "OpenAI",
+      "role": "Forward Deployed Engineer",
+      "url": "https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/",
+      "signal": "Discovery through stable production, measurable workflow impact, eval-driven feedback, customer adoption, full-stack building, pattern codification."
+    },
+    {
+      "company": "OpenAI",
+      "role": "Forward Deployed Software Engineer",
+      "url": "https://openai.com/careers/forward-deployed-software-engineer-nyc-new-york-city/",
+      "signal": "Customer-embedded full-stack engineering, scopes of work, production deployments on customer infrastructure, reusable abstractions."
+    },
+    {
+      "company": "LiveKit",
+      "role": "Forward Deployed Engineer",
+      "url": "https://jobs.ashbyhq.com/livekit/49b6403b-9110-4c0b-b8e2-f618b8a0a622",
+      "signal": "Agent infrastructure, architecture, integrations, production debugging, reference implementations, customer technical workshops."
+    },
+    {
+      "company": "Cognition",
+      "role": "Applied AI Engineer",
+      "url": "https://jobs.ashbyhq.com/cognition/811c3f5a-b26d-4162-b49b-93890a91794d",
+      "signal": "Enterprise agent modernization, embedded adoption, agent workflows, live pair programming, productivity metrics, repeatable playbooks."
+    },
+    {
+      "company": "Sierra",
+      "role": "Forward Deployed Infrastructure Engineer",
+      "url": "https://jobs.ashbyhq.com/Sierra/d9c0aa93-e35d-4752-9cef-4c39dcad5365/",
+      "signal": "Customer-owned infrastructure, VPC/IAM/networking, security/compliance, deployment lifecycle, upgrades/incidents, repeatable operations."
+    },
+    {
+      "company": "Reflection",
+      "role": "Forward Deployed Engineer - AI Engineer",
+      "url": "https://jobs.ashbyhq.com/reflectionai/8b97b583-3cc6-4834-ae2c-d5aecf22ed7d",
+      "signal": "Enterprise agentic systems from customer discovery through production launch."
+    },
+    {
+      "company": "Reducto",
+      "role": "Forward Deployed Engineer",
+      "url": "https://jobs.ashbyhq.com/reducto/b0c9caa5-6448-4b7c-8ee1-6e9630a60951",
+      "signal": "Founding FDE deploying and tuning agentic document systems in customer environments."
+    },
+    {
+      "company": "Stripe",
+      "role": "Forward Deployed Engineer, Professional Services",
+      "url": "https://stripe.com/careers/listing/forward-deployed-engineer-professional-services/8075570",
+      "signal": "Production applications and integrations, direct user discovery, secure scalable architecture, field patterns into product."
+    }
+  ],
+  "anti_patterns": [
+    "FDE title with little or no production coding",
+    "quota-carrying sales engineering relabeled as FDE",
+    "implementation management with no ownership of architecture or code",
+    "one-off custom work with no pattern extraction or product feedback",
+    "demo engineering without production/adoption responsibility"
+  ],
+  "next_proof_priority": "Acquire a real bounded user/customer engagement and preserve the complete FDE receipt: discovery -> scoped success criteria -> implementation -> integration -> go-live -> usage/adoption -> iteration -> externally grounded outcome."
+}

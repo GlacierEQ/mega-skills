@@ -4,62 +4,54 @@
   "assigned": 2,
   "findings": [
     {
-      "id": "mega-skill-forge",
+      "id": "mega-skills-test-runner",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill.",
-      "body_chars": 5760,
+      "description": "Run and diagnose the local hierarchy validator and full regression suite for a GlacierEQ Mega Skills repository checkout. Use before committing registry, Skill, Combo Skill, Mega Skill, schema, validator, or governance changes.",
+      "body_chars": 2965,
       "reasons": [
-        "8 explicit implementation stub(s)"
+        "3 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/combo_selector.py",
-          "scripts/contract_author.py",
-          "scripts/creation_workflow.py",
-          "scripts/decision_gate.py",
-          "scripts/hierarchy_validator.py",
-          "scripts/mission_drafter.py",
-          "scripts/readiness_gate.py",
-          "scripts/registry_publisher.py",
-          "scripts/release_coordinator.py",
-          "scripts/repo_inspector.py",
-          "scripts/this_skill.py",
+          "scripts/before_running.py",
+          "scripts/failure_diagnostic.py",
+          "scripts/purpose.py",
+          "scripts/report_emitter.py",
+          "scripts/revision_recorder.py",
+          "scripts/run.py",
+          "scripts/run_checks.py",
+          "scripts/standard_workflow.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_mega_skill_forge.py"
+          "tests/__pycache__/test_mega_skills_test_runner.cpython-311.pyc",
+          "tests/test_mega_skills_test_runner.py"
         ],
         "references": [
-          "references/mega-contract.md",
-          "references/release-checklist.md"
+          "references/checks.md"
         ],
         "assets": [
-          "resources/MEGA.md.template",
-          "resources/mega-contract.md",
-          "resources/mega-registry-entry.json.template",
-          "resources/mega_skill_forge_config.yaml",
-          "resources/mega_skill_forge_schema.json",
-          "resources/release-checklist.md"
+          "resources/checks.md",
+          "resources/mega_skills_test_runner_config.yaml",
+          "resources/mega_skills_test_runner_schema.json",
+          "resources/standard_tree.md"
         ]
       },
       "stub_files": [
-        "skills/mega-skill-forge/scripts/repo_inspector.py",
-        "skills/mega-skill-forge/scripts/readiness_gate.py",
-        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
-        "skills/mega-skill-forge/scripts/combo_selector.py",
-        "skills/mega-skill-forge/scripts/mission_drafter.py",
-        "skills/mega-skill-forge/scripts/contract_author.py",
-        "skills/mega-skill-forge/scripts/registry_publisher.py",
-        "skills/mega-skill-forge/scripts/release_coordinator.py"
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py",
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/mega-skill-forge/tests/test_mega_skill_forge.py"
+        "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
       ],
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-skills-test-runner/scripts/run_checks.py"
+      ],
       "recommended_action": "finish_domain_implementation"
     },
     {
@@ -83,10 +75,12 @@
           "scripts/protocol_serializer.py",
           "scripts/purpose.py",
           "scripts/rate_limiter.py",
+          "scripts/run.py",
           "scripts/telemetry_recorder.py",
           "skill.py"
         ],
         "tests": [
+          "tests/__pycache__/test_connector_bridge.cpython-311.pyc",
           "tests/test_connector_bridge.py"
         ],
         "references": [],
@@ -104,11 +98,11 @@
       ],
       "real_implementation_files": [
         "skills/connector-bridge/scripts/protocol_serializer.py",
-        "skills/connector-bridge/scripts/circuit_breaker.py",
+        "skills/connector-bridge/scripts/telemetry_recorder.py",
         "skills/connector-bridge/scripts/dispatcher.py",
-        "skills/connector-bridge/scripts/rate_limiter.py",
         "skills/connector-bridge/scripts/credential_resolver.py",
-        "skills/connector-bridge/scripts/telemetry_recorder.py"
+        "skills/connector-bridge/scripts/circuit_breaker.py",
+        "skills/connector-bridge/scripts/rate_limiter.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

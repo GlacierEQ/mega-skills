@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "generation_state": "SEEDED_FROM_VERIFIED_LIVE_GIT_BLOB_REFS_STRICT_CUSTOMER_DISCOVERY",
+  "source_authority": "missions/anthropic-applied-ai/LINKEDIN_PROFILE_SOURCE.md",
+  "publication_decision": "READY_WITH_BOUNDED_GAPS",
+  "identity": "Forward Deployed AI Architect",
+  "headline": "Forward Deployed AI Architect | AI Systems Architecture, Agent Infrastructure & Orchestration | Reliable Applied AI",
+  "about_policy": "Publish from LINKEDIN_PROFILE_SOURCE.md; do not regenerate or silently rewrite operator-authored About copy.",
+  "front_featured": [
+    {
+      "type": "portfolio_gateway",
+      "name": "GlacierEQ Hiring System",
+      "url": "https://casey-barton-glaciereq.vercel.app",
+      "purpose": "Single recruiter conversion surface above individual GitHub repositories.",
+      "state": "READY"
+    },
+    {
+      "type": "project",
+      "source_id": "tower-of-babel",
+      "name": "The Tower of Babel — Cross-Language Systems Architecture",
+      "url": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering.",
+      "evidence_state": "VERIFIED"
+    },
+    {
+      "type": "project",
+      "source_id": "anthropic-safety-monitor",
+      "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+      "url": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
+      "evidence_state": "VERIFIED"
+    },
+    {
+      "type": "project",
+      "source_id": "job-app-helix-intelligence",
+      "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+      "url": "https://github.com/GlacierEQ/job-app-helix",
+      "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts.",
+      "evidence_state": "VERIFIED"
+    },
+    {
+      "type": "project",
+      "source_id": "glaciereq-mcp-stack",
+      "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+      "url": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages.",
+      "evidence_state": "VERIFIED"
+    }
+  ],
+  "projects_section": [
+    {
+      "source_id": "tower-of-babel",
+      "name": "The Tower of Babel — Cross-Language Systems Architecture",
+      "url": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "anthropic-safety-monitor",
+      "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+      "url": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+      "url": "https://github.com/GlacierEQ/job-app-helix",
+      "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+      "url": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
+      "url": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
+      "url": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals.",
+      "state": "SUPPORTED"
+    },
+    {
+      "source_id": "spacex-autonomy",
+      "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
+      "url": "https://github.com/GlacierEQ/spacex-autonomy",
+      "summary": "Deterministic Python/Go simulation toolkit with bounded decisions, failure handling, quorum logic, and native verification.",
+      "state": "VERIFIED"
+    },
+    {
+      "source_id": "job-application",
+      "name": "Hiring System — Evidence & Release Control Plane",
+      "url": "https://github.com/GlacierEQ/job-application",
+      "summary": "Public presentation layer compiled from Helix-governed, evidence-bound portfolio truth.",
+      "state": "VERIFIED"
+    }
+  ],
+  "skills": [
+    "Forward-Deployed Engineering",
+    "AI Systems Architecture",
+    "Agentic AI",
+    "Multi-Agent Systems",
+    "AI Orchestration",
+    "Applied Artificial Intelligence",
+    "AI Infrastructure",
+    "Distributed Systems",
+    "System Design",
+    "Large Language Model (LLM) Applications",
+    "Python",
+    "Systems Integration",
+    "AI Evaluation",
+    "Reliability Engineering",
+    "Model Context Protocol (MCP)",
+    "Workflow Automation",
+    "Human-in-the-Loop Systems",
+    "Observability",
+    "API Integration"
+  ],
+  "defensible_metrics": [
+    {
+      "name": "technology_floors",
+      "value": 40,
+      "scope": "governed technology floors documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "linked_exhibits",
+      "value": 80,
+      "scope": "easy + advanced exhibits documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "behavioral_proof_floors",
+      "value": 17,
+      "scope": "behavioral proof floors documented by the current README",
+      "source_id": "tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "state": "VERIFIED",
+      "source_kind": "readme_verified",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_test_executions",
+      "value": 153,
+      "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    },
+    {
+      "name": "safety_monitor_failures",
+      "value": 0,
+      "scope": "failures/errors/skips reported by the documented verification matrix",
+      "source_id": "anthropic-safety-monitor",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "freshness_state": "FRESH"
+    }
+  ],
+  "claim_ceiling": {
+    "blocked_claims": [
+      {
+        "claim_id": "gap.production-llm",
+        "requirement_id": "production_llm_delivery",
+        "reason": "Do not add a production Claude/LLM delivery claim until a qualifying provider-connected, deployed, receipted artifact exists."
+      },
+      {
+        "claim_id": "gap.customer-deployment-adoption",
+        "requirement_id": "deployment_adoption",
+        "reason": "Current evidence is candidate narrative only. Do not claim customer deployment/adoption history without real external evidence."
+      },
+      {
+        "claim_id": "gap.customer-discovery",
+        "requirement_id": "customer_discovery",
+        "reason": "Current qualifying evidence is candidate positioning narrative only. Company/market intelligence does not establish real customer or stakeholder discovery."
+      }
+    ],
+    "rule": "Only VERIFIED or SUPPORTED, public-safe, sufficiently strong, non-stale evidence may populate outward LinkedIn proof claims. Private, CANDIDATE, UNVERIFIED, BLOCKED, weak, or stale evidence remains internal."
+  },
+  "evidence_status": {
+    "coverage_score": 72.4,
+    "score_semantics": "Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit.",
+    "requirements_satisfied": 9,
+    "requirements_total": 12,
+    "hard_gates_open": 3,
+    "open_gaps": [
+      {
+        "requirement_id": "production_llm_delivery",
+        "label": "Production LLM and agent application delivery",
+        "status": "MISSING",
+        "hard_gate": true,
+        "proof_strength": 0,
+        "minimum_strength": 0.58,
+        "priority": 1.131,
+        "evidence_ids": []
+      },
+      {
+        "requirement_id": "customer_discovery",
+        "label": "Customer discovery and workflow problem decomposition",
+        "status": "PARTIAL",
+        "hard_gate": true,
+        "proof_strength": 0.07,
+        "minimum_strength": 0.58,
+        "priority": 0.9563,
+        "evidence_ids": [
+          "ev_b0748b6b15795138"
+        ]
+      },
+      {
+        "requirement_id": "deployment_adoption",
+        "label": "Customer deployment support, adoption, and lifecycle expansion",
+        "status": "PARTIAL",
+        "hard_gate": true,
+        "proof_strength": 0.07,
+        "minimum_strength": 0.52,
+        "priority": 0.7763,
+        "evidence_ids": [
+          "ev_b0748b6b15795138"
+        ]
+      }
+    ]
+  },
+  "manual_actions": [
+    {
+      "id": "recommendations",
+      "status": "OPERATOR_ACTION_REQUIRED"
+    },
+    {
+      "id": "open_to_work_preferences",
+      "status": "NEEDS_INPUT"
+    },
+    {
+      "id": "identity_verification",
+      "status": "OPERATOR_ACTION_REQUIRED"
+    },
+    {
+      "id": "profile_photo",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "banner",
+      "status": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "contact_info",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "custom_url",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "input_git_blob_sha": {
+    "profile_source": "e0e62de6404991f94bec057f41ef31df21463a99",
+    "projection": "83bf2e9807198748f925c85bc4e001ec4b80d7b5",
+    "claim_audit": "3758570ac1a39fc4a7db6b7fd09d552fcffff780",
+    "activation": "3a64de55e1f5e2a496ccc33b1fe016c1c6bb1717",
+    "ledger": "b5803c1413bc28f752b3728679a81c0f963c604e"
+  }
+}

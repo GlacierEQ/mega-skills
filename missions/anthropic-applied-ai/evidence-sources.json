@@ -1,0 +1,563 @@
+{
+  "schema_version": 2,
+  "sources": [
+    {
+      "source_id": "tower-of-babel",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/the-tower-of-babel",
+      "artifact": "README.md@4135dec62239a215601ca55a5a06228a1ad7a321",
+      "verification": "GitHub README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "The Tower of Babel — Cross-Language Systems Architecture",
+        "role": "architecture",
+        "summary": "Executable technology-selection, interoperability, and proof system for multi-language engineering."
+      },
+      "metrics": [
+        {
+          "name": "technology_floors",
+          "value": 40,
+          "scope": "governed technology floors documented by the current README"
+        },
+        {
+          "name": "linked_exhibits",
+          "value": 80,
+          "scope": "easy + advanced exhibits documented by the current README"
+        },
+        {
+          "name": "behavioral_proof_floors",
+          "value": 17,
+          "scope": "behavioral proof floors documented by the current README"
+        }
+      ],
+      "claims": [
+        {
+          "claim": "Built an executable technology-selection, interoperability, and proof system that maps technologies to responsibilities, interfaces, proof gates, and deterministic receipts.",
+          "competencies": [
+            "AI systems architecture",
+            "evaluation, observability, and reliability",
+            "reusable patterns and product feedback"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The current Tower documents 40 technology floors, 80 linked exhibits, versioned interface contracts, executable build gates, and deterministic evidence receipts.",
+          "competencies": [
+            "AI systems architecture",
+            "hands-on Python and production engineering"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "tower-of-babel"
+    },
+    {
+      "source_id": "mega-skills",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/mega-skills",
+      "artifact": "README.md@7a0e51dddab27fc32a0a7b66f96b281f62e1d151",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "Mega-Skills — Agent Capability Control Plane",
+        "role": "orchestration substrate",
+        "summary": "Private monolithic control plane for a compounding Skills → Combo Skills → Mega Skills capability hierarchy.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built a private control-plane hierarchy separating atomic skills, reusable capability chains, and long-horizon mission systems with durable state, validation, evidence, and handoff contracts.",
+          "competencies": [
+            "AI systems architecture",
+            "agents, MCP, tools, and context engineering",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false
+        },
+        {
+          "claim": "The Mega-Skills snowball model requires higher layers to consume verified lower-layer artifacts and add integration capability rather than repeat instructions.",
+          "competencies": [
+            "reusable patterns and product feedback",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 4,
+          "public_safe": false
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "mega-skills"
+    },
+    {
+      "source_id": "spacex-autonomy",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/spacex-autonomy",
+      "artifact": "README.md@f3be38ba457d47a2ca4fbfff3398a468f2b7ed5f",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "SpaceX Autonomy — Mission-State & Operational Decision Logic",
+        "role": "applied system",
+        "summary": "Deterministic Python/Go simulation toolkit with bounded decisions, failure handling, quorum logic, and native verification."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic Python and Go autonomy simulation toolkit with explicit mode selection, bounded control, input validation, mission-thread quorum logic, and receipt-bound verification.",
+          "competencies": [
+            "hands-on Python and production engineering",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.",
+          "competencies": [
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "spacex-autonomy"
+    },
+    {
+      "source_id": "job-application",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/job-application",
+      "artifact": "README.md@83b291f5b540b64bf1e75b933b861773cfdf5eb7",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "Hiring System — Evidence & Release Control Plane",
+        "role": "evidence/release control",
+        "summary": "Public presentation layer compiled from Helix-governed, evidence-bound portfolio truth."
+      },
+      "claims": [
+        {
+          "claim": "Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.",
+          "competencies": [
+            "AI systems architecture",
+            "reusable patterns and product feedback",
+            "field leadership and technical communication"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.",
+          "competencies": [
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "helix-hiring-system"
+    },
+    {
+      "source_id": "xai-colossus-cooling",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/xai-colossus-cooling",
+      "artifact": "README.md@3d96c0d91cf9ec80afb27eea1680e31e57b3c9df",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST.",
+      "project": {
+        "name": "xAI Colossus Cooling — Thermal Capacity & Bounded Control",
+        "role": "applied system",
+        "summary": "Independent simulation/testbed for thermal classification, zone aggregation, bounded cooling decisions, and explicit evidence boundaries."
+      },
+      "claims": [
+        {
+          "claim": "Built a Python thermal simulation/test harness with thermal-node and zone models, threshold classification, emergency decision logic, anomaly baselines, controller modules, and behavioral tests.",
+          "competencies": [
+            "hands-on Python and production engineering",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 4,
+          "public_safe": true
+        },
+        {
+          "claim": "The project explicitly distinguishes tested simulation from unverified hardware, hyperscale, connector, PUE, latency, and production claims.",
+          "competencies": [
+            "safe and human-directed deployment",
+            "field leadership and technical communication"
+          ],
+          "hiring_signal": 4,
+          "public_safe": true
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "xai-colossus-cooling"
+    },
+    {
+      "source_id": "mission-thread-quorum",
+      "state": "SUPPORTED",
+      "locator": "https://github.com/GlacierEQ/spacex-mission-thread-quorum",
+      "artifact": "README.md@486ba98e833063131ab10ec81f483ff07ab83f1d",
+      "verification": "Public repository README fetched from main and inspected 2026-09-02 HST; repository labels itself a leveled reference mechanism.",
+      "project": {
+        "name": "Mission Thread Quorum",
+        "role": "bounded consequential system",
+        "summary": "Reference mechanism for weighted GO/HOLD decision logic with explicit hold reasons."
+      },
+      "claims": [
+        {
+          "claim": "Designed a simulation-only mission quorum mechanism in which high-severity NO votes freeze the decision stack with explicit hold reasons.",
+          "competencies": [
+            "safe and human-directed deployment",
+            "AI systems architecture"
+          ],
+          "hiring_signal": 3,
+          "public_safe": true,
+          "gap": "Reference mechanism rather than production system.",
+          "next_strengthening_action": "Add executable behavioral receipt and integration proof."
+        }
+      ],
+      "source_kind": "readme_verified",
+      "observed_at": "2026-09-02",
+      "independence_group": "mission-thread-quorum"
+    },
+    {
+      "source_id": "computer-user",
+      "state": "VERIFIED",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/computer-user",
+      "artifact": "README.md@e953c7e23073ec17923f6a0e062964cad3712b56",
+      "verification": "Private repository README fetched from main and inspected 2026-09-02 HST; README reports behavioral coverage and explicit runtime/security boundaries. Public projection disabled because repository is private.",
+      "project": {
+        "name": "Computer User — Governed Execution Kernel",
+        "role": "enterprise execution and integration substrate",
+        "summary": "Durable HTTP/CLI execution kernel with connector dispatch, authority envelopes, readiness probes, authenticated non-loopback service mode, task queues, and receipts.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built a governed computer execution kernel with durable task queues, HTTP/CLI invocation, capability and connector dispatch, verification, and receipt readback.",
+          "competencies": [
+            "enterprise integration and security",
+            "hands-on Python and production engineering"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false,
+          "limitations": [
+            "Private repository; do not expose implementation detail as public proof without a public-safe derivative."
+          ]
+        },
+        {
+          "claim": "The execution kernel enforces explicit approved/exact-target authority, idempotency, token protection for non-loopback service binding, read-only defaults, raw-secret rejection, and hash-only action receipts.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false,
+          "limitations": [
+            "Security properties are scoped to the documented kernel and automation boundaries, not a general enterprise certification."
+          ]
+        }
+      ],
+      "independence_group": "computer-user"
+    },
+    {
+      "source_id": "helix-role-power-matrix",
+      "state": "CANDIDATE",
+      "source_kind": "candidate_narrative",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/job-app-helix",
+      "artifact": "hire_package/casey-barton/ROLE_POWER_MATRIX.md@a7449fecd900d5fa490aed80589eb08088cfb3a3",
+      "verification": "Job-App Helix candidate-routing artifact fetched from main and inspected 2026-09-02 HST. It is a positioning artifact, not independent proof of customer deployment.",
+      "claims": [
+        {
+          "claim": "Candidate positioning explicitly defines the forward-deployed motion as workflow discovery, bottleneck mapping, architecture, integration, verification, adoption, and iterative expansion.",
+          "competencies": [
+            "customer discovery and problem decomposition",
+            "ambiguous-environment execution",
+            "customer adoption and deployment support"
+          ],
+          "hiring_signal": 4,
+          "public_safe": false,
+          "gap": "Narrative/candidate-routing evidence does not establish completed external customer engagements.",
+          "next_strengthening_action": "Retrieve independent deployment/customer evidence or build a public case study with explicit operator/customer context and outcomes."
+        }
+      ],
+      "independence_group": "helix-hiring-system"
+    },
+    {
+      "source_id": "anthropic-safety-monitor",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/anthropic-safety-monitor",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@3ec646d6a7902669de213bd26a9df53e2e62ffe2",
+      "verification": "Direct verification receipt inspected 2026-09-02 HST: workflow run 30645777132 success; Python 3.11/3.12/3.13; 51 tests each, 153 total executions; zero failures/errors/skips; receipt carries per-version JUnit and artifact SHA-256 values plus explicit nonclaims.",
+      "project": {
+        "name": "Anthropic Safety Monitor — Tool-Use Safety Boundary",
+        "role": "agent safety and approval boundary",
+        "summary": "Deterministic allow/confirm/deny policy boundary for proposed agent tool calls with explicit rules, tamper-evident receipts, and bounded claims."
+      },
+      "metrics": [
+        {
+          "name": "safety_monitor_test_executions",
+          "value": 153,
+          "scope": "51 tests executed on each of Python 3.11, 3.12, and 3.13 at the documented canonical promotion"
+        },
+        {
+          "name": "safety_monitor_failures",
+          "value": 0,
+          "scope": "failures/errors/skips reported by the documented verification matrix"
+        }
+      ],
+      "claims": [
+        {
+          "claim": "Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.",
+          "competencies": [
+            "enterprise integration and security",
+            "evaluation, observability, and reliability",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "independence_group": "anthropic-safety-monitor"
+    },
+    {
+      "source_id": "anthropic-agent-coordinator",
+      "state": "SUPPORTED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-09-02",
+      "locator": "https://github.com/GlacierEQ/anthropic-agent-coordinator",
+      "artifact": "receipts/wave-1-test-verification-2026-07-31.json@888ad285f5f7f827a87fc7428bae51a10c2a5e0c",
+      "verification": "Direct promotion receipt inspected 2026-09-02 HST: exact-revision commit 87438f57bdfd2cb380730cf51140611963d7c95b; 62 collected/executed/passed; zero failed/errored/skipped; receipt explicitly blocks hosted matrix, provider-call, production-scale, and deployment claims.",
+      "project": {
+        "name": "Anthropic Agent Coordinator — Deterministic Specialist Scheduler",
+        "role": "agent orchestration",
+        "summary": "Resource-constrained DAG scheduler with dependency waves, role capacity, structured deferrals, and assignment-bound tool proposals."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "AI systems architecture",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true,
+          "limitations": [
+            "Strongest executed proof is historical exact-revision evidence and does not automatically establish current-head behavior."
+          ]
+        },
+        {
+          "claim": "Added assignment-bound tool proposals that are emitted only for fully assigned tasks, bound to an exact plan SHA-256, and shaped for independent safety review without executing the tool.",
+          "competencies": [
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 4,
+          "public_safe": true,
+          "limitations": [
+            "Proposal handoff is not tool execution or provider deployment."
+          ]
+        }
+      ],
+      "independence_group": "anthropic-agent-coordinator"
+    },
+    {
+      "source_id": "job-app-helix-intelligence",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/job-app-helix",
+      "artifact": "company_intelligence_acquisition.py@91a916ee6522a4f4df855b23aec80fb2b06dc769; company_fit.py@7ea5ad849148eb9352c20b15762730adccb3e5ac; target_intelligence_cycle.py@5455ff590ad8589978cee52f56c9160878d31ca2; test_company_second_depth.py@4c5203154cce0c5c2009c1ca44922f12a7f65eb3",
+      "verification": "Current source/tests inspected. GitHub Actions APEX Estate Non-Regression run 33737806112 completed successfully at head e8b12f678f8cf9b20a8e94069230637e30edaf1a. Broad CI status is separately bounded and not implied.",
+      "project": {
+        "name": "Job App Helix — Target Intelligence & Company Problem Decomposition",
+        "role": "customer discovery / ambiguity execution",
+        "summary": "Provenance-bound company signal acquisition, freshness-aware fit mapping, target-opening discovery, change-sensitive watch cycles, and deterministic receipts."
+      },
+      "claims": [
+        {
+          "claim": "Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.",
+          "competencies": [
+            "evaluation, observability, and reliability",
+            "ambiguous-environment execution"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.",
+          "competencies": [
+            "ambiguous-environment execution",
+            "field leadership and technical communication"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "independence_group": "helix-hiring-system",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-02"
+    },
+    {
+      "source_id": "glaciereq-mcp-stack",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/glaciereq-mcp-stack",
+      "artifact": "README.md@f5db5a85e9d65e0f763004e9816aef967000f1f8",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33135067808 and Public Truth Gate run 33135067576 both completed successfully at head 9f2940a26b5fd2f38caf58108bce6e56a77c8c18. Live external-provider connectivity remains outside the claim boundary unless separately receipted.",
+      "project": {
+        "name": "GlacierEQ MCP Stack — Credential-Gated Integration Plane",
+        "role": "enterprise integration / security",
+        "summary": "Verified local allow-list MCP routing plus credential-gated GitHub, Asana, Confluence, Supabase, and Neo4j stdio server packages."
+      },
+      "claims": [
+        {
+          "claim": "Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.",
+          "competencies": [
+            "enterprise integration and security",
+            "agents, MCP, tools, and context engineering",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.",
+          "competencies": [
+            "enterprise integration and security",
+            "agents, MCP, tools, and context engineering",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "independence_group": "glaciereq-mcp-stack",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-08-28"
+    },
+    {
+      "source_id": "microsoft-identity-zero-trust",
+      "state": "VERIFIED",
+      "locator": "https://github.com/GlacierEQ/microsoft-identity-zero-trust",
+      "artifact": "README.md@7d18aff2a134b9ddff122976b76072f47b34b575",
+      "verification": "Current README/source inspected. GitHub Actions CI run 33519708554 completed successfully at head 9656f35d7694ee6084ddaeef2b7ebc7ed8bf5e41. Claims remain scoped to the deterministic identity/authorization model and its tested contracts.",
+      "project": {
+        "name": "Microsoft Identity Zero Trust — Least-Privilege Authorization Study",
+        "role": "enterprise security",
+        "summary": "Deterministic workload identity and principal-aware action authorization with fail-closed policy boundaries."
+      },
+      "claims": [
+        {
+          "claim": "Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        },
+        {
+          "claim": "Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.",
+          "competencies": [
+            "enterprise integration and security",
+            "safe and human-directed deployment",
+            "AI systems architecture"
+          ],
+          "hiring_signal": 5,
+          "public_safe": true
+        }
+      ],
+      "independence_group": "microsoft-identity-zero-trust",
+      "source_kind": "source_and_tests",
+      "observed_at": "2026-09-01"
+    },
+    {
+      "source_id": "doctor-strange-receipt-zero",
+      "state": "VERIFIED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-08-04",
+      "independence_group": "doctor-strange-sparkforge-runtime",
+      "locator": "https://github.com/GlacierEQ/Pro-DOCTOR-STRANGE",
+      "artifact": "apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.json@80a5773fad72ca4d3f5ab28482902fbf57faaf0e; apex_logic/receipts/portfolio-v13-sparkforge-2026-08-03.source.txt@0d169a1207558de2269e1da855874bda1f61e8ab",
+      "verification": "Receipt replayed 2026-09-02 HST against current main: bounded source SHA-256 matched bfe45e3e3bccc89ce6a860d2312a84343abb397ca3f8f04f10dc971d62e3e13e; technical output SHA-256 matched 1276b12310a82f5f9e713b16d2f1d2d48908f6c16a93065fdedf21824813ca16; executive output SHA-256 matched a7711c5c2bc861c92a4aeffbb1f3fc9413d0d85e718e62096c58f70c6ded96a9; character counts matched. Receipt records one genuine external model-backed provider success through henry-ships-sparkforge.smart_summarize, queued_capability authorization, correlation ID aaabf92b-e9db-41b8-8b42-1508c90883f9, 16035 ms gateway latency, and explicitly no fabricated multi-provider consensus.",
+      "project": {
+        "name": "Doctor Strange Convergence — Receipt-Backed External Model Execution",
+        "role": "production LLM runtime evidence",
+        "summary": "Immutable runtime receipt for a genuine external model-backed evaluation with source/output hashes and explicit failure/consensus boundaries.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Delivered a genuine external model-backed evaluation path through a queued capability and preserved the execution as an immutable receipt with provider identity, correlation ID, latency, source hash, response hashes, raw outputs, and explicit truth boundaries.",
+          "competencies": [
+            "production LLM application delivery",
+            "evaluation, observability, and reliability"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false
+        },
+        {
+          "claim": "The runtime preserved unavailable provider routes as explicit failures and counted two rendering modes from one provider as one provider success rather than fabricating multi-provider consensus.",
+          "competencies": [
+            "production LLM application delivery",
+            "safe and human-directed deployment"
+          ],
+          "hiring_signal": 5,
+          "public_safe": false
+        }
+      ]
+    },
+    {
+      "source_id": "chatgpt-vercel-ai-gateway-blocker",
+      "state": "BLOCKED",
+      "source_kind": "runtime_receipt",
+      "observed_at": "2026-09-02",
+      "independence_group": "chatgpt-vercel-ai-gateway",
+      "locator": "https://github.com/GlacierEQ/chatgpt-vercel",
+      "artifact": "production deployment dpl_F39gZLpiFvg7AMknedYLkbSSPyk7 @ dc7027f359439e4d434efd56a1011b2cc3f5346e; stable runtime commit b680e98c34142b5a6c02d1b1bc5a421e28705a30",
+      "verification": "Production deployment built frozen and reached READY. Live /api/health returned ok=true, route=vercel-ai-gateway, request_scoped_oidc=true with no OpenAI or AI Gateway API key. A gated real completion attempt reached Vercel AI Gateway but returned HTTP 403 customer_verification_required because the Vercel team has no valid credit card on file. No model completion is claimed. Temporary proof endpoint was removed immediately after the receipt.",
+      "project": {
+        "name": "chatgpt-vercel — Zero-Secret AI Gateway Relay",
+        "role": "blocked production LLM path",
+        "summary": "Real edge relay with request-scoped Vercel OIDC; inference currently blocked at Vercel customer verification.",
+        "public_safe": false
+      },
+      "claims": [
+        {
+          "claim": "Built and deployed a zero-secret edge relay that obtains request-scoped Vercel OIDC and reaches the AI Gateway; the model invocation is currently blocked by Vercel customer verification, so no completion is claimed from this path.",
+          "competencies": [
+            "production LLM application delivery",
+            "enterprise integration and security"
+          ],
+          "hiring_signal": 3,
+          "public_safe": false,
+          "gap": "AI Gateway returned 403 customer_verification_required before model execution.",
+          "next_strengthening_action": "Use an authorized provider path or satisfy Vercel customer verification, then rerun and preserve a successful completion receipt."
+        }
+      ]
+    }
+  ]
+}

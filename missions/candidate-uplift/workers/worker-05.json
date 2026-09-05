@@ -4,51 +4,62 @@
   "assigned": 2,
   "findings": [
     {
-      "id": "forensic-evidence-chain-core",
+      "id": "mega-skill-forge",
       "state": "implementation_partial",
       "ready": false,
       "declared_maturity": "candidate",
-      "description": "FRE 902(13)/(14) self-authenticating electronic record verification, cryptographic Bates numbering, and forensic anomaly detection.",
-      "body_chars": 2191,
+      "description": "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill.",
+      "body_chars": 5760,
       "reasons": [
-        "6 explicit implementation stub(s)"
+        "8 explicit implementation stub(s)"
       ],
       "package": {
         "scripts": [
           "__init__.py",
-          "scripts/anomaly_scanner.py",
-          "scripts/bates_stamper.py",
-          "scripts/manifest_emitter.py",
-          "scripts/output_contract.py",
-          "scripts/pii_scrubber.py",
-          "scripts/procedure.py",
-          "scripts/purpose.py",
-          "scripts/sha256_digester.py",
-          "scripts/timestamp_verifier.py",
+          "scripts/combo_selector.py",
+          "scripts/contract_author.py",
+          "scripts/creation_workflow.py",
+          "scripts/decision_gate.py",
+          "scripts/hierarchy_validator.py",
+          "scripts/mission_drafter.py",
+          "scripts/readiness_gate.py",
+          "scripts/registry_publisher.py",
+          "scripts/release_coordinator.py",
+          "scripts/repo_inspector.py",
+          "scripts/run.py",
+          "scripts/this_skill.py",
           "skill.py"
         ],
         "tests": [
-          "tests/test_forensic_evidence_chain_core.py"
+          "tests/__pycache__/test_mega_skill_forge.cpython-311.pyc",
+          "tests/test_mega_skill_forge.py"
         ],
-        "references": [],
+        "references": [
+          "references/mega-contract.md",
+          "references/release-checklist.md"
+        ],
         "assets": [
-          "resources/bates_serial_schema.yaml",
-          "resources/forensic_evidence_chain_core_config.yaml",
-          "resources/forensic_evidence_chain_core_schema.json",
-          "resources/fre_902_compliance.md"
+          "resources/MEGA.md.template",
+          "resources/mega-contract.md",
+          "resources/mega-registry-entry.json.template",
+          "resources/mega_skill_forge_config.yaml",
+          "resources/mega_skill_forge_schema.json",
+          "resources/release-checklist.md"
         ]
       },
       "stub_files": [
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
-        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
-        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
-        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
-        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
+        "skills/mega-skill-forge/scripts/repo_inspector.py",
+        "skills/mega-skill-forge/scripts/combo_selector.py",
+        "skills/mega-skill-forge/scripts/mission_drafter.py",
+        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
+        "skills/mega-skill-forge/scripts/readiness_gate.py",
+        "skills/mega-skill-forge/scripts/release_coordinator.py",
+        "skills/mega-skill-forge/scripts/registry_publisher.py",
+        "skills/mega-skill-forge/scripts/contract_author.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
-        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+        "skills/mega-skill-forge/tests/test_mega_skill_forge.py"
       ],
       "real_implementation_files": [],
       "recommended_action": "finish_domain_implementation"
@@ -72,11 +83,13 @@
           "scripts/procedure.py",
           "scripts/process_inspector.py",
           "scripts/purpose.py",
+          "scripts/run.py",
           "scripts/screen_capture.py",
           "scripts/state_verifier.py",
           "skill.py"
         ],
         "tests": [
+          "tests/__pycache__/test_computer_user_core.cpython-311.pyc",
           "tests/test_computer_user_core.py"
         ],
         "references": [],
@@ -93,11 +106,11 @@
         "skills/computer-user-core/tests/test_computer_user_core.py"
       ],
       "real_implementation_files": [
-        "skills/computer-user-core/scripts/cleanup.py",
         "skills/computer-user-core/scripts/process_inspector.py",
-        "skills/computer-user-core/scripts/state_verifier.py",
         "skills/computer-user-core/scripts/screen_capture.py",
-        "skills/computer-user-core/scripts/gui_automator.py"
+        "skills/computer-user-core/scripts/gui_automator.py",
+        "skills/computer-user-core/scripts/state_verifier.py",
+        "skills/computer-user-core/scripts/cleanup.py"
       ],
       "recommended_action": "design_behavioral_verification"
     }

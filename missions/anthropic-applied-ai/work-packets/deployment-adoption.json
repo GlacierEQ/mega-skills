@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "proof-deployment-adoption",
+  "requirement_id": "deployment_adoption",
+  "status": "BLOCKED_ON_RETRIEVAL",
+  "objective": "Produce truthful evidence of deploying and supporting an AI workflow for a real external consenting user, collaborator, team, or organization through discovery, deployment, feedback, iteration, and handoff.",
+  "truth_rules": [
+    "Never fabricate a customer, user, testimonial, adoption event, or business outcome.",
+    "Use the exact relationship label: customer only if they are actually a customer; otherwise say pilot user, collaborator, tester, team, or organization.",
+    "Do not count the operator's own use as external adoption evidence.",
+    "Do not publish identities, quotes, screenshots, or usage details without permission."
+  ],
+  "phases": [
+    {
+      "id": "discovery",
+      "evidence": [
+        "workflow/problem statement",
+        "current-state map",
+        "constraints",
+        "success criteria",
+        "what not to automate"
+      ]
+    },
+    {
+      "id": "deployment",
+      "evidence": [
+        "integration/runtime boundary",
+        "access/authority model",
+        "runbook",
+        "deployment receipt",
+        "rollback/recovery path"
+      ]
+    },
+    {
+      "id": "adoption",
+      "evidence": [
+        "first-use record",
+        "feedback/issues",
+        "support interactions",
+        "repeat-use or explicit acceptance when available"
+      ]
+    },
+    {
+      "id": "iteration",
+      "evidence": [
+        "changes tied to feedback",
+        "before/after acceptance evidence",
+        "remaining limitations"
+      ]
+    },
+    {
+      "id": "handoff",
+      "evidence": [
+        "operating instructions",
+        "ownership boundary",
+        "support/escalation path",
+        "final user acknowledgement where appropriate"
+      ]
+    }
+  ],
+  "acceptance": [
+    "A real external participant exists and their relationship is labeled accurately.",
+    "Discovery artifacts predate or clearly precede the final solution.",
+    "A deployed workflow is actually exercised by the external participant.",
+    "At least one feedback-to-change loop is documented.",
+    "Acceptance, repeat use, or explicit outcome evidence is captured without inventing metrics.",
+    "A public-safe case study is created only from information permitted for publication.",
+    "Evidence is ingested into evidence-sources.json with limitations and source lineage."
+  ],
+  "outputs": [
+    "private evidence packet",
+    "public-safe case study",
+    "deployment/adoption receipt",
+    "evidence-sources.json record"
+  ],
+  "claim_ceiling": "Evidence supports only the exact external relationship and observed deployment/adoption behavior. It does not imply enterprise scale, revenue impact, or customer success beyond the recorded scope."
+}

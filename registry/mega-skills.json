@@ -408,7 +408,7 @@
       "display_name": "Apex Always-On Core",
       "ownership": "glaciereq",
       "maturity": "active",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "mega-skills/apex-always-on-core",
       "entrypoint": "mega-skills/apex-always-on-core/MEGA.md",
       "required_combos": [
@@ -419,7 +419,8 @@
       "conditional_combos": [
         "capability-readiness",
         "evidence-to-evolution-loop",
-        "frontier-orbit-synthesis"
+        "frontier-orbit-synthesis",
+        "fleet-recon-and-harmonize"
       ],
       "mission_output": "ALWAYS_ON_CORE_MISSION_RESULT.md",
       "durable_state": [
@@ -428,9 +429,10 @@
         "EVIDENCE.md",
         "CONTEXT.md",
         "HANDOFF.md",
-        "ALWAYS_ON_CORE_RECEIPT.md"
+        "ALWAYS_ON_CORE_RECEIPT.md",
+        "harmonious-merge-watch.json"
       ],
-      "adds": "Continuous always-on cognitive foundation fusing sequential thinking, context compaction, dialectic swarm consensus, multi-service connectors, and estate watchdog health.",
+      "adds": "Continuous always-on cognitive foundation plus a read-only Harmonious Merge Watch that preserves main, detects branch divergence and security-sensitive refs, and emits evidence-backed plans without autonomous mutations.",
       "firewall": {
         "schema_version": 1,
         "mega_id": "apex-always-on-core",
@@ -855,6 +857,85 @@
         "long-horizon-core",
         "evidence-to-evolution-loop",
         "skill-forge"
+      ]
+    },
+    {
+      "id": "apex-casebuild-mesh",
+      "display_name": "APEX Casebuild Mesh",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-casebuild-mesh",
+      "entrypoint": "mega-skills/apex-casebuild-mesh/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "forensic-docket-intelligence",
+        "cross-cloud-memory-synthesis",
+        "epistemic-verification-chain"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "court-evidence-compiler",
+        "voice-evidence-authenticator",
+        "guarded-automation-loop",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "CASEBUILD_MESH_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md",
+        "CASEBUILD_MESH_REGISTER.md"
+      ],
+      "adds": "Long-horizon cross-system legal case integration with source/derivative boundaries, evidence identity and integrity, node reconciliation, attorney-review routing, completion gates, and exact recovery points.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-casebuild-mesh",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "read_connected_sources",
+          "run_local_tests",
+          "hash_local_artifacts",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deployment",
+          "merge",
+          "credential_access"
+        ],
+        "forbidden_actions": [
+          "legal_filing",
+          "autonomous_legal_decision",
+          "privilege_waiver",
+          "public_release",
+          "deletion",
+          "execute_unknown_program"
+        ],
+        "fail_closed": true
+      },
+      "human_control_points": [
+        "approve_case_scope_and_sensitive_access",
+        "approve_external_mutation",
+        "attorney_decides_strategy_and_filing",
+        "approve_production_or_exhibit_release",
+        "resolve_critical_integrity_anomaly"
+      ],
+      "local_validation": [
+        "All phase gates have evidence-backed results and an exact resume point",
+        "No original source is altered and every consequential claim has a source or declared limitation",
+        "External effects and legal decisions remain human-controlled"
+      ],
+      "does_not_own": [
+        "Canonical authority over peer repositories or clouds",
+        "Persuasive legal strategy or filings",
+        "Unapproved external mutation"
       ]
     },
     {

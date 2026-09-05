@@ -1,68 +1,103 @@
-# Capability Hierarchy and Snowball Contract
+# Capability Hierarchy and Recursive Mega-Skill Pyramid Contract
 
-## Purpose
+## Prime ontology
 
-The hierarchy makes composite intelligence stronger without making context larger or ownership blurrier. Every level must add a new type of value: method, composition, or mission integration.
-
-## Layer contracts
-
-### 1. Skills
-
-A **Skill** is the smallest maintained, independently useful procedure. It lives under `skills/<skill-id>/`, includes `SKILL.md`, and owns its trigger, method, local artifact, and local validation. A Skill may use references, templates, and deterministic scripts, but it may not depend on a Combo or Mega Skill.
-
-### 2. Combo Skills
-
-A **Combo Skill** is an explicit repeated route across multiple Skills. It lives under `combo-skills/<combo-id>/`, includes `COMBO.md`, names every member by ID, declares dependency order, turns each boundary into an input/output contract, and produces a compound artifact. It does not own copies of its member methods.
-
-### 3. Mega Skills
-
-A **Mega Skill** is a conditional mission system. It lives under `mega-skills/<mega-id>/`, includes `MEGA.md`, chooses Skills and Combo Skills based on mission shape, and owns durable state, phase gates, exception handling, and cross-artifact integration. It does not silently invoke unrelated capability.
-
-## Dependency law
+**Every node in a Mega-Skill pyramid is a proper Skill.** Atomic, Compound, and Mega are scale/composition kinds, not different standards of legitimacy.
 
 ```text
-Skills ─────────► Combo Skills ─────────► Mega Skills
-   ▲                    ▲                       │
-   └── may not depend ──┴── may not depend ─────┘
+                                 MEGA SKILL
+                         complete workflow / pipeline
+                         /          |           \
+              COMPOUND SKILL   COMPOUND SKILL   COMPOUND SKILL
+                /      \              |             /       \
+        ATOMIC SKILL   COMPOUND SKILL  ...     ATOMIC SKILL  ...
+                         /      \
+                  ATOMIC SKILL  ATOMIC SKILL
 ```
 
-Dependencies can only point upward. An external/platform skill is always treated as an atomic capability reference unless deliberately adopted as a GlacierEQ-owned Skill.
+A Mega Skill is the apex representation of a complete real capability built from recursively composable Skill building blocks. It is not a flat router over prose stages.
 
-## Snowball acceptance test
+## Skill kinds
 
-| Test | Skill | Combo Skill | Mega Skill |
-|---|---|---|---|
-| Independent trigger is defined | Required | Not required | Required at mission scope |
-| Reuses lower-layer IDs without copying their methods | Not applicable | Required | Required |
-| Adds new value | Procedure and local validation | Ordering and handoff contract | Conditional routing, state, phase gates, integration |
-| Produces a traceable artifact | Atomic artifact | Compound work packet | Mission result plus durable handoff |
-| Can be validated independently | Required | Required | Required |
-| Loads only required context | Required | Required | Required |
+### Atomic Skill
 
-If a proposed object cannot pass this test, it is either a duplicate, an unproven idea, or a documentation section—not a new Skill layer.
+The smallest maintained independently useful procedure. It owns its trigger, input contract, method, output contract, artifact, source identity, and local validation.
 
-## Snowball cycle
+### Compound Skill
+
+A proper reusable Skill implemented as a bounded composition. Existing `combo-skills/<id>/COMBO.md` manifests are the canonical compatibility/source representation for this class.
+
+A Compound Skill may contain Atomic Skills (`kind: skill`), other Compound Skills (`kind: compound-skill`), or explicit external capability references (`kind: external-skill`). It owns selection conditions, ordered execution, member roles, handoffs, a compound artifact, quality gates, state updates, and independent acceptance criteria.
+
+Recursive Compound-Skill composition must form a directed acyclic graph. Direct or indirect cycles and unresolved owned references are invalid.
+
+### Mega Skill
+
+A proper end-to-end Skill at mission scale. It owns mission trigger, route selection, durable state, phase gates, cross-branch integration, recovery, final acceptance, and mission output. Its full dependency graph must recursively resolve to valid Compound/Atomic Skills or explicit external references.
+
+## Identity law
+
+Exact human IDs are preserved. Machine projections use typed keys because an exact ID may legitimately exist at more than one Skill scale:
 
 ```text
-verified atomic artifact → reusable capability chain → compound artifact
-→ conditional mission route → durable state and final integration
-→ evidence that improves future Skill and Combo design
+atomic:<id>
+compound:<id>
+mega:<id>
+external:<id>
 ```
 
-Do not mutate a lower-level contract during an active mission without a decision record and fresh validation of dependent Combo and Mega entries.
+Shared Skills may feed multiple parents or multiple Mega Skills, so the canonical machine form is a DAG even when a human view is rendered as a pyramid.
 
-## Cross-layer source preservation invariant — 2026-08-31
+## Recursive invariants
 
-No higher layer may gain convenience by destroying lower-layer source meaning.
+1. Every GlacierEQ-owned node resolves to a canonical registry entry and source path.
+2. Every Atomic, Compound, and Mega node is independently valid at its scale.
+3. A Compound Skill may consume another validated Compound Skill by exact ID.
+4. Composition is acyclic; cycle introduction fails validation.
+5. Parents reference child IDs/contracts/artifacts and never copy child methods.
+6. Every parent adds integration capability no child owns alone.
+7. Member roles, handoffs, produced artifacts, and validation boundaries remain attributable to their canonical contracts.
+8. Required unresolved descendants block Mega validity.
+9. Source/provenance survives composition.
+10. Shared-node lineage is preserved instead of flattened.
+11. Higher scale does not authorize unrelated scope/context loading.
+
+## Canonical graph projection
+
+`registry/mega-skill-pyramids.json` is generated from the canonical registries. It is normalized so shared Skills are represented once and referenced by typed key.
+
+It contains:
+
+- `mega_roots`: all 29 Mega apexes and their required/conditional Compound roots;
+- `compound_nodes`: every Compound Skill and typed child references with exact child roles;
+- `leaf_keys`: Atomic/external leaves reachable from Compound Skills;
+- `shared_node_lineage`: nodes with multiple parents;
+- `contract_paths`: exact canonical registry fields carrying artifact and validation semantics;
+- `expansion_contract`: deterministic recursive traversal rules.
+
+Generate/check it with:
+
+```bash
+python scripts/generate_mega_skill_pyramids.py
+python scripts/generate_mega_skill_pyramids.py --check
+```
+
+There is no fixed maximum composition depth. Expansion starts at a Mega root, recursively follows `compound-skill` members, and stops only at Atomic or explicit external leaves.
+
+## Snowball acceptance
+
+A higher Skill must consume real lower-Skill contracts/artifacts, add new integration value, emit a traceable artifact, and remain independently testable. Nothing becomes a Mega Skill merely by collecting prompts or repeating instructions.
+
+## Source preservation
 
 ```text
-original source / journal / evidence
-        ↓ immutable provenance
-Skill artifact
-        ↓ additive method
-Combo artifact
-        ↓ additive integration
-Mega mission state
+source/evidence
+  ↓ immutable provenance
+Atomic Skill artifact
+  ↓ additive composition
+Compound Skill artifact
+  ↓ optional recursive Compound layers
+Mega Skill mission result + durable state
 ```
 
-A Combo or Mega Skill may compact, route, rank, annotate, or supersede an **analysis artifact**, but it may not silently rewrite the underlying source. If a later layer discovers an error, preserve the old artifact/proposition and record the correction, evidence, and effective supersession explicitly.
+Higher Skills may route, compact, annotate, or supersede analysis artifacts, but may not silently rewrite the underlying source or erase supersession lineage.
