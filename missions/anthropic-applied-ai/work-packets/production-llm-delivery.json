@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "proof-production-llm-delivery",
+  "requirement_id": "production_llm_delivery",
+  "status": "BLOCKED_ON_RETRIEVAL",
+  "objective": "Produce qualifying evidence of a real provider-connected LLM/agent application delivered through an executable, deployed path with verification and receipts.",
+  "retrieval_gate": {
+    "rule": "Do not build until existing-estate retrieval is exhausted or the operator explicitly chooses to build anyway.",
+    "disallowed_substitutes": [
+      "SDK example code",
+      "forked/upstream examples",
+      "mock-only provider tests",
+      "README architecture",
+      "unexecuted deployment manifests",
+      "local-only toy prompt demo"
+    ]
+  },
+  "minimum_system": {
+    "provider": "Claude/Anthropic or another target-relevant production LLM provider; exact provider must be recorded.",
+    "application": "A user-facing or operator-facing application that performs a bounded real workflow, not merely model echo/chat.",
+    "agentic_surface": [
+      "tool use or MCP server",
+      "structured state",
+      "bounded authority",
+      "verification/evaluation"
+    ],
+    "deployment": "A reachable deployed runtime or independently exercised hosted environment.",
+    "observability": [
+      "request/result identifiers",
+      "error classification",
+      "latency measurement",
+      "provider/model identity",
+      "bounded cost/token accounting where available"
+    ],
+    "safety": [
+      "secrets excluded from artifacts",
+      "tool authority explicit",
+      "failure behavior fail-closed where consequential"
+    ]
+  },
+  "acceptance": [
+    "At least one real provider request succeeds from the deployed application path.",
+    "At least one failure path is exercised and recorded.",
+    "Provider/model/runtime versions or identifiers are recorded.",
+    "Automated tests cover deterministic application logic around the model boundary.",
+    "An evaluation set measures task success or output quality with a declared rubric.",
+    "A deployment receipt binds source revision, runtime, verification result, and public artifact.",
+    "A public-safe case study describes problem, architecture, implementation, evaluation, deployment, limitations, and reproduction path."
+  ],
+  "outputs": [
+    "source repository",
+    "deployment receipt JSON",
+    "evaluation report JSON",
+    "public case study",
+    "evidence-sources.json record"
+  ],
+  "claim_ceiling": "This packet can establish production LLM application delivery. It does not establish customer deployment/adoption unless real external-user evidence separately satisfies that requirement."
+}

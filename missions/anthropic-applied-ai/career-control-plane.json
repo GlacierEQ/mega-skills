@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "career-control-plane",
+  "mission": "anthropic-applied-ai",
+  "authorities": {
+    "market_target": "missions/anthropic-applied-ai/target-role.json",
+    "market_projection": "missions/anthropic-applied-ai/target-competency-map.json",
+    "evidence_intake": "missions/anthropic-applied-ai/evidence-sources.json",
+    "compiled_evidence_truth": "missions/anthropic-applied-ai/evidence-ledger.json",
+    "linkedin_public_projection": "missions/anthropic-applied-ai/linkedin-backbone.json",
+    "linkedin_human_projection": "missions/anthropic-applied-ai/LINKEDIN_BACKBONE.md",
+    "linkedin_manual_state": "missions/anthropic-applied-ai/linkedin-activation.json",
+    "next_action_queue": "missions/anthropic-applied-ai/linkedin-action-queue.json",
+    "operator_linkedin_source": "missions/anthropic-applied-ai/LINKEDIN_PROFILE_SOURCE.md",
+    "linkedin_claim_audit": "missions/anthropic-applied-ai/linkedin-claim-audit.json",
+    "linkedin_publication_pack": "missions/anthropic-applied-ai/linkedin-publication-pack.json",
+    "production_llm_work_packet": "missions/anthropic-applied-ai/work-packets/production-llm-delivery.json",
+    "deployment_adoption_work_packet": "missions/anthropic-applied-ai/work-packets/deployment-adoption.json"
+  },
+  "flow": [
+    "refresh target market sources",
+    "check target freshness",
+    "compile weighted target requirements",
+    "ingest typed evidence sources",
+    "collapse correlated evidence by independence group",
+    "score proof strength and rank hard gaps",
+    "audit operator-authored LinkedIn claims against evidence",
+    "project only public-safe evidence",
+    "compile operator/system action queue",
+    "compile publication-safe LinkedIn release pack",
+    "retrieve existing evidence before activating proof-build packets",
+    "regenerate outward career surfaces from retained truth"
+  ],
+  "separation_of_concerns": {
+    "job-app-helix": "portfolio authority and evidence admission",
+    "mega-skills": "career control-plane logic, evidence weighting, mission continuity, and projection contracts",
+    "job-application": "public hiring presentation and delivery surface",
+    "linkedin": "external recruiter/social projection, never source authority"
+  },
+  "hard_rules": [
+    "Operator-authored LinkedIn source is preserved and cannot be silently rewritten by generated projections.",
+    "LinkedIn prose cannot create evidence.",
+    "Private evidence cannot leak into public projections unless a separately reviewed public-safe derivative exists.",
+    "Candidate narrative never satisfies a hard gate by itself.",
+    "Correlated claims from the same underlying system cannot self-corroborate.",
+    "Generic engineering evidence cannot satisfy customer-facing or production-LLM requirements unless the evidence explicitly demonstrates that behavior.",
+    "Target requirements expire and must be refreshed from current role sources.",
+    "Evidence coverage score is never a hiring probability, seniority score, or employer-fit claim.",
+    "Retrieval precedes proof-build activation.",
+    "Customer, adoption, deployment, testimonial, and production claims require the exact observed relationship and evidence boundary."
+  ]
+}

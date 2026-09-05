@@ -1,0 +1,185 @@
+{
+  "schema_version": 2,
+  "generated_from": {
+    "ledger_sha256": "b5803c1413bc28f752b3728679a81c0f963c604e",
+    "ledger_backbone_version": "2.0.0",
+    "ledger_as_of": "2026-09-02",
+    "evidence_coverage_score": 72.4,
+    "open_hard_gates": 3
+  },
+  "queue": [
+    {
+      "id": "evidence-retrieval:production_llm_delivery",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 113.1,
+      "requirement_id": "production_llm_delivery",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Production LLM and agent application delivery. Preserve source lineage; never promote examples, forks, market intelligence, candidate narrative, or unexecuted code into proof.",
+      "completion": "A stronger typed evidence source is added and the ledger is regenerated, or retrieval is explicitly exhausted with NO_QUALIFYING_EVIDENCE."
+    },
+    {
+      "id": "proof-build:production_llm_delivery",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 101.8,
+      "requirement_id": "production_llm_delivery",
+      "work_packet": "missions/anthropic-applied-ai/work-packets/production-llm-delivery.json",
+      "instruction": "Only after retrieval is exhausted, execute the bounded proof packet for Production LLM and agent application delivery.",
+      "completion": "Executable/observed proof + receipt + public-safe artifact is ingested into evidence-sources.json."
+    },
+    {
+      "id": "evidence-retrieval:customer_discovery",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 95.6,
+      "requirement_id": "customer_discovery",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Customer discovery and workflow problem decomposition. Preserve source lineage; never promote examples, forks, market intelligence, candidate narrative, or unexecuted code into proof.",
+      "completion": "A stronger typed evidence source is added and the ledger is regenerated, or retrieval is explicitly exhausted with NO_QUALIFYING_EVIDENCE."
+    },
+    {
+      "id": "proof-build:customer_discovery",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 86.1,
+      "requirement_id": "customer_discovery",
+      "work_packet": "missions/anthropic-applied-ai/work-packets/customer-discovery.json",
+      "instruction": "Only after retrieval is exhausted, execute the bounded proof packet for Customer discovery and workflow problem decomposition.",
+      "completion": "Executable/observed proof + receipt + public-safe artifact is ingested into evidence-sources.json."
+    },
+    {
+      "id": "evidence-retrieval:deployment_adoption",
+      "owner": "system",
+      "type": "evidence_retrieval",
+      "status": "READY",
+      "priority": 77.6,
+      "requirement_id": "deployment_adoption",
+      "instruction": "Search existing repositories, receipts, deployment records, Helix artifacts, and verified project history for stronger evidence of: Customer deployment support, adoption, and lifecycle expansion. Preserve source lineage; never promote examples, forks, market intelligence, candidate narrative, or unexecuted code into proof.",
+      "completion": "A stronger typed evidence source is added and the ledger is regenerated, or retrieval is explicitly exhausted with NO_QUALIFYING_EVIDENCE."
+    },
+    {
+      "id": "linkedin:recommendations",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "OPERATOR_ACTION_REQUIRED",
+      "priority": 72,
+      "instruction": "Request up to 5 real recommendations covering distinct firsthand dimensions: technical depth, systems thinking, problem solving and execution, reliability and follow-through, technical communication.",
+      "completion": "Visible recommendations exist or each request is explicitly unavailable/declined."
+    },
+    {
+      "id": "proof-build:deployment_adoption",
+      "owner": "system",
+      "type": "proof_build",
+      "status": "BLOCKED_ON_RETRIEVAL",
+      "priority": 69.9,
+      "requirement_id": "deployment_adoption",
+      "work_packet": "missions/anthropic-applied-ai/work-packets/deployment-adoption.json",
+      "instruction": "Only after retrieval is exhausted, execute the bounded proof packet for Customer deployment support, adoption, and lifecycle expansion.",
+      "completion": "Executable/observed proof + receipt + public-safe artifact is ingested into evidence-sources.json."
+    },
+    {
+      "id": "linkedin:open-to-work-preferences",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "NEEDS_INPUT",
+      "priority": 68,
+      "instruction": "Set actual location, workplace-type, and employment-type preferences. Do not infer them.",
+      "completion": "Locations, workplace types, and employment types are explicitly populated."
+    },
+    {
+      "id": "linkedin:identity-verification",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "OPERATOR_ACTION_REQUIRED",
+      "priority": 55,
+      "instruction": "Complete LinkedIn identity verification if eligible and desired.",
+      "completion": "Status becomes COMPLETE, UNAVAILABLE, or DECLINED."
+    },
+    {
+      "id": "linkedin:verify-banner",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "PROPOSED_NOT_VERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn banner against the current career positioning.",
+      "completion": "banner is VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-contact-info",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn contact info against the current career positioning.",
+      "completion": "contact_info is VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-custom-url",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn custom url against the current career positioning.",
+      "completion": "custom_url is VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:verify-profile-photo",
+      "owner": "operator",
+      "type": "linkedin_manual",
+      "status": "UNVERIFIED",
+      "priority": 48,
+      "instruction": "Inspect and verify LinkedIn profile photo against the current career positioning.",
+      "completion": "profile_photo is VERIFIED, COMPLETE, or intentionally deferred."
+    },
+    {
+      "id": "linkedin:technical-post:1",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 40,
+      "instruction": "Publish an evidence-linked technical post: Technology selection as an executable proof problem, not a language popularity contest",
+      "evidence_source": "tower-of-babel",
+      "completion": "Post is published with its evidence boundary intact."
+    },
+    {
+      "id": "linkedin:technical-post:2",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 38,
+      "instruction": "Publish an evidence-linked technical post: Fail-closed autonomy: preserving conflicting votes instead of averaging them away",
+      "evidence_source": "spacex-autonomy",
+      "completion": "Post is published with its evidence boundary intact."
+    },
+    {
+      "id": "linkedin:technical-post:3",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 36,
+      "instruction": "Publish an evidence-linked technical post: Claim → behavior → implementation → verification → receipt → promotion",
+      "evidence_source": "job-application",
+      "completion": "Post is published with its evidence boundary intact."
+    },
+    {
+      "id": "linkedin:technical-post:4",
+      "owner": "operator",
+      "type": "linkedin_content",
+      "status": "READY",
+      "priority": 34,
+      "instruction": "Publish an evidence-linked technical post: How to separate simulated infrastructure control from unverified production claims",
+      "evidence_source": "xai-colossus-cooling",
+      "completion": "Post is published with its evidence boundary intact."
+    }
+  ],
+  "summary": {
+    "total": 17,
+    "system": 6,
+    "operator": 11,
+    "ready": 7,
+    "blocked_on_retrieval": 3
+  }
+}

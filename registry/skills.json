@@ -3,30 +3,6 @@
   "layer": "skills",
   "entries": [
     {
-      "id": "genius-mastery",
-      "display_name": "Genius Mastery",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.1.0",
-      "path": "skills/genius-mastery",
-      "entrypoint": "skills/genius-mastery/SKILL.md",
-      "purpose": "Route Genius-Mastery kernel validate/doctor/synthesize/vector without dumping the skill catalog.",
-      "input_contract": [
-        "Genius repo path or role brief"
-      ],
-      "output_contract": [
-        "Kernel receipt: validate PASS, doctor, pytest count, or VECTOR.yaml"
-      ],
-      "local_validation": [
-        "genius validate PASS and pytest green in Genius-Mastery"
-      ],
-      "does_not_own": [
-        "Full GitHub estate clones",
-        "Raw legal exhibits on public compute",
-        "Skill-catalog dumps"
-      ]
-    },
-    {
       "id": "2d-games",
       "display_name": "2d Games",
       "ownership": "glaciereq",
@@ -963,12 +939,10 @@
       "entrypoint": "skills/apex-orchestration/SKILL.md",
       "purpose": "Holographic Mesh Orchestrator across 12 free-model lanes, six-stage mission lifecycle, receipt-chain verification, 26 production-grade logic packets (12 base + 4 ML/self-improving + 5 cutting-edge dev + 5 elite hardening). Use when executing APEX workflows, dispatching multi-model missions, fusing verified outputs, online-learning, speculative decoding, semantic caching, DAG scheduling, property-based testing, mutation testing, adaptive token compression, contract testing, model cascading, retrieval-augmented context, or constitutional gate.",
       "input_contract": [
-        "User mandate + blast-radius declaration + budget",
-        "Optional: domain classification, target lanes, evidence constraints"
+        "Domain mandate and parameters"
       ],
       "output_contract": [
-        "delivery.json with status in {SHIPPED, BLOCKED, REFUSED}, three signatures, receipt_chain_sha256, memory_write_id",
-        "runs/<mission_id>/ with audit.jsonl, token_log.jsonl, receipts/, fused.json"
+        "Verified task execution receipt and output payload"
       ],
       "local_validation": [
         "26 packets present at version 1.3.0 in skills/apex-orchestration/packets/",
@@ -981,15 +955,7 @@
         "skill.py advanced returns 10 packet summaries (17-26)"
       ],
       "does_not_own": [
-        "Unbounded mutations outside declared mission blast radius",
-        "Memory writes without provenance",
-        "Domain work routed to generalist lanes (DOMAIN-MED, DOMAIN-FIN are domain-only)"
-      ],
-      "packet_tree": "skills/apex-orchestration/packets/{01..12}-*.md",
-      "schemas": [
-        "skills/apex-orchestration/schemas/receipt.schema.json",
-        "skills/apex-orchestration/schemas/stage-receipt.schema.json",
-        "skills/apex-orchestration/schemas/delivery.schema.json"
+        "Unbounded operations outside declared domain scope"
       ]
     },
     {
@@ -1503,7 +1469,7 @@
       "id": "attio",
       "display_name": "Attio",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "skills/attio",
       "entrypoint": "skills/attio/SKILL.md",
@@ -1676,7 +1642,7 @@
       "id": "automated-performance-profiling",
       "display_name": "Automated Performance Profiling",
       "ownership": "glaciereq",
-      "maturity": "active",
+      "maturity": "candidate",
       "version": "0.1.0",
       "path": "skills/automated-performance-profiling",
       "entrypoint": "skills/automated-performance-profiling/SKILL.md",
@@ -2658,6 +2624,32 @@
       "does_not_own": [
         "Unverified capability promotion",
         "Specialist route execution"
+      ]
+    },
+    {
+      "id": "casebuild-mesh-organization",
+      "display_name": "Casebuild Mesh Organization",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/casebuild-mesh-organization",
+      "entrypoint": "skills/casebuild-mesh-organization/SKILL.md",
+      "purpose": "Organize a legal matter across repository and cloud nodes with stable evidence identity, provenance, integrity, navigation, reconciliation, review routing, and an exact resume point.",
+      "input_contract": [
+        "Matter identity, jurisdiction, scope, constraints, and authorization boundaries",
+        "Accessible repository/cloud nodes and existing indexes, checkpoints, manifests, and source receipts"
+      ],
+      "output_contract": [
+        "CASEBUILD_MESH_REGISTER.md with node graph, evidence integrity state, linked views, gaps, work packets, completion scorecard, and exact resume point"
+      ],
+      "local_validation": [
+        "Reviewer can traverse matter to issue/event to evidence ID to exact source to integrity receipt",
+        "Originals remain unchanged; derivatives retain parent and transformation provenance",
+        "Contradictions, unknowns, attorney decisions, and external-action approvals remain explicit"
+      ],
+      "does_not_own": [
+        "Persuasive legal writing, litigation strategy, legal filing, privilege waiver, or unapproved external mutation",
+        "Canonicalization or forced consolidation of peer repositories and cloud nodes"
       ]
     },
     {
@@ -5652,28 +5644,35 @@
     },
     {
       "id": "fleet-git-harmonizer-core",
-      "display_name": "Fleet Git Harmonizer Core",
+      "display_name": "Fleet Git Harmonizer Core — Harmonious Merge Protocol",
       "ownership": "glaciereq",
       "maturity": "candidate",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": "skills/fleet-git-harmonizer-core",
       "entrypoint": "skills/fleet-git-harmonizer-core/SKILL.md",
-      "purpose": "Audit branch divergence, synthesize commits into main, apply archive tags, and prune clutter.",
+      "purpose": "Preserve main as the living baseline; selectively integrate unique beneficial branch behavior, validate it on main, and retire branches only after their value is accounted for.",
       "input_contract": [
-        "Repository scope or path",
-        "Target branch (default: main)",
-        "Regression test command"
+        "Repository scope and canonical baseline (default: main)",
+        "Included branches and tags plus justified exclusions",
+        "Project validation commands and required checks",
+        "Security constraints, including known exposed paths or credentials",
+        "Approval boundary for integration, ref retirement, and history rewrites"
       ],
       "output_contract": [
-        "fleet-divergence-audit.json"
+        "harmonious-merge-audit.json"
       ],
       "local_validation": [
-        "Zero data loss verified via archive tags",
-        "Regression tests pass 100% green before merge"
+        "Every discovered branch/tag has an evidence-backed disposition",
+        "All accepted integrations pass required validation on main",
+        "Every retired ref has a preservation-or-rejection record and approval receipt",
+        "Main remains the verified canonical result",
+        "No new ref preserves known credential-bearing history"
       ],
       "does_not_own": [
-        "Multi-repo mission state",
-        "Unrelated repo mutations"
+        "Replacing, resetting, deleting, or treating main as disposable",
+        "Blind bulk merges or unapproved branch deletion",
+        "Credential rotation or unapproved force-push/history rewrite",
+        "Multi-repository mission state"
       ]
     },
     {
@@ -7636,6 +7635,31 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "job-app-helix-company-forge",
+      "display_name": "Job-App Helix Company Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/job-app-helix-company-forge",
+      "entrypoint": "skills/job-app-helix-company-forge/SKILL.md",
+      "purpose": "Full-cycle company-specific innovation forge for Job-App Helix. Always research-study-work; use sequential intelligence, heavy specialist swarms, token-efficient context routing, Pro-Code elite humanized engineering, anti-cookie-cutter architecture, verified deployment, and iterative magnificence.",
+      "input_contract": [
+        "Target company and role",
+        "Operator personal state, priorities, and constraints"
+      ],
+      "output_contract": [
+        "Company-specific deployed engineering artifact with its research, study, and work record",
+        "Durable continuation state for the next cycle"
+      ],
+      "local_validation": [
+        "Readiness not yet established; run scripts/readiness_assay.py before activation."
+      ],
+      "does_not_own": [
+        "Cross-system mission orchestration",
+        "Unverified external mutations"
       ]
     },
     {

@@ -89,7 +89,7 @@ def sync_skills() -> None:
             "version": "0.1.0",
         }
         fm_str = yaml.dump(fm_dict, sort_keys=False, default_flow_style=False).strip()
-        final_content = f"---\n{fm_str}\n---\n\n{cs["body"]}\n"
+        final_content = f"---\n{fm_str}\n---\n\n{cs['body']}\n"
         target_md.write_text(final_content, encoding="utf-8")
 
         # Create or update entry in skills.json
@@ -113,7 +113,7 @@ def sync_skills() -> None:
     # Sort entries by ID
     skills_registry["entries"] = [existing_entries[k] for k in sorted(existing_entries.keys())]
     SKILLS_JSON.write_text(json.dumps(skills_registry, indent=2) + "\n", encoding="utf-8")
-    print(f"Updated {SKILLS_JSON} with {len(skills_registry["entries"])} skills")
+    print(f"Updated {SKILLS_JSON} with {len(skills_registry['entries'])} skills")
 
 
 def main() -> None:

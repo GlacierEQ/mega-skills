@@ -85,7 +85,7 @@ def generate_preflight_report(
             owner=prereq.get("owner", "dev"),
             fallback=fallback_desc,
             result=result
-        )
+        ))
     
     # Generate markdown
     md = f"""# Resource Preflight Report

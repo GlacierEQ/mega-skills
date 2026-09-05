@@ -1,44 +1,65 @@
 #!/usr/bin/env python3
-"""
-L2 Behavioral tests for pipeline-compositor.
-Run with: python -m pytest tests/ -v
-"""
-
-import pytest
+import json
 import sys
+import tempfile
+import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from engine import PipelineError, execute_pipeline, topological_layers, validate_pipeline
 
-class TestPipelineCompositor:
-    """L2 tests for pipeline-compositor - DAG acyclic verification, type contract enforcement, checkpoint recovery, manifest completeness"""
-    
-    def test_skill_entry_point_exists(self):
-        skill_py = Path(__file__).parent.parent / "skill.py"
-        assert skill_py.exists()
-        assert skill_py.stat().st_mode & 0o111
-    
-    def test_scripts_exist(self):
-        scripts_dir = Path(__file__).parent.parent / "scripts"
-        expected = ['dag_parser.py', 'topology_validator.py', 'checkpoint_manager.py', 'stage_executor.py', 'backpressure_controller.py', 'manifest_synthesizer.py']
-        for script in expected:
-            p = scripts_dir / script
-            assert p.exists(), f"Missing script: {script}"
-            assert p.stat().st_mode & 0o111, f"Not executable: {script}"
-    
-    def test_resources_exist(self):
-        resources_dir = Path(__file__).parent.parent / "resources"
-        expected = ['pipeline_def_schema.yaml', 'edge_type_registry.json']
-        for res in expected:
-            p = resources_dir / res
-            assert p.exists(), f"Missing resource: {res}"
-    
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # DAG acyclic verification, type contract enforcement, checkpoint recovery, manifest completeness
 
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
+class PipelineCompositorBehaviorTests(unittest.TestCase):
+    def test_cycle_rejected(self):
+        spec={
+            "schema_version":1,
+            "id":"cycle",
+            "stages":[
+                {"id":"a","needs":["b"],"command":[sys.executable,"-c","print('a')"]},
+                {"id":"b","needs":["a"],"command":[sys.executable,"-c","print('b')"]}
+            ]
+        }
+        with self.assertRaises(PipelineError):
+            validate_pipeline(spec)
+
+    def test_parallel_layers(self):
+        spec={
+            "schema_version":1,
+            "id":"layers",
+            "stages":[
+                {"id":"a","command":[sys.executable,"-c","print('a')"]},
+                {"id":"b","command":[sys.executable,"-c","print('b')"]},
+                {"id":"c","needs":["a","b"],"command":[sys.executable,"-c","print('c')"]}
+            ]
+        }
+        self.assertEqual(topological_layers(spec), [["a","b"],["c"]])
+
+    def test_execution_checkpoint_and_resume(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            script=root/"make.py"
+            script.write_text("from pathlib import Path\nPath('out.json').write_text('{\\\"ok\\\":true}')\n", encoding="utf-8")
+            spec={
+                "schema_version":1,
+                "id":"demo",
+                "manifest":"manifest.json",
+                "stages":[
+                    {
+                        "id":"make",
+                        "command":[sys.executable,"make.py"],
+                        "produces":["out.json"],
+                        "resume_safe":True
+                    }
+                ]
+            }
+            first=execute_pipeline(spec,root,state_dir="state",resume=True)
+            self.assertEqual(first["status"],"COMPLETE")
+            self.assertEqual(first["summary"]["succeeded"],1)
+            second=execute_pipeline(spec,root,state_dir="state",resume=True)
+            self.assertEqual(second["summary"]["resumed"],1)
+            manifest=json.loads((root/"manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["status"],"COMPLETE")
+
+
+if __name__=="__main__":
+    unittest.main()
