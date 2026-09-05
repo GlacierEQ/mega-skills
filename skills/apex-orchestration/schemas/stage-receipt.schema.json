@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.com/schemas/apex-orchestration/stage-receipt.schema.json",
+  "title": "Apex Mesh Stage Receipt",
+  "description": "Per-stage evidence file. See Packet 02 of apex-orchestration v1.0.0.",
+  "type": "object",
+  "required": ["stage", "mission_id", "ts", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "stage": {"type": "string", "enum": ["INTAKE", "DECOMPOSE", "DISPATCH", "VERIFY", "FUSE", "DELIVER"]},
+    "mission_id": {"type": "string", "pattern": "^mission_[a-z0-9]+$"},
+    "ts": {"type": "string", "format": "date-time"},
+    "evidence": {"type": "object"},
+    "owner": {"type": "string", "minLength": 1},
+    "duration_ms": {"type": "integer", "minimum": 0}
+  }
+}

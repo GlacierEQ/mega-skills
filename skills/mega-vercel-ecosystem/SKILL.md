@@ -1,8 +1,7 @@
 ---
 name: mega-vercel-ecosystem
-description: "Consolidated mega skill encompassing 25 sub-skills."
+description: Consolidated mega skill encompassing 25 sub-skills.
 ---
-
 
 # MEGA-VERCEL-ECOSYSTEM
 
