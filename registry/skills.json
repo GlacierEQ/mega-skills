@@ -2623,9 +2623,7 @@
       "id": "casebuild-mesh-organization",
       "display_name": "Casebuild Mesh Organization",
       "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/casebuild-mesh-organization",
+      "maturity": "candidate", "version": "1.0.0", "path": "skills/casebuild-mesh-organization",
       "entrypoint": "skills/casebuild-mesh-organization/SKILL.md",
       "purpose": "Organize a legal matter across repository and cloud nodes with stable evidence identity, provenance, integrity, navigation, reconciliation, review routing, and an exact resume point.",
       "input_contract": [
