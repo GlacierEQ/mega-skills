@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.com/schemas/apex-orchestration/delivery.schema.json",
+  "title": "Apex Mesh Delivery",
+  "description": "Final delivery shape. See Packet 07 of apex-orchestration v1.0.0.",
+  "type": "object",
+  "required": ["mission_id", "status", "compound_artifact", "status_line", "receipt_chain_sha256", "memory_write_id", "ts"],
+  "additionalProperties": false,
+  "properties": {
+    "mission_id": {"type": "string", "pattern": "^mission_[a-z0-9]+$"},
+    "status": {"type": "string", "enum": ["SHIPPED", "BLOCKED", "REFUSED"]},
+    "compound_artifact": {"type": "object"},
+    "status_line": {"type": "string", "minLength": 1, "maxLength": 240},
+    "receipt_chain_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "signatures": {
+      "type": "object",
+      "properties": {
+        "producer": {"type": "object"},
+        "auditor": {"type": "object"},
+        "refiner": {"type": "object"}
+      }
+    },
+    "memory_write_id": {"type": "string", "pattern": "^mem_[a-z0-9]+$"},
+    "causes": {"type": "array", "items": {"type": "string"}},
+    "ts": {"type": "string", "format": "date-time"}
+  }
+}

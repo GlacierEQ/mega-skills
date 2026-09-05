@@ -2,6 +2,81 @@
   "schema_version": 2,
   "entries": [
     {
+      "id": "apex-genius-mastery",
+      "display_name": "APEX Genius Mastery",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.2.0",
+      "path": "mega-skills/apex-genius-mastery",
+      "entrypoint": "mega-skills/apex-genius-mastery/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "genius-epistemic-engineering",
+        "genius-entity-forge"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "skill-forge",
+        "polyglot-systems-verification"
+      ],
+      "mission_output": "GENIUS_MASTERY_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Forge Genius entities with a live mind chassis (epicenter, epistemic-gate, helix-pro-code, verification-before-completion) then plant verified outputs without dumping the skill catalog.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-genius-mastery",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "genius-epistemic-engineering",
+        "genius-entity-forge"
+      ]
+    },
+    {
       "id": "apex-accelerated-compute-mesh",
       "display_name": "APEX Accelerated Compute Mesh",
       "ownership": "glaciereq",
@@ -2301,6 +2376,96 @@
       },
       "combos": [
         "long-horizon-core"
+      ]
+    },
+    {
+      "id": "apex-orchestrator-mesh",
+      "display_name": "Apex Orchestrator Mesh",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-orchestrator-mesh",
+      "entrypoint": "mega-skills/apex-orchestrator-mesh/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "apex-mesh-dispatch"
+      ],
+      "conditional_combos": [
+        "multi-agent-orchestration-mesh",
+        "capability-readiness",
+        "closed-loop-code-repair",
+        "runtime-operations"
+      ],
+      "mission_output": "delivery.json",
+      "durable_state": [
+        "MISSION.md",
+        "intake.json",
+        "dag.json",
+        "receipts/<mission_id>-{INTAKE,DECOMPOSE,DISPATCH,VERIFY,FUSE,DELIVER}.json",
+        "subtask-receipts/<node_id>.json",
+        "fused.json",
+        "delivery.json",
+        "audit.jsonl",
+        "token_log.jsonl",
+        "routing_decisions.jsonl",
+        "HANDOFF.md"
+      ],
+      "adds": "Six-stage mission system with L2 evidence gates, three-signature rule for code, deterministic FUSE, closed-set delivery status, append-only memory with provenance, default-deny security boundary, hard token budget, and full observability across 12 logic packets.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-orchestrator-mesh",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record",
+          "audit.jsonl",
+          "token_log.jsonl",
+          "routing_decisions.jsonl",
+          "fused.json",
+          "memory_write_id"
+        ],
+        "human_control": "required"
+      },
+      "human_control_points": [
+        "approve_production_release",
+        "escalate_critical_anomalies",
+        "raise_budget",
+        "resolve_conflict"
+      ],
+      "combos": [
+        "apex-mesh-dispatch"
       ]
     }
   ],

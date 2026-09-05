@@ -3,6 +3,285 @@
   "layer": "combo-skills",
   "entries": [
     {
+      "id": "genius-epistemic-engineering",
+      "display_name": "Genius Epistemic Engineering",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/genius-epistemic-engineering",
+      "entrypoint": "combo-skills/genius-epistemic-engineering/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A Genius entity must classify knowledge, authorize L2+ action, engineer through helix-pro-code, and prove completion."
+        ],
+        "do_not_use_when": [
+          "The task is ordinary skill-catalog browsing or a forge-only name/validate without engineering."
+        ]
+      },
+      "members": [
+        {
+          "id": "epicenter",
+          "kind": "skill",
+          "role": "Tag claims L0/L1/L2 before action.",
+          "required": true
+        },
+        {
+          "id": "epistemic-gate",
+          "kind": "skill",
+          "role": "Authorize only L2+ local / L5+ enterprise.",
+          "required": true
+        },
+        {
+          "id": "helix-pro-code",
+          "kind": "skill",
+          "role": "Alpha/Omega engineering for authorized work.",
+          "required": true
+        },
+        {
+          "id": "verification-before-completion",
+          "kind": "skill",
+          "role": "Block done-claims without fresh command output.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "epicenter",
+            "consumes": [
+              "Role brief or proposed claim"
+            ],
+            "produces": [
+              "Layer-tagged claim set"
+            ],
+            "validation": "Every fact is L2 or explicitly tagged L0/L1."
+          },
+          {
+            "step": 2,
+            "member_id": "epistemic-gate",
+            "consumes": [
+              "Layer-tagged claims"
+            ],
+            "produces": [
+              "epistemic-verification-receipt.json"
+            ],
+            "validation": "Below-L2 actions denied."
+          },
+          {
+            "step": 3,
+            "member_id": "helix-pro-code",
+            "consumes": [
+              "Gate receipt",
+              "Coding mandate"
+            ],
+            "produces": [
+              "Engineering delta"
+            ],
+            "validation": "Gap analysis then verify-readback."
+          },
+          {
+            "step": 4,
+            "member_id": "verification-before-completion",
+            "consumes": [
+              "Engineering delta"
+            ],
+            "produces": [
+              "Verification receipt"
+            ],
+            "validation": "Claim text matches this-turn command output."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "epicenter",
+            "to_member": "epistemic-gate",
+            "required_inputs": [
+              "Layer-tagged claims"
+            ],
+            "accepted_outputs": [
+              "Epistemic receipt"
+            ],
+            "failure_owner": "epistemologist"
+          },
+          {
+            "from_member": "epistemic-gate",
+            "to_member": "helix-pro-code",
+            "required_inputs": [
+              "L2+ authorization"
+            ],
+            "accepted_outputs": [
+              "Engineering delta"
+            ],
+            "failure_owner": "engineer"
+          },
+          {
+            "from_member": "helix-pro-code",
+            "to_member": "verification-before-completion",
+            "required_inputs": [
+              "Delta and intended claim"
+            ],
+            "accepted_outputs": [
+              "Fresh command receipt"
+            ],
+            "failure_owner": "reviewer"
+          }
+        ],
+        "evidence_requirements": [
+          "Record epistemic tier, helix carryover check, and verification command with exit code."
+        ],
+        "risk_boundaries": [
+          "Do not dump the skill catalog. Mega firewall still requires approval for external_mutation."
+        ],
+        "quality_gates": [
+          "Untagged facts fail. Below-L2 work is not coded. Done without this-turn output is FAIL."
+        ],
+        "state_updates": [
+          "Write genius-epistemic-engineering-receipt.md before Mega routing."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "L0-L2 claim tags",
+          "L0-L6 authorization",
+          "Helix engineering law",
+          "Verification-before-completion"
+        ],
+        "adds": "Ordered mind chassis so Genius knows, authorizes, engineers, and proves without catalog dump.",
+        "compound_artifact": "genius-epistemic-engineering-receipt.md",
+        "next_layer_ready_when": [
+          "Layer tags, gate receipt, helix delta, and verification receipt agree on the same mandate."
+        ]
+      }
+    },
+    {
+      "id": "genius-entity-forge",
+      "display_name": "Genius Entity Forge",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/genius-entity-forge",
+      "entrypoint": "combo-skills/genius-entity-forge/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A Genius entity must be named, synthesized, validated, and receipted through Genius-Mastery."
+        ],
+        "do_not_use_when": [
+          "The task is ordinary skill authoring; use skill-forge instead."
+        ]
+      },
+      "members": [
+        {
+          "id": "genius-mastery",
+          "kind": "skill",
+          "role": "Run kernel name/validate/doctor/synthesize.",
+          "required": true
+        },
+        {
+          "id": "evidence-register",
+          "kind": "skill",
+          "role": "Trace kernel claims to VECTOR and CLAIMS.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Accept only kernel-backed receipts.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "genius-mastery",
+            "consumes": [
+              "Role brief or Genius repo path"
+            ],
+            "produces": [
+              "Kernel receipt"
+            ],
+            "validation": "genius validate PASS or pytest green."
+          },
+          {
+            "step": 2,
+            "member_id": "evidence-register",
+            "consumes": [
+              "Kernel receipt"
+            ],
+            "produces": [
+              "EVIDENCE.md"
+            ],
+            "validation": "Claims map to VECTOR/CLAIMS or tests."
+          },
+          {
+            "step": 3,
+            "member_id": "quality-gate",
+            "consumes": [
+              "EVIDENCE.md",
+              "Acceptance criteria"
+            ],
+            "produces": [
+              "Gate record"
+            ],
+            "validation": "Gate fails closed on kernel FAIL."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "genius-mastery",
+            "to_member": "evidence-register",
+            "required_inputs": [
+              "Kernel receipt"
+            ],
+            "accepted_outputs": [
+              "Claim-linked evidence"
+            ],
+            "failure_owner": "kernel operator"
+          },
+          {
+            "from_member": "evidence-register",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "EVIDENCE.md"
+            ],
+            "accepted_outputs": [
+              "Gate record"
+            ],
+            "failure_owner": "reviewer"
+          }
+        ],
+        "evidence_requirements": [
+          "Record kernel version, pytest count, and repo path."
+        ],
+        "risk_boundaries": [
+          "Do not copy legal exhibits or secrets onto public runners."
+        ],
+        "quality_gates": [
+          "Kernel validate PASS and pytest green before Mega routing."
+        ],
+        "state_updates": [
+          "Register forge receipt before higher-layer use."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Genius-Mastery kernel procedure",
+          "Evidence trace",
+          "Acceptance gate"
+        ],
+        "adds": "Ordered forge loop from kernel receipt to gated entity evidence.",
+        "compound_artifact": "genius-entity-forge-receipt.md",
+        "next_layer_ready_when": [
+          "Kernel receipt, evidence, and gate agree on the same repo path."
+        ]
+      }
+    },
+    {
       "id": "aerospace-mission-simulation",
       "display_name": "Aerospace Mission Simulation",
       "ownership": "glaciereq",
@@ -5102,6 +5381,169 @@
         "next_layer_ready_when": [
           "The mission can resume from the record without raw conversation history.",
           "Outcome, evidence, learning, and strengthening states are explicit and internally consistent."
+        ]
+      }
+    },
+    {
+      "id": "apex-mesh-dispatch",
+      "display_name": "Apex Mesh Dispatch",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "combo-skills/apex-mesh-dispatch",
+      "entrypoint": "combo-skills/apex-mesh-dispatch/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A code-producing mission needs a deterministic REASON -> CODE -> VERIFY -> REVIEW -> DELIVER route through the mesh."
+        ],
+        "do_not_use_when": [
+          "The mission is read-only research, single-line edit, planning without code, or domain work that does not need the full mesh."
+        ]
+      },
+      "members": [
+        {
+          "id": "apex-orchestration",
+          "kind": "skill",
+          "role": "Mesh definition, lifecycle, receipt format, routing heuristics, verification gate, FUSE, and delivery contract; executes each of the four ordered stages in this Combo.",
+          "required": true
+        },
+        {
+          "id": "verification-before-completion",
+          "kind": "skill",
+          "role": "Block any done-claim that does not have a fresh command output and a verifiable receipt chain; cross-check at every stage transition.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "mission mandate"
+            ],
+            "produces": [
+              "intake.json",
+              "dag.json"
+            ],
+            "validation": "12 packets present at v1.0.0, 6 stages in lifecycle, scope + DAG valid"
+          },
+          {
+            "step": 2,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "dag.json"
+            ],
+            "produces": [
+              "subtask receipts for REASON + CODE lanes"
+            ],
+            "validation": "every receipt has l2_proof: true with matching sha256"
+          },
+          {
+            "step": 3,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "code subtask receipts"
+            ],
+            "produces": [
+              "auditor + refiner signatures"
+            ],
+            "validation": "three signatures present for every code subtask"
+          },
+          {
+            "step": 4,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "verified receipts"
+            ],
+            "produces": [
+              "fused.json",
+              "delivery.json"
+            ],
+            "validation": "chain_hash reproducible, memory_write_id present, status SHIPPED"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "apex-orchestration",
+            "required_inputs": [
+              "intake.json",
+              "dag.json"
+            ],
+            "accepted_outputs": [
+              "first subtask receipts"
+            ],
+            "failure_owner": "INTAKE owner"
+          },
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "apex-orchestration",
+            "required_inputs": [
+              "subtask receipts with l2_proof"
+            ],
+            "accepted_outputs": [
+              "auditor + refiner signatures"
+            ],
+            "failure_owner": "DISPATCH owner"
+          },
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "apex-orchestration",
+            "required_inputs": [
+              "verified receipts"
+            ],
+            "accepted_outputs": [
+              "fused.json"
+            ],
+            "failure_owner": "VERIFY owner"
+          },
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "apex-orchestration",
+            "required_inputs": [
+              "fused.json"
+            ],
+            "accepted_outputs": [
+              "delivery.json SHIPPED"
+            ],
+            "failure_owner": "FUSE owner"
+          }
+        ],
+        "evidence_requirements": [
+          "12 packets present",
+          "3 JSON-Schema valid",
+          "receipt_chain_sha256 reproducible",
+          "memory_write_id queryable"
+        ],
+        "risk_boundaries": [
+          "no cross-boundary mutation",
+          "no domain violation",
+          "no silent degradation"
+        ],
+        "quality_gates": [
+          "three-signature rule for every code subtask",
+          "closed-set status in {SHIPPED, BLOCKED, REFUSED}",
+          "fused.json deterministic"
+        ],
+        "state_updates": [
+          "runs/<mission_id>/ updated at every stage transition",
+          "memory write at DELIVERY only"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "apex-orchestration v1.0.0 mesh, lifecycle, packet tree"
+        ],
+        "adds": "Deterministic REASON -> CODE -> VERIFY -> REVIEW -> DELIVER route, three-signature enforcement, deterministic FUSE",
+        "compound_artifact": "delivery.json with status SHIPPED, three signatures, receipt_chain_sha256, memory_write_id",
+        "next_layer_ready_when": [
+          "all 12 packets at v1.0.0",
+          "every subtask receipt has l2_proof: true",
+          "three signatures per code subtask",
+          "delivery.json SHIPPED with memory_write_id"
         ]
       }
     }

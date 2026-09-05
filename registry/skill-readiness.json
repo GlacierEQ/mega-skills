@@ -2,28 +2,42 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 708,
-    "combos": 32,
-    "megas": 29,
-    "ready_total": 726,
-    "not_ready_total": 43,
+    "skills": 709,
+    "combos": 34,
+    "megas": 30,
+    "ready_total": 625,
+    "not_ready_total": 148,
     "skill_states": {
-      "instruction_ready": 671,
+      "instruction_ready": 566,
       "implementation_partial": 9,
-      "implementation_unverified": 10,
-      "behavior_verified": 17,
-      "contract_incomplete": 1
+      "implementation_unverified": 103,
+      "behavior_verified": 27,
+      "contract_incomplete": 4
     },
     "combo_states": {
-      "composition_candidate": 14,
-      "composition_ready": 18
+      "composition_candidate": 18,
+      "composition_ready": 16
     },
     "mega_states": {
-      "mission_contract_ready": 21,
-      "mission_candidate": 8
+      "mission_candidate": 11,
+      "mission_contract_ready": 19
     }
   },
   "skills": [
+    {
+      "id": "genius-mastery",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "/Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/Genius-Mastery/src/genius/cli.py",
+        "/Users/kcbflux/APEX_SYSTEM/INFRASTRUCTURE/Genius-Mastery/src/genius/validate.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": []
+    },
     {
       "id": "2d-games",
       "layer": "skill",
@@ -199,19 +213,21 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/aerospace-trajectory-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/aerospace-trajectory-core/skill.py",
-        "skills/aerospace-trajectory-core/scripts/output_contract.py",
         "skills/aerospace-trajectory-core/scripts/purpose.py",
+        "skills/aerospace-trajectory-core/scripts/output_contract.py",
         "skills/aerospace-trajectory-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
-        "skills/aerospace-trajectory-core/scripts/lambert_solver.py",
         "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
-        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py"
+        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py",
+        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
+        "skills/aerospace-trajectory-core/scripts/lambert_solver.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
@@ -236,8 +252,8 @@
       ],
       "scaffold_files": [
         "skills/agent-evaluation/scripts/patterns.py",
-        "skills/agent-evaluation/scripts/requirements.py",
-        "skills/agent-evaluation/scripts/capabilities.py"
+        "skills/agent-evaluation/scripts/capabilities.py",
+        "skills/agent-evaluation/scripts/requirements.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -281,9 +297,9 @@
         "skills/agent-memory-mcp/scripts/this_skill.py"
       ],
       "scaffold_files": [
-        "skills/agent-memory-mcp/scripts/setup.py",
+        "skills/agent-memory-mcp/scripts/capabilities_mcp_tools.py",
         "skills/agent-memory-mcp/scripts/prerequisites.py",
-        "skills/agent-memory-mcp/scripts/capabilities_mcp_tools.py"
+        "skills/agent-memory-mcp/scripts/setup.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -395,8 +411,8 @@
       ],
       "scaffold_files": [
         "skills/ai-agents-architect/scripts/patterns.py",
-        "skills/ai-agents-architect/scripts/requirements.py",
-        "skills/ai-agents-architect/scripts/capabilities.py"
+        "skills/ai-agents-architect/scripts/capabilities.py",
+        "skills/ai-agents-architect/scripts/requirements.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -429,24 +445,28 @@
     {
       "id": "ai-deal-finder",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/ai-deal-finder/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/ai-deal-finder/skill.py",
-        "skills/ai-deal-finder/scripts/ai_deal_finder_validator.py",
         "skills/ai-deal-finder/scripts/quick_rules.py",
-        "skills/ai-deal-finder/scripts/ai_deal_finder_reporter.py"
+        "skills/ai-deal-finder/scripts/ai_deal_finder_reporter.py",
+        "skills/ai-deal-finder/scripts/ai_deal_finder_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/ai-deal-finder/tests/test_ai_deal_finder.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "ai-gateway",
@@ -776,8 +796,8 @@
       "real_implementation_files": [
         "skills/apex-boot-core/skill.py",
         "skills/apex-boot-core/scripts/run.py",
-        "skills/apex-boot-core/scripts/this_skill.py",
-        "skills/apex-boot-core/scripts/boot_watchdog.py"
+        "skills/apex-boot-core/scripts/boot_watchdog.py",
+        "skills/apex-boot-core/scripts/this_skill.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -835,24 +855,28 @@
     {
       "id": "apex-integrations",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/apex-integrations/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/apex-integrations/skill.py",
-        "skills/apex-integrations/scripts/apex_integrations_reporter.py",
         "skills/apex-integrations/scripts/quick_rules.py",
-        "skills/apex-integrations/scripts/apex_integrations_validator.py"
+        "skills/apex-integrations/scripts/apex_integrations_validator.py",
+        "skills/apex-integrations/scripts/apex_integrations_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/apex-integrations/tests/test_apex_integrations.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "apex-meta-ignition",
@@ -983,16 +1007,18 @@
     {
       "id": "apex-sovereign-runtime",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/apex-sovereign-runtime/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/apex-sovereign-runtime/skill.py",
-        "skills/apex-sovereign-runtime/scripts/immovable_force.py",
         "skills/apex-sovereign-runtime/scripts/pro_code_philosophy.py",
+        "skills/apex-sovereign-runtime/scripts/immovable_force.py",
         "skills/apex-sovereign-runtime/scripts/pro_methodology_why.py"
       ],
       "stub_files": [],
@@ -1000,7 +1026,9 @@
       "structural_tests": [
         "skills/apex-sovereign-runtime/tests/test_apex_sovereign_runtime.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "apex-universal-mcp-powerhouse",
@@ -1068,24 +1096,28 @@
     {
       "id": "api-integration",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/api-integration/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/api-integration/skill.py",
+        "skills/api-integration/scripts/keywords.py",
         "skills/api-integration/scripts/curl_examples.py",
-        "skills/api-integration/scripts/rest_api_testing.py",
-        "skills/api-integration/scripts/keywords.py"
+        "skills/api-integration/scripts/rest_api_testing.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/api-integration/tests/test_api_integration.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "api-patterns",
@@ -1195,24 +1227,28 @@
     {
       "id": "apple-ane-kv-quantizer",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/apple-ane-kv-quantizer/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/apple-ane-kv-quantizer/skill.py",
+        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_validator.py",
         "skills/apple-ane-kv-quantizer/scripts/quick_rules.py",
-        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_reporter.py",
-        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_validator.py"
+        "skills/apple-ane-kv-quantizer/scripts/apple_ane_kv_quantizer_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/apple-ane-kv-quantizer/tests/test_apple_ane_kv_quantizer.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "architecture",
@@ -1228,9 +1264,9 @@
         "skills/architecture/scripts/this_skill.py"
       ],
       "scaffold_files": [
-        "skills/architecture/scripts/selective_reading_rule.py",
         "skills/architecture/scripts/core_principle.py",
-        "skills/architecture/scripts/validation_checklist.py"
+        "skills/architecture/scripts/validation_checklist.py",
+        "skills/architecture/scripts/selective_reading_rule.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -1305,24 +1341,28 @@
     {
       "id": "aspen-grove",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/aspen-grove/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/aspen-grove/skill.py",
-        "skills/aspen-grove/scripts/connector_list.py",
+        "skills/aspen-grove/scripts/keywords.py",
         "skills/aspen-grove/scripts/architecture.py",
-        "skills/aspen-grove/scripts/keywords.py"
+        "skills/aspen-grove/scripts/connector_list.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/aspen-grove/tests/test_aspen_grove.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "aspen-grove-connectors",
@@ -1339,8 +1379,8 @@
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
-        "skills/aspen-grove-connectors/scripts/quick_rules.py",
         "skills/aspen-grove-connectors/scripts/aspen_grove_connectors_validator.py",
+        "skills/aspen-grove-connectors/scripts/quick_rules.py",
         "skills/aspen-grove-connectors/scripts/aspen_grove_connectors_reporter.py"
       ],
       "stub_files": [],
@@ -1400,16 +1440,17 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/ast-repair-core/scripts/patch_applier.py",
+        "skills/ast-repair-core/scripts/run.py",
         "skills/ast-repair-core/scripts/patch_synthesizer.py",
         "skills/ast-repair-core/scripts/ast_chunker.py",
-        "skills/ast-repair-core/scripts/traceback_parser.py",
-        "skills/ast-repair-core/scripts/patch_applier.py"
+        "skills/ast-repair-core/scripts/traceback_parser.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/ast-repair-core/skill.py",
-        "skills/ast-repair-core/scripts/output_contract.py",
         "skills/ast-repair-core/scripts/purpose.py",
+        "skills/ast-repair-core/scripts/output_contract.py",
         "skills/ast-repair-core/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -1451,21 +1492,23 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/audio-forensic-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/audio-forensic-core/skill.py",
-        "skills/audio-forensic-core/scripts/output_contract.py",
         "skills/audio-forensic-core/scripts/purpose.py",
+        "skills/audio-forensic-core/scripts/output_contract.py",
         "skills/audio-forensic-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/audio-forensic-core/scripts/whisperx_align.py",
         "skills/audio-forensic-core/scripts/enf_extractor.py",
-        "skills/audio-forensic-core/scripts/transcript_formatter.py",
         "skills/audio-forensic-core/scripts/sha256_audit.py",
+        "skills/audio-forensic-core/scripts/speaker_diarize.py",
         "skills/audio-forensic-core/scripts/bates_stamper.py",
-        "skills/audio-forensic-core/scripts/speaker_diarize.py"
+        "skills/audio-forensic-core/scripts/whisperx_align.py",
+        "skills/audio-forensic-core/scripts/transcript_formatter.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
@@ -1521,14 +1564,18 @@
       "id": "automated-architecture-analysis",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/automated-architecture-analysis/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/automated-architecture-analysis/tests/test_automated_architecture_analysis.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -1536,14 +1583,18 @@
       "id": "automated-code-refactoring",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/automated-code-refactoring/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/automated-code-refactoring/tests/test_automated_code_refactoring.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -1573,14 +1624,19 @@
       "id": "automated-performance-profiling",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/automated-performance-profiling/scripts/run.py",
+        "skills/automated-performance-profiling/scripts/profiler_engine.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/automated-performance-profiling/tests/test_automated_performance_profiling.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -1588,14 +1644,18 @@
       "id": "automated-security-scanning",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/automated-security-scanning/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/automated-security-scanning/tests/test_automated_security_scanning.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -1603,14 +1663,18 @@
       "id": "automated-test-generation",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/automated-test-generation/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/automated-test-generation/tests/test_automated_test_generation.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -1664,6 +1728,7 @@
       "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/autonomous-software-engineering/scripts/run.py",
         "skills/autonomous-software-engineering/scripts/run_pipeline_simulation.py"
       ],
       "generic_adapter_files": [],
@@ -1783,24 +1848,28 @@
     {
       "id": "aws-trainium-neuron-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/aws-trainium-neuron-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/aws-trainium-neuron-sentinel/skill.py",
-        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_reporter.py",
         "skills/aws-trainium-neuron-sentinel/scripts/quick_rules.py",
-        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_validator.py"
+        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_validator.py",
+        "skills/aws-trainium-neuron-sentinel/scripts/aws_trainium_neuron_sentinel_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/aws-trainium-neuron-sentinel/tests/test_aws_trainium_neuron_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "azure-functions",
@@ -2057,24 +2126,28 @@
     {
       "id": "brain",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/brain/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/brain/skill.py",
+        "skills/brain/scripts/keywords.py",
         "skills/brain/scripts/architecture.py",
-        "skills/brain/scripts/memory_layers.py",
-        "skills/brain/scripts/keywords.py"
+        "skills/brain/scripts/memory_layers.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/brain/tests/test_brain.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "brainstorm",
@@ -2442,12 +2515,13 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/capability-admission/skill.py",
-        "skills/capability-admission/scripts/decision_recorder.py",
-        "skills/capability-admission/scripts/preflight_integration.py",
-        "skills/capability-admission/scripts/output_contract.py",
         "skills/capability-admission/scripts/purpose.py",
-        "skills/capability-admission/scripts/admission_evaluator.py",
-        "skills/capability-admission/scripts/procedure.py"
+        "skills/capability-admission/scripts/output_contract.py",
+        "skills/capability-admission/scripts/run.py",
+        "skills/capability-admission/scripts/preflight_integration.py",
+        "skills/capability-admission/scripts/procedure.py",
+        "skills/capability-admission/scripts/decision_recorder.py",
+        "skills/capability-admission/scripts/admission_evaluator.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -2598,9 +2672,9 @@
         "skills/cc-skill-security-review/scripts/this_skill.py"
       ],
       "scaffold_files": [
+        "skills/cc-skill-security-review/scripts/secrets_management.py",
         "skills/cc-skill-security-review/scripts/security_checklist.py",
-        "skills/cc-skill-security-review/scripts/activate.py",
-        "skills/cc-skill-security-review/scripts/secrets_management.py"
+        "skills/cc-skill-security-review/scripts/activate.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -2612,10 +2686,10 @@
     {
       "id": "cc-skill-strategic-compact",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "contract_incomplete",
       "declared_maturity": "active",
-      "instruction_ready": true,
+      "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/cc-skill-strategic-compact/skill.py",
@@ -2628,7 +2702,9 @@
       "structural_tests": [
         "skills/cc-skill-strategic-compact/tests/test_cc_skill_strategic_compact.py"
       ],
-      "reasons": []
+      "reasons": [
+        "no actionable procedure/capability language"
+      ]
     },
     {
       "id": "chat-sdk",
@@ -2744,9 +2820,9 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/chunk-power/skill.py",
-        "skills/chunk-power/scripts/chunk_engine.py",
         "skills/chunk-power/scripts/run.py",
-        "skills/chunk-power/scripts/this_skill.py"
+        "skills/chunk-power/scripts/this_skill.py",
+        "skills/chunk-power/scripts/chunk_engine.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -2766,13 +2842,14 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/claim-calibration/skill.py",
-        "skills/claim-calibration/scripts/evidence_mapper.py",
-        "skills/claim-calibration/scripts/output_contract.py",
-        "skills/claim-calibration/scripts/scope_enforcer.py",
-        "skills/claim-calibration/scripts/claim_extractor.py",
-        "skills/claim-calibration/scripts/boundary_recorder.py",
         "skills/claim-calibration/scripts/purpose.py",
-        "skills/claim-calibration/scripts/procedure.py"
+        "skills/claim-calibration/scripts/output_contract.py",
+        "skills/claim-calibration/scripts/run.py",
+        "skills/claim-calibration/scripts/evidence_mapper.py",
+        "skills/claim-calibration/scripts/procedure.py",
+        "skills/claim-calibration/scripts/boundary_recorder.py",
+        "skills/claim-calibration/scripts/scope_enforcer.py",
+        "skills/claim-calibration/scripts/claim_extractor.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -2839,9 +2916,9 @@
         "skills/clean-code/scripts/this_skill.py"
       ],
       "scaffold_files": [
+        "skills/clean-code/scripts/function_rules.py",
         "skills/clean-code/scripts/core_principles.py",
-        "skills/clean-code/scripts/naming_rules.py",
-        "skills/clean-code/scripts/function_rules.py"
+        "skills/clean-code/scripts/naming_rules.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -3003,16 +3080,18 @@
     {
       "id": "codemaster",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/codemaster/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/codemaster/skill.py",
-        "skills/codemaster/scripts/project_table_canonical.py",
         "skills/codemaster/scripts/recipes.py",
+        "skills/codemaster/scripts/project_table_canonical.py",
         "skills/codemaster/scripts/environment_reality_read.py"
       ],
       "stub_files": [],
@@ -3020,7 +3099,9 @@
       "structural_tests": [
         "skills/codemaster/tests/test_codemaster.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "colossal-backend-engine",
@@ -3031,9 +3112,9 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/colossal-backend-engine/skill.py",
-        "skills/colossal-backend-engine/scripts/backend_engine.py",
         "skills/colossal-backend-engine/scripts/run.py",
-        "skills/colossal-backend-engine/scripts/this_skill.py"
+        "skills/colossal-backend-engine/scripts/this_skill.py",
+        "skills/colossal-backend-engine/scripts/backend_engine.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -3110,16 +3191,18 @@
     {
       "id": "composio",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/composio/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/composio/skill.py",
-        "skills/composio/scripts/choose_job.py",
         "skills/composio/scripts/choose_product.py",
+        "skills/composio/scripts/choose_job.py",
         "skills/composio/scripts/load_only_relevant.py"
       ],
       "stub_files": [],
@@ -3127,7 +3210,9 @@
       "structural_tests": [
         "skills/composio/tests/test_composio.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "computer-use-agents",
@@ -3158,17 +3243,18 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/computer-user-core/scripts/cleanup.py",
-        "skills/computer-user-core/scripts/process_inspector.py",
+        "skills/computer-user-core/scripts/run.py",
+        "skills/computer-user-core/scripts/gui_automator.py",
         "skills/computer-user-core/scripts/state_verifier.py",
+        "skills/computer-user-core/scripts/cleanup.py",
         "skills/computer-user-core/scripts/screen_capture.py",
-        "skills/computer-user-core/scripts/gui_automator.py"
+        "skills/computer-user-core/scripts/process_inspector.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/computer-user-core/skill.py",
-        "skills/computer-user-core/scripts/output_contract.py",
         "skills/computer-user-core/scripts/purpose.py",
+        "skills/computer-user-core/scripts/output_contract.py",
         "skills/computer-user-core/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -3225,10 +3311,10 @@
     {
       "id": "connectivity-hub",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "contract_incomplete",
       "declared_maturity": "active",
-      "instruction_ready": true,
+      "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/connectivity-hub/skill.py",
@@ -3241,7 +3327,9 @@
       "structural_tests": [
         "skills/connectivity-hub/tests/test_connectivity_hub.py"
       ],
-      "reasons": []
+      "reasons": [
+        "no actionable procedure/capability language"
+      ]
     },
     {
       "id": "connector-bridge",
@@ -3251,18 +3339,19 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/connector-bridge/scripts/protocol_serializer.py",
-        "skills/connector-bridge/scripts/circuit_breaker.py",
         "skills/connector-bridge/scripts/dispatcher.py",
-        "skills/connector-bridge/scripts/rate_limiter.py",
+        "skills/connector-bridge/scripts/run.py",
         "skills/connector-bridge/scripts/credential_resolver.py",
-        "skills/connector-bridge/scripts/telemetry_recorder.py"
+        "skills/connector-bridge/scripts/telemetry_recorder.py",
+        "skills/connector-bridge/scripts/protocol_serializer.py",
+        "skills/connector-bridge/scripts/rate_limiter.py",
+        "skills/connector-bridge/scripts/circuit_breaker.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/connector-bridge/skill.py",
-        "skills/connector-bridge/scripts/output_contract.py",
         "skills/connector-bridge/scripts/purpose.py",
+        "skills/connector-bridge/scripts/output_contract.py",
         "skills/connector-bridge/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -3325,11 +3414,12 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/context-capsule/skill.py",
-        "skills/context-capsule/scripts/state_compactor.py",
-        "skills/context-capsule/scripts/assumption_tracker.py",
-        "skills/context-capsule/scripts/drift_detector.py",
-        "skills/context-capsule/scripts/output_contract.py",
         "skills/context-capsule/scripts/purpose.py",
+        "skills/context-capsule/scripts/output_contract.py",
+        "skills/context-capsule/scripts/assumption_tracker.py",
+        "skills/context-capsule/scripts/run.py",
+        "skills/context-capsule/scripts/drift_detector.py",
+        "skills/context-capsule/scripts/state_compactor.py",
         "skills/context-capsule/scripts/procedure.py",
         "skills/context-capsule/scripts/capsule_generator.py"
       ],
@@ -3377,9 +3467,9 @@
         "skills/conversation-memory/scripts/this_skill.py"
       ],
       "scaffold_files": [
-        "skills/conversation-memory/scripts/tiered_memory_system.py",
         "skills/conversation-memory/scripts/patterns.py",
-        "skills/conversation-memory/scripts/capabilities.py"
+        "skills/conversation-memory/scripts/capabilities.py",
+        "skills/conversation-memory/scripts/tiered_memory_system.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -3559,21 +3649,22 @@
     {
       "id": "cross-app-pipeline",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
+      "ready": true,
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/cross-app-pipeline/pipeline.py"
+        "skills/cross-app-pipeline/pipeline.py",
+        "skills/cross-app-pipeline/scripts/run.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/cross-app-pipeline/tests/test_cross_app_pipeline.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "reasons": []
     },
     {
       "id": "dart-add-unit-test",
@@ -3809,24 +3900,28 @@
     {
       "id": "data-analysis",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/data-analysis/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/data-analysis/skill.py",
-        "skills/data-analysis/scripts/priority_order_file.py",
         "skills/data-analysis/scripts/critical_rule.py",
-        "skills/data-analysis/scripts/keywords.py"
+        "skills/data-analysis/scripts/keywords.py",
+        "skills/data-analysis/scripts/priority_order_file.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/data-analysis/tests/test_data_analysis.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "data-analytics",
@@ -4020,11 +4115,13 @@
     {
       "id": "deepseek-mla-moe-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/deepseek-mla-moe-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/deepseek-mla-moe-sentinel/skill.py",
@@ -4037,7 +4134,9 @@
       "structural_tests": [
         "skills/deepseek-mla-moe-sentinel/tests/test_deepseek_mla_moe_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "deployment-procedures",
@@ -4294,24 +4393,28 @@
     {
       "id": "docker-devops",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/docker-devops/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/docker-devops/skill.py",
         "skills/docker-devops/scripts/docker_commands.py",
-        "skills/docker-devops/scripts/container_management.py",
-        "skills/docker-devops/scripts/keywords.py"
+        "skills/docker-devops/scripts/keywords.py",
+        "skills/docker-devops/scripts/container_management.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/docker-devops/tests/test_docker_devops.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "docker-expert",
@@ -4568,11 +4671,13 @@
     {
       "id": "engineering-innovations",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/engineering-innovations/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/engineering-innovations/skill.py",
@@ -4585,7 +4690,9 @@
       "structural_tests": [
         "skills/engineering-innovations/tests/test_engineering_innovations.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "enrich-company-and-contact-data",
@@ -4700,16 +4807,17 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py",
         "skills/epistemic-gate/scripts/gate_enforcer.py",
-        "skills/epistemic-gate/scripts/receipt_generator.py",
-        "skills/epistemic-gate/scripts/tier_evaluator.py"
+        "skills/epistemic-gate/scripts/run.py",
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/epistemic-gate/skill.py",
-        "skills/epistemic-gate/scripts/output_contract.py",
         "skills/epistemic-gate/scripts/purpose.py",
+        "skills/epistemic-gate/scripts/output_contract.py",
         "skills/epistemic-gate/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -4751,13 +4859,14 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/evidence-register/skill.py",
-        "skills/evidence-register/scripts/id_assigner.py",
-        "skills/evidence-register/scripts/output_contract.py",
-        "skills/evidence-register/scripts/claim_tracer.py",
-        "skills/evidence-register/scripts/register_updater.py",
         "skills/evidence-register/scripts/purpose.py",
+        "skills/evidence-register/scripts/output_contract.py",
+        "skills/evidence-register/scripts/run.py",
         "skills/evidence-register/scripts/procedure.py",
-        "skills/evidence-register/scripts/integrity_checker.py"
+        "skills/evidence-register/scripts/register_updater.py",
+        "skills/evidence-register/scripts/claim_tracer.py",
+        "skills/evidence-register/scripts/integrity_checker.py",
+        "skills/evidence-register/scripts/id_assigner.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -4855,11 +4964,13 @@
     {
       "id": "far-away-party",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/far-away-party/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/far-away-party/skill.py",
@@ -4872,7 +4983,9 @@
       "structural_tests": [
         "skills/far-away-party/tests/test_far_away_party.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "faraway-party",
@@ -5297,24 +5410,28 @@
     {
       "id": "flagships",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/flagships/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/flagships/skill.py",
+        "skills/flagships/scripts/tier_apex_core.py",
         "skills/flagships/scripts/tier_apex_family.py",
-        "skills/flagships/scripts/flagship_roster.py",
-        "skills/flagships/scripts/tier_apex_core.py"
+        "skills/flagships/scripts/flagship_roster.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/flagships/tests/test_flagships.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "fleet-git-harmonizer-core",
@@ -5323,21 +5440,23 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/fleet-git-harmonizer-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/fleet-git-harmonizer-core/skill.py",
-        "skills/fleet-git-harmonizer-core/scripts/output_contract.py",
         "skills/fleet-git-harmonizer-core/scripts/purpose.py",
+        "skills/fleet-git-harmonizer-core/scripts/output_contract.py",
         "skills/fleet-git-harmonizer-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/fleet-git-harmonizer-core/scripts/commit_synthesizer.py",
-        "skills/fleet-git-harmonizer-core/scripts/ast_diff_extractor.py",
         "skills/fleet-git-harmonizer-core/scripts/archive_tagger.py",
+        "skills/fleet-git-harmonizer-core/scripts/branch_pruner.py",
         "skills/fleet-git-harmonizer-core/scripts/regression_gate.py",
+        "skills/fleet-git-harmonizer-core/scripts/ast_diff_extractor.py",
         "skills/fleet-git-harmonizer-core/scripts/divergence_auditor.py",
-        "skills/fleet-git-harmonizer-core/scripts/branch_pruner.py"
+        "skills/fleet-git-harmonizer-core/scripts/commit_synthesizer.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
@@ -5606,19 +5725,21 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/forensic-evidence-chain-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/forensic-evidence-chain-core/skill.py",
-        "skills/forensic-evidence-chain-core/scripts/output_contract.py",
         "skills/forensic-evidence-chain-core/scripts/purpose.py",
+        "skills/forensic-evidence-chain-core/scripts/output_contract.py",
         "skills/forensic-evidence-chain-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
-        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
         "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
+        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
+        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
+        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
         "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
         "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
       ],
@@ -5639,16 +5760,17 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/fork-overlay-core/scripts/merge_engine.py",
+        "skills/fork-overlay-core/scripts/run.py",
         "skills/fork-overlay-core/scripts/regression_gate.py",
+        "skills/fork-overlay-core/scripts/push_verifier.py",
         "skills/fork-overlay-core/scripts/overlay_isolator.py",
-        "skills/fork-overlay-core/scripts/upstream_fetcher.py",
-        "skills/fork-overlay-core/scripts/push_verifier.py"
+        "skills/fork-overlay-core/scripts/upstream_fetcher.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/fork-overlay-core/skill.py",
-        "skills/fork-overlay-core/scripts/output_contract.py",
         "skills/fork-overlay-core/scripts/purpose.py",
+        "skills/fork-overlay-core/scripts/output_contract.py",
         "skills/fork-overlay-core/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -5663,16 +5785,18 @@
     {
       "id": "forks",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/forks/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/forks/skill.py",
-        "skills/forks/scripts/working_fork.py",
         "skills/forks/scripts/estate_shape_audit.py",
+        "skills/forks/scripts/working_fork.py",
         "skills/forks/scripts/forks_differ_from.py"
       ],
       "stub_files": [],
@@ -5680,7 +5804,9 @@
       "structural_tests": [
         "skills/forks/tests/test_forks.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "form-cro",
@@ -6336,16 +6462,18 @@
     {
       "id": "genesis-prime",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/genesis-prime/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/genesis-prime/skill.py",
-        "skills/genesis-prime/scripts/genesis_prime_reporter.py",
         "skills/genesis-prime/scripts/genesis_prime_validator.py",
+        "skills/genesis-prime/scripts/genesis_prime_reporter.py",
         "skills/genesis-prime/scripts/quick_rules.py"
       ],
       "stub_files": [],
@@ -6353,7 +6481,9 @@
       "structural_tests": [
         "skills/genesis-prime/tests/test_genesis_prime.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "geo-fundamentals",
@@ -6463,24 +6593,28 @@
     {
       "id": "github-power",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/github-power/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/github-power/skill.py",
         "skills/github-power/scripts/quick_commands.py",
-        "skills/github-power/scripts/management.py",
-        "skills/github-power/scripts/keywords.py"
+        "skills/github-power/scripts/keywords.py",
+        "skills/github-power/scripts/management.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/github-power/tests/test_github_power.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "github-workflow-automation",
@@ -6528,20 +6662,22 @@
       "id": "gmail-orchestrator",
       "layer": "skill",
       "ready": false,
-      "state": "implementation_unverified",
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [
-        "skills/gmail-orchestrator/orchestrator.py"
+        "skills/gmail-orchestrator/orchestrator.py",
+        "skills/gmail-orchestrator/scripts/run.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/gmail-orchestrator/tests/test_gmail_orchestrator.py"
+      ],
       "structural_tests": [],
       "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
+        "no actionable procedure/capability language"
       ]
     },
     {
@@ -6658,14 +6794,15 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/handoff-record/skill.py",
-        "skills/handoff-record/scripts/resume_point_encoder.py",
         "skills/handoff-record/scripts/dead_end_recorder.py",
-        "skills/handoff-record/scripts/next_action_encoder.py",
-        "skills/handoff-record/scripts/output_contract.py",
         "skills/handoff-record/scripts/purpose.py",
+        "skills/handoff-record/scripts/assumption_separator.py",
+        "skills/handoff-record/scripts/output_contract.py",
+        "skills/handoff-record/scripts/run.py",
         "skills/handoff-record/scripts/environment_capturer.py",
-        "skills/handoff-record/scripts/procedure.py",
-        "skills/handoff-record/scripts/assumption_separator.py"
+        "skills/handoff-record/scripts/next_action_encoder.py",
+        "skills/handoff-record/scripts/resume_point_encoder.py",
+        "skills/handoff-record/scripts/procedure.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -6884,20 +7021,22 @@
       "id": "icloud-voice-memos",
       "layer": "skill",
       "ready": false,
-      "state": "implementation_unverified",
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
       "instruction_ready": false,
       "real_implementation_files": [
-        "skills/icloud-voice-memos/harvester.py"
+        "skills/icloud-voice-memos/harvester.py",
+        "skills/icloud-voice-memos/scripts/run.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/icloud-voice-memos/tests/test_icloud_voice_memos.py"
+      ],
       "structural_tests": [],
       "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
+        "no actionable procedure/capability language"
       ]
     },
     {
@@ -7218,24 +7357,28 @@
     {
       "id": "job-app-portfolio",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/job-app-portfolio/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/job-app-portfolio/skill.py",
+        "skills/job-app-portfolio/scripts/existing_per-repo_skills.py",
         "skills/job-app-portfolio/scripts/pattern_recognition.py",
-        "skills/job-app-portfolio/scripts/estate_shape.py",
-        "skills/job-app-portfolio/scripts/existing_per-repo_skills.py"
+        "skills/job-app-portfolio/scripts/estate_shape.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/job-app-portfolio/tests/test_job_app_portfolio.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "juggernaut-mode",
@@ -7471,24 +7614,28 @@
     {
       "id": "legacy-estate",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/legacy-estate/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/legacy-estate/skill.py",
         "skills/legacy-estate/scripts/pattern_recognition.py",
-        "skills/legacy-estate/scripts/legacy-estate_differs_from.py",
-        "skills/legacy-estate/scripts/estate_shape_audit.py"
+        "skills/legacy-estate/scripts/estate_shape_audit.py",
+        "skills/legacy-estate/scripts/legacy-estate_differs_from.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/legacy-estate/tests/test_legacy_estate.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "legal-automation-suite",
@@ -7535,24 +7682,28 @@
     {
       "id": "legal-powerhouse",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/legal-powerhouse/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/legal-powerhouse/skill.py",
-        "skills/legal-powerhouse/scripts/project_locations.py",
         "skills/legal-powerhouse/scripts/mandatory_inheritance.py",
-        "skills/legal-powerhouse/scripts/hard_rules_legal.py"
+        "skills/legal-powerhouse/scripts/hard_rules_legal.py",
+        "skills/legal-powerhouse/scripts/project_locations.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/legal-powerhouse/tests/test_legal_powerhouse.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "library-of-links",
@@ -7751,10 +7902,11 @@
       "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/local-skill/scripts/inspect.py",
-        "skills/local-skill/scripts/pattern_catalog.py",
-        "skills/local-skill/scripts/this_skill.py",
+        "skills/local-skill/scripts/run.py",
         "skills/local-skill/scripts/generate.py",
+        "skills/local-skill/scripts/this_skill.py",
+        "skills/local-skill/scripts/pattern_catalog.py",
+        "skills/local-skill/scripts/inspect.py",
         "skills/local-skill/scripts/validate.py",
         "skills/local-skill/scripts/extract.py"
       ],
@@ -7793,24 +7945,28 @@
     {
       "id": "long-horizon-core",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/long-horizon-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/long-horizon-core/skill.py",
-        "skills/long-horizon-core/scripts/7-stage_execution_loop.py",
         "skills/long-horizon-core/scripts/stage_contracts.py",
-        "skills/long-horizon-core/scripts/invariant_laws.py"
+        "skills/long-horizon-core/scripts/invariant_laws.py",
+        "skills/long-horizon-core/scripts/7-stage_execution_loop.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/long-horizon-core/tests/test_long_horizon_core.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "loop",
@@ -7847,9 +8003,9 @@
         "skills/make-it-heavy/scripts/this_skill.py"
       ],
       "scaffold_files": [
-        "skills/make-it-heavy/scripts/memory_architecture.py",
+        "skills/make-it-heavy/scripts/project_layout.py",
         "skills/make-it-heavy/scripts/key_commands.py",
-        "skills/make-it-heavy/scripts/project_layout.py"
+        "skills/make-it-heavy/scripts/memory_architecture.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
@@ -7966,11 +8122,13 @@
     {
       "id": "master",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/master/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/master/skill.py",
@@ -7983,29 +8141,35 @@
       "structural_tests": [
         "skills/master/tests/test_master.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mastermind",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mastermind/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mastermind/skill.py",
+        "skills/mastermind/scripts/project_layout.py",
         "skills/mastermind/scripts/hard_rules_non-negotiable.py",
-        "skills/mastermind/scripts/key_commands.py",
-        "skills/mastermind/scripts/project_layout.py"
+        "skills/mastermind/scripts/key_commands.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mastermind/tests/test_mastermind.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "max-token-saver",
@@ -8094,24 +8258,28 @@
     {
       "id": "mcp-master-server",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mcp-master-server/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mcp-master-server/skill.py",
-        "skills/mcp-master-server/scripts/mcp_master_server_validator.py",
+        "skills/mcp-master-server/scripts/quick_rules.py",
         "skills/mcp-master-server/scripts/mcp_master_server_reporter.py",
-        "skills/mcp-master-server/scripts/quick_rules.py"
+        "skills/mcp-master-server/scripts/mcp_master_server_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mcp-master-server/tests/test_mcp_master_server.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "meeting-insights-analyzer",
@@ -8137,11 +8305,13 @@
     {
       "id": "mega-agent-core-operations",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-agent-core-operations/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-agent-core-operations/skill.py",
@@ -8154,60 +8324,72 @@
       "structural_tests": [
         "skills/mega-agent-core-operations/tests/test_mega_agent_core_operations.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-agent-evaluation",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-agent-evaluation/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-agent-evaluation/skill.py",
         "skills/mega-agent-evaluation/scripts/patterns.py",
-        "skills/mega-agent-evaluation/scripts/requirements.py",
-        "skills/mega-agent-evaluation/scripts/capabilities.py"
+        "skills/mega-agent-evaluation/scripts/capabilities.py",
+        "skills/mega-agent-evaluation/scripts/requirements.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-agent-evaluation/tests/test_mega_agent_evaluation.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-agent-memory-mcp",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-agent-memory-mcp/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-agent-memory-mcp/skill.py",
-        "skills/mega-agent-memory-mcp/scripts/setup.py",
+        "skills/mega-agent-memory-mcp/scripts/capabilities_mcp_tools.py",
         "skills/mega-agent-memory-mcp/scripts/prerequisites.py",
-        "skills/mega-agent-memory-mcp/scripts/capabilities_mcp_tools.py"
+        "skills/mega-agent-memory-mcp/scripts/setup.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-agent-memory-mcp/tests/test_mega_agent_memory_mcp.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-agent-memory-systems",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-agent-memory-systems/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-agent-memory-systems/skill.py",
@@ -8220,82 +8402,98 @@
       "structural_tests": [
         "skills/mega-agent-memory-systems/tests/test_mega_agent_memory_systems.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-ai-agents-architect",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-ai-agents-architect/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-ai-agents-architect/skill.py",
         "skills/mega-ai-agents-architect/scripts/patterns.py",
-        "skills/mega-ai-agents-architect/scripts/requirements.py",
-        "skills/mega-ai-agents-architect/scripts/capabilities.py"
+        "skills/mega-ai-agents-architect/scripts/capabilities.py",
+        "skills/mega-ai-agents-architect/scripts/requirements.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-ai-agents-architect/tests/test_mega_ai_agents_architect.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-ai-deal-finder",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-ai-deal-finder/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-ai-deal-finder/skill.py",
-        "skills/mega-ai-deal-finder/scripts/mega_ai_deal_finder_reporter.py",
+        "skills/mega-ai-deal-finder/scripts/mega_ai_deal_finder_validator.py",
         "skills/mega-ai-deal-finder/scripts/quick_rules.py",
-        "skills/mega-ai-deal-finder/scripts/mega_ai_deal_finder_validator.py"
+        "skills/mega-ai-deal-finder/scripts/mega_ai_deal_finder_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-ai-deal-finder/tests/test_mega_ai_deal_finder.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-apex-integrations",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-apex-integrations/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-apex-integrations/skill.py",
+        "skills/mega-apex-integrations/scripts/mega_apex_integrations_reporter.py",
         "skills/mega-apex-integrations/scripts/quick_rules.py",
-        "skills/mega-apex-integrations/scripts/mega_apex_integrations_validator.py",
-        "skills/mega-apex-integrations/scripts/mega_apex_integrations_reporter.py"
+        "skills/mega-apex-integrations/scripts/mega_apex_integrations_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-apex-integrations/tests/test_mega_apex_integrations.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-apex-sovereign-mastermind",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-apex-sovereign-mastermind/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-apex-sovereign-mastermind/skill.py",
@@ -8308,21 +8506,25 @@
       "structural_tests": [
         "skills/mega-apex-sovereign-mastermind/tests/test_mega_apex_sovereign_mastermind.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-apex-sovereign-runtime",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-apex-sovereign-runtime/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-apex-sovereign-runtime/skill.py",
-        "skills/mega-apex-sovereign-runtime/scripts/immovable_force.py",
         "skills/mega-apex-sovereign-runtime/scripts/pro_code_philosophy.py",
+        "skills/mega-apex-sovereign-runtime/scripts/immovable_force.py",
         "skills/mega-apex-sovereign-runtime/scripts/pro_methodology_why.py"
       ],
       "stub_files": [],
@@ -8330,131 +8532,155 @@
       "structural_tests": [
         "skills/mega-apex-sovereign-runtime/tests/test_mega_apex_sovereign_runtime.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-api-integration",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-api-integration/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-api-integration/skill.py",
+        "skills/mega-api-integration/scripts/keywords.py",
         "skills/mega-api-integration/scripts/curl_examples.py",
-        "skills/mega-api-integration/scripts/rest_api_testing.py",
-        "skills/mega-api-integration/scripts/keywords.py"
+        "skills/mega-api-integration/scripts/rest_api_testing.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-api-integration/tests/test_mega_api_integration.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-apple-ane-kv-quantizer",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-apple-ane-kv-quantizer/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-apple-ane-kv-quantizer/skill.py",
-        "skills/mega-apple-ane-kv-quantizer/scripts/mega_apple_ane_kv_quantizer_validator.py",
         "skills/mega-apple-ane-kv-quantizer/scripts/quick_rules.py",
-        "skills/mega-apple-ane-kv-quantizer/scripts/mega_apple_ane_kv_quantizer_reporter.py"
+        "skills/mega-apple-ane-kv-quantizer/scripts/mega_apple_ane_kv_quantizer_reporter.py",
+        "skills/mega-apple-ane-kv-quantizer/scripts/mega_apple_ane_kv_quantizer_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-apple-ane-kv-quantizer/tests/test_mega_apple_ane_kv_quantizer.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-architecture",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-architecture/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-architecture/skill.py",
-        "skills/mega-architecture/scripts/selective_reading_rule.py",
         "skills/mega-architecture/scripts/core_principle.py",
-        "skills/mega-architecture/scripts/validation_checklist.py"
+        "skills/mega-architecture/scripts/validation_checklist.py",
+        "skills/mega-architecture/scripts/selective_reading_rule.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-architecture/tests/test_mega_architecture.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-aspen-grove",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-aspen-grove/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-aspen-grove/skill.py",
-        "skills/mega-aspen-grove/scripts/connector_list.py",
+        "skills/mega-aspen-grove/scripts/keywords.py",
         "skills/mega-aspen-grove/scripts/architecture.py",
-        "skills/mega-aspen-grove/scripts/keywords.py"
+        "skills/mega-aspen-grove/scripts/connector_list.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-aspen-grove/tests/test_mega_aspen_grove.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-aspen-grove-connectors",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-aspen-grove-connectors/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-aspen-grove-connectors/skill.py",
         "skills/mega-aspen-grove-connectors/scripts/quick_rules.py",
-        "skills/mega-aspen-grove-connectors/scripts/mega_aspen_grove_connectors_validator.py",
-        "skills/mega-aspen-grove-connectors/scripts/mega_aspen_grove_connectors_reporter.py"
+        "skills/mega-aspen-grove-connectors/scripts/mega_aspen_grove_connectors_reporter.py",
+        "skills/mega-aspen-grove-connectors/scripts/mega_aspen_grove_connectors_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-aspen-grove-connectors/tests/test_mega_aspen_grove_connectors.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-aws-trainium-neuron-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-aws-trainium-neuron-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-aws-trainium-neuron-sentinel/skill.py",
-        "skills/mega-aws-trainium-neuron-sentinel/scripts/quick_rules.py",
         "skills/mega-aws-trainium-neuron-sentinel/scripts/mega_aws_trainium_neuron_sentinel_validator.py",
+        "skills/mega-aws-trainium-neuron-sentinel/scripts/quick_rules.py",
         "skills/mega-aws-trainium-neuron-sentinel/scripts/mega_aws_trainium_neuron_sentinel_reporter.py"
       ],
       "stub_files": [],
@@ -8462,82 +8688,98 @@
       "structural_tests": [
         "skills/mega-aws-trainium-neuron-sentinel/tests/test_mega_aws_trainium_neuron_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-brain",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-brain/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-brain/skill.py",
+        "skills/mega-brain/scripts/keywords.py",
         "skills/mega-brain/scripts/architecture.py",
-        "skills/mega-brain/scripts/memory_layers.py",
-        "skills/mega-brain/scripts/keywords.py"
+        "skills/mega-brain/scripts/memory_layers.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-brain/tests/test_mega_brain.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-cc-skill-security-review",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-cc-skill-security-review/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-cc-skill-security-review/skill.py",
+        "skills/mega-cc-skill-security-review/scripts/secrets_management.py",
         "skills/mega-cc-skill-security-review/scripts/security_checklist.py",
-        "skills/mega-cc-skill-security-review/scripts/activate.py",
-        "skills/mega-cc-skill-security-review/scripts/secrets_management.py"
+        "skills/mega-cc-skill-security-review/scripts/activate.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-cc-skill-security-review/tests/test_mega_cc_skill_security_review.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-clean-code",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-clean-code/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-clean-code/skill.py",
+        "skills/mega-clean-code/scripts/function_rules.py",
         "skills/mega-clean-code/scripts/core_principles.py",
-        "skills/mega-clean-code/scripts/naming_rules.py",
-        "skills/mega-clean-code/scripts/function_rules.py"
+        "skills/mega-clean-code/scripts/naming_rules.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-clean-code/tests/test_mega_clean_code.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-code-review-checklist",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-code-review-checklist/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-code-review-checklist/skill.py",
@@ -8550,21 +8792,25 @@
       "structural_tests": [
         "skills/mega-code-review-checklist/tests/test_mega_code_review_checklist.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-codemaster",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-codemaster/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-codemaster/skill.py",
-        "skills/mega-codemaster/scripts/project_table_canonical.py",
         "skills/mega-codemaster/scripts/recipes.py",
+        "skills/mega-codemaster/scripts/project_table_canonical.py",
         "skills/mega-codemaster/scripts/environment_reality_read.py"
       ],
       "stub_files": [],
@@ -8572,21 +8818,25 @@
       "structural_tests": [
         "skills/mega-codemaster/tests/test_mega_codemaster.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-composio",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-composio/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-composio/skill.py",
-        "skills/mega-composio/scripts/choose_job.py",
         "skills/mega-composio/scripts/choose_product.py",
+        "skills/mega-composio/scripts/choose_job.py",
         "skills/mega-composio/scripts/load_only_relevant.py"
       ],
       "stub_files": [],
@@ -8594,65 +8844,77 @@
       "structural_tests": [
         "skills/mega-composio/tests/test_mega_composio.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-conversation-memory",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-conversation-memory/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-conversation-memory/skill.py",
-        "skills/mega-conversation-memory/scripts/tiered_memory_system.py",
         "skills/mega-conversation-memory/scripts/patterns.py",
-        "skills/mega-conversation-memory/scripts/capabilities.py"
+        "skills/mega-conversation-memory/scripts/capabilities.py",
+        "skills/mega-conversation-memory/scripts/tiered_memory_system.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-conversation-memory/tests/test_mega_conversation_memory.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-data-analysis",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-data-analysis/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-data-analysis/skill.py",
-        "skills/mega-data-analysis/scripts/priority_order_file.py",
         "skills/mega-data-analysis/scripts/critical_rule.py",
-        "skills/mega-data-analysis/scripts/keywords.py"
+        "skills/mega-data-analysis/scripts/keywords.py",
+        "skills/mega-data-analysis/scripts/priority_order_file.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-data-analysis/tests/test_mega_data_analysis.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-deepseek-mla-moe-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-deepseek-mla-moe-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-deepseek-mla-moe-sentinel/skill.py",
-        "skills/mega-deepseek-mla-moe-sentinel/scripts/quick_rules.py",
         "skills/mega-deepseek-mla-moe-sentinel/scripts/mega_deepseek_mla_moe_sentinel_reporter.py",
+        "skills/mega-deepseek-mla-moe-sentinel/scripts/quick_rules.py",
         "skills/mega-deepseek-mla-moe-sentinel/scripts/mega_deepseek_mla_moe_sentinel_validator.py"
       ],
       "stub_files": [],
@@ -8660,38 +8922,46 @@
       "structural_tests": [
         "skills/mega-deepseek-mla-moe-sentinel/tests/test_mega_deepseek_mla_moe_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-docker-devops",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-docker-devops/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-docker-devops/skill.py",
         "skills/mega-docker-devops/scripts/docker_commands.py",
-        "skills/mega-docker-devops/scripts/container_management.py",
-        "skills/mega-docker-devops/scripts/keywords.py"
+        "skills/mega-docker-devops/scripts/keywords.py",
+        "skills/mega-docker-devops/scripts/container_management.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-docker-devops/tests/test_mega_docker_devops.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-engineering-innovations",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-engineering-innovations/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-engineering-innovations/skill.py",
@@ -8704,65 +8974,77 @@
       "structural_tests": [
         "skills/mega-engineering-innovations/tests/test_mega_engineering_innovations.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-filesystem-omni-engine",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-filesystem-omni-engine/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-filesystem-omni-engine/skill.py",
         "skills/mega-filesystem-omni-engine/scripts/sub-skill_document-pdf-latex-pandoc-engine.py",
-        "skills/mega-filesystem-omni-engine/scripts/sub-skill_filesystem-view-and-recognition.py",
-        "skills/mega-filesystem-omni-engine/scripts/high-performance_recursive_tree.py"
+        "skills/mega-filesystem-omni-engine/scripts/high-performance_recursive_tree.py",
+        "skills/mega-filesystem-omni-engine/scripts/sub-skill_filesystem-view-and-recognition.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-filesystem-omni-engine/tests/test_mega_filesystem_omni_engine.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-flagships",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-flagships/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-flagships/skill.py",
+        "skills/mega-flagships/scripts/tier_apex_core.py",
         "skills/mega-flagships/scripts/tier_apex_family.py",
-        "skills/mega-flagships/scripts/flagship_roster.py",
-        "skills/mega-flagships/scripts/tier_apex_core.py"
+        "skills/mega-flagships/scripts/flagship_roster.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-flagships/tests/test_mega_flagships.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-forks",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-forks/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-forks/skill.py",
-        "skills/mega-forks/scripts/working_fork.py",
         "skills/mega-forks/scripts/estate_shape_audit.py",
+        "skills/mega-forks/scripts/working_fork.py",
         "skills/mega-forks/scripts/forks_differ_from.py"
       ],
       "stub_files": [],
@@ -8770,192 +9052,228 @@
       "structural_tests": [
         "skills/mega-forks/tests/test_mega_forks.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-gcp-data-engineering",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-gcp-data-engineering/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-gcp-data-engineering/skill.py",
+        "skills/mega-gcp-data-engineering/scripts/sub-skill_bigquery-ai-ml.py",
         "skills/mega-gcp-data-engineering/scripts/sub-skill_bigquery-bigframes.py",
-        "skills/mega-gcp-data-engineering/scripts/reference_directory.py",
-        "skills/mega-gcp-data-engineering/scripts/sub-skill_bigquery-ai-ml.py"
+        "skills/mega-gcp-data-engineering/scripts/reference_directory.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-gcp-data-engineering/tests/test_mega_gcp_data_engineering.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-genesis-prime",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-genesis-prime/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-genesis-prime/skill.py",
+        "skills/mega-genesis-prime/scripts/quick_rules.py",
         "skills/mega-genesis-prime/scripts/mega_genesis_prime_reporter.py",
-        "skills/mega-genesis-prime/scripts/mega_genesis_prime_validator.py",
-        "skills/mega-genesis-prime/scripts/quick_rules.py"
+        "skills/mega-genesis-prime/scripts/mega_genesis_prime_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-genesis-prime/tests/test_mega_genesis_prime.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-github-power",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-github-power/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-github-power/skill.py",
         "skills/mega-github-power/scripts/quick_commands.py",
-        "skills/mega-github-power/scripts/management.py",
-        "skills/mega-github-power/scripts/keywords.py"
+        "skills/mega-github-power/scripts/keywords.py",
+        "skills/mega-github-power/scripts/management.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-github-power/tests/test_mega_github_power.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-job-app-portfolio",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-job-app-portfolio/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-job-app-portfolio/skill.py",
+        "skills/mega-job-app-portfolio/scripts/existing_per-repo_skills.py",
         "skills/mega-job-app-portfolio/scripts/pattern_recognition.py",
-        "skills/mega-job-app-portfolio/scripts/estate_shape.py",
-        "skills/mega-job-app-portfolio/scripts/existing_per-repo_skills.py"
+        "skills/mega-job-app-portfolio/scripts/estate_shape.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-job-app-portfolio/tests/test_mega_job_app_portfolio.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-legacy-estate",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-legacy-estate/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-legacy-estate/skill.py",
         "skills/mega-legacy-estate/scripts/pattern_recognition.py",
-        "skills/mega-legacy-estate/scripts/legacy-estate_differs_from.py",
-        "skills/mega-legacy-estate/scripts/estate_shape_audit.py"
+        "skills/mega-legacy-estate/scripts/estate_shape_audit.py",
+        "skills/mega-legacy-estate/scripts/legacy-estate_differs_from.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-legacy-estate/tests/test_mega_legacy_estate.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-legal-forensic-engine",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-legal-forensic-engine/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-legal-forensic-engine/skill.py",
+        "skills/mega-legal-forensic-engine/scripts/sub-skill_deep-soul-litigation-engine.py",
         "skills/mega-legal-forensic-engine/scripts/quick_start.py",
-        "skills/mega-legal-forensic-engine/scripts/dependencies.py",
-        "skills/mega-legal-forensic-engine/scripts/sub-skill_deep-soul-litigation-engine.py"
+        "skills/mega-legal-forensic-engine/scripts/dependencies.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-legal-forensic-engine/tests/test_mega_legal_forensic_engine.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-legal-powerhouse",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-legal-powerhouse/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-legal-powerhouse/skill.py",
+        "skills/mega-legal-powerhouse/scripts/keywords.py",
         "skills/mega-legal-powerhouse/scripts/architecture.py",
-        "skills/mega-legal-powerhouse/scripts/courtlistener_api.py",
-        "skills/mega-legal-powerhouse/scripts/keywords.py"
+        "skills/mega-legal-powerhouse/scripts/courtlistener_api.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-legal-powerhouse/tests/test_mega_legal_powerhouse.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-make-it-heavy",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-make-it-heavy/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-make-it-heavy/skill.py",
-        "skills/mega-make-it-heavy/scripts/memory_architecture.py",
+        "skills/mega-make-it-heavy/scripts/project_layout.py",
         "skills/mega-make-it-heavy/scripts/key_commands.py",
-        "skills/mega-make-it-heavy/scripts/project_layout.py"
+        "skills/mega-make-it-heavy/scripts/memory_architecture.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-make-it-heavy/tests/test_mega_make_it_heavy.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-master",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-master/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-master/skill.py",
@@ -8968,104 +9286,124 @@
       "structural_tests": [
         "skills/mega-master/tests/test_mega_master.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-mastermind",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-mastermind/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-mastermind/skill.py",
         "skills/mega-mastermind/scripts/quick_commands.py",
-        "skills/mega-mastermind/scripts/architecture.py",
-        "skills/mega-mastermind/scripts/keywords.py"
+        "skills/mega-mastermind/scripts/keywords.py",
+        "skills/mega-mastermind/scripts/architecture.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-mastermind/tests/test_mega_mastermind.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-mcp-master-server",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-mcp-master-server/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-mcp-master-server/skill.py",
-        "skills/mega-mcp-master-server/scripts/mega_mcp_master_server_reporter.py",
+        "skills/mega-mcp-master-server/scripts/quick_rules.py",
         "skills/mega-mcp-master-server/scripts/mega_mcp_master_server_validator.py",
-        "skills/mega-mcp-master-server/scripts/quick_rules.py"
+        "skills/mega-mcp-master-server/scripts/mega_mcp_master_server_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-mcp-master-server/tests/test_mega_mcp_master_server.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-mermicorn-grove",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-mermicorn-grove/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-mermicorn-grove/skill.py",
-        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_reporter.py",
+        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_validator.py",
         "skills/mega-mermicorn-grove/scripts/quick_rules.py",
-        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_validator.py"
+        "skills/mega-mermicorn-grove/scripts/mega_mermicorn_grove_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-mermicorn-grove/tests/test_mega_mermicorn_grove.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-mermicorn-mega-boot",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-mermicorn-mega-boot/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-mermicorn-mega-boot/skill.py",
-        "skills/mega-mermicorn-mega-boot/scripts/mega_mermicorn_mega_boot_validator.py",
+        "skills/mega-mermicorn-mega-boot/scripts/quick_rules.py",
         "skills/mega-mermicorn-mega-boot/scripts/mega_mermicorn_mega_boot_reporter.py",
-        "skills/mega-mermicorn-mega-boot/scripts/quick_rules.py"
+        "skills/mega-mermicorn-mega-boot/scripts/mega_mermicorn_mega_boot_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-mermicorn-mega-boot/tests/test_mega_mermicorn_mega_boot.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-meta-llama-collective-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-meta-llama-collective-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-meta-llama-collective-sentinel/skill.py",
@@ -9078,87 +9416,103 @@
       "structural_tests": [
         "skills/mega-meta-llama-collective-sentinel/tests/test_mega_meta_llama_collective_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-model-expansion-engine",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-model-expansion-engine/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-model-expansion-engine/skill.py",
+        "skills/mega-model-expansion-engine/scripts/sub-skill_openrouter-free-tier-dispatch.py",
         "skills/mega-model-expansion-engine/scripts/free_model_roster.py",
-        "skills/mega-model-expansion-engine/scripts/dispatch_workflow_via.py",
-        "skills/mega-model-expansion-engine/scripts/sub-skill_openrouter-free-tier-dispatch.py"
+        "skills/mega-model-expansion-engine/scripts/dispatch_workflow_via.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-model-expansion-engine/tests/test_mega_model_expansion_engine.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-monolith",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-monolith/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-monolith/skill.py",
-        "skills/mega-monolith/scripts/entry_points.py",
         "skills/mega-monolith/scripts/test_command.py",
-        "skills/mega-monolith/scripts/project_layout.py"
+        "skills/mega-monolith/scripts/project_layout.py",
+        "skills/mega-monolith/scripts/entry_points.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-monolith/tests/test_mega_monolith.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-openai-reasoning-kv-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-openai-reasoning-kv-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-openai-reasoning-kv-sentinel/skill.py",
+        "skills/mega-openai-reasoning-kv-sentinel/scripts/mega_openai_reasoning_kv_sentinel_validator.py",
         "skills/mega-openai-reasoning-kv-sentinel/scripts/quick_rules.py",
-        "skills/mega-openai-reasoning-kv-sentinel/scripts/mega_openai_reasoning_kv_sentinel_reporter.py",
-        "skills/mega-openai-reasoning-kv-sentinel/scripts/mega_openai_reasoning_kv_sentinel_validator.py"
+        "skills/mega-openai-reasoning-kv-sentinel/scripts/mega_openai_reasoning_kv_sentinel_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-openai-reasoning-kv-sentinel/tests/test_mega_openai_reasoning_kv_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-primordial-mesh",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-primordial-mesh/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-primordial-mesh/skill.py",
-        "skills/mega-primordial-mesh/scripts/quick_rules.py",
         "skills/mega-primordial-mesh/scripts/mega_primordial_mesh_reporter.py",
+        "skills/mega-primordial-mesh/scripts/quick_rules.py",
         "skills/mega-primordial-mesh/scripts/mega_primordial_mesh_validator.py"
       ],
       "stub_files": [],
@@ -9166,7 +9520,9 @@
       "structural_tests": [
         "skills/mega-primordial-mesh/tests/test_mega_primordial_mesh.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-pro-code-engineering",
@@ -9192,38 +9548,44 @@
     {
       "id": "mega-quantum-nexus",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-quantum-nexus/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-quantum-nexus/skill.py",
         "skills/mega-quantum-nexus/scripts/quick_commands.py",
-        "skills/mega-quantum-nexus/scripts/architecture.py",
-        "skills/mega-quantum-nexus/scripts/keywords.py"
+        "skills/mega-quantum-nexus/scripts/keywords.py",
+        "skills/mega-quantum-nexus/scripts/architecture.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-quantum-nexus/tests/test_mega_quantum_nexus.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-reasoning-variants",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-reasoning-variants/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-reasoning-variants/skill.py",
-        "skills/mega-reasoning-variants/scripts/selector_decision_tree.py",
         "skills/mega-reasoning-variants/scripts/per-strategy_references.py",
+        "skills/mega-reasoning-variants/scripts/selector_decision_tree.py",
         "skills/mega-reasoning-variants/scripts/six_strategies.py"
       ],
       "stub_files": [],
@@ -9231,29 +9593,35 @@
       "structural_tests": [
         "skills/mega-reasoning-variants/tests/test_mega_reasoning_variants.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-research-study-act",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-research-study-act/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-research-study-act/skill.py",
-        "skills/mega-research-study-act/scripts/tri-phase_mandate.py",
         "skills/mega-research-study-act/scripts/phase_study_synthesize.py",
-        "skills/mega-research-study-act/scripts/phase_research_never.py"
+        "skills/mega-research-study-act/scripts/phase_research_never.py",
+        "skills/mega-research-study-act/scripts/tri-phase_mandate.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-research-study-act/tests/test_mega_research_study_act.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-skill-forge",
@@ -9262,23 +9630,25 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-skill-forge/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-skill-forge/skill.py",
         "skills/mega-skill-forge/scripts/decision_gate.py",
-        "skills/mega-skill-forge/scripts/creation_workflow.py",
-        "skills/mega-skill-forge/scripts/this_skill.py"
+        "skills/mega-skill-forge/scripts/this_skill.py",
+        "skills/mega-skill-forge/scripts/creation_workflow.py"
       ],
       "stub_files": [
+        "skills/mega-skill-forge/scripts/mission_drafter.py",
         "skills/mega-skill-forge/scripts/repo_inspector.py",
         "skills/mega-skill-forge/scripts/readiness_gate.py",
-        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
-        "skills/mega-skill-forge/scripts/combo_selector.py",
-        "skills/mega-skill-forge/scripts/mission_drafter.py",
-        "skills/mega-skill-forge/scripts/contract_author.py",
+        "skills/mega-skill-forge/scripts/release_coordinator.py",
         "skills/mega-skill-forge/scripts/registry_publisher.py",
-        "skills/mega-skill-forge/scripts/release_coordinator.py"
+        "skills/mega-skill-forge/scripts/combo_selector.py",
+        "skills/mega-skill-forge/scripts/hierarchy_validator.py",
+        "skills/mega-skill-forge/scripts/contract_author.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
@@ -9296,14 +9666,15 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/mega-skills-test-runner/scripts/run.py",
         "skills/mega-skills-test-runner/scripts/run_checks.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-skills-test-runner/skill.py",
-        "skills/mega-skills-test-runner/scripts/before_running.py",
         "skills/mega-skills-test-runner/scripts/purpose.py",
-        "skills/mega-skills-test-runner/scripts/standard_workflow.py"
+        "skills/mega-skills-test-runner/scripts/standard_workflow.py",
+        "skills/mega-skills-test-runner/scripts/before_running.py"
       ],
       "stub_files": [
         "skills/mega-skills-test-runner/scripts/revision_recorder.py",
@@ -9321,60 +9692,70 @@
     {
       "id": "mega-spacex-mission-control",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-spacex-mission-control/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-spacex-mission-control/skill.py",
-        "skills/mega-spacex-mission-control/scripts/mega_spacex_mission_control_reporter.py",
         "skills/mega-spacex-mission-control/scripts/mega_spacex_mission_control_validator.py",
-        "skills/mega-spacex-mission-control/scripts/quick_rules.py"
+        "skills/mega-spacex-mission-control/scripts/quick_rules.py",
+        "skills/mega-spacex-mission-control/scripts/mega_spacex_mission_control_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-spacex-mission-control/tests/test_mega_spacex_mission_control.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-supabase-ecosystem",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-supabase-ecosystem/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-supabase-ecosystem/skill.py",
+        "skills/mega-supabase-ecosystem/scripts/supabase_cli.py",
         "skills/mega-supabase-ecosystem/scripts/sub-skill_supabase.py",
-        "skills/mega-supabase-ecosystem/scripts/core_principles.py",
-        "skills/mega-supabase-ecosystem/scripts/supabase_cli.py"
+        "skills/mega-supabase-ecosystem/scripts/core_principles.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-supabase-ecosystem/tests/test_mega_supabase_ecosystem.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-token-saver",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-token-saver/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-token-saver/skill.py",
-        "skills/mega-token-saver/scripts/this_skill_does.py",
         "skills/mega-token-saver/scripts/quick_rules.py",
+        "skills/mega-token-saver/scripts/this_skill_does.py",
         "skills/mega-token-saver/scripts/mega_token_saver_reporter.py"
       ],
       "stub_files": [],
@@ -9382,51 +9763,61 @@
       "structural_tests": [
         "skills/mega-token-saver/tests/test_mega_token_saver.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-tower-of-babel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-tower-of-babel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-tower-of-babel/skill.py",
         "skills/mega-tower-of-babel/scripts/test_command.py",
-        "skills/mega-tower-of-babel/scripts/entry_points_cli.py",
-        "skills/mega-tower-of-babel/scripts/project_layout.py"
+        "skills/mega-tower-of-babel/scripts/project_layout.py",
+        "skills/mega-tower-of-babel/scripts/entry_points_cli.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-tower-of-babel/tests/test_mega_tower_of_babel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-vercel-ecosystem",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-vercel-ecosystem/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-vercel-ecosystem/skill.py",
+        "skills/mega-vercel-ecosystem/scripts/packages.py",
         "skills/mega-vercel-ecosystem/scripts/setup.py",
-        "skills/mega-vercel-ecosystem/scripts/sub-skill_ai-gateway.py",
-        "skills/mega-vercel-ecosystem/scripts/packages.py"
+        "skills/mega-vercel-ecosystem/scripts/sub-skill_ai-gateway.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mega-vercel-ecosystem/tests/test_mega_vercel_ecosystem.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mega-web",
@@ -9454,16 +9845,18 @@
     {
       "id": "mega-xai-colossus-2",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-xai-colossus-2/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mega-xai-colossus-2/skill.py",
-        "skills/mega-xai-colossus-2/scripts/mega_xai_colossus_2_reporter.py",
         "skills/mega-xai-colossus-2/scripts/quick_rules.py",
+        "skills/mega-xai-colossus-2/scripts/mega_xai_colossus_2_reporter.py",
         "skills/mega-xai-colossus-2/scripts/mega_xai_colossus_2_validator.py"
       ],
       "stub_files": [],
@@ -9471,7 +9864,9 @@
       "structural_tests": [
         "skills/mega-xai-colossus-2/tests/test_mega_xai_colossus_2.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "memory-connect",
@@ -9560,33 +9955,39 @@
     {
       "id": "mermicorn-grove",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mermicorn-grove/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mermicorn-grove/skill.py",
         "skills/mermicorn-grove/scripts/quick_rules.py",
-        "skills/mermicorn-grove/scripts/mermicorn_grove_validator.py",
-        "skills/mermicorn-grove/scripts/mermicorn_grove_reporter.py"
+        "skills/mermicorn-grove/scripts/mermicorn_grove_reporter.py",
+        "skills/mermicorn-grove/scripts/mermicorn_grove_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/mermicorn-grove/tests/test_mermicorn_grove.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "mermicorn-mega-boot",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mermicorn-mega-boot/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/mermicorn-mega-boot/skill.py",
@@ -9599,21 +10000,25 @@
       "structural_tests": [
         "skills/mermicorn-mega-boot/tests/test_mermicorn_mega_boot.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "meta-llama-collective-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/meta-llama-collective-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/meta-llama-collective-sentinel/skill.py",
-        "skills/meta-llama-collective-sentinel/scripts/meta_llama_collective_sentinel_validator.py",
         "skills/meta-llama-collective-sentinel/scripts/quick_rules.py",
+        "skills/meta-llama-collective-sentinel/scripts/meta_llama_collective_sentinel_validator.py",
         "skills/meta-llama-collective-sentinel/scripts/meta_llama_collective_sentinel_reporter.py"
       ],
       "stub_files": [],
@@ -9621,7 +10026,9 @@
       "structural_tests": [
         "skills/meta-llama-collective-sentinel/tests/test_meta_llama_collective_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "metasploit-framework",
@@ -9800,15 +10207,16 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mission-contract/skill.py",
-        "skills/mission-contract/scripts/outcome_framer.py",
-        "skills/mission-contract/scripts/assumption_bounder.py",
-        "skills/mission-contract/scripts/constraint_mapper.py",
-        "skills/mission-contract/scripts/scope_separator.py",
-        "skills/mission-contract/scripts/output_contract.py",
         "skills/mission-contract/scripts/purpose.py",
-        "skills/mission-contract/scripts/procedure.py",
+        "skills/mission-contract/scripts/output_contract.py",
+        "skills/mission-contract/scripts/run.py",
+        "skills/mission-contract/scripts/constraint_mapper.py",
         "skills/mission-contract/scripts/contract_emitter.py",
-        "skills/mission-contract/scripts/criteria_definer.py"
+        "skills/mission-contract/scripts/procedure.py",
+        "skills/mission-contract/scripts/scope_separator.py",
+        "skills/mission-contract/scripts/criteria_definer.py",
+        "skills/mission-contract/scripts/assumption_bounder.py",
+        "skills/mission-contract/scripts/outcome_framer.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -9927,24 +10335,28 @@
     {
       "id": "monolith",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/monolith/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/monolith/skill.py",
-        "skills/monolith/scripts/entry_points.py",
         "skills/monolith/scripts/test_command.py",
-        "skills/monolith/scripts/project_layout.py"
+        "skills/monolith/scripts/project_layout.py",
+        "skills/monolith/scripts/entry_points.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/monolith/tests/test_monolith.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "moodle-external-api-development",
@@ -10289,19 +10701,21 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/omni-memory-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/omni-memory-core/skill.py",
-        "skills/omni-memory-core/scripts/output_contract.py",
         "skills/omni-memory-core/scripts/purpose.py",
+        "skills/omni-memory-core/scripts/output_contract.py",
         "skills/omni-memory-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/omni-memory-core/scripts/file_traverser.py",
-        "skills/omni-memory-core/scripts/memory_exporter.py",
         "skills/omni-memory-core/scripts/vectorizer.py",
         "skills/omni-memory-core/scripts/cosine_engine.py",
+        "skills/omni-memory-core/scripts/memory_exporter.py",
+        "skills/omni-memory-core/scripts/file_traverser.py",
         "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
       ],
       "behavioral_tests": [],
@@ -10336,24 +10750,28 @@
     {
       "id": "openai-reasoning-kv-sentinel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/openai-reasoning-kv-sentinel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/openai-reasoning-kv-sentinel/skill.py",
-        "skills/openai-reasoning-kv-sentinel/scripts/openai_reasoning_kv_sentinel_validator.py",
+        "skills/openai-reasoning-kv-sentinel/scripts/openai_reasoning_kv_sentinel_reporter.py",
         "skills/openai-reasoning-kv-sentinel/scripts/quick_rules.py",
-        "skills/openai-reasoning-kv-sentinel/scripts/openai_reasoning_kv_sentinel_reporter.py"
+        "skills/openai-reasoning-kv-sentinel/scripts/openai_reasoning_kv_sentinel_validator.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/openai-reasoning-kv-sentinel/tests/test_openai_reasoning_kv_sentinel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "openfda-database",
@@ -10740,20 +11158,22 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/pipeline-compositor/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/pipeline-compositor/skill.py",
-        "skills/pipeline-compositor/scripts/output_contract.py",
         "skills/pipeline-compositor/scripts/purpose.py",
+        "skills/pipeline-compositor/scripts/output_contract.py",
         "skills/pipeline-compositor/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/pipeline-compositor/scripts/backpressure_controller.py",
         "skills/pipeline-compositor/scripts/manifest_synthesizer.py",
         "skills/pipeline-compositor/scripts/stage_executor.py",
         "skills/pipeline-compositor/scripts/dag_parser.py",
         "skills/pipeline-compositor/scripts/topology_validator.py",
+        "skills/pipeline-compositor/scripts/backpressure_controller.py",
         "skills/pipeline-compositor/scripts/checkpoint_manager.py"
       ],
       "behavioral_tests": [],
@@ -10897,20 +11317,22 @@
       "state": "implementation_partial",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/polyglot-rosetta-core/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/polyglot-rosetta-core/skill.py",
-        "skills/polyglot-rosetta-core/scripts/output_contract.py",
         "skills/polyglot-rosetta-core/scripts/purpose.py",
+        "skills/polyglot-rosetta-core/scripts/output_contract.py",
         "skills/polyglot-rosetta-core/scripts/procedure.py"
       ],
       "stub_files": [
-        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
-        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
-        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
         "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
-        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py"
+        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py",
+        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
+        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py"
       ],
       "behavioral_tests": [],
       "structural_tests": [
@@ -11133,24 +11555,28 @@
     {
       "id": "primordial-mesh",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/primordial-mesh/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/primordial-mesh/skill.py",
         "skills/primordial-mesh/scripts/quick_rules.py",
-        "skills/primordial-mesh/scripts/primordial_mesh_reporter.py",
-        "skills/primordial-mesh/scripts/primordial_mesh_validator.py"
+        "skills/primordial-mesh/scripts/primordial_mesh_validator.py",
+        "skills/primordial-mesh/scripts/primordial_mesh_reporter.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/primordial-mesh/tests/test_primordial_mesh.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "primordial-mesh-titan",
@@ -11665,14 +12091,15 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/quality-gate/skill.py",
-        "skills/quality-gate/scripts/verifier_coordinator.py",
-        "skills/quality-gate/scripts/decision_recorder.py",
-        "skills/quality-gate/scripts/output_contract.py",
-        "skills/quality-gate/scripts/criteria_reader.py",
-        "skills/quality-gate/scripts/failure_classifier.py",
         "skills/quality-gate/scripts/purpose.py",
+        "skills/quality-gate/scripts/output_contract.py",
+        "skills/quality-gate/scripts/run.py",
+        "skills/quality-gate/scripts/failure_classifier.py",
+        "skills/quality-gate/scripts/artifact_inspector.py",
         "skills/quality-gate/scripts/procedure.py",
-        "skills/quality-gate/scripts/artifact_inspector.py"
+        "skills/quality-gate/scripts/decision_recorder.py",
+        "skills/quality-gate/scripts/verifier_coordinator.py",
+        "skills/quality-gate/scripts/criteria_reader.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -11707,24 +12134,28 @@
     {
       "id": "quantum-nexus",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/quantum-nexus/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/quantum-nexus/skill.py",
-        "skills/quantum-nexus/scripts/quick_rules.py",
         "skills/quantum-nexus/scripts/quantum_nexus_validator.py",
-        "skills/quantum-nexus/scripts/quantum_nexus_reporter.py"
+        "skills/quantum-nexus/scripts/quantum_nexus_reporter.py",
+        "skills/quantum-nexus/scripts/quick_rules.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/quantum-nexus/tests/test_quantum_nexus.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "quickgo-database",
@@ -11876,16 +12307,18 @@
     {
       "id": "reasoning-variants",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/reasoning-variants/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/reasoning-variants/skill.py",
-        "skills/reasoning-variants/scripts/selector_decision_tree.py",
         "skills/reasoning-variants/scripts/per-strategy_references.py",
+        "skills/reasoning-variants/scripts/selector_decision_tree.py",
         "skills/reasoning-variants/scripts/six_strategies.py"
       ],
       "stub_files": [],
@@ -11893,7 +12326,9 @@
       "structural_tests": [
         "skills/reasoning-variants/tests/test_reasoning_variants.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "receiving-code-review",
@@ -12213,24 +12648,28 @@
     {
       "id": "research-study-act",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/research-study-act/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/research-study-act/skill.py",
-        "skills/research-study-act/scripts/tri-phase_mandate.py",
         "skills/research-study-act/scripts/phase_study_synthesize.py",
-        "skills/research-study-act/scripts/phase_research_never.py"
+        "skills/research-study-act/scripts/phase_research_never.py",
+        "skills/research-study-act/scripts/tri-phase_mandate.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/research-study-act/tests/test_research_study_act.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "resource-preflight",
@@ -12241,16 +12680,17 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/resource-preflight/skill.py",
-        "skills/resource-preflight/scripts/fallback_identifier.py",
-        "skills/resource-preflight/scripts/preflight_emitter.py",
+        "skills/resource-preflight/scripts/run.py",
         "skills/resource-preflight/scripts/classifier.py",
+        "skills/resource-preflight/scripts/availability_checker.py",
         "skills/resource-preflight/scripts/inventory_builder.py",
-        "skills/resource-preflight/scripts/availability_checker.py"
+        "skills/resource-preflight/scripts/preflight_emitter.py",
+        "skills/resource-preflight/scripts/fallback_identifier.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
-        "skills/resource-preflight/scripts/output_contract.py",
         "skills/resource-preflight/scripts/purpose.py",
+        "skills/resource-preflight/scripts/output_contract.py",
         "skills/resource-preflight/scripts/procedure.py"
       ],
       "stub_files": [],
@@ -12395,15 +12835,16 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/roadmap-builder/skill.py",
-        "skills/roadmap-builder/scripts/chunk_definer.py",
-        "skills/roadmap-builder/scripts/dependency_optimizer.py",
-        "skills/roadmap-builder/scripts/parallelism_validator.py",
-        "skills/roadmap-builder/scripts/roadmap_emitter.py",
-        "skills/roadmap-builder/scripts/output_contract.py",
-        "skills/roadmap-builder/scripts/artifact_lister.py",
         "skills/roadmap-builder/scripts/purpose.py",
+        "skills/roadmap-builder/scripts/output_contract.py",
+        "skills/roadmap-builder/scripts/run.py",
+        "skills/roadmap-builder/scripts/chunk_definer.py",
+        "skills/roadmap-builder/scripts/parallelism_validator.py",
+        "skills/roadmap-builder/scripts/procedure.py",
         "skills/roadmap-builder/scripts/phase_grouper.py",
-        "skills/roadmap-builder/scripts/procedure.py"
+        "skills/roadmap-builder/scripts/dependency_optimizer.py",
+        "skills/roadmap-builder/scripts/roadmap_emitter.py",
+        "skills/roadmap-builder/scripts/artifact_lister.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -12627,24 +13068,28 @@
     {
       "id": "security-review",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/security-review/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/security-review/skill.py",
+        "skills/security-review/scripts/secrets_management.py",
         "skills/security-review/scripts/security_checklist.py",
-        "skills/security-review/scripts/activate.py",
-        "skills/security-review/scripts/secrets_management.py"
+        "skills/security-review/scripts/activate.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/security-review/tests/test_security_review.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "segment-cdp",
@@ -12986,14 +13431,18 @@
       "id": "skills",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/skills/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/skills/tests/test_skills.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
@@ -13189,11 +13638,13 @@
     {
       "id": "spacex-mission-control",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/spacex-mission-control/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/spacex-mission-control/skill.py",
@@ -13206,7 +13657,9 @@
       "structural_tests": [
         "skills/spacex-mission-control/tests/test_spacex_mission_control.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "sql-injection-testing",
@@ -13421,10 +13874,10 @@
     {
       "id": "super-agent-orchestrator",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "contract_incomplete",
       "declared_maturity": "active",
-      "instruction_ready": true,
+      "instruction_ready": false,
       "real_implementation_files": [],
       "generic_adapter_files": [
         "skills/super-agent-orchestrator/skill.py",
@@ -13437,7 +13890,9 @@
       "structural_tests": [
         "skills/super-agent-orchestrator/tests/test_super_agent_orchestrator.py"
       ],
-      "reasons": []
+      "reasons": [
+        "no actionable procedure/capability language"
+      ]
     },
     {
       "id": "super-research",
@@ -13757,24 +14212,28 @@
     {
       "id": "token-saver",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/token-saver/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/token-saver/skill.py",
-        "skills/token-saver/scripts/this_skill_does.py",
         "skills/token-saver/scripts/token_saver_reporter.py",
-        "skills/token-saver/scripts/quick_rules.py"
+        "skills/token-saver/scripts/quick_rules.py",
+        "skills/token-saver/scripts/this_skill_does.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/token-saver/tests/test_token_saver.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "token-savings",
@@ -13821,24 +14280,28 @@
     {
       "id": "tower-of-babel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/tower-of-babel/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/tower-of-babel/skill.py",
         "skills/tower-of-babel/scripts/test_command.py",
-        "skills/tower-of-babel/scripts/entry_points_cli.py",
-        "skills/tower-of-babel/scripts/project_layout.py"
+        "skills/tower-of-babel/scripts/project_layout.py",
+        "skills/tower-of-babel/scripts/entry_points_cli.py"
       ],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [
         "skills/tower-of-babel/tests/test_tower_of_babel.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "trigger-dev",
@@ -14878,15 +15341,16 @@
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/work-packet/skill.py",
+        "skills/work-packet/scripts/purpose.py",
+        "skills/work-packet/scripts/output_contract.py",
+        "skills/work-packet/scripts/run.py",
+        "skills/work-packet/scripts/procedure.py",
+        "skills/work-packet/scripts/output_specifier.py",
+        "skills/work-packet/scripts/state_updater.py",
+        "skills/work-packet/scripts/acceptance_tester.py",
         "skills/work-packet/scripts/boundary_enforcer.py",
         "skills/work-packet/scripts/objective_namer.py",
-        "skills/work-packet/scripts/state_updater.py",
-        "skills/work-packet/scripts/output_contract.py",
-        "skills/work-packet/scripts/input_lister.py",
-        "skills/work-packet/scripts/output_specifier.py",
-        "skills/work-packet/scripts/purpose.py",
-        "skills/work-packet/scripts/acceptance_tester.py",
-        "skills/work-packet/scripts/procedure.py"
+        "skills/work-packet/scripts/input_lister.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [],
@@ -15026,16 +15490,18 @@
     {
       "id": "xai-colossus-2",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
+      "ready": false,
+      "state": "implementation_unverified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/xai-colossus-2/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/xai-colossus-2/skill.py",
-        "skills/xai-colossus-2/scripts/quick_rules.py",
         "skills/xai-colossus-2/scripts/xai_colossus_2_validator.py",
+        "skills/xai-colossus-2/scripts/quick_rules.py",
         "skills/xai-colossus-2/scripts/xai_colossus_2_reporter.py"
       ],
       "stub_files": [],
@@ -15043,7 +15509,9 @@
       "structural_tests": [
         "skills/xai-colossus-2/tests/test_xai_colossus_2.py"
       ],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "xcode-project-setup",
@@ -15195,6 +15663,22 @@
   ],
   "combos": [
     {
+      "id": "genius-epistemic-engineering",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
+      "id": "genius-entity-forge",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "aerospace-mission-simulation",
       "layer": "combo",
       "ready": false,
@@ -15271,10 +15755,12 @@
     {
       "id": "cybersecurity-threat-analysis",
       "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
+      "ready": false,
+      "state": "composition_candidate",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required skill not ready: security-review"
+      ]
     },
     {
       "id": "epistemic-verification-chain",
@@ -15311,6 +15797,7 @@
       "state": "composition_candidate",
       "declared_maturity": "candidate",
       "reasons": [
+        "required skill not ready: legal-powerhouse",
         "required skill not ready: audio-forensic-core",
         "required skill not ready: forensic-evidence-chain-core",
         "required skill not ready: epistemic-gate"
@@ -15319,10 +15806,12 @@
     {
       "id": "frontier-orbit-synthesis",
       "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
+      "ready": false,
+      "state": "composition_candidate",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required skill not ready: job-app-portfolio"
+      ]
     },
     {
       "id": "growth-analytics-optimization",
@@ -15343,10 +15832,15 @@
     {
       "id": "hardware-accelerated-inference",
       "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
+      "ready": false,
+      "state": "composition_candidate",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required skill not ready: apple-ane-kv-quantizer",
+        "required skill not ready: deepseek-mla-moe-sentinel",
+        "required skill not ready: openai-reasoning-kv-sentinel",
+        "required skill not ready: aws-trainium-neuron-sentinel"
+      ]
     },
     {
       "id": "interactive-media-3d-pipeline",
@@ -15415,10 +15909,15 @@
     {
       "id": "secure-service-deployment",
       "layer": "combo",
-      "ready": true,
-      "state": "composition_ready",
+      "ready": false,
+      "state": "composition_candidate",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required skill not ready: api-integration",
+        "required skill not ready: docker-devops",
+        "required skill not ready: security-review",
+        "required skill not ready: mcp-master-server"
+      ]
     },
     {
       "id": "signal-to-decision-loop",
@@ -15485,13 +15984,24 @@
   ],
   "megas": [
     {
-      "id": "apex-accelerated-compute-mesh",
+      "id": "apex-genius-mastery",
       "layer": "mega",
       "ready": true,
       "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "active",
       "reasons": []
+    },
+    {
+      "id": "apex-accelerated-compute-mesh",
+      "layer": "mega",
+      "ready": false,
+      "state": "mission_candidate",
+      "execution_scope": "read_only",
+      "declared_maturity": "active",
+      "reasons": [
+        "required combo not ready: hardware-accelerated-inference"
+      ]
     },
     {
       "id": "apex-adaptive-operations",
@@ -15584,11 +16094,14 @@
     {
       "id": "apex-cybersecurity-sentinel",
       "layer": "mega",
-      "ready": true,
-      "state": "mission_contract_ready",
+      "ready": false,
+      "state": "mission_candidate",
       "execution_scope": "read_only",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required combo not ready: cybersecurity-threat-analysis",
+        "required combo not ready: secure-service-deployment"
+      ]
     },
     {
       "id": "apex-dev-fork-orchestrator",
@@ -15698,11 +16211,13 @@
     {
       "id": "apex-secure-cloud-foundry",
       "layer": "mega",
-      "ready": true,
-      "state": "mission_contract_ready",
+      "ready": false,
+      "state": "mission_candidate",
       "execution_scope": "read_only",
       "declared_maturity": "active",
-      "reasons": []
+      "reasons": [
+        "required combo not ready: secure-service-deployment"
+      ]
     },
     {
       "id": "apex-self-healing-forge",
@@ -15763,5 +16278,6 @@
       "reasons": []
     }
   ],
-  "pass": 2
+  "pass": 1,
+  "pass1_adapter_repairs": 0
 }

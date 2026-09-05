@@ -1,8 +1,7 @@
 ---
 name: mega-legal-forensic-engine
-description: "Consolidated mega skill encompassing 5 sub-skills."
+description: Consolidated mega skill encompassing 5 sub-skills.
 ---
-
 
 # MEGA-LEGAL-FORENSIC-ENGINE
 
