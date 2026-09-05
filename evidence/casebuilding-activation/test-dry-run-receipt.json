@@ -2,7 +2,7 @@
   "schema_version": 1,
   "driver": "casebuilding_activation.py",
   "mode": "dry_run",
-  "generated_utc": "2026-09-05T09:57:27.608392+00:00",
+  "generated_utc": "2026-09-05T11:41:35.346188+00:00",
   "target_skills": [
     "audio-forensic-core",
     "forensic-evidence-chain-core",
@@ -17,8 +17,182 @@
   "target_megas": [
     "apex-forensic-litigation-sentinel"
   ],
-  "preflight_problems": [
-    "audio-forensic-core: stub marker in enf_extractor.py",
-    "audio-forensic-core: stub marker in enf_extractor.py"
-  ]
+  "preflight_problems": [],
+  "skill_test_suites": {
+    "audio-forensic-core:test_audio_forensic_core.py": {
+      "returncode": 0,
+      "tail": [
+        "..........",
+        "----------------------------------------------------------------------",
+        "Ran 10 tests in 12.511s",
+        "",
+        "OK"
+      ]
+    },
+    "forensic-evidence-chain-core:test_forensic_evidence_chain_core.py": {
+      "returncode": 0,
+      "tail": [
+        "........",
+        "----------------------------------------------------------------------",
+        "Ran 8 tests in 2.704s",
+        "",
+        "OK"
+      ]
+    },
+    "epistemic-gate:test_epistemic_gate.py": {
+      "returncode": 0,
+      "tail": [
+        ".......",
+        "----------------------------------------------------------------------",
+        "Ran 7 tests in 0.428s",
+        "",
+        "OK"
+      ]
+    }
+  },
+  "fresh_skill_verdicts": {
+    "audio-forensic-core": {
+      "id": "audio-forensic-core",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/audio-forensic-core/scripts/enf_extractor.py",
+        "skills/audio-forensic-core/scripts/sha256_audit.py",
+        "skills/audio-forensic-core/scripts/speaker_diarize.py",
+        "skills/audio-forensic-core/scripts/bates_stamper.py",
+        "skills/audio-forensic-core/scripts/whisperx_align.py",
+        "skills/audio-forensic-core/scripts/transcript_formatter.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/audio-forensic-core/skill.py",
+        "skills/audio-forensic-core/scripts/purpose.py",
+        "skills/audio-forensic-core/scripts/output_contract.py",
+        "skills/audio-forensic-core/scripts/run.py",
+        "skills/audio-forensic-core/scripts/procedure.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/audio-forensic-core/tests/test_audio_forensic_core.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    "forensic-evidence-chain-core": {
+      "id": "forensic-evidence-chain-core",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
+        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
+        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
+        "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
+        "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
+        "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/forensic-evidence-chain-core/skill.py",
+        "skills/forensic-evidence-chain-core/scripts/purpose.py",
+        "skills/forensic-evidence-chain-core/scripts/output_contract.py",
+        "skills/forensic-evidence-chain-core/scripts/run.py",
+        "skills/forensic-evidence-chain-core/scripts/procedure.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    "epistemic-gate": {
+      "id": "epistemic-gate",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/epistemic-gate/scripts/tier_evaluator.py",
+        "skills/epistemic-gate/scripts/gate_enforcer.py",
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/epistemic-gate/skill.py",
+        "skills/epistemic-gate/scripts/purpose.py",
+        "skills/epistemic-gate/scripts/output_contract.py",
+        "skills/epistemic-gate/scripts/run.py",
+        "skills/epistemic-gate/scripts/procedure.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/epistemic-gate/tests/test_epistemic_gate.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    }
+  },
+  "combo_verdicts": {
+    "court-evidence-compiler": {
+      "id": "court-evidence-compiler",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "candidate",
+      "reasons": [],
+      "evidence": "mixed: fresh target skills + recorded dependency readiness"
+    },
+    "epistemic-verification-chain": {
+      "id": "epistemic-verification-chain",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "candidate",
+      "reasons": [],
+      "evidence": "mixed: fresh target skills + recorded dependency readiness"
+    },
+    "forensic-docket-intelligence": {
+      "id": "forensic-docket-intelligence",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "candidate",
+      "reasons": [],
+      "evidence": "mixed: fresh target skills + recorded dependency readiness"
+    },
+    "voice-evidence-authenticator": {
+      "id": "voice-evidence-authenticator",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "candidate",
+      "reasons": [],
+      "evidence": "mixed: fresh target skills + recorded dependency readiness"
+    }
+  },
+  "mega_verdicts": {
+    "apex-forensic-litigation-sentinel": {
+      "id": "apex-forensic-litigation-sentinel",
+      "ready": true,
+      "state": "mission_contract_ready",
+      "reasons": [],
+      "evidence": "mixed: fresh combo verdicts + recorded combo readiness"
+    },
+    "apex-legal-forensic-powerhouse": {
+      "id": "apex-legal-forensic-powerhouse",
+      "ready": true,
+      "state": "mission_contract_ready",
+      "reasons": [],
+      "evidence": "mixed: fresh combo verdicts + recorded combo readiness"
+    }
+  },
+  "activation_ready": true
 }
