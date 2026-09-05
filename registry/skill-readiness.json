@@ -7991,7 +7991,7 @@
       "generic_adapter_files": [
         "skills/managing-python-dependencies/skill.py",
         "skills/managing-python-dependencies/scripts/this_skill.py",
-        "skills/managing-python-dependencies/scripts/run.py"
+        ,    {"id":"casebuild-mesh-organization","layer":"skill","ready":true,"state":"instruction_ready","declared_maturity":"active","instruction_ready":true,"real_implementation_files":[],"generic_adapter_files":[],"scaffold_files":[],"stub_files":[],"behavioral_tests":[],"structural_tests":[],"reasons":[]}"skills/managing-python-dependencies/scripts/run.py"
       ],
       "scaffold_files": [],
       "stub_files": [],
