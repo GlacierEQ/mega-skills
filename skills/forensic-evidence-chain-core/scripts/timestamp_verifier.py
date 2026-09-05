@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Timeline integrity verifier for forensic event logs.
 
-Detects chronological inversions, impossible negative durations, and duplicate
-timestamps across distinct events. All timestamps are normalized to UTC before
-comparison; dual-timestamp (local/UTC) inputs are supported via the
-``timestamp_utc`` field or a ``timestamp`` plus ``timezone`` field.
+Detects chronological inversions and impossible negative durations as fatal
+violations. Same-timestamp clusters (e.g. multiple same-day docket filings)
+are reported as warnings, not failures; pass --strict to escalate warnings to
+failures. All timestamps are normalized to UTC before comparison; dual-
+timestamp (local/UTC) inputs are supported via the ``timestamp_utc`` field or
+a ``timestamp`` plus ``timezone`` field.
 """
 
 import argparse
@@ -53,7 +55,10 @@ def verify_events(document):
     collisions = {}
     for event_id, moment in parsed_events:
         collisions.setdefault(moment, []).append(event_id)
-    duplicates = [
+    # Same-timestamp clusters are reported as warnings, not failures: routine
+    # same-day docket filings share date precision legitimately. Chronological
+    # inversions and unparseable timestamps remain fatal. --strict escalates.
+    warnings = [
         {"kind": "duplicate_timestamp", "timestamp_utc": moment.isoformat(), "ids": ids}
         for moment, ids in sorted(collisions.items()) if len(ids) > 1
     ]
@@ -67,13 +72,13 @@ def verify_events(document):
         widest = max(spans, key=lambda span: span[2])
         gaps = [{"between": [widest[0], widest[1]], "gap_seconds": widest[2]}]
     problems.extend(inversions)
-    problems.extend(duplicates)
     return {
         "schema_version": 1,
         "event_count": len(events),
         "parsed_count": len(parsed_events),
         "verified": not problems,
         "problems": problems,
+        "warnings": warnings,
         "largest_gap": gaps,
         "events_normalized": [
             {"type": "event", "id": event_id, "timestamp_utc": moment.isoformat()}
@@ -89,6 +94,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Forensic timeline verifier.")
     parser.add_argument("--events", required=True, help="Events JSON document.")
     parser.add_argument("--out")
+    parser.add_argument("--strict", action="store_true",
+                        help="Fail when warnings (e.g. duplicate timestamps) are present.")
     args = parser.parse_args(argv)
     document = json.loads(Path(args.events).read_text(encoding="utf-8"))
     report = verify_events(document)
@@ -98,6 +105,8 @@ def main(argv=None):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text + "\n", encoding="utf-8")
     print(text)
+    if args.strict and report["warnings"]:
+        return 1
     return 0 if report["verified"] else 1
 
 
