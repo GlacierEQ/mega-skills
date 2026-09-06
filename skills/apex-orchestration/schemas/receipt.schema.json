@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaciereq.com/schemas/apex-orchestration/receipt.schema.json",
+  "title": "Apex Mesh Subtask Receipt",
+  "description": "Format every dispatched lane must return. See Packet 03 of apex-orchestration v1.0.0.",
+  "type": "object",
+  "required": ["lane", "model", "task", "l2_proof"],
+  "additionalProperties": false,
+  "properties": {
+    "lane": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "pattern": "^[a-z0-9./:-]+$"},
+    "task": {"type": "string", "minLength": 1, "maxLength": 240},
+    "files_changed": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "sha256": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "tests": {
+      "type": "object",
+      "required": ["cmd", "exit"],
+      "additionalProperties": false,
+      "properties": {
+        "cmd": {"type": "string", "minLength": 1},
+        "exit": {"type": "integer"},
+        "summary": {"type": "string"}
+      }
+    },
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "l2_proof": {"type": "boolean", "const": true},
+    "evidence_uri": {"type": "string", "format": "uri-reference"},
+    "parent_mission_id": {"type": "string", "pattern": "^mission_[a-z0-9]+$"}
+  }
+}

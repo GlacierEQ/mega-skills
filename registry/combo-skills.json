@@ -134,6 +134,137 @@
       }
     },
     {
+      "id": "apex-mesh-dispatch",
+      "name": "Apex Mesh Dispatch",
+      "status": "active",
+      "family": "engineering-innovations",
+      "tags": [
+        "autonomous"
+      ],
+      "priority": 2,
+      "purpose": "Auto-registered from incoming origin/main branch integration.",
+      "local_validation": [],
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "path": "combo-skills/apex-mesh-dispatch",
+      "entrypoint": "combo-skills/apex-mesh-dispatch/COMBO.md",
+      "input_contract": [
+        {
+          "type": "triggers",
+          "value": [
+            "user_prompt"
+          ]
+        }
+      ],
+      "output_contract": [
+        {
+          "type": "guarantees",
+          "value": [
+            "response"
+          ]
+        }
+      ],
+      "does_not_own": [
+        {
+          "type": "skills",
+          "value": []
+        }
+      ],
+      "display_name": "Apex Mesh Dispatch",
+      "version": "1.0.0",
+      "selection": {
+        "use_when": [
+          "Executing multi-step code missions requiring REASON -> CODE -> VERIFY -> REVIEW -> DELIVER coverage."
+        ],
+        "do_not_use_when": [
+          "Trivial one-line edits, read-only research, or planning-only tasks."
+        ]
+      },
+      "members": [
+        {
+          "id": "apex-orchestration",
+          "kind": "skill",
+          "required": true,
+          "role": "primary"
+        },
+        {
+          "id": "apex-pillars",
+          "kind": "skill",
+          "required": false,
+          "role": "supporting"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_1"
+            ],
+            "validation": "test_apex_mesh_dispatch.py"
+          },
+          {
+            "step": 2,
+            "member_id": "apex-pillars",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_2"
+            ],
+            "validation": "test_apex_mesh_dispatch.py"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "apex-pillars",
+            "required_inputs": [
+              "user_prompt"
+            ],
+            "accepted_outputs": [
+              "receipt"
+            ],
+            "failure_owner": "apex-orchestration",
+            "transition_guard": "output not empty"
+          }
+        ],
+        "evidence_requirements": [
+          "L2 test suite pass"
+        ],
+        "risk_boundaries": [
+          "no data loss",
+          "no clobber"
+        ],
+        "quality_gates": [
+          "test pass",
+          "constitutional gate"
+        ],
+        "state_updates": [
+          "mesh packet metrics"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "apex-mesh-dispatch"
+        ],
+        "adds": {
+          "new_packet": "dispatch_routing"
+        },
+        "compound_artifact": "dispatch_receipt_chain",
+        "next_layer_ready_when": [
+          "all_members_complete",
+          "evidence_verified"
+        ]
+      }
+    },
+    {
       "id": "architectural-refactoring-engine",
       "display_name": "Architectural Refactoring Engine",
       "ownership": "glaciereq",
@@ -2380,6 +2511,268 @@
         "next_layer_ready_when": [
           "Orbit implementation is 100% green with zero placeholder stubs",
           "Architecture, test, and security receipts are cryptographically hashed"
+        ]
+      }
+    },
+    {
+      "id": "genius-entity-forge",
+      "name": "Genius Entity Forge",
+      "status": "active",
+      "family": "engineering-innovations",
+      "tags": [
+        "autonomous"
+      ],
+      "priority": 2,
+      "purpose": "Auto-registered from incoming origin/main branch integration.",
+      "local_validation": [],
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "path": "combo-skills/genius-entity-forge",
+      "entrypoint": "combo-skills/genius-entity-forge/COMBO.md",
+      "input_contract": [
+        {
+          "type": "triggers",
+          "value": [
+            "user_prompt"
+          ]
+        }
+      ],
+      "output_contract": [
+        {
+          "type": "guarantees",
+          "value": [
+            "response"
+          ]
+        }
+      ],
+      "does_not_own": [
+        {
+          "type": "skills",
+          "value": []
+        }
+      ],
+      "display_name": "Genius Entity Forge",
+      "version": "1.0.0",
+      "selection": {
+        "use_when": [
+          "Forging Genius entities or orchestrating entity-level automation."
+        ],
+        "do_not_use_when": [
+          "Simple single-skill tasks."
+        ]
+      },
+      "members": [
+        {
+          "id": "apex-orchestration",
+          "kind": "skill",
+          "required": true,
+          "role": "primary"
+        },
+        {
+          "id": "genius-mastery",
+          "kind": "skill",
+          "required": false,
+          "role": "supporting"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_1"
+            ],
+            "validation": "test_genius_entity_forge.py"
+          },
+          {
+            "step": 2,
+            "member_id": "genius-mastery",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_2"
+            ],
+            "validation": "test_genius_entity_forge.py"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "genius-mastery",
+            "required_inputs": [
+              "user_prompt"
+            ],
+            "accepted_outputs": [
+              "receipt"
+            ],
+            "failure_owner": "apex-orchestration",
+            "transition_guard": "output not empty"
+          }
+        ],
+        "evidence_requirements": [
+          "L2 test suite pass"
+        ],
+        "risk_boundaries": [
+          "no data loss",
+          "no clobber"
+        ],
+        "quality_gates": [
+          "test pass",
+          "constitutional gate"
+        ],
+        "state_updates": [
+          "mesh packet metrics"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "genius-entity-forge"
+        ],
+        "adds": {
+          "new_packet": "dispatch_routing"
+        },
+        "compound_artifact": "dispatch_receipt_chain",
+        "next_layer_ready_when": [
+          "all_members_complete",
+          "evidence_verified"
+        ]
+      }
+    },
+    {
+      "id": "genius-epistemic-engineering",
+      "name": "Genius Epistemic Engineering",
+      "status": "active",
+      "family": "engineering-innovations",
+      "tags": [
+        "autonomous"
+      ],
+      "priority": 2,
+      "purpose": "Auto-registered from incoming origin/main branch integration.",
+      "local_validation": [],
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "path": "combo-skills/genius-epistemic-engineering",
+      "entrypoint": "combo-skills/genius-epistemic-engineering/COMBO.md",
+      "input_contract": [
+        {
+          "type": "triggers",
+          "value": [
+            "user_prompt"
+          ]
+        }
+      ],
+      "output_contract": [
+        {
+          "type": "guarantees",
+          "value": [
+            "response"
+          ]
+        }
+      ],
+      "does_not_own": [
+        {
+          "type": "skills",
+          "value": []
+        }
+      ],
+      "display_name": "Genius Epistemic Engineering",
+      "version": "1.0.0",
+      "selection": {
+        "use_when": [
+          "Engineering epistemic upgrades or skill-level improvements."
+        ],
+        "do_not_use_when": [
+          "Routine code edits."
+        ]
+      },
+      "members": [
+        {
+          "id": "apex-orchestration",
+          "kind": "skill",
+          "required": true,
+          "role": "primary"
+        },
+        {
+          "id": "genius-mastery",
+          "kind": "skill",
+          "required": false,
+          "role": "supporting"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "apex-orchestration",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_1"
+            ],
+            "validation": "test_genius_epistemic_engineering.py"
+          },
+          {
+            "step": 2,
+            "member_id": "genius-mastery",
+            "consumes": [
+              "user_prompt"
+            ],
+            "produces": [
+              "receipt_2"
+            ],
+            "validation": "test_genius_epistemic_engineering.py"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "apex-orchestration",
+            "to_member": "genius-mastery",
+            "required_inputs": [
+              "user_prompt"
+            ],
+            "accepted_outputs": [
+              "receipt"
+            ],
+            "failure_owner": "apex-orchestration",
+            "transition_guard": "output not empty"
+          }
+        ],
+        "evidence_requirements": [
+          "L2 test suite pass"
+        ],
+        "risk_boundaries": [
+          "no data loss",
+          "no clobber"
+        ],
+        "quality_gates": [
+          "test pass",
+          "constitutional gate"
+        ],
+        "state_updates": [
+          "mesh packet metrics"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "genius-epistemic-engineering"
+        ],
+        "adds": {
+          "new_packet": "dispatch_routing"
+        },
+        "compound_artifact": "dispatch_receipt_chain",
+        "next_layer_ready_when": [
+          "all_members_complete",
+          "evidence_verified"
         ]
       }
     },

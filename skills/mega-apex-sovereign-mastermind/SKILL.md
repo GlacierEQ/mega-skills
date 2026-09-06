@@ -1,8 +1,7 @@
 ---
 name: mega-apex-sovereign-mastermind
-description: "Consolidated mega skill encompassing 8 sub-skills."
+description: Consolidated mega skill encompassing 8 sub-skills.
 ---
-
 
 # MEGA-APEX-SOVEREIGN-MASTERMIND
 

@@ -202,6 +202,11 @@ class TestAudioForensicBehavior(unittest.TestCase):
         clean_wav = self.tmp / "clean.wav"
         _write_wav(clean_wav, [(60.0, 1), (60.0, 1), (60.0, 1), (60.0, 1)])
         clean = enf_extractor.analyze_wav(clean_wav)
+        if clean.get("status") == "capability_blocked":
+            self.assertEqual(clean["capability"], "enf-extraction")
+            self.assertFalse(clean["fabricated_results"])
+            self.assertTrue(clean["missing"])
+            self.skipTest("WAV ENF screening requires unavailable numpy/scipy dependencies")
         self.assertEqual(clean["mode"], "wav_screening")
         self.assertFalse(clean["laboratory_certification"])
         self.assertEqual(clean["windows"], 4)

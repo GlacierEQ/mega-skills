@@ -1,8 +1,7 @@
 ---
 name: mega-gcp-data-engineering
-description: "Consolidated mega skill encompassing 23 sub-skills."
+description: Consolidated mega skill encompassing 23 sub-skills.
 ---
-
 
 # MEGA-GCP-DATA-ENGINEERING
 
