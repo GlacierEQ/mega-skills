@@ -1,5 +1,5 @@
 {
-  "$schema": "./mega-skills-bridge.schema.json",
+  "$schema": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery/fd35fbe21f7f4fdbd22d259511340665834956f1/schemas/mega-skills-bridge.schema.json",
   "schema_version": 1,
   "contract_id": "genius-mastery.operating-loop",
   "provider": {
@@ -9,6 +9,15 @@
     "schema": "schemas/operating-loop.schema.json",
     "module_blob_sha": "db36f71aed06969089a6498c3677f9004e6cc273",
     "schema_blob_sha": "62cfa2e81315eed90c5e582b607bb718dcb11256",
+    "raw_base": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery"
+  },
+  "source_contract": {
+    "repository": "GlacierEQ/Genius-Mastery",
+    "ref": "fd35fbe21f7f4fdbd22d259511340665834956f1",
+    "path": "interfaces/mega-skills-bridge.json",
+    "blob_sha": "ab2981c8d184e54b90232a61d0a0b64b41458406",
+    "schema": "schemas/mega-skills-bridge.schema.json",
+    "schema_blob_sha": "4cd0aaa61d9c3400895c4a06cd1b46a9beef203f",
     "raw_base": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery"
   },
   "consumer": {
@@ -62,7 +71,7 @@
   ],
   "validation": {
     "default_mode": "local_contract",
-    "remote_mode": "pinned_raw_source_and_git_blob_hash",
+    "remote_mode": "pinned_source_contract_and_git_blob_hash",
     "command": "python scripts/validate_genius_mastery_bridge.py --remote"
   }
 }
