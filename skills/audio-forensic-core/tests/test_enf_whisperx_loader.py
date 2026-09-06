@@ -17,11 +17,6 @@ import unittest
 import wave
 from pathlib import Path
 
-try:
-    import pytest
-except ImportError:
-    pytest = None
-
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import enf_extractor
 
@@ -39,32 +34,32 @@ def _write_wav(path: Path, segments, rate=8000):
         handle.writeframes(struct.pack(f"<{len(frames)}h", *frames))
 
 
-class TestEnfWhisperxLoader:
+class TestEnfWhisperxLoader(unittest.TestCase):
     """Behavioral contract: whisperx_audio_loader integration."""
 
-    @pytest.fixture
-    def tmp(self, tmp_path):
-        return tmp_path
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="enf-whisperx-"))
 
     def test_capability_report_includes_whisperx_flag(self):
         report = enf_extractor.capability_report()
         assert "whisperx_integrated" in report
         assert isinstance(report["whisperx_integrated"], bool)
 
-    def test_whisperx_audio_loader_fallback_when_unavailable(self, tmp):
+    def test_whisperx_audio_loader_fallback_when_unavailable(self):
         if enf_extractor._WHISPERX_AVAILABLE:
-            pytest.skip("WhisperX available in this environment")
+            self.skipTest("WhisperX available in this environment")
 
-        wav = tmp / "test.wav"
+        wav = self.tmp / "test.wav"
         _write_wav(wav, [(60.0, 1), (60.0, 1)])
         result = enf_extractor.whisperx_audio_loader(wav)
         # When WhisperX is not available, returns capability report
         assert result["capability"] == "enf-extraction"
         assert result["whisperx_integrated"] is False
 
-    @pytest.mark.skipif(not enf_extractor._WHISPERX_AVAILABLE, reason="requires whisperx")
-    def test_whisperx_audio_loader_clean_hum(self, tmp):
-        wav = tmp / "clean.wav"
+    def test_whisperx_audio_loader_clean_hum(self):
+        if not enf_extractor._WHISPERX_AVAILABLE:
+            self.skipTest("requires whisperx")
+        wav = self.tmp / "clean.wav"
         _write_wav(wav, [(60.0, 1), (60.0, 1), (60.0, 1), (60.0, 1)])
         result = enf_extractor.whisperx_audio_loader(wav)
 
@@ -75,9 +70,10 @@ class TestEnfWhisperxLoader:
         assert "anomaly_report" in result
         assert result["anomaly_report"]["verdict"] == "continuous"
 
-    @pytest.mark.skipif(not enf_extractor._WHISPERX_AVAILABLE, reason="requires whisperx")
-    def test_whisperx_audio_loader_spliced_detection(self, tmp):
-        wav = tmp / "spliced.wav"
+    def test_whisperx_audio_loader_spliced_detection(self):
+        if not enf_extractor._WHISPERX_AVAILABLE:
+            self.skipTest("requires whisperx")
+        wav = self.tmp / "spliced.wav"
         _write_wav(wav, [(60.0, 1), (60.0, 1), (60.5, 1), (60.0, 1)])
         result = enf_extractor.whisperx_audio_loader(wav)
 
@@ -85,20 +81,20 @@ class TestEnfWhisperxLoader:
         assert result["anomaly_report"]["verdict"] == "tamper_suspected"
         assert any(v["type"] == "frequency_spike" for v in result["anomaly_report"]["anomalies"])
 
-    def test_whisperx_audio_loader_insufficient_audio(self, tmp):
+    def test_whisperx_audio_loader_insufficient_audio(self):
         if not enf_extractor._WHISPERX_AVAILABLE:
-            pytest.skip("requires whisperx")
-        wav = tmp / "silent.wav"
+            self.skipTest("requires whisperx")
+        wav = self.tmp / "silent.wav"
         _write_wav(wav, [(60.0, 0.1)])  # 0.1s is too short
         result = enf_extractor.whisperx_audio_loader(wav)
         assert result["verdict"] == "insufficient_audio"
 
-    def test_whisperx_audio_loader_chain_of_custody(self, tmp):
+    def test_whisperx_audio_loader_chain_of_custody(self):
         """Verify SHA-256 chain integrity in whisperx loader output."""
         if not enf_extractor._WHISPERX_AVAILABLE:
-            pytest.skip("requires whisperx")
+            self.skipTest("requires whisperx")
 
-        wav = tmp / "chain_test.wav"
+        wav = self.tmp / "chain_test.wav"
         _write_wav(wav, [(60.0, 1), (60.0, 1), (60.0, 1)])
         result = enf_extractor.whisperx_audio_loader(wav)
 
