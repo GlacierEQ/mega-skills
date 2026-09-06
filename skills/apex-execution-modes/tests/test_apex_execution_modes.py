@@ -18,6 +18,9 @@ class TestApexExecutionModes(unittest.TestCase):
         self.assertIn("EXECUTE → WATCH", skill_md)
         self.assertIn("ADVANCE → RECONCILE", skill_md)
         self.assertIn("Recurring workers are production executors", skill_md)
+        self.assertIn("Substantive mission-work gate", skill_md)
+        self.assertIn("support work", skill_md.lower())
+        self.assertIn("inspection artifact", skill_md.lower())
 
     def test_skill_entry_point_exists_and_executable(self):
         skill_py = SKILL_ROOT / "skill.py"
@@ -37,7 +40,7 @@ class TestApexExecutionModes(unittest.TestCase):
         self.assertTrue(payload["continue_required"])
         self.assertNotIn("execution_unavailable", proc.stdout)
         contract = payload["execution_contract"]
-        self.assertEqual(contract["loop"], ["select_real_work", "do_it", "verify", "keep_doing"])
+        self.assertEqual(contract["loop"], ["select_substantive_work", "do_it", "verify", "keep_doing"])
         self.assertEqual(
             contract["completion_gate"],
             "no_final_response_while_authorized_executable_action_exists",
@@ -50,6 +53,12 @@ class TestApexExecutionModes(unittest.TestCase):
             "reconcile_instead_of_advance",
             contract["prohibited_terminal_substitutions"],
         )
+        self.assertEqual(
+            contract["mission_work_gate"],
+            "support_work_cannot_satisfy_completion_unless_explicitly_requested_as_mission",
+        )
+        self.assertIn("inspection", contract["support_work_examples"])
+        self.assertIn("meta_tool_repair", contract["support_work_examples"])
 
     def test_scripts_executable(self):
         for script_name in ("run.py", "this_skill.py"):

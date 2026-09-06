@@ -2,24 +2,24 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 712,
-    "combos": 33,
+    "skills": 714,
+    "combos": 36,
     "megas": 32,
-    "ready_total": 736,
-    "not_ready_total": 41,
+    "ready_total": 747,
+    "not_ready_total": 35,
     "skill_states": {
-      "instruction_ready": 672,
-      "implementation_partial": 7,
+      "instruction_ready": 673,
+      "implementation_partial": 6,
       "implementation_unverified": 10,
-      "behavior_verified": 23
+      "behavior_verified": 25
     },
     "combo_states": {
-      "composition_candidate": 12,
-      "composition_ready": 21
+      "composition_candidate": 10,
+      "composition_ready": 26
     },
     "mega_states": {
-      "mission_candidate": 11,
-      "mission_contract_ready": 21
+      "mission_contract_ready": 24,
+      "mission_candidate": 8
     }
   },
   "skills": [
@@ -795,21 +795,22 @@
       "id": "apex-execution-modes",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/apex-execution-modes/skill.py"
+      ],
       "generic_adapter_files": [
-        "skills/apex-execution-modes/skill.py",
         "skills/apex-execution-modes/scripts/run.py",
         "skills/apex-execution-modes/scripts/this_skill.py"
       ],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/apex-execution-modes/tests/test_apex_execution_modes.py"
       ],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -1458,11 +1459,12 @@
     {
       "id": "audio-forensic-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
+      "ready": true,
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/audio-forensic-core/scripts/enf_extractor.py",
         "skills/audio-forensic-core/scripts/sha256_audit.py",
         "skills/audio-forensic-core/scripts/speaker_diarize.py",
         "skills/audio-forensic-core/scripts/bates_stamper.py",
@@ -1477,16 +1479,13 @@
         "skills/audio-forensic-core/scripts/run.py",
         "skills/audio-forensic-core/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/audio-forensic-core/scripts/enf_extractor.py"
-      ],
+      "stub_files": [],
       "behavioral_tests": [
+        "skills/audio-forensic-core/tests/test_enf_whisperx_loader.py",
         "skills/audio-forensic-core/tests/test_audio_forensic_core.py"
       ],
       "structural_tests": [],
-      "reasons": [
-        "1 explicit implementation stub(s)"
-      ]
+      "reasons": []
     },
     {
       "id": "audit",
@@ -2527,6 +2526,21 @@
       "ready": true,
       "state": "instruction_ready",
       "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "casey-operator-execution-kernel",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -6856,6 +6870,21 @@
       "reasons": []
     },
     {
+      "id": "holographic-case-mesh",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "html-injection-testing",
       "layer": "skill",
       "ready": true,
@@ -7898,9 +7927,9 @@
         "skills/local-skill/scripts/generate.py",
         "skills/local-skill/scripts/this_skill.py",
         "skills/local-skill/scripts/pattern_catalog.py",
-        "skills/local-skill/scripts/inspect.py",
         "skills/local-skill/scripts/validate.py",
-        "skills/local-skill/scripts/extract.py"
+        "skills/local-skill/scripts/extract.py",
+        "skills/local-skill/scripts/inspect_skill.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
@@ -15441,6 +15470,14 @@
       ]
     },
     {
+      "id": "apex-mesh-dispatch",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
       "id": "architectural-refactoring-engine",
       "layer": "combo",
       "ready": false,
@@ -15547,15 +15584,29 @@
     {
       "id": "forensic-docket-intelligence",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: audio-forensic-core"
-      ]
+      "reasons": []
     },
     {
       "id": "frontier-orbit-synthesis",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
+      "id": "genius-entity-forge",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
+      "id": "genius-epistemic-engineering",
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
@@ -15702,12 +15753,10 @@
     {
       "id": "voice-evidence-authenticator",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: audio-forensic-core"
-      ]
+      "reasons": []
     },
     {
       "id": "web-build-foundation",
@@ -15724,14 +15773,11 @@
     {
       "id": "apex-genius-mastery",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "active",
-      "reasons": [
-        "required combo not ready: genius-epistemic-engineering",
-        "required combo not ready: genius-entity-forge"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-accelerated-compute-mesh",
@@ -15838,7 +15884,6 @@
       "execution_scope": "read_only",
       "declared_maturity": "active",
       "reasons": [
-        "required combo not ready: forensic-docket-intelligence",
         "required combo not ready: cross-cloud-memory-synthesis"
       ]
     },
@@ -15883,13 +15928,11 @@
     {
       "id": "apex-forensic-litigation-sentinel",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: forensic-docket-intelligence"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-growth-intelligence",
@@ -16026,13 +16069,11 @@
     {
       "id": "apex-orchestrator-mesh",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: apex-mesh-dispatch"
-      ]
+      "reasons": []
     }
   ],
   "pass": 1,

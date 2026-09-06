@@ -10,13 +10,32 @@ import json
 import sys
 
 EXECUTION_CONTRACT = {
-    "loop": ["select_real_work", "do_it", "verify", "keep_doing"],
+    "loop": ["select_substantive_work", "do_it", "verify", "keep_doing"],
     "completion_gate": "no_final_response_while_authorized_executable_action_exists",
     "observation_role": "minimum_input_for_immediate_concrete_action_only",
     "reconciliation_role": "incidental_technique_inside_specific_mutation_only",
     "tool_failure_role": "internal_repair_or_route_around_then_continue",
     "operator_boundary": "surface_only_genuine_operator_only_dependencies",
-    "success_condition": "durable_verified_useful_state_change_when_executable_work_exists",
+    "success_condition": "durable_verified_substantive_mission_state_change_when_substantive_executable_work_exists",
+    "mission_work_gate": "support_work_cannot_satisfy_completion_unless_explicitly_requested_as_mission",
+    "support_work_requires_follow_through": "support_work_must_immediately_enable_and_be_followed_by_substantive_mutation_when_authorized",
+    "support_work_examples": [
+        "inspection",
+        "diagnostics",
+        "audit",
+        "inventory",
+        "reconciliation",
+        "health_check",
+        "ci_watching",
+        "receipt_consumption",
+        "branch_freshness",
+        "meta_tool_repair",
+        "skill_framework_repair",
+        "scheduler_repair",
+        "governance",
+        "registry_maintenance",
+        "reporting",
+    ],
     "prohibited_terminal_substitutions": [
         "plan_instead_of_build",
         "audit_instead_of_fix",
@@ -38,7 +57,7 @@ def main() -> int:
         "continue_required": wants_execute,
         "capability_executed": False,
         "reason": (
-            "Execution request accepted. Dispatch substantive work to the qualified domain execution surface and continue until the completion gate is satisfied."
+            "Execution request accepted. Dispatch substantive mission work to the qualified domain execution surface. Support/meta work cannot satisfy completion unless explicitly requested as the mission; if support work is needed, perform it only to unblock and then immediately continue into the substantive mutation."
             if wants_execute
             else "Compatibility adapter is installed and exposes the APEX execution contract."
         ),
