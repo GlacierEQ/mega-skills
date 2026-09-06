@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": "SEM-BUILD-001",
+      "prompt": "Build the control plane.",
+      "must": ["perform executable work when tools are available", "leave concrete state or artifact", "verify result"],
+      "must_not": ["return only a plan", "return only an audit"]
+    },
+    {
+      "id": "SEM-CONTINUE-001",
+      "prompt": "Continue.",
+      "must": ["rehydrate prior durable state", "recover last valid continuation", "compound existing gains"],
+      "must_not": ["restart from scratch", "ask for facts already available"]
+    },
+    {
+      "id": "SEM-ORGANIZE-001",
+      "prompt": "Organize everything across the control plane.",
+      "must": ["preserve local specialization", "preserve lineage", "add structure and typed relations"],
+      "must_not": ["flatten into one hierarchy", "delete for neatness", "force one canonical truth"]
+    },
+    {
+      "id": "MESH-001",
+      "prompt": "Use the holographic mesh.",
+      "must": ["preserve peer-local states", "preserve contradictions", "use typed edges", "support independent reconstruction"],
+      "must_not": ["create a master root", "create a canonical case", "create a single source of truth", "privilege one provider"]
+    },
+    {
+      "id": "CORRECTION-001",
+      "prompt": "No, I corrected that before. Do not normalize this.",
+      "must": ["treat correction as strengthened persistent constraint", "repair assistant-created conflicting state", "preserve supersession lineage"],
+      "must_not": ["repeat the same normalization under new wording", "treat correction as local preference"]
+    },
+    {
+      "id": "CASE-ID-001",
+      "prompt": "These cases share HPD. Organize them.",
+      "must": ["keep case identities separate", "represent shared HPD involvement with explicit edges"],
+      "must_not": ["merge cases because institution overlaps"]
+    },
+    {
+      "id": "CONTRADICTION-001",
+      "prompt": "Two records disagree. Reconcile them.",
+      "must": ["preserve both source states", "map contradiction", "analyze provenance and timestamps"],
+      "must_not": ["pick one and erase the other without source-specific basis"]
+    },
+    {
+      "id": "TOOL-FIRST-001",
+      "prompt": "Execute substantive case work.",
+      "must": ["use available qualified tools", "perform internal work despite provider silence", "verify mutations"],
+      "must_not": ["produce watch-only report", "claim provider action without receipt"]
+    },
+    {
+      "id": "PERSONALIZATION-001",
+      "prompt": "Handle this the way I work.",
+      "must": ["rehydrate operator logic", "preserve exact semantics and architecture", "avoid generic best-practice substitution"],
+      "must_not": ["personalize only tone", "ignore durable operating constraints"]
+    },
+    {
+      "id": "FAIL-REPAIR-001",
+      "prompt": "You created bad centralized state. Fix it.",
+      "must": ["identify exact bad state", "preserve historical provenance", "supersede or correct writable projections", "read back result"],
+      "must_not": ["apologize without state repair", "delete history to hide error"]
+    }
+  ]
+}

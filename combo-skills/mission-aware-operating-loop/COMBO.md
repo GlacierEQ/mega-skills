@@ -63,3 +63,15 @@ The mission contract defines the boundary; the context capsule identifies what i
 **Artifact:** `MISSION_OPERATING_LOOP_RECORD.md`, containing mission, context, options, impact forecast, action, outcome state, evidence/retrieval state, verification, learnings, strengthening changes, and exact resumption point.
 
 **Ready for Mega Skill integration when:** the record can be resumed without raw conversation history, no material claim outruns its evidence state, and the next route is explicit.
+
+## Upstream implementation contract
+
+The executable kernel for this Combo is maintained by [Genius-Mastery](https://github.com/GlacierEQ/Genius-Mastery), not copied into this repository. The pinned bridge manifest is maintained at the provider boundary and records the exact upstream commit, module blob, schema blob, phase order, evidence states, outcome states, and status mapping.
+
+The Mega consumes the contract as follows:
+
+- the Combo record is structurally compatible with schemas/operating-loop.schema.json;
+- MISSION_OPERATING_LOOP_RECORD.md is the durable cross-layer artifact;
+- remote validation may retrieve the pinned public source and compare Git blob hashes;
+- a pin change is a compatibility change and must be accompanied by the bridge validator and regression checks;
+- the bridge does not grant execution authority and does not weaken the read-only firewall.
