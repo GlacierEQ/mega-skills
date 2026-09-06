@@ -1,26 +1,62 @@
-import unittest
 import json
+import subprocess
+import sys
+import unittest
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SKILL_ROOT = HERE.parent
 
+
 class TestApexExecutionModes(unittest.TestCase):
-    def test_skill_md_manifest(self):
+    def test_skill_md_manifest_and_doing_contract(self):
         skill_md = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
         self.assertIn("name: apex-execution-modes", skill_md)
         self.assertIn("description:", skill_md)
+        self.assertIn("Prime Execution Law — DOING, Not Watching", skill_md)
+        self.assertIn("No final response while an authorized executable next action exists", skill_md)
+        self.assertIn("EXECUTE → WATCH", skill_md)
+        self.assertIn("ADVANCE → RECONCILE", skill_md)
+        self.assertIn("Recurring workers are production executors", skill_md)
 
     def test_skill_entry_point_exists_and_executable(self):
         skill_py = SKILL_ROOT / "skill.py"
         self.assertTrue(skill_py.exists())
         self.assertTrue(bool(skill_py.stat().st_mode & 0o111))
 
+    def test_execute_request_dispatches_instead_of_stalling(self):
+        proc = subprocess.run(
+            [sys.executable, str(SKILL_ROOT / "skill.py"), "--execute"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["status"], "dispatch_required")
+        self.assertTrue(payload["continue_required"])
+        self.assertNotIn("execution_unavailable", proc.stdout)
+        contract = payload["execution_contract"]
+        self.assertEqual(contract["loop"], ["select_real_work", "do_it", "verify", "keep_doing"])
+        self.assertEqual(
+            contract["completion_gate"],
+            "no_final_response_while_authorized_executable_action_exists",
+        )
+        self.assertIn(
+            "watch_instead_of_execute",
+            contract["prohibited_terminal_substitutions"],
+        )
+        self.assertIn(
+            "reconcile_instead_of_advance",
+            contract["prohibited_terminal_substitutions"],
+        )
+
     def test_scripts_executable(self):
         for script_name in ("run.py", "this_skill.py"):
             p = SKILL_ROOT / "scripts" / script_name
             self.assertTrue(p.exists())
             self.assertTrue(bool(p.stat().st_mode & 0o111))
+
 
 if __name__ == "__main__":
     unittest.main()

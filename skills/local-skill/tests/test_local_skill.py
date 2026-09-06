@@ -10,13 +10,24 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = ROOT / "scripts" / "generate.py"
 
 class TestLocalSkill(unittest.TestCase):
+    def test_skill_dispatcher_preserves_child_script_runtime_context(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "skill.py"), "inspect"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("Found ", result.stdout)
+        self.assertNotIn("NameError", result.stderr)
+
     def test_skill_entry_point_exists(self):
         skill_py = ROOT / "skill.py"
         self.assertTrue(skill_py.exists())
         self.assertTrue(bool(skill_py.stat().st_mode & 0o111))
 
     def test_scripts_exist(self):
-        for script in ["inspect.py","extract.py","generate.py","validate.py","pattern_catalog.py","this_skill.py"]:
+        for script in ["inspect_skill.py","extract.py","generate.py","validate.py","pattern_catalog.py","this_skill.py"]:
             path = ROOT / "scripts" / script
             self.assertTrue(path.exists(), f"Missing script: {script}")
             self.assertTrue(bool(path.stat().st_mode & 0o111), f"Not executable: {script}")
