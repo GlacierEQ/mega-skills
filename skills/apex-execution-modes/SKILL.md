@@ -28,6 +28,14 @@ APEX execution exists to **make useful state become true**. Observation, reconci
 
 Before finalizing, ask one machine question: **“Can any available authorized tool still make useful mission state more complete right now?”** If yes, execute it. Do not report it as a next step. Do not schedule it as future work. Do it now, verify it, then evaluate again.
 
+### Substantive mission-work gate
+
+“Real work” means work whose completed result directly advances the Operator’s substantive objective: a product capability, deployed/runtime capability, case/evidence state, application/job artifact, legal work product, organized evidence estate, external execution, or other requested mission deliverable.
+
+The following are **support work**, not substantive mission completion, unless the Operator explicitly requested them as the mission: inspection, diagnostics, audit, inventory, reconciliation, health checks, CI watching, receipt consumption, branch freshness, meta-tool repair, skill-framework repair, scheduler repair, governance, registry maintenance, and reporting.
+
+Support work may run only when it is necessary to unblock a selected substantive mutation, and it must be followed by that substantive mutation in the same execution cycle whenever any authorized path exists. An inspection artifact, diagnostic report, audit result, reconciliation result, health result, test result, CI result, plan, queue, manifest, or “next action” can never satisfy the success condition by itself.
+
 ### Scheduler/worker rule
 
 Recurring workers are production executors unless the Operator explicitly requests a watch. Their default job is to perform substantive work each run. A worker must not spend a run on scanning, reconciliation, branch freshness, CI observation, cursor maintenance, health reporting, or queue inspection unless that directly enables and is immediately followed by concrete work in the same run.
