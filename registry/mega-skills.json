@@ -17,7 +17,8 @@
       "conditional_combos": [
         "capability-readiness",
         "skill-forge",
-        "polyglot-systems-verification"
+        "polyglot-systems-verification",
+        "mission-aware-operating-loop"
       ],
       "mission_output": "GENIUS_MASTERY_MISSION_RESULT.md",
       "durable_state": [
