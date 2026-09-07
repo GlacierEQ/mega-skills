@@ -5,12 +5,12 @@
     "skills": 714,
     "combos": 36,
     "megas": 32,
-    "ready_total": 747,
-    "not_ready_total": 35,
+    "ready_total": 746,
+    "not_ready_total": 36,
     "skill_states": {
-      "instruction_ready": 673,
+      "instruction_ready": 672,
       "implementation_partial": 6,
-      "implementation_unverified": 10,
+      "implementation_unverified": 11,
       "behavior_verified": 25
     },
     "combo_states": {
@@ -2523,9 +2523,9 @@
     {
       "id": "casebuild-mesh-organization",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "active",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -2533,7 +2533,9 @@
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [],
-      "reasons": []
+      "reasons": [
+        "instruction-only package; executable implementation and behavioral verification are not present"
+      ]
     },
     {
       "id": "casey-operator-execution-kernel",
@@ -15456,6 +15458,23 @@
         "skills/zoominfo/tests/test_zoominfo.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "casebuild-mesh-organization",
+      "layer": "skill",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "instruction-only package; executable implementation and behavioral verification are not present"
+      ]
     }
   ],
   "combos": [
