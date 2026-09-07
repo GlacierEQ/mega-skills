@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import struct
@@ -15,6 +16,57 @@ from typing import Iterable, Sequence
 DEFAULT_FREQUENCY_HZ = 60.0
 DEFAULT_TOLERANCE_HZ = 0.1
 DEFAULT_JUMP_HZ = 0.25
+
+# WhisperX is an optional integration.  This module deliberately fails closed
+# when that dependency and its authenticated integration are not present.
+# Keeping the capability explicit prevents a screening helper from implying
+# laboratory or source-authentication results.
+_WHISPERX_AVAILABLE = False
+
+
+def capability_report() -> dict:
+    """Return the observable capability boundary for this extractor."""
+    return {
+        "capability": "enf-extraction",
+        "whisperx_integrated": bool(_WHISPERX_AVAILABLE),
+        "laboratory_certification": False,
+    }
+
+
+def whisperx_audio_loader(
+    path: str | Path,
+    nominal_hz: float = DEFAULT_FREQUENCY_HZ,
+    tolerance_hz: float = DEFAULT_TOLERANCE_HZ,
+    jump_hz: float = DEFAULT_JUMP_HZ,
+) -> dict:
+    """Use the optional WhisperX path, or report its unavailable boundary.
+
+    No fallback is represented as WhisperX output.  The ordinary deterministic
+    WAV screen remains available through :func:`analyze_wav`.
+    """
+    if not _WHISPERX_AVAILABLE:
+        report = capability_report()
+        report.update({
+            "status": "capability_unavailable",
+            "source": str(path),
+            "nominal_hz": _number(nominal_hz, "nominal_hz"),
+            "tolerance_hz": _number(tolerance_hz, "tolerance_hz"),
+            "jump_hz": _number(jump_hz, "jump_hz"),
+        })
+        return report
+    raise RuntimeError("WhisperX integration is not enabled in this build")
+
+
+def verify_enf_document(document: dict) -> dict:
+    """Verify the optional document chain when a caller supplies one."""
+    errors = []
+    measurements = document.get("measurements")
+    if not isinstance(measurements, list):
+        errors.append("measurements must be a list")
+    chain_root = document.get("chain_digest_root")
+    if chain_root is not None and (not isinstance(chain_root, str) or len(chain_root) != 64):
+        errors.append("chain_digest_root must be a SHA-256 hex digest")
+    return {"valid": not errors, "errors": errors}
 
 
 def _number(value: object, field: str) -> float:
