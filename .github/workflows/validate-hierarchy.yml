@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  compile:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -19,15 +19,95 @@ jobs:
           python-version: "3.11"
       - name: Compile every Python source on the pinned interpreter
         run: python -m compileall -q scripts tests skills
+
+  hierarchy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Validate capability hierarchy
         run: python scripts/validate_hierarchy.py
+
+  genius-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Validate pinned Genius-Mastery bridge
         run: python scripts/validate_genius_mastery_bridge.py --remote
+
+  pyramids:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Validate Mega-Skill pyramids
         run: python scripts/generate_mega_skill_pyramids.py --check
+
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
+
+  local-skill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Validate local skill creator behavior
         run: python skills/local-skill/tests/test_local_skill.py -v
+
+  branch-lifecycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
       - name: Validate branch lifecycle intelligence
         run: python skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
+
+  validate:
+    if: always()
+    runs-on: ubuntu-latest
+    needs: [compile, hierarchy, genius-bridge, pyramids, regression, local-skill, branch-lifecycle]
+    steps:
+      - name: Require every validation lane to succeed
+        env:
+          NEEDS_JSON: ${{ toJson(needs) }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+
+          needs = json.loads(os.environ["NEEDS_JSON"])
+          failed = {
+              name: data.get("result")
+              for name, data in needs.items()
+              if data.get("result") != "success"
+          }
+          if failed:
+              print("Validation lanes failed:", json.dumps(failed, sort_keys=True))
+              sys.exit(1)
+          print("All validation lanes succeeded.")
+          PY
