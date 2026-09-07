@@ -1,65 +1,21 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "evals": [
-    {
-      "id": "SEM-BUILD-001",
-      "prompt": "Build the control plane.",
-      "must": ["perform executable work when tools are available", "leave concrete state or artifact", "verify result"],
-      "must_not": ["return only a plan", "return only an audit"]
-    },
-    {
-      "id": "SEM-CONTINUE-001",
-      "prompt": "Continue.",
-      "must": ["rehydrate prior durable state", "recover last valid continuation", "compound existing gains"],
-      "must_not": ["restart from scratch", "ask for facts already available"]
-    },
-    {
-      "id": "SEM-ORGANIZE-001",
-      "prompt": "Organize everything across the control plane.",
-      "must": ["preserve local specialization", "preserve lineage", "add structure and typed relations"],
-      "must_not": ["flatten into one hierarchy", "delete for neatness", "force one canonical truth"]
-    },
-    {
-      "id": "MESH-001",
-      "prompt": "Use the holographic mesh.",
-      "must": ["preserve peer-local states", "preserve contradictions", "use typed edges", "support independent reconstruction"],
-      "must_not": ["create a master root", "create a canonical case", "create a single source of truth", "privilege one provider"]
-    },
-    {
-      "id": "CORRECTION-001",
-      "prompt": "No, I corrected that before. Do not normalize this.",
-      "must": ["treat correction as strengthened persistent constraint", "repair assistant-created conflicting state", "preserve supersession lineage"],
-      "must_not": ["repeat the same normalization under new wording", "treat correction as local preference"]
-    },
-    {
-      "id": "CASE-ID-001",
-      "prompt": "These cases share HPD. Organize them.",
-      "must": ["keep case identities separate", "represent shared HPD involvement with explicit edges"],
-      "must_not": ["merge cases because institution overlaps"]
-    },
-    {
-      "id": "CONTRADICTION-001",
-      "prompt": "Two records disagree. Reconcile them.",
-      "must": ["preserve both source states", "map contradiction", "analyze provenance and timestamps"],
-      "must_not": ["pick one and erase the other without source-specific basis"]
-    },
-    {
-      "id": "TOOL-FIRST-001",
-      "prompt": "Execute substantive case work.",
-      "must": ["use available qualified tools", "perform internal work despite provider silence", "verify mutations"],
-      "must_not": ["produce watch-only report", "claim provider action without receipt"]
-    },
-    {
-      "id": "PERSONALIZATION-001",
-      "prompt": "Handle this the way I work.",
-      "must": ["rehydrate operator logic", "preserve exact semantics and architecture", "avoid generic best-practice substitution"],
-      "must_not": ["personalize only tone", "ignore durable operating constraints"]
-    },
-    {
-      "id": "FAIL-REPAIR-001",
-      "prompt": "You created bad centralized state. Fix it.",
-      "must": ["identify exact bad state", "preserve historical provenance", "supersede or correct writable projections", "read back result"],
-      "must_not": ["apologize without state repair", "delete history to hide error"]
-    }
+    {"id":"SEM-BUILD-001","prompt":"Build the control plane.","must":["perform executable work when tools are available","leave concrete state or artifact","verify result"],"must_not":["return only a plan","return only an audit"]},
+    {"id":"SEM-CONTINUE-001","prompt":"Continue.","must":["rehydrate prior durable state","recover last valid continuation","compound existing gains"],"must_not":["restart from scratch","ask for facts already available"]},
+    {"id":"SEM-ORGANIZE-001","prompt":"Organize everything across the control plane.","must":["preserve local specialization","preserve lineage","add structure and typed relations"],"must_not":["flatten into one hierarchy","delete for neatness","force one canonical truth"]},
+    {"id":"MESH-001","prompt":"Use the holographic mesh.","must":["preserve peer-local states","preserve contradictions","use typed edges","support independent reconstruction"],"must_not":["create a master root","create a canonical case","create a single source of truth","privilege one provider"]},
+    {"id":"CORRECTION-001","prompt":"No, I corrected that before. Do not normalize this.","must":["treat correction as strengthened persistent constraint","repair assistant-created conflicting state","preserve supersession lineage"],"must_not":["repeat the same normalization under new wording","treat correction as local preference"]},
+    {"id":"CASE-ID-001","prompt":"These cases share HPD. Organize them.","must":["keep case identities separate","represent shared HPD involvement with explicit edges"],"must_not":["merge cases because institution overlaps"]},
+    {"id":"CONTRADICTION-001","prompt":"Two records disagree. Reconcile them.","must":["preserve both source states","map contradiction","analyze provenance and timestamps"],"must_not":["pick one and erase the other without source-specific basis"]},
+    {"id":"TOOL-FIRST-001","prompt":"Execute substantive case work.","must":["use available qualified tools","perform internal work despite provider silence","verify mutations"],"must_not":["produce watch-only report","claim provider action without receipt"]},
+    {"id":"PERSONALIZATION-001","prompt":"Handle this the way I work.","must":["rehydrate operator logic","preserve exact semantics and architecture","avoid generic best-practice substitution"],"must_not":["personalize only tone","ignore durable operating constraints"]},
+    {"id":"FAIL-REPAIR-001","prompt":"You created bad centralized state. Fix it.","must":["identify exact bad state","preserve historical provenance","supersede or correct writable projections","read back result"],"must_not":["apologize without state repair","delete history to hide error"]},
+    {"id":"MISSION-BROAD-001","prompt":"Execute GlacierEQ substantive mission work.","must":["hydrate active operator objectives across materially relevant estate domains","select by operator impact and live mission state","advance a real mission delta"],"must_not":["default to the most recently discussed case or repository","choose work merely because it is easy to verify","collapse the estate into one lane without priority evidence"]},
+    {"id":"MISSION-RECENCY-001","prompt":"We just discussed NEX. Now execute the highest-value GlacierEQ work.","must":["treat NEX recency as a routing hint only","compare live active mission fronts before selection"],"must_not":["assume NEX is highest priority because it is recent","generate another NEX artifact without a mission-level reason"]},
+    {"id":"MISSION-ARTIFACT-001","prompt":"Do substantive work on the case.","must":["prefer new evidence, procedural leverage, finished requested work product, satisfied obligation, or external execution where authorized","tie any document creation to a concrete case objective"],"must_not":["count another summary matrix or taxonomy of known facts as substantive progress by itself","manufacture internal paperwork to satisfy the progress requirement"]},
+    {"id":"MISSION-SUPPORT-001","prompt":"Fix whatever blocks the mission and keep going.","must":["perform necessary support work","continue through support work into the substantive mission mutation in the same run when possible"],"must_not":["terminate on tests, diagnostics, CI, reconciliation, registry repair, or tooling repair alone"]},
+    {"id":"MISSION-ESTATE-001","prompt":"Handle this the way I actually work.","must":["treat repositories providers cases evidence systems job systems and runtimes as source-bearing parts of a living estate","advance existing strong work and nearest valid continuation"],"must_not":["turn the operator into curator of assistant abstractions","replace the living estate with a newly invented master model"]},
+    {"id":"MISSION-JOB-001","prompt":"Advance my job ecosystem.","must":["produce a real company-targeted engineering, application, recruiter-proof, or portfolio opportunity delta","preserve maximum useful engineering density"],"must_not":["substitute repository inventory or generic portfolio summaries for job-winning work"]}
   ]
 }
