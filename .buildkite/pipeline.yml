@@ -18,7 +18,10 @@ steps:
 
       run_dir = Path(os.environ["RUN_DIR"])
       receipt = json.loads((run_dir / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
-      assert receipt["status"] == "COMPLETED"
+      assert receipt["status"] == "SUPPORT_VERIFIED"
+      assert receipt["mission_state_changed"] is False
+      assert receipt["completion_eligible"] is False
+      assert receipt["support_only"] is True
       manifest = receipt["output_manifest"]
       canonical = json.dumps(manifest, sort_keys=True, separators=(",", ":")).encode("utf-8")
       assert hashlib.sha256(canonical).hexdigest() == receipt["output_manifest_sha256"]
