@@ -51,7 +51,7 @@ class FirewallAndMissionTests(unittest.TestCase):
         self.assertNotIn('m / "SKILL.md"', source)
         self.assertIn('target / "SKILL.md"', source)
 
-    def test_mission_runner_completes_required_route_and_receipt_hashes(self):
+    def test_mission_runner_proves_support_route_without_claiming_mission_completion(self):
         with tempfile.TemporaryDirectory() as output_dir:
             result = subprocess.run(
                 [sys.executable, "scripts/run_mega_mission.py", "--output-dir", output_dir],
@@ -60,7 +60,10 @@ class FirewallAndMissionTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             out = Path(output_dir)
             receipt = json.loads((out / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
-            self.assertEqual(receipt["status"], "COMPLETED")
+            self.assertEqual(receipt["status"], "SUPPORT_VERIFIED")
+            self.assertFalse(receipt["mission_state_changed"])
+            self.assertFalse(receipt["completion_eligible"])
+            self.assertTrue(receipt["support_only"])
             self.assertTrue(receipt["mission_id"].startswith("FOUNDRY-RUN-"))
             self.assertTrue((out / "INPUT_MANIFEST.json").is_file())
             self.assertTrue((out / "FAILURE_RECORD.json").is_file())

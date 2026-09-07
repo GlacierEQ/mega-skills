@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from operator_mission_kernel import run_operator_mission_kernel
+
 def as_list(value: Any) -> list:
     if value is None: return []
     return value if isinstance(value,list) else [value]
@@ -137,7 +139,7 @@ def claim_calibration(op:str,p:dict[str,Any]) -> dict[str,Any]:
     return {"valid":not errors,"errors":errors,"claims":rows,"escalations":[r["id"] for r in rows if r["escalation_required"]],
             "artifact":"CLAIM_BOUNDARIES.md","markdown":"\n".join(lines)}
 
-RUNNERS={"resource-preflight":resource_preflight,"capability-admission":capability_admission,"claim-calibration":claim_calibration}
+RUNNERS={"resource-preflight":resource_preflight,"capability-admission":capability_admission,"claim-calibration":claim_calibration,"casey-operator-execution-kernel":run_operator_mission_kernel}
 
 def run(skill:str,op:str,payload:dict[str,Any]) -> dict[str,Any]:
     if op in {"purpose","procedure","output_contract"}: return {"skill":skill,"operation":op,"runtime":"always-on-atomic"}

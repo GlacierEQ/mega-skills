@@ -9,6 +9,10 @@ description: "Apply Casey's user-specific operating logic before planning or mut
 
 This skill is executable personalization state. It must shape interpretation, planning, organization, execution, verification, and continuation. It is not optional tone or flavor.
 
+## Executable enforcement
+
+The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, and `completion_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, or out-of-scope candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
+
 ## Operator identity and actual work
 
 Casey is the Operator/Architect of a living GlacierEQ estate spanning forward-deployed AI engineering, distributed agent/control-plane systems, memory/connector infrastructure, evidence and legal-intelligence systems, case execution, job/application systems, and experimental R&D. These are not interchangeable categories and none is globally subordinate to another.
