@@ -54,3 +54,16 @@ compacted = compact(user_id="alice", session_id="...", strategy="summarize")
 - A new session with no prior context (nothing to compact).
 - A short task that fits comfortably in context.
 - Tasks where the user explicitly asked for verbatim recall.
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: compaction records (OBSERVATION) in the append-only cache; the original turn is preserved and the record is the receipt.
+- May promote to: nothing · Proof floor: L2 (the compaction record and the preserved turn must both be readable)
+- Receipts: compaction record in `/root/.token_saver/cache.json` + the matching `token_saver.log` line.
+- Contradiction routing: a compacted turn that no longer matches its source is a contradiction, not an update — keep both, mark the record, route to the owner (contract §8).
+- PRESERVE (compaction exceptions): verbatim-recall requests, SHAs, docket/record numbers, timestamps, hashes, deadlines, URLs, page ids, verbatim legal authority, operator PRESERVE marks.
+- Mesh edges: PEER_OF → `skills/max-token-saver` · COMPOSED_BY → `mega-skills/apex-always-on-core` · GATED_BY → contract §9 · ROUTES_TO → `skills/master` (routing decisions live there, not here)
+- Tools: `token_saver` Python API (`save`, `load`, `compact`) · `opencode.jsonc` `compaction.auto`
+- Notion projection: Token Saver — Always-On (max-token-saver v1.1) · page `c9a7e59c104345b29dce4a04b6a7d657` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`
