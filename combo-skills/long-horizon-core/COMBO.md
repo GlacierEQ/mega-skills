@@ -47,3 +47,18 @@ The compound state is an **index and execution layer**, not a replacement archiv
 - `HANDOFF.md` must carry any operator/source correction that changes retrieval or interpretation rules.
 - A failed or incomplete verification pass may add a retrieval task; it may not erase an existing source assertion.
 - For journal/chat sources, preserve original text outside the capsule and label it `REGULARLY KEPT JOURNAL — ORIGINAL WORDING PRESERVED` when that is the mission's source treatment.
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+Reference-only section (CONTRIBUTING: no skill-level instruction copying into a Combo Skill).
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: `MISSION.md` / `ROADMAP.md` (PLAN), `EVIDENCE.md` rows (FACT with source-access state ≠ proposition truth state), `CONTEXT.md` (grade-D pointers), gate record + `HANDOFF.md` (OBSERVATION).
+- May promote to: a member's output reaches the gate only when evidence-backed; a failed gate returns to the work-packet owner and never silently advances · Proof floor: L2 per artifact, L3 when state files must agree across stores
+- Receipts: gate record + `HANDOFF.md` with an exact resume point.
+- Contradiction routing: state files that disagree on scope or next action block the handoff; record the disagreement in `EVIDENCE.md` and route to the owner (contract §8). Never erase an existing source assertion.
+- PRESERVE (compaction exceptions): original wording and provenance behind every `CONTEXT.md` compaction; `REGULARLY KEPT JOURNAL — ORIGINAL WORDING PRESERVED` labels; operator / source corrections carried in `HANDOFF.md`.
+- Mesh edges: COMPOSED_BY → `mega-skills/apex-always-on-core` · VERIFIED_BY → `quality-gate` (member 6) · FEEDS → `handoff-record` (member 7) · GATED_BY → contract §5 (execution-state ladder)
+- Tools: the seven member skills in order · durable state files · `schemas/combo-skill.schema.json`
+- Notion projection: APEX Always-On Core — Long-Horizon Operating Loop · page `17811a298d2c4d328f293e63ad5a91ca` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`
