@@ -1,5 +1,23 @@
-# Configuration schema for agent-memory-systems
-version: '1.0.0'
+# Runtime defaults for agent-memory-systems continuity projections.
+version: '2.0.0'
 enabled: true
 settings:
   strict_validation: true
+  boot_context_authority: routing_only
+  hydration_mode: source_realized
+  peer_state_model: polycentric
+  default_projection_path: .glaciereq/continuation.json
+  atomic_writes: true
+  integrity_algorithm: sha256
+  require_evidence_for_verified_transition: true
+  require_explicit_reopen_for_resolved_questions: true
+  preserve_contradictions: true
+  preserve_provider_identity: true
+  preserve_revision_and_hash_when_available: true
+  hydrate_recent_transition_receipts: 10
+  continuation_policy:
+    continue_from_nearest_valid_state: true
+    do_not_restart_for_missing_context: true
+    do_not_reopen_resolved_without_new_basis: true
+    next_action_must_advance_active_mission: true
+    discovery_does_not_expand_scope_automatically: true

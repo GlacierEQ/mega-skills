@@ -1,9 +1,91 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Mega-Agent-Memory-Systems",
+  "title": "Mega Agent Memory Behavioral Verification Receipt",
   "type": "object",
+  "required": [
+    "skill",
+    "status",
+    "atomic_engine"
+  ],
   "properties": {
-    "status": {"type": "string"},
-    "artifacts": {"type": "array"}
-  }
+    "skill": {
+      "const": "mega-agent-memory-systems"
+    },
+    "status": {
+      "enum": [
+        "BEHAVIOR_VERIFIED",
+        "FAILED"
+      ]
+    },
+    "continuation_schema_version": {
+      "const": "2.0.0"
+    },
+    "projection_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "previous_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "projection_created",
+          "source_and_peer_bound",
+          "atomic_persist",
+          "integrity_reload",
+          "verified_transition_receipt",
+          "hydration_cursor_verified"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "atomic_engine": {
+      "type": "string",
+      "minLength": 1
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "BEHAVIOR_VERIFIED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "continuation_schema_version",
+          "projection_digest",
+          "previous_digest",
+          "receipt_id",
+          "checks"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "FAILED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "error"
+        ]
+      }
+    }
+  ]
 }

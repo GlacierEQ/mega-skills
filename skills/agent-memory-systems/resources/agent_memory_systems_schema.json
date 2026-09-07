@@ -1,9 +1,477 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Agent-Memory-Systems",
+  "$id": "https://glaciereq.dev/schemas/agent-memory-systems/continuation-projection-2.0.0.json",
+  "title": "GlacierEQ Continuation Projection",
+  "description": "A polycentric, provenance-bound continuation projection. It is a resumable source map, not a canonical truth authority.",
   "type": "object",
+  "required": [
+    "schema_version",
+    "projection_id",
+    "mission",
+    "continuation",
+    "sources",
+    "contradictions",
+    "receipts",
+    "peers",
+    "lineage",
+    "updated_at",
+    "state_digest"
+  ],
   "properties": {
-    "status": {"type": "string"},
-    "artifacts": {"type": "array"}
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "projection_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mission": {
+      "type": "object",
+      "required": [
+        "mission_id",
+        "operator_intent",
+        "active_target",
+        "status",
+        "scope"
+      ],
+      "properties": {
+        "mission_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operator_intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active_target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "active",
+            "blocked",
+            "complete"
+          ]
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "required": [
+        "last_verified_state",
+        "critical_path",
+        "next_action",
+        "completed",
+        "blockers",
+        "resolved_questions"
+      ],
+      "properties": {
+        "last_verified_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "critical_path": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_action": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "action",
+                "why",
+                "requires_authority",
+                "blocked_by"
+              ],
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "why": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requires_authority": {
+                  "type": "boolean"
+                },
+                "blocked_by": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "completed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/completed"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/blocker"
+          }
+        },
+        "resolved_questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resolvedQuestion"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contradiction"
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/receipt"
+      }
+    },
+    "peers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/peer"
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "previous_digest",
+        "created_at"
+      ],
+      "properties": {
+        "previous_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reopened_questions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "provider",
+        "locator",
+        "scope",
+        "truth_state",
+        "observed_at"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "truth_state": {
+          "enum": [
+            "behavior_verified",
+            "blocked",
+            "externally_verified",
+            "hypothesis",
+            "implemented",
+            "inference",
+            "inspected",
+            "measured",
+            "operator_observation",
+            "unknown"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string"
+        },
+        "content_hash": {
+          "type": "string"
+        }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": [
+        "receipt_id",
+        "action",
+        "before_state",
+        "observed_result",
+        "after_state",
+        "evidence_refs",
+        "verified_at"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "before_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "after_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "required": [
+        "id",
+        "claim_a",
+        "claim_b",
+        "status",
+        "evidence_refs",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_a": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_b": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "open",
+            "resolved"
+          ]
+        },
+        "resolution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "peer": {
+      "type": "object",
+      "required": [
+        "provider",
+        "locator",
+        "relationship"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship": {
+          "enum": [
+            "peer",
+            "projection",
+            "derived_from",
+            "supersedes",
+            "superseded_by",
+            "corroborates",
+            "contradicts"
+          ]
+        },
+        "revision": {
+          "type": "string"
+        }
+      }
+    },
+    "resolvedQuestion": {
+      "type": "object",
+      "required": [
+        "id",
+        "question",
+        "resolution",
+        "evidence_refs",
+        "resolved_at",
+        "reopen_conditions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "resolved_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reopen_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "required": [
+        "id",
+        "description",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "open",
+            "resolved"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "completed": {
+      "type": "object",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receipt_id": {
+          "type": "string"
+        },
+        "verified_at": {
+          "type": "string"
+        }
+      }
+    }
   }
 }
