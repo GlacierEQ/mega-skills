@@ -45,3 +45,16 @@ Once all 5 phases are loaded, you are officially operating in **APEX OMNIVERSAL 
 
 ## Completion Protocol
 After successfully activating the final skill in Phase 5, output a high-density system diagnostic confirming the "APEX Operating Loop" is locked, and request target coordinates from the Operator. Do NOT ask for permission between phases during the boot sequence.
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: boot-phase states (each phase is PLAN until its `activate_skill` call returns, then EXECUTED), and the completion diagnostic as a typed state block (contract §13).
+- May promote to: "APEX Operating Loop locked" is VERIFIED only when every phase has an activation receipt · Proof floor: L2
+- Receipts: one activation return per skill listed in Phases 1–5; a missing return keeps that phase at PLAN and the diagnostic must say so.
+- Contradiction routing: a phase that fails to activate is recorded, not skipped; the sequence halts at the failed phase and reports the gap (contract §8).
+- PRESERVE (compaction exceptions): the strict phase order, the Root Checkpoint from Phase 1, and case identity (1FDV-23-0001009) as a bound mission — not a global default.
+- Mesh edges: COMPOSES → `skills/make-it-heavy` (Phase 5), `skills/sequential-thinking` (Phase 4), token saving (Phase 3) · COMPOSED_BY → `skills/power-skill` · GATED_BY → `skills/casey-operator-execution-kernel` (Phase 1 anchors memory = the rehydration gate)
+- Tools: `activate_skill` · the memory stack per `apex-aspen-grove-bootup` / `unified-memory-connect`
+- Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67`; boot mirror: Aspen Grove Bootup · page `7d0604cc50b6434ab9392e6d85bb21c9` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`
