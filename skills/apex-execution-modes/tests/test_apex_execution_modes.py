@@ -126,6 +126,30 @@ class TestApexExecutionModes(unittest.TestCase):
             "routing_hint_only",
         )
 
+    def test_all_entrypoints_share_the_same_non_stalling_execution_contract(self):
+        entrypoints = [
+            SKILL_ROOT / "skill.py",
+            SKILL_ROOT / "scripts" / "run.py",
+            SKILL_ROOT / "scripts" / "this_skill.py",
+        ]
+        for entrypoint in entrypoints:
+            with self.subTest(entrypoint=entrypoint.name):
+                proc = subprocess.run(
+                    [sys.executable, str(entrypoint), "--execute"],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+                self.assertNotIn("execution_unavailable", proc.stdout)
+                payload = json.loads(proc.stdout)
+                self.assertEqual(payload["status"], "dispatch_required")
+                self.assertTrue(payload["continuation_required"])
+                self.assertEqual(
+                    payload["execution_contract"]["continuity"]["boot_context_role"],
+                    "routing_hint_only",
+                )
+
     def test_scripts_executable(self):
         for script_name in ("run.py", "this_skill.py"):
             p = SKILL_ROOT / "scripts" / script_name
