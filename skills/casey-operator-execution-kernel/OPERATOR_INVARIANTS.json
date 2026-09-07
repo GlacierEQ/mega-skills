@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "purpose": "Machine-readable user-specific execution constraints for Casey Barton workflows.",
   "authority_order": [
     "platform_safety_legal_constraints",
@@ -79,6 +79,90 @@
     "distinct_case_or_project_identity_merged",
     "execution_requested_but_only_description_produced",
     "available_tools_ignored_without_reason",
-    "verification_claim_without_readback_or_receipt"
-  ]
+    "verification_claim_without_readback_or_receipt",
+    "broad_estate_command_captured_by_recent_lane_without_priority_evidence",
+    "support_artifact_counted_as_substantive_progress",
+    "assistant_generated_representation_substituted_for_operator_work",
+    "support_work_terminated_without_downstream_mission_mutation",
+    "mission_selected_for_convenience_or_verifiability_instead_of_operator_impact"
+  ],
+  "operator_model": {
+    "identity": "Operator/Architect of the GlacierEQ living estate",
+    "estate_domains": [
+      "forward_deployed_ai_engineering",
+      "distributed_agent_and_control_plane_systems",
+      "memory_and_connector_infrastructure",
+      "evidence_and_legal_intelligence",
+      "case_execution",
+      "job_application_and_portfolio_systems",
+      "experimental_r_and_d"
+    ],
+    "estate_is_the_work": true,
+    "assistant_generated_abstractions_are_support_by_default": true,
+    "no_single_domain_globally_outranks_others": true
+  },
+  "mission_selection": {
+    "broad_commands_require_operator_objective_graph": true,
+    "recent_context_is_routing_hint_not_priority": true,
+    "no_recent_lane_capture": true,
+    "no_arbitrary_legal_over_engineering_priority": true,
+    "no_arbitrary_engineering_over_legal_priority": true,
+    "estate_wide_worker_selects_across_estate": true,
+    "specialized_worker_respects_explicit_lane_scope": true,
+    "rank_positive": [
+      "operator_impact",
+      "real_deadline_or_urgency",
+      "blocked_downstream_work",
+      "external_leverage",
+      "capability_gain",
+      "evidence_gain",
+      "compounding_value",
+      "execution_readiness",
+      "prior_investment"
+    ],
+    "rank_negative": [
+      "support_only",
+      "recency_only",
+      "artifact_only",
+      "duplicated_representation",
+      "speculative_architecture",
+      "easy_to_verify_bias"
+    ]
+  },
+  "mission_delta_gate": {
+    "substantive_delta_examples": [
+      "working_executable_capability",
+      "new_or_materially_improved_source_bearing_evidence",
+      "case_procedural_or_decision_leverage",
+      "job_application_or_portfolio_opportunity_delta",
+      "mission_enabling_control_plane_capability",
+      "real_estate_organization_improvement"
+    ],
+    "insufficient_alone": [
+      "markdown_summary",
+      "matrix",
+      "taxonomy",
+      "ledger",
+      "manifest",
+      "registry",
+      "graph",
+      "report",
+      "ci_result",
+      "test_result",
+      "inspection_result",
+      "health_result",
+      "reconciliation_result",
+      "pr_refresh",
+      "branch_freshness",
+      "check_watching",
+      "planning_artifact",
+      "governance_artifact",
+      "meta_skill_artifact",
+      "case_decomposition_without_new_evidence_or_leverage",
+      "ready_or_prepared_state_without_target_mutation"
+    ],
+    "documentation_exception": "substantive only when requested finished deliverable, external/procedural work product, or executable/system contract",
+    "support_work_must_continue_into_substantive_mutation": true,
+    "existing_strong_continuation_outranks_activity_artifact": true
+  }
 }
