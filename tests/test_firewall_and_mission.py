@@ -22,6 +22,13 @@ class FirewallAndMissionTests(unittest.TestCase):
                 with self.assertRaises(FirewallViolation):
                     guard(policy, action)
 
+    def test_buildkite_does_not_require_false_mission_completion(self):
+        pipeline = (ROOT / ".buildkite" / "pipeline.yml").read_text(encoding="utf-8")
+        self.assertNotIn('receipt["status"] == "COMPLETED"', pipeline)
+        self.assertIn('receipt["status"] == "SUPPORT_VERIFIED"', pipeline)
+        self.assertIn('receipt["completion_eligible"] is False', pipeline)
+        self.assertIn('receipt["mission_state_changed"] is False', pipeline)
+
     def test_malformed_policy_cannot_be_used_to_bypass_guard(self):
         policy = load_policy(ROOT, "apex-autonomous-agent-foundry")
         policy["allowed_actions"].append("network_send")

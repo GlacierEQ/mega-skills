@@ -36,7 +36,9 @@ class TestApexExecutionModes(unittest.TestCase):
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
         payload = json.loads(proc.stdout)
-        self.assertEqual(payload["status"], "dispatch_required")
+        self.assertEqual(payload["status"], "mission_hydration_required")
+        self.assertFalse(payload["dispatch_allowed"])
+        self.assertIsNone(payload["operator_mission_gate"])
         self.assertTrue(payload["continue_required"])
         self.assertTrue(payload["continuation_required"])
         self.assertNotIn("execution_unavailable", proc.stdout)
@@ -109,6 +111,38 @@ class TestApexExecutionModes(unittest.TestCase):
             continuity["anti_reconstruction"],
         )
 
+    def test_execute_with_hydrated_mission_input_dispatches_selected_real_work(self):
+        import tempfile
+        mission = {
+            "scope": {"mode": "estate"},
+            "objective_graph_hydrated": True,
+            "fronts_considered": [{"lane": "nex"}, {"lane": "engineering"}],
+            "candidates": [
+                {"id": "recent-report", "lane": "nex", "source_state_hydrated": True,
+                 "authorized": True, "executable": True, "substantive": True,
+                 "result_kind": "report", "selection_basis": ["recent_context"]},
+                {"id": "runtime-fix", "lane": "engineering", "source_state_hydrated": True,
+                 "authorized": True, "executable": True, "substantive": True,
+                 "continuation_valid": True, "operator_impact": 1.0,
+                 "capability_gain": 1.0, "execution_readiness": 1.0},
+            ],
+        }
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            json.dump(mission, handle)
+            path = handle.name
+        try:
+            proc = subprocess.run(
+                [sys.executable, str(SKILL_ROOT / "skill.py"), "--execute", "--mission-input", path],
+                check=False, capture_output=True, text=True,
+            )
+        finally:
+            Path(path).unlink(missing_ok=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["status"], "dispatch_required")
+        self.assertTrue(payload["dispatch_allowed"])
+        self.assertEqual(payload["operator_mission_gate"]["selected"]["id"], "runtime-fix")
+
     def test_adapter_without_execute_still_exposes_continuity_contract(self):
         proc = subprocess.run(
             [sys.executable, str(SKILL_ROOT / "skill.py")],
@@ -143,7 +177,8 @@ class TestApexExecutionModes(unittest.TestCase):
                 self.assertEqual(proc.returncode, 0, proc.stderr)
                 self.assertNotIn("execution_unavailable", proc.stdout)
                 payload = json.loads(proc.stdout)
-                self.assertEqual(payload["status"], "dispatch_required")
+                self.assertEqual(payload["status"], "mission_hydration_required")
+                self.assertFalse(payload["dispatch_allowed"])
                 self.assertTrue(payload["continuation_required"])
                 self.assertEqual(
                     payload["execution_contract"]["continuity"]["boot_context_role"],
