@@ -1,5 +1,24 @@
-# Configuration schema for mega-agent-memory-systems
-version: '1.0.0'
+# Composition policy for mega-agent-memory-systems.
+version: '2.0.0'
 enabled: true
 settings:
   strict_validation: true
+  execution_owner: agent-memory-systems
+  continuation_schema_version: '2.0.0'
+  boot_context_authority: routing_only
+  peer_state_model: polycentric
+  verification:
+    mode: behavioral_round_trip
+    require_projection_create: true
+    require_atomic_persist: true
+    require_integrity_reload: true
+    require_source_backed_transition: true
+    require_hydration_cursor: true
+    forbid_markdown_hash_as_behavior_proof: true
+    forbid_file_count_as_behavior_proof: true
+  continuation:
+    continue_from_nearest_valid_state: true
+    resolved_state_stays_resolved: true
+    preserve_contradictions: true
+    preserve_provider_identity: true
+    discovery_does_not_expand_scope_automatically: true
