@@ -5,13 +5,13 @@
     "skills": 714,
     "combos": 36,
     "megas": 32,
-    "ready_total": 746,
-    "not_ready_total": 36,
+    "ready_total": 747,
+    "not_ready_total": 35,
     "skill_states": {
-      "instruction_ready": 672,
+      "instruction_ready": 671,
       "implementation_partial": 6,
-      "implementation_unverified": 11,
-      "behavior_verified": 25
+      "behavior_verified": 27,
+      "implementation_unverified": 10
     },
     "combo_states": {
       "composition_candidate": 10,
@@ -296,25 +296,26 @@
       "id": "agent-memory-systems",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [
+      "real_implementation_files": [
         "skills/agent-memory-systems/skill.py",
+        "skills/agent-memory-systems/continuity.py",
         "skills/agent-memory-systems/scripts/run.py",
-        "skills/agent-memory-systems/scripts/this_skill.py"
+        "skills/agent-memory-systems/scripts/this_skill.py",
+        "skills/agent-memory-systems/scripts/capabilities.py"
       ],
+      "generic_adapter_files": [],
       "scaffold_files": [
         "skills/agent-memory-systems/scripts/patterns.py",
-        "skills/agent-memory-systems/scripts/capabilities.py",
         "skills/agent-memory-systems/scripts/memory_type_architecture.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/agent-memory-systems/tests/test_agent_memory_systems.py"
       ],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -799,12 +800,11 @@
       "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/apex-execution-modes/skill.py"
-      ],
-      "generic_adapter_files": [
+        "skills/apex-execution-modes/skill.py",
         "skills/apex-execution-modes/scripts/run.py",
         "skills/apex-execution-modes/scripts/this_skill.py"
       ],
+      "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [
@@ -1461,7 +1461,7 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/audio-forensic-core/scripts/enf_extractor.py",
@@ -2159,26 +2159,6 @@
       "reasons": []
     },
     {
-      "id": "branch-lifecycle-intelligence",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "development",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/branch-lifecycle-intelligence/skill.py",
-        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
-      ],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
       "id": "brand-guidelines-anthropic",
       "layer": "skill",
       "ready": true,
@@ -2523,9 +2503,9 @@
     {
       "id": "casebuild-mesh-organization",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -2533,16 +2513,14 @@
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [],
-      "reasons": [
-        "instruction-only package; executable implementation and behavioral verification are not present"
-      ]
+      "reasons": []
     },
     {
       "id": "casey-operator-execution-kernel",
       "layer": "skill",
       "ready": true,
       "state": "instruction_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -4807,7 +4785,7 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/epistemic-gate/scripts/tier_evaluator.py",
@@ -5718,7 +5696,7 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
@@ -6476,7 +6454,7 @@
       "layer": "skill",
       "ready": true,
       "state": "instruction_ready",
-      "declared_maturity": "development",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -6876,7 +6854,7 @@
       "layer": "skill",
       "ready": true,
       "state": "instruction_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -8387,23 +8365,24 @@
       "id": "mega-agent-memory-systems",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/mega-agent-memory-systems/skill.py",
+        "skills/mega-agent-memory-systems/scripts/run.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
-        "skills/mega-agent-memory-systems/skill.py",
-        "skills/mega-agent-memory-systems/scripts/run.py",
         "skills/mega-agent-memory-systems/scripts/patterns.py",
         "skills/mega-agent-memory-systems/scripts/capabilities.py",
         "skills/mega-agent-memory-systems/scripts/memory_type_architecture.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/mega-agent-memory-systems/tests/test_mega_agent_memory_systems.py"
       ],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -10984,7 +10963,7 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/pipeline-compositor/scripts/manifest_synthesizer.py",
@@ -15460,21 +15439,24 @@
       "reasons": []
     },
     {
-      "id": "casebuild-mesh-organization",
+      "id": "branch-lifecycle-intelligence",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/branch-lifecycle-intelligence/skill.py",
+        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "instruction-only package; executable implementation and behavioral verification are not present"
-      ]
+      "reasons": []
     }
   ],
   "combos": [
@@ -15553,7 +15535,7 @@
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     },
     {
@@ -15579,7 +15561,7 @@
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     },
     {
@@ -15605,7 +15587,7 @@
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     },
     {
@@ -15774,7 +15756,7 @@
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     },
     {
@@ -15901,7 +15883,7 @@
       "ready": false,
       "state": "mission_candidate",
       "execution_scope": "read_only",
-      "declared_maturity": "active",
+      "declared_maturity": "candidate",
       "reasons": [
         "required combo not ready: cross-cloud-memory-synthesis"
       ]
@@ -15950,7 +15932,7 @@
       "ready": true,
       "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     },
     {
@@ -16091,10 +16073,9 @@
       "ready": true,
       "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "reasons": []
     }
   ],
-  "pass": 1,
-  "pass1_adapter_repairs": 0
+  "pass": 2
 }
