@@ -339,7 +339,14 @@
         "Unbounded recursive agent spawning without supervisor depth bounds"
       ],
       "firewall_policy": {
-        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
+        "mode": "read_only",
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -356,13 +363,6 @@
         "human_control_points": [
           "approve_swarm_topology",
           "authorize_external_agent_delegation"
-        ],
-        "human_control": {
-          "mode": "supervisor_approval_required"
-        },
-        "required_evidence": [
-          "L2 test suite pass",
-          "SHA-256 verified"
         ]
       },
       "mission_output": "AGENT_ARCHITECT_RECORD.md",
@@ -870,7 +870,7 @@
       "id": "apex-casebuild-mesh",
       "display_name": "APEX Casebuild Mesh",
       "ownership": "glaciereq",
-      "maturity": "active",
+      "maturity": "candidate",
       "version": "1.0.0",
       "path": "mega-skills/apex-casebuild-mesh",
       "entrypoint": "mega-skills/apex-casebuild-mesh/MEGA.md",
@@ -1001,7 +1001,14 @@
         "Live destructive intrusion against unowned infrastructure or unapproved production mutations"
       ],
       "firewall_policy": {
-        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
+        "mode": "read_only",
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -1018,13 +1025,6 @@
         "human_control_points": [
           "approve_security_patches",
           "escalate_critical_vulnerabilities"
-        ],
-        "human_control": {
-          "mode": "supervisor_approval_required"
-        },
-        "required_evidence": [
-          "L2 test suite pass",
-          "SHA-256 verified"
         ]
       },
       "mission_output": "CYBERSECURITY_SENTINEL_RECORD.md",
@@ -1291,7 +1291,7 @@
       "id": "apex-forensic-litigation-sentinel",
       "display_name": "APEX Forensic Litigation Sentinel",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "1.0.0",
       "path": "mega-skills/apex-forensic-litigation-sentinel",
       "entrypoint": "mega-skills/apex-forensic-litigation-sentinel/MEGA.md",
@@ -1404,7 +1404,14 @@
         "Unauthorized email dispatch, dark patterns, or real ad credit charging"
       ],
       "firewall_policy": {
-        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
+        "mode": "read_only",
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -1421,13 +1428,6 @@
         "human_control_points": [
           "approve_live_campaign",
           "authorize_ad_budget_allocation"
-        ],
-        "human_control": {
-          "mode": "supervisor_approval_required"
-        },
-        "required_evidence": [
-          "L2 test suite pass",
-          "SHA-256 verified"
         ]
       },
       "mission_output": "GROWTH_INTELLIGENCE_RECORD.md",
@@ -1519,7 +1519,14 @@
         "Direct native GPU firmware manipulation or audio driver overrides"
       ],
       "firewall_policy": {
-        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
+        "mode": "read_only",
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -1535,13 +1542,6 @@
         "human_control_points": [
           "approve_asset_publishing",
           "release_interactive_build"
-        ],
-        "human_control": {
-          "mode": "supervisor_approval_required"
-        },
-        "required_evidence": [
-          "L2 test suite pass",
-          "SHA-256 verified"
         ]
       },
       "mission_output": "INTERACTIVE_ENGINE_RECORD.md",
@@ -2213,7 +2213,14 @@
         "Destructive database drops or unauthorized live DNS alterations"
       ],
       "firewall_policy": {
-        "mode": "read_only","required_evidence": ["input_manifest", "phase_receipts", "output_manifest", "failure_record"], "human_control": "required",
+        "mode": "read_only",
+        "required_evidence": [
+          "L2 test suite pass",
+          "SHA-256 verified"
+        ],
+        "human_control": {
+          "mode": "supervisor_approval_required"
+        },
         "allowed_actions": [
           "read_repository",
           "run_local_tests",
@@ -2230,13 +2237,6 @@
         "human_control_points": [
           "approve_production_deployment",
           "approve_domain_rebinding"
-        ],
-        "human_control": {
-          "mode": "supervisor_approval_required"
-        },
-        "required_evidence": [
-          "L2 test suite pass",
-          "SHA-256 verified"
         ]
       },
       "mission_output": "VERCEL_WEB_FOUNDRY_RECORD.md",
@@ -2506,7 +2506,7 @@
       "id": "apex-orchestrator-mesh",
       "display_name": "Apex Orchestrator Mesh",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "mega-skills/apex-orchestrator-mesh",
       "entrypoint": "mega-skills/apex-orchestrator-mesh/MEGA.md",

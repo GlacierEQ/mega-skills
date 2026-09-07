@@ -196,6 +196,38 @@
       ],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/cultivate_main.py"
+    },
+    {
+      "id": "transcribe-organize-legal-code",
+      "display_name": "APEX Transcription & Organization Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/transcribe-organize-legal-code.json",
+      "family": "specialized",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "build",
+        "verify",
+        "package",
+        "fuse",
+        "deliver"
+      ],
+      "mega_roots": [
+        "apex-always-on-core",
+        "apex-orchestration",
+        "apex-free-provider",
+        "apex-epistemic-gate",
+        "apex-holographic-mesh"
+      ],
+      "required_combos": [
+        "pipeline-orchestration",
+        "epistemic-compliance"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
     }
   ]
 }

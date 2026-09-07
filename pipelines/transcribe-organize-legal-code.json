@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "id": "transcribe-organize-legal-code",
+  "display_name": "APEX Transcription & Organization Pipeline",
+  "description": "Dispatches audio transcription across APEX 12-lane holographic mesh with L2 proof receipts and FUSE integration. For legal + engineering code transcription and organization.",
+  "family": "specialized",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "build",
+    "verify",
+    "package",
+    "fuse",
+    "deliver"
+  ],
+  "mega_roots": [
+    "apex-always-on-core",
+    "apex-orchestration",
+    "apex-free-provider",
+    "apex-epistemic-gate",
+    "apex-holographic-mesh"
+  ],
+  "required_combos": [
+    "pipeline-orchestration",
+    "epistemic-compliance"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 4,
+  "manifest": "missions/transcribe-organize/manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/transcribe-organize/MISSION.md",
+        "missions/transcribe-organize/CONTEXT.md",
+        "missions/transcribe-organize/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/inception.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/READINESS.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/RECON.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/BUILD.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 300
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/BUILD.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/VERIFY.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/VERIFY.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/PACKAGE.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 300
+    },
+    {
+      "id": "fuse",
+      "phase": "fuse",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "fuse"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/PACKAGE.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/FUSE.json"
+      ],
+      "resume_safe": true,
+      "approval_required": true,
+      "timeout_seconds": 300
+    },
+    {
+      "id": "deliver",
+      "phase": "deliver",
+      "needs": [
+        "fuse"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "transcribe-organize-legal-code",
+        "--family",
+        "specialized",
+        "--stage",
+        "deliver"
+      ],
+      "consumes": [
+        "missions/transcribe-organize/FUSE.json"
+      ],
+      "produces": [
+        "missions/transcribe-organize/DELIVER.json"
+      ],
+      "resume_safe": true,
+      "approval_required": true,
+      "timeout_seconds": 180
+    }
+  ]
+}
