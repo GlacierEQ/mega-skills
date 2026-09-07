@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
-"""Compatibility adapter for agent-memory-systems; package discovery only, not domain execution."""
-import json
-import sys
+"""Compatibility entrypoint that delegates to the substantive continuation CLI."""
 
-def main() -> int:
-    wants_execute = "--execute" in sys.argv[1:]
-    payload = {
-        "skill": "agent-memory-systems",
-        "adapter": True,
-        "capability_executed": False,
-        "status": "execution_unavailable" if wants_execute else "adapter_ready",
-        "reason": (
-            "Generic compatibility adapter has no domain execution implementation. Use SKILL.md or a substantive package entrypoint."
-            if wants_execute else "Compatibility adapter is installed and discoverable."
-        ),
-    }
-    print(json.dumps(payload, indent=2, sort_keys=True))
-    return 2 if wants_execute else 0
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+SKILL_DIR = Path(__file__).resolve().parent.parent
+if str(SKILL_DIR) not in sys.path:
+    sys.path.insert(0, str(SKILL_DIR))
+
+from skill import main
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))
