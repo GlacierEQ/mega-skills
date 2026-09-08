@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "mission": "1fdv-deep-casebuilding",
+  "case_number": "1FDV-23-0001009",
+  "caption": "Barton v. Barton",
+  "court": "Family Court of the First Circuit, State of Hawaii",
+  "timezone": "Pacific/Honolulu",
+  "evidence_roots": ["missions/1fdv-23-0001009/intake"],
+  "audio_roots": ["missions/1fdv-23-0001009/audio"],
+  "bates_prefix": "1FDV",
+  "source_systems": {
+    "dropbox_audio": "/APEX/EVIDENCE/AUDIO/",
+    "icloud_audio": "UNIFIED_FORENSIC_LIBRARY/04_AUDIO",
+    "notion_inventory": "https://www.notion.so/2eeb1e4f322381989b88d91bf2b02046",
+    "exhibit_register": "missions/1fdv-23-0001009/exhibits.json"
+  },
+  "notes": "Live mission instance of the deep-casebuilding pipeline for 1FDV-23-0001009. Original media stay in their source systems (Dropbox/iCloud) untouched; working copies dropped into intake/ and audio/ are hashed, scanned, Bates-planned, and custody-chained here."
+}

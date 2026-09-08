@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "id": "1fdv-deep-casebuilding",
+  "description": "Live deep-casebuilding instance for 1FDV-23-0001009 (Barton v. Barton): intake validation, hashing, anomaly scan, Bates planning + verification, docket timeline verification, PII scan, hash-chained manifest, audio custody, audio exhibit serials, transcript compile/verify, alignment + diarization verification, cluster test suites, dossier.",
+  "max_parallel": 2,
+  "manifest": "missions/1fdv-23-0001009/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "validate-intake",
+      "command": ["{python}", "-c", "import json; d=json.load(open('missions/1fdv-23-0001009/case-intake.json')); assert d['schema_version']==1; assert d['case_number']=='1FDV-23-0001009'; assert isinstance(d['evidence_roots'], list); assert d['bates_prefix']; print('intake-ok')"],
+      "consumes": ["missions/1fdv-23-0001009/case-intake.json"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "hash-evidence-intake",
+      "needs": ["validate-intake"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/sha256_digester.py", "--root", "missions/1fdv-23-0001009/intake", "--out", "missions/1fdv-23-0001009/digests.json"],
+      "consumes": ["missions/1fdv-23-0001009/intake"],
+      "produces": ["missions/1fdv-23-0001009/digests.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-hashes",
+      "needs": ["hash-evidence-intake"],
+      "command": ["{python}", "-c", "import json; d=json.load(open('missions/1fdv-23-0001009/digests.json')); assert d['algorithm']=='sha256'; assert d['file_count']==len(d['files']); assert all(len(f['sha256'])==64 for f in d['files']); print('hashes-ok')"],
+      "consumes": ["missions/1fdv-23-0001009/digests.json"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "scan-anomalies",
+      "needs": ["verify-hashes"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py", "--root", "missions/1fdv-23-0001009/intake", "--out", "missions/1fdv-23-0001009/anomalies.json"],
+      "consumes": ["missions/1fdv-23-0001009/intake"],
+      "produces": ["missions/1fdv-23-0001009/anomalies.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "assign-bates",
+      "needs": ["scan-anomalies"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/bates_stamper.py", "--manifest", "missions/1fdv-23-0001009/digests.json", "--prefix", "1FDV", "--schema", "skills/forensic-evidence-chain-core/resources/bates_serial_schema.yaml", "--out", "missions/1fdv-23-0001009/bates.json"],
+      "consumes": ["missions/1fdv-23-0001009/digests.json"],
+      "produces": ["missions/1fdv-23-0001009/bates.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-bates-contiguity",
+      "needs": ["assign-bates"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/bates_stamper.py", "--verify", "missions/1fdv-23-0001009/bates.json"],
+      "consumes": ["missions/1fdv-23-0001009/bates.json"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "verify-docket-timeline",
+      "needs": ["verify-bates-contiguity"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py", "--events", "missions/1fdv-23-0001009/events.json", "--out", "missions/1fdv-23-0001009/timestamp-report.json"],
+      "consumes": ["missions/1fdv-23-0001009/events.json"],
+      "produces": ["missions/1fdv-23-0001009/timestamp-report.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "scan-pii",
+      "needs": ["verify-docket-timeline"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py", "--root", "missions/1fdv-23-0001009/intake", "--report", "missions/1fdv-23-0001009/pii-report.json"],
+      "consumes": ["missions/1fdv-23-0001009/intake"],
+      "produces": ["missions/1fdv-23-0001009/pii-report.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "emit-master-manifest",
+      "needs": ["scan-pii"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py", "--digests", "missions/1fdv-23-0001009/digests.json", "--bates", "missions/1fdv-23-0001009/bates.json", "--anomalies", "missions/1fdv-23-0001009/anomalies.json", "--timestamps", "missions/1fdv-23-0001009/timestamp-report.json", "--out", "missions/1fdv-23-0001009/BATES_MANIFEST.json", "--timeline", "missions/1fdv-23-0001009/00_FORENSIC_MASTER_TIMELINE.json"],
+      "consumes": ["missions/1fdv-23-0001009/digests.json", "missions/1fdv-23-0001009/bates.json", "missions/1fdv-23-0001009/anomalies.json", "missions/1fdv-23-0001009/timestamp-report.json"],
+      "produces": ["missions/1fdv-23-0001009/BATES_MANIFEST.json", "missions/1fdv-23-0001009/00_FORENSIC_MASTER_TIMELINE.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-manifest-chain",
+      "needs": ["emit-master-manifest"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py", "--verify", "missions/1fdv-23-0001009/BATES_MANIFEST.json"],
+      "consumes": ["missions/1fdv-23-0001009/BATES_MANIFEST.json"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "audit-audio-custody",
+      "needs": ["verify-manifest-chain"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/sha256_audit.py", "--root", "missions/1fdv-23-0001009/audio", "--out", "missions/1fdv-23-0001009/custody.json"],
+      "consumes": ["missions/1fdv-23-0001009/audio"],
+      "produces": ["missions/1fdv-23-0001009/custody.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "plan-audio-exhibit-serials",
+      "needs": ["audit-audio-custody"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/bates_stamper.py", "--exhibits", "missions/1fdv-23-0001009/exhibits.json", "--prefix", "1FDV-AUD", "--out", "missions/1fdv-23-0001009/audio-bates-plan.json"],
+      "consumes": ["missions/1fdv-23-0001009/exhibits.json"],
+      "produces": ["missions/1fdv-23-0001009/audio-bates-plan.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-audio-exhibit-serials",
+      "needs": ["plan-audio-exhibit-serials"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/bates_stamper.py", "--verify", "missions/1fdv-23-0001009/audio-bates-plan.json"],
+      "consumes": ["missions/1fdv-23-0001009/audio-bates-plan.json"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "compile-sample-transcript",
+      "needs": ["verify-audio-exhibit-serials"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/transcript_formatter.py", "--alignment", "missions/1fdv-23-0001009/fixtures/alignment.sample.json", "--rules", "skills/audio-forensic-core/resources/court_rules_hi_family.yaml", "--case-number", "1FDV-23-0001009", "--caption", "Barton v. Barton", "--out", "missions/1fdv-23-0001009/transcripts/sample-transcript.txt", "--verify", "missions/1fdv-23-0001009/transcript-verify.json"],
+      "consumes": ["missions/1fdv-23-0001009/fixtures/alignment.sample.json", "skills/audio-forensic-core/resources/court_rules_hi_family.yaml"],
+      "produces": ["missions/1fdv-23-0001009/transcripts/sample-transcript.txt", "missions/1fdv-23-0001009/transcript-verify.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-alignment",
+      "needs": ["compile-sample-transcript"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/whisperx_align.py", "--verify-alignment", "missions/1fdv-23-0001009/fixtures/alignment.sample.json", "--out", "missions/1fdv-23-0001009/alignment-verify.json"],
+      "consumes": ["missions/1fdv-23-0001009/fixtures/alignment.sample.json"],
+      "produces": ["missions/1fdv-23-0001009/alignment-verify.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "verify-diarization",
+      "needs": ["verify-alignment"],
+      "command": ["{python}", "skills/audio-forensic-core/scripts/speaker_diarize.py", "--verify-segments", "missions/1fdv-23-0001009/fixtures/segments.sample.json", "--out", "missions/1fdv-23-0001009/diarization-report.json"],
+      "consumes": ["missions/1fdv-23-0001009/fixtures/segments.sample.json"],
+      "produces": ["missions/1fdv-23-0001009/diarization-report.json"],
+      "resume_safe": true
+    },
+    {
+      "id": "test-forensic-evidence-chain-core",
+      "needs": ["verify-diarization"],
+      "command": ["{python}", "skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"],
+      "consumes": ["skills/forensic-evidence-chain-core/tests/test_forensic_evidence_chain_core.py"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "test-audio-forensic-core",
+      "needs": ["test-forensic-evidence-chain-core"],
+      "command": ["{python}", "skills/audio-forensic-core/tests/test_audio_forensic_core.py"],
+      "consumes": ["skills/audio-forensic-core/tests/test_audio_forensic_core.py"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "test-epistemic-gate",
+      "needs": ["test-audio-forensic-core"],
+      "command": ["{python}", "skills/epistemic-gate/tests/test_epistemic_gate.py"],
+      "consumes": ["skills/epistemic-gate/tests/test_epistemic_gate.py"],
+      "produces": [],
+      "resume_safe": false
+    },
+    {
+      "id": "compile-casebuilding-dossier",
+      "needs": ["test-epistemic-gate"],
+      "command": ["{python}", "-c", "import json,pathlib; base=pathlib.Path('missions/1fdv-23-0001009'); m=json.load(open(base/'BATES_MANIFEST.json')); t=json.load(open(base/'transcript-verify.json')); a=json.load(open(base/'alignment-verify.json')); d=json.load(open(base/'diarization-report.json')); ab=json.load(open(base/'audio-bates-plan.json')); assert len(m['chain_root_sha256'])==64; assert t['format_compliant']; assert a['aligned']; assert d['valid']; assert ab['validation']['contiguous']; out={'schema_version':1,'case_number':'1FDV-23-0001009','chain_root':m['chain_root_sha256'],'audio_exhibits_planned':ab['validation']['exhibits'],'transcript_pages':t['pages'],'words_aligned':a['word_count'],'speakers':d['speaker_count'],'status':'dossier_compiled'}; (base/'DEEP_CASEBUILDING_DOSSIER.json').write_text(json.dumps(out,indent=2)+chr(10)); print('1fdv-deep-casebuilding-dossier-ok')"],
+      "consumes": ["missions/1fdv-23-0001009/BATES_MANIFEST.json", "missions/1fdv-23-0001009/transcript-verify.json", "missions/1fdv-23-0001009/alignment-verify.json", "missions/1fdv-23-0001009/diarization-report.json", "missions/1fdv-23-0001009/audio-bates-plan.json"],
+      "produces": ["missions/1fdv-23-0001009/DEEP_CASEBUILDING_DOSSIER.json"],
+      "resume_safe": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source": "Docket Timeline rows verified from JEFS NEF notices (Continuity Ledger ENTRY 011, 2026-07-29)",
+  "events": [
+    {"id": "dkt-213", "timestamp": "2025-11-17", "kind": "docket_filing", "note": "Court-filed exhibit list (Dkt 213)"},
+    {"id": "dkt-215", "timestamp": "2026-06-30T23:54:00-10:00", "kind": "docket_filing", "note": "Rule 60(b) voidness motion filed (Dkt 215)"},
+    {"id": "dkt-217", "timestamp": "2026-07-02", "kind": "docket_filing", "note": "CSEA baseline duties filing (Dkt 217), pending"},
+    {"id": "dkt-219", "timestamp": "2026-07-02", "kind": "docket_filing", "note": "Selective urgency filing (Dkt 219), pending"},
+    {"id": "dkt-221", "timestamp": "2026-07-02", "kind": "docket_filing", "note": "Equal scheduling filing (Dkt 221), pending"},
+    {"id": "dkt-223", "timestamp": "2026-07-06", "kind": "docket_order", "note": "60(b) motion denied without alternative evidentiary hearing; 'RETURN TO PLAINTIFF PRO SE' anomaly (Dkt 223)"},
+    {"id": "dkt-225", "timestamp": "2026-07-18T23:58:00-10:00", "kind": "docket_filing", "note": "Corrected 60(b) resubmission preserving original filing date (Dkt 225)"}
+  ]
+}
