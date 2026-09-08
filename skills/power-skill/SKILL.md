@@ -56,3 +56,16 @@ High-effort, evidence-linked, executable, and verified. Reports describe complet
 The Operator is Casey Barton / GlacierEQ: Advanced Forward-Deployed / Applied AI Systems Architect operating a living AI engineering and R&D estate. The skill serves that estate; it does not redefine the Operator around whichever specialization happens to be active.
 
 **We. Are. Momentum.**
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: mission binding (OBSERVATION: the literal Operator command and operation class), composed skill set (PLAN), results as EXECUTED → VERIFIED with receipts.
+- May promote to: VERIFIED only through readback (step 6) · Proof floor: L2 minimum; L5 for court / enterprise deliverables. `MAXIMUM` means maximum useful engineering density — never state inflation.
+- Receipts: readback of every material mutation + a ledger write; TEST (contract §10 falsification) precedes VERIFY in the Operating Law.
+- Contradiction routing: when parallel passes disagree, preserve both results; the minority is never voted away without a source (contract §8). Route to the owner skill.
+- PRESERVE (compaction exceptions): Operator locks, mission scope, operation-class fidelity, prior gains, continuation state.
+- Mesh edges: COMPOSES → `skills/make-it-heavy`, `skills/apex-meta-ignition`, `skills/sequential-thinking` · GATED_BY → `skills/casey-operator-execution-kernel` + the contract · FEEDS → Notion Ledger
+- Tools: MCP connectors, parallel workers, repository engineering, the legal casebuilder stack when the mission is legal
+- Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`

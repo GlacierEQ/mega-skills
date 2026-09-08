@@ -43,3 +43,16 @@ Works with every other skill. Routes to evidence-engine, apex-task-router, sover
 Every action is tool-executed or file-based. No filler. Savings measured by reduced response length + increased tool/file reliance. Report exact blockers if further minimization is impossible.
 
 **We. Are. Momentum.**
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: compaction records (OBSERVATION) + pointers to the offloaded artifact (file path, page id, SHA). Compaction changes no claim state.
+- May promote to: nothing · Proof floor: L2 (every pointer must resolve on readback)
+- Receipts: the compaction record + the source pointer; "offloaded" without a resolvable pointer is GENERATED, not EXECUTED.
+- Contradiction routing: if a compacted summary disagrees with its source, stop, keep both, route to the owning skill (contract §8). Never "fix" the source to match the summary.
+- PRESERVE (compaction exceptions): SHAs, docket/record numbers, timestamps, hashes, deadlines, URLs, page ids, verbatim legal authority, operator PRESERVE marks.
+- Mesh edges: GATES → every output · COMPOSED_BY → `mega-skills/apex-always-on-core` · GATED_BY → contract §9 (compaction & humanizer boundary) · PEER_OF → `skills/token-saver`
+- Tools: offload (`write_file` / `edit_file`, GitHub, Notion, Drive), todo tracking, parallel tool calls · `token_saver` append-only cache
+- Notion projection: Token Saver — Always-On (max-token-saver v1.1) · page `c9a7e59c104345b29dce4a04b6a7d657` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`

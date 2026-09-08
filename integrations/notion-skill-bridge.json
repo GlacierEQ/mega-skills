@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "contract_id": "notion.skill-bridge",
+  "title": "Notion <-> mega-skills skill bridge: epistemic contract, skill mesh, tool bindings",
+  "generated_at": "2026-09-07T19:50:00Z",
+  "generated_by": "Notion AI session (operator-directed)",
+  "provider": {
+    "repository": "GlacierEQ/mega-skills",
+    "base_ref": "0fc5de294d029fddbfdd4d0ee7694203b92981b0",
+    "branch": "notion-bridge/epistemic-mesh-20260907",
+    "merge_state": "unmerged_pr_pending_operator_approval",
+    "blob_sha_note": "repo_paths[].blob_sha values are blob SHAs at base_ref, i.e. the content read before hook sections were appended on this branch. Re-baseline at merge."
+  },
+  "consumer": {
+    "system": "Notion AI skills (isSkill pages)",
+    "notion_url_template": "https://www.notion.so/{notion_page_id}",
+    "hub": { "title": "SKILL CODEX - Six Capability Legs (Skills + Framework Tasks)", "notion_page_id": "ee44bb9baaa344f785843f8b00e4dbaf" },
+    "substrate_parent": { "title": "SKILL 5 - Memory & Continuity Engineering", "notion_page_id": "a0db5ee649c44e7a9d6af8366227bf96" },
+    "ledger": { "title": "SuperNova Continuity Ledger - Session Memory", "notion_page_id": "6b2f21f8a8454aa69c533824900ea43b" }
+  },
+  "docs": [
+    "docs/EPISTEMIC_CONTRACT.md",
+    "docs/SKILL_MESH_AND_TOOLS.md",
+    "governance/decision-records/2026-09-07-notion-skill-bridge-epistemic-mesh.md"
+  ],
+  "vocabulary": {
+    "edge_types": ["COMPOSES", "GATES", "FEEDS", "VERIFIES", "MIRRORS", "ROUTES_TO", "PEER_OF", "SUPERSEDES", "CONTRADICTS", "DERIVED_FROM"],
+    "claim_types": ["FACT", "OBSERVATION", "INFERENCE", "HYPOTHESIS", "PROPOSAL", "PLAN", "QUESTION", "UNKNOWN"],
+    "evidence_states": ["known_from_context", "operator_reported", "retrieval_pending", "not_searched", "searched_found", "searched_not_found", "unavailable", "contradicted"],
+    "outcome_statuses": ["pending", "observed", "verified", "contradicted"],
+    "execution_states": ["OBSERVED", "INFERRED", "HYPOTHESIZED", "PROPOSED", "ATTEMPTED", "EXECUTED", "VERIFIED", "COMMITTED", "DEPLOYED", "OBSERVED_IN_OPERATION"],
+    "proof_tiers": { "L0": "presence", "L1": "structure", "L2": "behavior (baseline for any mutation claim)", "L3": "backend", "L4": "telemetry", "L5": "swarm consensus (court/enterprise floor)", "L6": "sovereign autonomy" },
+    "source_grades": { "A": "primary / provider-native", "B": "controlled mirror with hash + provenance pointer", "C": "secondary / index", "D": "assistant-generated representation", "X": "unknown provenance" }
+  },
+  "legends": {
+    "is_skill": { "verified": "Notion AI skill flag set and read back this session", "executed": "flag set; readback not yet performed", "unknown": "not checked this session" },
+    "read_state": { "blob_read": "content read at blob level this session", "registry_confirmed": "present in registry or referenced by a read file; content not read", "path_confirmed": "path listed; content not read", "new_on_branch": "created by this branch; no base blob" }
+  },
+  "entries": [
+    {
+      "id": "notion.epistemic-contract", "kind": "substrate",
+      "title": "Epistemic Contract - Proof-Bound Claims (Skill Substrate)",
+      "notion_page_id": "f86b7bc950e84c5b9f8b7272883dd18d", "is_skill": "executed",
+      "repo_paths": [
+        { "path": "docs/EPISTEMIC_CONTRACT.md", "blob_sha": null, "read_state": "new_on_branch" },
+        { "path": "skills/epistemic-gate/SKILL.md", "blob_sha": "16ff5ee68e38204bf41f4f33b32b7c20a4d9291f", "read_state": "blob_read" },
+        { "path": "combo-skills/epistemic-verification-chain/COMBO.md", "blob_sha": "4342942ced6a7d91354167680c7d4e0ed94f5dd2", "read_state": "blob_read" },
+        { "path": "skills/holographic-case-mesh/SKILL.md", "blob_sha": "87b5a7f11e3fdc6d2ef416bf1d6823118b439143", "read_state": "blob_read" },
+        { "path": "integrations/genius-mastery-bridge.json", "blob_sha": "679837712dc53475f240b8777e8ccd630ecd73d8", "read_state": "blob_read" }
+      ],
+      "triggers": ["verify", "prove it", "source?", "is this true", "what state is this in", "any VERIFIED/COMPLETE/FILED/SENT/MERGED claim", "any contradiction", "any compaction"],
+      "edges": [ { "type": "GATES", "to": "*" }, { "type": "DERIVED_FROM", "to": ["skills/epistemic-gate", "combo-skills/epistemic-verification-chain", "integrations/genius-mastery-bridge.json", "skills/holographic-case-mesh", "skills/casey-operator-execution-kernel"] }, { "type": "FEEDS", "from": "notion.apex-learning-loop" } ],
+      "tools": { "notion_runtime": ["page readback", "SQL query", "blob SHA read via get_file_contents", "sha256sum in sandbox"], "repo": ["skills/epistemic-gate scripts", "test suites"] },
+      "epistemic": { "emits": ["typed claims", "proof tier", "receipt list"], "may_promote_to": [], "proof_floor": "L2", "receipts": ["typed state block", "epistemic-verification-receipt.json"], "contradiction_routing": "owner page as open issue; CONTRADICTS edge", "preserve": ["all locators"] }
+    },
+    {
+      "id": "notion.skill-mesh", "kind": "substrate",
+      "title": "Skill Mesh & Tool Bindings - Typed Edges + Tool Routing",
+      "notion_page_id": "7bcb81c6952d4b83b221a8244da48b34", "is_skill": "executed",
+      "repo_paths": [
+        { "path": "docs/SKILL_MESH_AND_TOOLS.md", "blob_sha": null, "read_state": "new_on_branch" },
+        { "path": "skills/master/SKILL.md", "blob_sha": "57edfcd5190a74e69f4767efbff3d2695de57a2d", "read_state": "blob_read" },
+        { "path": "MESH_PEERS.json", "blob_sha": null, "read_state": "path_confirmed" }
+      ],
+      "triggers": ["which skill", "route", "connect", "cross-link", "what tools", "drift", "sync Notion and GitHub", "request spanning more than one leg"],
+      "edges": [ { "type": "ROUTES_TO", "to": "*" }, { "type": "MIRRORS", "to": "skills/master" } ],
+      "tools": { "notion_runtime": ["tool-binding table", "directory listing for drift", "page load for skill flag"], "repo": ["skills/master tree", "MESH_PEERS.json", "registry/*.json"] },
+      "epistemic": { "emits": ["routing decision (INFERENCE with ranking shown)", "drift report (OBSERVATION)"], "may_promote_to": ["VERIFIED (edge resolvable both ends)"], "proof_floor": "L2", "receipts": ["manifest SHA diff"], "contradiction_routing": "drift -> issue on owner + ledger note; never auto-overwrite", "preserve": ["edge types", "page ids", "blob SHAs"] }
+    },
+    {
+      "id": "notion.token-saver", "kind": "substrate",
+      "title": "Token Saver - Always-On (max-token-saver v1.1)",
+      "notion_page_id": "c9a7e59c104345b29dce4a04b6a7d657", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/max-token-saver/SKILL.md", "blob_sha": "71d68c2d0645e47c836fafe1161c1e1412287beb", "read_state": "blob_read", "hooked_on_branch": true },
+        { "path": "skills/token-saver/SKILL.md", "blob_sha": "4ebeb1d0ac00d6365240db04b526eeda245f4d5a", "read_state": "blob_read", "hooked_on_branch": true }
+      ],
+      "triggers": ["max-token-saver", "token saver always", "max efficiency mode", "compact", "save tokens", "task longer than 3 tool calls", "context above ~70%"],
+      "edges": [ { "type": "GATES", "to": "every output" }, { "type": "COMPOSES", "from": "notion.always-on-core" }, { "type": "GATES", "from": "notion.epistemic-contract" } ],
+      "tools": { "notion_runtime": ["offload to sandbox files or child pages", "todo tracker", "parallel calls"], "repo": ["token_saver append-only cache"] },
+      "epistemic": { "emits": ["compaction records (OBSERVATION)", "pointers"], "may_promote_to": [], "proof_floor": "L2", "receipts": ["compaction record + source pointer"], "contradiction_routing": "stop; keep both; route to owner", "preserve": ["SHA", "docket/record number", "timestamp", "hash", "deadline", "URL", "page id", "verbatim legal authority", "operator PRESERVE marks"] }
+    },
+    {
+      "id": "notion.always-on-core", "kind": "substrate",
+      "title": "APEX Always-On Core - Long-Horizon Operating Loop",
+      "notion_page_id": "17811a298d2c4d328f293e63ad5a91ca", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "mega-skills/apex-always-on-core/MEGA.md", "blob_sha": "847e7ab212531c45766cf58e73b47cce3ce8dee5", "read_state": "blob_read", "hooked_on_branch": true },
+        { "path": "combo-skills/long-horizon-core/COMBO.md", "blob_sha": "6c27948004de6fee7e41141094458bfce2b039b8", "read_state": "blob_read", "hooked_on_branch": true }
+      ],
+      "triggers": ["always on", "long horizon", "keep going", "continue the mission", "handoff", "resume", "where were we", "session start"],
+      "edges": [ { "type": "COMPOSES", "to": ["notion.kernel", "notion.token-saver", "combo-skills/long-horizon-core", "notion.epistemic-contract"] }, { "type": "VERIFIES", "from": "skills/quality-gate" }, { "type": "MIRRORS", "to": "GlacierEQ/apex-control-plane" } ],
+      "tools": { "notion_runtime": ["ledger load/update", "unified + realtime search"], "repo": ["scripts/deep_work_stage.py", "MISSION.md", "ROADMAP.md", "EVIDENCE.md", "CONTEXT.md", "HANDOFF.md"] },
+      "epistemic": { "emits": ["PLAN (MISSION/ROADMAP)", "FACT with grade (EVIDENCE)", "grade-D pointer set (CONTEXT)", "OBSERVATION (HANDOFF)"], "may_promote_to": ["COMPLETE only with quality-gate PASS + HANDOFF + every gap blocked or assigned"], "proof_floor": "L2", "receipts": ["HANDOFF.md or ledger entry", "EVIDENCE.md hashes"], "contradiction_routing": "Harmonious Merge Watch -> evidence-acquisition work packet; never resolves", "preserve": ["source != summary", "journal continuity", "alias lineage"] }
+    },
+    {
+      "id": "notion.kernel", "kind": "substrate",
+      "title": "Casey Operator Execution Kernel - Authority, Locks, Gates",
+      "notion_page_id": "6184d704135440b19a2e1894a50ffa12", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/casey-operator-execution-kernel/SKILL.md", "blob_sha": "5f9b881e0962230f868eb8b3b389b6b147d2436e", "read_state": "blob_read", "hooked_on_branch": true }
+      ],
+      "triggers": ["any operator message", "semantic lock words", "broad estate command", "any correction"],
+      "edges": [ { "type": "GATES", "to": ["notion.power-skill", "notion.pipelines", "all writes"] }, { "type": "DERIVED_FROM", "to": "skills/holographic-case-mesh" } ],
+      "tools": { "notion_runtime": ["interpretive: governs every tool", "page readback", "get_file_contents"], "repo": [] },
+      "epistemic": { "emits": ["lock resolution (OBSERVATION)", "mission selection (INFERENCE with ranking)", "authority rulings"], "may_promote_to": [], "proof_floor": "L2", "receipts": ["readback for any authorized mutation"], "contradiction_routing": "correction stickiness + SUPERSEDES edge + state repair with lineage", "preserve": ["exact terminology", "identities", "decisions", "receipts", "contradictions"], "pre_response_test_questions": 13 }
+    },
+    {
+      "id": "notion.power-skill", "kind": "substrate",
+      "title": "Power-Skill - Maximum Operator Execution (make-it-heavy)",
+      "notion_page_id": "c6eb8644d7474ccb818ad92dbc737d67", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/power-skill/SKILL.md", "blob_sha": "da8eee97d8fe3df53aa1ebc884123b6010cac519", "read_state": "blob_read", "hooked_on_branch": true },
+        { "path": "skills/make-it-heavy/SKILL.md", "blob_sha": "3f57b40791f36afd2ea6372ac9ac92f15d07b466", "read_state": "blob_read", "hooked_on_branch": true },
+        { "path": "skills/apex-meta-ignition/SKILL.md", "blob_sha": "ab77c68764e66e532a3dd92e3f3e356d53c4bc91", "read_state": "blob_read", "hooked_on_branch": true }
+      ],
+      "triggers": ["MAXIMUM", "make it heavy", "best of all worlds", "highest possible skill level", "major upgrades", "compounding capability"],
+      "edges": [ { "type": "COMPOSES", "to": ["skills/make-it-heavy", "skills/apex-meta-ignition", "skills/sequential-thinking"] }, { "type": "GATES", "from": ["notion.kernel", "notion.epistemic-contract"] }, { "type": "FEEDS", "to": "ledger" } ],
+      "tools": { "notion_runtime": ["parallel function calls", "sandbox terminal", "agent threads", "GitHub write tools under explicit operator authorization"], "repo": ["make-it-heavy runner", "repo scripts"] },
+      "epistemic": { "emits": ["mission binding (OBSERVATION)", "composed skill set (PLAN)", "results EXECUTED -> VERIFIED with receipts"], "may_promote_to": ["VERIFIED via step 8 readback"], "proof_floor": "L2 (L5 for court/enterprise deliverables)", "receipts": ["readback", "ledger write"], "contradiction_routing": "disagreeing parallel passes both preserved and routed", "preserve": ["operator semantics (locks)", "mission scope", "operation-class fidelity"] }
+    },
+    {
+      "id": "notion.pipelines", "kind": "substrate",
+      "title": "Mega-Skills Pipelines - Approval-Gated Deep Work",
+      "notion_page_id": "a9fd045e0b574acb9d43a4b7e9d35abe", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "registry/pipelines.json", "blob_sha": null, "blob_sha_short": "9a264185", "read_state": "blob_read" },
+        { "path": "pipelines/control-plane.json", "blob_sha": "f555e5c8713f9a5e46b38528f50ea87f89995d46", "read_state": "blob_read" },
+        { "path": "schemas/pipeline.schema.json", "blob_sha": null, "read_state": "path_confirmed" }
+      ],
+      "triggers": ["run the pipeline", "deep work", "inception to deployment", "control plane", "ship", "cultivate main"],
+      "edges": [ { "type": "VERIFIES", "to": "deploy-gate (human)" }, { "type": "COMPOSES", "from": "notion.always-on-core" }, { "type": "GATES", "from": ["notion.kernel", "notion.epistemic-contract"] } ],
+      "tools": { "notion_runtime": ["get_file_contents to route to pipeline JSON", "mission-control rows"], "repo": ["scripts/run_deep_work_pipeline.py", "scripts/deep_work_stage.py", "scripts/validate_hierarchy.py"] },
+      "epistemic": { "emits": ["stage artifacts (EXECUTED)", "VERIFY.json / EVIDENCE.md (L2 receipts)", "RELEASE_PACKET (PROPOSED)", "DEPLOYMENT_DECISION.json (human OBSERVATION)"], "may_promote_to": ["DEPLOYED only after human decision + runtime observation"], "proof_floor": "L2", "receipts": ["per-stage artifact hashes", "deploy-gate approval record"], "contradiction_routing": "registry vs README drift recorded; registry wins on provenance strength; README never silently edited", "preserve": ["stage order", "not-resume-safe flags on verify and deploy-gate", "max_parallel: 1"] }
+    },
+    {
+      "id": "notion.leg1-case-architecture", "kind": "leg",
+      "title": "SKILL 1 - Case Architecture (Jurisdiction-First Systematization)",
+      "notion_page_id": "0e139ae7c3da4832b912d4e26eb098ff", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/holographic-case-mesh/SKILL.md", "blob_sha": "87b5a7f11e3fdc6d2ef416bf1d6823118b439143", "read_state": "blob_read" },
+        { "path": "mega-skills/apex-casebuild-mesh/MEGA.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "skills/mission-contract/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" }
+      ],
+      "triggers": ["structure the case", "which jurisdiction / lane", "actor/issue chain", "source-control row", "new matter"],
+      "edges": [ { "type": "FEEDS", "to": ["notion.leg3-docket-forensics", "notion.leg4-filing-production"] }, { "type": "GATES", "from": "notion.kernel" }, { "type": "DERIVED_FROM", "to": "skills/holographic-case-mesh" } ],
+      "tools": { "notion_runtime": ["database load + SQL over lane matrices", "page creation"], "repo": ["holographic-case-mesh node kernel"] },
+      "epistemic": { "emits": ["lane assignment (INFERENCE until source-bound)", "eight-field row (FACT when quote/pin verbatim)"], "may_promote_to": ["VERIFIED when all eight fields filled and row reads back"], "proof_floor": "L2", "receipts": ["row URL + source locator"], "contradiction_routing": "both kept; CONTRADICTS edge; lane review chain", "preserve": ["record pins", "verbatim quotes", "node identities"] }
+    },
+    {
+      "id": "notion.leg2-forensic-evidence", "kind": "leg",
+      "title": "SKILL 2 - Forensic Evidence Management",
+      "notion_page_id": "435e3ea12a3d445195cd76bd39c780be", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/forensic-evidence-chain-core/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" },
+        { "path": "skills/audio-forensic-core/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" },
+        { "path": "skills/evidence-register/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "combo-skills/court-evidence-compiler/COMBO.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" }
+      ],
+      "triggers": ["intake", "hash", "chain of custody", "exhibit", "authenticate", "file/audio/photo arrival"],
+      "edges": [ { "type": "GATES", "to": "notion.leg4-filing-production" }, { "type": "FEEDS", "from": "notion.leg6-records-warfare" }, { "type": "PEER_OF", "to": "skills/forensic-evidence-chain-core" } ],
+      "tools": { "notion_runtime": ["sha256sum", "pdftotext", "ffprobe", "file upload", "evidence inventory + custody log rows", "mail for provider-native records"], "repo": ["forensic-evidence-chain-core digests + hash-chained manifest", "audio-forensic-core"] },
+      "epistemic": { "emits": ["acquisition (OBSERVATION)", "SHA-256 (FACT)", "custody entry (FACT)", "exhibit id (PLAN until row exists)"], "may_promote_to": ["VERIFIED with hash + custody row + source path"], "proof_floor": "L2 internal; L5 court use", "receipts": ["hash", "custody row URL"], "contradiction_routing": "gate fails closed; both records kept; CONTRADICTS edge", "preserve": ["hashes", "dual timestamps", "original bytes", "exhibit ids", "transcript wording"] }
+    },
+    {
+      "id": "notion.leg3-docket-forensics", "kind": "leg",
+      "title": "SKILL 3 - Docket & Timeline Forensics",
+      "notion_page_id": "65c0bcc62035464f80db8a5f2e54505b", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "combo-skills/forensic-docket-intelligence/COMBO.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" },
+        { "path": "mega-skills/apex-forensic-litigation-sentinel/MEGA.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" }
+      ],
+      "triggers": ["docket", "notice of electronic filing", "timeline", "anomaly", "delay", "out of sequence", "chronology"],
+      "edges": [ { "type": "FEEDS", "to": ["notion.leg6-records-warfare", "notion.leg4-filing-production"] }, { "type": "FEEDS", "from": "notion.leg1-case-architecture" }, { "type": "PEER_OF", "to": "combo-skills/forensic-docket-intelligence" } ],
+      "tools": { "notion_runtime": ["mail intake of court notices", "SQL over docket databases", "pdftotext on certified docket PDFs", "daily briefing pointer report"], "repo": ["forensic-docket-intelligence"] },
+      "epistemic": { "emits": ["entry metadata (grade A FACT)", "anomaly flag (INFERENCE until pinned)", "measured interval (FACT with computation)", "pattern (HYPOTHESIS until statistics shown)"], "may_promote_to": ["VERIFIED anomaly = record number + notice timestamp + pin, read back"], "proof_floor": "L2 for filing use; L5 for characterizations", "receipts": ["irregularities report row"], "contradiction_routing": "notice vs docket disagreement recorded as CONTRADICTS; opens leg 6 record-gap row", "preserve": ["notice timestamps", "record numbers", "verbatim entry text", "dual timestamps"] }
+    },
+    {
+      "id": "notion.leg4-filing-production", "kind": "leg",
+      "title": "SKILL 4 - Filing Production Engineering",
+      "notion_page_id": "439746d1013b407780fe73c48b309221", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "combo-skills/court-evidence-compiler/COMBO.md", "blob_sha": null, "read_state": "registry_confirmed", "confirmed_by": "governance/decision-records/DR-2026-09-03-deep-casebuilding-activation.md" },
+        { "path": "mega-skills/apex-legal-warfare/MEGA.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "skills/make-it-heavy/SKILL.md", "blob_sha": "3f57b40791f36afd2ea6372ac9ac92f15d07b466", "read_state": "blob_read", "hooked_on_branch": true }
+      ],
+      "triggers": ["draft the motion", "file", "exhibit pack", "proposed order", "service plan", "court-ready", "filing deadline"],
+      "edges": [ { "type": "GATES", "from": "notion.leg2-forensic-evidence" }, { "type": "FEEDS", "from": ["notion.leg1-case-architecture", "notion.leg3-docket-forensics", "notion.leg6-records-warfare"] }, { "type": "VERIFIES", "to": "provider receipt (stamp)" } ],
+      "tools": { "notion_runtime": ["draft pages", "LibreOffice / PDF merge", "filings rows", "calendar deadline check", "web search for public statute text (verified against official source)"], "repo": ["legal-powerhouse generation", "court-evidence-compiler"] },
+      "epistemic": { "emits": ["authority citation (FACT after text read)", "factual assertion (FACT with exhibit id + pin)", "ready (gated state)"], "may_promote_to": ["court-ready = VERIFIED with exhibit pack + service plan + proposed order + citation check", "FILED only with stamp or notice"], "proof_floor": "L5 for anything filed; L2 for drafts", "receipts": ["filing row", "exhibit index", "stamp"], "contradiction_routing": "both preserved in QA notes; operator decides", "preserve": ["citations", "quotes", "exhibit references", "record pins"] }
+    },
+    {
+      "id": "notion.leg5-memory-continuity", "kind": "leg",
+      "title": "SKILL 5 - Memory & Continuity Engineering (hosts the substrate)",
+      "notion_page_id": "a0db5ee649c44e7a9d6af8366227bf96", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "combo-skills/long-horizon-core/COMBO.md", "blob_sha": "6c27948004de6fee7e41141094458bfce2b039b8", "read_state": "blob_read", "hooked_on_branch": true },
+        { "path": "skills/context-capsule/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "skills/handoff-record/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "skills/unified-memory-connect/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "mega-skills/apex-omniversal-memory/MEGA.md", "blob_sha": null, "read_state": "registry_confirmed" }
+      ],
+      "external_peers": [ { "repository": "GlacierEQ/apex-control-plane", "note": "Notion-first continuity gate (PR #10, merge 4111622b)" } ],
+      "triggers": ["session start", "log it", "continue", "where were we", "resume", "handoff", "operator correction"],
+      "edges": [ { "type": "COMPOSES", "from": "notion.always-on-core" }, { "type": "MIRRORS", "to": "GlacierEQ/apex-control-plane" }, { "type": "FEEDS", "to": "notion.epistemic-contract" } ],
+      "tools": { "notion_runtime": ["ledger update + readback", "experience-replay rows", "ntn CLI", "todo tracker"], "repo": ["context-capsule", "handoff-record", "apex-control-plane continuity gate"] },
+      "epistemic": { "emits": ["ledger entries (grade D prose pointing to A/B receipts)", "learning propositions (Contract section 7 record)", "gravity notes (OBSERVATION)"], "may_promote_to": ["ENTRY VERIFIED when every action claim carries a receipt and the entry reads back"], "proof_floor": "L2; L3 when Notion + GitHub + backing store must agree", "receipts": ["ledger entry + readback"], "contradiction_routing": "new ENTRY with CONTRADICTS / SUPERSEDES edges; append-only", "preserve": ["gravity notes", "exact terminology", "receipts", "contradictions", "last five full entries"] }
+    },
+    {
+      "id": "notion.leg6-records-warfare", "kind": "leg",
+      "title": "SKILL 6 - Records Warfare (Public Records / Subpoena / Preservation)",
+      "notion_page_id": "2127f229b67546b7b47bf920492009ae", "is_skill": "verified",
+      "repo_paths": [
+        { "path": "skills/digital-law-library-master/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" },
+        { "path": "skills/evidence-register/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed" }
+      ],
+      "triggers": ["public records request", "subpoena", "preservation demand", "compel", "record gap", "audit log"],
+      "edges": [ { "type": "FEEDS", "to": ["notion.leg2-forensic-evidence", "notion.leg4-filing-production"] }, { "type": "FEEDS", "from": "notion.leg3-docket-forensics" } ],
+      "tools": { "notion_runtime": ["mail send (operator-approved only)", "calendar deadlines", "correspondence rows", "web search for public statute text (verified against official source)"], "repo": ["digital-law-library-master"] },
+      "epistemic": { "emits": ["record gap (INFERENCE until custodian confirms/denies)", "statutory basis (FACT after text read)", "SERVED / RESPONDED (provider states)"], "may_promote_to": ["SERVED with proof of service", "RESPONDED when response artifact hashed into leg 2"], "proof_floor": "L2", "receipts": ["service receipt", "dated ledger state"], "contradiction_routing": "custodian denial vs docket evidence -> CONTRADICTS -> motion-to-compel hook", "preserve": ["statutory citations", "request scope text", "deadlines", "response wording"] }
+    },
+    {
+      "id": "notion.aspen-grove-bootup", "kind": "peer-skill",
+      "title": "Aspen Grove Bootup",
+      "notion_page_id": "7d0604cc50b6434ab9392e6d85bb21c9", "is_skill": "verified",
+      "repo_paths": [ { "path": "skills/aspen-grove-bootup/SKILL.md", "blob_sha": null, "read_state": "registry_confirmed", "referenced_by": "skills/apex-meta-ignition/SKILL.md" } ],
+      "edges": [ { "type": "COMPOSES", "from": "skills/apex-meta-ignition" } ]
+    },
+    {
+      "id": "notion.powered-casebuilding", "kind": "peer-skill",
+      "title": "Powered Casebuilding",
+      "notion_page_id": "ffaf2033728b49298066aee5b87a4728", "is_skill": "executed",
+      "repo_paths": [ { "path": "pipelines/deep-casebuilding.json", "blob_sha": null, "read_state": "path_confirmed", "note": "18 stages" }, { "path": "scripts/casebuilding_activation.py", "blob_sha": null, "read_state": "path_confirmed" } ],
+      "edges": [ { "type": "PEER_OF", "to": "pipelines/deep-casebuilding.json" } ]
+    },
+    {
+      "id": "notion.universal-casebuilder", "kind": "peer-skill",
+      "title": "Universal Casebuilder Meta-Prompt",
+      "notion_page_id": "3fcbe17c00f24c249d9692bbacc18082", "is_skill": "executed",
+      "repo_paths": [ { "path": "mega-skills/apex-casebuild-mesh/MEGA.md", "blob_sha": null, "read_state": "registry_confirmed" } ],
+      "edges": [ { "type": "PEER_OF", "to": "mega-skills/apex-casebuild-mesh" }, { "type": "FEEDS", "to": "notion.leg1-case-architecture" } ]
+    },
+    {
+      "id": "notion.legacy-drain", "kind": "peer-skill",
+      "title": "APEX LOGIC Reconciliation & Legacy Drain",
+      "notion_page_id": "2b16f4346bb84d7f9e4ee44d7c94e613", "is_skill": "executed",
+      "repo_paths": [],
+      "note": "No repo owner identified for reconciliation/legacy-drain; candidate for a future atomic skill. Owner precedence ladder is adopted by docs/EPISTEMIC_CONTRACT.md section 8.",
+      "edges": [ { "type": "VERIFIES", "to": "any legacy -> owner reconciliation" } ]
+    },
+    {
+      "id": "notion.apex-learning-loop", "kind": "peer-skill",
+      "title": "APEX Learning Loop - Experience Replay & Policy Distillation",
+      "notion_page_id": "3c2b1e4f3223817687e4cea933229a76", "is_skill": "unknown",
+      "repo_paths": [],
+      "edges": [ { "type": "FEEDS", "to": "notion.epistemic-contract" } ]
+    }
+  ],
+  "queued_peers": [
+    { "path": "skills/master/SKILL.md", "status": "read_not_hooked", "next": "append hook section; mesh MIRRORS it" },
+    { "path": "skills/holographic-case-mesh/SKILL.md", "status": "read_not_hooked", "next": "append hook section; create Notion skill page" },
+    { "path": "skills/epistemic-gate/SKILL.md", "status": "read_not_hooked", "next": "append hook section pointing to the contract" },
+    { "path": "combo-skills/epistemic-verification-chain/COMBO.md", "status": "read_not_hooked", "next": "append hook section" },
+    { "path": "skills/local-skill/SKILL.md", "status": "not_embedded", "next": "create Notion skill page + hook" },
+    { "path": "skills/notion-sync-automation/SKILL.md", "status": "not_embedded", "next": "create Notion skill page + hook; candidate owner of the drift check" },
+    { "path": "skills/sequential-thinking/SKILL.md", "status": "not_embedded", "next": "create Notion skill page + hook" },
+    { "path": "skills/forensic-evidence-chain-core/SKILL.md", "status": "not_embedded", "next": "create Notion skill page + hook (leg 2 peer)" },
+    { "path": "mega-skills/apex-casebuild-mesh/MEGA.md", "status": "not_embedded", "next": "hook (leg 1 peer)" },
+    { "path": "mega-skills/apex-legal-warfare/MEGA.md", "status": "not_embedded", "next": "hook (leg 4 peer)" },
+    { "path": "mega-skills/apex-omniversal-memory/MEGA.md", "status": "not_embedded", "next": "hook (leg 5 peer)" },
+    { "path": "mega-skills/apex-orchestrator-mesh/MEGA.md", "status": "not_embedded", "next": "hook (mesh peer)" }
+  ],
+  "invariants": [
+    "UNKNOWN != FALSE; retrieval_pending / not_searched / searched_not_found / unavailable are not proof of falsity.",
+    "GENERATED != EXECUTED != VERIFIED; PARTIAL != COMPLETE; nothing below L2 authorizes a mutation claim.",
+    "No SENT / FILED / CALLED / ACKNOWLEDGED / MERGED without a provider-native receipt.",
+    "Contradiction is evidence: keep both, add CONTRADICTS edge, route to owner; supersession creates an edge, never a deletion.",
+    "Source grade never rises by copying; secondary (C) never overrides primary (A/B); assistant output (D) is a pointer or nothing.",
+    "Compaction never drops locators (SHA, record number, timestamp, hash, deadline, URL, page id).",
+    "Live repo state outranks any Notion projection; route instead of copy (MESH_PEERS invariant).",
+    "A skill is connected only when page <-> repo path <-> blob SHA <-> trigger <-> tools <-> at least one typed edge all resolve.",
+    "This manifest changes no registry entry, ID, layer, or dependency; scripts/validate_hierarchy.py is unaffected."
+  ],
+  "validation": {
+    "json_parse": "validate with: jq empty integrations/notion-skill-bridge.json",
+    "drift_check": "for each repo_paths[].blob_sha compare against git rev-parse <base_ref>:<path>; for each notion_page_id load the page and confirm skill flag + source-of-truth line; mismatch -> issue on owner + ledger note; never auto-overwrite",
+    "hierarchy_validator_impact": "none",
+    "counts_at_base_ref": { "atomic": 714, "compound": 36, "mega": 32, "pipelines": 7, "cycles": 0, "readme_lag": "709/33/29 (not changed by this branch)" }
+  }
+}
