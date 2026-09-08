@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "case_number": "1FDV-23-0001009",
+  "register_source": "CASE EVIDENCE INVENTORY — 1FDV-23-0001009 (Notion, last edited 2026-07-16) + P1 TRANSCRIBE task row (Legal War Room)",
+  "custody_rule": "Serials are assigned to derivative copies only; original media in Dropbox/iCloud are never modified by this pipeline.",
+  "exhibits": [
+    {
+      "id": "1FDV-23-1009_EX-AUD-001",
+      "label": "Phone call - kekoa is alone",
+      "actor": "CHILD",
+      "priority": "CRITICAL",
+      "reported_size": "2.84MB",
+      "path": "audio/EX-AUD-001.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "generated — review pending",
+      "source_location": "iCloud UNIFIED_FORENSIC_LIBRARY/04_AUDIO",
+      "integrity_records": [
+        {"source": "CASE EVIDENCE INVENTORY (Notion)", "sha256": "9086d2922d0c3fdc868f03d3412b5eeb98619762b2948f4007e11942faa556da"},
+        {"source": "P1 TRANSCRIBE task row (Notion Legal War Room)", "sha256": "faab712a693925cce0abf17b94a6f90b86f88d5cce2535a23b92c4b0681cd427", "file_description": "Oct 11 at 3-29 PM Kekoa Distress.m4a", "duration": "45m 50s"}
+      ],
+      "integrity_flag": "HASH_DISCREPANCY_UNRESOLVED — two workspace records carry different SHA-256 values and descriptions for EX-AUD-001; resolve by re-hashing the custodial original before any filing use"
+    },
+    {
+      "id": "1FDV-23-1009_EX-AUD-002",
+      "label": "Kekoa Concerns",
+      "actor": "CHILD",
+      "priority": "HIGH",
+      "reported_size": "636KB",
+      "path": "audio/EX-AUD-002.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "needed",
+      "source_location": "Dropbox /APEX/EVIDENCE/AUDIO/"
+    },
+    {
+      "id": "1FDV-23-1009_EX-AUD-003",
+      "label": "Teresa retaliatory pact reschedule",
+      "actor": "DEFENDANT",
+      "priority": "HIGH",
+      "reported_size": "1.6MB",
+      "path": "audio/EX-AUD-003.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "needed",
+      "source_location": "Dropbox /APEX/EVIDENCE/AUDIO/"
+    },
+    {
+      "id": "1FDV-23-1009_EX-AUD-004",
+      "label": "Job trouble",
+      "actor": "PLAINTIFF",
+      "priority": "MED",
+      "reported_size": "1.9MB",
+      "path": "audio/EX-AUD-004.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "needed",
+      "source_location": "Dropbox /APEX/EVIDENCE/AUDIO/"
+    },
+    {
+      "id": "1FDV-23-1009_EX-AUD-005",
+      "label": "Brower analysis",
+      "actor": "OPP_COUNSEL",
+      "priority": "HIGH",
+      "reported_size": "2.9MB",
+      "path": "audio/EX-AUD-005.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "needed",
+      "source_location": "Dropbox /APEX/EVIDENCE/AUDIO/"
+    },
+    {
+      "id": "1FDV-23-1009_EX-AUD-006",
+      "label": "Brower and Yamatani",
+      "actor": "OPP_COUNSEL",
+      "priority": "HIGH",
+      "reported_size": "3.8MB",
+      "path": "audio/EX-AUD-006.m4a",
+      "transcript_lines": 0,
+      "transcription_status": "needed",
+      "source_location": "Dropbox /APEX/EVIDENCE/AUDIO/"
+    }
+  ]
+}
