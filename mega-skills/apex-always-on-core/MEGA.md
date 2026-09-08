@@ -76,3 +76,18 @@ The always-on core continuously enforces:
 - **contradiction routing**: conflicts create evidence-acquisition work packets instead of silent fact deletion;
 - **forward persistence**: every complex run should leave a durable delta and exact resume point;
 - **no false completion**: close only when remaining gaps are explicitly blocked/assigned or mission criteria are satisfied.
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+Reference-only section (CONTRIBUTING: no skill-level instruction copying into a Mega Skill).
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: PLAN (`MISSION.md`, `ROADMAP.md`), FACT with source grade (`EVIDENCE.md`), grade-D pointer set (`CONTEXT.md`), OBSERVATION (`HANDOFF.md`, `harmonious-merge-watch.json`).
+- May promote to: COMPLETE only with quality-gate PASS + `HANDOFF.md` + every remaining gap explicitly blocked or assigned · Proof floor: L2 per artifact, L3 across stores
+- Receipts: `HANDOFF.md` / ledger entry + `EVIDENCE.md` hashes; the watch emits receipts, never mutations.
+- Contradiction routing: Harmonious Merge Watch → evidence-acquisition work packet with per-ref dispositions; the watch never resolves a contradiction itself (contract §8).
+- PRESERVE (compaction exceptions): source ≠ summary, journal continuity, alias lineage, refs marked security-sensitive.
+- Mesh edges: COMPOSES → `skills/casey-operator-execution-kernel`, `skills/max-token-saver`, `combo-skills/long-horizon-core`, the contract · VERIFIED_BY → `quality-gate` · MIRRORS → `GlacierEQ/apex-control-plane`
+- Tools: read-only repository observation, local tests, run artifacts, receipts (cognitive firewall) · human control points listed above
+- Notion projection: APEX Always-On Core — Long-Horizon Operating Loop · page `17811a298d2c4d328f293e63ad5a91ca` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`

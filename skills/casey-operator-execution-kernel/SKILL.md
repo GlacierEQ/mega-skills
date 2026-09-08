@@ -187,3 +187,17 @@ When assistant-created state violates this kernel:
 4. repair writable peer projections;
 5. verify by readback;
 6. do not substitute apology for state repair.
+
+## Epistemic contract & Notion bridge — 2026-09-07
+
+- Contract: `docs/EPISTEMIC_CONTRACT.md` · Mesh: `docs/SKILL_MESH_AND_TOOLS.md`
+- Emits: lock resolutions (OBSERVATION: which semantic lock applied), mission selection (INFERENCE, with the ranking that produced it), authority rulings (which stack level decided).
+- May promote to: nothing — the kernel gates; it never promotes a claim · Proof floor: L2 for any authorized mutation (readback required)
+- Receipts: readback for every authorized mutation; provider-native receipt for any `SENT` / `FILED` / `CALLED` / `ACKNOWLEDGED` claim (Execution loop, above).
+- Contradiction routing: correction stickiness — the newer operator correction wins forward, the older state stays source-bearing behind a SUPERSEDES edge, and state repair preserves lineage (Failure repair, above; contract §8).
+- PRESERVE (compaction exceptions): exact terminology, architecture, case/project identities, ledgers, decisions, receipts, contradictions, active obligations.
+- Pre-response test, extended by the contract (questions 11–13): 11. Is every claim typed (FACT / INFERENCE / PLAN / OBSERVATION / UNKNOWN)? 12. Does every EXECUTED / VERIFIED claim carry a receipt? 13. Did I keep UNKNOWN as UNKNOWN rather than collapsing it to FALSE or to a guess?
+- Mesh edges: GATES → `skills/power-skill`, `registry/pipelines.json` pipelines, every write · DERIVED_FROM → `skills/holographic-case-mesh` · COMPOSED_BY → `mega-skills/apex-always-on-core`
+- Tools: rehydration stores (Notion Codex + Ledger, Supermemory, repository state) · readback through the same tool that performed the mutation
+- Notion projection: Casey Operator Execution Kernel — Authority, Locks, Gates · page `6184d704135440b19a2e1894a50ffa12` (route, don't copy — this file outranks the projection)
+- Index: `integrations/notion-skill-bridge.json`
