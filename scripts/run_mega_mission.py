@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Run a safe, contract-backed Mega Skill mission locally.
+"""Run a support-only Mega Skill contract preflight locally.
 
-The runner resolves a registered route, validates every selected Combo contract and
-member entrypoint, runs the repository validator, and emits durable local evidence.
-It never invokes arbitrary member programs or performs external mutation.
+This runner validates route contracts and emits local evidence. It does NOT perform
+domain mission execution and therefore MUST NOT report mission completion.
 """
 
 from __future__ import annotations
@@ -130,10 +129,10 @@ def main(argv: list[str] | None = None) -> int:
             "ROADMAP.md": "# Mission Roadmap\n\n" + common + f"Phases: admission, route resolution, member preflight, hierarchy validation, artifact emission.\nRoute: {', '.join(c['id'] for c in route)}\n",
             "CONTEXT.md": "# Mission Context\n\n" + common + f"Repository root: {root}\nMega: {args.mega_id}\nAdds: {mega.get('adds', '')}\n",
             "EVIDENCE.md": "# Evidence Register\n\n" + json.dumps(phase_receipts, indent=2) + "\n",
-            "HANDOFF.md": "# Durable Handoff\n\nStatus: COMPLETED\nResumption point: none; receipt is complete.\n",
+            "HANDOFF.md": "# Durable Handoff\n\nStatus: SUPPORT_VERIFIED_NOT_MISSION_COMPLETE\nMission state changed: false\nThis preflight cannot terminate an execution run.\n",
             "ROUTE.json": json.dumps({"mega_id": args.mega_id, "required_combos": mega["required_combos"], "selected_combos": [c["id"] for c in route], "member_ids": member_ids}, indent=2) + "\n",
             "FAILURE_RECORD.json": json.dumps({"schema_version": 1, "status": "NONE", "failures": []}, indent=2) + "\n",
-            mission_output_file: f"# {mega['display_name']} Deliverable\n\nStatus: CONTRACT_VERIFIED\nMission ID: {mission_id}\nEvidence: all member contracts resolved and verified.\n",
+            mission_output_file: f"# {mega['display_name']} Deliverable\n\nStatus: SUPPORT_VERIFIED_NOT_MISSION_COMPLETE\nMission ID: {mission_id}\nMission state changed: false\nEvidence: member contracts resolved and verified; no domain execution occurred.\n",
         }
         if args.mega_id == "apex-autonomous-agent-foundry":
             artifacts["AGENT_ARCHITECTURE_SPEC.md"] = "# Architecture Contract\n\nStatus: CONTRACT_VERIFIED\nEvidence: registered Combo/member contracts and entrypoints resolved.\n"
@@ -151,7 +150,10 @@ def main(argv: list[str] | None = None) -> int:
             "schema_version": 1,
             "mission_id": mission_id,
             "mega_id": args.mega_id,
-            "status": "COMPLETED",
+            "status": "SUPPORT_VERIFIED",
+            "mission_state_changed": False,
+            "completion_eligible": False,
+            "support_only": True,
             "firewall_mode": policy["mode"],
             "started_at": started,
             "finished_at": datetime.now(timezone.utc).isoformat(),
@@ -162,7 +164,7 @@ def main(argv: list[str] | None = None) -> int:
         }
         guard(policy, "emit_receipt")
         write_artifact(policy, run_dir / "RUN_RECEIPT.json", json.dumps(receipt, indent=2) + "\n")
-        print(json.dumps({"status": receipt["status"], "run_dir": str(run_dir), "artifacts": len(output_manifest) + 1}, indent=2))
+        print(json.dumps({"status": receipt["status"], "mission_state_changed": False, "completion_eligible": False, "run_dir": str(run_dir), "artifacts": len(output_manifest) + 1}, indent=2))
         return 0
     except (OSError, KeyError, ValueError, RuntimeError, json.JSONDecodeError) as exc:
         if policy is not None and run_dir.exists() and not any(run_dir.iterdir()):
