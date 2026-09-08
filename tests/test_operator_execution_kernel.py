@@ -1,0 +1,161 @@
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+KERNEL = ROOT / "skills" / "casey-operator-execution-kernel" / "skill.py"
+
+
+def run_kernel(operation, payload):
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+        json.dump(payload, handle)
+        input_path = handle.name
+    try:
+        proc = subprocess.run(
+            [sys.executable, str(KERNEL), operation, "--input", input_path],
+            cwd=ROOT, text=True, capture_output=True, check=False,
+        )
+    finally:
+        Path(input_path).unlink(missing_ok=True)
+    if proc.returncode != 0:
+        raise AssertionError(proc.stdout + proc.stderr)
+    return json.loads(proc.stdout)
+
+
+class OperatorExecutionKernelTests(unittest.TestCase):
+    def test_kernel_entrypoint_exists(self):
+        self.assertTrue(KERNEL.is_file())
+
+    def test_estate_dispatch_requires_real_objective_graph_hydration(self):
+        result = run_kernel("dispatch_gate", {
+            "scope": {"mode": "estate"},
+            "candidates": [{
+                "id": "easy-one", "lane": "engineering",
+                "source_state_hydrated": True,
+                "authorized": True, "executable": True, "substantive": True,
+                "operator_impact": 1.0,
+            }],
+        })
+        self.assertFalse(result["dispatch_allowed"])
+        self.assertIn("operator_objective_graph_not_hydrated", result["hydration_reasons"])
+        self.assertIn("cross_estate_front_comparison_missing", result["hydration_reasons"])
+
+    def test_broad_estate_rejects_recent_artifact_lane_capture(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "estate"},
+            "objective_graph_hydrated": True,
+            "fronts_considered": [{"lane": "nex"}, {"lane": "engineering"}],
+            "candidates": [
+                {
+                    "id": "recent-nex-matrix", "lane": "nex",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "result_kind": "matrix", "selection_basis": ["recent_context"],
+                    "operator_impact": 1.0,
+                },
+                {
+                    "id": "runtime-capability", "lane": "engineering",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "continuation_valid": True, "operator_impact": 0.9,
+                    "blocked_downstream": 0.8, "capability_gain": 1.0,
+                    "compounding_value": 1.0, "execution_readiness": 0.9,
+                    "prior_investment": 0.9,
+                },
+            ],
+        })
+        self.assertEqual(result["selected"]["id"], "runtime-capability")
+        rejected = {item["id"]: item["reasons"] for item in result["rejected"]}
+        self.assertIn("artifact_only", rejected["recent-nex-matrix"])
+        self.assertIn("recency_only", rejected["recent-nex-matrix"])
+
+    def test_support_only_candidate_cannot_dispatch(self):
+        result = run_kernel("dispatch_gate", {
+            "scope": {"mode": "estate"},
+            "objective_graph_hydrated": True,
+            "fronts_considered": [{"lane": "engineering"}, {"lane": "job"}],
+            "candidates": [{
+                "id": "ci-watch", "lane": "engineering",
+                "source_state_hydrated": True,
+                "authorized": True, "executable": True, "substantive": True,
+                "support_only": True, "operator_impact": 1.0,
+            }],
+        })
+        self.assertFalse(result["dispatch_allowed"])
+        self.assertEqual(
+            result["status"],
+            "mission_hydration_or_substantive_candidate_required",
+        )
+
+    def test_specialized_worker_stays_in_lane(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "specialized", "lane": "supabase"},
+            "continuation_hydrated": True,
+            "candidates": [
+                {"id": "nex-real", "lane": "nex", "source_state_hydrated": True,
+                 "authorized": True, "executable": True, "substantive": True,
+                 "operator_impact": 1.0},
+                {"id": "supabase-runtime", "lane": "supabase",
+                 "source_state_hydrated": True, "authorized": True,
+                 "executable": True, "substantive": True, "continuation_valid": True,
+                 "operator_impact": 0.8, "capability_gain": 0.9,
+                 "execution_readiness": 1.0},
+            ],
+        })
+        self.assertEqual(result["selected"]["id"], "supabase-runtime")
+        self.assertIn("outside_specialized_lane", result["rejected"][0]["reasons"])
+
+    def test_completion_gate_rejects_artifact_only_progress(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": False,
+            "verified": True,
+            "artifact_only": True,
+            "support_only": True,
+            "authorized_executable_action_exists": True,
+        })
+        self.assertFalse(result["can_finalize"])
+        self.assertTrue(result["continue_required"])
+        self.assertIn("artifact_only_output_is_not_mission_completion", result["reasons"])
+        self.assertIn("authorized_executable_action_still_exists", result["reasons"])
+
+    def test_verified_boolean_without_receipt_cannot_finalize(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": True,
+            "verified": True,
+            "support_only": False,
+            "artifact_only": False,
+            "authorized_executable_action_exists": False,
+        })
+        self.assertFalse(result["can_finalize"])
+        self.assertIn("verification_reference_missing", result["reasons"])
+
+    def test_completion_gate_allows_verified_real_delta_with_receipt(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": True,
+            "verified": True,
+            "verification_refs": ["readback-receipt-123"],
+            "artifact_only": False,
+            "support_only": False,
+            "authorized_executable_action_exists": False,
+        })
+        self.assertTrue(result["can_finalize"])
+        self.assertEqual(result["finalization_kind"], "verified_mission_delta")
+        self.assertFalse(result["continue_required"])
+
+    def test_hard_boundary_can_finalize_without_false_success(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": False,
+            "verified": False,
+            "hard_external_boundary": True,
+            "authorized_executable_action_exists": False,
+        })
+        self.assertTrue(result["can_finalize"])
+        self.assertEqual(result["finalization_kind"], "hard_boundary")
+        self.assertFalse(result["continue_required"])
+
+
+if __name__ == "__main__":
+    unittest.main()

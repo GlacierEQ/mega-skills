@@ -10,8 +10,14 @@ Long-running execution also carries a durable continuation obligation: a fresh
 worker must be able to hydrate the nearest valid continuation state instead of
 reconstructing the mission from prose or startup summaries.
 """
+import argparse
 import json
 import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts"))
+from operator_mission_kernel import run_operator_mission_kernel
 
 CONTINUATION_CONTRACT = {
     "boot_context_role": "routing_hint_only",
@@ -107,20 +113,46 @@ EXECUTION_CONTRACT = {
 
 
 def main() -> int:
-    wants_execute = "--execute" in sys.argv[1:]
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--mission-input", help="JSON mission candidate payload for the operator dispatch gate")
+    args = parser.parse_args()
+
+    mission_gate = None
+    if args.execute and args.mission_input:
+        mission_payload = json.loads(Path(args.mission_input).read_text(encoding="utf-8"))
+        mission_gate = run_operator_mission_kernel("dispatch_gate", mission_payload)
+
+    if args.execute and mission_gate is None:
+        status = "mission_hydration_required"
+        dispatch_allowed = False
+        reason = (
+            "Execution accepted, but unqualified dispatch is forbidden. Hydrate the operator objective graph or specialized continuation, provide source-hydrated substantive candidates, then pass them through the operator mission dispatch gate."
+        )
+    elif args.execute:
+        dispatch_allowed = bool(mission_gate.get("dispatch_allowed"))
+        status = "dispatch_required" if dispatch_allowed else "mission_hydration_required"
+        reason = (
+            "Operator mission gate selected a qualified substantive continuation; dispatch only that selected mission and verify the resulting target-state mutation."
+            if dispatch_allowed
+            else "Operator mission gate rejected dispatch. Hydrate/compare real mission fronts and continue until a qualified substantive candidate exists."
+        )
+    else:
+        status = "adapter_ready"
+        dispatch_allowed = False
+        reason = "Compatibility adapter is installed and exposes APEX execution, operator mission-selection, and durable continuation contracts."
+
     payload = {
         "skill": "apex-execution-modes",
         "adapter": True,
         "execution_contract": EXECUTION_CONTRACT,
-        "status": "dispatch_required" if wants_execute else "adapter_ready",
-        "continue_required": wants_execute,
-        "continuation_required": wants_execute,
+        "operator_mission_gate": mission_gate,
+        "status": status,
+        "dispatch_allowed": dispatch_allowed,
+        "continue_required": args.execute,
+        "continuation_required": args.execute,
         "capability_executed": False,
-        "reason": (
-            "Execution request accepted. Hydrate the nearest valid continuation state, dispatch substantive mission work to the qualified domain execution surface, verify the resulting mutation, and persist a stronger source-bearing continuation before finalization. Support/meta work cannot satisfy completion unless explicitly requested as the mission."
-            if wants_execute
-            else "Compatibility adapter is installed and exposes the APEX execution and durable continuation contracts."
-        ),
+        "reason": reason,
     }
     print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
