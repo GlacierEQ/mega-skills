@@ -9,6 +9,7 @@ Executable DAGs for GlacierEQ Mega Skills.
 | `memory-fleet.json` | memory-fleet | inception → evolve |
 | `change-swe.json` | change-swe | inception → evolve |
 | `ship-cloud.json` | ship-cloud | inception → evolve |
+| `cultivate-main.json` | change-swe | inception → evolve |
 | `anthropic-applied-ai-readiness.json` | mission | career evidence only |
 
 Schema: `schemas/pipeline.schema.json`  
