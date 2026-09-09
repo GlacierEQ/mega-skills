@@ -1,12 +1,20 @@
 steps:
-  - label: ":python: Mega Skills contract validation"
-    timeout_in_minutes: 10
+  - label: ":python: Mega Skills full validation parity"
+    key: "mega-skills-contract"
+    timeout_in_minutes: 15
     command: |
-      set -eu
+      set -euo pipefail
+      mkdir -p artifacts/buildkite
+      actual="$(git rev-parse HEAD)"
+      test "$$actual" = "$BUILDKITE_COMMIT"
       python3 --version
+      python3 -m compileall -q scripts tests skills
       python3 scripts/validate_hierarchy.py
+      python3 scripts/validate_genius_mastery_bridge.py --remote
+      python3 scripts/generate_mega_skill_pyramids.py --check
       python3 -m unittest discover -s tests -v
-      python3 -m compileall -q scripts tests
+      python3 skills/local-skill/tests/test_local_skill.py -v
+      python3 skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
       export RUN_DIR=/tmp/mega-skills-buildkite-run
       rm -rf "$$RUN_DIR"
       python3 scripts/run_mega_mission.py --output-dir "$$RUN_DIR"
@@ -32,8 +40,53 @@ steps:
           assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], item["path"]
       print(f"Verified {len(manifest)} receipt-manifest entries and their SHA-256 hashes.")
       PY
+      python3 - <<'PY' > artifacts/buildkite/mega-skills-ci-receipt.json
+      import datetime
+      import json
+      import os
+      import subprocess
+
+      receipt = {
+          "schema": "glaciereq.mega-skills.buildkite-ci.v1",
+          "status": "PASS",
+          "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+          "branch": os.environ.get("BUILDKITE_BRANCH"),
+          "build_id": os.environ.get("BUILDKITE_BUILD_ID"),
+          "build_number": os.environ.get("BUILDKITE_BUILD_NUMBER"),
+          "pipeline": os.environ.get("BUILDKITE_PIPELINE_SLUG"),
+          "validation_contract": [
+              "compileall:scripts-tests-skills",
+              "validate_hierarchy",
+              "validate_genius_mastery_bridge_remote",
+              "generate_mega_skill_pyramids_check",
+              "unittest_discover",
+              "local_skill_tests",
+              "branch_lifecycle_tests",
+              "mega_mission_receipt_hashes"
+          ],
+          "generated_at": datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(),
+      }
+      print(json.dumps(receipt, indent=2, sort_keys=True))
+      PY
+      TRANSIENT_RECEIPT=evidence/casebuilding-activation/test-dry-run-receipt.json
+      changed="$(git diff --name-only)"
+      unexpected="$(printf '%s\n' "$$changed" | grep -v '^$$' | grep -v "^$${TRANSIENT_RECEIPT}$$" || true)"
+      if [ -n "$$unexpected" ]; then
+        echo "Unexpected tracked mutations after validation:" >&2
+        printf '%s\n' "$$unexpected" >&2
+        exit 1
+      fi
+      if git diff --quiet -- "$$TRANSIENT_RECEIPT"; then
+        echo "No transient dry-run receipt mutation observed."
+      else
+        cp "$$TRANSIENT_RECEIPT" artifacts/buildkite/test-dry-run-receipt.generated.json
+        git checkout -- "$$TRANSIENT_RECEIPT"
+      fi
+      git diff --exit-code
     artifact_paths:
       - "/tmp/mega-skills-buildkite-run/**/*"
+      - "artifacts/buildkite/mega-skills-ci-receipt.json"
+      - "artifacts/buildkite/test-dry-run-receipt.generated.json"
 
   - label: ":compass: Harmonious Merge Watch (read-only)"
     key: "harmonious-merge-watch"
