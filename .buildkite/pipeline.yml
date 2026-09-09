@@ -68,10 +68,25 @@ steps:
       }
       print(json.dumps(receipt, indent=2, sort_keys=True))
       PY
+      TRANSIENT_RECEIPT=evidence/casebuilding-activation/test-dry-run-receipt.json
+      changed="$(git diff --name-only)"
+      unexpected="$(printf '%s\n' "$$changed" | grep -v '^$$' | grep -v "^$${TRANSIENT_RECEIPT}$$" || true)"
+      if [ -n "$$unexpected" ]; then
+        echo "Unexpected tracked mutations after validation:" >&2
+        printf '%s\n' "$$unexpected" >&2
+        exit 1
+      fi
+      if git diff --quiet -- "$$TRANSIENT_RECEIPT"; then
+        echo "No transient dry-run receipt mutation observed."
+      else
+        cp "$$TRANSIENT_RECEIPT" artifacts/buildkite/test-dry-run-receipt.generated.json
+        git checkout -- "$$TRANSIENT_RECEIPT"
+      fi
       git diff --exit-code
     artifact_paths:
       - "/tmp/mega-skills-buildkite-run/**/*"
       - "artifacts/buildkite/mega-skills-ci-receipt.json"
+      - "artifacts/buildkite/test-dry-run-receipt.generated.json"
 
   - label: ":compass: Harmonious Merge Watch (read-only)"
     key: "harmonious-merge-watch"
