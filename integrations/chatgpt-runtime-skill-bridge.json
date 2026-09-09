@@ -1,0 +1,57 @@
+{
+  "schema": "glaciereq.chatgpt-runtime-skill-bridge.v1",
+  "source_surface": "chatgpt",
+  "source_plugin": "openai-developers",
+  "authority_model": "polycentric_peer_projection",
+  "edge_types": ["PEER_OF", "DERIVED_FROM"],
+  "rules": {
+    "provider_source_authority": "ChatGPT/OpenAI source skill controls host-runtime semantics.",
+    "portable_peer_authority": "Mega-Skills peer controls GlacierEQ portable execution semantics.",
+    "no_hidden_copy_claim": true,
+    "verification_required_for_host_specific_equivalence": true,
+    "preserve_name_collisions": true
+  },
+  "skills": [
+    {
+      "source_skill_key": "agents-sdk",
+      "source_uri": "skills://plugins/openai-developers/agents-sdk/skill.md",
+      "portable_skill_key": "openai-agents-sdk",
+      "portable_path": "skills/openai-agents-sdk/SKILL.md",
+      "relationship": ["PEER_OF", "DERIVED_FROM"],
+      "state": "PORTABLE_PEER_BUILT",
+      "collision_preserved": "skills/agents-sdk is the existing Cloudflare Agents SDK skill"
+    },
+    {
+      "source_skill_key": "build-chatgpt-app",
+      "source_uri": "skills://plugins/openai-developers/build-chatgpt-app/skill.md",
+      "portable_skill_key": "build-chatgpt-app",
+      "portable_path": "skills/build-chatgpt-app/SKILL.md",
+      "relationship": ["PEER_OF", "DERIVED_FROM"],
+      "state": "PORTABLE_PEER_BUILT"
+    },
+    {
+      "source_skill_key": "chatgpt-app-submission",
+      "source_uri": "skills://plugins/openai-developers/chatgpt-app-submission/skill.md",
+      "portable_skill_key": "chatgpt-app-submission",
+      "portable_path": "skills/chatgpt-app-submission/SKILL.md",
+      "relationship": ["PEER_OF", "DERIVED_FROM"],
+      "state": "PORTABLE_PEER_BUILT"
+    },
+    {
+      "source_skill_key": "openai-api-troubleshooting",
+      "source_uri": "skills://plugins/openai-developers/openai-api-troubleshooting/skill.md",
+      "portable_skill_key": "openai-api-troubleshooting",
+      "portable_path": "skills/openai-api-troubleshooting/SKILL.md",
+      "relationship": ["PEER_OF", "DERIVED_FROM"],
+      "state": "PORTABLE_PEER_BUILT"
+    },
+    {
+      "source_skill_key": "openai-platform-api-key",
+      "source_uri": "skills://plugins/openai-developers/openai-platform-api-key/skill.md",
+      "portable_skill_key": "openai-platform-api-key",
+      "portable_path": "skills/openai-platform-api-key/SKILL.md",
+      "relationship": ["PEER_OF", "DERIVED_FROM"],
+      "state": "PORTABLE_PEER_BUILT"
+    }
+  ]
+}
