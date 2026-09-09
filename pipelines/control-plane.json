@@ -39,9 +39,25 @@
       "id": "inception",
       "phase": "inception",
       "needs": [],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "inception"],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "inception"
+      ],
       "consumes": [],
-      "produces": ["missions/control-plane/MISSION.md", "missions/control-plane/ROADMAP.md", "missions/control-plane/CONTEXT.md", "missions/control-plane/inception.json"],
+      "produces": [
+        "missions/control-plane/MISSION.md",
+        "missions/control-plane/ROADMAP.md",
+        "missions/control-plane/CONTEXT.md",
+        "missions/control-plane/inception.json"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -49,10 +65,27 @@
     {
       "id": "readiness",
       "phase": "readiness",
-      "needs": ["inception"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "readiness"],
-      "consumes": ["missions/control-plane/inception.json"],
-      "produces": ["missions/control-plane/READINESS.json"],
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/control-plane/inception.json"
+      ],
+      "produces": [
+        "missions/control-plane/READINESS.json"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -60,10 +93,27 @@
     {
       "id": "recon",
       "phase": "recon",
-      "needs": ["readiness"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "recon"],
-      "consumes": ["missions/control-plane/READINESS.json"],
-      "produces": ["missions/control-plane/RECON.json"],
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/control-plane/READINESS.json"
+      ],
+      "produces": [
+        "missions/control-plane/RECON.json"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -71,10 +121,28 @@
     {
       "id": "design",
       "phase": "design",
-      "needs": ["recon"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "design"],
-      "consumes": ["missions/control-plane/RECON.json"],
-      "produces": ["missions/control-plane/ROUTE.json", "missions/control-plane/ARCHITECTURE.md"],
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/control-plane/RECON.json"
+      ],
+      "produces": [
+        "missions/control-plane/ROUTE.json",
+        "missions/control-plane/ARCHITECTURE.md"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -82,10 +150,28 @@
     {
       "id": "build",
       "phase": "build",
-      "needs": ["design"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "build"],
-      "consumes": ["missions/control-plane/ROUTE.json"],
-      "produces": ["missions/control-plane/BUILD_PREFLIGHT.json", "missions/control-plane/SAFE_CHANGE_PREFLIGHT.md"],
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/control-plane/ROUTE.json"
+      ],
+      "produces": [
+        "missions/control-plane/BUILD_PREFLIGHT.json",
+        "missions/control-plane/SAFE_CHANGE_PREFLIGHT.md"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -93,10 +179,28 @@
     {
       "id": "verify",
       "phase": "verify",
-      "needs": ["build"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "verify"],
-      "consumes": ["missions/control-plane/BUILD_PREFLIGHT.json"],
-      "produces": ["missions/control-plane/VERIFY.json", "missions/control-plane/EVIDENCE.md"],
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/control-plane/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/control-plane/VERIFY.json",
+        "missions/control-plane/EVIDENCE.md"
+      ],
       "resume_safe": false,
       "approval_required": false,
       "timeout_seconds": 120
@@ -104,10 +208,28 @@
     {
       "id": "package",
       "phase": "package",
-      "needs": ["verify"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "package"],
-      "consumes": ["missions/control-plane/VERIFY.json"],
-      "produces": ["missions/control-plane/RELEASE_PACKET.json", "missions/control-plane/RELEASE_PACKET.md"],
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/control-plane/VERIFY.json"
+      ],
+      "produces": [
+        "missions/control-plane/RELEASE_PACKET.json",
+        "missions/control-plane/RELEASE_PACKET.md"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -115,10 +237,27 @@
     {
       "id": "deploy-gate",
       "phase": "deploy-gate",
-      "needs": ["package"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "deploy-gate"],
-      "consumes": ["missions/control-plane/RELEASE_PACKET.json"],
-      "produces": ["missions/control-plane/DEPLOYMENT_DECISION.json"],
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/control-plane/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/control-plane/DEPLOYMENT_DECISION.json"
+      ],
       "resume_safe": false,
       "approval_required": true,
       "timeout_seconds": 120
@@ -126,10 +265,27 @@
     {
       "id": "handoff",
       "phase": "handoff",
-      "needs": ["deploy-gate"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "handoff"],
-      "consumes": ["missions/control-plane/DEPLOYMENT_DECISION.json"],
-      "produces": ["missions/control-plane/HANDOFF.md"],
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/control-plane/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/control-plane/HANDOFF.md"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
@@ -137,10 +293,27 @@
     {
       "id": "evolve",
       "phase": "evolve",
-      "needs": ["handoff"],
-      "command": ["{python}", "scripts/runtime_amplified_stage.py", "--root", "{workspace}", "--pipeline-id", "control-plane", "--family", "control-plane", "--stage", "evolve"],
-      "consumes": ["missions/control-plane/HANDOFF.md"],
-      "produces": ["missions/control-plane/EVOLUTION_BACKLOG.json"],
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/runtime_amplified_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "control-plane",
+        "--family",
+        "control-plane",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/control-plane/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/control-plane/EVOLUTION_BACKLOG.json"
+      ],
       "resume_safe": true,
       "approval_required": false,
       "timeout_seconds": 120
