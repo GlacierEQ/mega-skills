@@ -9,36 +9,8 @@
       "version": "1.0.0",
       "path": "pipelines/inception-to-deployment.json",
       "family": "master",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "design",
-        "build",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff",
-        "evolve"
-      ],
-      "mega_roots": [
-        "apex-always-on-core",
-        "apex-adaptive-operations",
-        "apex-sovereign-runtime",
-        "far-away-party",
-        "apex-omniversal-memory",
-        "apex-fleet-harmonizer",
-        "apex-docgen-synthesis",
-        "apex-safe-change-orchestrator",
-        "apex-self-healing-forge",
-        "apex-autonomous-software-engineering",
-        "apex-architectural-evolution-engine",
-        "apex-dev-fork-orchestrator",
-        "apex-web-build-system",
-        "apex-vercel-web-foundry",
-        "apex-backend-infrastructure-engine",
-        "apex-secure-cloud-foundry"
-      ],
+      "span": ["inception", "readiness", "recon", "design", "build", "verify", "package", "deploy-gate", "handoff", "evolve"],
+      "mega_roots": ["apex-always-on-core", "apex-adaptive-operations", "apex-sovereign-runtime", "far-away-party", "apex-omniversal-memory", "apex-fleet-harmonizer", "apex-docgen-synthesis", "apex-safe-change-orchestrator", "apex-self-healing-forge", "apex-autonomous-software-engineering", "apex-architectural-evolution-engine", "apex-dev-fork-orchestrator", "apex-web-build-system", "apex-vercel-web-foundry", "apex-backend-infrastructure-engine", "apex-secure-cloud-foundry"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py"
     },
@@ -47,29 +19,15 @@
       "display_name": "Control Plane",
       "ownership": "glaciereq",
       "maturity": "active",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "pipelines/control-plane.json",
       "family": "control-plane",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "design",
-        "build",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff",
-        "evolve"
-      ],
-      "mega_roots": [
-        "apex-always-on-core",
-        "apex-adaptive-operations",
-        "apex-sovereign-runtime",
-        "far-away-party"
-      ],
+      "span": ["inception", "readiness", "recon", "design", "build", "verify", "package", "deploy-gate", "handoff", "evolve"],
+      "mega_roots": ["apex-always-on-core", "apex-adaptive-operations", "apex-sovereign-runtime", "far-away-party", "apex-genius-mastery"],
+      "required_combos": ["long-horizon-core", "capability-readiness", "pipeline-orchestration", "genius-epistemic-engineering", "genius-entity-forge", "epistemic-verification-chain"],
+      "runtime_profile": "control-plane-max-runtime-v1",
       "deploy_mode": "approval_packet_only",
-      "runner": "scripts/run_deep_work_pipeline.py"
+      "runner": "scripts/runtime_amplified_stage.py"
     },
     {
       "id": "memory-fleet",
@@ -79,23 +37,8 @@
       "version": "1.0.0",
       "path": "pipelines/memory-fleet.json",
       "family": "memory-fleet",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "design",
-        "build",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff",
-        "evolve"
-      ],
-      "mega_roots": [
-        "apex-omniversal-memory",
-        "apex-fleet-harmonizer",
-        "apex-docgen-synthesis"
-      ],
+      "span": ["inception", "readiness", "recon", "design", "build", "verify", "package", "deploy-gate", "handoff", "evolve"],
+      "mega_roots": ["apex-omniversal-memory", "apex-fleet-harmonizer", "apex-docgen-synthesis"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py"
     },
@@ -107,25 +50,8 @@
       "version": "1.0.0",
       "path": "pipelines/change-swe.json",
       "family": "change-swe",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "design",
-        "build",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff",
-        "evolve"
-      ],
-      "mega_roots": [
-        "apex-safe-change-orchestrator",
-        "apex-self-healing-forge",
-        "apex-autonomous-software-engineering",
-        "apex-architectural-evolution-engine",
-        "apex-dev-fork-orchestrator"
-      ],
+      "span": ["inception", "readiness", "recon", "design", "build", "verify", "package", "deploy-gate", "handoff", "evolve"],
+      "mega_roots": ["apex-safe-change-orchestrator", "apex-self-healing-forge", "apex-autonomous-software-engineering", "apex-architectural-evolution-engine", "apex-dev-fork-orchestrator"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py"
     },
@@ -137,24 +63,8 @@
       "version": "1.0.0",
       "path": "pipelines/ship-cloud.json",
       "family": "ship-cloud",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "design",
-        "build",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff",
-        "evolve"
-      ],
-      "mega_roots": [
-        "apex-web-build-system",
-        "apex-vercel-web-foundry",
-        "apex-backend-infrastructure-engine",
-        "apex-secure-cloud-foundry"
-      ],
+      "span": ["inception", "readiness", "recon", "design", "build", "verify", "package", "deploy-gate", "handoff", "evolve"],
+      "mega_roots": ["apex-web-build-system", "apex-vercel-web-foundry", "apex-backend-infrastructure-engine", "apex-secure-cloud-foundry"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py"
     },
@@ -166,10 +76,7 @@
       "version": "1.0.0",
       "path": "pipelines/anthropic-applied-ai-readiness.json",
       "family": "mission",
-      "span": [
-        "verify",
-        "package"
-      ],
+      "span": ["verify", "package"],
       "mega_roots": [],
       "deploy_mode": "approval_packet_only",
       "runner": "skills/pipeline-compositor/scripts/engine.py"
@@ -182,18 +89,8 @@
       "version": "1.0.0",
       "path": "pipelines/cultivate-main.json",
       "family": "change-swe",
-      "span": [
-        "recon",
-        "design",
-        "verify",
-        "package",
-        "deploy-gate",
-        "handoff"
-      ],
-      "mega_roots": [
-        "apex-safe-change-orchestrator",
-        "apex-always-on-core"
-      ],
+      "span": ["recon", "design", "verify", "package", "deploy-gate", "handoff"],
+      "mega_roots": ["apex-safe-change-orchestrator", "apex-always-on-core"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/cultivate_main.py"
     },
@@ -205,27 +102,9 @@
       "version": "1.0.0",
       "path": "pipelines/transcribe-organize-legal-code.json",
       "family": "specialized",
-      "span": [
-        "inception",
-        "readiness",
-        "recon",
-        "build",
-        "verify",
-        "package",
-        "fuse",
-        "deliver"
-      ],
-      "mega_roots": [
-        "apex-always-on-core",
-        "apex-orchestration",
-        "apex-free-provider",
-        "apex-epistemic-gate",
-        "apex-holographic-mesh"
-      ],
-      "required_combos": [
-        "pipeline-orchestration",
-        "epistemic-compliance"
-      ],
+      "span": ["inception", "readiness", "recon", "build", "verify", "package", "fuse", "deliver"],
+      "mega_roots": ["apex-always-on-core", "apex-orchestration", "apex-free-provider", "apex-epistemic-gate", "apex-holographic-mesh"],
+      "required_combos": ["pipeline-orchestration", "epistemic-compliance"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py"
     },
@@ -237,15 +116,8 @@
       "version": "1.0.0",
       "path": "pipelines/deep-casebuilding.json",
       "family": "mission",
-      "span": [
-        "recon",
-        "verify",
-        "package"
-      ],
-      "mega_roots": [
-        "apex-forensic-litigation-sentinel",
-        "apex-legal-forensic-powerhouse"
-      ],
+      "span": ["recon", "verify", "package"],
+      "mega_roots": ["apex-forensic-litigation-sentinel", "apex-legal-forensic-powerhouse"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_pipeline.py"
     },
@@ -257,15 +129,8 @@
       "version": "1.0.0",
       "path": "pipelines/1fdv-deep-casebuilding.json",
       "family": "mission",
-      "span": [
-        "recon",
-        "verify",
-        "package"
-      ],
-      "mega_roots": [
-        "apex-forensic-litigation-sentinel",
-        "apex-legal-forensic-powerhouse"
-      ],
+      "span": ["recon", "verify", "package"],
+      "mega_roots": ["apex-forensic-litigation-sentinel", "apex-legal-forensic-powerhouse"],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_pipeline.py"
     }
