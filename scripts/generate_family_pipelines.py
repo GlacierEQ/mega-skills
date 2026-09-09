@@ -44,6 +44,12 @@ CONSUMES = {
     "evolve": "HANDOFF.md",
 }
 
+DEFAULT_COMBOS = [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration",
+]
+
 FAMILIES = {
     "inception-to-deployment": {
         "display_name": "Inception to Deployment",
@@ -67,17 +73,30 @@ FAMILIES = {
             "apex-backend-infrastructure-engine",
             "apex-secure-cloud-foundry",
         ],
+        "required_combos": DEFAULT_COMBOS,
+        "runner": "scripts/deep_work_stage.py",
     },
     "control-plane": {
         "display_name": "Control Plane",
         "family": "control-plane",
-        "description": "Session continuity, adaptive operations, and guarded always-on loop.",
+        "description": "Session continuity, adaptive operations, guarded always-on execution, and proof-bound runtime amplification.",
         "mega_roots": [
             "apex-always-on-core",
             "apex-adaptive-operations",
             "apex-sovereign-runtime",
             "far-away-party",
+            "apex-genius-mastery",
         ],
+        "required_combos": [
+            "long-horizon-core",
+            "capability-readiness",
+            "pipeline-orchestration",
+            "genius-epistemic-engineering",
+            "genius-entity-forge",
+            "epistemic-verification-chain",
+        ],
+        "runner": "scripts/runtime_amplified_stage.py",
+        "runtime_profile": "control-plane-max-runtime-v1",
     },
     "memory-fleet": {
         "display_name": "Memory and Fleet",
@@ -88,6 +107,8 @@ FAMILIES = {
             "apex-fleet-harmonizer",
             "apex-docgen-synthesis",
         ],
+        "required_combos": DEFAULT_COMBOS,
+        "runner": "scripts/deep_work_stage.py",
     },
     "change-swe": {
         "display_name": "Change and Software Engineering",
@@ -100,6 +121,8 @@ FAMILIES = {
             "apex-architectural-evolution-engine",
             "apex-dev-fork-orchestrator",
         ],
+        "required_combos": DEFAULT_COMBOS,
+        "runner": "scripts/deep_work_stage.py",
     },
     "ship-cloud": {
         "display_name": "Ship and Cloud",
@@ -111,11 +134,19 @@ FAMILIES = {
             "apex-backend-infrastructure-engine",
             "apex-secure-cloud-foundry",
         ],
+        "required_combos": DEFAULT_COMBOS,
+        "runner": "scripts/deep_work_stage.py",
     },
 }
 
 
-def make_stage(pipeline_id: str, family: str, phase: str, previous: str | None) -> dict:
+def make_stage(
+    pipeline_id: str,
+    family: str,
+    phase: str,
+    previous: str | None,
+    runner: str,
+) -> dict:
     produces = [f"missions/{pipeline_id}/{name}" for name in PRODUCES[phase]]
     consumes = [f"missions/{pipeline_id}/{CONSUMES[phase]}"] if phase in CONSUMES else []
     return {
@@ -124,7 +155,7 @@ def make_stage(pipeline_id: str, family: str, phase: str, previous: str | None) 
         "needs": [previous] if previous else [],
         "command": [
             "{python}",
-            "scripts/deep_work_stage.py",
+            runner,
             "--root",
             "{workspace}",
             "--pipeline-id",
@@ -145,8 +176,9 @@ def make_stage(pipeline_id: str, family: str, phase: str, previous: str | None) 
 def make_pipeline(pipeline_id: str, meta: dict) -> dict:
     stages = []
     previous = None
+    runner = str(meta.get("runner") or "scripts/deep_work_stage.py")
     for phase in SPAN:
-        stages.append(make_stage(pipeline_id, meta["family"], phase, previous))
+        stages.append(make_stage(pipeline_id, meta["family"], phase, previous, runner))
         previous = phase
     return {
         "schema_version": 1,
@@ -156,11 +188,7 @@ def make_pipeline(pipeline_id: str, meta: dict) -> dict:
         "family": meta["family"],
         "span": list(SPAN),
         "mega_roots": meta["mega_roots"],
-        "required_combos": [
-            "long-horizon-core",
-            "capability-readiness",
-            "pipeline-orchestration",
-        ],
+        "required_combos": list(meta.get("required_combos") or DEFAULT_COMBOS),
         "deploy_mode": "approval_packet_only",
         "max_parallel": 1,
         "manifest": f"missions/{pipeline_id}/pipeline-execution-manifest.json",
@@ -171,21 +199,23 @@ def make_pipeline(pipeline_id: str, meta: dict) -> dict:
 def make_registry() -> dict:
     entries = []
     for pipeline_id, meta in FAMILIES.items():
-        entries.append(
-            {
-                "id": pipeline_id,
-                "display_name": meta["display_name"],
-                "ownership": "glaciereq",
-                "maturity": "active",
-                "version": "1.0.0",
-                "path": f"pipelines/{pipeline_id}.json",
-                "family": meta["family"],
-                "span": list(SPAN),
-                "mega_roots": meta["mega_roots"],
-                "deploy_mode": "approval_packet_only",
-                "runner": "scripts/run_deep_work_pipeline.py",
-            }
-        )
+        entry = {
+            "id": pipeline_id,
+            "display_name": meta["display_name"],
+            "ownership": "glaciereq",
+            "maturity": "active",
+            "version": "1.1.0" if pipeline_id == "control-plane" else "1.0.0",
+            "path": f"pipelines/{pipeline_id}.json",
+            "family": meta["family"],
+            "span": list(SPAN),
+            "mega_roots": meta["mega_roots"],
+            "required_combos": list(meta.get("required_combos") or DEFAULT_COMBOS),
+            "deploy_mode": "approval_packet_only",
+            "runner": meta.get("runner") or "scripts/deep_work_stage.py",
+        }
+        if meta.get("runtime_profile"):
+            entry["runtime_profile"] = meta["runtime_profile"]
+        entries.append(entry)
     entries.append(
         {
             "id": "anthropic-applied-ai-readiness",
