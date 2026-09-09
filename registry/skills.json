@@ -2272,6 +2272,28 @@
       ]
     },
     {
+      "id": "branch-lifecycle-intelligence",
+      "display_name": "Branch Lifecycle Intelligence",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/branch-lifecycle-intelligence",
+      "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
+      "purpose": "Evidence-first Git branch lifecycle intelligence for collapsing branch sprawl without destroying useful work. Inventories branches and PR lineage, proves redundancy, groups related work into synthesis families, preserves divergent value, and emits bounded cleanup plans and receipts.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "18/18 exact BLI tests and repository hierarchy validation pass"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "brand-guidelines-anthropic",
       "display_name": "Brand Guidelines Anthropic",
       "ownership": "glaciereq",
@@ -2401,6 +2423,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "build-chatgpt-app",
+      "display_name": "Build Chatgpt App",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/build-chatgpt-app",
+      "entrypoint": "skills/build-chatgpt-app/SKILL.md",
+      "purpose": "Portable peer for designing, scaffolding, refactoring, and validating ChatGPT Apps SDK applications built from an MCP server plus optional widget UI.",
+      "input_contract": [
+        "Domain mandate and materially relevant source context"
+      ],
+      "output_contract": [
+        "Skill-defined artifact or execution result with explicit proof state"
+      ],
+      "local_validation": [
+        "SKILL.md presence plus repository hierarchy validation"
+      ],
+      "does_not_own": [
+        "Host-only provider capabilities or unverified external mutations"
       ]
     },
     {
@@ -2656,7 +2700,7 @@
       "id": "casey-operator-execution-kernel",
       "display_name": "Casey Operator Execution Kernel",
       "ownership": "candidate",
-      "maturity": "active",
+      "maturity": "candidate",
       "version": "0.1.0",
       "path": "skills/casey-operator-execution-kernel",
       "entrypoint": "skills/casey-operator-execution-kernel/SKILL.md",
@@ -2876,6 +2920,28 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "chatgpt-app-submission",
+      "display_name": "Chatgpt App Submission",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/chatgpt-app-submission",
+      "entrypoint": "skills/chatgpt-app-submission/SKILL.md",
+      "purpose": "Portable peer for inspecting a ChatGPT Apps MCP server and preparing truthful submission metadata, annotation justifications, review tests, and source-aligned findings.",
+      "input_contract": [
+        "Domain mandate and materially relevant source context"
+      ],
+      "output_contract": [
+        "Skill-defined artifact or execution result with explicit proof state"
+      ],
+      "local_validation": [
+        "SKILL.md presence plus repository hierarchy validation"
+      ],
+      "does_not_own": [
+        "Host-only provider capabilities or unverified external mutations"
       ]
     },
     {
@@ -11182,6 +11248,72 @@
       ]
     },
     {
+      "id": "openai-agents-sdk",
+      "display_name": "Openai Agents Sdk",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/openai-agents-sdk",
+      "entrypoint": "skills/openai-agents-sdk/SKILL.md",
+      "purpose": "Portable GlacierEQ peer for the ChatGPT openai-developers Agents SDK skill. Build, test, evaluate, and deploy OpenAI Agents SDK applications while preserving live documentation, credential, safety, and verification gates.",
+      "input_contract": [
+        "Domain mandate and materially relevant source context"
+      ],
+      "output_contract": [
+        "Skill-defined artifact or execution result with explicit proof state"
+      ],
+      "local_validation": [
+        "SKILL.md presence plus repository hierarchy validation"
+      ],
+      "does_not_own": [
+        "Host-only provider capabilities or unverified external mutations"
+      ]
+    },
+    {
+      "id": "openai-api-troubleshooting",
+      "display_name": "Openai Api Troubleshooting",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/openai-api-troubleshooting",
+      "entrypoint": "skills/openai-api-troubleshooting/SKILL.md",
+      "purpose": "Portable peer for classifying concrete OpenAI API failures and routing the smallest evidence-backed remediation across transport, authentication, quota, rate-limit, and access failures.",
+      "input_contract": [
+        "Domain mandate and materially relevant source context"
+      ],
+      "output_contract": [
+        "Skill-defined artifact or execution result with explicit proof state"
+      ],
+      "local_validation": [
+        "SKILL.md presence plus repository hierarchy validation"
+      ],
+      "does_not_own": [
+        "Host-only provider capabilities or unverified external mutations"
+      ]
+    },
+    {
+      "id": "openai-platform-api-key",
+      "display_name": "Openai Platform Api Key",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/openai-platform-api-key",
+      "entrypoint": "skills/openai-platform-api-key/SKILL.md",
+      "purpose": "Portable credential-gate peer for OpenAI API-backed builds. Safely determine credential availability, obtain explicit reuse/create intent, provision through an authorized provider surface when available, and never expose plaintext secrets.",
+      "input_contract": [
+        "Domain mandate and materially relevant source context"
+      ],
+      "output_contract": [
+        "Skill-defined artifact or execution result with explicit proof state"
+      ],
+      "local_validation": [
+        "SKILL.md presence plus repository hierarchy validation"
+      ],
+      "does_not_own": [
+        "Host-only provider capabilities or unverified external mutations"
+      ]
+    },
+    {
       "id": "openai-reasoning-kv-sentinel",
       "display_name": "Openai Reasoning Kv Sentinel",
       "ownership": "glaciereq",
@@ -16267,28 +16399,6 @@
       ],
       "local_validation": [
         "100% test assertions pass in tests/test_zoominfo.py"
-      ],
-      "does_not_own": [
-        "Unbounded operations outside declared domain scope"
-      ]
-    },
-    {
-      "id": "branch-lifecycle-intelligence",
-      "display_name": "Branch Lifecycle Intelligence",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/branch-lifecycle-intelligence",
-      "entrypoint": "skills/branch-lifecycle-intelligence/SKILL.md",
-      "purpose": "Evidence-first Git branch lifecycle intelligence for collapsing branch sprawl without destroying useful work. Inventories branches and PR lineage, proves redundancy, groups related work into synthesis families, preserves divergent value, and emits bounded cleanup plans and receipts.",
-      "input_contract": [
-        "Domain mandate and parameters"
-      ],
-      "output_contract": [
-        "Verified task execution receipt and output payload"
-      ],
-      "local_validation": [
-        "18/18 exact BLI tests and repository hierarchy validation pass"
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"

@@ -65,7 +65,12 @@ class DeepWorkPipelineTests(unittest.TestCase):
                 command = " ".join(stage["command"]).lower()
                 for token in BANNED:
                     self.assertNotIn(token, command)
-                self.assertEqual(stage["command"][1], "scripts/deep_work_stage.py")
+                expected_runner = (
+                    "scripts/runtime_amplified_stage.py"
+                    if pipeline_id == "control-plane"
+                    else "scripts/deep_work_stage.py"
+                )
+                self.assertEqual(stage["command"][1], expected_runner)
 
     def test_deploy_gate_requires_approval(self) -> None:
         spec = json.loads((PIPELINES / "inception-to-deployment.json").read_text(encoding="utf-8"))

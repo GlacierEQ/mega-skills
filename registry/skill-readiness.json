@@ -2,16 +2,16 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 714,
+    "skills": 719,
     "combos": 36,
     "megas": 32,
-    "ready_total": 747,
-    "not_ready_total": 35,
+    "ready_total": 751,
+    "not_ready_total": 36,
     "skill_states": {
-      "instruction_ready": 671,
+      "instruction_ready": 675,
       "implementation_partial": 6,
       "behavior_verified": 27,
-      "implementation_unverified": 10
+      "implementation_unverified": 11
     },
     "combo_states": {
       "composition_candidate": 10,
@@ -2159,6 +2159,26 @@
       "reasons": []
     },
     {
+      "id": "branch-lifecycle-intelligence",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/branch-lifecycle-intelligence/skill.py",
+        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "brand-guidelines-anthropic",
       "layer": "skill",
       "ready": true,
@@ -2282,6 +2302,21 @@
       "structural_tests": [
         "skills/build-business-case/tests/test_build_business_case.py"
       ],
+      "reasons": []
+    },
+    {
+      "id": "build-chatgpt-app",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -2518,17 +2553,21 @@
     {
       "id": "casey-operator-execution-kernel",
       "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "active",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/casey-operator-execution-kernel/skill.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
       "structural_tests": [],
-      "reasons": []
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
     },
     {
       "id": "cc-skill-backend-patterns",
@@ -2721,6 +2760,21 @@
       "structural_tests": [
         "skills/chat-sdk/tests/test_chat_sdk.py"
       ],
+      "reasons": []
+    },
+    {
+      "id": "chatgpt-app-submission",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -10558,6 +10612,51 @@
       "reasons": []
     },
     {
+      "id": "openai-agents-sdk",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "openai-api-troubleshooting",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "openai-platform-api-key",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "openai-reasoning-kv-sentinel",
       "layer": "skill",
       "ready": true,
@@ -15436,26 +15535,6 @@
       "structural_tests": [
         "skills/zoominfo/tests/test_zoominfo.py"
       ],
-      "reasons": []
-    },
-    {
-      "id": "branch-lifecycle-intelligence",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/branch-lifecycle-intelligence/skill.py",
-        "skills/branch-lifecycle-intelligence/scripts/branch_lifecycle.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py"
-      ],
-      "structural_tests": [],
       "reasons": []
     }
   ],

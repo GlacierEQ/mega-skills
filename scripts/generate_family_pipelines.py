@@ -74,7 +74,7 @@ FAMILIES = {
             "apex-secure-cloud-foundry",
         ],
         "required_combos": DEFAULT_COMBOS,
-        "runner": "scripts/deep_work_stage.py",
+        "stage_runner": "scripts/deep_work_stage.py",
     },
     "control-plane": {
         "display_name": "Control Plane",
@@ -95,7 +95,7 @@ FAMILIES = {
             "genius-entity-forge",
             "epistemic-verification-chain",
         ],
-        "runner": "scripts/runtime_amplified_stage.py",
+        "stage_runner": "scripts/runtime_amplified_stage.py",
         "runtime_profile": "control-plane-max-runtime-v1",
     },
     "memory-fleet": {
@@ -108,7 +108,7 @@ FAMILIES = {
             "apex-docgen-synthesis",
         ],
         "required_combos": DEFAULT_COMBOS,
-        "runner": "scripts/deep_work_stage.py",
+        "stage_runner": "scripts/deep_work_stage.py",
     },
     "change-swe": {
         "display_name": "Change and Software Engineering",
@@ -122,7 +122,7 @@ FAMILIES = {
             "apex-dev-fork-orchestrator",
         ],
         "required_combos": DEFAULT_COMBOS,
-        "runner": "scripts/deep_work_stage.py",
+        "stage_runner": "scripts/deep_work_stage.py",
     },
     "ship-cloud": {
         "display_name": "Ship and Cloud",
@@ -135,7 +135,7 @@ FAMILIES = {
             "apex-secure-cloud-foundry",
         ],
         "required_combos": DEFAULT_COMBOS,
-        "runner": "scripts/deep_work_stage.py",
+        "stage_runner": "scripts/deep_work_stage.py",
     },
 }
 
@@ -176,7 +176,7 @@ def make_stage(
 def make_pipeline(pipeline_id: str, meta: dict) -> dict:
     stages = []
     previous = None
-    runner = str(meta.get("runner") or "scripts/deep_work_stage.py")
+    runner = str(meta.get("stage_runner") or "scripts/deep_work_stage.py")
     for phase in SPAN:
         stages.append(make_stage(pipeline_id, meta["family"], phase, previous, runner))
         previous = phase
@@ -211,8 +211,11 @@ def make_registry() -> dict:
             "mega_roots": meta["mega_roots"],
             "required_combos": list(meta.get("required_combos") or DEFAULT_COMBOS),
             "deploy_mode": "approval_packet_only",
-            "runner": meta.get("runner") or "scripts/deep_work_stage.py",
+            "runner": "scripts/run_deep_work_pipeline.py",
         }
+        stage_runner = str(meta.get("stage_runner") or "scripts/deep_work_stage.py")
+        if stage_runner != "scripts/deep_work_stage.py":
+            entry["stage_runner"] = stage_runner
         if meta.get("runtime_profile"):
             entry["runtime_profile"] = meta["runtime_profile"]
         entries.append(entry)
