@@ -6,7 +6,7 @@ steps:
       set -euo pipefail
       mkdir -p artifacts/buildkite
       actual="$(git rev-parse HEAD)"
-      test "$actual" = "$BUILDKITE_COMMIT"
+      test "$$actual" = "$BUILDKITE_COMMIT"
       python3 --version
       python3 -m compileall -q scripts tests skills
       python3 scripts/validate_hierarchy.py
