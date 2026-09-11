@@ -72,6 +72,8 @@
   "validation": {
     "default_mode": "local_contract",
     "remote_mode": "pinned_source_contract_and_git_blob_hash",
-    "command": "python scripts/validate_genius_mastery_bridge.py --remote"
+    "freshness_mode": "current_upstream_contract_content_and_authorization",
+    "command": "python scripts/validate_genius_mastery_bridge.py --mode freshness",
+    "compatibility_command": "python scripts/validate_genius_mastery_bridge.py --remote"
   }
 }

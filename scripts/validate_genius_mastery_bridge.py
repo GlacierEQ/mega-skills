@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate the pinned Genius-Mastery ↔ Mega-Skills operating-loop contract."""
+
 from __future__ import annotations
 
 import argparse
@@ -31,17 +32,50 @@ EXPECTED_STATUS_MAP = {
     "contradicted": "contradicted",
 }
 BRIDGE_KEYS = {
-    "$schema", "schema_version", "contract_id", "provider", "source_contract",
-    "consumer", "compatibility", "phase_order", "evidence_states",
-    "outcome_statuses", "status_map", "invariants", "validation",
+    "$schema",
+    "schema_version",
+    "contract_id",
+    "provider",
+    "source_contract",
+    "consumer",
+    "compatibility",
+    "phase_order",
+    "evidence_states",
+    "outcome_statuses",
+    "status_map",
+    "invariants",
+    "validation",
 }
 SOURCE_CONTRACT_KEYS = {
-    "$schema", "schema_version", "contract_id", "provider", "consumer",
-    "compatibility", "phase_order", "evidence_states", "outcome_statuses",
-    "status_map", "invariants",
+    "$schema",
+    "schema_version",
+    "contract_id",
+    "provider",
+    "consumer",
+    "compatibility",
+    "phase_order",
+    "evidence_states",
+    "outcome_statuses",
+    "status_map",
+    "invariants",
 }
-PROVIDER_KEYS = {"repository", "ref", "module", "schema", "module_blob_sha", "schema_blob_sha"}
-SOURCE_PIN_KEYS = {"repository", "ref", "path", "blob_sha", "schema", "schema_blob_sha", "raw_base"}
+PROVIDER_KEYS = {
+    "repository",
+    "ref",
+    "module",
+    "schema",
+    "module_blob_sha",
+    "schema_blob_sha",
+}
+SOURCE_PIN_KEYS = {
+    "repository",
+    "ref",
+    "path",
+    "blob_sha",
+    "schema",
+    "schema_blob_sha",
+    "raw_base",
+}
 
 RUN_QUALITY_TERMS = (
     "VERBATIM-FIRST",
@@ -96,7 +130,10 @@ def expected_raw_url(record: dict, path: str) -> str:
 
 def check_local(bridge: dict):
     require_exact_keys(bridge, BRIDGE_KEYS, "consumer bridge")
-    if bridge.get("schema_version") != 1 or bridge.get("contract_id") != "genius-mastery.operating-loop":
+    if (
+        bridge.get("schema_version") != 1
+        or bridge.get("contract_id") != "genius-mastery.operating-loop"
+    ):
         fail("bridge identity/version mismatch")
 
     provider = bridge["provider"]
@@ -108,7 +145,9 @@ def check_local(bridge: dict):
     require_unique(bridge["evidence_states"], "evidence_states")
     require_unique(bridge["outcome_statuses"], "outcome_statuses")
     require_unique(bridge["invariants"], "invariants")
-    if any(not isinstance(item, str) or len(item) < 20 for item in bridge["invariants"]):
+    if any(
+        not isinstance(item, str) or len(item) < 20 for item in bridge["invariants"]
+    ):
         fail("bridge invariants must be non-empty explanatory strings")
 
     if provider["repository"] != "GlacierEQ/Genius-Mastery":
@@ -126,7 +165,10 @@ def check_local(bridge: dict):
     if bridge["$schema"] != expected_raw_url(source, source["schema"]):
         fail("consumer manifest does not point to the pinned source schema")
 
-    if consumer["repository"] != "GlacierEQ/mega-skills" or consumer["combo_id"] != "mission-aware-operating-loop":
+    if (
+        consumer["repository"] != "GlacierEQ/mega-skills"
+        or consumer["combo_id"] != "mission-aware-operating-loop"
+    ):
         fail("unexpected consumer route")
     if consumer["mega_routes"] != ["apex-adaptive-operations", "apex-genius-mastery"]:
         fail("Mega route set drifted")
@@ -152,11 +194,15 @@ def check_local(bridge: dict):
             fail(f"missing integration surface: {path}")
     for relpath in RUN_QUALITY_SURFACES:
         text = (ROOT / relpath).read_text(encoding="utf-8")
-        missing_terms = [term for term in RUN_QUALITY_TERMS if term.casefold() not in text.casefold()]
+        missing_terms = [
+            term for term in RUN_QUALITY_TERMS if term.casefold() not in text.casefold()
+        ]
         if missing_terms:
             fail(f"run-quality contract drifted in {relpath}; missing={missing_terms}")
 
-    combo = (ROOT / "combo-skills" / "mission-aware-operating-loop" / "COMBO.md").read_text(encoding="utf-8")
+    combo = (
+        ROOT / "combo-skills" / "mission-aware-operating-loop" / "COMBO.md"
+    ).read_text(encoding="utf-8")
     if "Genius-Mastery" not in combo or "MISSION_OPERATING_LOOP_RECORD.md" not in combo:
         fail("Combo does not declare upstream bridge")
 
@@ -170,11 +216,87 @@ def remote_bytes(record: dict, path: str) -> bytes:
         return response.read()
 
 
+def remote_bytes_at_ref(record: dict, ref: str, path: str) -> bytes:
+    current = dict(record)
+    current["ref"] = ref
+    return remote_bytes(current, path)
+
+
+def repository_head(repository: str) -> str:
+    request = Request(
+        f"https://api.github.com/repos/{repository}/commits/main",
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "GlacierEQ-mega-skills-bridge-validator",
+        },
+    )
+    with urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read())
+    head = payload.get("sha", "")
+    require_hex(head, f"{repository} main head")
+    return head
+
+
+def check_freshness_state(
+    bridge: dict,
+    current_contract_data: bytes,
+    current_schema_data: bytes,
+    authority_head: str,
+) -> dict:
+    """Prove the pinned consumer still matches the current upstream authority contract.
+
+    Freshness is content/authority based, not `provider.ref == main`. The current
+    upstream contract may intentionally authorize an older implementation ref when
+    its verified module/schema blobs remain the approved provider implementation.
+    """
+    require_hex(authority_head, "upstream authority head")
+    source = bridge["source_contract"]
+    contract_blob = git_blob_sha(current_contract_data)
+    schema_blob = git_blob_sha(current_schema_data)
+    if contract_blob != source["blob_sha"]:
+        fail(
+            "stale-provider provenance: current upstream bridge contract blob "
+            f"is {contract_blob}, consumer pins {source['blob_sha']}"
+        )
+    if schema_blob != source["schema_blob_sha"]:
+        fail(
+            "stale-provider provenance: current upstream bridge schema blob "
+            f"is {schema_blob}, consumer pins {source['schema_blob_sha']}"
+        )
+    current_contract = json.loads(current_contract_data)
+    check_source_contract(current_contract, bridge)
+    return {
+        "authority_head": authority_head,
+        "authority_contract_blob": contract_blob,
+        "authority_schema_blob": schema_blob,
+        "pinned_source_ref": source["ref"],
+        "source_ref_is_authority_head": source["ref"] == authority_head,
+        "provider_ref": bridge["provider"]["ref"],
+        "freshness_basis": "current_upstream_contract_content_and_authorization",
+    }
+
+
+def check_freshness(bridge: dict) -> dict:
+    source = bridge["source_contract"]
+    head = repository_head(source["repository"])
+    contract_data = remote_bytes_at_ref(source, "main", source["path"])
+    schema_data = remote_bytes_at_ref(source, "main", source["schema"])
+    return check_freshness_state(bridge, contract_data, schema_data, head)
+
+
 def check_source_contract(contract: dict, bridge: dict):
     require_exact_keys(contract, SOURCE_CONTRACT_KEYS, "source contract")
     require_exact_keys(contract["provider"], PROVIDER_KEYS, "source provider")
-    require_exact_keys(contract["consumer"], {"repository", "combo_id", "mega_routes"}, "source consumer")
-    require_exact_keys(contract["compatibility"], {"operating_loop_schema_version", "combo_contract_version", "artifact"}, "source compatibility")
+    require_exact_keys(
+        contract["consumer"],
+        {"repository", "combo_id", "mega_routes"},
+        "source consumer",
+    )
+    require_exact_keys(
+        contract["compatibility"],
+        {"operating_loop_schema_version", "combo_contract_version", "artifact"},
+        "source compatibility",
+    )
     require_unique(contract["invariants"], "source invariants")
     if contract.get("schema_version") != bridge["schema_version"]:
         fail("source contract version mismatch")
@@ -195,18 +317,37 @@ def check_source_contract(contract: dict, bridge: dict):
     ):
         if source_provider.get(key) != provider.get(key):
             fail(f"source contract provider mismatch for {key}")
-    for key in ("consumer", "compatibility", "phase_order", "evidence_states", "outcome_statuses", "status_map", "invariants"):
+    for key in (
+        "consumer",
+        "compatibility",
+        "phase_order",
+        "evidence_states",
+        "outcome_statuses",
+        "status_map",
+        "invariants",
+    ):
         if contract.get(key) != bridge.get(key):
             fail(f"source contract mismatch for {key}")
 
 
 def check_bridge_schema(schema: dict, bridge: dict):
-    if schema.get("type") != "object" or schema.get("additionalProperties") is not False:
+    if (
+        schema.get("type") != "object"
+        or schema.get("additionalProperties") is not False
+    ):
         fail("source bridge schema must be a closed object")
     expected_required = [
-        "$schema", "schema_version", "contract_id", "provider", "consumer",
-        "compatibility", "phase_order", "evidence_states", "outcome_statuses",
-        "status_map", "invariants",
+        "$schema",
+        "schema_version",
+        "contract_id",
+        "provider",
+        "consumer",
+        "compatibility",
+        "phase_order",
+        "evidence_states",
+        "outcome_statuses",
+        "status_map",
+        "invariants",
     ]
     if schema.get("required") != expected_required:
         fail("source bridge schema required fields drifted")
@@ -222,7 +363,13 @@ def check_bridge_schema(schema: dict, bridge: dict):
     for name, expected in expected_consts.items():
         if properties.get(name, {}).get("const") != expected:
             fail(f"source bridge schema drifted for {name}")
-    if properties.get("consumer", {}).get("properties", {}).get("mega_routes", {}).get("const") != bridge["consumer"]["mega_routes"]:
+    if (
+        properties.get("consumer", {})
+        .get("properties", {})
+        .get("mega_routes", {})
+        .get("const")
+        != bridge["consumer"]["mega_routes"]
+    ):
         fail("source bridge schema route contract drifted")
     for name in ("provider", "consumer", "compatibility"):
         if properties.get(name, {}).get("additionalProperties") is not False:
@@ -242,7 +389,9 @@ def check_remote(bridge: dict):
         data = remote_bytes(provider, path)
         actual = git_blob_sha(data)
         if actual != provider[key]:
-            fail(f"remote provider pin mismatch for {path}: expected {provider[key]}, got {actual}")
+            fail(
+                f"remote provider pin mismatch for {path}: expected {provider[key]}, got {actual}"
+            )
 
     contract_data = remote_bytes(source, source["path"])
     if git_blob_sha(contract_data) != source["blob_sha"]:
@@ -257,31 +406,56 @@ def check_remote(bridge: dict):
     check_bridge_schema(schema, bridge)
 
     operating_schema = json.loads(remote_bytes(provider, provider["schema"]))
-    if operating_schema["properties"]["schema_version"]["const"] != bridge["compatibility"]["operating_loop_schema_version"]:
+    if (
+        operating_schema["properties"]["schema_version"]["const"]
+        != bridge["compatibility"]["operating_loop_schema_version"]
+    ):
         fail("remote operating-loop schema version mismatch")
     if operating_schema["properties"]["phases"]["required"] != bridge["phase_order"]:
         fail("remote phase contract mismatch")
-    if operating_schema["properties"]["evidence_state"]["enum"] != bridge["evidence_states"]:
+    if (
+        operating_schema["properties"]["evidence_state"]["enum"]
+        != bridge["evidence_states"]
+    ):
         fail("remote evidence vocabulary mismatch")
-    if operating_schema["properties"]["outcome_status"]["enum"] != bridge["outcome_statuses"]:
+    if (
+        operating_schema["properties"]["outcome_status"]["enum"]
+        != bridge["outcome_statuses"]
+    ):
         fail("remote outcome vocabulary mismatch")
-    if operating_schema["properties"]["status"]["enum"] != list(bridge["status_map"].values()):
+    if operating_schema["properties"]["status"]["enum"] != list(
+        bridge["status_map"].values()
+    ):
         fail("remote status vocabulary mismatch")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        "--mode",
+        choices=("local", "compatibility", "freshness"),
+        default="local",
+        help=(
+            "local validates repository structure; compatibility verifies pinned remote "
+            "artifacts; freshness also proves the pin is still authorized by the current "
+            "upstream bridge contract"
+        ),
+    )
+    parser.add_argument(
         "--remote",
         action="store_true",
-        help="retrieve both pinned source contracts and provider artifacts",
+        help="backward-compatible alias for --mode compatibility",
     )
     args = parser.parse_args()
+    mode = "compatibility" if args.remote and args.mode == "local" else args.mode
+    freshness = None
     try:
         bridge = load(BRIDGE)
         check_local(bridge)
-        if args.remote:
+        if mode in {"compatibility", "freshness"}:
             check_remote(bridge)
+        if mode == "freshness":
+            freshness = check_freshness(bridge)
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}")
         return 1
@@ -289,10 +463,13 @@ def main() -> int:
         json.dumps(
             {
                 "ok": True,
-                "remote_verified": args.remote,
+                "mode": mode,
+                "remote_verified": mode in {"compatibility", "freshness"},
+                "freshness_verified": mode == "freshness",
                 "provider_ref": bridge["provider"]["ref"],
                 "source_contract_ref": bridge["source_contract"]["ref"],
                 "combo": bridge["consumer"]["combo_id"],
+                "freshness": freshness,
             },
             indent=2,
         )
