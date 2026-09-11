@@ -1,0 +1,146 @@
+{
+  "schema": "glaciereq.chatgpt-runtime-activation.v1",
+  "profile_id": "chatgpt-estate-cartographer-executor",
+  "source_surface": "chatgpt",
+  "source_repository": "GlacierEQ/mega-skills",
+  "source_main_sha_at_selection": "ec451dd0610df400886abdd665d55c64ea2aeb1e",
+  "state": "ACTIVE_PROFILE",
+  "purpose": "Load the GlacierEQ skills that materially improve estate-wide source recovery, codebase understanding, topology and classification work, GitHub execution, connector use, evidence discipline, verification, and continuation without globally loading unrelated domain specializations.",
+  "activation_contract": {
+    "host_activate_skill_tool_available": false,
+    "activation_semantics": "A ChatGPT consumer may claim a skill CONTRACT_LOADED only after reading the canonical SKILL.md or COMBO.md for the active session. The existence of this profile alone is not a host-runtime activation receipt.",
+    "always_on_policy": "Read and apply all always_on entries for substantive GlacierEQ estate work, subject to higher-priority platform constraints and current Operator scope.",
+    "conditional_policy": "Load a conditional entry only when its trigger matches the current mission. Do not globally inject domain-specific or stale instructions.",
+    "readback_required": true,
+    "no_fake_activation_claim": true,
+    "preserve_canonical_source": true
+  },
+  "always_on": [
+    {
+      "id": "casey-operator-execution-kernel",
+      "kind": "atomic",
+      "path": "skills/casey-operator-execution-kernel/SKILL.md",
+      "selected_blob_sha": "672a68224efa6ed92cc14f8968bae74144087f07",
+      "role": "Operator authority, semantic locks, rehydration, holographic-mesh fidelity, execution/readback gate"
+    },
+    {
+      "id": "power-skill",
+      "kind": "atomic",
+      "path": "skills/power-skill/SKILL.md",
+      "selected_blob_sha": "b0ca8a9d3e12a7ca4d31e970f6e768170383dbaf",
+      "role": "Mission-bound execution composition and continuation"
+    },
+    {
+      "id": "agent-memory-systems",
+      "kind": "atomic",
+      "path": "skills/agent-memory-systems/SKILL.md",
+      "selected_blob_sha": "838aae7ff05f40363eacba20071a2e17594aa279",
+      "role": "Source-realized hydration, nearest-valid continuation, provenance-bound memory"
+    },
+    {
+      "id": "evidence-register",
+      "kind": "atomic",
+      "path": "skills/evidence-register/SKILL.md",
+      "selected_blob_sha": "54de3dd18b478813014e82e45b2e68fed31a0aed",
+      "role": "Traceability for sources, claims, tests, contradictions, and uncertainty"
+    },
+    {
+      "id": "context-capsule",
+      "kind": "atomic",
+      "path": "skills/context-capsule/SKILL.md",
+      "selected_blob_sha": "993afd5ee36a1dcbcb31180e3f21c88b1e6a2fea",
+      "role": "Compact continuation context without replacing source state"
+    },
+    {
+      "id": "quality-gate",
+      "kind": "atomic",
+      "path": "skills/quality-gate/SKILL.md",
+      "selected_blob_sha": "9a53fd82fd8d6d020494147a61d1272a0ef34221",
+      "role": "Evidence-backed acceptance before advancement or completion claims"
+    },
+    {
+      "id": "skills",
+      "kind": "atomic",
+      "path": "skills/skills/SKILL.md",
+      "selected_blob_sha": "86615fd7692a77708b21d4b5ae930596df3208fb",
+      "role": "Skill discovery, selection, validation, composition, and lifecycle discipline"
+    },
+    {
+      "id": "github-power",
+      "kind": "atomic",
+      "path": "skills/github-power/SKILL.md",
+      "selected_blob_sha": "f94397499bc3244969902267d800b8e427986462",
+      "role": "Repository intelligence, GitHub Actions, multi-repo operations, and GitHub execution"
+    },
+    {
+      "id": "mcp",
+      "kind": "atomic",
+      "path": "skills/mcp/SKILL.md",
+      "selected_blob_sha": "1f41ac24ab56412be59572b860a82a2a5485be0b",
+      "role": "Connector/tool orchestration patterns; provider-specific configuration is advisory and must be reconciled to the live ChatGPT tool surface"
+    }
+  ],
+  "conditional": [
+    {
+      "id": "compose-next",
+      "kind": "atomic",
+      "path": "skills/compose-next/SKILL.md",
+      "selected_blob_sha": "0096d070a2f70cd50bc63119330f7710c47f88fd",
+      "trigger": "Multi-step implementation, repair, or refactor that merits repository orientation, verification, and independent review"
+    },
+    {
+      "id": "long-horizon-core",
+      "kind": "compound",
+      "path": "combo-skills/long-horizon-core/COMBO.md",
+      "selected_blob_sha": "f9b4db5742e54f571517ae443202a7f154192147",
+      "trigger": "Dependent phases, durable artifacts, uncertainty, or safe resumption across work chunks"
+    },
+    {
+      "id": "capability-readiness",
+      "kind": "compound",
+      "path": "combo-skills/capability-readiness/COMBO.md",
+      "selected_blob_sha": "564058fd2ca930f0e6ad3cb903cf0912e2000ada",
+      "trigger": "An advanced route depends on tools, access, environment, or evidence whose readiness is not yet verified"
+    },
+    {
+      "id": "mission-aware-operating-loop",
+      "kind": "compound",
+      "path": "combo-skills/mission-aware-operating-loop/COMBO.md",
+      "selected_blob_sha": "e1785857b642f162570fba4153b80bc40f3934b6",
+      "trigger": "Cross-session, cross-repository, cross-provider, or changing-evidence missions requiring recoverable decisions and learning"
+    },
+    {
+      "id": "fleet-recon-and-harmonize",
+      "kind": "compound",
+      "path": "combo-skills/fleet-recon-and-harmonize/COMBO.md",
+      "selected_blob_sha": "439389de86a845b891ca00eeabaa0ec27e670217",
+      "trigger": "Branch/ref convergence where living main must be preserved and unique value selectively integrated"
+    }
+  ],
+  "explicitly_not_global": [
+    {
+      "id": "apex-meta-ignition",
+      "reason": "Its documented activation sequence depends on a host activate_skill tool not exposed in this ChatGPT runtime and contains case-bound defaults that must not become estate-wide mission defaults."
+    },
+    {
+      "id": "sovereign-connectors-exposer",
+      "reason": "Useful as a donor/conditional connector pattern, but its current contract contains case-bound mission language and provider/tool names that must be reconciled to the live runtime before use."
+    }
+  ],
+  "runtime_loaded_this_session": [
+    "casey-operator-execution-kernel",
+    "power-skill",
+    "agent-memory-systems",
+    "evidence-register",
+    "context-capsule",
+    "quality-gate",
+    "skills",
+    "github-power",
+    "mcp",
+    "compose-next",
+    "long-horizon-core",
+    "capability-readiness",
+    "mission-aware-operating-loop",
+    "fleet-recon-and-harmonize"
+  ]
+}
