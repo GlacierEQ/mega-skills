@@ -33,12 +33,34 @@ class TestFleetGitHarmonizerCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Zero data loss via archive tags, 100% green regression, no force-push, cryptographic verification
+    def test_divergence_auditor_behavioral(self):
+        from scripts.divergence_auditor import audit_divergence
+        res = audit_divergence(Path(__file__).resolve().parents[3])
+        assert "branches" in res
+        assert "total_branches_audited" in res
+
+    def test_ast_diff_extractor_behavioral(self):
+        from scripts.ast_diff_extractor import compute_ast_diff
+        c1 = "def foo():\n    return 1\n"
+        c2 = "def foo():\n    return 2\n\ndef bar():\n    return 3\n"
+        diff = compute_ast_diff(c1, c2)
+        assert diff["semantic_changes_detected"] is True
+        assert "bar" in diff["added"]
+        assert "foo" in diff["modified"]
+
+    def test_commit_synthesizer_provenance(self):
+        from scripts.commit_synthesizer import synthesize_commit_message
+        msg = synthesize_commit_message("feat: test", "body text")
+        assert "Signed-off-by" in msg["full_message"]
+        assert "Evidence-Receipt" in msg["full_message"]
+
+    def test_archive_tagger_dry_run(self):
+        from scripts.archive_tagger import create_archive_tag
+        res = create_archive_tag(Path(__file__).resolve().parents[3], "main", dry_run=True)
+        assert res["dry_run"] is True
+        assert "archive/main" in res["tag_name"]
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

@@ -33,12 +33,14 @@ class TestForkOverlayCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Upstream merge cleanness, overlay 100% untouched, zero regressions, clean push
+    def test_overlay_isolator_behavioral(self):
+        from scripts.overlay_isolator import classify_modifications, OverlayAnalysis
+        analysis = classify_modifications(Path(__file__).parent.parent)
+        assert isinstance(analysis, OverlayAnalysis)
+        assert isinstance(analysis.protected_dirs, list)
+        assert "custom/" in analysis.protected_dirs
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

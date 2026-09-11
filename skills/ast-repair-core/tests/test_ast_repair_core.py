@@ -33,12 +33,35 @@ class TestAstRepairCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Traceback parsing accuracy, AST chunk isolation, patch application, 100% green verification
+    def test_traceback_parser_behavioral(self):
+        from scripts.traceback_parser import parse_pytest_traceback
+        sample_output = """
+=================================== FAILURES ===================================
+_________________________________ test_failure _________________________________
+def test_failure():
+>       assert 1 == 2
+E       assert 1 == 2
+tests/test_dummy.py:4: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_dummy.py::test_failure - assert 1 == 2
+"""
+        parsed = parse_pytest_traceback(sample_output)
+        assert parsed is not None
+        assert parsed.error_type == "AssertionError"
+        assert len(parsed.frames) >= 1
+        assert parsed.root_cause_frame is not None
+        assert parsed.root_cause_frame.line == 4
+
+    def test_ast_chunker_enclosing_node(self):
+        import ast
+        from scripts.ast_chunker import find_enclosing_node
+        code = "def sample():\n    x = 10\n    return x\n"
+        tree = ast.parse(code)
+        node = find_enclosing_node(tree, 2)
+        assert node is not None
+        assert isinstance(node, (ast.FunctionDef, ast.Assign))
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

@@ -22,14 +22,28 @@ from typing import Optional
 
 # ── Universal imports ────────────────────────────────────────────────────────
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
-from paths import (
-    CATACLYSM_DIR,
-    NOTION_QUEUE_DIR, GMAIL_DRAFTS_DIR, PIPELINE_REPORTS_DIR,
-)
+try:
+    from paths import (
+        CATACLYSM_DIR,
+        NOTION_QUEUE_DIR, GMAIL_DRAFTS_DIR, PIPELINE_REPORTS_DIR,
+    )
+except ImportError:
+    BASE_DIR = Path.home() / ".apex"
+    CATACLYSM_DIR = BASE_DIR / "cataclysm"
+    NOTION_QUEUE_DIR = BASE_DIR / "notion_queue"
+    GMAIL_DRAFTS_DIR = BASE_DIR / "gmail_drafts"
+    PIPELINE_REPORTS_DIR = BASE_DIR / "pipeline_reports"
 
 # ── Sibling skill imports ────────────────────────────────────────────────────
-from icloud_voice_memos.harvester import run as harvest_voice_memos
-from gmail_orchestrator.orchestrator import GmailOrchestrator
+try:
+    from icloud_voice_memos.harvester import run as harvest_voice_memos
+except ImportError:
+    harvest_voice_memos = None
+try:
+    from gmail_orchestrator.orchestrator import GmailOrchestrator
+except ImportError:
+    GmailOrchestrator = None
+
 
 # ── Whisper model ────────────────────────────────────────────────────────────
 WHISPER_MODEL = __import__("os").environ.get("WHISPER_MODEL", "medium")

@@ -33,12 +33,21 @@ class TestConnectorBridge:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Rate-limit compliance, circuit-breaker transitions, schema validation, token budget enforcement
+    def test_circuit_breaker_behavioral(self):
+        from scripts.circuit_breaker import CircuitBreaker, CircuitBreakerConfig, CircuitState
+        cb = CircuitBreaker("unit-test", CircuitBreakerConfig(failure_threshold=2))
+        assert cb.state == CircuitState.CLOSED
+        cb._on_failure()
+        cb._on_failure()
+        assert cb.state == CircuitState.OPEN
+
+
+    def test_rate_limiter_configs(self):
+        from scripts.rate_limiter import DEFAULT_CONFIGS
+        assert "openrouter" in DEFAULT_CONFIGS
+        assert DEFAULT_CONFIGS["openrouter"].requests_per_second > 0
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

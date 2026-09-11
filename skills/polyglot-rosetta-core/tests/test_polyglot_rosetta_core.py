@@ -33,12 +33,33 @@ class TestPolyglotRosettaCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # AST equivalence, compilation success, benchmark TTFT/latency, Lean 4 proof verification
+    def test_floor_selector_behavioral(self):
+        from scripts.floor_selector import select_target_floor
+        res = select_target_floor(["zero_copy", "ipc"])
+        assert res["selected_floor"] == "capnp"
+        res_proof = select_target_floor(["proofs", "formal_verification"])
+        assert res_proof["selected_floor"] == "lean4"
+
+    def test_ast_inspector_behavioral(self):
+        from scripts.ast_inspector import inspect_signatures
+        code = "def multiply(x: int, y: float) -> float:\n    return x * y\n"
+        res = inspect_signatures(code)
+        assert res["valid"] is True
+        assert len(res["functions"]) == 1
+        assert res["functions"][0]["name"] == "multiply"
+
+    def test_code_synthesizer_rust(self):
+        from scripts.code_synthesizer import synthesize_rust_function
+        code = synthesize_rust_function("compute", [{"name": "a", "type": "int"}], return_type="int")
+        assert "pub fn compute(a: i64) -> i64" in code
+
+    def test_proof_generator_behavioral(self):
+        from scripts.proof_generator import generate_proof_receipt
+        receipt = generate_proof_receipt("valid_transition", "lean4", "forall s, valid s")
+        assert receipt["verified"] is True
+        assert len(receipt["proof_hash"]) == 64
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

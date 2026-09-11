@@ -33,12 +33,34 @@ class TestAerospaceTrajectoryCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Energy/angular momentum conservation, Lambert convergence, boil-off pressure curves
+    def test_boiloff_calc_behavioral(self):
+        from scripts.boiloff_calc import calculate_boiloff
+        res = calculate_boiloff("LOX", mass_kg=10000.0, heat_leak_watts=100.0, duration_hours=10.0)
+        assert res["boiloff_mass_kg"] > 0
+        assert res["remaining_mass_kg"] < 10000.0
+        assert res["percentage_lost"] > 0
+
+    def test_orbital_propagation_conservation(self):
+        from scripts.orbital_propagator import propagate_rk4
+        r0 = [7000.0, 0.0, 0.0]
+        v0 = [0.0, 7.546, 0.0]
+        res = propagate_rk4(r0, v0, dt=5.0, steps=20)
+        assert res["specific_energy_km2_s2"] < 0
+        assert res["radius_km"] > 6000.0
+
+    def test_lambert_solver_convergence(self):
+        from scripts.lambert_solver import solve_lambert
+        res = solve_lambert([7000.0, 0.0, 0.0], [0.0, 7000.0, 0.0], time_of_flight_s=3600.0)
+        assert res["v1_magnitude_km_s"] > 0
+        assert res["chord_km"] > 0
+
+    def test_conjunction_analyzer_behavioral(self):
+        from scripts.conjunction_analyzer import analyze_conjunction
+        res = analyze_conjunction([7000.0, 0.0, 0.0], [0.0, 7.5, 0.0], [7000.05, 0.0, 0.0], [0.0, -7.5, 0.0])
+        assert res["miss_distance_m"] > 0
+        assert res["collision_probability"] >= 0
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

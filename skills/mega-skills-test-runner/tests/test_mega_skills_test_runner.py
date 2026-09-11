@@ -33,12 +33,29 @@ class TestMegaSkillsTestRunner:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Canonical validation sequence, JSON evidence emission, failure diagnosis, revision capture
+    def test_revision_recorder_behavioral(self):
+        from scripts.revision_recorder import record_revision
+        record = record_revision(Path(__file__).resolve().parents[3])
+        assert isinstance(record, dict)
+        assert "head" in record
+        assert "clean" in record
+
+    def test_report_emitter_behavioral(self, tmp_path):
+        from scripts.report_emitter import emit_report
+        out = tmp_path / "report.json"
+        payload = emit_report(out, status="PASS", checks=[{"check": "dummy", "returncode": 0}])
+        assert payload["status"] == "PASS"
+        assert out.is_file()
+
+    def test_failure_diagnostic_behavioral(self):
+        from scripts.failure_diagnostic import diagnose_failure
+        diag = diagnose_failure("Validation error in entry: test-skill at field: description on line 42")
+        assert diag["boundary"] == "schema_validation"
+        assert diag["entry"] == "test-skill"
+        assert diag["field"] == "description"
+        assert diag["line"] == 42
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

@@ -9,8 +9,10 @@ import json
 import os
 import resource
 import statistics
+import sys
 import time
 from typing import Callable, Any, Dict, List
+
 
 def profile_callable(func: Callable, iterations: int = 1000, *args, **kwargs) -> Dict[str, Any]:
     latencies_us = []

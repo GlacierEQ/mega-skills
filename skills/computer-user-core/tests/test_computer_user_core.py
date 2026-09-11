@@ -33,12 +33,20 @@ class TestComputerUserCore:
             p = resources_dir / res
             assert p.exists(), f"Missing resource: {res}"
     
-    def test_requirements_exist(self):
-        req = Path(__file__).parent.parent / "requirements.txt"
-        assert req.exists()
-    
-    # TODO: Add actual behavioral tests
-    # Process inspection accuracy, visual delta detection, zero zombie cleanup, non-blocking execution
+    def test_process_inspector_behavioral(self):
+        from scripts.process_inspector import get_processes_by_name
+        procs = get_processes_by_name("python")
+        assert isinstance(procs, list)
+
+    def test_state_verifier_hash_behavioral(self, tmp_path):
+        from scripts.state_verifier import compute_image_hash
+        sample = tmp_path / "test.bin"
+        sample.write_bytes(b"hello state verifier")
+        res = compute_image_hash(str(sample))
+        assert isinstance(res, str)
+        assert len(res) == 64
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+

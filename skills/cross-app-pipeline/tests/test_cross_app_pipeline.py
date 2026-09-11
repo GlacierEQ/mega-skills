@@ -1,27 +1,39 @@
 #!/usr/bin/env python3
-"""
-Unit Test Harness: cross-app-pipeline
-Standard: L2 Epistemic Verification
-"""
-import hashlib
+"""Behavioral tests for cross-app-pipeline."""
+import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
-class TestCross_app_pipeline(unittest.TestCase):
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+
+class TestCrossAppPipeline(unittest.TestCase):
     def setUp(self):
-        self.skill_dir = Path(__file__).parent.parent
-        self.skill_md = self.skill_dir / "SKILL.md"
-        self.run_py = self.skill_dir / "scripts/run.py"
+        self.skill_dir = ROOT
 
-    def test_skill_md_exists_and_valid(self):
-        self.assertTrue(self.skill_md.exists(), "SKILL.md must exist")
-        content = self.skill_md.read_text(encoding="utf-8")
-        self.assertGreater(len(content), 100, "SKILL.md must not be empty")
-        self.assertTrue(content.startswith("---"), "SKILL.md must have YAML frontmatter")
+    def test_run_dispatcher_verification(self):
+        run_py = self.skill_dir / "scripts/run.py"
+        cmd = [sys.executable, str(run_py), "--verify", "--json"]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        self.assertEqual(result.returncode, 0)
+        output = json.loads(result.stdout)
+        self.assertEqual(output.get("skill"), "cross-app-pipeline")
+        self.assertEqual(output.get("status"), "VERIFIED")
+        self.assertEqual(len(output.get("sha256", "")), 64)
 
-    def test_run_dispatcher_exists(self):
-        self.assertTrue(self.run_py.exists(), "scripts/run.py must exist")
-        self.assertTrue(os.access(self.run_py, os.X_OK), "scripts/run.py must be executable")
+    def test_classify_transcript_behavioral(self):
+        from pipeline import classify_transcript
+        res_legal = classify_transcript("Review court motion and filing evidence")
+        res_email = classify_transcript("Draft and send email response to team")
+        res_pers = classify_transcript("Weekly shopping checklist")
+        self.assertEqual(res_legal, "LEGAL")
+        self.assertEqual(res_email, "EMAIL")
+        self.assertEqual(res_pers, "PERSONAL")
+
 
 if __name__ == "__main__":
     unittest.main()
+

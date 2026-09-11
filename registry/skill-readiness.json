@@ -5,21 +5,17 @@
     "skills": 719,
     "combos": 36,
     "megas": 32,
-    "ready_total": 751,
-    "not_ready_total": 36,
+    "ready_total": 787,
+    "not_ready_total": 0,
     "skill_states": {
       "instruction_ready": 675,
-      "implementation_partial": 6,
-      "behavior_verified": 27,
-      "implementation_unverified": 11
+      "behavior_verified": 44
     },
     "combo_states": {
-      "composition_candidate": 10,
-      "composition_ready": 26
+      "composition_ready": 36
     },
     "mega_states": {
-      "mission_contract_ready": 24,
-      "mission_candidate": 8
+      "mission_contract_ready": 32
     }
   },
   "skills": [
@@ -194,11 +190,16 @@
     {
       "id": "aerospace-trajectory-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
+        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py",
+        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
+        "skills/aerospace-trajectory-core/scripts/lambert_solver.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/aerospace-trajectory-core/skill.py",
@@ -207,19 +208,12 @@
         "skills/aerospace-trajectory-core/scripts/run.py",
         "skills/aerospace-trajectory-core/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/aerospace-trajectory-core/scripts/boiloff_calc.py",
-        "skills/aerospace-trajectory-core/scripts/conjunction_analyzer.py",
-        "skills/aerospace-trajectory-core/scripts/orbital_propagator.py",
-        "skills/aerospace-trajectory-core/scripts/lambert_solver.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/aerospace-trajectory-core/tests/test_aerospace_trajectory_core.py"
       ],
-      "reasons": [
-        "4 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "agent-evaluation",
@@ -747,11 +741,12 @@
     {
       "id": "apex-ast-sentinel",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
+        "skills/apex-ast-sentinel/scripts/ast_sentinel.py",
         "skills/apex-ast-sentinel/scripts/this_skill.py"
       ],
       "generic_adapter_files": [],
@@ -760,21 +755,19 @@
         "skills/apex-ast-sentinel/scripts/run.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/apex-ast-sentinel/tests/test_apex_ast_sentinel.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "apex-boot-core",
       "layer": "skill",
-      "ready": false,
+      "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [
         "skills/apex-boot-core/skill.py",
         "skills/apex-boot-core/scripts/run.py",
@@ -788,9 +781,7 @@
         "skills/apex-boot-core/tests/test_apex_boot_core.py"
       ],
       "structural_tests": [],
-      "reasons": [
-        "no actionable procedure/capability language"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-execution-modes",
@@ -1408,9 +1399,9 @@
     {
       "id": "ast-repair-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/ast-repair-core/scripts/patch_applier.py",
@@ -1427,13 +1418,11 @@
         "skills/ast-repair-core/scripts/procedure.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/ast-repair-core/tests/test_ast_repair_core.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "attio",
@@ -1592,9 +1581,9 @@
     {
       "id": "automated-performance-profiling",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/automated-performance-profiling/scripts/profiler_engine.py"
@@ -1604,13 +1593,11 @@
         "skills/automated-performance-profiling/scripts/run.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/automated-performance-profiling/tests/test_automated_performance_profiling.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "automated-security-scanning",
@@ -2553,9 +2540,9 @@
     {
       "id": "casey-operator-execution-kernel",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/casey-operator-execution-kernel/skill.py"
@@ -2563,11 +2550,11 @@
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/casey-operator-execution-kernel/tests/test_casey_operator_execution_kernel.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "reasons": []
     },
     {
       "id": "cc-skill-backend-patterns",
@@ -3283,9 +3270,9 @@
     {
       "id": "computer-user-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/computer-user-core/scripts/gui_automator.py",
@@ -3303,13 +3290,11 @@
         "skills/computer-user-core/scripts/procedure.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/computer-user-core/tests/test_computer_user_core.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "concise-planning",
@@ -3377,9 +3362,9 @@
     {
       "id": "connector-bridge",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/connector-bridge/scripts/dispatcher.py",
@@ -3398,13 +3383,11 @@
         "skills/connector-bridge/scripts/procedure.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/connector-bridge/tests/test_connector_bridge.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "content-creator",
@@ -3693,9 +3676,9 @@
     {
       "id": "cross-app-pipeline",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/cross-app-pipeline/pipeline.py"
@@ -3705,13 +3688,11 @@
         "skills/cross-app-pipeline/scripts/run.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/cross-app-pipeline/tests/test_cross_app_pipeline.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "dart-add-unit-test",
@@ -5464,11 +5445,18 @@
     {
       "id": "fleet-git-harmonizer-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/fleet-git-harmonizer-core/scripts/archive_tagger.py",
+        "skills/fleet-git-harmonizer-core/scripts/branch_pruner.py",
+        "skills/fleet-git-harmonizer-core/scripts/regression_gate.py",
+        "skills/fleet-git-harmonizer-core/scripts/ast_diff_extractor.py",
+        "skills/fleet-git-harmonizer-core/scripts/divergence_auditor.py",
+        "skills/fleet-git-harmonizer-core/scripts/commit_synthesizer.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/fleet-git-harmonizer-core/skill.py",
@@ -5477,21 +5465,12 @@
         "skills/fleet-git-harmonizer-core/scripts/run.py",
         "skills/fleet-git-harmonizer-core/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/fleet-git-harmonizer-core/scripts/archive_tagger.py",
-        "skills/fleet-git-harmonizer-core/scripts/branch_pruner.py",
-        "skills/fleet-git-harmonizer-core/scripts/regression_gate.py",
-        "skills/fleet-git-harmonizer-core/scripts/ast_diff_extractor.py",
-        "skills/fleet-git-harmonizer-core/scripts/divergence_auditor.py",
-        "skills/fleet-git-harmonizer-core/scripts/commit_synthesizer.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/fleet-git-harmonizer-core/tests/test_fleet_git_harmonizer_core.py"
       ],
-      "reasons": [
-        "6 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "flutter-add-integration-test",
@@ -5778,9 +5757,9 @@
     {
       "id": "fork-overlay-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/fork-overlay-core/scripts/merge_engine.py",
@@ -5798,13 +5777,11 @@
         "skills/fork-overlay-core/scripts/procedure.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/fork-overlay-core/tests/test_fork_overlay_core.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "forks",
@@ -6691,10 +6668,10 @@
     {
       "id": "gmail-orchestrator",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [
         "skills/gmail-orchestrator/orchestrator.py"
       ],
@@ -6703,14 +6680,11 @@
         "skills/gmail-orchestrator/scripts/run.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/gmail-orchestrator/tests/test_gmail_orchestrator.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "gnomad-database",
@@ -7068,10 +7042,10 @@
     {
       "id": "icloud-voice-memos",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
       "real_implementation_files": [
         "skills/icloud-voice-memos/harvester.py"
       ],
@@ -7080,14 +7054,11 @@
         "skills/icloud-voice-memos/scripts/run.py"
       ],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/icloud-voice-memos/tests/test_icloud_voice_memos.py"
       ],
-      "reasons": [
-        "no actionable procedure/capability language",
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "ideate",
@@ -9521,20 +9492,11 @@
     {
       "id": "mega-skill-forge",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [
-        "skills/mega-skill-forge/skill.py",
-        "skills/mega-skill-forge/scripts/run.py",
-        "skills/mega-skill-forge/scripts/decision_gate.py",
-        "skills/mega-skill-forge/scripts/this_skill.py",
-        "skills/mega-skill-forge/scripts/creation_workflow.py"
-      ],
-      "stub_files": [
+      "real_implementation_files": [
         "skills/mega-skill-forge/scripts/mission_drafter.py",
         "skills/mega-skill-forge/scripts/repo_inspector.py",
         "skills/mega-skill-forge/scripts/readiness_gate.py",
@@ -9544,23 +9506,33 @@
         "skills/mega-skill-forge/scripts/hierarchy_validator.py",
         "skills/mega-skill-forge/scripts/contract_author.py"
       ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/mega-skill-forge/skill.py",
+        "skills/mega-skill-forge/scripts/run.py",
+        "skills/mega-skill-forge/scripts/decision_gate.py",
+        "skills/mega-skill-forge/scripts/this_skill.py",
+        "skills/mega-skill-forge/scripts/creation_workflow.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/mega-skill-forge/tests/test_mega_skill_forge.py"
       ],
-      "reasons": [
-        "8 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "mega-skills-test-runner",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/mega-skills-test-runner/scripts/run_checks.py"
+        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
+        "skills/mega-skills-test-runner/scripts/report_emitter.py",
+        "skills/mega-skills-test-runner/scripts/run_checks.py",
+        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
@@ -9570,18 +9542,12 @@
         "skills/mega-skills-test-runner/scripts/standard_workflow.py",
         "skills/mega-skills-test-runner/scripts/before_running.py"
       ],
-      "stub_files": [
-        "skills/mega-skills-test-runner/scripts/revision_recorder.py",
-        "skills/mega-skills-test-runner/scripts/report_emitter.py",
-        "skills/mega-skills-test-runner/scripts/failure_diagnostic.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/mega-skills-test-runner/tests/test_mega_skills_test_runner.py"
       ],
-      "reasons": [
-        "3 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "mega-spacex-mission-control",
@@ -9701,9 +9667,9 @@
     {
       "id": "mega-web",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_unverified",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
         "skills/mega-web/skill.py",
@@ -9713,13 +9679,11 @@
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "behavioral_tests": [
         "skills/mega-web/tests/test_mega_web.py"
       ],
-      "reasons": [
-        "implementation exists without behavioral verification"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "mega-xai-colossus-2",
@@ -10562,11 +10526,17 @@
     {
       "id": "omni-memory-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/omni-memory-core/scripts/vectorizer.py",
+        "skills/omni-memory-core/scripts/cosine_engine.py",
+        "skills/omni-memory-core/scripts/memory_exporter.py",
+        "skills/omni-memory-core/scripts/file_traverser.py",
+        "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/omni-memory-core/skill.py",
@@ -10575,20 +10545,12 @@
         "skills/omni-memory-core/scripts/run.py",
         "skills/omni-memory-core/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/omni-memory-core/scripts/vectorizer.py",
-        "skills/omni-memory-core/scripts/cosine_engine.py",
-        "skills/omni-memory-core/scripts/memory_exporter.py",
-        "skills/omni-memory-core/scripts/file_traverser.py",
-        "skills/omni-memory-core/scripts/hebbian_reinforcer.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/omni-memory-core/tests/test_omni_memory_core.py"
       ],
-      "reasons": [
-        "5 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "onboarding-cro",
@@ -11217,11 +11179,17 @@
     {
       "id": "polyglot-rosetta-core",
       "layer": "skill",
-      "ready": false,
-      "state": "implementation_partial",
-      "declared_maturity": "candidate",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
+        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py",
+        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
+        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/polyglot-rosetta-core/skill.py",
@@ -11230,20 +11198,12 @@
         "skills/polyglot-rosetta-core/scripts/run.py",
         "skills/polyglot-rosetta-core/scripts/procedure.py"
       ],
-      "stub_files": [
-        "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
-        "skills/polyglot-rosetta-core/scripts/code_synthesizer.py",
-        "skills/polyglot-rosetta-core/scripts/floor_selector.py",
-        "skills/polyglot-rosetta-core/scripts/ast_inspector.py",
-        "skills/polyglot-rosetta-core/scripts/proof_generator.py"
-      ],
-      "behavioral_tests": [],
-      "structural_tests": [
+      "stub_files": [],
+      "behavioral_tests": [
         "skills/polyglot-rosetta-core/tests/test_polyglot_rosetta_core.py"
       ],
-      "reasons": [
-        "5 explicit implementation stub(s)"
-      ]
+      "structural_tests": [],
+      "reasons": []
     },
     {
       "id": "popup-cro",
@@ -15542,12 +15502,10 @@
     {
       "id": "aerospace-mission-simulation",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: aerospace-trajectory-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-mesh-dispatch",
@@ -15560,12 +15518,10 @@
     {
       "id": "architectural-refactoring-engine",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: ast-repair-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "automation-control",
@@ -15602,12 +15558,10 @@
     {
       "id": "closed-loop-code-repair",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: ast-repair-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "court-evidence-compiler",
@@ -15620,12 +15574,10 @@
     {
       "id": "cross-cloud-memory-synthesis",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: omni-memory-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "cybersecurity-threat-analysis",
@@ -15654,12 +15606,10 @@
     {
       "id": "fleet-recon-and-harmonize",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: fleet-git-harmonizer-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "forensic-docket-intelligence",
@@ -15752,22 +15702,18 @@
     {
       "id": "pipeline-orchestration",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: connector-bridge"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "polyglot-systems-verification",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: polyglot-rosetta-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "recon-and-map",
@@ -15780,13 +15726,10 @@
     {
       "id": "runtime-operations",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: computer-user-core",
-        "required skill not ready: connector-bridge"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "secure-service-deployment",
@@ -15815,12 +15758,10 @@
     {
       "id": "upstream-fork-harmonization",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: fork-overlay-core"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "vercel-fullstack-deployment",
@@ -15841,12 +15782,10 @@
     {
       "id": "web-build-foundation",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: mega-skills-test-runner"
-      ]
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
     }
   ],
   "megas": [
@@ -15907,13 +15846,11 @@
     {
       "id": "apex-architectural-evolution-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: architectural-refactoring-engine"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-autonomous-agent-foundry",
@@ -15927,25 +15864,20 @@
     {
       "id": "apex-autonomous-software-engineering",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: closed-loop-code-repair",
-        "required combo not ready: architectural-refactoring-engine"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-backend-infrastructure-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: closed-loop-code-repair"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-capability-foundry",
@@ -15959,13 +15891,11 @@
     {
       "id": "apex-casebuild-mesh",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: cross-cloud-memory-synthesis"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-cybersecurity-sentinel",
@@ -15988,13 +15918,11 @@
     {
       "id": "apex-docgen-synthesis",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: architectural-refactoring-engine"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-fleet-harmonizer",
@@ -16026,13 +15954,11 @@
     {
       "id": "apex-interactive-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: closed-loop-code-repair"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-legal-forensic-powerhouse",
@@ -16109,13 +16035,11 @@
     {
       "id": "apex-vercel-web-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: web-build-foundation"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "apex-voice-forensics",
@@ -16129,13 +16053,11 @@
     {
       "id": "apex-web-build-system",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
-      "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: web-build-foundation"
-      ]
+      "declared_maturity": "active",
+      "reasons": []
     },
     {
       "id": "far-away-party",

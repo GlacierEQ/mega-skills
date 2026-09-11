@@ -6,14 +6,21 @@ description: "Extracts transcripts, GPS/location metadata, and audio timestamps 
 
 # iCloud Voice Memos Harvester
 
-## What it does
+## Purpose
+
 Logs into iCloud.com via Chromium browser automation and extracts:
 - **Transcripts** (Apple auto-generated)
 - **GPS / location metadata**
 - **Timestamps** (creation time, duration)
 - **Title and memo ID**
 
-Outputs structured JSON to `/tasklet/voice-memos/`.
+## Standard Procedure and Workflow
+
+1. Configure Apple credentials securely in `~/.apex/connections.json`.
+2. Launch browser harvester to navigate to Voice Memos on icloud.com.
+3. Extract audio transcripts, location coordinates, and creation timestamps.
+4. Output structured evidentiary JSON records to `/tasklet/voice-memos/` with SHA256 checksums.
+
 
 ## No app breach required
 Pure browser automation against icloud.com. Credentials in `~/.apex/connections.json`.

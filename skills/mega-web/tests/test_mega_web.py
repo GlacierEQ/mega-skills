@@ -16,11 +16,19 @@ class TestMegaWeb(unittest.TestCase):
         self.assertTrue(skill_py.exists())
         self.assertTrue(bool(skill_py.stat().st_mode & 0o111))
 
-    def test_scripts_executable(self):
-        for script_name in ("run.py", "this_skill.py"):
-            p = SKILL_ROOT / "scripts" / script_name
-            self.assertTrue(p.exists())
-            self.assertTrue(bool(p.stat().st_mode & 0o111))
+    def test_run_behavioral(self):
+        import subprocess
+        import sys
+        run_py = SKILL_ROOT / "scripts" / "run.py"
+        cmd = [sys.executable, str(run_py)]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        self.assertEqual(result.returncode, 0)
+        output = json.loads(result.stdout)
+        self.assertEqual(output.get("skill"), "mega-web")
+        self.assertEqual(output.get("status"), "ready")
+        self.assertTrue(output.get("firewall_active"))
+
 
 if __name__ == "__main__":
     unittest.main()
+
