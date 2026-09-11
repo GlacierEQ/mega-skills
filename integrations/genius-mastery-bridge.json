@@ -1,10 +1,10 @@
 {
-  "$schema": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery/df460c718cbdb63e32b4d226b8fe5aacebe774bb/schemas/mega-skills-bridge.schema.json",
+  "$schema": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery/a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16/schemas/mega-skills-bridge.schema.json",
   "schema_version": 1,
   "contract_id": "genius-mastery.operating-loop",
   "provider": {
     "repository": "GlacierEQ/Genius-Mastery",
-    "ref": "d16b0859a5e74f0586d505c93f972109d96395d3",
+    "ref": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
     "module": "src/genius/operating_loop.py",
     "schema": "schemas/operating-loop.schema.json",
     "module_blob_sha": "db36f71aed06969089a6498c3677f9004e6cc273",
@@ -13,9 +13,9 @@
   },
   "source_contract": {
     "repository": "GlacierEQ/Genius-Mastery",
-    "ref": "df460c718cbdb63e32b4d226b8fe5aacebe774bb",
+    "ref": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
     "path": "interfaces/mega-skills-bridge.json",
-    "blob_sha": "ab2981c8d184e54b90232a61d0a0b64b41458406",
+    "blob_sha": "4e1599c4809a8144855d56deeb8f73ab9a305bc5",
     "schema": "schemas/mega-skills-bridge.schema.json",
     "schema_blob_sha": "4cd0aaa61d9c3400895c4a06cd1b46a9beef203f",
     "raw_base": "https://raw.githubusercontent.com/GlacierEQ/Genius-Mastery"
