@@ -1,78 +1,59 @@
 ---
 name: unified-memory-connect
-description: "Maximized multi-layer orchestration mapping Mem0, MemoryPlugin, Supermemory, Pinecone, Qdrant, and Notion to a single unified context gateway."
+description: "Multi-peer memory orchestration across Mem0, MemoryPlugin, Supermemory, Pinecone, Qdrant, and Notion with provenance-preserving routing and secret-safe configuration."
 ---
 
-# 🧠 Unified Memory Connect (APEX Hybrid Memory Stack)
+# Unified Memory Connect — APEX Polycentric Memory Mesh
 
-This skill maps the distributed agent state across six different memory layers and exposes them through a single unified interface. It maximizes operational throughput and minimizes token usage using zero-token APEX caching and unified REST mapping.
+This skill routes distributed context across qualified memory peers without making any provider globally canonical. Live provider/source state and provenance control proposition-specific support; retrieval failure is never factual disproof.
 
-```mermaid
-graph TD
-    A[Agent Runtime Interface] --> B[FastMCP: UnifiedMemory Server]
-    B --> C[Layer 1: Mem0 Cloud - Pro & Regular]
-    B --> D[Layer 2: MemoryPlugin - Global & Direct]
-    B --> E[Layer 3: Supermemory - Primary, Secondary, & xAI]
-    B --> F[Layer 4: Pinecone Vector Database - apex-main]
-    B --> G[Layer 5: Qdrant Vector Database - local collection]
-    B --> H[Layer 6: Notion System Workspace Database]
-    C & D & E & F & G & H --> I[Unified Context Window - 0ms/0-token optimization]
-```
+## Memory peers
 
----
+- Mem0 — semantic memory and retrieval.
+- MemoryPlugin — portable cross-platform routing/index continuity.
+- Supermemory — semantic/context retrieval peer.
+- Pinecone / Qdrant — vector retrieval peers where configured.
+- Notion — projection/workspace peer; never substitutes for source-bearing state.
 
-## 🔑 Secret Token Mapping Matrix
+## Secret boundary
 
-These credentials are configured in your `~/.env` file and managed by the vault:
+Credentials MUST NOT be embedded in this skill, registries, examples, logs, receipts, generated documentation, or committed source. Runtime adapters may reference environment-variable *names* or secret-manager identifiers only. Secret values remain in the configured vault/runtime secret store and must be redacted from diagnostics.
 
-| Memory Layer | Variable Name | Active Target / Scope |
-| :--- | :--- | :--- |
-| **Mem0 (Pro)** | `MEM0_PRO_API_KEY` | Casey Org: `org_Gsa76AGni...` |
-| **Mem0 (Regular)** | `MEM0_REG_API_KEY` | Personal: `higuy.vids@gmail.com` |
-| **MemoryPlugin (Global)**| `MEMORY_GLOBAL_KEY` | Token: `LFVBLPUL3N8N8K2FLYGCSCKMSMSRHSG9` |
-| **MemoryPlugin (Direct)**| `MEMORY_DIRECT_KEY` | Token: `yD4IKCdlI0VCXlfD4xLT1x5D0dEU9Hd1` |
-| **Supermemory (Primary)**| `SUPERMEMORY_PRIMARY_KEY` | Global store |
-| **Supermemory (Secondary)**| `SUPERMEMORY_SECONDARY_KEY`| Auxiliary backups |
-| **Supermemory (xAI/Tertiary)**| `SUPERMEMORY_TERTIARY_KEY`| Raycast/xAI target context |
-| **Pinecone** | `PINECONE_PRIMARY_KEY` | Index: `apex-main` (1536 dim) |
-| **Qdrant** | `QDRANT_KEY` | Local host: `6333` |
-| **Notion** | `NOTION_API_KEY` | Platform Sync & Platform Logs |
+Expected runtime secret identifiers may include provider-specific names such as `MEM0_PRO_API_KEY`, `MEM0_REG_API_KEY`, `MEMORY_GLOBAL_KEY`, `MEMORY_DIRECT_KEY`, `SUPERMEMORY_PRIMARY_KEY`, `SUPERMEMORY_SECONDARY_KEY`, `SUPERMEMORY_TERTIARY_KEY`, `PINECONE_PRIMARY_KEY`, `QDRANT_KEY`, and `NOTION_API_KEY`; these names are configuration pointers, never values.
 
----
+## Retrieval contract
 
-## ⚡ Token Savings & APEX Caching
+1. Reuse relevant known state before rediscovery.
+2. Query the smallest qualified peer set that can answer the proposition.
+3. Preserve provider identity, record IDs, timestamps, versions, hashes, and retrieval state where available.
+4. Deduplicate semantically equivalent hits without erasing distinct provenance.
+5. Treat `retrieval_pending`, `not_searched`, `searched_not_found`, and `unavailable` as retrieval states, not proof of falsity.
+6. Preserve contradictions and route them for discriminating evidence rather than silently reconciling them.
+7. Promote claims only when proposition-specific source evidence supports promotion.
 
-To ensure the agent maintains **maximum efficiency** and the **lightest possible token footprints**, the following rules are enforced:
+## Cache contract
 
-1. **Deterministic Request Deduplication**:
-   - Before executing any semantic query, calculate a `SHA-256` hash of the search phrase.
-   - Match the hash against the local cache (`~/.apex_cache/memory_hits.json`). If matching, return cached context in **0ms** utilizing **0 API tokens**.
-2. **Selective Context Chunking**:
-   - Do not dump entire databases into the context. Load top 3 semantic matches only, scoped strictly using a `filters` dictionary (e.g. `filters={"user_id": "casey"}`).
-3. **Async Batch Ingests**:
-   - Avoid executing blocking/sequential writes. Batch ingestion inputs and trigger them asynchronously via `AsyncMemoryClient` or background tasks.
+Caching is an optimization, not authority. Cache keys should bind query + filters + provider + relevant version/scope. Cached results must retain original provenance and an explicit freshness state. A stale cache must not override newer provider-native state.
 
----
+## Ingestion contract
 
-## 🛠️ Workspace Reference Implementations
+- Batch when it improves throughput, but retain per-record provenance and idempotency keys.
+- Never ingest credentials or authentication material into semantic/vector memory.
+- Preserve lineage between source record, normalized representation, embedding/vector record, and downstream derivative.
+- Writes require provider/tool evidence; verified mutation requires readback when available.
 
-1. **Unified FastMCP Server:**
-   * Local Script: [unified_memory_mcp.py](file:///data/data/com.termux/files/home/scripts/unified_memory_mcp.py)
-   * Packaged: [unified_memory_mcp.py](file:///data/data/com.termux/files/home/.gemini/skills/unified-memory-connect/logic/unified_memory_mcp.py)
-2. **Connectivity Diagnostics:**
-   * Local Script: [verify_mem0_layers.py](file:///data/data/com.termux/files/home/scripts/verify_mem0_layers.py)
-   * Packaged: [verify_mem0_layers.py](file:///data/data/com.termux/files/home/.gemini/skills/unified-memory-connect/logic/verify_mem0_layers.py)
-3. **Memory Organization & Formatting:**
-   * Local Script: [organize_memories.py](file:///data/data/com.termux/files/home/scripts/organize_memories.py)
-   * Packaged: [organize_memories.py](file:///data/data/com.termux/files/home/.gemini/skills/unified-memory-connect/logic/organize_memories.py)
-4. **Signal 9 Process Monitoring:**
-   * Local Script: [guard_signal9.sh](file:///data/data/com.termux/files/home/scripts/guard_signal9.sh)
-   * Packaged: [guard_signal9.sh](file:///data/data/com.termux/files/home/.gemini/skills/unified-memory-connect/logic/guard_signal9.sh)
-5. **Key Orchestrator Panel:**
-   * Local Script: [apex_control_panel.py](file:///data/data/com.termux/files/home/scripts/apex_control_panel.py)
-6. **Custom Stealth Models Compiler:**
-   * Local Script: [build_stealth_models.py](file:///data/data/com.termux/files/home/scripts/build_stealth_models.py)
-   * Packaged: [build_stealth_models.py](file:///data/data/com.termux/files/home/.gemini/skills/unified-memory-connect/logic/build_stealth_models.py)
-7. **Active Context Registry:**
-   * Active Snapshot: [MEM0_ACTIVE_CONTEXT.md](file:///data/data/com.termux/files/home/CASE_STRUCTURE/MEM0_ACTIVE_CONTEXT.md)
-   * Organized View: [MEM0_ACTIVE_CONTEXT_ORGANIZED.md](file:///data/data/com.termux/files/home/CASE_STRUCTURE/MEM0_ACTIVE_CONTEXT_ORGANIZED.md)
+## Runtime discovery
+
+Local scripts and device-specific paths are implementation details, not universal truth. Discover currently available adapters at runtime. Missing one peer must not stop unaffected execution through other qualified peers.
+
+## Cross-estate composition
+
+This skill composes with:
+- `casey-operator-execution-kernel` for mission/continuity semantics.
+- `far-away-party` for long-horizon state and lossless handoff.
+- Genius-Mastery operating-loop/composition contracts for evidence-bounded capability reuse.
+- Mega Skills registries and mesh routing for capability discovery.
+
+## Verification
+
+A memory peer is `CONNECTED` only after a live provider/tool call succeeds. A write is `VERIFIED` only after provider-side readback where supported. Configuration presence, historical success, copied documentation, or a remembered connection does not establish current connectivity.
