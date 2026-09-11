@@ -1,0 +1,43 @@
+{
+  "run": "deep-progress-forge-bridge-provenance-03",
+  "source_basis": {
+    "operator_verbatim": [
+      "MAXIMUM USEFUL ENGINEERING DENSITY",
+      "Build more when more creates value",
+      "Preserve diversity when diversity creates insight",
+      "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+      "MASTER IT. DO NOT MUTILATE IT.",
+      "Every pass should make the proposition stronger",
+      "If one evidence path fails, search another",
+      "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+    ],
+    "prior_runtime_commit": "46ed77b49e8261366f2521d64e2d0e68bd33355e",
+    "genius_mastery_source_faithful_head": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"
+  },
+  "failure_pattern_attacked": "The downstream Genius-Mastery bridge could pass remote pin validation while remaining pinned to an older provider commit, so green validation did not prove that the source-faithful long-run provider state was actually in the consumer provenance chain.",
+  "durable_changes": [
+    "Updated GlacierEQ/Genius-Mastery interfaces/mega-skills-bridge.json to pin provider.ref to eb63c06b46812ccc43f80a37b480ff2638d5e0b5 while preserving the verified operating-loop module and schema blob identities.",
+    "Updated GlacierEQ/mega-skills integrations/genius-mastery-bridge.json to pin the refreshed upstream contract commit/blob and the source-faithful provider head.",
+    "Added this provider-bound execution receipt so the continuity frontier no longer depends on an ephemeral /tmp worktree or assistant narrative."
+  ],
+  "verification": {
+    "genius_mastery_bridge_commit": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
+    "genius_mastery_bridge_blob": "4e1599c4809a8144855d56deeb8f73ab9a305bc5",
+    "mega_skills_bridge_commit": "2b3260812da08da66cacaf671b868840ca01d557",
+    "mega_skills_bridge_blob": "f3bc1df131dcd113e8df280ea9a41627c1160c74",
+    "operating_loop_module_blob": "db36f71aed06969089a6498c3677f9004e6cc273",
+    "operating_loop_schema_blob": "62cfa2e81315eed90c5e582b607bb718dcb11256",
+    "bridge_schema_blob": "4cd0aaa61d9c3400895c4a06cd1b46a9beef203f",
+    "readback": "Provider and consumer files were re-fetched from main and all pinned commit/blob identities matched the intended source chain."
+  },
+  "counterevidence": [
+    "The previous /tmp isolated worktree no longer existed, proving that ephemeral worktree state is not a sufficient continuity anchor.",
+    "A local durable worktree attempt surfaced a pathological index state and was rejected rather than used for mutation.",
+    "No new executable behavior was claimed from this provenance-only repair; the operating-loop module and schema blobs are unchanged at the new source-faithful commit."
+  ],
+  "objective_state_delta": {
+    "before": "The runtime producer was durable on mega-skills main, but the Genius-Mastery bridge provenance still authorized an older provider ref and the latest execution frontier had to be reconstructed from historical receipts/tool history.",
+    "after": "The downstream bridge now proves a chain to the source-faithful Genius-Mastery head through exact provider, contract, module, schema, and blob identities, and this run is recorded as a durable provider-bound continuation receipt."
+  },
+  "next_executable_frontier": "Add a freshness assertion to scripts/validate_genius_mastery_bridge.py that distinguishes valid pinned provenance from stale-provider provenance, with an explicit compatibility/freshness mode; test it against a deliberately stale fixture and the current refreshed bridge, then promote with readback."
+}
