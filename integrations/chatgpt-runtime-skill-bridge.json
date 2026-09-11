@@ -4,12 +4,19 @@
   "source_plugin": "openai-developers",
   "authority_model": "polycentric_peer_projection",
   "edge_types": ["PEER_OF", "DERIVED_FROM"],
+  "active_runtime_profile": {
+    "profile_id": "chatgpt-estate-cartographer-executor",
+    "path": "integrations/chatgpt-runtime-activation.json",
+    "activation_semantics": "canonical_contract_loadout",
+    "host_activation_receipt_required_for_host_native_claim": true
+  },
   "rules": {
     "provider_source_authority": "ChatGPT/OpenAI source skill controls host-runtime semantics.",
     "portable_peer_authority": "Mega-Skills peer controls GlacierEQ portable execution semantics.",
     "no_hidden_copy_claim": true,
     "verification_required_for_host_specific_equivalence": true,
-    "preserve_name_collisions": true
+    "preserve_name_collisions": true,
+    "runtime_profile_does_not_imply_hidden_host_activation": true
   },
   "skills": [
     {
