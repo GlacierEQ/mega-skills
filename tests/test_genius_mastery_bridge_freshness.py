@@ -1,9 +1,8 @@
 import copy
 import importlib.util
 import json
+import unittest
 from pathlib import Path
-
-import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "validate_genius_mastery_bridge.py"
@@ -43,34 +42,43 @@ def authority_fixture():
     return bridge, contract_data, schema_data
 
 
-def test_current_authority_can_intentionally_pin_older_provider_ref():
-    bridge, contract_data, schema_data = authority_fixture()
-    head = "a" * 40
-    assert bridge["provider"]["ref"] != head
-    state = validator.check_freshness_state(bridge, contract_data, schema_data, head)
-    assert state["source_ref_is_authority_head"] is False
-    assert state["provider_ref"] == bridge["provider"]["ref"]
-    assert (
-        state["freshness_basis"]
-        == "current_upstream_contract_content_and_authorization"
-    )
+class TestGeniusMasteryBridgeFreshness(unittest.TestCase):
+    def test_current_authority_can_intentionally_pin_older_provider_ref(self):
+        bridge, contract_data, schema_data = authority_fixture()
+        head = "a" * 40
+        self.assertNotEqual(bridge["provider"]["ref"], head)
+        state = validator.check_freshness_state(
+            bridge, contract_data, schema_data, head
+        )
+        self.assertFalse(state["source_ref_is_authority_head"])
+        self.assertEqual(state["provider_ref"], bridge["provider"]["ref"])
+        self.assertEqual(
+            state["freshness_basis"],
+            "current_upstream_contract_content_and_authorization",
+        )
+
+    def test_stale_contract_blob_is_rejected_even_if_pin_is_structurally_valid(self):
+        bridge, contract_data, schema_data = authority_fixture()
+        bridge["source_contract"]["blob_sha"] = "0" * 40
+        with self.assertRaisesRegex(
+            ValueError,
+            "stale-provider provenance: current upstream bridge contract blob",
+        ):
+            validator.check_freshness_state(
+                bridge, contract_data, schema_data, "a" * 40
+            )
+
+    def test_current_authority_provider_change_rejects_old_provider_pin(self):
+        bridge, contract_data, schema_data = authority_fixture()
+        contract = json.loads(contract_data)
+        contract["provider"]["ref"] = "b" * 40
+        changed = (json.dumps(contract, separators=(",", ":")) + "\n").encode()
+        bridge["source_contract"]["blob_sha"] = validator.git_blob_sha(changed)
+        with self.assertRaisesRegex(
+            ValueError, "source contract provider mismatch for ref"
+        ):
+            validator.check_freshness_state(bridge, changed, schema_data, "a" * 40)
 
 
-def test_stale_contract_blob_is_rejected_even_if_pin_is_structurally_valid():
-    bridge, contract_data, schema_data = authority_fixture()
-    bridge["source_contract"]["blob_sha"] = "0" * 40
-    with pytest.raises(
-        ValueError,
-        match="stale-provider provenance: current upstream bridge contract blob",
-    ):
-        validator.check_freshness_state(bridge, contract_data, schema_data, "a" * 40)
-
-
-def test_current_authority_provider_change_rejects_old_provider_pin():
-    bridge, contract_data, schema_data = authority_fixture()
-    contract = json.loads(contract_data)
-    contract["provider"]["ref"] = "b" * 40
-    changed = (json.dumps(contract, separators=(",", ":")) + "\n").encode()
-    bridge["source_contract"]["blob_sha"] = validator.git_blob_sha(changed)
-    with pytest.raises(ValueError, match="source contract provider mismatch for ref"):
-        validator.check_freshness_state(bridge, changed, schema_data, "a" * 40)
+if __name__ == "__main__":
+    unittest.main()

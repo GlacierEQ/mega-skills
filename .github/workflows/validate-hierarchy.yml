@@ -39,8 +39,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate pinned Genius-Mastery bridge
-        run: python scripts/validate_genius_mastery_bridge.py --remote
+      - name: Validate current Genius-Mastery bridge authority
+        run: python scripts/validate_genius_mastery_bridge.py --mode freshness
 
   pyramids:
     runs-on: ubuntu-latest

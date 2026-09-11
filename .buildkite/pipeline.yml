@@ -10,7 +10,7 @@ steps:
       python3 --version
       python3 -m compileall -q scripts tests skills
       python3 scripts/validate_hierarchy.py
-      python3 scripts/validate_genius_mastery_bridge.py --remote
+      python3 scripts/validate_genius_mastery_bridge.py --mode freshness
       python3 scripts/generate_mega_skill_pyramids.py --check
       python3 -m unittest discover -s tests -v
       python3 skills/local-skill/tests/test_local_skill.py -v
@@ -57,7 +57,7 @@ steps:
           "validation_contract": [
               "compileall:scripts-tests-skills",
               "validate_hierarchy",
-              "validate_genius_mastery_bridge_remote",
+              "validate_genius_mastery_bridge_freshness",
               "generate_mega_skill_pyramids_check",
               "unittest_discover",
               "local_skill_tests",
