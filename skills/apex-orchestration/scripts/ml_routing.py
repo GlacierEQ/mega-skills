@@ -59,8 +59,8 @@ HARD_RULES: List[Tuple[str, str, str, bool]] = [
     ),
     ("R-LONGCTX", "LONG-CTX", "input_tokens > 500_000", True),
     ("R-PLAN", "REASON", "kind == plan OR invariants > 3 OR cross_domain", True),
-    ("R-CODE-EDIT", "CODE", "kind IN {code_edit, code_create}", False),
     ("R-CODE-FAST", "CODE-FAST", "subagent == true AND estimated_lines < 200", False),
+    ("R-CODE-EDIT", "CODE", "kind IN {code_edit, code_create}", False),
     ("R-DEFAULT", "ROUTER-FREE", "always", False),
 ]
 
@@ -330,10 +330,22 @@ def _pred_match(predicate: str, subtask: Dict[str, Any]) -> bool:
         if m:
             field_name, threshold = m.group(1), int(m.group(2))
             return subtask.get(field_name, 0) > threshold
+    if " < " in predicate:
+        m = re.match(r"(\w+)\s*<\s*(\d+)", predicate)
+        if m:
+            field_name, threshold = m.group(1), int(m.group(2))
+            return subtask.get(field_name, 0) < threshold
     if "==" in predicate and "OR" not in predicate and "AND" not in predicate:
         m = re.match(r"(\w+)\s*==\s*(\w+)", predicate)
         if m:
-            return subtask.get(m.group(1)) == m.group(2)
+            field_val = subtask.get(m.group(1))
+            cmp_val = m.group(2)
+            # Handle boolean literals in predicates (true/false)
+            if cmp_val == "true":
+                cmp_val = True
+            elif cmp_val == "false":
+                cmp_val = False
+            return field_val == cmp_val
     if " OR " in predicate or " AND " in predicate:
         parts = re.split(r"\s+OR\s+|\s+AND\s+", predicate)
         results = [_pred_match(p.strip(), subtask) for p in parts]

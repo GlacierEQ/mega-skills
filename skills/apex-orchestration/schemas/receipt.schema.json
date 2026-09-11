@@ -25,6 +25,21 @@
     "duration_ms": {"type": "integer", "minimum": 0},
     "l2_proof": {"type": "boolean", "const": true},
     "evidence_uri": {"type": "string", "format": "uri-reference"},
-    "parent_mission_id": {"type": "string", "pattern": "^mission_[a-z0-9]+$"}
+    "parent_mission_id": {"type": "string", "pattern": "^mission_[a-z0-9]+$"},
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "lane", "model", "ts", "receipt_sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "role": {"type": "string", "enum": ["producer", "auditor", "refiner"]},
+          "lane": {"type": "string"},
+          "model": {"type": "string"},
+          "ts": {"type": "string"},
+          "receipt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    }
   }
 }

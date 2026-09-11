@@ -1,22 +1,14 @@
 #!/usr/bin/env python3
-"""Compatibility adapter for apex-orchestration; package discovery only, not domain execution."""
-import json
-import sys
+"""Entry point for apex-orchestration — delegates to orchestrator.main()."""
 
-def main() -> int:
-    wants_execute = "--execute" in sys.argv[1:]
-    payload = {
-        "skill": "apex-orchestration",
-        "adapter": True,
-        "capability_executed": False,
-        "status": "execution_unavailable" if wants_execute else "adapter_ready",
-        "reason": (
-            "Generic compatibility adapter has no domain execution implementation. Use SKILL.md or a substantive package entrypoint."
-            if wants_execute else "Compatibility adapter is installed and discoverable."
-        ),
-    }
-    print(json.dumps(payload, indent=2, sort_keys=True))
-    return 2 if wants_execute else 0
+import sys
+from pathlib import Path
+
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from orchestrator import main  # noqa: E402
 
 if __name__ == "__main__":
     raise SystemExit(main())

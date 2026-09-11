@@ -1,0 +1,45 @@
+{
+  "run": "deep-progress-forge-runtime-producer-02",
+  "source_basis": {
+    "operator_verbatim": [
+      "MAXIMUM USEFUL ENGINEERING DENSITY",
+      "Build more when more creates value",
+      "Preserve diversity when diversity creates insight",
+      "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+      "MASTER IT. DO NOT MUTILATE IT.",
+      "Every pass should make the proposition stronger",
+      "If one evidence path fails, search another",
+      "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+    ],
+    "provider_head_before": "a9b265671898e59b8abaadc0456f6eecb1da054c",
+    "recovered_runtime_sha256": {
+      "skills/apex-orchestration/scripts/orchestrator.py": "d934e931fdf4011eaba884baf37dbc526c845cb5437e7f419a18cd84ef29c08f",
+      "skills/apex-orchestration/tests/test_orchestrator.py": "a449730062e66d416bd8e68dc9414a61d3164507b63b1360763c48b3bbff0e67"
+    }
+  },
+  "failure_pattern_attacked": "The durable delivery schema rejected weak SHIPPED claims, but the substantive runtime producer was absent from provider main and could still construct a delivery without emitting the schema-required run-quality object.",
+  "durable_changes": [
+    "Added the substantive apex-orchestration runtime and lifecycle tests to the provider-bound source tree.",
+    "Bound DELIVER to delivery.schema.json run_quality validation before memory persistence.",
+    "Added F-DEL-03 run_quality_invalid to the closed failure taxonomy.",
+    "Promoted route/mission/validate-receipt execution through skill.py, scripts/run.py, and scripts/this_skill.py.",
+    "Recovered CODE-FAST predicate support and receipt signature schema required by the executable runtime."
+  ],
+  "verification": {
+    "runtime_suite": "45 passed",
+    "apex_contract_suite": "19 passed",
+    "hierarchy_validation": "passed",
+    "e2e_delivery_schema": "passed; generated delivery.json validated and status was SHIPPED",
+    "missing_run_quality": "passed; BLOCKED with F-DEL-03 before memory write",
+    "diff_check": "passed"
+  },
+  "counterevidence": [
+    "The prior integrated runtime run failed at CODE-FAST because the clean tree lacked the local ml_routing dependency changes. This run recovered the full dependency closure and the same test now passes.",
+    "validate_genius_mastery_bridge reports remote_verified=false while this change is uncommitted; this is expected until provider promotion and must be re-run after push."
+  ],
+  "objective_state_delta": {
+    "before": "Provider main enforced run-quality only at the JSON-schema contract layer; the actual apex-orchestration producer was not present on main and could not emit or enforce the proof object end-to-end.",
+    "after": "The isolated source tree contains an executable producer that fails closed before persistence without run-quality proof, emits run_quality on SHIPPED, and produces delivery.json that validates against the provider schema."
+  },
+  "next_executable_frontier": "Commit and push the verified runtime dependency closure to mega-skills/main; then re-fetch provider state and rerun the remote Genius-Mastery bridge/readback against the promoted commit."
+}

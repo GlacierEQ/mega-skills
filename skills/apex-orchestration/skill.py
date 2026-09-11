@@ -4,7 +4,7 @@ apex-orchestration v1.1.0 — Holographic Mesh Orchestrator (Skill entry point).
 
 Real implementation, not a stub. Subcommands:
   packets        list all 16 logic packets and their maturity
-  schema         print the receipt schema path
+  schema         print the receipt/schema paths
   mesh           list all 12 lanes with model and dispatch trigger
   validate <id>  validate a JSON file against a packet's contract
   hash-chain <files...> compute the receipt chain hash (Packet 03)
@@ -12,6 +12,9 @@ Real implementation, not a stub. Subcommands:
   failures       print the 13 failure codes (Packet 09)
   receipt-test   run the test fixtures and print a summary
   ml             ML/self-improving layer info (Packets 13-16)
+  route          route a single subtask to a lane (Packet 04 + 13)
+  mission        run the full 6-stage lifecycle (Packets 02-07)
+  validate-receipt  validate a receipt file against schema + gates
 """
 
 import argparse
@@ -284,6 +287,53 @@ def cmd_ml(_args):
     return 0
 
 
+def cmd_route(args):
+    """Route a single subtask to a lane (delegates to orchestrator.route)."""
+    scripts_dir = str(SKILL_ROOT / "scripts")
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    from orchestrator import MissionOrchestrator
+
+    orch = MissionOrchestrator()
+    result = orch.route(args.subtask_json)
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_mission(args):
+    """Run the full 6-stage mission lifecycle (INTAKE→DECOMPOSE→DISPATCH→VERIFY→FUSE→DELIVER)."""
+    scripts_dir = str(SKILL_ROOT / "scripts")
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    from orchestrator import MissionOrchestrator
+
+    orch = MissionOrchestrator()
+    receipts = json.loads(args.receipts_json) if args.receipts_json else []
+    run_quality = json.loads(args.run_quality_json) if args.run_quality_json else None
+    delivery = orch.run(
+        description=args.description,
+        budget=args.budget,
+        blast_radius=args.blast_radius,
+        receipts=receipts,
+        run_quality=run_quality,
+    )
+    print(json.dumps(delivery.to_dict(), indent=2))
+    return 0 if delivery.status == "SHIPPED" else 1
+
+
+def cmd_validate_receipt(args):
+    """Validate a receipt file against the schema + l2_proof + three-sig gates."""
+    scripts_dir = str(SKILL_ROOT / "scripts")
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    from orchestrator import MissionOrchestrator
+
+    orch = MissionOrchestrator()
+    result = orch.validate_receipt(args.path)
+    print(json.dumps(result, indent=2))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(
         prog="apex-orchestration", description="Holographic Mesh Orchestrator v1.1.0"
@@ -296,6 +346,26 @@ def main():
     sub.add_parser("failures")
     sub.add_parser("receipt-test")
     sub.add_parser("ml")
+
+    p_route = sub.add_parser("route", help="Route a single subtask to a lane")
+    p_route.add_argument(
+        "--subtask-json",
+        required=True,
+        help="JSON: {kind, domain, task/description, input_tokens, etc.}",
+    )
+
+    p_mission = sub.add_parser("mission", help="Run full 6-stage mission lifecycle")
+    p_mission.add_argument("--description", required=True)
+    p_mission.add_argument("--budget", type=float, default=1.0)
+    p_mission.add_argument(
+        "--blast-radius", default="local", choices=["local", "remote", "cross_domain"]
+    )
+    p_mission.add_argument("--receipts-json", default="[]")
+    p_mission.add_argument("--run-quality-json", default="")
+
+    p_vr = sub.add_parser("validate-receipt", help="Validate a receipt file")
+    p_vr.add_argument("--path", required=True)
+
     p_val = sub.add_parser("validate")
     p_val.add_argument("packet")
     p_val.add_argument("path")
@@ -312,6 +382,9 @@ def main():
         "hash-chain": cmd_hash_chain,
         "receipt-test": cmd_receipt_test,
         "ml": cmd_ml,
+        "route": cmd_route,
+        "mission": cmd_mission,
+        "validate-receipt": cmd_validate_receipt,
     }
     return dispatch[args.cmd](args)
 

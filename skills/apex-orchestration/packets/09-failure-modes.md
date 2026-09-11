@@ -32,6 +32,7 @@ No silent failure. No "we'll figure it out." No third category.
 | F-FUSE-02 | conflict_unresolved | FUSE | conflict could not be resolved by evidence | operator | BLOCK with both options, user decides |
 | F-DEL-01 | memory_write_failed | DELIVERY | memory backend did not return id | operator | BLOCK; retry once; then REFUSE |
 | F-DEL-02 | chain_hash_drift | DELIVERY | receipt chain hash != reproducible | operator | REFUSE; mission is untrustworthy |
+| F-DEL-03 | run_quality_invalid | DELIVERY | SHIPPED lacks valid source coverage, changed mission delta, durable output, verification evidence, or exact next frontier | operator | BLOCK; strengthen evidence and retry |
 
 ## Detection Ladder
 
