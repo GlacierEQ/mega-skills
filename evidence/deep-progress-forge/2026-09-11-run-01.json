@@ -28,7 +28,10 @@
     "skills/genius-mastery/SKILL.md",
     "mega-skills/apex-genius-mastery/MEGA.md",
     "combo-skills/mission-aware-operating-loop/COMBO.md",
-    "scripts/validate_genius_mastery_bridge.py"
+    "scripts/validate_genius_mastery_bridge.py",
+    "skills/apex-orchestration/schemas/delivery.schema.json",
+    "skills/apex-orchestration/packets/07-delivery-contract.md",
+    "skills/apex-orchestration/tests/test_apex_orchestration.py"
   ],
   "canonical_gates": [
     "VERBATIM-FIRST",
@@ -44,14 +47,18 @@
     "bridge_local": "passed",
     "bridge_remote": "passed",
     "hierarchy_validation": "passed",
-    "remote_verified": true
+    "remote_verified": true,
+    "apex_orchestration_unit_tests": "19 passed",
+    "shipped_without_run_quality": "rejected_by_jsonschema",
+    "shipped_with_verified_run_quality": "accepted_by_jsonschema"
   },
   "counterevidence": [
-    "The first strengthened local bridge validation failed because canonical run-quality terms were not present verbatim in every consumer surface. The validator was retained unchanged; the consumer docs were corrected to carry canonical terms end-to-end."
+    "The first strengthened local bridge validation failed because canonical run-quality terms were not present verbatim in every consumer surface. The validator was retained unchanged; the consumer docs were corrected to carry canonical terms end-to-end.",
+    "The first apex-orchestration unit run failed because Packet 07 ownership is pinned to apex-orchestration v1.0.0. The owner marker was preserved while the packet field-level delivery contract remains version 1.1.0; 19 tests then passed."
   ],
   "objective_state_delta": {
     "before": "Genius-Mastery had the strengthened run-quality contract, but mega-skills consumer routes could still paraphrase or omit those gates without validation failure.",
-    "after": "The agent-facing skill, Mega route, and mission-aware Combo inherit the canonical gates, and the bridge validator now fails closed if any of the six terms disappear from any consumer surface."
+    "after": "The agent-facing skill, Mega route, and mission-aware Combo inherit the canonical gates; the bridge validator fails closed if any gate disappears; and apex-orchestration can no longer validate a SHIPPED delivery without source-coverage evidence, a direct changed=true mission delta with before/after state, at least one durable output, verified evidence, and an exact next frontier."
   },
-  "next_executable_frontier": "Promote this verified mega-skills change to main, then inspect higher-level orchestration/controller surfaces for routes that bypass genius-mastery and therefore still permit short-run or summary substitution."
+  "next_executable_frontier": "Wire the same SHIPPED run-quality object into the substantive apex-orchestration runtime/fuse-delivery code path that constructs delivery.json, so producers emit the required evidence automatically rather than only being schema-rejected when absent."
 }

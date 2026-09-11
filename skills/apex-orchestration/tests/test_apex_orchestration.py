@@ -284,6 +284,21 @@ class TestReceiptSchema(unittest.TestCase):
             {"SHIPPED", "BLOCKED", "REFUSED"},
         )
 
+    def test_shipped_delivery_requires_verified_run_quality_and_mission_delta(self):
+        schema = json.loads(
+            (SKILL_ROOT / "schemas" / "delivery.schema.json").read_text()
+        )
+        run_quality = schema["properties"]["run_quality"]
+        self.assertEqual(
+            set(run_quality["required"]),
+            {"source_coverage", "mission_delta", "durable_outputs", "verification", "next_frontier"},
+        )
+        self.assertIs(run_quality["properties"]["mission_delta"]["properties"]["changed"]["const"], True)
+        self.assertEqual(run_quality["properties"]["verification"]["properties"]["status"]["const"], "verified")
+        conditional = schema["allOf"][0]
+        self.assertEqual(conditional["if"]["properties"]["status"]["const"], "SHIPPED")
+        self.assertIn("run_quality", conditional["then"]["required"])
+
     def test_stage_receipt_schema_enum(self):
         schema = json.loads(
             (SKILL_ROOT / "schemas" / "stage-receipt.schema.json").read_text()
