@@ -5677,6 +5677,213 @@
           "Every handoff names an owner, accepted output, and close condition."
         ]
       }
+    },
+    {
+      "id": "telecommunications-mission-orchestration",
+      "display_name": "Telecommunications Mission Orchestration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/telecommunications-mission-orchestration",
+      "entrypoint": "combo-skills/telecommunications-mission-orchestration/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A bounded APEX mission must execute and verify a voice/SMS/SIP/PSTN/WebRTC communication."
+        ],
+        "do_not_use_when": [
+          "Casual transcription or voice generation with no telecommunications mission semantics."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set objective, authority, target and evidence boundaries.",
+          "required": true
+        },
+        {
+          "id": "telecommunications-execution-core",
+          "kind": "skill",
+          "role": "Preflight, normalize receipt state and prevent false success.",
+          "required": true
+        },
+        {
+          "id": "voice-ai-development",
+          "kind": "skill",
+          "role": "Realtime voice/provider architecture for voice routes.",
+          "required": false
+        },
+        {
+          "id": "voice-agents",
+          "kind": "skill",
+          "role": "Conversational turn-taking and interruption handling.",
+          "required": false
+        },
+        {
+          "id": "whisperx-audio-processing",
+          "kind": "skill",
+          "role": "High-assurance post-call transcription when audio exists.",
+          "required": false
+        },
+        {
+          "id": "voice-evidence-authenticator",
+          "kind": "compound-skill",
+          "role": "Authenticate material recorded evidence when required.",
+          "required": false
+        },
+        {
+          "id": "forensic-evidence-chain-core",
+          "kind": "skill",
+          "role": "Preserve source/derivative hashes and provenance.",
+          "required": true
+        },
+        {
+          "id": "agent-evaluation",
+          "kind": "skill",
+          "role": "Evaluate agent behavior and scenario reliability.",
+          "required": false
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Promote only verified communication outcomes.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Mission request",
+              "Current source state"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Authority, target, objective and stop conditions explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "telecommunications-execution-core",
+            "consumes": [
+              "MISSION.md",
+              "Source freshness"
+            ],
+            "produces": [
+              "Preflight receipt"
+            ],
+            "validation": "Freshness/authority/destination semantics pass."
+          },
+          {
+            "step": 3,
+            "member_id": "voice-ai-development",
+            "consumes": [
+              "Voice route plan"
+            ],
+            "produces": [
+              "Realtime provider/transport plan"
+            ],
+            "validation": "Only required for voice/realtime routes; upstream cores remain external."
+          },
+          {
+            "step": 4,
+            "member_id": "forensic-evidence-chain-core",
+            "consumes": [
+              "Provider receipt",
+              "Transcript/recording when present"
+            ],
+            "produces": [
+              "Provenance-bound evidence record"
+            ],
+            "validation": "Original/native artifacts remain intact and hashed."
+          },
+          {
+            "step": 5,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Semantic receipt",
+              "Evidence record"
+            ],
+            "produces": [
+              "Promotion gate record"
+            ],
+            "validation": "No false-success or unsupported source claim advances state."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "telecommunications-execution-core",
+            "required_inputs": [
+              "Bounded mission packet"
+            ],
+            "accepted_outputs": [
+              "READY/BLOCKED preflight"
+            ],
+            "failure_owner": "telecom-manager"
+          },
+          {
+            "from_member": "telecommunications-execution-core",
+            "to_member": "forensic-evidence-chain-core",
+            "required_inputs": [
+              "Provider-native receipt"
+            ],
+            "accepted_outputs": [
+              "Source-linked receipt/evidence record"
+            ],
+            "failure_owner": "receipt-verifier"
+          },
+          {
+            "from_member": "forensic-evidence-chain-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Evidence/provenance record"
+            ],
+            "accepted_outputs": [
+              "ACCEPT/REPAIR/REDISPATCH gate"
+            ],
+            "failure_owner": "telecom-quality-auditor"
+          }
+        ],
+        "evidence_requirements": [
+          "Provider-native IDs/readback retained",
+          "Receipt/transcript/recording hashes retained when available",
+          "Truth-state/provenance preserved"
+        ],
+        "risk_boundaries": [
+          "No standing external send authority",
+          "No provider lock-in",
+          "No silent source replacement",
+          "No upstream-core business-logic patching"
+        ],
+        "quality_gates": [
+          "Semantic false-success suite passes",
+          "Missing provider evidence cannot produce objective success"
+        ],
+        "state_updates": [
+          "Append verified receipt",
+          "Update continuity/relationship/case projections only from accepted evidence"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission bounds",
+          "Realtime voice architecture",
+          "Forensic provenance",
+          "Quality promotion"
+        ],
+        "adds": "End-to-end telecom mission routing and semantic outcome verification across provider-neutral transports.",
+        "compound_artifact": "TELECOMMUNICATIONS_EXECUTION_RECORD.md",
+        "next_layer_ready_when": [
+          "Preflight and provider-receipt semantics verify",
+          "False-success tests pass",
+          "Native evidence lineage is retained"
+        ]
+      }
     }
   ],
   "schema": "../schemas/combo-skill.schema.json"

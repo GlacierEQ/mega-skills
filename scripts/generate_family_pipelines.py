@@ -51,6 +51,27 @@ DEFAULT_COMBOS = [
 ]
 
 FAMILIES = {
+    "telecommunications-evolution": {
+        "display_name": "APEX Telecommunications Evolution",
+        "family": "telecommunications",
+        "description": "Evolve provider-neutral telecommunications around clean upstream cores with Genius Mastery, source-bearing receipts, semantic evals and human-gated release packets.",
+        "mega_roots": [
+            "apex-telecommunications",
+            "apex-genius-mastery",
+            "apex-safe-change-orchestrator",
+            "apex-architectural-evolution-engine",
+        ],
+        "required_combos": [
+            "long-horizon-core",
+            "capability-readiness",
+            "pipeline-orchestration",
+            "telecommunications-mission-orchestration",
+            "genius-epistemic-engineering",
+            "epistemic-verification-chain",
+            "polyglot-systems-verification",
+        ],
+        "stage_runner": "scripts/deep_work_stage.py",
+    },
     "inception-to-deployment": {
         "display_name": "Inception to Deployment",
         "family": "master",

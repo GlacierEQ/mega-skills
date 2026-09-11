@@ -2591,6 +2591,87 @@
       "combos": [
         "apex-mesh-dispatch"
       ]
+    },
+    {
+      "id": "apex-telecommunications",
+      "display_name": "APEX Telecommunications",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-telecommunications",
+      "entrypoint": "mega-skills/apex-telecommunications/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "automation-control",
+        "epistemic-verification-chain",
+        "polyglot-systems-verification",
+        "genius-epistemic-engineering",
+        "voice-evidence-authenticator"
+      ],
+      "mission_output": "TELECOMMUNICATIONS_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "TELECOM_RECEIPTS.jsonl",
+        "PROVIDER_CAPABILITIES.json",
+        "TRANSPLANT_LEDGER.md",
+        "UPSTREAM_LOCK.json"
+      ],
+      "adds": "Mission-scale provider-neutral telecommunications coordination with rich call/SMS semantics, native receipts, false-success prevention, provenance, relationship/case projections, upstream-core upgrade discipline and Genius Mastery/Lineage compounding.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-telecommunications",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "provider_native_receipt",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
+      ]
     }
   ],
   "layer": "mega-skills"

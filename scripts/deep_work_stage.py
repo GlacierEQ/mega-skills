@@ -40,6 +40,12 @@ PHASES = (
 )
 
 FAMILY_MEGAS: dict[str, list[str]] = {
+    "telecommunications": [
+        "apex-telecommunications",
+        "apex-genius-mastery",
+        "apex-safe-change-orchestrator",
+        "apex-architectural-evolution-engine",
+    ],
     "control-plane": [
         "apex-always-on-core",
         "apex-adaptive-operations",
