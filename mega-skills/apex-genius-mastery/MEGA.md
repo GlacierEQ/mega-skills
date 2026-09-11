@@ -9,6 +9,14 @@ Forge, validate, and receipt Genius entities through the Genius-Mastery kernel w
 - Required combos: `long-horizon-core`, `genius-epistemic-engineering`, `genius-entity-forge`
 - Conditional combos: `capability-readiness`, `skill-forge`, `polyglot-systems-verification`, `mission-aware-operating-loop`
 
+## Deep-progress inheritance
+
+Canonical gates: `VERBATIM-FIRST` · **coverage honesty** · `LONG-RUN` · `MISSION-DELTA` · `DIVERSE OUTPUTS` · **anti-repetition**.
+
+`apex-genius-mastery` inherits the live Genius-Mastery run-quality contract. For continuation/deep-progress missions, the Mega must preserve source-bearing Operator wording before summaries, prove source-coverage claims, continue through the strongest coherent tranche, require a direct mission/objective-state delta, create heterogeneous durable outputs when additive, and reject repetitive analysis that does not deepen evidence or execution.
+
+A mission may not be marked complete merely because documentation, planning, a heartbeat, or one token mutation exists. Completion requires verified mission movement and a recoverable continuation frontier.
+
 ## Execution protocol
 
 1. Initialize `MISSION.md` through `HANDOFF.md` in the active execution workspace.
@@ -16,7 +24,7 @@ Forge, validate, and receipt Genius entities through the Genius-Mastery kernel w
 3. Execute required combos in deterministic dependency order: horizon → epistemic engineering → entity forge.
 4. Know before acting (`epicenter` / `epistemic-gate`). Code only through `helix-pro-code`. Claim done only with `verification-before-completion`.
 5. Validate kernel receipts (`genius validate`, pytest) and record hashes in `EVIDENCE.md`.
-6. Synthesize final mission deliverable `GENIUS_MASTERY_MISSION_RESULT.md`.
+6. Synthesize final mission deliverable `GENIUS_MASTERY_MISSION_RESULT.md` with source coverage, objective-state delta, verification/counterevidence, durable outputs, and exact continuation frontier.
 
 ## Durable state files
 

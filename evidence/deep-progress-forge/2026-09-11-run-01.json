@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "deep-progress-forge-receipt",
+  "date": "2026-09-11",
+  "mission": "Propagate source-faithful long-run execution semantics from Genius-Mastery into mega-skills consumer surfaces and make semantic drift fail validation.",
+  "verbatim_operator_source": [
+    "We need to start focusing on longer stronger runs in higher quality accomishing more durable diverse and meaningful outputs.",
+    "Do not spend the run merely cataloguing problems. After identifying a problem, move into implementation.",
+    "Every pass should make the proposition stronger",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT."
+  ],
+  "prior_verified_frontier": {
+    "repository": "GlacierEQ/Genius-Mastery",
+    "commit": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+    "state": "promoted_to_main",
+    "next_frontier": "propagate run-quality contract into GlacierEQ/mega-skills routing and orchestration surfaces"
+  },
+  "failure_pattern_attacked": [
+    "consumer-layer semantic dilution of verbatim/source fidelity",
+    "premature stopping after diagnosis or token mutation",
+    "support-only activity counted as mission progress",
+    "single-output execution when heterogeneous durable outputs add value",
+    "repeated analysis without deeper evidence or implementation",
+    "prose-only continuity promises without executable drift detection"
+  ],
+  "durable_sources_changed": [
+    "skills/genius-mastery/SKILL.md",
+    "mega-skills/apex-genius-mastery/MEGA.md",
+    "combo-skills/mission-aware-operating-loop/COMBO.md",
+    "scripts/validate_genius_mastery_bridge.py"
+  ],
+  "canonical_gates": [
+    "VERBATIM-FIRST",
+    "coverage honesty",
+    "LONG-RUN",
+    "MISSION-DELTA",
+    "DIVERSE OUTPUTS",
+    "anti-repetition"
+  ],
+  "verification": {
+    "python_compile": "passed",
+    "git_diff_check": "passed_before_receipt",
+    "bridge_local": "passed",
+    "bridge_remote": "passed",
+    "hierarchy_validation": "passed",
+    "remote_verified": true
+  },
+  "counterevidence": [
+    "The first strengthened local bridge validation failed because canonical run-quality terms were not present verbatim in every consumer surface. The validator was retained unchanged; the consumer docs were corrected to carry canonical terms end-to-end."
+  ],
+  "objective_state_delta": {
+    "before": "Genius-Mastery had the strengthened run-quality contract, but mega-skills consumer routes could still paraphrase or omit those gates without validation failure.",
+    "after": "The agent-facing skill, Mega route, and mission-aware Combo inherit the canonical gates, and the bridge validator now fails closed if any of the six terms disappear from any consumer surface."
+  },
+  "next_executable_frontier": "Promote this verified mega-skills change to main, then inspect higher-level orchestration/controller surfaces for routes that bypass genius-mastery and therefore still permit short-run or summary substitution."
+}

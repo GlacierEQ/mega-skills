@@ -43,6 +43,20 @@ SOURCE_CONTRACT_KEYS = {
 PROVIDER_KEYS = {"repository", "ref", "module", "schema", "module_blob_sha", "schema_blob_sha"}
 SOURCE_PIN_KEYS = {"repository", "ref", "path", "blob_sha", "schema", "schema_blob_sha", "raw_base"}
 
+RUN_QUALITY_TERMS = (
+    "VERBATIM-FIRST",
+    "coverage honesty",
+    "LONG-RUN",
+    "MISSION-DELTA",
+    "DIVERSE OUTPUTS",
+    "anti-repetition",
+)
+RUN_QUALITY_SURFACES = (
+    "skills/genius-mastery/SKILL.md",
+    "mega-skills/apex-genius-mastery/MEGA.md",
+    "combo-skills/mission-aware-operating-loop/COMBO.md",
+)
+
 
 def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(f"blob {len(data)}".encode() + bytes([0]) + data).hexdigest()
@@ -136,6 +150,12 @@ def check_local(bridge: dict):
     ):
         if not path.is_file():
             fail(f"missing integration surface: {path}")
+    for relpath in RUN_QUALITY_SURFACES:
+        text = (ROOT / relpath).read_text(encoding="utf-8")
+        missing_terms = [term for term in RUN_QUALITY_TERMS if term.casefold() not in text.casefold()]
+        if missing_terms:
+            fail(f"run-quality contract drifted in {relpath}; missing={missing_terms}")
+
     combo = (ROOT / "combo-skills" / "mission-aware-operating-loop" / "COMBO.md").read_text(encoding="utf-8")
     if "Genius-Mastery" not in combo or "MISSION_OPERATING_LOOP_RECORD.md" not in combo:
         fail("Combo does not declare upstream bridge")

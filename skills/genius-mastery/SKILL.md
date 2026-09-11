@@ -30,14 +30,27 @@ Doctrine: **mastery-not-skills**. This Skill routes to that kernel; it does not 
 
 Combo that orders them: `genius-epistemic-engineering`. Mega: `apex-genius-mastery`.
 
+## Run-quality law
+
+When this route is selected for continuation, progress, strengthening, hardening, or a deep pass, inherit the live Genius-Mastery progress contract rather than reducing it to a short answer. The consumer path must enforce:
+
+- `SOURCE-FIRST` + `VERBATIM-FIRST`: recover material Operator language and source-bearing state before assistant summaries when wording controls facts, intent, architecture, criticism, or constraints.
+- coverage honesty: never claim full-history/full-source review without evidence of that coverage; partial retrieval stays explicitly partial.
+- `LONG-RUN`: continue through the strongest coherent tranche of authorized high-value work; diagnosis, documentation, or a token patch is not a valid stopping point while stronger executable work remains.
+- `MISSION-DELTA`: do not count support-only motion as progress; record at least one direct Operator objective-state before/after change.
+- `DIVERSE OUTPUTS`: when value-additive, produce heterogeneous durable outputs such as code, tests, evidence, receipts, state records, or recovery artifacts rather than one narrow representation.
+- anti-repetition: reject another pass over the same bottleneck unless it deepens evidence, implementation, verification, interoperability, or recoverability.
+
+The governing loop is `RECOVER → UNDERSTAND → CHALLENGE → EXECUTE → VERIFY → PRESERVE → CONTINUE`.
+
 ## Procedure
 
-1. Prefer the live kernel, not this file: `genius --version` then `genius validate .` and `genius doctor .`.
+1. Prefer the live kernel, not this file: `genius --version` then `genius validate .`, `genius doctor .`, and inspect `genius progress . --mission <mission>` so the current progress/run-quality contract is visible before execution.
 2. Classify every claim with `epicenter` before engineering. `epistemic-gate` denies below L2.
 3. All coding goes through `helix-pro-code`. Do not dump TDD/debug catalogs; load them only when that step needs them.
 4. Evidence is claim+vector, never a single mastery percentage. No done-claim without `verification-before-completion`.
 5. Tests: `pytest -q` in the Genius-Mastery tree (75 passed on glacier-agent 2026-09-04).
-6. Receipts go to `evidence/receipts/` in the kernel, or `glacier-artifacts` on OCI.
+6. Receipts go to `evidence/receipts/` in the kernel, or `glacier-artifacts` on OCI, and must include source coverage, objective-state delta, verification/counterevidence, and the exact next executable frontier for deep progress runs.
 
 ## Paths
 

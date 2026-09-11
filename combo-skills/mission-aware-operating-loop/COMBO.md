@@ -29,6 +29,21 @@ This Combo adds the connective tissue that existing Skills do not own individual
 | 5 | `quality-gate` | Proposed action, evidence, and acceptance criteria | Outcome gate | The result is pending, observed, verified, contradicted, blocked, or escalated—never silently upgraded. |
 | 6 | `handoff-record` | Gate result, learnings, and next-state changes | Recovery and strengthening record | A future operator can resume from the exact next action and review trigger. |
 
+## Run-quality gates
+
+Canonical gates: `VERBATIM-FIRST` · **coverage honesty** · `LONG-RUN` · `MISSION-DELTA` · `DIVERSE OUTPUTS` · **anti-repetition**.
+
+For deep or continuation-dependent work, the loop fails closed unless all of the following remain true:
+
+1. **Verbatim/source fidelity** — material Operator wording is preserved from source-bearing history before summaries or reinterpretation.
+2. **Coverage honesty** — full-history/full-source claims require evidence of actual coverage; partial retrieval cannot masquerade as exhaustive review.
+3. **Long-run execution** — the route continues through the strongest coherent tranche while authorized high-value executable work remains.
+4. **Mission delta** — at least one Operator objective state changes before the cycle is counted as progress.
+5. **Additive output diversity** — distinct code, tests, evidence, receipts, records, or recovery artifacts are produced when each adds mission value.
+6. **Anti-repetition** — a repeated pass must deepen evidence, implementation, verification, interoperability, or recoverability.
+
+These are execution gates, not style preferences. A concise result can still pass when the mission is genuinely bounded; a short result caused by premature stopping cannot.
+
 ## Execution loop
 
 ```text
@@ -60,7 +75,7 @@ The mission contract defines the boundary; the context capsule identifies what i
 
 ## Compound output
 
-**Artifact:** `MISSION_OPERATING_LOOP_RECORD.md`, containing mission, context, options, impact forecast, action, outcome state, evidence/retrieval state, verification, learnings, strengthening changes, and exact resumption point.
+**Artifact:** `MISSION_OPERATING_LOOP_RECORD.md`, containing mission, context, options, impact forecast, action, outcome state, evidence/retrieval state, source-coverage status, objective-state delta, durable outputs, verification/counterevidence, learnings, strengthening changes, and exact resumption point.
 
 **Ready for Mega Skill integration when:** the record can be resumed without raw conversation history, no material claim outruns its evidence state, and the next route is explicit.
 
