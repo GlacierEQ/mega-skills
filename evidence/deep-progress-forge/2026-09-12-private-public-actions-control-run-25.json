@@ -1,0 +1,27 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 25,
+  "purpose": "Bind a current same-account public-vs-private GitHub Actions control test.",
+  "private_target": {
+    "repo": "GlacierEQ/mega-skills",
+    "visibility": "private",
+    "head_before": "fc11f7865c1e2b665c96c48f511c31a2d692fedd",
+    "observed_failure_boundary": "GitHub-hosted jobs fail before payload steps execute",
+    "buildkite_build": 521,
+    "buildkite_state": "failure"
+  },
+  "public_control": {
+    "repo": "GlacierEQ/Genius-Mastery",
+    "visibility": "public",
+    "workflow_run": 34723841056,
+    "head": "00b563015566cd50a80a01a6cdc1b3a6b2837bfd",
+    "job_id": 103634382201,
+    "job_name": "validate",
+    "conclusion": "success",
+    "executed_steps": 13,
+    "runner_payload_executed": true
+  },
+  "verified_inference": "The GlacierEQ account can currently obtain and execute a GitHub-hosted ubuntu runner on a public repository. The mega-skills failure is therefore not an account-wide GitHub-hosted-runner outage; the remaining fault domain is private-repository-specific execution eligibility, repository Actions settings, or private-repository billing/usage policy.",
+  "claim_boundary": "This does not identify which private-repository prerequisite is responsible. Current repository Actions administration and billing state remain unreadable through the connected GitHub endpoint allowlist.",
+  "next_frontier": "Inspect or repair mega-skills private-repository Actions eligibility/billing settings through an admin-capable surface; independently recover the exact Buildkite 521 failing command."
+}
