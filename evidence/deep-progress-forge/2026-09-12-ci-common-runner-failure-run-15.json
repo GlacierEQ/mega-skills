@@ -1,0 +1,29 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 15,
+  "recovered_frontier": "Run 14: recover the exact failing CI command and repair the concrete source failure before claiming green.",
+  "source_anchor": "evidence/deep-progress-forge/LATEST.json run_sequence=14",
+  "provider_observation_before": {
+    "commit": "c5f25a6633bf856f96574bcb6397112ab0014526",
+    "buildkite_build": 505,
+    "buildkite_state": "failure",
+    "github_actions_run": 34692446546,
+    "github_actions_state": "failure",
+    "github_actions_jobs": "all seven prerequisite lanes failed in 3-4 seconds with empty step arrays"
+  },
+  "execution": {
+    "commit": "f5de80b95400e26afeae9f02879376f6721698ea",
+    "mutation": ".github/workflows/validate-hierarchy.yml changed actions/checkout v5 -> v4 and actions/setup-python v6 -> v5 across all validation lanes",
+    "reason": "falsify whether the common pre-step failure was caused by action-version compatibility"
+  },
+  "provider_readback_after": {
+    "workflow_blob": "0676bd6b5a4e47638e030c53ec2fd9ebb674e446",
+    "github_actions_result": "failure persisted before executable steps; hypothesis falsified",
+    "buildkite_build": 506,
+    "buildkite_state": "failure",
+    "buildkite_duration_seconds": 14
+  },
+  "objective_state_delta": "The CI failure space is materially narrowed: changing the shared checkout/setup-python action major versions did not restore execution, so the common GitHub Actions failure is upstream of repository validation commands; Buildkite independently remains red.",
+  "claim_boundary": "This run does not claim CI repaired or green. The workflow mutation is durable and provider-read back; its failure is preserved as counterevidence.",
+  "next_executable_frontier": "Recover provider-native failure annotations/logs for the pre-step GitHub Actions failure and Buildkite #506. Repair the actual shared runner/provider prerequisite rather than repository validation logic; then rerun and bind only verified-green provider evidence."
+}
