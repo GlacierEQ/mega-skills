@@ -14,6 +14,7 @@ import sys
 import unittest
 from pathlib import Path
 from typing import Any, Tuple
+from unittest import mock
 
 SKILLS_BIN_ENV = "GLACIEREQ_SKILLS_BIN"
 
@@ -21,6 +22,17 @@ SKILLS_BIN_ENV = "GLACIEREQ_SKILLS_BIN"
 def configured_skills_bin() -> Path | None:
     raw = os.environ.get(SKILLS_BIN_ENV, "").strip()
     return Path(raw).expanduser() if raw else None
+
+
+class DynamicSkillsPortabilityTests(unittest.TestCase):
+    def test_generic_environment_does_not_infer_host_cli(self):
+        with mock.patch.dict(os.environ, {}, clear=True):
+            self.assertIsNone(configured_skills_bin())
+
+    def test_explicit_host_binding_is_preserved(self):
+        target = "/operator/runtime/bin/skills"
+        with mock.patch.dict(os.environ, {SKILLS_BIN_ENV: target}, clear=True):
+            self.assertEqual(configured_skills_bin(), Path(target))
 
 
 class DynamicSkillsControllerTests(unittest.TestCase):
