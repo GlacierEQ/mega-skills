@@ -1,0 +1,30 @@
+{
+  "run": 24,
+  "date": "2026-09-12",
+  "subject": "GitHub Actions included-minutes evidence temporal boundary",
+  "source_evidence": [
+    {
+      "provider": "Gmail",
+      "message_id": "1a05ba79deefbd45",
+      "timestamp": "2026-08-31T23:28:26-07:00",
+      "subject": "[GitHub] You have used 100% of the Actions minutes included for the GlacierEQ account",
+      "snippet_fact": "GitHub stated the plan includes 2000 Actions minutes per month and 100% had been used so far that month."
+    },
+    {
+      "provider": "Gmail",
+      "message_id": "1a05b8d7397b03b2",
+      "timestamp": "2026-08-31T22:59:51-07:00",
+      "subject": "[GitHub] You have used 90% of the Actions minutes included for the GlacierEQ account"
+    }
+  ],
+  "correction": {
+    "verified": "The 100% notification is dated August 31 and explicitly describes a per-month included allowance / usage so far that month.",
+    "not_verified": "No current September billing, budget, overage, or execution-eligibility state was recovered in this run.",
+    "displaced_inference": "The August 31 notification alone must not be treated as proof that September 12 runner-allocation failures are caused by current Actions-minute exhaustion.",
+    "required_next_evidence": "Current GitHub billing/budget/execution-eligibility state or a September provider notification tying present runner denial to quota/billing."
+  },
+  "continuation": {
+    "preserve": "The three-OS minimal runner-allocation harness and repeated pre-step failures remain valid observations.",
+    "next_frontier": "Inspect current account-level Actions billing/budget/eligibility state; do not churn repository validation semantics."
+  }
+}
