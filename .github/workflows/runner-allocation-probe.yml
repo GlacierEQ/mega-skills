@@ -12,16 +12,19 @@ permissions:
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 1
     steps:
-      - run: echo runner-assigned-ubuntu
+      - name: allocation-marker
+        run: echo runner-assigned-ubuntu
   macos:
     runs-on: macos-latest
-    timeout-minutes: 2
+    timeout-minutes: 1
     steps:
-      - run: echo runner-assigned-macos
+      - name: allocation-marker
+        run: echo runner-assigned-macos
   windows:
     runs-on: windows-latest
-    timeout-minutes: 2
+    timeout-minutes: 1
     steps:
-      - run: echo runner-assigned-windows
+      - name: allocation-marker
+        run: echo runner-assigned-windows
