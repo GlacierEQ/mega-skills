@@ -1,0 +1,68 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 11,
+  "verbatim_operator_source": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "failure_pattern_attacked": "Run-10 made provider+host proof renewal atomic in the filesystem, but a locally valid renewal could still race a moving origin/main, two renewals could overlap, and durable provider state did not bind the renewed proof payload to committed Git object identities.",
+  "source_classification": {
+    "verbatim_source": "Operator governing phrases above and the run-10 next_executable_frontier in LATEST.json",
+    "verified_provider_state": "GitHub main, exact commits, Git trees/blobs, Buildkite status readback",
+    "verified_host_state": "KcBs-MacBook-Air.local real ~/bin/skills proof refresh during live transaction",
+    "inference": "A self-referential final commit SHA cannot be embedded in the same commit; therefore commit-aware proof uses a payload commit plus a finalization commit published by one leased ref update.",
+    "contradictions_or_counterevidence": [
+      "The first synthetic commit-finalization test failed because its bare remote lived inside the synthetic worktree; the clean-tree guard correctly rejected that fixture. The guard was preserved and the fixture was fixed.",
+      "The first source-promotion push attempt failed because the shell refspec interpolated incorrectly. Provider main remained unchanged; origin/main was reread before a corrected compare-and-swap retry.",
+      "An initial finalizer design rechecked the full recovery tuple after legitimate proof-digest mutation and would have rejected its own renewal. Mission identity and renewable proof identity were split before promotion."
+    ]
+  },
+  "durable_sources_changed": [
+    "scripts/renew_proof_leases.py",
+    "tests/test_renew_proof_leases.py"
+  ],
+  "implementation": {
+    "source_commit": "7b60e72291fca842794fb875655d1ad7c9397f6c",
+    "repository_lock": ".git/deep-progress-proof-renewal.lock via non-blocking flock",
+    "optimistic_concurrency": "snapshot local HEAD, origin/main, mission tuple, and full recovery tuple; fail closed if origin/main or bound state moves",
+    "publish_contract": "two local commits, one force-with-lease ref update against the exact captured origin/main",
+    "payload_commit": "fe470d518688b03daf47c4bce94e95f059b2acc9",
+    "payload_tree": "7414de9b0a43b9048f75494925070d274df9bd49",
+    "payload_blobs": {
+      "provider": "5997a5acc19d2846cd47a8eb191b9677bca27873",
+      "host": "a518036fcae786c8429087413d1bc7185cab8f8b"
+    },
+    "finalization_commit": "5bebf5e4bee59648aeaf4d59d3b7eaa1c399a4b5",
+    "finalization_tree": "c5157d5ac64140f9e0a71e4035ff5922cf22a09e",
+    "origin_parent": "7b60e72291fca842794fb875655d1ad7c9397f6c",
+    "finalized_receipt_digest": "2b6f36e257a7b5c7878d003777a02075e0b8f22022ec4e9ab9b005dc6ad7f7a3"
+  },
+  "verification": {
+    "renewal_tests": "9/9 passed",
+    "refresh_plus_continuity_tests": "20/20 passed",
+    "run10_pointer_validation": "PASS before extension",
+    "source_commit_buildkite": "build 489 success",
+    "live_transaction": "RENEWED; both proof lanes changed; run_sequence and frontier unchanged",
+    "finalization_buildkite": "build 490 success",
+    "provider_digest_after": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421",
+    "host_digest_after": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c",
+    "host_executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
+  },
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Proof renewal was atomic only across local proof files; concurrent provider movement, overlapping renewals, and uncommitted-but-valid local renewal remained possible ambiguity.",
+    "after": "Proof renewal is serialized per repository, snapshots provider and recovery state, refuses stale promotion, binds renewed provider/host bytes to a payload Git commit/tree/blob set, and publishes payload+finalization through one compare-and-swap provider ref update verified green in Buildkite."
+  },
+  "unresolved": [
+    "The continuity validator does not yet independently traverse and prove the latest renewal receipt's payload commit/tree/blob chain from LATEST.json.",
+    "If provider publication is rejected after local payload/finalization commits exist, the worktree remains safely unpublished but recovery of those abandoned local commits is not yet automated.",
+    "The finalization commit cannot cryptographically self-name its own SHA; provider readback must remain the authoritative proof that the finalization commit became main."
+  ],
+  "next_executable_frontier": "Extend validate_deep_progress_latest.py to verify the latest proof-renewal Git chain end-to-end: receipt digest, recorded origin parent, payload commit parent/tree, provider+host blob identities, finalization commit ancestry/provider readback, and explicit abandoned-local-transaction recovery when a leased publish is rejected."
+}
