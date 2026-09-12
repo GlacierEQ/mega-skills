@@ -1,25 +1,100 @@
 {
   "stream": "deep-progress-forge",
-  "run_sequence": 7,
-  "current_run": "evidence/deep-progress-forge/2026-09-11-provider-provenance-run-07.json",
-  "current_run_commit": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7",
-  "provider_state_schema_version": 2,
+  "run_sequence": 8,
+  "current_run": "evidence/deep-progress-forge/2026-09-11-proof-bound-provider-run-08.json",
+  "current_run_commit": "41e8858de5e5260e454c90417bdac600e1fe0b19",
+  "provider_state_schema_version": 3,
   "verified_provider_state": {
-    "mega_skills_runtime_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "46ed77b49e8261366f2521d64e2d0e68bd33355e"},
-    "mega_skills_bridge_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "2b3260812da08da66cacaf671b868840ca01d557"},
-    "genius_mastery_bridge_commit": {"type": "cross_repo_commit", "repo": "GlacierEQ/Genius-Mastery", "sha": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16"},
-    "genius_mastery_source_faithful_head": {"type": "cross_repo_commit", "repo": "GlacierEQ/Genius-Mastery", "sha": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"},
-    "freshness_implementation_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "18410a9e941683502e6d9e81e44b8cf711804b0d"},
-    "freshness_ci_enforcement_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "2e296c6da75ab677a86883e20f5ed2788eeeba56"},
-    "ci_portability_repair_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "f321514277068a83c421c48b389924cbba65470b"},
-    "host_lane_opt_in_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "39b31c4ea71cd9bd690f9286937512f3ce42a03a"},
-    "host_lane_test_blob": {"type": "blob", "repo": "GlacierEQ/mega-skills", "sha": "55a03d51519b7f22e7f9641c2afc887070b0c09c"},
-    "continuity_validator_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "dfc878b1c5133081d2a8d5285bcfafa8e71a487a"},
-    "continuity_tests_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "31a45cac6550bf6995383f7ce1926c4a5ec9c5a3"},
-    "continuity_run_receipt_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7"},
-    "continuity_pointer_binding_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "59ad37e6ad534ef964ead277c9fd3796a1e69ae3"},
-    "continuity_ci_enforcement_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "437982a0d2bce6be67d53aa524c1edc74ca215f2"},
-    "provider_provenance_pointer_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea"}
+    "mega_skills_runtime_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "46ed77b49e8261366f2521d64e2d0e68bd33355e"
+    },
+    "mega_skills_bridge_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "2b3260812da08da66cacaf671b868840ca01d557"
+    },
+    "genius_mastery_bridge_commit": {
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16"
+    },
+    "genius_mastery_source_faithful_head": {
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"
+    },
+    "freshness_implementation_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "18410a9e941683502e6d9e81e44b8cf711804b0d"
+    },
+    "freshness_ci_enforcement_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "2e296c6da75ab677a86883e20f5ed2788eeeba56"
+    },
+    "ci_portability_repair_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "f321514277068a83c421c48b389924cbba65470b"
+    },
+    "host_lane_opt_in_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "39b31c4ea71cd9bd690f9286937512f3ce42a03a"
+    },
+    "host_lane_test_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "55a03d51519b7f22e7f9641c2afc887070b0c09c"
+    },
+    "continuity_validator_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "dfc878b1c5133081d2a8d5285bcfafa8e71a487a"
+    },
+    "continuity_tests_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "31a45cac6550bf6995383f7ce1926c4a5ec9c5a3"
+    },
+    "continuity_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7"
+    },
+    "continuity_pointer_binding_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "59ad37e6ad534ef964ead277c9fd3796a1e69ae3"
+    },
+    "continuity_ci_enforcement_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "437982a0d2bce6be67d53aa524c1edc74ca215f2"
+    },
+    "provider_provenance_pointer_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea"
+    },
+    "proof_bound_provider_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "41e8858de5e5260e454c90417bdac600e1fe0b19"
+    },
+    "provider_readback_manifest_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "476d0979104fd0685df9125ae54aac4c1ffbba56"
+    },
+    "host_skills_lifecycle_receipt_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "9811558dc61a348896d43414e936df171c5df6dc"
+    }
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
@@ -44,9 +119,16 @@
     "provider_provenance_pointer_build_state": "success",
     "generic_ci_contract": "No implicit ~/bin/skills discovery. Host lifecycle executes only when GLACIEREQ_SKILLS_BIN explicitly binds the executable.",
     "continuity_contract": "provider-state v2 is green in Buildkite: run-07 is bound, same-repository commits must be real reachable commits, and cross-repository/blob references are explicitly typed.",
-    "operator_host_runtime": "unverified: all registered Remote Desktop Commander devices offline"
+    "operator_host_runtime": "verified on KcBs-MacBook-Air.local: status/search/recommend/activate/verify/deactivate/verify passed; pre/post state identical",
+    "provider_state_v3_tests": "12/12 passed",
+    "operator_host_runtime_receipt_digest": "1073b2f28dbcec9db8d57c44e2ae0fb1655d5791d33f5f4e565fda30ae1184f3",
+    "provider_readback_manifest_digest": "855ab848bdc385ffc7a4552afed6b4eaddd08125da5a8921dc22d7bd90ed4469"
   },
-  "objective_state": "Deep Progress Forge recovery is re-bound to run-07 and provider-state v2 is provider-verified green. Same-repository commit claims are executable assertions requiring real reachable commit objects. Cross-repository commits and blobs are explicit types rather than ambiguous 40-hex strings, and direct GitHub readback resolved the current external/blob examples. The run also corrects the prior pointer-only frontier mutation that left build 478 red.",
-  "next_executable_frontier": "Upgrade typed provider exceptions from classification to proof: verify same-repository blob objects directly, bind cross-repository commit references to a durable provider-readback manifest with exact repository/object type/SHA and receipt digest, add tamper and nonexistent-object tests, and preserve host-runtime verification as a separate unresolved lane until an Operator device is online.",
-  "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version as a binding tuple. Build 482 is provider proof that v2 passed. For provider-state v2, repo_commit means GlacierEQ/mega-skills commit and must be reachable from HEAD; cross_repo_commit and blob must be explicitly typed and must not be silently promoted into same-repository commit proof. Do not infer host success from repository CI. Do not change next_executable_frontier without advancing the bound run receipt."
+  "objective_state": "Deep Progress Forge run-08 upgrades provider-state from typed identifiers to proof-bound v3: external Genius-Mastery commit claims must match a tamper-evident provider-readback manifest, same-repository blob claims must resolve as Git blob objects, and the previously unresolved Operator-host Skills lifecycle is now directly verified with exact state restoration.",
+  "next_executable_frontier": "Automate provider-readback manifest refresh from provider-native GitHub evidence, bind each cross-repository proof to fetch metadata plus immutable object identity, add stale-proof expiry/revalidation semantics without weakening offline deterministic CI, and propagate the now-verified host-runtime lane into the recovery contract so future runs distinguish provider proof freshness from host proof freshness.",
+  "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version/provider_readback_manifest as a binding tuple. Provider-state v3 requires reachable same-repository commits, actual same-repository blob objects, and digest-bound readback proofs for external objects. The Operator-host Skills lane is independently verified by host-skills-lifecycle-run-08.json and must not be inferred from CI. Do not change next_executable_frontier without advancing the bound run receipt.",
+  "provider_readback_manifest": {
+    "path": "evidence/deep-progress-forge/provider-readback-manifest-v1.json",
+    "proof_digest_sha256": "855ab848bdc385ffc7a4552afed6b4eaddd08125da5a8921dc22d7bd90ed4469"
+  }
 }
