@@ -1,0 +1,58 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 13,
+  "failure_pattern_attacked": "Implemented-but-unbound progress: main already contained abandoned-renewal recovery receipts and an end-to-end marker -> continuity failure -> recovery -> continuity PASS test, while LATEST still described that exact work as the next frontier. This recreated the recurring failure mode where durable source advances but the recovery pointer causes the next run to rediscover finished work.",
+  "source_classification": {
+    "verbatim_source": "Operator governing phrases preserved in verbatim_sources plus the run-12 next_executable_frontier.",
+    "verified_provider_state": "GlacierEQ/mega-skills main at 98f06a6b5afa336203d74a89fc81f30730abb8e4; abandoned-recovery implementation commit 0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3 is reachable on main; direct GitHub readback shows recovery receipt creation, LATEST binding, and end-to-end recovery test.",
+    "inference": "A source-bearing recovery pointer that still names already-implemented work as future work is itself a continuity defect even when the implementation exists and is correct.",
+    "contradictions_or_counterevidence": [
+      "Run-12 recorded recovery receipts and an end-to-end rejected-lease recovery test as unresolved; main now contains both in commit 0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3.",
+      "Buildkite build 499 on the recovery implementation commit failed, and build 500 on subsequent CI-headroom commit 98f06a6b5afa336203d74a89fc81f30730abb8e4 also failed. Therefore this run does not promote those builds to verified-green state and treats CI restoration as unresolved provider evidence."
+    ]
+  },
+  "durable_sources_changed": [
+    "evidence/deep-progress-forge/2026-09-12-recovery-evidence-binding-run-13.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "implementation": {
+    "recovery_evidence_source_commit": "0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3",
+    "recovery_behavior": "recover_abandoned_transaction now hashes the abandoned marker, publishes the recovered final commit with force-with-lease, verifies provider main, emits an immutable receipt under evidence/deep-progress-forge/abandoned-renewal-recoveries/, binds that receipt into LATEST, deletes the marker only inside the guarded success path, commits the recovery evidence, and verifies the evidence commit became provider main.",
+    "end_to_end_test": "test_recover_abandoned_transaction_is_continuity_gate_end_to_end exercises marker creation -> validate_no_abandoned_renewal failure -> recover_abandoned_transaction -> validate_no_abandoned_renewal NONE -> durable recovery receipt existence.",
+    "pointer_reconciliation": "run-13 advances the recovery frontier beyond work already present on main rather than rerunning or re-describing it."
+  },
+  "verification": {
+    "github_recovery_commit_readback": "verified",
+    "github_main_head": "98f06a6b5afa336203d74a89fc81f30730abb8e4",
+    "buildkite_recovery_commit": "build 499 failure",
+    "buildkite_current_main": "build 500 failure",
+    "claim_boundary": "Recovery implementation existence is provider-verified; green CI is not claimed."
+  },
+  "objective_state_delta": {
+    "changed": true,
+    "before": "The durable pointer said the next run still needed to implement abandoned-renewal recovery receipts and an end-to-end recovery test even though both had already landed on provider main, forcing future runs toward rediscovery.",
+    "after": "The durable continuation state explicitly recognizes the landed recovery-evidence implementation, preserves the red-CI counterevidence, and moves the next executable frontier to validating the recovery binding itself plus diagnosing/restoring provider CI."
+  },
+  "unresolved": [
+    "validate_deep_progress_latest.py currently fails closed on an active abandoned marker but does not independently validate the latest_abandoned_recovery receipt binding when such a recovery exists.",
+    "Buildkite builds 499 and 500 are red; the exact failing pipeline step is not exposed by the current GitHub status readback and must be recovered from provider logs or reproduced through an executable environment before claiming CI repair.",
+    "No claim is made that model weights, hidden system instructions, or immutable ChatGPT runtime behavior changed."
+  ],
+  "next_executable_frontier": "Close the remaining recovery-evidence truth gap and restore provider-green state: add validator coverage for latest_abandoned_recovery so its path, receipt digest, marker digest, origin/final commits and provider-main transition cannot drift; add tamper/missing-receipt tests; recover the exact Buildkite 500 failure step from provider logs or executable reproduction; repair that source-level failure; then bind the verified green commit/build into the next run rather than treating CI failure as incidental.",
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "concrete_outputs": [
+    "source-bearing run-13 receipt that reconciles provider implementation with continuity state",
+    "LATEST pointer advanced beyond the already-landed run-12 frontier",
+    "explicit red-CI counterevidence retained instead of converted into a success claim",
+    "new executable frontier focused on validator proof-binding and exact provider-CI restoration"
+  ]
+}
