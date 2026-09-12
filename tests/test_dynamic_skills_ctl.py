@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Host-integration tests for the dynamic skill activator & governor (~/bin/skills).
+Opt-in host-integration tests for the dynamic skill activator & governor.
 
-These tests exercise the Operator-host runtime when the CLI is installed. Repository
-CI must remain portable: a generic Buildkite/GitHub runner is not evidence that the
-host-only CLI is broken merely because ~/bin/skills is absent there.
+These tests exercise the Operator-host runtime only when GLACIEREQ_SKILLS_BIN
+explicitly names the executable under test. Generic CI must remain portable and
+must not infer host capability from ~/bin/skills or any incidental local path.
 """
 
 import json
@@ -15,24 +15,34 @@ import unittest
 from pathlib import Path
 from typing import Any, Tuple
 
-SKILLS_BIN = Path(os.environ.get("GLACIEREQ_SKILLS_BIN", str(Path.home() / "bin" / "skills")))
+SKILLS_BIN_ENV = "GLACIEREQ_SKILLS_BIN"
+
+
+def configured_skills_bin() -> Path | None:
+    raw = os.environ.get(SKILLS_BIN_ENV, "").strip()
+    return Path(raw).expanduser() if raw else None
 
 
 class DynamicSkillsControllerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        if not SKILLS_BIN.is_file():
+        cls.skills_bin = configured_skills_bin()
+        if cls.skills_bin is None:
             raise unittest.SkipTest(
-                f"host integration unavailable: Skills CLI not found at {SKILLS_BIN}"
+                f"host integration is opt-in: set {SKILLS_BIN_ENV} to the Skills CLI executable"
             )
-        if not SKILLS_BIN.stat().st_mode & 0o111:
-            raise unittest.SkipTest(
-                f"host integration unavailable: Skills CLI is not executable at {SKILLS_BIN}"
+        if not cls.skills_bin.is_file():
+            raise AssertionError(
+                f"explicit host integration target does not exist: {cls.skills_bin}"
+            )
+        if not cls.skills_bin.stat().st_mode & 0o111:
+            raise AssertionError(
+                f"explicit host integration target is not executable: {cls.skills_bin}"
             )
 
     def _run_skills(self, *args: str) -> Tuple[int, Any]:
         res = subprocess.run(
-            [sys.executable, str(SKILLS_BIN), *args],
+            [sys.executable, str(self.skills_bin), *args],
             capture_output=True,
             text=True,
         )
