@@ -1,44 +1,54 @@
 {
   "schema_version": 1,
   "transaction": "atomic_proof_renewal",
-  "renewed_at": "2026-09-12T05:48:06Z",
+  "renewed_at": "2026-09-12T06:55:25Z",
   "before": {
-    "provider_digest": "d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046",
-    "host_digest": "387992e1e7c57615fb91f1b1027a43f337cad3ea9bae050cd124e53d1d5d05e3",
-    "run_sequence": 9,
-    "frontier": "Build an atomic proof-renewal transaction that refreshes provider and host evidence, validates both new receipts, updates only the renewable proof bindings in LATEST.json without changing the mission frontier/run sequence, preserves a renewal receipt with before/after digests, and fails safely if either lane cannot refresh; add near-expiry status and rollback tests so scheduled runs renew proof leases before CI reaches expiry."
-  },
-  "after": {
     "provider_digest": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e",
     "host_digest": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
-    "run_sequence": 9,
-    "frontier": "Build an atomic proof-renewal transaction that refreshes provider and host evidence, validates both new receipts, updates only the renewable proof bindings in LATEST.json without changing the mission frontier/run sequence, preserves a renewal receipt with before/after digests, and fails safely if either lane cannot refresh; add near-expiry status and rollback tests so scheduled runs renew proof leases before CI reaches expiry."
+    "run_sequence": 10,
+    "frontier": "Add optimistic concurrency and commit-aware finalization to proof renewal: refuse renewal when origin/main or the bound recovery tuple moves during the transaction, serialize concurrent renewals, and bind the resulting renewal receipt to the committed Git object identities so a filesystem-valid but uncommitted renewal cannot be mistaken for durable provider state."
+  },
+  "after": {
+    "provider_digest": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421",
+    "host_digest": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c",
+    "run_sequence": 10,
+    "frontier": "Add optimistic concurrency and commit-aware finalization to proof renewal: refuse renewal when origin/main or the bound recovery tuple moves during the transaction, serialize concurrent renewals, and bind the resulting renewal receipt to the committed Git object identities so a filesystem-valid but uncommitted renewal cannot be mistaken for durable provider state."
   },
   "validation": {
     "status": "PASS",
-    "run_sequence": 9,
-    "current_run": "evidence/deep-progress-forge/2026-09-11-renewable-proof-leases-run-09.json",
-    "current_run_commit": "f62cdaa095d5eb25b1ec9d35e9a005a8a58fca2c",
+    "run_sequence": 10,
+    "current_run": "evidence/deep-progress-forge/2026-09-11-atomic-proof-renewal-run-10.json",
+    "current_run_commit": "2d50da2ebad68b07368ea81d393d4eeb2e685522",
     "provider_state": {
       "status": "PASS",
-      "checked": 23,
-      "same_repo_commits": 16,
+      "checked": 24,
+      "same_repo_commits": 17,
       "same_repo_blobs": 5,
       "cross_repo_proofs": 2,
-      "manifest_digest": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e"
+      "manifest_digest": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421"
     },
     "host_runtime_proof": {
       "status": "PASS",
-      "observed_at": "2026-09-12T05:47:44Z",
-      "revalidate_after": "2026-09-12T13:47:44Z",
+      "observed_at": "2026-09-12T06:54:35Z",
+      "revalidate_after": "2026-09-12T14:54:35Z",
       "executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
     },
-    "next_executable_frontier": "Build an atomic proof-renewal transaction that refreshes provider and host evidence, validates both new receipts, updates only the renewable proof bindings in LATEST.json without changing the mission frontier/run sequence, preserves a renewal receipt with before/after digests, and fails safely if either lane cannot refresh; add near-expiry status and rollback tests so scheduled runs renew proof leases before CI reaches expiry."
+    "next_executable_frontier": "Add optimistic concurrency and commit-aware finalization to proof renewal: refuse renewal when origin/main or the bound recovery tuple moves during the transaction, serialize concurrent renewals, and bind the resulting renewal receipt to the committed Git object identities so a filesystem-valid but uncommitted renewal cannot be mistaken for durable provider state."
   },
   "invariants": {
     "run_sequence_unchanged": true,
     "frontier_unchanged": true,
     "both_lanes_changed": true
   },
-  "receipt_digest_sha256": "a04d86ec2d8680e2dea0ff1e47cf8f53a59bc5025cc2a38ed88561c4a68c6a4f"
+  "git_finalization": {
+    "origin_parent": "7b60e72291fca842794fb875655d1ad7c9397f6c",
+    "payload_commit": "fe470d518688b03daf47c4bce94e95f059b2acc9",
+    "payload_tree": "7414de9b0a43b9048f75494925070d274df9bd49",
+    "payload_blob_shas": {
+      "provider": "5997a5acc19d2846cd47a8eb191b9677bca27873",
+      "host": "a518036fcae786c8429087413d1bc7185cab8f8b"
+    },
+    "recovery_tuple_before_sha256": "9fcf2ebd3e657fbc1e50641463a2e9dc2a0594f6b423819126955d56fc92f76f"
+  },
+  "receipt_digest_sha256": "2b6f36e257a7b5c7878d003777a02075e0b8f22022ec4e9ab9b005dc6ad7f7a3"
 }

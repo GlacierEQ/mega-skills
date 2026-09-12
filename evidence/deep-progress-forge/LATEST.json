@@ -151,33 +151,37 @@
     "continuity_contract": "provider-state v2 is green in Buildkite: run-07 is bound, same-repository commits must be real reachable commits, and cross-repository/blob references are explicitly typed.",
     "operator_host_runtime": "verified on KcBs-MacBook-Air.local: status/search/recommend/activate/verify/deactivate/verify passed; pre/post state identical",
     "provider_state_v3_tests": "12/12 passed",
-    "operator_host_runtime_receipt_digest": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
-    "provider_readback_manifest_digest": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e",
+    "operator_host_runtime_receipt_digest": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c",
+    "provider_readback_manifest_digest": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421",
     "provider_state_v4_tests": "17/17 continuity tests passed; 20/20 combined continuity + refresh-tool tests passed",
     "repository_unittest_discovery": "101 passed, 1 intentional skip",
-    "provider_proof_observed_at": "2026-09-12T05:47:34Z",
-    "provider_proof_revalidate_after": "2026-09-13T05:47:34Z",
-    "host_proof_observed_at": "2026-09-12T05:47:44Z",
-    "host_proof_revalidate_after": "2026-09-12T13:47:44Z",
+    "provider_proof_observed_at": "2026-09-12T06:54:31Z",
+    "provider_proof_revalidate_after": "2026-09-13T06:54:31Z",
+    "host_proof_observed_at": "2026-09-12T06:54:35Z",
+    "host_proof_revalidate_after": "2026-09-12T14:54:35Z",
     "host_executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662",
     "atomic_renewal_tests": "24/24 focused renewal + refresh + continuity tests passed",
     "atomic_renewal_live_receipt_digest": "a04d86ec2d8680e2dea0ff1e47cf8f53a59bc5025cc2a38ed88561c4a68c6a4f",
     "atomic_renewal_provider_digest": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e",
     "atomic_renewal_host_digest": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
-    "proof_lease_ci_guard": "Buildkite invokes renew_proof_leases.py --check --renew-within-hours 2"
+    "proof_lease_ci_guard": "Buildkite invokes renew_proof_leases.py --check --renew-within-hours 2",
+    "latest_proof_renewal_payload_commit": "fe470d518688b03daf47c4bce94e95f059b2acc9",
+    "latest_proof_renewal_payload_tree": "7414de9b0a43b9048f75494925070d274df9bd49",
+    "latest_proof_renewal_origin_parent": "7b60e72291fca842794fb875655d1ad7c9397f6c",
+    "latest_proof_renewal_receipt_digest": "2b6f36e257a7b5c7878d003777a02075e0b8f22022ec4e9ab9b005dc6ad7f7a3"
   },
   "objective_state": "Deep Progress Forge run-10 makes provider+host proof renewal transactional: both lanes refresh before any pointer update, candidate state must validate, failures roll all proof files back, renewal preserves mission sequence/frontier, and CI detects the two-hour pre-expiry renewal horizon.",
   "next_executable_frontier": "Add optimistic concurrency and commit-aware finalization to proof renewal: refuse renewal when origin/main or the bound recovery tuple moves during the transaction, serialize concurrent renewals, and bind the resulting renewal receipt to the committed Git object identities so a filesystem-valid but uncommitted renewal cannot be mistaken for durable provider state.",
   "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Run-10 adds scripts/renew_proof_leases.py: renewable provider+host proof must change together through candidate validation and rollback-safe commit_transaction, while run_sequence and next frontier stay fixed during lease-only renewal. Buildkite checks the two-hour near-expiry horizon. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version/provider_readback_manifest/host_runtime_proof as a binding tuple; do not substitute filesystem renewal for committed provider state.",
   "provider_readback_manifest": {
     "path": "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
-    "proof_digest_sha256": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e"
+    "proof_digest_sha256": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421"
   },
   "host_runtime_proof": {
     "path": "evidence/deep-progress-forge/host-skills-lifecycle-latest.json",
-    "receipt_digest_sha256": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
-    "observed_at": "2026-09-12T05:47:44Z",
-    "revalidate_after": "2026-09-12T13:47:44Z",
+    "receipt_digest_sha256": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c",
+    "observed_at": "2026-09-12T06:54:35Z",
+    "revalidate_after": "2026-09-12T14:54:35Z",
     "executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
   }
 }
