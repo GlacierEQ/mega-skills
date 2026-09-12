@@ -15,27 +15,33 @@
     "host_lane_test_blob": "55a03d51519b7f22e7f9641c2afc887070b0c09c",
     "continuity_validator_commit": "42b6add9ef95b6fc1017512789b15076c279e267",
     "continuity_tests_commit": "b937475be4859c2d3e2c89ff0ba2e7fc5dc09e87",
-    "continuity_run_receipt_commit": "09d492115cf75c0bc7e3e5d4013f14f1d80aad59"
+    "continuity_run_receipt_commit": "09d492115cf75c0bc7e3e5d4013f14f1d80aad59",
+    "continuity_pointer_binding_commit": "59ad37e6ad534ef964ead277c9fd3796a1e69ae3",
+    "continuity_ci_enforcement_commit": "437982a0d2bce6be67d53aa524c1edc74ca215f2"
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
     "freshness_tests": "3/3 passed",
     "hierarchy": "passed",
     "pyramids": "passed",
-    "repository_wide_ci": "verified_green_after_regression_repair",
+    "repository_wide_ci": "verified_green",
     "buildkite_context": "buildkite/mega-skills-contract-validation",
     "portability_baseline_build": 466,
     "host_lane_opt_in_build": 470,
     "host_lane_opt_in_build_state": "success",
+    "continuity_pointer_build": 476,
+    "continuity_pointer_build_state": "success",
+    "continuity_ci_enforcement_build": 477,
+    "continuity_ci_enforcement_build_state": "success",
     "generic_ci_contract": "No implicit ~/bin/skills discovery. Host lifecycle executes only when GLACIEREQ_SKILLS_BIN explicitly binds the executable.",
     "portable_contract_tests": [
       "generic environment resolves no host CLI",
       "explicit GLACIEREQ_SKILLS_BIN binding is preserved"
     ],
-    "continuity_contract": "pending provider CI readback for final pointer commit",
+    "continuity_contract": "verified: Buildkite executes validate_deep_progress_latest.py directly and unittest discovery includes five continuity-contract tests",
     "operator_host_runtime": "unverified: all registered Remote Desktop Commander devices offline"
   },
-  "objective_state": "Bridge freshness, executable run-quality enforcement, repository portability, and explicit host-lane separation remain durable. Deep Progress Forge recovery is now itself governed by a fail-closed executable contract: LATEST must bind an existing source-bearing receipt, its actual receipt commit, matching run sequence/frontier, verbatim source, mission delta, and durable mutation/output evidence.",
-  "next_executable_frontier": "Verify the final continuity-pointer commit through provider CI/readback; then strengthen continuity further by making the recovery validator prove that verified_provider_state commit references are reachable ancestors or explicitly classified exceptions instead of accepting arbitrary 40-hex identifiers. Keep the host-runtime lifecycle separate and unresolved until an Operator device is online.",
-  "recovery_rule": "Recover this pointer first, then run scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence as a binding tuple, not advisory metadata. Do not advance verified_provider_state without provider/readback evidence; do not infer host success from repository CI; do not reconstruct from assistant summaries or ephemeral worktrees when this pointer and its receipt are available."
+  "objective_state": "Bridge freshness, executable run-quality enforcement, repository portability, explicit host-lane separation, and Deep Progress Forge recovery integrity are durable and provider-verified. LATEST is no longer advisory metadata: repository CI fails if it does not bind an existing source-bearing receipt, the receipt's actual last-change commit, matching run sequence/frontier, verbatim source, mission delta, and durable mutation/output evidence.",
+  "next_executable_frontier": "Strengthen continuity provenance by making the recovery validator prove that every commit-valued entry in verified_provider_state is reachable from repository history or explicitly classified as a cross-repository/blob reference, instead of accepting arbitrary 40-hex identifiers. Add negative tests for nonexistent same-repository commits and explicit typed exceptions for Genius-Mastery commits and blob SHAs. Keep the host-runtime lifecycle separate and unresolved until an Operator device is online.",
+  "recovery_rule": "Recover this pointer first, then run scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence as a binding tuple, not advisory metadata. Builds 476 and 477 are provider evidence for continuity binding and CI enforcement. Do not advance verified_provider_state without provider/readback evidence; do not infer host success from repository CI; do not reconstruct from assistant summaries or ephemeral worktrees when this pointer and its receipt are available."
 }
