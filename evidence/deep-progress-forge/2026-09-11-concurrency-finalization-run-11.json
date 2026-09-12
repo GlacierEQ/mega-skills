@@ -1,16 +1,6 @@
 {
   "stream": "deep-progress-forge",
   "run_sequence": 11,
-  "verbatim_operator_source": [
-    "MAXIMUM USEFUL ENGINEERING DENSITY",
-    "Build more when more creates value",
-    "Preserve diversity when diversity creates insight",
-    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
-    "MASTER IT. DO NOT MUTILATE IT.",
-    "Every pass should make the proposition stronger",
-    "If one evidence path fails, search another",
-    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
-  ],
   "failure_pattern_attacked": "Run-10 made provider+host proof renewal atomic in the filesystem, but a locally valid renewal could still race a moving origin/main, two renewals could overlap, and durable provider state did not bind the renewed proof payload to committed Git object identities.",
   "source_classification": {
     "verbatim_source": "Operator governing phrases above and the run-10 next_executable_frontier in LATEST.json",
@@ -64,5 +54,22 @@
     "If provider publication is rejected after local payload/finalization commits exist, the worktree remains safely unpublished but recovery of those abandoned local commits is not yet automated.",
     "The finalization commit cannot cryptographically self-name its own SHA; provider readback must remain the authoritative proof that the finalization commit became main."
   ],
-  "next_executable_frontier": "Extend validate_deep_progress_latest.py to verify the latest proof-renewal Git chain end-to-end: receipt digest, recorded origin parent, payload commit parent/tree, provider+host blob identities, finalization commit ancestry/provider readback, and explicit abandoned-local-transaction recovery when a leased publish is rejected."
+  "next_executable_frontier": "Extend validate_deep_progress_latest.py to verify the latest proof-renewal Git chain end-to-end: receipt digest, recorded origin parent, payload commit parent/tree, provider+host blob identities, finalization commit ancestry/provider readback, and explicit abandoned-local-transaction recovery when a leased publish is rejected.",
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "concrete_outputs": [
+    "scripts/renew_proof_leases.py concurrency-safe commit-aware implementation",
+    "tests/test_renew_proof_leases.py adversarial concurrency/finalization tests",
+    "provider proof payload commit fe470d518688b03daf47c4bce94e95f059b2acc9",
+    "provider proof finalization commit 5bebf5e4bee59648aeaf4d59d3b7eaa1c399a4b5",
+    "evidence/deep-progress-forge/proof-renewal-latest.json finalized Git-bound renewal receipt"
+  ]
 }
