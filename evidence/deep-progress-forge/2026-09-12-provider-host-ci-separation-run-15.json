@@ -1,0 +1,46 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 15,
+  "verbatim_sources": [
+    "SUCCESS REQUIRES CURRENT-RUN OBJECTIVE-STATE CHANGE.",
+    "If one execution route fails, preserve the exact failure and immediately use another relevant route.",
+    "NO TOOL EVIDENCE = NO EXECUTION CLAIM. NO READBACK = NO VERIFIED COMPLETION."
+  ],
+  "source_classes": {
+    "verbatim_operator": "active hard execution contract",
+    "verified_provider_state": "GitHub issue #23; provider readback of current pipeline and proof scripts; Buildkite combined status for a461912e491e4708029b561db06b3215c1461adf",
+    "inference": "generic Buildkite validation had re-coupled CI to an eight-hour Operator-host proof even though the durable generic_ci_contract explicitly separated host lifecycle from generic CI",
+    "counterevidence": "Buildkite build 512 remains failure after the decoupling change, so stale host proof was a real architecture defect but not the only active Buildkite failure",
+    "unresolved": "exact Buildkite #512 failing command; GitHub Actions runner/account annotation remains inaccessible through connected checks/log surfaces"
+  },
+  "failure_pattern_attacked": "Generic provider CI depended on current freshness of a short-lived Operator-host runtime proof, causing provider CI truth to collapse when the host was offline and contradicting the previously established host-lane opt-in contract.",
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_provider_ci.py",
+    "scripts/check_provider_proof_lease.py",
+    ".buildkite/pipeline.yml",
+    "GitHub issue #23"
+  ],
+  "concrete_outputs": [
+    "provider-scoped continuity validator that preserves provider freshness/provenance and host receipt integrity without treating host freshness as generic-CI authority",
+    "provider-only two-hour proof lease pre-expiry guard",
+    "Buildkite contract updated to use provider-scoped checks",
+    "provider incident updated with exact commits and Buildkite #512 counterevidence"
+  ],
+  "verification": [
+    "GitHub readback of .buildkite/pipeline.yml at a461912e491e4708029b561db06b3215c1461adf confirms the two provider-scoped commands",
+    "GitHub combined status for a461912e491e4708029b561db06b3215c1461adf reports buildkite/mega-skills-contract-validation=failure with target build 512",
+    "GitHub Actions check collection for a461912e491e4708029b561db06b3215c1461adf still reports hosted jobs failing before steps, preserving the separate provider prerequisite incident",
+    "GitHub issue #23 comment 5647040174 preserves current mutation and counterevidence"
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Generic Buildkite CI failed closed on host proof freshness and the two-hour dual-lane renewal window, so an offline Operator host could make provider CI permanently red even when provider evidence was current.",
+    "after": "Generic Buildkite CI has an explicit provider-only continuity/freshness lane while strict host-aware validation remains unchanged and fail-closed; host receipt integrity is still checked, provider proof still has a two-hour pre-expiry guard, and host freshness is delegated to a host-capable executor rather than silently weakening it."
+  },
+  "unresolved": [
+    "Buildkite build 512 is still red; the next failing command is not exposed through the connected GitHub status surface.",
+    "GitHub Actions hosted jobs still show runner_id=0, empty steps, and inaccessible annotations.",
+    "Operator host route became unavailable during this invocation after a transient rate-limit response, preventing host proof renewal or local pipeline reproduction in this pass."
+  ],
+  "next_executable_frontier": "Recover Buildkite #512 logs through an authenticated Buildkite surface or the Operator host, identify the exact first failing command after provider/host decoupling, repair it, and obtain a fresh green Buildkite receipt. In parallel, recover the GitHub Actions annotation/account prerequisite without changing repository validation semantics."
+}
