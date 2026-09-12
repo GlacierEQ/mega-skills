@@ -1,0 +1,21 @@
+name: Runner Allocation Probe
+
+on:
+  push:
+    paths:
+      - '.github/workflows/runner-allocation-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Confirm runner assignment
+        run: |
+          echo "runner-assigned"
+          echo "os=${{ runner.os }}"
+          echo "arch=${{ runner.arch }}"
