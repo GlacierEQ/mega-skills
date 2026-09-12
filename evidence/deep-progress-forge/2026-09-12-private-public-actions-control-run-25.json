@@ -6,8 +6,13 @@
     "repo": "GlacierEQ/mega-skills",
     "visibility": "private",
     "head_before": "fc11f7865c1e2b665c96c48f511c31a2d692fedd",
-    "observed_failure_boundary": "GitHub-hosted jobs fail before payload steps execute",
-    "buildkite_build": 521,
+    "probe_commit": "2a07c4258f8559e7e6f30016432f5e16d39a02c9",
+    "workflow_run": 34724046536,
+    "job_count": 8,
+    "all_jobs_failed": true,
+    "all_jobs_runner_id_zero": true,
+    "all_jobs_steps_empty": true,
+    "buildkite_build": 522,
     "buildkite_state": "failure"
   },
   "public_control": {
@@ -16,12 +21,23 @@
     "workflow_run": 34723841056,
     "head": "00b563015566cd50a80a01a6cdc1b3a6b2837bfd",
     "job_id": 103634382201,
+    "runner_id": 1000363504,
+    "runner_name": "GitHub Actions 1000363504",
     "job_name": "validate",
     "conclusion": "success",
     "executed_steps": 13,
     "runner_payload_executed": true
   },
-  "verified_inference": "The GlacierEQ account can currently obtain and execute a GitHub-hosted ubuntu runner on a public repository. The mega-skills failure is therefore not an account-wide GitHub-hosted-runner outage; the remaining fault domain is private-repository-specific execution eligibility, repository Actions settings, or private-repository billing/usage policy.",
-  "claim_boundary": "This does not identify which private-repository prerequisite is responsible. Current repository Actions administration and billing state remain unreadable through the connected GitHub endpoint allowlist.",
-  "next_frontier": "Inspect or repair mega-skills private-repository Actions eligibility/billing settings through an admin-capable surface; independently recover the exact Buildkite 521 failing command."
+  "verified_inference": "The GlacierEQ account can currently obtain and execute a GitHub-hosted ubuntu runner on a public repository. The mega-skills failure is therefore not an account-wide GitHub-hosted-runner outage. The remaining GitHub fault domain is private-repository-specific Actions eligibility, repository Actions settings, or private-repository billing/usage policy.",
+  "provider_route_failures": [
+    "Repository Actions administration endpoint is blocked by the connected GitHub endpoint allowlist despite repository admin permission.",
+    "No current September billing/payment/quota notification was located in connected Gmail; only the August 31 90% and 100% included-minutes notices were found.",
+    "Buildkite #522 is visible only as a failed commit status target; exact job/command output is not exposed by the connected GitHub status surface.",
+    "Direct Buildkite web/API access is unavailable in this invocation, no Buildkite plugin is installed, and the Operator host is offline."
+  ],
+  "objective_state_delta": {
+    "before": "The incident was bounded to provider-side runner allocation, but account-wide versus private-repository-specific eligibility remained unresolved.",
+    "after": "A same-account public repository has current successful hosted-runner execution while the private mega-skills repository simultaneously returns runner_id=0 and no steps. Account-wide hosted-runner outage is falsified; investigation is narrowed to private-repository eligibility/settings/billing."
+  },
+  "next_frontier": "Use an admin-capable GitHub billing/settings surface to inspect and repair mega-skills private-repository Actions eligibility; use an authenticated Buildkite or restored Operator-host route to recover build 522's exact failing command."
 }
