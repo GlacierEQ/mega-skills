@@ -2,7 +2,7 @@
   "stream": "deep-progress-forge",
   "run_sequence": 7,
   "current_run": "evidence/deep-progress-forge/2026-09-11-provider-provenance-run-07.json",
-  "current_run_commit": "1592167db275683a925bbd664dad5662b30355d1",
+  "current_run_commit": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7",
   "provider_state_schema_version": 2,
   "verified_provider_state": {
     "mega_skills_runtime_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "46ed77b49e8261366f2521d64e2d0e68bd33355e"},
@@ -16,9 +16,10 @@
     "host_lane_test_blob": {"type": "blob", "repo": "GlacierEQ/mega-skills", "sha": "55a03d51519b7f22e7f9641c2afc887070b0c09c"},
     "continuity_validator_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "dfc878b1c5133081d2a8d5285bcfafa8e71a487a"},
     "continuity_tests_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "31a45cac6550bf6995383f7ce1926c4a5ec9c5a3"},
-    "continuity_run_receipt_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "1592167db275683a925bbd664dad5662b30355d1"},
+    "continuity_run_receipt_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7"},
     "continuity_pointer_binding_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "59ad37e6ad534ef964ead277c9fd3796a1e69ae3"},
-    "continuity_ci_enforcement_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "437982a0d2bce6be67d53aa524c1edc74ca215f2"}
+    "continuity_ci_enforcement_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "437982a0d2bce6be67d53aa524c1edc74ca215f2"},
+    "provider_provenance_pointer_commit": {"type": "repo_commit", "repo": "GlacierEQ/mega-skills", "sha": "e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea"}
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
@@ -39,11 +40,13 @@
     "provider_provenance_validator_build_state": "failure_while_stale_frontier_contradiction_remained",
     "provider_provenance_tests_build": 480,
     "provider_provenance_tests_build_state": "failure_while_stale_frontier_contradiction_remained",
+    "provider_provenance_pointer_build": 482,
+    "provider_provenance_pointer_build_state": "success",
     "generic_ci_contract": "No implicit ~/bin/skills discovery. Host lifecycle executes only when GLACIEREQ_SKILLS_BIN explicitly binds the executable.",
-    "continuity_contract": "v2 pointer binds the new run-07 receipt and types provider references; same-repository commits must resolve to commits reachable from HEAD.",
+    "continuity_contract": "provider-state v2 is green in Buildkite: run-07 is bound, same-repository commits must be real reachable commits, and cross-repository/blob references are explicitly typed.",
     "operator_host_runtime": "unverified: all registered Remote Desktop Commander devices offline"
   },
-  "objective_state": "Deep Progress Forge recovery now has a source-bearing run-07 receipt and typed provider provenance. Same-repository commit claims are executable assertions: the validator requires a real commit object reachable from HEAD. Cross-repository commits and blobs are explicit types rather than ambiguous 40-hex strings. The run also repairs the run-06 frontier contradiction that left main red after build 477.",
+  "objective_state": "Deep Progress Forge recovery is re-bound to run-07 and provider-state v2 is provider-verified green. Same-repository commit claims are executable assertions requiring real reachable commit objects. Cross-repository commits and blobs are explicit types rather than ambiguous 40-hex strings, and direct GitHub readback resolved the current external/blob examples. The run also corrects the prior pointer-only frontier mutation that left build 478 red.",
   "next_executable_frontier": "Upgrade typed provider exceptions from classification to proof: verify same-repository blob objects directly, bind cross-repository commit references to a durable provider-readback manifest with exact repository/object type/SHA and receipt digest, add tamper and nonexistent-object tests, and preserve host-runtime verification as a separate unresolved lane until an Operator device is online.",
-  "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version as a binding tuple. For provider-state v2, repo_commit means GlacierEQ/mega-skills commit and must be reachable from HEAD; cross_repo_commit and blob must be explicitly typed and must not be silently promoted into same-repository commit proof. Do not infer host success from repository CI. Do not change next_executable_frontier without advancing the bound run receipt."
+  "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version as a binding tuple. Build 482 is provider proof that v2 passed. For provider-state v2, repo_commit means GlacierEQ/mega-skills commit and must be reachable from HEAD; cross_repo_commit and blob must be explicitly typed and must not be silently promoted into same-repository commit proof. Do not infer host success from repository CI. Do not change next_executable_frontier without advancing the bound run receipt."
 }
