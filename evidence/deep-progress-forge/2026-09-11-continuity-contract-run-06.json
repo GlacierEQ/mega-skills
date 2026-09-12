@@ -1,0 +1,58 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 6,
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "source_classification": {
+    "operator_verbatim": "governing standards above",
+    "verified_provider_state": [
+      "GitHub main contained bc92f70ff98817605f907b88e2d50199480cbb53 as the prior continuation advance",
+      "LATEST.json still named run-05/a7eb8719 as current_run/current_run_commit while carrying newer host-lane state",
+      "Remote Desktop Commander reported all registered Operator devices offline"
+    ],
+    "inference": "A recovery pointer that carries newer state while naming an older current receipt can cause a later agent to recover stale causality.",
+    "unresolved": "The Operator-host dynamic-skills lifecycle remains unverified until a device is reachable.",
+    "prior_assistant_interpretation": "Earlier output described host-lane separation as the latest durable run even though no run-06 receipt existed and LATEST still named run-05."
+  },
+  "failure_pattern_attacked": "Continuity state could advance through ad hoc LATEST.json edits without advancing current_run/current_run_commit, leaving a stale recovery anchor that silently disagreed with newer verified_provider_state.",
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_latest.py",
+    "tests/test_deep_progress_latest.py",
+    "evidence/deep-progress-forge/2026-09-11-continuity-contract-run-06.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "concrete_outputs": [
+    "fail-closed Deep Progress Forge pointer validator",
+    "five focused continuity-contract tests",
+    "source-bearing run-06 execution receipt",
+    "advanced recovery pointer bound to this receipt"
+  ],
+  "verification": [
+    "GitHub provider commit/readback for validator",
+    "GitHub provider commit/readback for focused tests",
+    "GitHub provider commit/readback for run-06 receipt",
+    "LATEST.json commit binding verified by validator contract and repository CI when provider status resolves"
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Deep Progress Forge continuity depended on convention: LATEST.json could contain newer verified state while still naming an older current_run/current_run_commit, and no executable guard rejected that inconsistency.",
+    "after": "Continuity is now an executable contract. The pointer must name an existing source-bearing receipt, bind the receipt's actual last-change commit, agree on run sequence and next frontier, preserve verbatim source, prove mission delta, and contain durable mutation/output evidence or validation fails closed."
+  },
+  "counterevidence": [
+    "The Operator host is offline, so this run does not claim host-runtime verification.",
+    "Repository-side contract verification is distinct from model-weight or hidden-system modification; no such immutable layer is claimed changed."
+  ],
+  "unresolved": [
+    "Operator-host status -> search -> recommend -> activate -> verify -> deactivate -> verify remains unverified because Remote Desktop Commander has no online device.",
+    "Buildkite/provider CI for the final pointer commit must be read back before promoting repository-wide verification beyond source-level mutation."
+  ],
+  "next_executable_frontier": "Verify the final continuity-pointer commit through provider CI/readback; then strengthen continuity further by making the recovery validator prove that verified_provider_state commit references are reachable ancestors or explicitly classified exceptions instead of accepting arbitrary 40-hex identifiers. Keep the host-runtime lifecycle separate and unresolved until an Operator device is online."
+}
