@@ -11,8 +11,8 @@ steps:
       python3 -m compileall -q scripts tests skills
       python3 scripts/validate_hierarchy.py
       python3 scripts/validate_genius_mastery_bridge.py --mode freshness
-      python3 scripts/validate_deep_progress_latest.py
-      python3 scripts/renew_proof_leases.py --check --renew-within-hours 2
+      python3 scripts/validate_deep_progress_provider_ci.py
+      python3 scripts/check_provider_proof_lease.py --renew-within-hours 2
       python3 scripts/generate_mega_skill_pyramids.py --check
       python3 -m unittest discover -s tests -v
       python3 skills/local-skill/tests/test_local_skill.py -v
@@ -60,8 +60,8 @@ steps:
               "compileall:scripts-tests-skills",
               "validate_hierarchy",
               "validate_genius_mastery_bridge_freshness",
-              "validate_deep_progress_latest",
-              "proof_lease_near_expiry_check",
+              "validate_deep_progress_provider_ci",
+              "provider_proof_lease_near_expiry_check",
               "generate_mega_skill_pyramids_check",
               "unittest_discover",
               "local_skill_tests",
