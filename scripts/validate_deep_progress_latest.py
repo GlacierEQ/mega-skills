@@ -6,6 +6,7 @@ import json
 import re
 import subprocess
 import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
@@ -13,9 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 POINTER = ROOT / "evidence" / "deep-progress-forge" / "LATEST.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 CURRENT_REPO = "GlacierEQ/mega-skills"
-PROVIDER_STATE_SCHEMA_VERSION = 3
+PROVIDER_STATE_SCHEMA_VERSION = 4
+LEGACY_PROVIDER_STATE_SCHEMA_VERSION = 3
 PROVIDER_TYPES = {"repo_commit", "cross_repo_commit", "blob"}
-PROVIDER_MANIFEST_SCHEMA_VERSION = 1
+PROVIDER_MANIFEST_SCHEMA_VERSION = 2
+LEGACY_PROVIDER_MANIFEST_SCHEMA_VERSION = 1
 REQUIRED_LEDGER = {
     "stream", "run_sequence", "verbatim_sources", "failure_pattern_attacked",
     "durable_sources_changed", "concrete_outputs", "verification",
@@ -62,10 +65,40 @@ def canonical_digest(value: object) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def load_provider_manifest(pointer: dict, root: Path = ROOT) -> dict:
+
+
+def parse_utc(value: str) -> datetime:
+    if not isinstance(value, str) or not value.endswith("Z"):
+        raise ValueError("freshness timestamps must be UTC RFC3339 values ending in Z")
+    try:
+        return datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise ValueError(f"invalid UTC timestamp: {value}") from exc
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def manifest_digest_payload(manifest: dict) -> dict:
+    return {
+        "schema_version": manifest.get("schema_version"),
+        "source": manifest.get("source"),
+        "observed_at": manifest.get("observed_at"),
+        "revalidate_after": manifest.get("revalidate_after"),
+        "proofs": manifest.get("proofs"),
+    }
+
+
+def receipt_digest(receipt: dict) -> str:
+    body = dict(receipt)
+    body.pop("receipt_digest_sha256", None)
+    return canonical_digest(body)
+
+def load_provider_manifest(pointer: dict, root: Path = ROOT, *, require_freshness: bool = False, now: datetime | None = None) -> dict:
     binding = pointer.get("provider_readback_manifest")
     if not isinstance(binding, dict):
-        raise ValueError("provider_readback_manifest is required for provider-state v3")
+        raise ValueError("provider_readback_manifest is required for provider-state")
     rel = binding.get("path")
     digest = binding.get("proof_digest_sha256")
     if not isinstance(rel, str) or not rel.startswith("evidence/deep-progress-forge/"):
@@ -76,35 +109,74 @@ def load_provider_manifest(pointer: dict, root: Path = ROOT) -> dict:
     if not path.is_file():
         raise ValueError(f"provider readback manifest does not exist: {rel}")
     manifest = load_json(path)
-    if manifest.get("schema_version") != PROVIDER_MANIFEST_SCHEMA_VERSION:
+    schema_version = manifest.get("schema_version")
+    allowed = {PROVIDER_MANIFEST_SCHEMA_VERSION} if require_freshness else {LEGACY_PROVIDER_MANIFEST_SCHEMA_VERSION, PROVIDER_MANIFEST_SCHEMA_VERSION}
+    if schema_version not in allowed:
         raise ValueError("unsupported provider readback manifest schema")
     proofs = manifest.get("proofs")
     if not isinstance(proofs, list) or not proofs:
         raise ValueError("provider readback manifest proofs must be a non-empty list")
-    actual = canonical_digest(proofs)
+    if schema_version == LEGACY_PROVIDER_MANIFEST_SCHEMA_VERSION:
+        actual = canonical_digest(proofs)
+    else:
+        observed = parse_utc(manifest.get("observed_at"))
+        due = parse_utc(manifest.get("revalidate_after"))
+        if due <= observed:
+            raise ValueError("provider proof revalidate_after must be later than observed_at")
+        if require_freshness and (now or utc_now()) > due:
+            raise ValueError("provider readback proof is stale and requires revalidation")
+        actual = canonical_digest(manifest_digest_payload(manifest))
     if manifest.get("proof_digest_sha256") != actual or digest != actual:
         raise ValueError("provider readback manifest digest mismatch")
     return manifest
+
+
+def validate_host_runtime_proof(pointer: dict, root: Path = ROOT, *, now: datetime | None = None) -> dict:
+    binding = pointer.get("host_runtime_proof")
+    if not isinstance(binding, dict):
+        raise ValueError("host_runtime_proof is required for provider-state v4")
+    rel = binding.get("path")
+    if not isinstance(rel, str) or not rel.startswith("evidence/deep-progress-forge/"):
+        raise ValueError("host runtime proof must stay inside forge evidence directory")
+    path = root / rel
+    if not path.is_file():
+        raise ValueError(f"host runtime proof does not exist: {rel}")
+    receipt = load_json(path)
+    expected_digest = binding.get("receipt_digest_sha256")
+    if receipt_digest(receipt) != expected_digest or receipt.get("receipt_digest_sha256") != expected_digest:
+        raise ValueError("host runtime receipt digest mismatch")
+    observed = parse_utc(binding.get("observed_at"))
+    due = parse_utc(binding.get("revalidate_after"))
+    if due <= observed:
+        raise ValueError("host runtime revalidate_after must be later than observed_at")
+    if (now or utc_now()) > due:
+        raise ValueError("host runtime proof is stale and requires revalidation")
+    executable_sha = binding.get("executable_sha256")
+    if not isinstance(executable_sha, str) or not re.fullmatch(r"[0-9a-f]{64}", executable_sha):
+        raise ValueError("host runtime proof requires executable_sha256")
+    if receipt.get("skills_bin_sha256") != executable_sha:
+        raise ValueError("host runtime executable fingerprint disagrees with receipt")
+    return {"status": "PASS", "observed_at": binding["observed_at"], "revalidate_after": binding["revalidate_after"], "executable_sha256": executable_sha}
 
 def validate_provider_state(
     pointer: dict,
     root: Path = ROOT,
     commit_reachable: Callable[[str, Path], bool] | None = None,
     object_type_lookup: Callable[[str, Path], str | None] | None = None,
+    now: datetime | None = None,
 ) -> dict:
     version = pointer.get("provider_state_schema_version")
     if version is None:
         return {"status": "LEGACY", "checked": 0}
-    if version != PROVIDER_STATE_SCHEMA_VERSION:
-        raise ValueError(
-            f"provider_state_schema_version must be {PROVIDER_STATE_SCHEMA_VERSION}"
-        )
+    if version not in {LEGACY_PROVIDER_STATE_SCHEMA_VERSION, PROVIDER_STATE_SCHEMA_VERSION}:
+        raise ValueError(f"provider_state_schema_version must be {LEGACY_PROVIDER_STATE_SCHEMA_VERSION} or {PROVIDER_STATE_SCHEMA_VERSION}")
     state = pointer.get("verified_provider_state")
     if not isinstance(state, dict) or not state:
         raise ValueError("verified_provider_state must be a non-empty object")
     lookup = commit_reachable or git_commit_reachable
     object_lookup = object_type_lookup or git_object_type
-    manifest = load_provider_manifest(pointer, root)
+    require_freshness = version == PROVIDER_STATE_SCHEMA_VERSION
+    manifest = load_provider_manifest(pointer, root, require_freshness=require_freshness, now=now)
     proof_index = {}
     for proof in manifest["proofs"]:
         if not isinstance(proof, dict):
@@ -148,6 +220,16 @@ def validate_provider_state(
                 raise ValueError(
                     f"provider state {name} cross-repository commit lacks matching provider readback proof"
                 )
+            if require_freshness:
+                provider_object = proof.get("provider_object")
+                if not isinstance(provider_object, dict) or provider_object.get("kind") != "commit":
+                    raise ValueError(f"provider state {name} lacks immutable commit metadata")
+                tree_sha = provider_object.get("tree_sha")
+                parents = provider_object.get("parent_shas")
+                if not isinstance(tree_sha, str) or not HEX40.fullmatch(tree_sha):
+                    raise ValueError(f"provider state {name} requires provider tree_sha")
+                if not isinstance(parents, list) or not all(isinstance(x, str) and HEX40.fullmatch(x) for x in parents):
+                    raise ValueError(f"provider state {name} requires provider parent_shas")
             cross_repo_proofs += 1
         elif kind == "blob":
             if repo == CURRENT_REPO:
@@ -181,6 +263,7 @@ def validate_pointer(
     commit_lookup: Callable[[Path], str] | None = None,
     provider_commit_reachable: Callable[[str, Path], bool] | None = None,
     provider_object_type: Callable[[str, Path], str | None] | None = None,
+    now: datetime | None = None,
 ) -> dict:
     if pointer.get("stream") != "deep-progress-forge":
         raise ValueError("unexpected continuation stream")
@@ -225,14 +308,16 @@ def validate_pointer(
     if not receipt["durable_sources_changed"] or not receipt["concrete_outputs"]:
         raise ValueError("current run must contain durable mutation and concrete outputs")
     provider_result = validate_provider_state(
-        pointer, root, provider_commit_reachable, provider_object_type
+        pointer, root, provider_commit_reachable, provider_object_type, now
     )
+    host_result = validate_host_runtime_proof(pointer, root, now=now) if pointer.get("provider_state_schema_version") == PROVIDER_STATE_SCHEMA_VERSION else {"status": "LEGACY"}
     return {
         "status": "PASS",
         "run_sequence": sequence,
         "current_run": run_rel,
         "current_run_commit": actual_commit,
         "provider_state": provider_result,
+        "host_runtime_proof": host_result,
         "next_executable_frontier": receipt["next_executable_frontier"],
     }
 

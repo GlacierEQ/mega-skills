@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "source": "GitHub provider readback via gh api",
+  "observed_at": "2026-09-12T04:43:12Z",
+  "revalidate_after": "2026-09-13T04:43:12Z",
+  "proofs": [
+    {
+      "name": "genius_mastery_bridge_commit",
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
+      "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
+      "provider_message": "fix(bridge): pin operating loop to source-faithful head",
+      "provider_object": {
+        "kind": "commit",
+        "tree_sha": "4cc97a4bf6c261a839be119c2558f3d61fe16ac3",
+        "parent_shas": [
+          "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"
+        ]
+      }
+    },
+    {
+      "name": "genius_mastery_source_faithful_head",
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+      "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+      "provider_message": "feat: enforce source-faithful long-run progress",
+      "provider_object": {
+        "kind": "commit",
+        "tree_sha": "9e6028c0558d26092ab2af86026bb65705818f1c",
+        "parent_shas": [
+          "f3a8fcb75707ddd1e24807a3595c4d48a7aed241"
+        ]
+      }
+    }
+  ],
+  "proof_digest_sha256": "d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046"
+}

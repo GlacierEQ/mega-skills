@@ -1,0 +1,114 @@
+{
+  "schema_version": 2,
+  "lane": "operator_host_runtime",
+  "device": "KcBs-MacBook-Air.local",
+  "skills_bin": "~/bin/skills",
+  "skills_bin_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662",
+  "observed_at": "2026-09-12T04:45:26Z",
+  "revalidate_after": "2026-09-12T12:45:26Z",
+  "commands": [
+    "status",
+    "search supabase --limit 5",
+    "recommend build a fastapi postgres microservice",
+    "activate playwright-skill",
+    "status",
+    "deactivate playwright-skill",
+    "status"
+  ],
+  "observations": {
+    "status_before": {
+      "live_count": 135,
+      "available_count": 803,
+      "core_active_count": 135,
+      "dynamic_active_count": 0,
+      "dynamic_active_skills": [],
+      "token_estimate_live": "~20,250 tokens",
+      "token_estimate_unpruned": "~120,450 tokens",
+      "token_savings_pct": "83.2%",
+      "status": "OPTIMAL"
+    },
+    "search": [
+      {
+        "name": "nextjs-supabase-auth",
+        "score": 19,
+        "active": false,
+        "description": "Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentica..."
+      },
+      {
+        "name": "supabase-postgres-best-practices",
+        "score": 19,
+        "active": false,
+        "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFOR..."
+      },
+      {
+        "name": "mega-supabase-ecosystem",
+        "score": 13,
+        "active": true,
+        "description": "Consolidated mega skill encompassing 5 sub-skills."
+      },
+      {
+        "name": "aspen-grove",
+        "score": 6,
+        "active": false,
+        "description": "Use when working with Aspen Grove connectors, MCP servers, multi-service integrations, connector reg..."
+      },
+      {
+        "name": "aspen-grove-connectors",
+        "score": 6,
+        "active": false,
+        "description": "Universal multi-service MCP & API connector mesh. Bridges GitHub, Notion, Supabase, Dropbox, ClickUp..."
+      }
+    ],
+    "recommend": {
+      "unavailable": "Command '['/Users/kcbflux/bin/skills', 'recommend', 'build a fastapi postgres microservice']' timed out after 20 seconds"
+    },
+    "activate": [
+      {
+        "name": "playwright-skill",
+        "success": true,
+        "action": "activated",
+        "symlink": "../skills.available/playwright-skill"
+      }
+    ],
+    "status_active": {
+      "live_count": 136,
+      "available_count": 803,
+      "core_active_count": 135,
+      "dynamic_active_count": 1,
+      "dynamic_active_skills": [
+        "playwright-skill"
+      ],
+      "token_estimate_live": "~20,400 tokens",
+      "token_estimate_unpruned": "~120,450 tokens",
+      "token_savings_pct": "83.1%",
+      "status": "OPTIMAL"
+    },
+    "deactivate": [
+      {
+        "name": "playwright-skill",
+        "success": true,
+        "action": "deactivated"
+      }
+    ],
+    "status_restored": {
+      "live_count": 135,
+      "available_count": 803,
+      "core_active_count": 135,
+      "dynamic_active_count": 0,
+      "dynamic_active_skills": [],
+      "token_estimate_live": "~20,250 tokens",
+      "token_estimate_unpruned": "~120,450 tokens",
+      "token_savings_pct": "83.2%",
+      "status": "OPTIMAL"
+    }
+  },
+  "assertions": {
+    "initial_status_optimal": true,
+    "search_returned_supabase": true,
+    "activation_verified": true,
+    "deactivation_verified": true,
+    "host_state_restored_exactly": true,
+    "executable_fingerprint_bound": true
+  },
+  "receipt_digest_sha256": "3dec79016d20291290bc3e0fd554b37defb771d70e8bf49058b16632cc976f60"
+}

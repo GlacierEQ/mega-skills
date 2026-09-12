@@ -209,6 +209,51 @@ class DeepProgressLatestTests(unittest.TestCase):
                 lambda _sha, _root: "blob",
             )
 
+    def enable_provider_v4(self, pointer, root, *, stale_provider=False, stale_host=False):
+        from datetime import datetime, timedelta, timezone
+        now = datetime(2026, 9, 12, 4, 45, tzinfo=timezone.utc)
+        pointer["provider_state_schema_version"] = 4
+        pointer["verified_provider_state"] = self.provider_state()
+        provider_observed = now - timedelta(hours=2 if stale_provider else 0)
+        provider_due = now - timedelta(hours=1) if stale_provider else now + timedelta(hours=24)
+        proofs = [{
+            "name": "genius_mastery_head", "type": "cross_repo_commit",
+            "repo": "GlacierEQ/Genius-Mastery", "sha": "c" * 40,
+            "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/" + "c" * 40,
+            "provider_object": {"kind": "commit", "tree_sha": "e" * 40, "parent_shas": ["f" * 40]},
+        }]
+        manifest = {
+            "schema_version": 2, "source": "test GitHub readback",
+            "observed_at": provider_observed.isoformat().replace("+00:00", "Z"),
+            "revalidate_after": provider_due.isoformat().replace("+00:00", "Z"),
+            "proofs": proofs,
+        }
+        digest = mod.canonical_digest(mod.manifest_digest_payload(manifest))
+        manifest["proof_digest_sha256"] = digest
+        mrel = Path("evidence/deep-progress-forge/provider-readback-manifest-v2.json")
+        (root / mrel).write_text(json.dumps(manifest), encoding="utf-8")
+        pointer["provider_readback_manifest"] = {"path": str(mrel), "proof_digest_sha256": digest}
+
+        host_observed = now - timedelta(hours=2 if stale_host else 0)
+        host_due = now - timedelta(hours=1) if stale_host else now + timedelta(hours=8)
+        host = {
+            "schema_version": 2, "lane": "operator_host_runtime", "device": "test-host",
+            "skills_bin": "~/bin/skills", "skills_bin_sha256": "1" * 64,
+            "observed_at": host_observed.isoformat().replace("+00:00", "Z"),
+            "revalidate_after": host_due.isoformat().replace("+00:00", "Z"),
+            "commands": ["status"], "observations": {"status": "OPTIMAL"},
+            "assertions": {"host_state_restored_exactly": True},
+        }
+        host["receipt_digest_sha256"] = mod.receipt_digest(host)
+        hrel = Path("evidence/deep-progress-forge/host-skills-lifecycle-test.json")
+        (root / hrel).write_text(json.dumps(host), encoding="utf-8")
+        pointer["host_runtime_proof"] = {
+            "path": str(hrel), "receipt_digest_sha256": host["receipt_digest_sha256"],
+            "observed_at": host["observed_at"], "revalidate_after": host["revalidate_after"],
+            "executable_sha256": host["skills_bin_sha256"],
+        }
+        return now
+
     def test_v3_rejects_non_blob_same_repo_blob_reference(self):
         tmp, root, path, pointer = self.fixture()
         self.addCleanup(tmp.cleanup)
@@ -218,6 +263,45 @@ class DeepProgressLatestTests(unittest.TestCase):
                 pointer, root, lambda _: "a" * 40, lambda _sha, _root: True,
                 lambda _sha, _root: "tree",
             )
+
+    def test_v4_accepts_fresh_provider_and_host_leases(self):
+        tmp, root, path, pointer = self.fixture(); self.addCleanup(tmp.cleanup)
+        now = self.enable_provider_v4(pointer, root)
+        result = mod.validate_pointer(pointer, root, lambda _: "a" * 40,
+            lambda sha, _: sha == "b" * 40, lambda sha, _: "blob" if sha == "d" * 40 else None, now=now)
+        self.assertEqual(result["provider_state"]["status"], "PASS")
+        self.assertEqual(result["host_runtime_proof"]["status"], "PASS")
+
+    def test_v4_rejects_stale_provider_lease(self):
+        tmp, root, path, pointer = self.fixture(); self.addCleanup(tmp.cleanup)
+        now = self.enable_provider_v4(pointer, root, stale_provider=True)
+        with self.assertRaisesRegex(ValueError, "provider readback proof is stale"):
+            mod.validate_pointer(pointer, root, lambda _: "a" * 40, lambda _sha, _root: True, lambda _sha, _root: "blob", now=now)
+
+    def test_v4_rejects_stale_host_lease(self):
+        tmp, root, path, pointer = self.fixture(); self.addCleanup(tmp.cleanup)
+        now = self.enable_provider_v4(pointer, root, stale_host=True)
+        with self.assertRaisesRegex(ValueError, "host runtime proof is stale"):
+            mod.validate_pointer(pointer, root, lambda _: "a" * 40, lambda _sha, _root: True, lambda _sha, _root: "blob", now=now)
+
+    def test_v4_rejects_host_executable_fingerprint_drift(self):
+        tmp, root, path, pointer = self.fixture(); self.addCleanup(tmp.cleanup)
+        now = self.enable_provider_v4(pointer, root)
+        pointer["host_runtime_proof"]["executable_sha256"] = "2" * 64
+        with self.assertRaisesRegex(ValueError, "executable fingerprint disagrees"):
+            mod.validate_pointer(pointer, root, lambda _: "a" * 40, lambda _sha, _root: True, lambda _sha, _root: "blob", now=now)
+
+    def test_v4_rejects_provider_metadata_without_tree_identity(self):
+        tmp, root, path, pointer = self.fixture(); self.addCleanup(tmp.cleanup)
+        now = self.enable_provider_v4(pointer, root)
+        manifest_path = root / pointer["provider_readback_manifest"]["path"]
+        manifest = json.loads(manifest_path.read_text())
+        manifest["proofs"][0]["provider_object"].pop("tree_sha")
+        manifest["proof_digest_sha256"] = mod.canonical_digest(mod.manifest_digest_payload(manifest))
+        manifest_path.write_text(json.dumps(manifest))
+        pointer["provider_readback_manifest"]["proof_digest_sha256"] = manifest["proof_digest_sha256"]
+        with self.assertRaisesRegex(ValueError, "requires provider tree_sha"):
+            mod.validate_pointer(pointer, root, lambda _: "a" * 40, lambda _sha, _root: True, lambda _sha, _root: "blob", now=now)
 
 
 if __name__ == "__main__":
