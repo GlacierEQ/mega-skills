@@ -20,6 +20,7 @@ LATEST = EVIDENCE / "LATEST.json"
 PROVIDER = EVIDENCE / "provider-readback-manifest-v2.json"
 HOST = EVIDENCE / "host-skills-lifecycle-latest.json"
 RENEWAL = EVIDENCE / "proof-renewal-latest.json"
+ABANDONED = ROOT / ".git" / "deep-progress-abandoned-renewal.json"
 
 
 def load_module(name: str, path: Path):
@@ -188,12 +189,26 @@ def commit_and_publish(candidate: dict, receipt: dict, snapshot: dict, *, push: 
     final_commit = git("rev-parse", "HEAD")
     final_tree = git("rev-parse", "HEAD^{tree}")
 
-    # Re-read the remote immediately before the single ref update.
-    git("fetch", "--quiet", "origin", "main")
-    if git("rev-parse", "origin/main") != snapshot["origin_main"]:
-        raise RuntimeError("optimistic concurrency conflict: origin/main moved before publish")
-    if push:
-        git("push", "--quiet", f"--force-with-lease=refs/heads/main:{snapshot['origin_main']}", "origin", f"{final_commit}:refs/heads/main")
+    finalization = {
+        "origin_parent": snapshot["origin_main"],
+        "payload_commit": payload_commit,
+        "payload_tree": payload_tree,
+        "final_commit": final_commit,
+        "final_tree": final_tree,
+        "receipt_digest_sha256": receipt["receipt_digest_sha256"],
+        "payload_blob_shas": payload_blobs,
+    }
+    try:
+        # Re-read the remote immediately before the single ref update.
+        git("fetch", "--quiet", "origin", "main")
+        if git("rev-parse", "origin/main") != snapshot["origin_main"]:
+            raise RuntimeError("optimistic concurrency conflict: origin/main moved before publish")
+        if push:
+            git("push", "--quiet", f"--force-with-lease=refs/heads/main:{snapshot['origin_main']}", "origin", f"{final_commit}:refs/heads/main")
+    except Exception as exc:
+        _record_abandoned_transaction(snapshot, finalization, str(exc))
+        raise
+    ABANDONED.unlink(missing_ok=True)
     return {
         "origin_parent": snapshot["origin_main"],
         "payload_commit": payload_commit,
@@ -204,6 +219,53 @@ def commit_and_publish(candidate: dict, receipt: dict, snapshot: dict, *, push: 
         "payload_blob_shas": payload_blobs,
         "published": push,
     }
+
+def _record_abandoned_transaction(snapshot: dict, finalization: dict, reason: str) -> dict:
+    git("fetch", "--quiet", "origin", "main", check=False)
+    record = {
+        "schema_version": 1,
+        "status": "ABANDONED_LOCAL_TRANSACTION",
+        "recorded_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "reason": reason,
+        "origin_parent": snapshot["origin_main"],
+        "origin_main_now": git("rev-parse", "origin/main", check=False),
+        "payload_commit": finalization.get("payload_commit"),
+        "final_commit": finalization.get("final_commit"),
+        "local_head": git("rev-parse", "HEAD", check=False),
+        "recovery_tuple_before_sha256": snapshot.get("recovery_tuple_sha256"),
+    }
+    _atomic_json(ABANDONED, record)
+    return record
+
+
+def abandoned_transaction_status() -> dict:
+    if not ABANDONED.is_file():
+        return {"status": "NONE"}
+    record = read_json(ABANDONED)
+    git("fetch", "--quiet", "origin", "main", check=False)
+    current = git("rev-parse", "origin/main", check=False)
+    final_commit = record.get("final_commit")
+    exists = bool(final_commit and git("cat-file", "-e", f"{final_commit}^{{commit}}", check=False) == "")
+    retry_safe = exists and current == record.get("origin_parent")
+    return {**record, "origin_main_now": current, "final_commit_exists": exists, "retry_safe": retry_safe}
+
+
+def recover_abandoned_transaction(*, push: bool = True) -> dict:
+    status = abandoned_transaction_status()
+    if status.get("status") == "NONE":
+        return status
+    if not status.get("final_commit_exists"):
+        return {**status, "status": "BLOCKED_MISSING_LOCAL_COMMIT"}
+    if not status.get("retry_safe"):
+        return {**status, "status": "BLOCKED_PROVIDER_MOVED"}
+    if push:
+        git("push", "--quiet", f"--force-with-lease=refs/heads/main:{status['origin_parent']}", "origin", f"{status['final_commit']}:refs/heads/main")
+        git("fetch", "--quiet", "origin", "main")
+        if git("rev-parse", "origin/main") != status["final_commit"]:
+            raise RuntimeError("abandoned renewal recovery push did not become origin/main")
+    ABANDONED.unlink(missing_ok=True)
+    return {**status, "status": "RECOVERED" if push else "RECOVERABLE", "published": push}
+
 
 def lease_status(pointer: dict, now: datetime | None = None, renew_within_hours: float = 2.0) -> dict:
     now = now or datetime.now(timezone.utc)
@@ -328,7 +390,10 @@ def main() -> int:
     ap.add_argument("--renew-within-hours", type=float, default=2.0)
     ap.add_argument("--skills-bin", type=Path, default=Path.home()/"bin/skills")
     ap.add_argument("--no-push", action="store_true", help="finalize locally without publishing origin/main")
+    ap.add_argument("--recover-abandoned", action="store_true", help="retry a safely recoverable rejected leased publish")
     args = ap.parse_args()
+    if args.recover_abandoned:
+        print(json.dumps(recover_abandoned_transaction(push=not args.no_push), indent=2)); return 0
     pointer = read_json(LATEST)
     status = lease_status(pointer, renew_within_hours=args.renew_within_hours)
     if args.status:

@@ -146,4 +146,49 @@ class RenewProofLeasesTests(unittest.TestCase):
             finally:
                 mod.ROOT,mod.EVIDENCE,mod.LATEST,mod.PROVIDER,mod.HOST,mod.RENEWAL=old
 
+    def _abandoned_repo(self):
+        td=tempfile.TemporaryDirectory(); rd=tempfile.TemporaryDirectory()
+        root=Path(td.name); remote=Path(rd.name)/"remote.git"
+        subprocess.run(["git","init","-q","-b","main"],cwd=root,check=True)
+        subprocess.run(["git","config","user.email","test@example.com"],cwd=root,check=True)
+        subprocess.run(["git","config","user.name","Test"],cwd=root,check=True)
+        subprocess.run(["git","init","--bare","-q",str(remote)],check=True)
+        subprocess.run(["git","remote","add","origin",str(remote)],cwd=root,check=True)
+        (root/"base").write_text("base")
+        subprocess.run(["git","add","."],cwd=root,check=True); subprocess.run(["git","commit","-qm","base"],cwd=root,check=True)
+        subprocess.run(["git","push","-q","-u","origin","main"],cwd=root,check=True)
+        base=subprocess.check_output(["git","rev-parse","HEAD"],cwd=root,text=True).strip()
+        (root/"payload").write_text("payload"); subprocess.run(["git","add","."],cwd=root,check=True); subprocess.run(["git","commit","-qm","payload"],cwd=root,check=True)
+        payload=subprocess.check_output(["git","rev-parse","HEAD"],cwd=root,text=True).strip()
+        (root/"final").write_text("final"); subprocess.run(["git","add","."],cwd=root,check=True); subprocess.run(["git","commit","-qm","final"],cwd=root,check=True)
+        final=subprocess.check_output(["git","rev-parse","HEAD"],cwd=root,text=True).strip()
+        return td,rd,root,remote,base,payload,final
+
+    def test_recover_abandoned_transaction_retries_when_provider_parent_unchanged(self):
+        td,rd,root,remote,base,payload,final=self._abandoned_repo(); self.addCleanup(td.cleanup); self.addCleanup(rd.cleanup)
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'.git/deep-progress-abandoned-renewal.json'
+        try:
+            mod._atomic_json(mod.ABANDONED,{"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final})
+            result=mod.recover_abandoned_transaction(push=True)
+            self.assertEqual(result["status"],"RECOVERED")
+            self.assertFalse(mod.ABANDONED.exists())
+            remote_head=subprocess.check_output(["git","--git-dir",remote,"rev-parse","refs/heads/main"],text=True).strip()
+            self.assertEqual(remote_head,final)
+        finally: mod.ROOT,mod.ABANDONED=old
+
+    def test_recover_abandoned_transaction_blocks_when_provider_moved(self):
+        td,rd,root,remote,base,payload,final=self._abandoned_repo(); self.addCleanup(td.cleanup); self.addCleanup(rd.cleanup)
+        mover=Path(tempfile.mkdtemp())
+        self.addCleanup(lambda: __import__('shutil').rmtree(mover,ignore_errors=True))
+        subprocess.run(["git","clone","-q",str(remote),str(mover)],check=True)
+        subprocess.run(["git","config","user.email","mover@example.com"],cwd=mover,check=True); subprocess.run(["git","config","user.name","Mover"],cwd=mover,check=True)
+        (mover/"move").write_text("moved"); subprocess.run(["git","add","."],cwd=mover,check=True); subprocess.run(["git","commit","-qm","provider moved"],cwd=mover,check=True); subprocess.run(["git","push","-q","origin","main"],cwd=mover,check=True)
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'.git/deep-progress-abandoned-renewal.json'
+        try:
+            mod._atomic_json(mod.ABANDONED,{"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final})
+            result=mod.recover_abandoned_transaction(push=True)
+            self.assertEqual(result["status"],"BLOCKED_PROVIDER_MOVED")
+            self.assertTrue(mod.ABANDONED.exists())
+        finally: mod.ROOT,mod.ABANDONED=old
+
 if __name__ == '__main__': unittest.main()

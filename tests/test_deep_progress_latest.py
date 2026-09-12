@@ -303,6 +303,69 @@ class DeepProgressLatestTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "requires provider tree_sha"):
             mod.validate_pointer(pointer, root, lambda _: "a" * 40, lambda _sha, _root: True, lambda _sha, _root: "blob", now=now)
 
+    def _renewal_chain_fixture(self):
+        tmp = tempfile.TemporaryDirectory()
+        root = Path(tmp.name)
+        subprocess = __import__("subprocess")
+        subprocess.run(["git", "init", "-q", "-b", "main"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.name", "Test"], cwd=root, check=True)
+        ev = root / "evidence/deep-progress-forge"; ev.mkdir(parents=True)
+        provider = ev / "provider-readback-manifest-v2.json"; provider.write_text('{"provider":1}')
+        host = ev / "host-skills-lifecycle-latest.json"; host.write_text('{"host":1}')
+        latest = ev / "LATEST.json"; latest.write_text('{}')
+        renewal = ev / "proof-renewal-latest.json"; renewal.write_text('{}')
+        subprocess.run(["git", "add", "."], cwd=root, check=True)
+        subprocess.run(["git", "commit", "-qm", "origin parent"], cwd=root, check=True)
+        origin = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        provider.write_text('{"provider":2}'); host.write_text('{"host":2}')
+        subprocess.run(["git", "add", str(provider.relative_to(root)), str(host.relative_to(root))], cwd=root, check=True)
+        subprocess.run(["git", "commit", "-qm", "payload"], cwd=root, check=True)
+        payload = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        payload_tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], cwd=root, text=True).strip()
+        blobs = {
+            "provider": subprocess.check_output(["git", "rev-parse", f"{payload}:evidence/deep-progress-forge/provider-readback-manifest-v2.json"], cwd=root, text=True).strip(),
+            "host": subprocess.check_output(["git", "rev-parse", f"{payload}:evidence/deep-progress-forge/host-skills-lifecycle-latest.json"], cwd=root, text=True).strip(),
+        }
+        receipt = {"schema_version":1,"transaction":"atomic_proof_renewal","git_finalization":{"origin_parent":origin,"payload_commit":payload,"payload_tree":payload_tree,"payload_blob_shas":blobs}}
+        receipt["receipt_digest_sha256"] = mod.receipt_digest(receipt)
+        renewal.write_text(json.dumps(receipt))
+        pointer = {"verification_state":{"latest_proof_renewal_payload_commit":payload,"latest_proof_renewal_payload_tree":payload_tree,"latest_proof_renewal_origin_parent":origin,"latest_proof_renewal_receipt_digest":receipt["receipt_digest_sha256"]}}
+        latest.write_text(json.dumps(pointer))
+        subprocess.run(["git", "add", str(renewal.relative_to(root)), str(latest.relative_to(root))], cwd=root, check=True)
+        subprocess.run(["git", "commit", "-qm", "finalization"], cwd=root, check=True)
+        final = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        final_tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], cwd=root, text=True).strip()
+        pointer["verification_state"]["latest_proof_renewal_finalization_commit"] = final
+        pointer["verification_state"]["latest_proof_renewal_finalization_tree"] = final_tree
+        return tmp, root, pointer, receipt
+
+    def test_v4_renewal_chain_traverses_commits_trees_blobs_and_receipt(self):
+        tmp, root, pointer, receipt = self._renewal_chain_fixture(); self.addCleanup(tmp.cleanup)
+        result = mod.validate_latest_renewal_chain(pointer, root)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["payload_blob_shas"], receipt["git_finalization"]["payload_blob_shas"])
+
+    def test_v4_renewal_chain_rejects_payload_blob_drift(self):
+        tmp, root, pointer, receipt = self._renewal_chain_fixture(); self.addCleanup(tmp.cleanup)
+        path = root / "evidence/deep-progress-forge/proof-renewal-latest.json"
+        receipt["git_finalization"]["payload_blob_shas"]["provider"] = "0" * 40
+        receipt["receipt_digest_sha256"] = mod.receipt_digest(receipt)
+        path.write_text(json.dumps(receipt))
+        pointer["verification_state"]["latest_proof_renewal_receipt_digest"] = receipt["receipt_digest_sha256"]
+        with self.assertRaisesRegex(ValueError, "provider blob identity mismatch"):
+            mod.validate_latest_renewal_chain(pointer, root)
+
+    def test_v4_renewal_chain_rejects_wrong_payload_parent(self):
+        tmp, root, pointer, receipt = self._renewal_chain_fixture(); self.addCleanup(tmp.cleanup)
+        pointer["verification_state"]["latest_proof_renewal_origin_parent"] = "0" * 40
+        receipt["git_finalization"]["origin_parent"] = "0" * 40
+        receipt["receipt_digest_sha256"] = mod.receipt_digest(receipt)
+        (root / "evidence/deep-progress-forge/proof-renewal-latest.json").write_text(json.dumps(receipt))
+        pointer["verification_state"]["latest_proof_renewal_receipt_digest"] = receipt["receipt_digest_sha256"]
+        with self.assertRaisesRegex(ValueError, "payload parent"):
+            mod.validate_latest_renewal_chain(pointer, root)
+
 
 if __name__ == "__main__":
     unittest.main()

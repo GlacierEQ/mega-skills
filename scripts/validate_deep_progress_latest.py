@@ -12,6 +12,7 @@ from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 POINTER = ROOT / "evidence" / "deep-progress-forge" / "LATEST.json"
+RENEWAL = ROOT / "evidence" / "deep-progress-forge" / "proof-renewal-latest.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 CURRENT_REPO = "GlacierEQ/mega-skills"
 PROVIDER_STATE_SCHEMA_VERSION = 4
@@ -58,6 +59,38 @@ def git_object_type(sha: str, root: Path = ROOT) -> str | None:
         ["git", "cat-file", "-t", sha], cwd=root, capture_output=True, text=True
     )
     return result.stdout.strip() if result.returncode == 0 else None
+
+def git_commit_parent(sha: str, root: Path = ROOT) -> str | None:
+    result = subprocess.run(
+        ["git", "rev-parse", f"{sha}^"], cwd=root, capture_output=True, text=True
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def git_commit_tree(sha: str, root: Path = ROOT) -> str | None:
+    result = subprocess.run(
+        ["git", "rev-parse", f"{sha}^{{tree}}"], cwd=root, capture_output=True, text=True
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def git_blob_at(sha: str, rel: str, root: Path = ROOT) -> str | None:
+    result = subprocess.run(
+        ["git", "rev-parse", f"{sha}:{rel}"], cwd=root, capture_output=True, text=True
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def git_json_at(sha: str, rel: str, root: Path = ROOT) -> dict | None:
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{rel}"], cwd=root, capture_output=True, text=True
+    )
+    if result.returncode != 0:
+        return None
+    try:
+        return json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return None
 
 
 def canonical_digest(value: object) -> str:
@@ -257,6 +290,84 @@ def validate_provider_state(
     }
 
 
+def validate_latest_renewal_chain(pointer: dict, root: Path = ROOT) -> dict:
+    """Traverse the latest proof-renewal receipt through immutable Git objects."""
+    state = pointer.get("verification_state", {})
+    payload = state.get("latest_proof_renewal_payload_commit")
+    if not payload:
+        return {"status": "LEGACY"}
+    required = {
+        "latest_proof_renewal_payload_commit": payload,
+        "latest_proof_renewal_payload_tree": state.get("latest_proof_renewal_payload_tree"),
+        "latest_proof_renewal_origin_parent": state.get("latest_proof_renewal_origin_parent"),
+        "latest_proof_renewal_receipt_digest": state.get("latest_proof_renewal_receipt_digest"),
+        "latest_proof_renewal_finalization_commit": state.get("latest_proof_renewal_finalization_commit"),
+        "latest_proof_renewal_finalization_tree": state.get("latest_proof_renewal_finalization_tree"),
+    }
+    for name, value in required.items():
+        if not isinstance(value, str) or (name.endswith(("commit", "tree", "parent")) and not HEX40.fullmatch(value)):
+            raise ValueError(f"renewal chain requires {name}")
+    receipt_path = root / "evidence/deep-progress-forge/proof-renewal-latest.json"
+    if not receipt_path.is_file():
+        raise ValueError("latest proof-renewal receipt is missing")
+    receipt = load_json(receipt_path)
+    expected_digest = required["latest_proof_renewal_receipt_digest"]
+    if receipt_digest(receipt) != expected_digest or receipt.get("receipt_digest_sha256") != expected_digest:
+        raise ValueError("latest proof-renewal receipt digest mismatch")
+    gf = receipt.get("git_finalization")
+    if not isinstance(gf, dict):
+        raise ValueError("latest proof-renewal receipt lacks git_finalization")
+    origin = required["latest_proof_renewal_origin_parent"]
+    if gf.get("origin_parent") != origin or gf.get("payload_commit") != payload:
+        raise ValueError("latest proof-renewal receipt disagrees on origin/payload commit")
+    payload_tree = required["latest_proof_renewal_payload_tree"]
+    if gf.get("payload_tree") != payload_tree or git_commit_tree(payload, root) != payload_tree:
+        raise ValueError("proof-renewal payload tree mismatch")
+    if git_commit_parent(payload, root) != origin:
+        raise ValueError("proof-renewal payload parent does not equal recorded origin parent")
+    blobs = gf.get("payload_blob_shas")
+    if not isinstance(blobs, dict):
+        raise ValueError("proof-renewal receipt lacks payload blob identities")
+    expected_paths = {
+        "provider": "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
+        "host": "evidence/deep-progress-forge/host-skills-lifecycle-latest.json",
+    }
+    for lane, rel in expected_paths.items():
+        recorded = blobs.get(lane)
+        if not isinstance(recorded, str) or not HEX40.fullmatch(recorded):
+            raise ValueError(f"proof-renewal receipt lacks {lane} blob identity")
+        if git_blob_at(payload, rel, root) != recorded:
+            raise ValueError(f"proof-renewal {lane} blob identity mismatch")
+    final_commit = required["latest_proof_renewal_finalization_commit"]
+    final_tree = required["latest_proof_renewal_finalization_tree"]
+    if git_commit_parent(final_commit, root) != payload:
+        raise ValueError("proof-renewal finalization parent does not equal payload commit")
+    if git_commit_tree(final_commit, root) != final_tree:
+        raise ValueError("proof-renewal finalization tree mismatch")
+    if not git_commit_reachable(final_commit, root):
+        raise ValueError("proof-renewal finalization commit is not reachable from repository HEAD")
+    committed_receipt = git_json_at(final_commit, "evidence/deep-progress-forge/proof-renewal-latest.json", root)
+    if not isinstance(committed_receipt, dict) or committed_receipt.get("receipt_digest_sha256") != expected_digest:
+        raise ValueError("finalization commit does not contain the bound renewal receipt")
+    committed_pointer = git_json_at(final_commit, "evidence/deep-progress-forge/LATEST.json", root)
+    if not isinstance(committed_pointer, dict):
+        raise ValueError("finalization commit does not contain LATEST.json")
+    committed_state = committed_pointer.get("verification_state", {})
+    for key in ("latest_proof_renewal_payload_commit", "latest_proof_renewal_payload_tree", "latest_proof_renewal_origin_parent", "latest_proof_renewal_receipt_digest"):
+        if committed_state.get(key) != state.get(key):
+            raise ValueError(f"finalization commit disagrees with current binding for {key}")
+    return {
+        "status": "PASS",
+        "origin_parent": origin,
+        "payload_commit": payload,
+        "payload_tree": payload_tree,
+        "finalization_commit": final_commit,
+        "finalization_tree": final_tree,
+        "receipt_digest_sha256": expected_digest,
+        "payload_blob_shas": blobs,
+    }
+
+
 def validate_pointer(
     pointer: dict,
     root: Path = ROOT,
@@ -311,6 +422,7 @@ def validate_pointer(
         pointer, root, provider_commit_reachable, provider_object_type, now
     )
     host_result = validate_host_runtime_proof(pointer, root, now=now) if pointer.get("provider_state_schema_version") == PROVIDER_STATE_SCHEMA_VERSION else {"status": "LEGACY"}
+    renewal_result = validate_latest_renewal_chain(pointer, root)
     return {
         "status": "PASS",
         "run_sequence": sequence,
@@ -318,6 +430,7 @@ def validate_pointer(
         "current_run_commit": actual_commit,
         "provider_state": provider_result,
         "host_runtime_proof": host_result,
+        "proof_renewal_chain": renewal_result,
         "next_executable_frontier": receipt["next_executable_frontier"],
     }
 
