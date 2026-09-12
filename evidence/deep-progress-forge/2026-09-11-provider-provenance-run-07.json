@@ -16,10 +16,13 @@
     "verified_provider_state": [
       "GitHub main readback identified fd22609f80536f97807e92edc2718abc43f8153b as the pre-run head",
       "Buildkite status readback shows build 478 failed on fd22609f80536f97807e92edc2718abc43f8153b",
-      "Buildkite status readback shows builds 479 and 480 also failed on subsequent validator/test commits"
+      "Buildkite status readback shows builds 479 and 480 also failed while the stale run-06 frontier contradiction remained",
+      "Buildkite build 482 succeeded on e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea after run-07 and the v2 typed provider-state pointer were bound together",
+      "GitHub provider readback resolved Genius-Mastery commits a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16 and eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+      "GitHub blob readback resolved mega-skills blob 55a03d51519b7f22e7f9641c2afc887070b0c09c"
     ],
-    "inference": "Build 478 failure is causally consistent with fd22609f changing LATEST.next_executable_frontier without changing the bound run-06 receipt frontier; the installed validator rejects that disagreement.",
-    "unresolved": "Exact Buildkite step log for build 478 was not available through the connected provider surface; causal attribution is based on provider commit diff plus the validator's explicit frontier equality gate.",
+    "inference": "Build 478 failure is causally consistent with fd22609f changing LATEST.next_executable_frontier without changing the bound run-06 receipt frontier; build 482 success after re-binding run-07 materially strengthens that causal attribution.",
+    "unresolved": "Exact Buildkite step log for build 478 was not available through the connected provider surface; causal attribution is based on provider commit diff, the validator's explicit frontier equality gate, and the succeeding build after the tuple was repaired.",
     "prior_assistant_interpretation": "The prior run reported continuity enforcement as green after build 477, but the later fd22609f pointer-only mutation was not re-bound to a new run receipt and left main red."
   },
   "failure_pattern_attacked": "Continuity metadata advanced beyond its bound source-bearing receipt, creating a self-contradictory recovery tuple; provider-state identifiers were also untyped 40-hex strings that could not distinguish same-repository commits from cross-repository commits or blobs.",
@@ -34,26 +37,30 @@
     "same-repository commit reachability gate using git cat-file plus merge-base --is-ancestor",
     "typed cross_repo_commit and blob exceptions",
     "negative tests for nonexistent same-repository commits, untyped identifiers, and same-repository commits disguised as cross-repository references",
-    "new source-bearing run-07 receipt that re-binds the recovery frontier"
+    "new source-bearing run-07 receipt that re-binds the recovery frontier",
+    "green provider CI readback proving the repaired tuple and v2 contract coexist successfully"
   ],
   "verification": [
     "GitHub provider readback of validator blob fa10f0073a8e42c6707d7366e3ffff4aff2aa6c9",
     "GitHub commit status readback: fd22609f/build 478 failure predates this run's validator change",
     "GitHub commit status readback: dfc878b1/build 479 failure and 31a45cac/build 480 failure occurred while the stale run-06 frontier contradiction remained in LATEST",
+    "GitHub commit status readback: e9f64cba/build 482 success after run-07 + typed v2 pointer migration",
+    "GitHub cross-repository commit readback: a6e111e3 and eb63c06b resolve in GlacierEQ/Genius-Mastery",
+    "GitHub blob readback: 55a03d51 resolves in GlacierEQ/mega-skills",
     "Remote Desktop Commander readback: all registered Operator devices remain offline; host runtime is not claimed verified"
   ],
   "counterevidence": [
     "The first assumption that build 480 represented a regression from the new provider-state tests was rejected after provider readback showed build 478 on the prior pointer-only commit was already failing.",
-    "The v2 migration is staged behind provider_state_schema_version so legacy state does not fail merely because the validator code lands before the pointer migration."
+    "The v2 migration was staged behind provider_state_schema_version so legacy state did not fail merely because validator code landed before pointer migration.",
+    "A typed exception is not yet equivalent to CI-enforced provider proof; direct provider readback exists for the current external/blob examples, but the validator does not yet bind those readbacks to a durable manifest."
   ],
   "objective_state_delta": {
     "changed": true,
     "before": "The forge pointer could contain arbitrary untyped 40-hex provider identifiers, and main was red because LATEST advanced its frontier without advancing the bound run receipt.",
-    "after": "The validator has a versioned typed provider-state contract with same-repository reachability checks and adversarial tests, and run-07 provides the new source-bearing receipt needed to re-bind LATEST without repeating the run-06 frontier contradiction."
+    "after": "The recovery tuple is re-bound to run-07, provider-state v2 distinguishes and validates same-repository commits, adversarial tests exist, external/blob examples have direct provider readback, and Buildkite build 482 proves the repaired v2 pointer passes repository CI."
   },
   "unresolved": [
-    "The run-07 pointer migration still requires provider CI readback after LATEST is updated to v2.",
-    "Cross-repository commits and blob references are typed exceptions in v2 but are not yet independently provider-verified by CI.",
+    "Cross-repository commits and blob references are typed and directly provider-read in this run, but CI does not yet bind those readbacks to a tamper-evident provider manifest.",
     "The Operator-host skills lifecycle remains unverified because every registered Remote Desktop Commander device is offline."
   ],
   "next_executable_frontier": "Upgrade typed provider exceptions from classification to proof: verify same-repository blob objects directly, bind cross-repository commit references to a durable provider-readback manifest with exact repository/object type/SHA and receipt digest, add tamper and nonexistent-object tests, and preserve host-runtime verification as a separate unresolved lane until an Operator device is online."
