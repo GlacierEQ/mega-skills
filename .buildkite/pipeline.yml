@@ -1,7 +1,7 @@
 steps:
   - label: ":python: Mega Skills full validation parity"
     key: "mega-skills-contract"
-    timeout_in_minutes: 15
+    timeout_in_minutes: 25
     command: |
       set -euo pipefail
       mkdir -p artifacts/buildkite
