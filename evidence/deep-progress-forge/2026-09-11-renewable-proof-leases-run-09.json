@@ -1,0 +1,77 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 9,
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "source_classification": {
+    "operator_verbatim": "verbatim_sources",
+    "verified_provider_state": [
+      "Run-08 LATEST.json recovered from GitHub main at 84c56429f5fe2139e3bdf9cbfa05b4c44f37ff67.",
+      "GitHub provider readback refreshed both Genius-Mastery cross-repository commits with commit tree and parent identity.",
+      "Operator Mac directly revalidated the Skills lifecycle and restored pre-run state exactly.",
+      "Repository-wide unittest discovery passed 101 tests with one intentional skip before run-09 binding."
+    ],
+    "inference": "Immutable object identity alone is insufficient as a living verification state: without an observation time and revalidation deadline, a valid proof can silently become stale while still being presented as current.",
+    "contradiction": "Run-08 called provider and host state verified but encoded no freshness lease in the binding tuple; this made current verification semantically permanent even though both provider observation and host executable state can change.",
+    "prior_assistant_interpretation": "Run-08 correctly separated provider and host proof lanes, but freshness was deferred to its next frontier rather than enforced."
+  },
+  "failure_pattern_attacked": "Verified continuity proofs could remain trusted indefinitely after their observations or host executable became stale; provider manifest creation and host proof renewal also depended on manual reconstruction.",
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_latest.py",
+    "tests/test_deep_progress_latest.py",
+    "scripts/refresh_provider_readback_manifest.py",
+    "scripts/refresh_host_runtime_proof.py",
+    "tests/test_refresh_proof_tools.py",
+    "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
+    "evidence/deep-progress-forge/host-skills-lifecycle-run-09.json",
+    "evidence/deep-progress-forge/2026-09-11-renewable-proof-leases-run-09.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "concrete_outputs": [
+    "provider-state v4 freshness-aware validator",
+    "automated GitHub provider-readback manifest refresher",
+    "immutable external commit metadata binding using tree_sha and parent_shas",
+    "24-hour provider proof lease",
+    "automated reversible host runtime proof refresher with guaranteed deactivation cleanup",
+    "8-hour host proof lease bound to exact ~/bin/skills SHA-256",
+    "five new v4 adversarial freshness/fingerprint tests",
+    "three proof-refresh tool tests including cleanup-on-failure",
+    "fresh provider manifest v2",
+    "fresh host lifecycle receipt v2",
+    "advanced run-09 recovery tuple"
+  ],
+  "verification": [
+    "17/17 focused continuity tests passed before host-refresh automation",
+    "20/20 combined continuity + proof-refresh tests passed after host-refresh automation",
+    "101 repository tests passed with one intentional skip",
+    "Mega Skills recursive hierarchy validation passed",
+    "Genius-Mastery bridge freshness validation passed with remote_verified=true",
+    "git diff --check passed",
+    "provider manifest digest d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046",
+    "host lifecycle receipt digest 387992e1e7c57615fb91f1b1027a43f337cad3ea9bae050cd124e53d1d5d05e3",
+    "host executable SHA-256 455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
+  ],
+  "counterevidence": [
+    "The broad unittest suite mutated an unrelated generated casebuilding receipt; that incidental artifact was reverted and excluded from the durable delta.",
+    "Provider-state v3 remains supported so validator code can land without invalidating the still-bound run-08 pointer during migration.",
+    "Host recommendation output is treated as non-critical enrichment; lifecycle verification depends on status/search/activate/readback/deactivate/restoration assertions, not recommendation availability."
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Run-08 proof bindings established object identity but had no expiry/revalidation semantics; provider and host proof refresh were manual and the host proof was not bound to executable fingerprint freshness.",
+    "after": "Provider-state v4 makes provider and host verification renewable leases: stale proofs fail closed offline, external commits carry immutable tree/parent identity, host proof is bound to the exact Skills executable SHA-256, and both proof lanes now have executable refresh tools with tested cleanup and revalidation behavior."
+  },
+  "unresolved": [
+    "Proof refresh tools update evidence files but do not yet atomically renew LATEST.json bindings; a refresh can therefore produce fresh evidence while the recovery pointer still names the prior digest until a separate binding step occurs.",
+    "Freshness deadlines are enforced at validation time but there is not yet a near-expiry warning/renewal transaction that refreshes both proof lanes and pointer bindings before CI crosses the deadline."
+  ],
+  "next_executable_frontier": "Build an atomic proof-renewal transaction that refreshes provider and host evidence, validates both new receipts, updates only the renewable proof bindings in LATEST.json without changing the mission frontier/run sequence, preserves a renewal receipt with before/after digests, and fails safely if either lane cannot refresh; add near-expiry status and rollback tests so scheduled runs renew proof leases before CI reaches expiry."
+}
