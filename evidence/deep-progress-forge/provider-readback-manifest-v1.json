@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source": "GitHub provider readback",
+  "proofs": [
+    {
+      "name": "genius_mastery_bridge_commit",
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
+      "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
+      "provider_message": "fix(bridge): pin operating loop to source-faithful head"
+    },
+    {
+      "name": "genius_mastery_source_faithful_head",
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+      "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+      "provider_message": "feat: enforce source-faithful long-run progress"
+    }
+  ],
+  "proof_digest_sha256": "855ab848bdc385ffc7a4552afed6b4eaddd08125da5a8921dc22d7bd90ed4469"
+}

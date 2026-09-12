@@ -1,0 +1,66 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 8,
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "source_classification": {
+    "operator_verbatim": "verbatim_sources",
+    "verified_provider_state": [
+      "GitHub readback resolved GlacierEQ/Genius-Mastery commit a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16 as fix(bridge): pin operating loop to source-faithful head.",
+      "GitHub readback resolved GlacierEQ/Genius-Mastery commit eb63c06b46812ccc43f80a37b480ff2638d5e0b5 as feat: enforce source-faithful long-run progress.",
+      "Clean mega-skills main clone validated run-07 before mutation.",
+      "Operator Mac was online and ~/bin/skills exposed status/activate/deactivate/reset/search/recommend."
+    ],
+    "inference": "A typed identifier without an independently bound proof record is only classification, not provider proof. A host capability marked unverified after the host is reachable is stale continuity state and should be actively re-probed.",
+    "contradiction": "Run-07 LATEST recorded the Operator host as offline/unverified, while direct device readback in this run showed KcBs-MacBook-Air.local online and the Skills CLI executable available.",
+    "prior_assistant_interpretation": "Prior passes correctly kept host proof separate from repository CI, but the host lane was never closed because the device had been offline."
+  },
+  "failure_pattern_attacked": "Provider-state v2 typed external commits and blobs but did not prove typed exceptions inside CI; the durable continuity pointer also retained a stale host-unverified state after the Operator device became reachable.",
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_latest.py",
+    "tests/test_deep_progress_latest.py",
+    "evidence/deep-progress-forge/provider-readback-manifest-v1.json",
+    "evidence/deep-progress-forge/host-skills-lifecycle-run-08.json",
+    "evidence/deep-progress-forge/2026-09-11-proof-bound-provider-run-08.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "concrete_outputs": [
+    "provider-state v3 proof-binding validator",
+    "same-repository blob object-type gate",
+    "tamper-evident provider-readback manifest",
+    "adversarial manifest/blob/cross-repo tests",
+    "direct Operator-host Skills lifecycle receipt with exact state restoration",
+    "advanced run-08 recovery tuple"
+  ],
+  "verification": [
+    "12/12 focused continuity/provenance tests passed",
+    "6/6 opt-in Operator-host Skills tests passed against ~/bin/skills",
+    "hierarchy validator passed",
+    "genius-mastery bridge local validation passed",
+    "git diff --check passed",
+    "provider manifest digest 855ab848bdc385ffc7a4552afed6b4eaddd08125da5a8921dc22d7bd90ed4469",
+    "host lifecycle receipt digest 1073b2f28dbcec9db8d57c44e2ae0fb1655d5791d33f5f4e565fda30ae1184f3"
+  ],
+  "counterevidence": [
+    "The first v3 test run failed because v2 fixtures were not migrated; the validator was retained and fixtures were upgraded to the new proof-bearing contract before rerun.",
+    "The normal Operator mega-skills checkout was behind provider main and contained unrelated modifications; it was deliberately not mutated. A clean provider-synced clone was used."
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Cross-repository commit/blob state was typed but not proof-bound in the validator, and the Operator host Skills lifecycle remained explicitly unverified.",
+    "after": "Provider-state v3 now requires a digest-bound provider readback manifest for external objects, verifies same-repository blobs by Git object type, rejects tampered/missing proofs, and the real Operator-host Skills lifecycle is directly verified with exact post-run state restoration."
+  },
+  "unresolved": [
+    "Provider-readback manifest creation is still manually produced from connected GitHub readback rather than refreshed by an automated provider-native collector.",
+    "Cross-repository proof freshness is immutable-object strong but does not yet record a revalidation/observation timestamp policy."
+  ],
+  "next_executable_frontier": "Automate provider-readback manifest refresh from provider-native GitHub evidence, bind each cross-repository proof to fetch metadata plus immutable object identity, add stale-proof expiry/revalidation semantics without weakening offline deterministic CI, and propagate the now-verified host-runtime lane into the recovery contract so future runs distinguish provider proof freshness from host proof freshness."
+}

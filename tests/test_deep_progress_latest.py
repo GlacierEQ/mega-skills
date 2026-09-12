@@ -65,9 +65,32 @@ class DeepProgressLatestTests(unittest.TestCase):
             },
         }
 
-    def enable_provider_v2(self, pointer):
-        pointer["provider_state_schema_version"] = 2
+    def enable_provider_v3(self, pointer, root):
+        pointer["provider_state_schema_version"] = 3
         pointer["verified_provider_state"] = self.provider_state()
+        proofs = [
+            {
+                "name": "genius_mastery_head",
+                "type": "cross_repo_commit",
+                "repo": "GlacierEQ/Genius-Mastery",
+                "sha": "c" * 40,
+                "provider_url": "https://github.com/GlacierEQ/Genius-Mastery/commit/" + "c" * 40,
+            }
+        ]
+        digest = mod.canonical_digest(proofs)
+        rel = Path("evidence/deep-progress-forge/provider-readback-manifest-v1.json")
+        path = root / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({
+            "schema_version": 1,
+            "source": "test provider readback",
+            "proofs": proofs,
+            "proof_digest_sha256": digest,
+        }), encoding="utf-8")
+        pointer["provider_readback_manifest"] = {
+            "path": str(rel),
+            "proof_digest_sha256": digest,
+        }
         return pointer
 
     def test_accepts_consistent_pointer(self):
@@ -107,23 +130,26 @@ class DeepProgressLatestTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "frontier disagrees"):
             mod.validate_pointer(pointer, root, lambda _: "a" * 40)
 
-    def test_v2_accepts_reachable_same_repo_and_typed_external_refs(self):
+    def test_v3_accepts_reachable_same_repo_and_typed_external_refs(self):
         tmp, root, path, pointer = self.fixture()
         self.addCleanup(tmp.cleanup)
-        self.enable_provider_v2(pointer)
+        self.enable_provider_v3(pointer, root)
         result = mod.validate_pointer(
             pointer,
             root,
             lambda _: "a" * 40,
             lambda sha, _: sha == "b" * 40,
+            lambda sha, _: "blob" if sha == "d" * 40 else None,
         )
         self.assertEqual(result["provider_state"]["status"], "PASS")
         self.assertEqual(result["provider_state"]["same_repo_commits"], 1)
+        self.assertEqual(result["provider_state"]["same_repo_blobs"], 1)
+        self.assertEqual(result["provider_state"]["cross_repo_proofs"], 1)
 
-    def test_v2_rejects_nonexistent_same_repo_commit(self):
+    def test_v3_rejects_nonexistent_same_repo_commit(self):
         tmp, root, path, pointer = self.fixture()
         self.addCleanup(tmp.cleanup)
-        self.enable_provider_v2(pointer)
+        self.enable_provider_v3(pointer, root)
         with self.assertRaisesRegex(ValueError, "not reachable from repository HEAD"):
             mod.validate_pointer(
                 pointer,
@@ -132,10 +158,10 @@ class DeepProgressLatestTests(unittest.TestCase):
                 lambda _sha, _root: False,
             )
 
-    def test_v2_rejects_untyped_hex_identifier(self):
+    def test_v3_rejects_untyped_hex_identifier(self):
         tmp, root, path, pointer = self.fixture()
         self.addCleanup(tmp.cleanup)
-        self.enable_provider_v2(pointer)
+        self.enable_provider_v3(pointer, root)
         pointer["verified_provider_state"]["runtime_commit"] = "b" * 40
         with self.assertRaisesRegex(ValueError, "must be a typed object"):
             mod.validate_pointer(
@@ -145,10 +171,10 @@ class DeepProgressLatestTests(unittest.TestCase):
                 lambda _sha, _root: True,
             )
 
-    def test_v2_rejects_same_repo_disguised_as_cross_repo(self):
+    def test_v3_rejects_same_repo_disguised_as_cross_repo(self):
         tmp, root, path, pointer = self.fixture()
         self.addCleanup(tmp.cleanup)
-        self.enable_provider_v2(pointer)
+        self.enable_provider_v3(pointer, root)
         pointer["verified_provider_state"]["runtime_commit"]["type"] = "cross_repo_commit"
         with self.assertRaisesRegex(ValueError, "cannot classify a same-repository commit"):
             mod.validate_pointer(
@@ -156,6 +182,41 @@ class DeepProgressLatestTests(unittest.TestCase):
                 root,
                 lambda _: "a" * 40,
                 lambda _sha, _root: True,
+            )
+
+    def test_v3_rejects_tampered_provider_manifest_digest(self):
+        tmp, root, path, pointer = self.fixture()
+        self.addCleanup(tmp.cleanup)
+        self.enable_provider_v3(pointer, root)
+        manifest_path = root / pointer["provider_readback_manifest"]["path"]
+        manifest = json.loads(manifest_path.read_text())
+        manifest["proofs"][0]["sha"] = "e" * 40
+        manifest_path.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, "manifest digest mismatch"):
+            mod.validate_pointer(
+                pointer, root, lambda _: "a" * 40, lambda _sha, _root: True,
+                lambda _sha, _root: "blob",
+            )
+
+    def test_v3_rejects_cross_repo_reference_without_matching_proof(self):
+        tmp, root, path, pointer = self.fixture()
+        self.addCleanup(tmp.cleanup)
+        self.enable_provider_v3(pointer, root)
+        pointer["verified_provider_state"]["genius_mastery_head"]["sha"] = "e" * 40
+        with self.assertRaisesRegex(ValueError, "lacks matching provider readback proof"):
+            mod.validate_pointer(
+                pointer, root, lambda _: "a" * 40, lambda _sha, _root: True,
+                lambda _sha, _root: "blob",
+            )
+
+    def test_v3_rejects_non_blob_same_repo_blob_reference(self):
+        tmp, root, path, pointer = self.fixture()
+        self.addCleanup(tmp.cleanup)
+        self.enable_provider_v3(pointer, root)
+        with self.assertRaisesRegex(ValueError, "not a same-repository blob object"):
+            mod.validate_pointer(
+                pointer, root, lambda _: "a" * 40, lambda _sha, _root: True,
+                lambda _sha, _root: "tree",
             )
 
 
