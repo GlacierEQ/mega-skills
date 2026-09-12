@@ -1,8 +1,8 @@
 {
   "stream": "deep-progress-forge",
-  "run_sequence": 11,
-  "current_run": "evidence/deep-progress-forge/2026-09-11-concurrency-finalization-run-11.json",
-  "current_run_commit": "81c7759db035329d16d024b61cf92c28f9917bc0",
+  "run_sequence": 12,
+  "current_run": "evidence/deep-progress-forge/2026-09-11-abandoned-renewal-gate-run-12.json",
+  "current_run_commit": "baea1480caf674980b46f041ca143d0c7b5fc08d",
   "provider_state_schema_version": 4,
   "verified_provider_state": {
     "mega_skills_runtime_commit": {
@@ -144,6 +144,16 @@
       "type": "repo_commit",
       "repo": "GlacierEQ/mega-skills",
       "sha": "81c7759db035329d16d024b61cf92c28f9917bc0"
+    },
+    "abandoned_renewal_gate_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "3dcd968609ce630e364863ecdf1668d080e205d7"
+    },
+    "abandoned_renewal_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "baea1480caf674980b46f041ca143d0c7b5fc08d"
     }
   },
   "verification_state": {
@@ -196,11 +206,14 @@
     "latest_proof_renewal_finalization_commit": "5bebf5e4bee59648aeaf4d59d3b7eaa1c399a4b5",
     "latest_proof_renewal_finalization_tree": "c5157d5ac64140f9e0a71e4035ff5922cf22a09e",
     "latest_proof_renewal_finalization_build": 490,
-    "latest_proof_renewal_finalization_build_state": "success"
+    "latest_proof_renewal_finalization_build_state": "success",
+    "abandoned_renewal_gate_tests": "34/34 focused continuity + renewal tests passed",
+    "abandoned_renewal_gate": "continuity fails closed on proof-renewal-abandoned.json and names --recover-abandoned; current state NONE",
+    "abandoned_renewal_gate_commit": "3dcd968609ce630e364863ecdf1668d080e205d7"
   },
-  "objective_state": "Deep Progress Forge run-11 makes renewable proof provider-concurrency-safe and commit-aware: renewal is serialized, origin/main and the bound recovery tuple are snapshotted, stale promotion fails closed, renewed provider+host bytes are committed as an immutable payload, and payload+finalization are published through one force-with-lease compare-and-swap ref update.",
-  "next_executable_frontier": "Extend validate_deep_progress_latest.py to verify the latest proof-renewal Git chain end-to-end: receipt digest, recorded origin parent, payload commit parent/tree, provider+host blob identities, finalization commit ancestry/provider readback, and explicit abandoned-local-transaction recovery when a leased publish is rejected.",
-  "recovery_rule": "Recover this run-11 pointer first and execute scripts/validate_deep_progress_latest.py before extension. Proof renewal now requires the repository lock, a provider/recovery snapshot, mission-tuple preservation, two-phase local commits, and one force-with-lease publish from the captured origin parent. Treat the run-11 receipt, source commit, payload commit/tree/blobs, finalization commit, provider/host digests, and current frontier as source-bearing state; do not substitute an uncommitted or rejected local renewal for provider durability.",
+  "objective_state": "Deep Progress Forge run-12 closes the rejected-publish continuity blind spot: an unresolved abandoned proof-renewal transaction can no longer coexist with a global continuity PASS; the validator fails closed and requires the explicit recovery path before continuation.",
+  "next_executable_frontier": "Make abandoned-renewal recovery itself provider-bound and auditable: emit an immutable recovery receipt containing the abandoned marker digest, origin parent, final commit, provider main before/after, action and outcome; add an end-to-end synthetic rejected lease -> marker -> continuity failure -> recovery -> continuity PASS test; bind the latest recovery receipt into LATEST without weakening the current fail-closed gate.",
+  "recovery_rule": "Recover this run-12 pointer first and execute scripts/validate_deep_progress_latest.py before extension. If proof-renewal-abandoned.json exists, continuity MUST fail and the abandoned transaction must be explicitly recovered or classified blocked before any PASS claim. Preserve the run-12 receipt, gate commit, renewal-chain proof, provider/host leases, and current frontier as source-bearing state.",
   "provider_readback_manifest": {
     "path": "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
     "proof_digest_sha256": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421"
