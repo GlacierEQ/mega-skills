@@ -412,6 +412,48 @@ def validate_latest_renewal_chain(pointer: dict, root: Path = ROOT) -> dict:
     }
 
 
+def validate_latest_abandoned_recovery(pointer: dict, root: Path = ROOT) -> dict:
+    """Validate the latest recovered abandoned-renewal receipt when one is bound."""
+    binding = pointer.get("latest_abandoned_recovery")
+    if binding is None:
+        return {"status": "NONE"}
+    if not isinstance(binding, dict):
+        raise ValueError("latest_abandoned_recovery must be an object")
+    rel = binding.get("path")
+    prefix = "evidence/deep-progress-forge/abandoned-renewal-recoveries/"
+    if not isinstance(rel, str) or not rel.startswith(prefix):
+        raise ValueError("abandoned recovery receipt must stay inside recovery evidence directory")
+    path = root / rel
+    if not path.is_file():
+        raise ValueError(f"abandoned recovery receipt does not exist: {rel}")
+    receipt = load_json(path)
+    expected = binding.get("receipt_digest_sha256")
+    marker = binding.get("marker_digest_sha256")
+    if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
+        raise ValueError("abandoned recovery binding requires receipt_digest_sha256")
+    if not isinstance(marker, str) or not re.fullmatch(r"[0-9a-f]{64}", marker):
+        raise ValueError("abandoned recovery binding requires marker_digest_sha256")
+    if receipt_digest(receipt) != expected or receipt.get("receipt_digest_sha256") != expected:
+        raise ValueError("abandoned recovery receipt digest mismatch")
+    if receipt.get("marker_digest_sha256") != marker:
+        raise ValueError("abandoned recovery marker digest mismatch")
+    if receipt.get("kind") != "abandoned-proof-renewal-recovery" or receipt.get("outcome") != "RECOVERED":
+        raise ValueError("abandoned recovery receipt is not a successful recovery")
+    origin = receipt.get("origin_parent")
+    final = receipt.get("final_commit")
+    before = receipt.get("provider_main_before")
+    after = receipt.get("provider_main_after")
+    if not isinstance(origin, str) or not HEX40.fullmatch(origin):
+        raise ValueError("abandoned recovery receipt lacks valid origin_parent")
+    if not isinstance(final, str) or not HEX40.fullmatch(final):
+        raise ValueError("abandoned recovery receipt lacks valid final_commit")
+    if before != origin or after != final:
+        raise ValueError("abandoned recovery provider-main transition disagrees with origin/final commits")
+    if not git_commit_reachable(origin, root) or not git_commit_reachable(final, root):
+        raise ValueError("abandoned recovery origin/final commit is not reachable from repository HEAD")
+    return {"status": "PASS", "path": rel, "receipt_digest_sha256": expected, "marker_digest_sha256": marker, "origin_parent": origin, "final_commit": final}
+
+
 def validate_pointer(
     pointer: dict,
     root: Path = ROOT,
@@ -468,6 +510,7 @@ def validate_pointer(
     host_result = validate_host_runtime_proof(pointer, root, now=now) if pointer.get("provider_state_schema_version") == PROVIDER_STATE_SCHEMA_VERSION else {"status": "LEGACY"}
     abandoned_result = validate_no_abandoned_renewal(root)
     renewal_result = validate_latest_renewal_chain(pointer, root)
+    recovery_result = validate_latest_abandoned_recovery(pointer, root)
     return {
         "status": "PASS",
         "run_sequence": sequence,
@@ -477,6 +520,7 @@ def validate_pointer(
         "host_runtime_proof": host_result,
         "abandoned_renewal": abandoned_result,
         "proof_renewal_chain": renewal_result,
+        "latest_abandoned_recovery": recovery_result,
         "next_executable_frontier": receipt["next_executable_frontier"],
     }
 

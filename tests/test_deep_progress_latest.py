@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -384,6 +385,53 @@ class DeepProgressLatestTests(unittest.TestCase):
         pointer["verification_state"]["latest_proof_renewal_receipt_digest"] = receipt["receipt_digest_sha256"]
         with self.assertRaisesRegex(ValueError, "payload parent"):
             mod.validate_latest_renewal_chain(pointer, root)
+
+    def _abandoned_recovery_fixture(self):
+        tmp = tempfile.TemporaryDirectory(); root = Path(tmp.name)
+        subprocess.run(["git", "init", "-q", "-b", "main"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=root, check=True)
+        subprocess.run(["git", "config", "user.name", "Test"], cwd=root, check=True)
+        (root / "seed").write_text("origin")
+        subprocess.run(["git", "add", "."], cwd=root, check=True); subprocess.run(["git", "commit", "-qm", "origin"], cwd=root, check=True)
+        origin = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        (root / "seed").write_text("final")
+        subprocess.run(["git", "commit", "-qam", "final"], cwd=root, check=True)
+        final = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        marker = "a" * 64
+        receipt = {"schema_version":1,"kind":"abandoned-proof-renewal-recovery","recorded_at":"2026-09-12T00:00:00Z","marker_digest_sha256":marker,"origin_parent":origin,"payload_commit":final,"final_commit":final,"provider_main_before":origin,"provider_main_after":final,"action":"recover_abandoned_transaction","outcome":"RECOVERED","abandoned_reason":"test"}
+        receipt["receipt_digest_sha256"] = mod.receipt_digest(receipt)
+        rel = "evidence/deep-progress-forge/abandoned-renewal-recoveries/test.json"
+        path=root/rel; path.parent.mkdir(parents=True); path.write_text(json.dumps(receipt))
+        pointer={"latest_abandoned_recovery":{"path":rel,"receipt_digest_sha256":receipt["receipt_digest_sha256"],"marker_digest_sha256":marker}}
+        return tmp, root, pointer, receipt, path
+
+    def test_latest_abandoned_recovery_binding_passes(self):
+        tmp, root, pointer, receipt, path = self._abandoned_recovery_fixture(); self.addCleanup(tmp.cleanup)
+        result = mod.validate_latest_abandoned_recovery(pointer, root)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["final_commit"], receipt["final_commit"])
+
+    def test_latest_abandoned_recovery_rejects_missing_receipt(self):
+        tmp, root, pointer, receipt, path = self._abandoned_recovery_fixture(); self.addCleanup(tmp.cleanup)
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, "does not exist"):
+            mod.validate_latest_abandoned_recovery(pointer, root)
+
+    def test_latest_abandoned_recovery_rejects_tampered_receipt(self):
+        tmp, root, pointer, receipt, path = self._abandoned_recovery_fixture(); self.addCleanup(tmp.cleanup)
+        receipt["provider_main_after"] = receipt["origin_parent"]
+        path.write_text(json.dumps(receipt))
+        with self.assertRaisesRegex(ValueError, "receipt digest mismatch"):
+            mod.validate_latest_abandoned_recovery(pointer, root)
+
+    def test_latest_abandoned_recovery_rejects_transition_drift(self):
+        tmp, root, pointer, receipt, path = self._abandoned_recovery_fixture(); self.addCleanup(tmp.cleanup)
+        receipt["provider_main_after"] = receipt["origin_parent"]
+        receipt["receipt_digest_sha256"] = mod.receipt_digest(receipt)
+        pointer["latest_abandoned_recovery"]["receipt_digest_sha256"] = receipt["receipt_digest_sha256"]
+        path.write_text(json.dumps(receipt))
+        with self.assertRaisesRegex(ValueError, "provider-main transition"):
+            mod.validate_latest_abandoned_recovery(pointer, root)
 
     def test_history_hydration_turns_shallow_repo_into_full_history(self):
         import subprocess
