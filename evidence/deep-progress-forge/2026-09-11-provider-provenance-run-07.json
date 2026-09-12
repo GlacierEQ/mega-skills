@@ -1,0 +1,60 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 7,
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "source_classification": {
+    "operator_verbatim": "verbatim_sources",
+    "verified_provider_state": [
+      "GitHub main readback identified fd22609f80536f97807e92edc2718abc43f8153b as the pre-run head",
+      "Buildkite status readback shows build 478 failed on fd22609f80536f97807e92edc2718abc43f8153b",
+      "Buildkite status readback shows builds 479 and 480 also failed on subsequent validator/test commits"
+    ],
+    "inference": "Build 478 failure is causally consistent with fd22609f changing LATEST.next_executable_frontier without changing the bound run-06 receipt frontier; the installed validator rejects that disagreement.",
+    "unresolved": "Exact Buildkite step log for build 478 was not available through the connected provider surface; causal attribution is based on provider commit diff plus the validator's explicit frontier equality gate.",
+    "prior_assistant_interpretation": "The prior run reported continuity enforcement as green after build 477, but the later fd22609f pointer-only mutation was not re-bound to a new run receipt and left main red."
+  },
+  "failure_pattern_attacked": "Continuity metadata advanced beyond its bound source-bearing receipt, creating a self-contradictory recovery tuple; provider-state identifiers were also untyped 40-hex strings that could not distinguish same-repository commits from cross-repository commits or blobs.",
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_latest.py",
+    "tests/test_deep_progress_latest.py",
+    "evidence/deep-progress-forge/2026-09-11-provider-provenance-run-07.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "concrete_outputs": [
+    "versioned provider-state provenance contract",
+    "same-repository commit reachability gate using git cat-file plus merge-base --is-ancestor",
+    "typed cross_repo_commit and blob exceptions",
+    "negative tests for nonexistent same-repository commits, untyped identifiers, and same-repository commits disguised as cross-repository references",
+    "new source-bearing run-07 receipt that re-binds the recovery frontier"
+  ],
+  "verification": [
+    "GitHub provider readback of validator blob fa10f0073a8e42c6707d7366e3ffff4aff2aa6c9",
+    "GitHub commit status readback: fd22609f/build 478 failure predates this run's validator change",
+    "GitHub commit status readback: dfc878b1/build 479 failure and 31a45cac/build 480 failure occurred while the stale run-06 frontier contradiction remained in LATEST",
+    "Remote Desktop Commander readback: all registered Operator devices remain offline; host runtime is not claimed verified"
+  ],
+  "counterevidence": [
+    "The first assumption that build 480 represented a regression from the new provider-state tests was rejected after provider readback showed build 478 on the prior pointer-only commit was already failing.",
+    "The v2 migration is staged behind provider_state_schema_version so legacy state does not fail merely because the validator code lands before the pointer migration."
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "The forge pointer could contain arbitrary untyped 40-hex provider identifiers, and main was red because LATEST advanced its frontier without advancing the bound run receipt.",
+    "after": "The validator has a versioned typed provider-state contract with same-repository reachability checks and adversarial tests, and run-07 provides the new source-bearing receipt needed to re-bind LATEST without repeating the run-06 frontier contradiction."
+  },
+  "unresolved": [
+    "The run-07 pointer migration still requires provider CI readback after LATEST is updated to v2.",
+    "Cross-repository commits and blob references are typed exceptions in v2 but are not yet independently provider-verified by CI.",
+    "The Operator-host skills lifecycle remains unverified because every registered Remote Desktop Commander device is offline."
+  ],
+  "next_executable_frontier": "Upgrade typed provider exceptions from classification to proof: verify same-repository blob objects directly, bind cross-repository commit references to a durable provider-readback manifest with exact repository/object type/SHA and receipt digest, add tamper and nonexistent-object tests, and preserve host-runtime verification as a separate unresolved lane until an Operator device is online."
+}
