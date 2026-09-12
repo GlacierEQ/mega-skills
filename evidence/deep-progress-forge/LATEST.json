@@ -9,7 +9,9 @@
     "genius_mastery_source_faithful_head": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
     "freshness_implementation_commit": "18410a9e941683502e6d9e81e44b8cf711804b0d",
     "freshness_ci_enforcement_commit": "2e296c6da75ab677a86883e20f5ed2788eeeba56",
-    "ci_portability_repair_commit": "f321514277068a83c421c48b389924cbba65470b"
+    "ci_portability_repair_commit": "f321514277068a83c421c48b389924cbba65470b",
+    "host_lane_opt_in_commit": "39b31c4ea71cd9bd690f9286937512f3ce42a03a",
+    "host_lane_test_blob": "55a03d51519b7f22e7f9641c2afc887070b0c09c"
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
@@ -18,25 +20,17 @@
     "pyramids": "passed",
     "repository_wide_ci": "verified_green_after_regression_repair",
     "buildkite_context": "buildkite/mega-skills-contract-validation",
-    "buildkite_build": 466,
-    "buildkite_state": "success",
-    "regression_last_green_build": 456,
-    "regression_first_red_build": 457,
-    "regression_source_commit": "96e84e78e11c40ede2486d18feed48320d8559e9"
-  },
-  "in_progress_provider_state": {
-    "host_lane_opt_in_commit": "39b31c4ea71cd9bd690f9286937512f3ce42a03a",
-    "host_lane_test_blob": "55a03d51519b7f22e7f9641c2afc887070b0c09c",
-    "generic_ci_contract": "No implicit ~/bin/skills discovery. Host lifecycle is exercised only when GLACIEREQ_SKILLS_BIN explicitly binds the executable.",
-    "portable_tests": [
+    "portability_baseline_build": 466,
+    "host_lane_opt_in_build": 470,
+    "host_lane_opt_in_build_state": "success",
+    "generic_ci_contract": "No implicit ~/bin/skills discovery. Host lifecycle executes only when GLACIEREQ_SKILLS_BIN explicitly binds the executable.",
+    "portable_contract_tests": [
       "generic environment resolves no host CLI",
       "explicit GLACIEREQ_SKILLS_BIN binding is preserved"
     ],
-    "buildkite_build": 470,
-    "buildkite_state_at_pointer_write": "pending",
-    "operator_host_state": "unavailable to Remote Desktop Commander; host lifecycle remains unverified"
+    "operator_host_runtime": "unverified: no Remote Desktop Commander device available"
   },
-  "objective_state": "Bridge freshness and executable run-quality enforcement remain durable; repository CI was repaired and verified green. The dynamic-skills host lane is now source-separated from portable CI with explicit GLACIEREQ_SKILLS_BIN opt-in and portable contract tests, while host-runtime verification remains deliberately unresolved until an Operator host is reachable.",
-  "next_executable_frontier": "First verify Buildkite build 470 for commit 39b31c4ea71cd9bd690f9286937512f3ce42a03a. If green, promote that commit from in-progress to verified provider state. Then, when an Operator host is reachable, bind GLACIEREQ_SKILLS_BIN to the real executable and prove status -> search -> recommend -> activate -> verify -> deactivate -> verify, preserving a durable host-runtime receipt. Do not substitute generic CI success for host-runtime proof.",
-  "recovery_rule": "Recover this pointer first. Preserve build 466/f3215142 as the last fully verified portability baseline until build 470 resolves. Treat 39b31c4e as implemented but not fully verified while its provider CI is pending. Never infer host success from repository CI, and never infer host failure merely because GLACIEREQ_SKILLS_BIN is absent. Do not reconstruct from assistant summaries or ephemeral worktrees when this pointer is available."
+  "objective_state": "Bridge freshness and executable run-quality enforcement remain durable; repository CI is green; and dynamic-skills verification now has two truth-preserving lanes: portable repository CI with deterministic no-host semantics, and an explicit GLACIEREQ_SKILLS_BIN host-runtime lane that cannot be accidentally inferred from ~/bin/skills. Provider CI verified the lane separation on Buildkite build 470.",
+  "next_executable_frontier": "When an Operator host becomes reachable, bind GLACIEREQ_SKILLS_BIN to the real Skills CLI and execute the host lifecycle status -> search -> recommend -> activate -> verify -> deactivate -> verify. Preserve exact command/readback evidence and a durable host-runtime receipt. Until that happens, continue source-level work elsewhere rather than treating generic CI as host proof.",
+  "recovery_rule": "Recover this pointer first. Treat commit 39b31c4ea71cd9bd690f9286937512f3ce42a03a and Buildkite build 470 as verified repository/provider state. Do not infer host success from repository CI, and do not infer host failure from an absent GLACIEREQ_SKILLS_BIN. The host-runtime lifecycle remains a separate unresolved proposition until provider-native host readback exists. Do not reconstruct from assistant summaries or ephemeral worktrees when this pointer is available."
 }
