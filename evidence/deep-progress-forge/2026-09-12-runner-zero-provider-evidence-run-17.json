@@ -1,0 +1,26 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 17,
+  "source_anchor": "issue #23 and its provider/host decoupling continuation",
+  "provider_head": "a461912e491e4708029b561db06b3215c1461adf",
+  "github_actions": {
+    "run_id": 34703884143,
+    "jobs_total": 8,
+    "jobs_failed": 8,
+    "common_observation": "all jobs expose steps=[] and runner_id=0 with blank runner_name/group",
+    "compile_job_id": 103580322775,
+    "annotation_route": "GitHub connector rejected direct annotations subresource as unsupported"
+  },
+  "buildkite": {
+    "build": 512,
+    "state": "failure"
+  },
+  "alternate_execution_routes": [
+    "Remote Desktop command route attempted; command execution was blocked by safety checks",
+    "Remote Desktop device route then reported no connected devices",
+    "GitHub provider jobs endpoint succeeded and narrowed the failure to runner assignment/prerequisite state before steps"
+  ],
+  "objective_state_delta": "The common GitHub Actions failure is now durably bound to provider-native runner_id=0/steps=[] evidence instead of the weaker generic pre-step-failure description.",
+  "claim_boundary": "This receipt does not claim GitHub Actions or Buildkite is repaired.",
+  "next_executable_frontier": "Recover or change the GitHub-hosted runner/account prerequisite that leaves all jobs unassigned (runner_id=0), while separately recovering Buildkite #512's failing step; require fresh provider-native green receipts before closing issue #23."
+}
