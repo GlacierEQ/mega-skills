@@ -13,6 +13,7 @@ from typing import Callable
 ROOT = Path(__file__).resolve().parents[1]
 POINTER = ROOT / "evidence" / "deep-progress-forge" / "LATEST.json"
 RENEWAL = ROOT / "evidence" / "deep-progress-forge" / "proof-renewal-latest.json"
+ABANDONED = ROOT / "evidence" / "deep-progress-forge" / "proof-renewal-abandoned.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 CURRENT_REPO = "GlacierEQ/mega-skills"
 PROVIDER_STATE_SCHEMA_VERSION = 4
@@ -312,6 +313,27 @@ def validate_provider_state(
     }
 
 
+def validate_no_abandoned_renewal(root: Path = ROOT) -> dict:
+    """Fail closed while a rejected leased publish still has unresolved local state."""
+    path = root / "evidence/deep-progress-forge/proof-renewal-abandoned.json"
+    if not path.is_file():
+        return {"status": "NONE"}
+    record = load_json(path)
+    if record.get("status") != "ABANDONED_LOCAL_TRANSACTION":
+        raise ValueError("malformed abandoned proof-renewal marker")
+    origin = record.get("origin_parent")
+    final_commit = record.get("final_commit")
+    if not isinstance(origin, str) or not HEX40.fullmatch(origin):
+        raise ValueError("abandoned proof-renewal marker lacks valid origin_parent")
+    if not isinstance(final_commit, str) or not HEX40.fullmatch(final_commit):
+        raise ValueError("abandoned proof-renewal marker lacks valid final_commit")
+    raise ValueError(
+        "unresolved abandoned proof-renewal transaction; "
+        "recover explicitly with `python3 scripts/renew_proof_leases.py --recover-abandoned` "
+        f"before continuity can PASS (origin_parent={origin}, final_commit={final_commit})"
+    )
+
+
 def validate_latest_renewal_chain(pointer: dict, root: Path = ROOT) -> dict:
     """Traverse the latest proof-renewal receipt through immutable Git objects."""
     state = pointer.get("verification_state", {})
@@ -444,6 +466,7 @@ def validate_pointer(
         pointer, root, provider_commit_reachable, provider_object_type, now
     )
     host_result = validate_host_runtime_proof(pointer, root, now=now) if pointer.get("provider_state_schema_version") == PROVIDER_STATE_SCHEMA_VERSION else {"status": "LEGACY"}
+    abandoned_result = validate_no_abandoned_renewal(root)
     renewal_result = validate_latest_renewal_chain(pointer, root)
     return {
         "status": "PASS",
@@ -452,6 +475,7 @@ def validate_pointer(
         "current_run_commit": actual_commit,
         "provider_state": provider_result,
         "host_runtime_proof": host_result,
+        "abandoned_renewal": abandoned_result,
         "proof_renewal_chain": renewal_result,
         "next_executable_frontier": receipt["next_executable_frontier"],
     }

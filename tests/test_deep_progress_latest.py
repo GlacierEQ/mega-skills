@@ -340,6 +340,25 @@ class DeepProgressLatestTests(unittest.TestCase):
         pointer["verification_state"]["latest_proof_renewal_finalization_tree"] = final_tree
         return tmp, root, pointer, receipt
 
+    def test_abandoned_renewal_absent_is_clean(self):
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self.assertEqual(mod.validate_no_abandoned_renewal(root), {"status": "NONE"})
+
+    def test_abandoned_renewal_blocks_with_explicit_recovery_command(self):
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        path = root / "evidence/deep-progress-forge/proof-renewal-abandoned.json"
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps({
+            "schema_version": 1,
+            "status": "ABANDONED_LOCAL_TRANSACTION",
+            "origin_parent": "a" * 40,
+            "final_commit": "b" * 40,
+        }))
+        with self.assertRaisesRegex(ValueError, "--recover-abandoned"):
+            mod.validate_no_abandoned_renewal(root)
+
     def test_v4_renewal_chain_traverses_commits_trees_blobs_and_receipt(self):
         tmp, root, pointer, receipt = self._renewal_chain_fixture(); self.addCleanup(tmp.cleanup)
         result = mod.validate_latest_renewal_chain(pointer, root)
