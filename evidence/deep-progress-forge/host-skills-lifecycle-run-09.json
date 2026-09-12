@@ -2,10 +2,10 @@
   "schema_version": 2,
   "lane": "operator_host_runtime",
   "device": "KcBs-MacBook-Air.local",
-  "skills_bin": "~/bin/skills",
+  "skills_bin": "/Users/kcbflux/bin/skills",
   "skills_bin_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662",
-  "observed_at": "2026-09-12T04:45:26Z",
-  "revalidate_after": "2026-09-12T12:45:26Z",
+  "observed_at": "2026-09-12T04:53:30Z",
+  "revalidate_after": "2026-09-12T12:53:30Z",
   "commands": [
     "status",
     "search supabase --limit 5",
@@ -59,9 +59,20 @@
         "description": "Universal multi-service MCP & API connector mesh. Bridges GitHub, Notion, Supabase, Dropbox, ClickUp..."
       }
     ],
-    "recommend": {
-      "unavailable": "Command '['/Users/kcbflux/bin/skills', 'recommend', 'build a fastapi postgres microservice']' timed out after 20 seconds"
-    },
+    "recommend": [
+      {
+        "name": "postgres-best-practices",
+        "score": 7,
+        "active": false,
+        "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, rev..."
+      },
+      {
+        "name": "supabase-postgres-best-practices",
+        "score": 7,
+        "active": false,
+        "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFOR..."
+      }
+    ],
     "activate": [
       {
         "name": "playwright-skill",
@@ -104,11 +115,11 @@
   },
   "assertions": {
     "initial_status_optimal": true,
-    "search_returned_supabase": true,
+    "search_returned_results": true,
     "activation_verified": true,
     "deactivation_verified": true,
     "host_state_restored_exactly": true,
     "executable_fingerprint_bound": true
   },
-  "receipt_digest_sha256": "3dec79016d20291290bc3e0fd554b37defb771d70e8bf49058b16632cc976f60"
+  "receipt_digest_sha256": "387992e1e7c57615fb91f1b1027a43f337cad3ea9bae050cd124e53d1d5d05e3"
 }
