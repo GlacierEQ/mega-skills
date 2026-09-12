@@ -1,0 +1,61 @@
+{
+  "run": "deep-progress-forge-ci-portability-repair-05",
+  "source_basis": {
+    "operator_verbatim": [
+      "MAXIMUM USEFUL ENGINEERING DENSITY",
+      "Build more when more creates value",
+      "Preserve diversity when diversity creates insight",
+      "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+      "MASTER IT. DO NOT MUTILATE IT.",
+      "Every pass should make the proposition stronger",
+      "If one evidence path fails, search another",
+      "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+    ],
+    "recovered_pointer": "evidence/deep-progress-forge/LATEST.json",
+    "prior_frontier": "Resolve the persistent Buildkite failure before advancing the forge pointer."
+  },
+  "failure_pattern_attacked": "The durable pointer attributed the unresolved CI contradiction to freshness work, but provider history showed the first red commit was 96e84e78e11c40ede2486d18feed48320d8559e9, which added a host-only dynamic-skills test that asserted ~/bin/skills must exist on every repository CI runner. That conflated absence of an Operator-host integration with repository failure and kept every later Buildkite build red.",
+  "causal_bisection": {
+    "last_green": {
+      "commit": "a9b265671898e59b8abaadc0456f6eecb1da054c",
+      "build": 456,
+      "state": "success",
+      "duration_seconds": 15
+    },
+    "first_red": {
+      "commit": "96e84e78e11c40ede2486d18feed48320d8559e9",
+      "build": 457,
+      "state": "failure",
+      "duration_seconds": 16
+    },
+    "red_persisted_through": {
+      "commit": "2fa8932b8fa8699f1b2edbdbd303a573e243840d",
+      "build": 465,
+      "state": "failure"
+    }
+  },
+  "durable_changes": [
+    "Changed tests/test_dynamic_skills_ctl.py from an unconditional repository test into an explicit host-integration test.",
+    "Missing or non-executable ~/bin/skills now produces unittest.SkipTest rather than a false repository failure.",
+    "Added GLACIEREQ_SKILLS_BIN override so an authorized host/runtime can bind the test to its actual executable path.",
+    "Replaced PEP-604 return annotation syntax with typing.Tuple/Any to reduce unpinned-Python CI compatibility risk."
+  ],
+  "repair_commit": "f321514277068a83c421c48b389924cbba65470b",
+  "verification": {
+    "provider_readback": "tests/test_dynamic_skills_ctl.py at repair commit has blob 01ee07ac631fea57f48bd8463818bdf5c8b71b2d",
+    "buildkite_build": 466,
+    "buildkite_state": "success",
+    "buildkite_description": "Build #466 passed (14 seconds)",
+    "regression_window_closed": true
+  },
+  "counterevidence_and_constraints": [
+    "Remote Desktop Commander had no connected device during this run, so no claim is made about current Operator-host ~/bin/skills health.",
+    "The Buildkite repair proves portable repository CI is restored; it does not prove the skipped host integration itself passes on an Operator machine.",
+    "Container git clone had no network resolution, so provider-native GitHub state and commit-status history were used as the alternate evidence path."
+  ],
+  "objective_state_delta": {
+    "before": "Freshness/runtime work was implemented but every later Buildkite status remained red, and the durable pointer mislocalized the regression to the freshness frontier.",
+    "after": "The actual regression introduction is provider-bisected to the host-only test commit, the test is portable without weakening host execution when available, and Buildkite is green again on the repair commit."
+  },
+  "next_executable_frontier": "Separate host-runtime verification from portable repository CI explicitly: add a deterministic host-integration contract/test lane that requires GLACIEREQ_SKILLS_BIN when intentionally invoked, while generic CI verifies that host-only tests skip rather than fail when the capability is absent; then verify both paths on the next available Operator host and preserve both receipts."
+}
