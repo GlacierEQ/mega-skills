@@ -1,0 +1,60 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 12,
+  "failure_pattern_attacked": "Run-11 implemented commit-aware leased publication and abandoned-local-transaction recovery, but continuity validation still ignored an unresolved proof-renewal-abandoned.json marker. A rejected leased publish could therefore leave unpublished local proof state requiring recovery while validate_deep_progress_latest.py still reported PASS.",
+  "source_classification": {
+    "verbatim_source": "Operator governing phrases in this receipt plus the run-11 next_executable_frontier in LATEST.json",
+    "verified_provider_state": "GlacierEQ/mega-skills main, source commit 3dcd968609ce630e364863ecdf1668d080e205d7, direct post-push continuity validation",
+    "verified_host_state": "KcBs-MacBook-Air.local online; clean provider-synced run-12 clone used; normal divergent Operator checkout left untouched",
+    "inference": "An unresolved abandoned-local-transaction marker is contradictory to a global continuity PASS because it proves unpublished durable local work still requires an explicit recover-or-block decision.",
+    "contradictions_or_counterevidence": [
+      "The run-11 pointer named end-to-end renewal-chain validation plus explicit abandoned transaction recovery as one frontier; live main had already implemented the chain traversal and recovery command but had not connected the abandoned marker to continuity validation.",
+      "A shallow clone initially lacked historical objects needed by continuity proof; commit 160267442d2a8281d356eb54072d258194871f7a had already added history hydration, and run-12 validation confirmed full history before promotion."
+    ]
+  },
+  "durable_sources_changed": [
+    "scripts/validate_deep_progress_latest.py",
+    "tests/test_deep_progress_latest.py"
+  ],
+  "implementation": {
+    "source_commit": "3dcd968609ce630e364863ecdf1668d080e205d7",
+    "continuity_gate": "validate_no_abandoned_renewal",
+    "failure_semantics": "proof-renewal-abandoned.json blocks continuity PASS until explicitly recovered",
+    "recovery_command": "python3 scripts/renew_proof_leases.py --recover-abandoned",
+    "normal_state": {"abandoned_renewal": {"status": "NONE"}}
+  },
+  "verification": {
+    "focused_continuity_plus_renewal_tests": "34/34 passed",
+    "git_diff_check": "passed",
+    "post_push_pointer_validation": "PASS",
+    "post_push_abandoned_state": "NONE",
+    "renewal_chain_validation": "PASS",
+    "provider_state_validation": "PASS"
+  },
+  "objective_state_delta": {
+    "changed": true,
+    "before": "A rejected leased proof-renewal publish could leave an explicit abandoned-local-transaction marker while the continuity validator still returned PASS, allowing recovery-required local state to be hidden from the next run.",
+    "after": "Continuity now fails closed whenever an abandoned proof-renewal marker exists and names the exact explicit recovery command; a clean no-marker state is surfaced as abandoned_renewal.status=NONE alongside the renewal-chain proof."
+  },
+  "unresolved": [
+    "Successful abandoned-transaction recovery currently deletes the marker but does not emit a separate immutable recovery receipt binding the marker digest, provider main before/after, and recovery outcome.",
+    "The existing recovery tests exercise safe retry/provider-moved branches but do not yet run one end-to-end rejected leased publish through marker creation, continuity failure, recovery, provider readback, and restored continuity PASS."
+  ],
+  "next_executable_frontier": "Make abandoned-renewal recovery itself provider-bound and auditable: emit an immutable recovery receipt containing the abandoned marker digest, origin parent, final commit, provider main before/after, action and outcome; add an end-to-end synthetic rejected lease -> marker -> continuity failure -> recovery -> continuity PASS test; bind the latest recovery receipt into LATEST without weakening the current fail-closed gate.",
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "concrete_outputs": [
+    "scripts/validate_deep_progress_latest.py fail-closed abandoned-renewal gate",
+    "tests/test_deep_progress_latest.py abandoned-marker regression coverage",
+    "provider source commit 3dcd968609ce630e364863ecdf1668d080e205d7",
+    "evidence/deep-progress-forge/2026-09-11-abandoned-renewal-gate-run-12.json"
+  ]
+}
