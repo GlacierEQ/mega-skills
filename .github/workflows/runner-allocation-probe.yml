@@ -10,12 +10,18 @@ permissions:
   contents: read
 
 jobs:
-  probe:
+  ubuntu:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Confirm runner assignment
-        run: |
-          echo "runner-assigned"
-          echo "os=${{ runner.os }}"
-          echo "arch=${{ runner.arch }}"
+      - run: echo runner-assigned-ubuntu
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 2
+    steps:
+      - run: echo runner-assigned-macos
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 2
+    steps:
+      - run: echo runner-assigned-windows
