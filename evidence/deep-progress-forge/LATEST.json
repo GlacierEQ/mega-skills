@@ -1,14 +1,25 @@
 {
   "stream": "deep-progress-forge",
-  "current_run": "evidence/deep-progress-forge/2026-09-11-bridge-provenance-run-03.json",
-  "current_run_commit": "381b004e70e77a34bbbd61ebc70a8b8b20feba99",
+  "current_run": "evidence/deep-progress-forge/2026-09-11-bridge-freshness-run-04.json",
+  "current_run_commit": "5a7570489980b67194067a08f5a3b8253b5cc660",
   "verified_provider_state": {
     "mega_skills_runtime_commit": "46ed77b49e8261366f2521d64e2d0e68bd33355e",
     "mega_skills_bridge_commit": "2b3260812da08da66cacaf671b868840ca01d557",
     "genius_mastery_bridge_commit": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16",
-    "genius_mastery_source_faithful_head": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"
+    "genius_mastery_source_faithful_head": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5",
+    "freshness_implementation_commit": "18410a9e941683502e6d9e81e44b8cf711804b0d",
+    "freshness_ci_enforcement_commit": "2e296c6da75ab677a86883e20f5ed2788eeeba56"
   },
-  "objective_state": "Runtime run-quality enforcement is durable and the Genius-Mastery bridge provenance now resolves to the source-faithful provider head with exact contract/module/schema blob identities.",
-  "next_executable_frontier": "Add and test a bridge freshness assertion that distinguishes structurally valid pinned provenance from stale-provider provenance without conflating intentional compatibility pins with accidental staleness.",
-  "recovery_rule": "Recover this pointer first, then read current_run and verify referenced provider state before extending the stream. Do not infer the frontier from assistant summaries or ephemeral worktrees when this pointer is available."
+  "verification_state": {
+    "focused_freshness_validation": "verified",
+    "freshness_tests": "3/3 passed",
+    "hierarchy": "passed",
+    "pyramids": "passed",
+    "repository_wide_ci": "blocked_by_failed_provider_status",
+    "buildkite_context": "buildkite/mega-skills-contract-validation",
+    "buildkite_build": 463
+  },
+  "objective_state": "Bridge freshness enforcement is implemented and focused-verified, but repository-wide completion is explicitly blocked by the failed Buildkite provider status rather than being inferred from focused green tests.",
+  "next_executable_frontier": "Resolve Buildkite build 463 at the failing gate by obtaining its job evidence or reproducing the complete .buildkite/pipeline.yml contract on the clean durable checkout; repair deterministic source failure if present and require green provider readback before advancing this pointer.",
+  "recovery_rule": "Recover this pointer first, then read current_run and verify referenced provider/CI state before extending the stream. A focused local PASS must not override a contradictory provider CI failure. Do not infer the frontier from assistant summaries or ephemeral worktrees when this pointer is available."
 }
