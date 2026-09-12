@@ -1,0 +1,33 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 16,
+  "source_anchor": "run-15 established that all GitHub Actions validation lanes failed before executable repository steps and that the v4/v5 action-major downgrade did not repair the failure",
+  "provider_observations": {
+    "prior_run_id": 34692446546,
+    "prior_head_sha": "c5f25a6633bf856f96574bcb6397112ab0014526",
+    "prior_jobs": "all eight workflow jobs completed failure; job step payloads were null",
+    "prior_job_log_fetch": "GitHub job-log retrieval for job 103549997413 returned BlobNotFound/404",
+    "workflow_path": ".github/workflows/validate-hierarchy.yml",
+    "workflow_is_syntactically_present": true
+  },
+  "current_run_mutation": {
+    "commit": "ea52f97feb48170f6bd71d3219b24a6a01b73efd",
+    "change": "reverted the falsified compatibility experiment: actions/checkout v4 -> v5 and actions/setup-python v5 -> v6 across all validation lanes",
+    "reason": "the downgrade had already been falsified and retaining it added unsupported configuration drift"
+  },
+  "current_provider_readback": {
+    "workflow_blob": "6334de3ffdcdff4ee5dfe3dde896ef1540c610f9",
+    "new_workflow_run_id": 34697042249,
+    "new_compile_check_run": 103562192548,
+    "new_compile_conclusion": "failure",
+    "new_compile_annotations_count": 1,
+    "interpretation": "the latest action majors reproduce the same pre-step failure; action-major compatibility is falsified as the root cause"
+  },
+  "objective_state_delta": {
+    "changed": true,
+    "before": "main retained an action-version downgrade that provider evidence had already falsified",
+    "after": "main no longer carries the unsupported downgrade, and the new provider run reproduces the prerequisite failure on the restored action majors"
+  },
+  "claim_boundary": "CI is not green. The current evidence localizes failure before repository validation commands but does not yet expose the annotation text through the available connector surface.",
+  "next_executable_frontier": "Retrieve the single GitHub Actions check annotation or equivalent provider prerequisite error for run 34697042249/check 103562192548; repair the provider/runner prerequisite rather than repository validation code; then rerun and require provider-native green evidence."
+}
