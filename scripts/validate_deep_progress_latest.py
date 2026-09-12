@@ -31,6 +31,28 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def ensure_repository_history(root: Path = ROOT) -> dict:
+    """Hydrate shallow Git history before making historical continuity claims."""
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
+        cwd=root, capture_output=True, text=True,
+    )
+    if shallow.returncode != 0:
+        raise ValueError("unable to determine repository history depth")
+    was_shallow = shallow.stdout.strip() == "true"
+    if was_shallow:
+        hydrated = subprocess.run(
+            ["git", "fetch", "--quiet", "--unshallow", "origin", "main"],
+            cwd=root, capture_output=True, text=True,
+        )
+        if hydrated.returncode != 0:
+            raise ValueError(
+                "source-bearing Git history is shallow and hydration failed: "
+                + hydrated.stderr.strip()
+            )
+    return {"was_shallow": was_shallow, "hydrated": was_shallow}
+
+
 def git_last_change(path: Path) -> str:
     rel = path.relative_to(ROOT)
     return subprocess.check_output(
@@ -436,7 +458,9 @@ def validate_pointer(
 
 
 def main() -> int:
+    history = ensure_repository_history(ROOT)
     result = validate_pointer(load_json(POINTER))
+    result["repository_history"] = history
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 

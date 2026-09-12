@@ -366,6 +366,27 @@ class DeepProgressLatestTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "payload parent"):
             mod.validate_latest_renewal_chain(pointer, root)
 
+    def test_history_hydration_turns_shallow_repo_into_full_history(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as remote_dir, tempfile.TemporaryDirectory() as source_dir, tempfile.TemporaryDirectory() as clone_parent:
+            remote = Path(remote_dir) / "remote.git"
+            source = Path(source_dir)
+            subprocess.run(["git", "init", "--bare", "-q", str(remote)], check=True)
+            subprocess.run(["git", "init", "-q", "-b", "main"], cwd=source, check=True)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=source, check=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
+            (source / "x").write_text("one")
+            subprocess.run(["git", "add", "."], cwd=source, check=True); subprocess.run(["git", "commit", "-qm", "one"], cwd=source, check=True)
+            (source / "x").write_text("two")
+            subprocess.run(["git", "commit", "-qam", "two"], cwd=source, check=True)
+            subprocess.run(["git", "remote", "add", "origin", str(remote)], cwd=source, check=True); subprocess.run(["git", "push", "-q", "origin", "main"], cwd=source, check=True)
+            clone = Path(clone_parent) / "clone"
+            subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + str(remote), str(clone)], check=True)
+            self.assertEqual(subprocess.check_output(["git", "rev-parse", "--is-shallow-repository"], cwd=clone, text=True).strip(), "true")
+            result = mod.ensure_repository_history(clone)
+            self.assertTrue(result["hydrated"])
+            self.assertEqual(subprocess.check_output(["git", "rev-parse", "--is-shallow-repository"], cwd=clone, text=True).strip(), "false")
+
 
 if __name__ == "__main__":
     unittest.main()
