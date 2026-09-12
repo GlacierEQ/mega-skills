@@ -5,6 +5,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/renew_proof_leases.py"
@@ -77,5 +78,72 @@ class RenewProofLeasesTests(unittest.TestCase):
                 self.assertEqual(json.loads(paths[0].read_text()),{"candidate":True})
                 self.assertEqual(json.loads(paths[3].read_text())['transaction'],'atomic_proof_renewal')
             finally: mod.LATEST,mod.PROVIDER,mod.HOST,mod.RENEWAL=old
+
+
+    def test_recovery_tuple_digest_changes_when_binding_moves(self):
+        now=datetime(2026,9,12,tzinfo=timezone.utc); pointer=self.pointer(now)
+        a=mod.digest(mod.recovery_tuple(pointer))
+        pointer["next_executable_frontier"]="moved"
+        self.assertNotEqual(a,mod.digest(mod.recovery_tuple(pointer)))
+
+    def test_assert_snapshot_rejects_origin_move(self):
+        pointer={"run_sequence":1,"current_run":"r","current_run_commit":"a","provider_state_schema_version":4,
+                 "provider_readback_manifest":{"proof_digest_sha256":"a"*64},
+                 "host_runtime_proof":{"receipt_digest_sha256":"b"*64},"next_executable_frontier":"f"}
+        snapshot={"local_head":"L","origin_main":"O","mission_tuple_sha256":mod.digest(mod.mission_tuple(pointer)),"recovery_tuple_sha256":mod.digest(mod.recovery_tuple(pointer))}
+        with patch.object(mod,'git',side_effect=["", "L", "MOVED"]):
+            with self.assertRaisesRegex(RuntimeError,'origin/main moved'):
+                mod.assert_snapshot_unchanged(snapshot)
+
+    def test_precommit_allows_renewed_proof_but_rejects_mission_move(self):
+        pointer={"run_sequence":1,"current_run":"r","current_run_commit":"a","provider_state_schema_version":4,
+                 "provider_readback_manifest":{"proof_digest_sha256":"a"*64},
+                 "host_runtime_proof":{"receipt_digest_sha256":"b"*64},"next_executable_frontier":"f"}
+        snapshot={"local_head":"L","origin_main":"O","mission_tuple_sha256":mod.digest(mod.mission_tuple(pointer))}
+        renewed=json.loads(json.dumps(pointer)); renewed['provider_readback_manifest']['proof_digest_sha256']='c'*64; renewed['host_runtime_proof']['receipt_digest_sha256']='d'*64
+        with patch.object(mod,'git',side_effect=["", "L", "O"]):
+            mod.assert_precommit_snapshot_unchanged(snapshot,renewed)
+        renewed['next_executable_frontier']='changed'
+        with patch.object(mod,'git',side_effect=["", "L", "O"]):
+            with self.assertRaisesRegex(RuntimeError,'mission tuple moved'):
+                mod.assert_precommit_snapshot_unchanged(snapshot,renewed)
+
+    def test_repository_lock_rejects_concurrent_holder(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); (root/'.git').mkdir()
+            old=mod.ROOT; mod.ROOT=root
+            try:
+                with mod.renewal_lock():
+                    with self.assertRaisesRegex(RuntimeError,'another proof renewal'):
+                        with mod.renewal_lock(): pass
+            finally: mod.ROOT=old
+
+    def test_commit_publish_builds_two_commits_and_uses_force_with_lease(self):
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as rd:
+            root=Path(td); ev=root/'evidence/deep-progress-forge'; ev.mkdir(parents=True)
+            subprocess.run(['git','init','-q','-b','main'],cwd=root,check=True)
+            subprocess.run(['git','config','user.email','test@example.com'],cwd=root,check=True)
+            subprocess.run(['git','config','user.name','Test'],cwd=root,check=True)
+            remote=Path(rd)/'remote.git'; subprocess.run(['git','init','--bare','-q',str(remote)],check=True)
+            subprocess.run(['git','remote','add','origin',str(remote)],cwd=root,check=True)
+            for name,data in [('LATEST.json',{}),('provider-readback-manifest-v2.json',{'p':1}),('host-skills-lifecycle-latest.json',{'h':1}),('proof-renewal-latest.json',{'r':1})]:
+                (ev/name).write_text(json.dumps(data))
+            subprocess.run(['git','add','.'],cwd=root,check=True); subprocess.run(['git','commit','-qm','base'],cwd=root,check=True); subprocess.run(['git','push','-q','-u','origin','main'],cwd=root,check=True)
+            old=(mod.ROOT,mod.EVIDENCE,mod.LATEST,mod.PROVIDER,mod.HOST,mod.RENEWAL)
+            mod.ROOT=root; mod.EVIDENCE=ev; mod.LATEST=ev/'LATEST.json'; mod.PROVIDER=ev/'provider-readback-manifest-v2.json'; mod.HOST=ev/'host-skills-lifecycle-latest.json'; mod.RENEWAL=ev/'proof-renewal-latest.json'
+            try:
+                base=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+                pointer={"run_sequence":1,"current_run":"r","current_run_commit":"a","provider_state_schema_version":4,"provider_readback_manifest":{"path":"evidence/deep-progress-forge/provider-readback-manifest-v2.json","proof_digest_sha256":"a"*64},"host_runtime_proof":{"path":"evidence/deep-progress-forge/host-skills-lifecycle-latest.json","receipt_digest_sha256":"b"*64},"verification_state":{},"next_executable_frontier":"f"}
+                snapshot={"local_head":base,"origin_main":base,"mission_tuple":mod.mission_tuple(pointer),"mission_tuple_sha256":mod.digest(mod.mission_tuple(pointer)),"recovery_tuple":mod.recovery_tuple(pointer),"recovery_tuple_sha256":mod.digest(mod.recovery_tuple(pointer))}
+                mod._atomic_json(mod.LATEST,pointer); mod._atomic_json(mod.PROVIDER,{"p":2}); mod._atomic_json(mod.HOST,{"h":2})
+                receipt={"receipt_digest_sha256":"x"*64}
+                result=mod.commit_and_publish(pointer,receipt,snapshot,push=True)
+                remote_head=subprocess.check_output(['git','--git-dir',remote,'rev-parse','refs/heads/main'],text=True).strip()
+                self.assertEqual(remote_head,result['final_commit'])
+                self.assertEqual(subprocess.check_output(['git','rev-list','--count',f'{base}..{remote_head}'],cwd=root,text=True).strip(),'2')
+                final_receipt=json.loads(mod.RENEWAL.read_text())
+                self.assertEqual(final_receipt['git_finalization']['payload_commit'],result['payload_commit'])
+            finally:
+                mod.ROOT,mod.EVIDENCE,mod.LATEST,mod.PROVIDER,mod.HOST,mod.RENEWAL=old
 
 if __name__ == '__main__': unittest.main()
