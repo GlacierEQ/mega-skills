@@ -1,7 +1,8 @@
 {
   "stream": "deep-progress-forge",
-  "current_run": "evidence/deep-progress-forge/2026-09-11-ci-portability-repair-run-05.json",
-  "current_run_commit": "a7eb8719a652bb06133ae3788f4fd74b657750e5",
+  "run_sequence": 6,
+  "current_run": "evidence/deep-progress-forge/2026-09-11-continuity-contract-run-06.json",
+  "current_run_commit": "09d492115cf75c0bc7e3e5d4013f14f1d80aad59",
   "verified_provider_state": {
     "mega_skills_runtime_commit": "46ed77b49e8261366f2521d64e2d0e68bd33355e",
     "mega_skills_bridge_commit": "2b3260812da08da66cacaf671b868840ca01d557",
@@ -11,7 +12,10 @@
     "freshness_ci_enforcement_commit": "2e296c6da75ab677a86883e20f5ed2788eeeba56",
     "ci_portability_repair_commit": "f321514277068a83c421c48b389924cbba65470b",
     "host_lane_opt_in_commit": "39b31c4ea71cd9bd690f9286937512f3ce42a03a",
-    "host_lane_test_blob": "55a03d51519b7f22e7f9641c2afc887070b0c09c"
+    "host_lane_test_blob": "55a03d51519b7f22e7f9641c2afc887070b0c09c",
+    "continuity_validator_commit": "42b6add9ef95b6fc1017512789b15076c279e267",
+    "continuity_tests_commit": "b937475be4859c2d3e2c89ff0ba2e7fc5dc09e87",
+    "continuity_run_receipt_commit": "09d492115cf75c0bc7e3e5d4013f14f1d80aad59"
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
@@ -28,9 +32,10 @@
       "generic environment resolves no host CLI",
       "explicit GLACIEREQ_SKILLS_BIN binding is preserved"
     ],
-    "operator_host_runtime": "unverified: no Remote Desktop Commander device available"
+    "continuity_contract": "pending provider CI readback for final pointer commit",
+    "operator_host_runtime": "unverified: all registered Remote Desktop Commander devices offline"
   },
-  "objective_state": "Bridge freshness and executable run-quality enforcement remain durable; repository CI is green; and dynamic-skills verification now has two truth-preserving lanes: portable repository CI with deterministic no-host semantics, and an explicit GLACIEREQ_SKILLS_BIN host-runtime lane that cannot be accidentally inferred from ~/bin/skills. Provider CI verified the lane separation on Buildkite build 470.",
-  "next_executable_frontier": "When an Operator host becomes reachable, bind GLACIEREQ_SKILLS_BIN to the real Skills CLI and execute the host lifecycle status -> search -> recommend -> activate -> verify -> deactivate -> verify. Preserve exact command/readback evidence and a durable host-runtime receipt. Until that happens, continue source-level work elsewhere rather than treating generic CI as host proof.",
-  "recovery_rule": "Recover this pointer first. Treat commit 39b31c4ea71cd9bd690f9286937512f3ce42a03a and Buildkite build 470 as verified repository/provider state. Do not infer host success from repository CI, and do not infer host failure from an absent GLACIEREQ_SKILLS_BIN. The host-runtime lifecycle remains a separate unresolved proposition until provider-native host readback exists. Do not reconstruct from assistant summaries or ephemeral worktrees when this pointer is available."
+  "objective_state": "Bridge freshness, executable run-quality enforcement, repository portability, and explicit host-lane separation remain durable. Deep Progress Forge recovery is now itself governed by a fail-closed executable contract: LATEST must bind an existing source-bearing receipt, its actual receipt commit, matching run sequence/frontier, verbatim source, mission delta, and durable mutation/output evidence.",
+  "next_executable_frontier": "Verify the final continuity-pointer commit through provider CI/readback; then strengthen continuity further by making the recovery validator prove that verified_provider_state commit references are reachable ancestors or explicitly classified exceptions instead of accepting arbitrary 40-hex identifiers. Keep the host-runtime lifecycle separate and unresolved until an Operator device is online.",
+  "recovery_rule": "Recover this pointer first, then run scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence as a binding tuple, not advisory metadata. Do not advance verified_provider_state without provider/readback evidence; do not infer host success from repository CI; do not reconstruct from assistant summaries or ephemeral worktrees when this pointer and its receipt are available."
 }
