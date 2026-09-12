@@ -1,0 +1,28 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 19,
+  "source_anchor": {
+    "incident": 23,
+    "minimal_probe_commit": "18f29faadc2d0caaf8567913a7519280314e8f8a",
+    "minimal_probe_run": 34706124786,
+    "rerun_job": 103587008493
+  },
+  "current_run_execution": {
+    "route": "GitHub Actions decoded job-log endpoint",
+    "job_id": 103587008493,
+    "result": "failure",
+    "provider_error": "GitHub API error 404: BlobNotFound",
+    "provider_request_id": "b45debf1-e01e-0095-1add-427f44000000",
+    "provider_time": "2026-09-12T17:35:02.1470900Z"
+  },
+  "classification": {
+    "verified": "The isolated ubuntu-latest probe rerun has no retrievable GitHub Actions job-log blob through the provider-native decoded-log endpoint.",
+    "inference": "The absence of a job log is consistent with failure before runner step execution, but does not by itself identify billing, account eligibility, abuse controls, quota, or another provider prerequisite.",
+    "prohibited_claim": "Do not claim the precise GitHub account/provider root cause until a provider surface exposes it."
+  },
+  "objective_state_delta": {
+    "before": "Incident #23 recorded generic BlobNotFound/log unavailability for an earlier full-workflow job and zero-runner evidence for later runs.",
+    "after": "The minimal no-checkout probe's provider-native rerun is now independently bound to an exact BlobNotFound log retrieval failure with provider request ID and timestamp, closing the ambiguity that only the full validation workflow lacked logs."
+  },
+  "next_executable_frontier": "Use an Actions administration/billing/support-capable provider surface to inspect execution eligibility for GlacierEQ/mega-skills; separately recover Buildkite's exact failing step. Preserve the minimal probe and provider/host separation."
+}
