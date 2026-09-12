@@ -1,0 +1,51 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 18,
+  "source_anchor": {
+    "incident": "https://github.com/GlacierEQ/mega-skills/issues/23",
+    "prior_receipt_commit": "3221d0a35fa3249362dcc54d50c2a50b940f8f03",
+    "prior_frontier": "repair or recover the GitHub-hosted runner/account prerequisite responsible for zero-runner assignments and independently recover the Buildkite failing step"
+  },
+  "failure_pattern_attacked": "The existing multi-job workflow could not prove whether repository validation structure contributed to failure because every job failed before steps. A minimal workflow with no checkout and one shell step was needed to isolate provider runner allocation.",
+  "durable_changes": [
+    {
+      "path": ".github/workflows/runner-allocation-probe.yml",
+      "commit": "98c814bf5091b532989fe352ef3d4928bff794ad",
+      "blob": "af25f34a0c8392ae7efe8fcf1d00c6d35104d63f",
+      "purpose": "minimal GitHub-hosted ubuntu-latest allocation probe with no checkout or repository validation dependency"
+    }
+  ],
+  "provider_execution": {
+    "workflow_run_id": 34706124786,
+    "workflow_id": 356627092,
+    "head_sha": "98c814bf5091b532989fe352ef3d4928bff794ad",
+    "attempt_1": {
+      "job_id": 103586374712,
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": null,
+      "logs_url": null
+    },
+    "attempt_2": {
+      "trigger": "rerun_workflow_job",
+      "job_id": 103587008493,
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": null,
+      "logs_url": null
+    }
+  },
+  "falsification": {
+    "repository_checkout_required": false,
+    "repository_validation_required": false,
+    "single_job_only": true,
+    "transient_single_attempt_failure": false,
+    "result": "Failure reproduces on a one-step ubuntu-latest workflow and again on provider rerun without any repository checkout or validation command executing."
+  },
+  "claim_boundary": "This proves persistence and independence from repository validation logic; it does not by itself identify the hidden GitHub account/billing/runner-policy prerequisite because the provider does not expose the pre-run annotation through the connected surface.",
+  "objective_state_delta": {
+    "before": "Runner-zero evidence came from the repository's normal eight-job validation workflow.",
+    "after": "A dedicated minimal provider allocation probe now exists on main and independently reproduces the same pre-step failure twice, eliminating checkout, action version, and repository test logic as necessary causes of the GitHub Actions failure."
+  },
+  "next_executable_frontier": "Use repository/account administration or billing/provider support surface to inspect GitHub Actions execution eligibility for this private repository; separately recover Buildkite's failing step. Do not weaken repository validation or remove provider/host separation."
+}
