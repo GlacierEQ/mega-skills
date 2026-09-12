@@ -1,0 +1,63 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 21,
+  "source_anchor": {
+    "issue": 23,
+    "prior_probe_commit": "add53f8b849057dadadde07376c77a2853c41e19",
+    "prior_workflow_run": 34711802015,
+    "prior_frontier": "inspect/mutate repository/account Actions execution eligibility and independently recover Buildkite failure"
+  },
+  "current_run_execution": {
+    "actions_admin_endpoint": {
+      "url": "https://api.github.com/repos/GlacierEQ/mega-skills/actions/permissions",
+      "result": "blocked_by_connected_surface",
+      "error": "HTTP 400: URL is not an allowed public GitHub repository or search endpoint"
+    },
+    "operator_host_route": {
+      "device": "KcBs-MacBook-Air.local",
+      "result": "offline",
+      "last_seen": "2026-09-12T13:18:13.067+00:00"
+    },
+    "provider_native_rerun": {
+      "workflow_run": 34711802015,
+      "action": "rerun_failed_jobs",
+      "result": "accepted",
+      "attempt_observations": [
+        {
+          "phase": "first_readback",
+          "jobs": {
+            "macos": {"job_id": 103610480374, "status": "queued", "conclusion": null, "steps": null},
+            "windows": {"job_id": 103610480532, "status": "completed", "conclusion": "failure", "steps": null},
+            "ubuntu": {"job_id": 103610480551, "status": "completed", "conclusion": "failure", "steps": null}
+          }
+        },
+        {
+          "phase": "final_readback",
+          "jobs": {
+            "macos": {"job_id": 103610480374, "status": "completed", "conclusion": "failure", "steps": null},
+            "windows": {"job_id": 103610480532, "status": "completed", "conclusion": "failure", "steps": null},
+            "ubuntu": {"job_id": 103610480551, "status": "completed", "conclusion": "failure", "steps": null}
+          }
+        }
+      ]
+    }
+  },
+  "falsification": {
+    "displaced_theory": "all hosted pools are rejected identically at admission",
+    "result": "falsified_as_too_strong",
+    "basis": "macOS entered queued state on rerun while Windows and Ubuntu failed immediately, then macOS also failed before steps",
+    "strongest_supported_boundary": "provider-side runner allocation/execution prerequisite remains unresolved; timing differs across hosted pools, but no pool executed its payload"
+  },
+  "truth_boundary": {
+    "ci_green": false,
+    "root_cause_identified": false,
+    "billing_or_quota_proven": false,
+    "repository_validation_executed": false
+  },
+  "objective_state_delta": {
+    "changed": true,
+    "before": "cross-pool probe had one failed provider attempt showing all three hosted OS pools failed before steps",
+    "after": "provider-native rerun attempt exists with new job identities and a differentiated scheduling trace: macOS was observed queued while Windows/Ubuntu failed immediately, followed by all three failing before steps"
+  },
+  "next_executable_frontier": "Recover an administration/billing/support-capable Actions eligibility surface or authenticated provider annotation; preserve the scheduling-timing distinction across pools. Independently recover the exact Buildkite failing step when the Operator host or Buildkite provider surface is available. Do not mutate repository validation semantics to chase green."
+}
