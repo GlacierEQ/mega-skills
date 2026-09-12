@@ -166,14 +166,47 @@ class RenewProofLeasesTests(unittest.TestCase):
 
     def test_recover_abandoned_transaction_retries_when_provider_parent_unchanged(self):
         td,rd,root,remote,base,payload,final=self._abandoned_repo(); self.addCleanup(td.cleanup); self.addCleanup(rd.cleanup)
-        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'.git/deep-progress-abandoned-renewal.json'
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'evidence/deep-progress-forge/proof-renewal-abandoned.json'
         try:
             mod._atomic_json(mod.ABANDONED,{"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final})
             result=mod.recover_abandoned_transaction(push=True)
             self.assertEqual(result["status"],"RECOVERED")
             self.assertFalse(mod.ABANDONED.exists())
             remote_head=subprocess.check_output(["git","--git-dir",remote,"rev-parse","refs/heads/main"],text=True).strip()
-            self.assertEqual(remote_head,final)
+            self.assertEqual(remote_head,result["provider_main_after_evidence"])
+            self.assertEqual(subprocess.check_output(["git","rev-parse",f"{remote_head}^"],cwd=root,text=True).strip(),final)
+            receipt=json.loads((root/result["recovery_receipt"]).read_text())
+            self.assertEqual(receipt["origin_parent"],base)
+            self.assertEqual(receipt["final_commit"],final)
+            self.assertEqual(receipt["provider_main_before"],base)
+            self.assertEqual(receipt["provider_main_after"],final)
+        finally: mod.ROOT,mod.ABANDONED=old
+
+    def test_recover_abandoned_transaction_is_continuity_gate_end_to_end(self):
+        td,rd,root,remote,base,payload,final=self._abandoned_repo(); self.addCleanup(td.cleanup); self.addCleanup(rd.cleanup)
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'evidence/deep-progress-forge/proof-renewal-abandoned.json'
+        mod.ABANDONED.parent.mkdir(parents=True,exist_ok=True)
+        try:
+            marker={"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final,"reason":"synthetic rejected lease"}
+            mod._atomic_json(mod.ABANDONED,marker)
+            with self.assertRaisesRegex(ValueError,"unresolved abandoned proof-renewal transaction"):
+                mod.validator.validate_no_abandoned_renewal(root)
+            result=mod.recover_abandoned_transaction(push=True)
+            self.assertEqual(result["status"],"RECOVERED")
+            self.assertEqual(mod.validator.validate_no_abandoned_renewal(root)["status"],"NONE")
+            self.assertFalse(mod.ABANDONED.exists())
+            self.assertTrue((root/result["recovery_receipt"]).is_file())
+        finally: mod.ROOT,mod.ABANDONED=old
+
+    def test_recover_abandoned_no_push_preserves_marker(self):
+        td,rd,root,remote,base,payload,final=self._abandoned_repo(); self.addCleanup(td.cleanup); self.addCleanup(rd.cleanup)
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'evidence/deep-progress-forge/proof-renewal-abandoned.json'
+        mod.ABANDONED.parent.mkdir(parents=True,exist_ok=True)
+        try:
+            mod._atomic_json(mod.ABANDONED,{"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final})
+            result=mod.recover_abandoned_transaction(push=False)
+            self.assertEqual(result["status"],"RECOVERABLE")
+            self.assertTrue(mod.ABANDONED.exists())
         finally: mod.ROOT,mod.ABANDONED=old
 
     def test_recover_abandoned_transaction_blocks_when_provider_moved(self):
@@ -183,7 +216,7 @@ class RenewProofLeasesTests(unittest.TestCase):
         subprocess.run(["git","clone","-q",str(remote),str(mover)],check=True)
         subprocess.run(["git","config","user.email","mover@example.com"],cwd=mover,check=True); subprocess.run(["git","config","user.name","Mover"],cwd=mover,check=True)
         (mover/"move").write_text("moved"); subprocess.run(["git","add","."],cwd=mover,check=True); subprocess.run(["git","commit","-qm","provider moved"],cwd=mover,check=True); subprocess.run(["git","push","-q","origin","main"],cwd=mover,check=True)
-        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'.git/deep-progress-abandoned-renewal.json'
+        old=(mod.ROOT,mod.ABANDONED); mod.ROOT=root; mod.ABANDONED=root/'evidence/deep-progress-forge/proof-renewal-abandoned.json'
         try:
             mod._atomic_json(mod.ABANDONED,{"schema_version":1,"status":"ABANDONED_LOCAL_TRANSACTION","origin_parent":base,"payload_commit":payload,"final_commit":final})
             result=mod.recover_abandoned_transaction(push=True)

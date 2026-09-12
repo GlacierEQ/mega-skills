@@ -20,7 +20,7 @@ LATEST = EVIDENCE / "LATEST.json"
 PROVIDER = EVIDENCE / "provider-readback-manifest-v2.json"
 HOST = EVIDENCE / "host-skills-lifecycle-latest.json"
 RENEWAL = EVIDENCE / "proof-renewal-latest.json"
-ABANDONED = ROOT / ".git" / "deep-progress-abandoned-renewal.json"
+ABANDONED = EVIDENCE / "proof-renewal-abandoned.json"
 
 
 def load_module(name: str, path: Path):
@@ -250,6 +250,38 @@ def abandoned_transaction_status() -> dict:
     return {**record, "origin_main_now": current, "final_commit_exists": exists, "retry_safe": retry_safe}
 
 
+
+def _recovery_receipt_path(marker_digest: str, final_commit: str) -> Path:
+    return ROOT / "evidence/deep-progress-forge/abandoned-renewal-recoveries" / f"{marker_digest[:16]}-{final_commit[:12]}.json"
+
+
+def _write_recovery_receipt(status: dict, marker_digest: str, provider_before: str) -> tuple[Path, dict]:
+    receipt = {
+        "schema_version": 1,
+        "kind": "abandoned-proof-renewal-recovery",
+        "recorded_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "marker_digest_sha256": marker_digest,
+        "origin_parent": status["origin_parent"],
+        "payload_commit": status.get("payload_commit"),
+        "final_commit": status["final_commit"],
+        "provider_main_before": provider_before,
+        "provider_main_after": status["final_commit"],
+        "action": "recover_abandoned_transaction",
+        "outcome": "RECOVERED",
+        "abandoned_reason": status.get("reason"),
+    }
+    receipt["receipt_digest_sha256"] = digest(receipt)
+    path = _recovery_receipt_path(marker_digest, status["final_commit"])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        existing = read_json(path)
+        if existing != receipt:
+            raise RuntimeError(f"immutable abandoned-renewal recovery receipt collision: {path}")
+    else:
+        _atomic_json(path, receipt)
+    return path, receipt
+
+
 def recover_abandoned_transaction(*, push: bool = True) -> dict:
     status = abandoned_transaction_status()
     if status.get("status") == "NONE":
@@ -258,13 +290,56 @@ def recover_abandoned_transaction(*, push: bool = True) -> dict:
         return {**status, "status": "BLOCKED_MISSING_LOCAL_COMMIT"}
     if not status.get("retry_safe"):
         return {**status, "status": "BLOCKED_PROVIDER_MOVED"}
-    if push:
-        git("push", "--quiet", f"--force-with-lease=refs/heads/main:{status['origin_parent']}", "origin", f"{status['final_commit']}:refs/heads/main")
+    if not push:
+        return {**status, "status": "RECOVERABLE", "published": False}
+
+    marker_bytes = ABANDONED.read_bytes()
+    marker_digest = hashlib.sha256(marker_bytes).hexdigest()
+    provider_before = status["origin_main_now"]
+    git("push", "--quiet", f"--force-with-lease=refs/heads/main:{status['origin_parent']}", "origin", f"{status['final_commit']}:refs/heads/main")
+    git("fetch", "--quiet", "origin", "main")
+    if git("rev-parse", "origin/main") != status["final_commit"]:
+        raise RuntimeError("abandoned renewal recovery push did not become origin/main")
+
+    receipt_path = None
+    try:
+        receipt_path, receipt = _write_recovery_receipt(status, marker_digest, provider_before)
+        latest_path = ROOT / "evidence/deep-progress-forge/LATEST.json"
+        pointer = read_json(latest_path) if latest_path.is_file() else {}
+        if pointer:
+            rel = receipt_path.relative_to(ROOT).as_posix()
+            pointer["latest_abandoned_recovery"] = {
+                "path": rel,
+                "receipt_digest_sha256": receipt["receipt_digest_sha256"],
+                "marker_digest_sha256": marker_digest,
+            }
+            _atomic_json(latest_path, pointer)
+        ABANDONED.unlink(missing_ok=True)
+        paths = [str(receipt_path.relative_to(ROOT))]
+        if pointer:
+            paths.append(str(latest_path.relative_to(ROOT)))
+        git("add", *paths)
+        git("commit", "-m", "evidence: bind abandoned renewal recovery")
+        evidence_commit = git("rev-parse", "HEAD")
+        git("push", "--quiet", f"--force-with-lease=refs/heads/main:{status['final_commit']}", "origin", f"{evidence_commit}:refs/heads/main")
         git("fetch", "--quiet", "origin", "main")
-        if git("rev-parse", "origin/main") != status["final_commit"]:
-            raise RuntimeError("abandoned renewal recovery push did not become origin/main")
-    ABANDONED.unlink(missing_ok=True)
-    return {**status, "status": "RECOVERED" if push else "RECOVERABLE", "published": push}
+        if git("rev-parse", "origin/main") != evidence_commit:
+            raise RuntimeError("abandoned renewal recovery evidence did not become origin/main")
+    except Exception:
+        ABANDONED.parent.mkdir(parents=True, exist_ok=True)
+        ABANDONED.write_bytes(marker_bytes)
+        raise
+    return {
+        **status,
+        "status": "RECOVERED",
+        "published": True,
+        "marker_digest_sha256": marker_digest,
+        "recovery_receipt": str(receipt_path.relative_to(ROOT)),
+        "recovery_receipt_digest_sha256": receipt["receipt_digest_sha256"],
+        "provider_main_before": provider_before,
+        "provider_main_after_recovery": status["final_commit"],
+        "provider_main_after_evidence": evidence_commit,
+    }
 
 
 def lease_status(pointer: dict, now: datetime | None = None, renew_within_hours: float = 2.0) -> dict:
