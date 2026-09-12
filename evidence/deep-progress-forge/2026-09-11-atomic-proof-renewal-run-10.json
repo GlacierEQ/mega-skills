@@ -1,0 +1,58 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 10,
+  "verbatim_sources": [
+    "MAXIMUM USEFUL ENGINEERING DENSITY",
+    "Build more when more creates value",
+    "Preserve diversity when diversity creates insight",
+    "DO NOT REDUCE THE VISION TO MAKE THE WORK EASIER",
+    "MASTER IT. DO NOT MUTILATE IT.",
+    "Every pass should make the proposition stronger",
+    "If one evidence path fails, search another",
+    "TURN EVERY MATERIAL EVENT INTO A PROPOSITION THAT CAN BE PROVEN, ATTACKED, STRENGTHENED, AND USED"
+  ],
+  "source_classes": {
+    "verbatim_operator": "governing language above",
+    "verified_provider_state": "run-09 pointer at 9c34199f475c2046638ed4b8a52d4e545ac41c4b plus live provider/host refresh outputs",
+    "inference": "separate refresh tools without transactionality permit partial renewable-state drift",
+    "contradiction": "none after live transaction; run sequence/frontier remained unchanged during renewable binding refresh",
+    "unresolved": "renewal is filesystem-atomic but not yet Git/provider-concurrency-atomic",
+    "prior_assistant_interpretation": "run-09 named atomic proof renewal as the next executable frontier"
+  },
+  "failure_pattern_attacked": "Provider and host proof could be refreshed independently, leaving LATEST bound to a mixed old/new pair; near-expiry state also had no CI-visible pre-expiry gate.",
+  "durable_sources_changed": [
+    "scripts/renew_proof_leases.py",
+    "tests/test_renew_proof_leases.py",
+    ".buildkite/pipeline.yml",
+    "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
+    "evidence/deep-progress-forge/host-skills-lifecycle-latest.json",
+    "evidence/deep-progress-forge/proof-renewal-latest.json",
+    "evidence/deep-progress-forge/LATEST.json"
+  ],
+  "concrete_outputs": [
+    "atomic dual-lane renewal controller",
+    "rollback-on-validation-failure tests",
+    "near-expiry status/check mode",
+    "Buildkite pre-expiry gate",
+    "live provider+host renewal receipt with before/after digests"
+  ],
+  "verification": [
+    "24 focused renewal/freshness/continuity tests passed",
+    "live forced renewal changed both proof digests and preserved run_sequence=9/frontier exactly",
+    "post-renewal validate_deep_progress_latest.py PASS: 23 provider objects, 16 reachable same-repo commits, 5 same-repo blobs, 2 cross-repo proofs",
+    "host lifecycle renewed and restored exact state with executable SHA-256 455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662",
+    "renewal receipt digest a04d86ec2d8680e2dea0ff1e47cf8f53a59bc5025cc2a38ed88561c4a68c6a4f",
+    "git diff --check passed"
+  ],
+  "objective_state_delta": {
+    "changed": true,
+    "before": "Provider and host proof leases were independently renewable, so a partial refresh could leave mixed evidence and scheduled execution had no durable near-expiry gate.",
+    "after": "Provider and host proof are refreshed as one validated rollback-safe transaction, LATEST renewable bindings update only after both lanes validate, a before/after renewal receipt is preserved, and Buildkite checks the two-hour renewal horizon before expiry."
+  },
+  "unresolved": [
+    "Atomicity currently covers repository filesystem mutation, not concurrent movement of origin/main between refresh and commit.",
+    "The renewal receipt binds evidence digests but does not yet bind the resulting Git commit/blob object identities.",
+    "The existing normal Operator checkout remains behind provider main and was intentionally left untouched."
+  ],
+  "next_executable_frontier": "Add optimistic concurrency and commit-aware finalization to proof renewal: refuse renewal when origin/main or the bound recovery tuple moves during the transaction, serialize concurrent renewals, and bind the resulting renewal receipt to the committed Git object identities so a filesystem-valid but uncommitted renewal cannot be mistaken for durable provider state."
+}

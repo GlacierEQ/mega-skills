@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "source": "GitHub provider readback via gh api",
-  "observed_at": "2026-09-12T04:43:12Z",
-  "revalidate_after": "2026-09-13T04:43:12Z",
+  "observed_at": "2026-09-12T05:47:34Z",
+  "revalidate_after": "2026-09-13T05:47:34Z",
   "proofs": [
     {
       "name": "genius_mastery_bridge_commit",
@@ -35,5 +35,5 @@
       }
     }
   ],
-  "proof_digest_sha256": "d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046"
+  "proof_digest_sha256": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e"
 }

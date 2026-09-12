@@ -146,14 +146,14 @@
     "continuity_contract": "provider-state v2 is green in Buildkite: run-07 is bound, same-repository commits must be real reachable commits, and cross-repository/blob references are explicitly typed.",
     "operator_host_runtime": "verified on KcBs-MacBook-Air.local: status/search/recommend/activate/verify/deactivate/verify passed; pre/post state identical",
     "provider_state_v3_tests": "12/12 passed",
-    "operator_host_runtime_receipt_digest": "387992e1e7c57615fb91f1b1027a43f337cad3ea9bae050cd124e53d1d5d05e3",
-    "provider_readback_manifest_digest": "d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046",
+    "operator_host_runtime_receipt_digest": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
+    "provider_readback_manifest_digest": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e",
     "provider_state_v4_tests": "17/17 continuity tests passed; 20/20 combined continuity + refresh-tool tests passed",
     "repository_unittest_discovery": "101 passed, 1 intentional skip",
-    "provider_proof_observed_at": "2026-09-12T04:43:12Z",
-    "provider_proof_revalidate_after": "2026-09-13T04:43:12Z",
-    "host_proof_observed_at": "2026-09-12T04:53:30Z",
-    "host_proof_revalidate_after": "2026-09-12T12:53:30Z",
+    "provider_proof_observed_at": "2026-09-12T05:47:34Z",
+    "provider_proof_revalidate_after": "2026-09-13T05:47:34Z",
+    "host_proof_observed_at": "2026-09-12T05:47:44Z",
+    "host_proof_revalidate_after": "2026-09-12T13:47:44Z",
     "host_executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
   },
   "objective_state": "Deep Progress Forge run-09 upgrades provider-state to renewable proof leases: provider evidence expires after a bounded GitHub revalidation window, host evidence expires independently and is bound to the exact ~/bin/skills executable fingerprint, and both proof lanes now have tested refresh tools rather than manual reconstruction.",
@@ -161,13 +161,13 @@
   "recovery_rule": "Recover this pointer first and execute scripts/validate_deep_progress_latest.py before extending the stream. Treat current_run/current_run_commit/run_sequence/provider_state_schema_version/provider_readback_manifest/host_runtime_proof as a binding tuple. Provider-state v4 requires fresh digest-bound external provider proofs with immutable commit metadata and an independently fresh host proof bound to the Skills executable SHA-256. Expired proof is unresolved state, not evidence absence. Do not change next_executable_frontier without advancing the bound run receipt; renewable proof bindings may later be refreshed only through the planned atomic renewal transaction.",
   "provider_readback_manifest": {
     "path": "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
-    "proof_digest_sha256": "d3930e4c59ab49bbb8d4694be7700d2e287fa05e8211c18e64bed9c78518a046"
+    "proof_digest_sha256": "f2118fc745d74de37b77279f0de7b0ab2ae3f75cfbfd63ba294421de1775b38e"
   },
   "host_runtime_proof": {
-    "path": "evidence/deep-progress-forge/host-skills-lifecycle-run-09.json",
-    "receipt_digest_sha256": "387992e1e7c57615fb91f1b1027a43f337cad3ea9bae050cd124e53d1d5d05e3",
-    "observed_at": "2026-09-12T04:53:30Z",
-    "revalidate_after": "2026-09-12T12:53:30Z",
+    "path": "evidence/deep-progress-forge/host-skills-lifecycle-latest.json",
+    "receipt_digest_sha256": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4",
+    "observed_at": "2026-09-12T05:47:44Z",
+    "revalidate_after": "2026-09-12T13:47:44Z",
     "executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
   }
 }
