@@ -4,8 +4,8 @@
   "device": "KcBs-MacBook-Air.local",
   "skills_bin": "/Users/kcbflux/bin/skills",
   "skills_bin_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662",
-  "observed_at": "2026-09-12T05:47:44Z",
-  "revalidate_after": "2026-09-12T13:47:44Z",
+  "observed_at": "2026-09-12T06:54:35Z",
+  "revalidate_after": "2026-09-12T14:54:35Z",
   "commands": [
     "status",
     "search supabase --limit 5",
@@ -121,5 +121,5 @@
     "host_state_restored_exactly": true,
     "executable_fingerprint_bound": true
   },
-  "receipt_digest_sha256": "feb88fc07b9a5977378480d033140c215b8ed49c116bbe66beb88ca044c446e4"
+  "receipt_digest_sha256": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c"
 }
