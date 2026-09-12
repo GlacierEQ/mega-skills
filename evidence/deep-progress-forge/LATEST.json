@@ -1,42 +1,175 @@
 {
   "stream": "deep-progress-forge",
-  "run_sequence": 13,
-  "current_run": "evidence/deep-progress-forge/2026-09-12-recovery-evidence-binding-run-13.json",
-  "current_run_commit": "a408bc3ef304dc3c287fbed4daaecf3cae3b3e13",
+  "run_sequence": 14,
+  "current_run": "evidence/deep-progress-forge/2026-09-12-recovery-binding-validator-run-14.json",
+  "current_run_commit": "8cefd9f337db9b35509c280f367e8e92d6f7d1ef",
   "provider_state_schema_version": 4,
   "verified_provider_state": {
-    "mega_skills_runtime_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"46ed77b49e8261366f2521d64e2d0e68bd33355e"},
-    "mega_skills_bridge_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"2b3260812da08da66cacaf671b868840ca01d557"},
-    "genius_mastery_bridge_commit": {"type":"cross_repo_commit","repo":"GlacierEQ/Genius-Mastery","sha":"a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16"},
-    "genius_mastery_source_faithful_head": {"type":"cross_repo_commit","repo":"GlacierEQ/Genius-Mastery","sha":"eb63c06b46812ccc43f80a37b480ff2638d5e0b5"},
-    "freshness_implementation_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"18410a9e941683502e6d9e81e44b8cf711804b0d"},
-    "freshness_ci_enforcement_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"2e296c6da75ab677a86883e20f5ed2788eeeba56"},
-    "ci_portability_repair_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"f321514277068a83c421c48b389924cbba65470b"},
-    "host_lane_opt_in_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"39b31c4ea71cd9bd690f9286937512f3ce42a03a"},
-    "host_lane_test_blob": {"type":"blob","repo":"GlacierEQ/mega-skills","sha":"55a03d51519b7f22e7f9641c2afc887070b0c09c"},
-    "continuity_validator_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"dfc878b1c5133081d2a8d5285bcfafa8e71a487a"},
-    "continuity_tests_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"31a45cac6550bf6995383f7ce1926c4a5ec9c5a3"},
-    "continuity_run_receipt_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"ce8bc3d99008a4b5cd59b836137d589624f9d4e7"},
-    "continuity_pointer_binding_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"59ad37e6ad534ef964ead277c9fd3796a1e69ae3"},
-    "continuity_ci_enforcement_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"437982a0d2bce6be67d53aa524c1edc74ca215f2"},
-    "provider_provenance_pointer_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea"},
-    "proof_bound_provider_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"41e8858de5e5260e454c90417bdac600e1fe0b19"},
-    "provider_readback_manifest_blob": {"type":"blob","repo":"GlacierEQ/mega-skills","sha":"476d0979104fd0685df9125ae54aac4c1ffbba56"},
-    "host_skills_lifecycle_receipt_blob": {"type":"blob","repo":"GlacierEQ/mega-skills","sha":"9811558dc61a348896d43414e936df171c5df6dc"},
-    "proof_freshness_implementation_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"d85bba10f7d868aafc27bff07cb325720629f663"},
-    "host_proof_refresh_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"43a1ded6322521fd6011bb875252616cbcfb27c4"},
-    "renewable_proof_run_receipt_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"f62cdaa095d5eb25b1ec9d35e9a005a8a58fca2c"},
-    "provider_readback_manifest_v2_blob": {"type":"blob","repo":"GlacierEQ/mega-skills","sha":"7ea809908d665f9e049bf5f3643119314f394f3d"},
-    "host_skills_lifecycle_run09_blob": {"type":"blob","repo":"GlacierEQ/mega-skills","sha":"0cee0a3aafeabe6648e2d9df5da33f55cdaba017"},
-    "atomic_proof_renewal_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"2d50da2ebad68b07368ea81d393d4eeb2e685522"},
-    "renewal_concurrency_source_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"7b60e72291fca842794fb875655d1ad7c9397f6c"},
-    "latest_proof_renewal_payload_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"fe470d518688b03daf47c4bce94e95f059b2acc9"},
-    "latest_proof_renewal_finalization_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"5bebf5e4bee59648aeaf4d59d3b7eaa1c399a4b5"},
-    "concurrency_finalization_run_receipt_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"81c7759db035329d16d024b61cf92c28f9917bc0"},
-    "abandoned_renewal_gate_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"3dcd968609ce630e364863ecdf1668d080e205d7"},
-    "abandoned_renewal_run_receipt_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"baea1480caf674980b46f041ca143d0c7b5fc08d"},
-    "abandoned_recovery_evidence_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3"},
-    "recovery_binding_run13_receipt_commit": {"type":"repo_commit","repo":"GlacierEQ/mega-skills","sha":"a408bc3ef304dc3c287fbed4daaecf3cae3b3e13"}
+    "mega_skills_runtime_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "46ed77b49e8261366f2521d64e2d0e68bd33355e"
+    },
+    "mega_skills_bridge_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "2b3260812da08da66cacaf671b868840ca01d557"
+    },
+    "genius_mastery_bridge_commit": {
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "a6e111e349ae2c900bb95ae5c2bafc1cce2f3a16"
+    },
+    "genius_mastery_source_faithful_head": {
+      "type": "cross_repo_commit",
+      "repo": "GlacierEQ/Genius-Mastery",
+      "sha": "eb63c06b46812ccc43f80a37b480ff2638d5e0b5"
+    },
+    "freshness_implementation_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "18410a9e941683502e6d9e81e44b8cf711804b0d"
+    },
+    "freshness_ci_enforcement_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "2e296c6da75ab677a86883e20f5ed2788eeeba56"
+    },
+    "ci_portability_repair_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "f321514277068a83c421c48b389924cbba65470b"
+    },
+    "host_lane_opt_in_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "39b31c4ea71cd9bd690f9286937512f3ce42a03a"
+    },
+    "host_lane_test_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "55a03d51519b7f22e7f9641c2afc887070b0c09c"
+    },
+    "continuity_validator_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "dfc878b1c5133081d2a8d5285bcfafa8e71a487a"
+    },
+    "continuity_tests_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "31a45cac6550bf6995383f7ce1926c4a5ec9c5a3"
+    },
+    "continuity_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "ce8bc3d99008a4b5cd59b836137d589624f9d4e7"
+    },
+    "continuity_pointer_binding_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "59ad37e6ad534ef964ead277c9fd3796a1e69ae3"
+    },
+    "continuity_ci_enforcement_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "437982a0d2bce6be67d53aa524c1edc74ca215f2"
+    },
+    "provider_provenance_pointer_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "e9f64cba4972d4c0f5be8c96db0f470cb7ab0aea"
+    },
+    "proof_bound_provider_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "41e8858de5e5260e454c90417bdac600e1fe0b19"
+    },
+    "provider_readback_manifest_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "476d0979104fd0685df9125ae54aac4c1ffbba56"
+    },
+    "host_skills_lifecycle_receipt_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "9811558dc61a348896d43414e936df171c5df6dc"
+    },
+    "proof_freshness_implementation_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "d85bba10f7d868aafc27bff07cb325720629f663"
+    },
+    "host_proof_refresh_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "43a1ded6322521fd6011bb875252616cbcfb27c4"
+    },
+    "renewable_proof_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "f62cdaa095d5eb25b1ec9d35e9a005a8a58fca2c"
+    },
+    "provider_readback_manifest_v2_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "7ea809908d665f9e049bf5f3643119314f394f3d"
+    },
+    "host_skills_lifecycle_run09_blob": {
+      "type": "blob",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "0cee0a3aafeabe6648e2d9df5da33f55cdaba017"
+    },
+    "atomic_proof_renewal_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "2d50da2ebad68b07368ea81d393d4eeb2e685522"
+    },
+    "renewal_concurrency_source_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "7b60e72291fca842794fb875655d1ad7c9397f6c"
+    },
+    "latest_proof_renewal_payload_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "fe470d518688b03daf47c4bce94e95f059b2acc9"
+    },
+    "latest_proof_renewal_finalization_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "5bebf5e4bee59648aeaf4d59d3b7eaa1c399a4b5"
+    },
+    "concurrency_finalization_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "81c7759db035329d16d024b61cf92c28f9917bc0"
+    },
+    "abandoned_renewal_gate_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "3dcd968609ce630e364863ecdf1668d080e205d7"
+    },
+    "abandoned_renewal_run_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "baea1480caf674980b46f041ca143d0c7b5fc08d"
+    },
+    "abandoned_recovery_evidence_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3"
+    },
+    "recovery_binding_run13_receipt_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "a408bc3ef304dc3c287fbed4daaecf3cae3b3e13"
+    },
+    "abandoned_recovery_binding_validator_commit": {
+      "type": "repo_commit",
+      "repo": "GlacierEQ/mega-skills",
+      "sha": "0917d7e01363139a5aa8bb4a0702c46585281d83"
+    }
   },
   "verification_state": {
     "focused_freshness_validation": "verified",
@@ -98,11 +231,24 @@
     "current_main_before_run13": "98f06a6b5afa336203d74a89fc81f30730abb8e4",
     "current_main_build": 500,
     "current_main_build_state": "failure",
-    "run13_claim_boundary": "Recovery implementation existence and source behavior are provider-readback verified; green CI is explicitly unresolved."
+    "run13_claim_boundary": "Recovery implementation existence and source behavior are provider-readback verified; green CI is explicitly unresolved.",
+    "abandoned_recovery_binding_tests": "27/27 focused continuity tests passed; includes missing receipt, tampered receipt, and provider transition drift rejection",
+    "abandoned_recovery_binding_validator_commit": "0917d7e01363139a5aa8bb4a0702c46585281d83",
+    "abandoned_recovery_binding_build": 503,
+    "abandoned_recovery_binding_build_state": "failure_exact_step_unresolved_local_continuity_path_passes"
   },
-  "objective_state": "Deep Progress Forge run-13 reconciles the durable recovery pointer with provider main: abandoned-renewal recovery receipts and end-to-end recovery-gate coverage are recognized as landed work instead of being repeatedly rediscovered, while red Buildkite state remains explicit counterevidence rather than being normalized away.",
-  "next_executable_frontier": "Close the remaining recovery-evidence truth gap and restore provider-green state: add validator coverage for latest_abandoned_recovery so its path, receipt digest, marker digest, origin/final commits and provider-main transition cannot drift; add tamper/missing-receipt tests; recover the exact Buildkite 500 failure step from provider logs or executable reproduction; repair that source-level failure; then bind the verified green commit/build into the next run rather than treating CI failure as incidental.",
-  "recovery_rule": "Recover this run-13 pointer first. Treat run-12 recovery receipt/test work as already implemented at provider commit 0cb5e352ea0b12d7fd6216b2e9e2714fe51294d3; do not repeat it. Preserve the red Buildkite 499/500 counterevidence. Before any green-state claim, validate latest_abandoned_recovery bindings and identify/repair the exact current provider-CI failure.",
-  "provider_readback_manifest": {"path":"evidence/deep-progress-forge/provider-readback-manifest-v2.json","proof_digest_sha256":"d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421"},
-  "host_runtime_proof": {"path":"evidence/deep-progress-forge/host-skills-lifecycle-latest.json","receipt_digest_sha256":"8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c","observed_at":"2026-09-12T06:54:35Z","revalidate_after":"2026-09-12T14:54:35Z","executable_sha256":"455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"}
+  "objective_state": "Deep Progress Forge run-14 closes the abandoned-recovery binding truth gap: recovery receipts are now independently validated for existence, receipt/marker digests, origin/final commit reachability, and provider-main transition integrity; Buildkite remains explicit red counterevidence.",
+  "next_executable_frontier": "Recover Buildkite #503's exact failing command from provider-native logs or reproduce the remaining pipeline tail; repair that concrete failure at source; then bind the verified-green build/commit into the next continuation receipt. Do not weaken the new abandoned-recovery validator to obtain green CI.",
+  "recovery_rule": "Recover this run-14 pointer first. Treat latest_abandoned_recovery validation as implemented at 0917d7e01363139a5aa8bb4a0702c46585281d83 and do not repeat it. Preserve Buildkite #503 failure as counterevidence until its exact failing command is recovered and repaired.",
+  "provider_readback_manifest": {
+    "path": "evidence/deep-progress-forge/provider-readback-manifest-v2.json",
+    "proof_digest_sha256": "d9d2ea37eedf9ef3c06125805b0298f11143d3f60dc5f88e20a5e7e535a14421"
+  },
+  "host_runtime_proof": {
+    "path": "evidence/deep-progress-forge/host-skills-lifecycle-latest.json",
+    "receipt_digest_sha256": "8f52f8f2a94b952e63b52f1884fe2cd50384bf0ac6759c5f5fd00044739a498c",
+    "observed_at": "2026-09-12T06:54:35Z",
+    "revalidate_after": "2026-09-12T14:54:35Z",
+    "executable_sha256": "455c2c2438cf423051fa42d1243b7ac42f49a3225a786b61835dfdfa2fba3662"
+  }
 }
