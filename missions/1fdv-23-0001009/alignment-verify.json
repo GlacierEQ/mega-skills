@@ -1,0 +1,9 @@
+{
+  "aligned": true,
+  "max_inter_word_gap_seconds": 0.2,
+  "schema_version": 1,
+  "segment_count": 2,
+  "violations": [],
+  "word_count": 16,
+  "zero_drift": true
+}

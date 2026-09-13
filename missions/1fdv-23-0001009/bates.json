@@ -1,0 +1,18 @@
+{
+  "mode": "derivative-stamping-plan",
+  "original_media_modified": false,
+  "plan": [],
+  "prefix": "1FDV",
+  "schema_version": 1,
+  "start": 1,
+  "validation": {
+    "contiguous": true,
+    "entries": 0,
+    "mode": "derivative-stamping-plan",
+    "original_media_modified": false,
+    "problems": [],
+    "schema_version": 1,
+    "unique_serials": 0
+  },
+  "width": 6
+}

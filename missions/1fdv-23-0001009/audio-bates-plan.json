@@ -1,0 +1,76 @@
+{
+  "lines_per_page": 25,
+  "plan": [
+    {
+      "bates": "1FDV-AUD-0001",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-001",
+      "lines_per_page": 25,
+      "page_end": 1,
+      "page_start": 1,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-001.m4a",
+      "transcript_lines": 0
+    },
+    {
+      "bates": "1FDV-AUD-0002",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-002",
+      "lines_per_page": 25,
+      "page_end": 2,
+      "page_start": 2,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-002.m4a",
+      "transcript_lines": 0
+    },
+    {
+      "bates": "1FDV-AUD-0003",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-003",
+      "lines_per_page": 25,
+      "page_end": 3,
+      "page_start": 3,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-003.m4a",
+      "transcript_lines": 0
+    },
+    {
+      "bates": "1FDV-AUD-0004",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-004",
+      "lines_per_page": 25,
+      "page_end": 4,
+      "page_start": 4,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-004.m4a",
+      "transcript_lines": 0
+    },
+    {
+      "bates": "1FDV-AUD-0005",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-005",
+      "lines_per_page": 25,
+      "page_end": 5,
+      "page_start": 5,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-005.m4a",
+      "transcript_lines": 0
+    },
+    {
+      "bates": "1FDV-AUD-0006",
+      "exhibit_id": "1FDV-23-1009_EX-AUD-006",
+      "lines_per_page": 25,
+      "page_end": 6,
+      "page_start": 6,
+      "pages": 1,
+      "source_path": "audio/EX-AUD-006.m4a",
+      "transcript_lines": 0
+    }
+  ],
+  "prefix": "1FDV-AUD",
+  "schema_version": 1,
+  "validation": {
+    "contiguous": true,
+    "exhibits": 6,
+    "planning_only": true,
+    "problems": [],
+    "schema_version": 1,
+    "sources_modified": false,
+    "total_pages": 6
+  }
+}

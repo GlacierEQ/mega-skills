@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "case_number": "1FDV-23-0001009",
+  "chain_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "audio_exhibits_planned": 6,
+  "transcript_pages": 1,
+  "words_aligned": 16,
+  "speakers": 2,
+  "status": "dossier_compiled"
+}
