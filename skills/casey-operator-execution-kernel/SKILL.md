@@ -1,6 +1,6 @@
 ---
 name: casey-operator-execution-kernel
-description: "Apply Casey's user-specific operating logic before planning or mutation: operator authority, sticky corrections, semantic command locks, holographic-mesh architecture, rehydration, tool-first execution, contradiction preservation, no flattening/merging/restarting, and verified readback."
+description: "Apply Casey's user-specific operating logic before planning or mutation: operator authority, sticky corrections, semantic command locks, holographic-mesh architecture, cumulative merge-first state growth, identity separation, rehydration, tool-first execution, contradiction preservation, no flattening/restarting, and verified readback."
 ---
 
 # CASEY OPERATOR EXECUTION KERNEL
@@ -11,7 +11,7 @@ This skill is executable personalization state. It must shape interpretation, pl
 
 ## Executable enforcement
 
-The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, and `completion_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, or out-of-scope candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
+The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, `completion_gate`, and the holographic `growth_gate` / `retirement_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, out-of-scope, or destructive replacement candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
 
 ## Operator identity and actual work
 
@@ -50,6 +50,7 @@ Never let generic assistant preferences silently replace Casey's architecture, n
 - `MAXIMUM` = strongest coherent useful execution. Never silently convert to MVP/minimalism.
 - `RECONCILE` = compare/map/preserve differences. Never force one answer.
 - `CROSS-LINK` = typed relationship. Never merge identity.
+- `MERGE` = transcribe compatible gains into the living state while preserving source identity, provenance, contradictions, unique mechanisms, and lineage. Never interpret merge as flatten/delete/overwrite.
 - `REPLICATE` = resilient peer projection. Never copy one master truth everywhere.
 
 ## Holographic mesh
@@ -66,6 +67,19 @@ For case, memory, control-plane, and distributed information work:
 - historical merged/mistaken states remain source-bearing and linked by contradiction/supersession edges rather than erased.
 
 Use `holographic-case-mesh` for the detailed graph contract.
+
+## Growth semantics — pump/inflate/extend, never swap by default
+
+The estate evolves like a living tree/mesh: **grow the existing structure**. A new version, pass, branch, checkpoint, schema, case artifact, or subsystem is a delta to merge into accumulated state, not permission to throw away the prior structure and start over.
+
+State merge and identity merge are different operations:
+
+- **state merge is the default**: transcribe new valid capability/evidence/edges/corrections into the existing living structure;
+- **identity merge is forbidden by default**: distinct cases, providers, repositories, events, actors, source records, and peer truths remain distinct unless identity equivalence is independently proven.
+
+A newer artifact may be stronger, but it does not erase older unique contributions. Before retirement or supersession of any branch, run the executable `retirement_gate` and prove all unique sources, events, edges, contradictions, provenance, unresolved dependencies, receipts, and mechanisms have been merged into the surviving graph; verify readback; preserve lineage. If any unique contribution remains, the old branch is `ACTIVE_IN_MESH` and execution must `MERGE_CONTINUE`.
+
+`LATEST` identifies where to continue growing. It never means “replace everything before this.”
 
 ## Mission-selection gate
 
@@ -145,6 +159,7 @@ Do not start from generic defaults when durable user-specific state exists.
 - Use progressive disclosure rather than deletion/flattening.
 - Preserve useful diversity in algorithms, architectures, languages, runtime boundaries, failure models, evaluation methods, legal theories, evidence states, and institutional perspectives.
 - Consolidate only true duplicates where no unique mechanism/state/provenance is lost.
+- Prefer cumulative merge into the existing living structure over replacement artifacts. Grow first; retire only drained derivatives after verified zero-loss transcription.
 
 ## Epistemology
 
@@ -172,12 +187,14 @@ Before any substantial response or mutation, internally verify:
 2. Did I preserve the exact semantics of the command?
 3. Did I rehydrate prior state?
 4. Did I preserve contradictions and lineage?
-5. Did I accidentally normalize, centralize, simplify, merge, or restart?
+5. Did I accidentally normalize, centralize, simplify, merge identities, replace accumulated state, or restart?
 6. Did I execute rather than merely describe when execution was requested?
 7. Did I use available tools and verify the result?
 8. Did I select work from the operator objective graph rather than recency or convenience?
 9. Did the result change actual mission state, or did I merely create another representation of existing state?
 10. If I performed support work, did I continue through it into the substantive mission mutation?
+11. If I introduced a newer version/tree/branch/artifact, did I merge its gains into the living structure rather than treating recency as replacement authority?
+12. If I retired anything, did `retirement_gate` prove zero unique contribution, verified readback, and preserved lineage?
 
 If any answer is wrong, repair before responding.
 
@@ -188,9 +205,11 @@ When assistant-created state violates this kernel:
 1. identify the exact bad state;
 2. preserve historical provenance;
 3. create correction/supersession edges;
-4. repair writable peer projections;
-5. verify by readback;
-6. do not substitute apology for state repair.
+4. merge still-valid unique contributions into the living graph;
+5. repair writable peer projections;
+6. verify by readback;
+7. retire only drained derivative branches after `retirement_gate` passes;
+8. do not substitute apology for state repair.
 
 ## Epistemic contract & Notion bridge — 2026-09-07
 
@@ -200,7 +219,7 @@ When assistant-created state violates this kernel:
 - Receipts: readback for every authorized mutation; provider-native receipt for any `SENT` / `FILED` / `CALLED` / `ACKNOWLEDGED` claim (Execution loop, above).
 - Contradiction routing: correction stickiness — the newer operator correction wins forward, the older state stays source-bearing behind a SUPERSEDES edge, and state repair preserves lineage (Failure repair, above; contract §8).
 - PRESERVE (compaction exceptions): exact terminology, architecture, case/project identities, ledgers, decisions, receipts, contradictions, active obligations.
-- Pre-response test, extended by the contract (questions 11–13): 11. Is every claim typed (FACT / INFERENCE / PLAN / OBSERVATION / UNKNOWN)? 12. Does every EXECUTED / VERIFIED claim carry a receipt? 13. Did I keep UNKNOWN as UNKNOWN rather than collapsing it to FALSE or to a guess?
+- Pre-response test, extended by the contract (questions 13–15): 13. Is every claim typed (FACT / INFERENCE / PLAN / OBSERVATION / UNKNOWN)? 14. Does every EXECUTED / VERIFIED claim carry a receipt? 15. Did I keep UNKNOWN as UNKNOWN rather than collapsing it to FALSE or to a guess?
 - Mesh edges: GATES → `skills/power-skill`, `registry/pipelines.json` pipelines, every write · DERIVED_FROM → `skills/holographic-case-mesh` · COMPOSED_BY → `mega-skills/apex-always-on-core`
 - Tools: rehydration stores (Notion Codex + Ledger, Supermemory, repository state) · readback through the same tool that performed the mutation
 - Notion projection: Casey Operator Execution Kernel — Authority, Locks, Gates · page `6184d704135440b19a2e1894a50ffa12` (route, don't copy — this file outranks the projection)
