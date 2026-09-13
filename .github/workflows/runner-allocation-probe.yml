@@ -10,6 +10,15 @@ permissions:
   contents: read
 
 jobs:
+  self_hosted_mega_skills:
+    runs-on: [self-hosted, mega-skills, macos-x64]
+    timeout-minutes: 2
+    steps:
+      - name: allocation-marker
+        run: |
+          echo runner-assigned-self-hosted-mega-skills
+          uname -m
+
   ubuntu:
     runs-on: ubuntu-latest
     timeout-minutes: 1
