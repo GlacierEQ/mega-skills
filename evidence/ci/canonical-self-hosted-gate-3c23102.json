@@ -1,0 +1,39 @@
+{
+  "schema": "glaciereq.ci.provider-receipt.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "workflow": "Validate Mega Skills Hierarchy",
+  "run_id": 34749813637,
+  "workflow_id": 344170255,
+  "check_suite_id": 94116452686,
+  "validated_source_sha": "3c231020604c277958e760d4ba82dad24a334c2f",
+  "provider": "github-actions",
+  "conclusion": "success",
+  "canonical_blocking_authority": "private-self-hosted-full",
+  "jobs": {
+    "private-self-hosted-full": {
+      "job_id": 103704171451,
+      "conclusion": "success",
+      "runner_id": 21,
+      "runner_name": "glaciereq-mega-skills-mac",
+      "labels": ["self-hosted", "mega-skills", "macos-x64"]
+    },
+    "validate": {
+      "job_id": 103704457287,
+      "conclusion": "success",
+      "runner_id": 21,
+      "runner_name": "glaciereq-mega-skills-mac",
+      "labels": ["self-hosted", "mega-skills", "macos-x64"]
+    },
+    "hosted_probes": {
+      "genius-bridge": {"job_id": 103704171339, "conclusion": "failure", "runner_id": 0},
+      "local-skill": {"job_id": 103704171430, "conclusion": "failure", "runner_id": 0},
+      "regression": {"job_id": 103704171488, "conclusion": "failure", "runner_id": 0},
+      "pyramids": {"job_id": 103704171498, "conclusion": "failure", "runner_id": 0},
+      "hierarchy": {"job_id": 103704171509, "conclusion": "failure", "runner_id": 0},
+      "branch-lifecycle": {"job_id": 103704171546, "conclusion": "failure", "runner_id": 0},
+      "compile": {"job_id": 103704171583, "conclusion": "failure", "runner_id": 0}
+    }
+  },
+  "interpretation": "The post-receipt repository head independently passed the canonical private self-hosted full validation and terminal validate gate. Hosted probes remain independently visible failures with runner_id 0 and are not represented as successful.",
+  "evidence_boundary": "This receipt records GitHub provider-native workflow/job state for exact source SHA 3c231020604c277958e760d4ba82dad24a334c2f."
+}
