@@ -1,0 +1,21 @@
+name: Private Self-Hosted Proof
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/private-self-hosted-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  prove-private-execution:
+    runs-on: [self-hosted, mega-skills, macos-x64]
+    timeout-minutes: 3
+    steps:
+      - name: runtime-proof
+        run: |
+          echo private-repo-self-hosted-execution-ok
+          echo "runner=$RUNNER_NAME"
+          uname -m
