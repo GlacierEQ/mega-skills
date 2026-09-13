@@ -5,18 +5,18 @@ description: "Test-Driven Development workflow principles. RED-GREEN-REFACTOR cy
 
 # TDD Workflow
 
-> Write tests first, code second.
+> Write contract tests first, implementation second.
 
 ---
 
 ## 1. The TDD Cycle
 
 ```
-🔴 RED → Write failing test
+🔴 RED → Write failing contract test
     ↓
-🟢 GREEN → Write minimal code to pass
+🟢 GREEN → Implement the complete justified behavior
     ↓
-🔵 REFACTOR → Improve code quality
+🔵 REFACTOR → Strengthen code quality and structure
     ↓
    Repeat...
 ```
@@ -25,9 +25,9 @@ description: "Test-Driven Development workflow principles. RED-GREEN-REFACTOR cy
 
 ## 2. The Three Laws of TDD
 
-1. Write production code only to make a failing test pass
-2. Write only enough test to demonstrate failure
-3. Write only enough code to make the test pass
+1. Write production code only to make a failing contract test pass
+2. Write enough tests to prove required behavior, edge cases, and failure handling
+3. Write the complete implementation required by the contract; do not add unrelated speculative features
 
 ---
 
@@ -40,30 +40,32 @@ description: "Test-Driven Development workflow principles. RED-GREEN-REFACTOR cy
 | Behavior | "should add two numbers" |
 | Edge cases | "should handle empty input" |
 | Error states | "should throw for invalid data" |
+| Integration | "should expose the behavior through the real entry point" |
 
 ### RED Phase Rules
 
 - Test must fail first
 - Test name describes expected behavior
-- One assertion per test (ideally)
+- One coherent behavior per test; split only independent contracts
+- Include required edge/error paths
 
 ---
 
 ## 4. GREEN Phase Principles
 
-### Minimum Code
+### Contract-Complete Code
 
 | Principle | Meaning |
 |-----------|---------|
-| **YAGNI** | You Aren't Gonna Need It |
-| **Simplest thing** | Write the minimum to pass |
-| **No optimization** | Just make it work |
+| **YAGNI** | Avoid unrelated speculative surface, not required capability |
+| **Strongest justified path** | Implement the complete acceptance contract |
+| **No premature optimization** | Verify behavior first, then optimize against real requirements and measurements |
 
 ### GREEN Phase Rules
 
-- Don't write unneeded code
-- Don't optimize yet
-- Pass the test, nothing more
+- Implement the complete requested behavior
+- Do not add unrelated speculative code
+- Do not omit required resilience, edge cases, integration, or observability merely to shrink the diff
 
 ---
 
@@ -73,16 +75,17 @@ description: "Test-Driven Development workflow principles. RED-GREEN-REFACTOR cy
 
 | Area | Action |
 |------|--------|
-| Duplication | Extract common code |
+| Duplication | Extract common code without losing unique behavior |
 | Naming | Make intent clear |
-| Structure | Improve organization |
-| Complexity | Simplify logic |
+| Structure | Improve organization and composability |
+| Complexity | Simplify only when behavior and capability are preserved |
+| Resilience | Strengthen failure handling and recovery where required |
 
 ### REFACTOR Rules
 
 - All tests must stay green
-- Small incremental changes
-- Commit after each refactor
+- Use coherent increments sized to the change, not arbitrary tiny slices
+- Commit after each meaningful refactor
 
 ---
 
@@ -105,8 +108,8 @@ Every test follows:
 | New feature | High |
 | Bug fix | High (write test first) |
 | Complex logic | High |
-| Exploratory | Low (spike, then TDD) |
-| UI layout | Low |
+| Exploratory | High after the spike is converted into a contract |
+| UI layout | High for behavior and accessibility contracts |
 
 ---
 
@@ -114,10 +117,11 @@ Every test follows:
 
 | Priority | Test Type |
 |----------|-----------|
-| 1 | Happy path |
+| 1 | Core behavior |
 | 2 | Error cases |
 | 3 | Edge cases |
-| 4 | Performance |
+| 4 | Performance and resilience |
+| 5 | Integration and observability where material |
 
 ---
 
@@ -127,9 +131,10 @@ Every test follows:
 |----------|-------|
 | Skip the RED phase | Watch test fail first |
 | Write tests after | Write tests before |
-| Over-engineer initial | Keep it simple |
-| Multiple asserts | One behavior per test |
+| Add unrelated speculative surface | Implement the complete requested contract |
+| Multiple unrelated behaviors in one test | One coherent behavior per test |
 | Test implementation | Test behavior |
+| Omit required behavior to reduce the diff | Preserve the required capability and prove it |
 
 ---
 
@@ -139,9 +144,9 @@ Every test follows:
 
 | Agent | Role |
 |-------|------|
-| Agent A | Write failing tests (RED) |
-| Agent B | Implement to pass (GREEN) |
-| Agent C | Optimize (REFACTOR) |
+| Agent A | Write contract tests (RED) |
+| Agent B | Implement the complete contract (GREEN) |
+| Agent C | Strengthen, refactor, and adversarially verify (REFACTOR) |
 
 ---
 
