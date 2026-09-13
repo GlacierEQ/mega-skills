@@ -156,6 +156,89 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertEqual(result["finalization_kind"], "hard_boundary")
         self.assertFalse(result["continue_required"])
 
+    def test_retirement_gate_keeps_branch_active_while_unique_state_remains(self):
+        result = run_kernel("retirement_gate", {
+            "unique_sources_remaining": 1,
+            "unique_events_remaining": 2,
+            "unique_edges_remaining": 0,
+            "unique_contradictions_remaining": 1,
+            "unique_provenance_remaining": 0,
+            "unique_unresolved_dependencies_remaining": 0,
+            "unique_receipts_remaining": 0,
+            "merged_target_readback_verified": True,
+            "preserves_lineage": True,
+        })
+        self.assertFalse(result["can_retire"])
+        self.assertEqual(result["branch_state"], "ACTIVE_IN_MESH")
+        self.assertEqual(result["action"], "merge_continue")
+        self.assertEqual(result["total_unique_remaining"], 4)
+
+    def test_retirement_gate_allows_only_drained_lineage_preserved_branch(self):
+        result = run_kernel("retirement_gate", {
+            "unique_sources_remaining": 0,
+            "unique_events_remaining": 0,
+            "unique_edges_remaining": 0,
+            "unique_contradictions_remaining": 0,
+            "unique_provenance_remaining": 0,
+            "unique_unresolved_dependencies_remaining": 0,
+            "unique_receipts_remaining": 0,
+            "merged_target_readback_verified": True,
+            "preserves_lineage": True,
+        })
+        self.assertTrue(result["can_retire"])
+        self.assertEqual(result["branch_state"], "RETIRED_DERIVATIVE")
+        self.assertEqual(result["action"], "retire_with_lineage")
+
+    def test_mission_select_rejects_replacement_that_would_drop_unique_state(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "specialized", "lane": "case"},
+            "continuation_hydrated": True,
+            "candidates": [
+                {
+                    "id": "swap-tree", "lane": "case",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "replace_existing": True,
+                    "retirement_check": {
+                        "unique_sources_remaining": 1,
+                        "merged_target_readback_verified": True,
+                        "preserves_lineage": True,
+                    },
+                    "operator_impact": 1.0,
+                },
+                {
+                    "id": "grow-tree", "lane": "case",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "merge_extends_existing_state": True,
+                    "continuation_valid": True,
+                    "operator_impact": 0.8,
+                },
+            ],
+        })
+        self.assertEqual(result["selected"]["id"], "grow-tree")
+        rejected = {item["id"]: item["reasons"] for item in result["rejected"]}
+        self.assertIn("replacement_would_discard_unique_state", rejected["swap-tree"])
+
+    def test_completion_gate_blocks_unproven_replacement(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": True,
+            "verified": True,
+            "verification_refs": ["receipt-1"],
+            "artifact_only": False,
+            "support_only": False,
+            "authorized_executable_action_exists": False,
+            "replacement_attempted": True,
+            "retirement_check": {
+                "unique_events_remaining": 1,
+                "merged_target_readback_verified": True,
+                "preserves_lineage": True,
+            },
+        })
+        self.assertFalse(result["can_finalize"])
+        self.assertIn("replacement_would_discard_unique_state", result["reasons"])
+        self.assertEqual(result["retirement"]["branch_state"], "ACTIVE_IN_MESH")
+
 
 if __name__ == "__main__":
     unittest.main()
