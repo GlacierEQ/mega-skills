@@ -1,0 +1,26 @@
+{
+  "stream": "deep-progress-forge",
+  "run_sequence": 27,
+  "source_commit": "8296653d44f72d95dcd6c1b5fa1d964e99da8e25",
+  "buildkite_build": 524,
+  "buildkite_status": "failure",
+  "host": "KcBs-MacBook-Air.local",
+  "reproduction": {
+    "provider_continuity_preflight": "PASS",
+    "validate_deep_progress_provider_ci": "PASS",
+    "provider_proof_lease": "PASS",
+    "compileall": "PASS",
+    "validate_hierarchy": "PASS",
+    "validate_genius_mastery_bridge_freshness": "PASS",
+    "generate_mega_skill_pyramids_check": "PASS",
+    "unittest_discover": "PASS: 127 tests, 1 skipped",
+    "local_skill_tests": "PASS: 7 tests",
+    "branch_lifecycle_tests": "PASS: 18 tests",
+    "mega_mission_receipt_hashes": "PASS: 13 manifest entries",
+    "tracked_mutation_guard": "PASS: only transient dry-run receipt observed and restored",
+    "git_diff_exit_code": 0
+  },
+  "objective_state_delta": "Every repository-controlled command in Buildkite build 524's provider-continuity preflight and mega-skills-contract lanes was reproduced against the exact source commit on the restored Operator host and passed. Buildkite 524 remains provider-red, so the remaining failure domain is Buildkite execution environment/configuration or a non-reproduced provider-only condition rather than these repository validation commands.",
+  "truth_boundary": "This receipt does not claim Buildkite green and does not identify the provider-only failing condition because authenticated Buildkite job logs are still unavailable.",
+  "next_frontier": "Use authenticated Buildkite job output to identify the provider-only failure, with local parity now established as a control; separately repair private-repository GitHub Actions eligibility through an admin-capable settings/billing surface."
+}
