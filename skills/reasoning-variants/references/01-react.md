@@ -32,21 +32,24 @@ You tune it by:
 
 - `system_prompt` — strategy-specific preamble
 - `max_iterations` — default 10; raise to 20 for complex tool chains
-- Tool allowlist — keep tight; ReAct picks worse when overloaded
+- Tool allowlist — keep it task-relevant and complete; remove only irrelevant or unauthorized tools, not mission-relevant capability
 
-## Minimal Prompt Variant
+## Compact Transport Prompt Variant
+
+This is a transport-efficient prompt, not a capability ceiling. Expand the prompt with task-specific constraints, evidence requirements, and verification whenever the mission needs them.
 
 ```
 You will solve the task step by step using available tools.
 
 For each step:
-1. Reason briefly about what to do next.
-2. Call exactly one tool.
-3. Observe the result.
-4. Continue until you can call mark_task_complete.
+1. Reason about what to do next and preserve material rationale.
+2. Call the tool that advances the mission with the strongest available evidence.
+3. Observe and record the result.
+4. Continue until the requested capability is complete and verified.
 
-Never invent tool outputs. If a tool fails, surface the error and choose
-a different tool or a smaller step.
+Never invent tool outputs. If a tool fails, surface the error, preserve the evidence,
+and choose the strongest justified recovery path. Use a narrower diagnostic step only
+when it improves fault isolation; do not turn local narrowing into mission reduction.
 ```
 
 ## Debugging
