@@ -1,0 +1,95 @@
+{
+  "schema": "glaciereq.external-capability-binding.v1",
+  "binding_id": "psysoc-x-canonical-akos",
+  "capability_id": "stone-psysoc-x",
+  "name": "PSYSOC-X",
+  "state": "SOURCE_BOUND",
+  "authority": {
+    "repository": "GlacierEQ/AKOS",
+    "manifest_path": "stones/psysoc-x/stone.json",
+    "manifest_blob_sha": "4a8bb311153c436941d7c65ed7d34d4a72c2dd47",
+    "contract_path": "stones/psysoc-x/STONE.md",
+    "contract_blob_sha": "66f02c05326ad8434648394b73f458ed91c9e9fb",
+    "engine_path": "infinity_stones/psysoc_x.py",
+    "engine_blob_sha": "2cb83cc713099fe1f794efbd9c1488cfffb90e28",
+    "models_path": "infinity_stones/models.py",
+    "models_blob_sha": "8d5790621f0e93d506acc8267b8a134fcb6d3c6e",
+    "verification_receipt_path": "receipts/2026-08-02_psysoc-x_v0.1.0_promotion.json",
+    "verification_receipt_blob_sha": "4120afb3907a673a28d938b97af72c09c659c2e7",
+    "tested_revision": "5b960219635fcd95a9a98a2d7c1bfc5d19111c84",
+    "evidence_level": "TEST"
+  },
+  "presentation_projection": {
+    "repository": "GlacierEQ/job-application",
+    "path": "site-v15/data/psysoc-x-profiles.json",
+    "blob_sha": "f3dd1f22ae6cf99167ba7ae920b73c5d572d2d61",
+    "schema": "glaciereq.psysoc-x.presentation-profiles.v15",
+    "layers": [
+      "recruiter",
+      "master",
+      "machine",
+      "mesh"
+    ]
+  },
+  "activation": {
+    "aliases": [
+      "PSYSOC-X",
+      "psysoc x",
+      "human calibration stone"
+    ],
+    "trigger": "Human-facing communication, README and portfolio rendering, audience calibration, progressive disclosure, title and density selection, skepticism handling, emotional-weight calibration, or any task where the same verified facts must be expressed differently for different readers.",
+    "core_law": "Understand human reception without exploiting human vulnerability.",
+    "expression_law": "Fixed truth. Adaptive expression.",
+    "truth_invariant": "The sequence, density, framing, and style of truth may change; the truth, evidence state, uncertainty, dignity, provenance, and reader agency may not."
+  },
+  "readme_projection_contract": {
+    "stable_order": [
+      "recruiter",
+      "master",
+      "machine",
+      "mesh"
+    ],
+    "recruiter": {
+      "audience": "recruiters, hiring managers, collaborators, and normal people",
+      "purpose": "Answer what this is, what it does, why it matters, and why the reader should care quickly enough to earn deeper attention.",
+      "density": "dynamic-low-to-medium",
+      "stopping_point": "must stand alone as a complete useful overview"
+    },
+    "master": {
+      "audience": "masters of the trade, senior engineers, domain experts, and serious technical reviewers",
+      "purpose": "Expose architecture, mechanism, technical choices, tradeoffs, failure behavior, evidence, limits, security/reliability implications, and why the work matters technically.",
+      "density": "dynamic-medium-to-high",
+      "stopping_point": "must support serious technical diligence without requiring the machine layer"
+    },
+    "machine": {
+      "audience": "agents, retrieval systems, tooling, compilers, and future automated operators",
+      "purpose": "Expose deterministic identity, schemas, entrypoints, claims, evidence, hashes, authority limits, lifecycle state, and reproducibility hooks.",
+      "density": "structured-maximum",
+      "stopping_point": "machine-consumable contract; no decorative prose requirement"
+    },
+    "mesh": {
+      "audience": "humans and machines exploring the wider GlacierEQ system",
+      "purpose": "Expose typed relationships, composition, dependencies, capability enhancement, lineage, current-versus-aspirational state, blockers, and the additional value created by connection.",
+      "density": "dynamic-medium-to-high",
+      "stopping_point": "only include relationships that materially improve understanding or capability"
+    }
+  },
+  "style_contract": {
+    "titles": "Use specific, clever, project-native titles that carry information and invite attention; never use cleverness that obscures meaning.",
+    "length": "Use the shortest form that preserves the reader's needed understanding and the longest form justified by technical or evidentiary value. Do not optimize for uniform length.",
+    "interest": "Keep prose alive, concrete, and human. Avoid sterile catalog language, hype, canned marketing, and ornamental verbosity.",
+    "progressive_disclosure": "Every layer must be a valid stopping point. A reader may stop after Recruiter, Master, Machine, or Mesh without being misled by what they did not read.",
+    "humor": "Contextual only. Remove it where stakes, privacy, dignity, or technical seriousness make it counterproductive.",
+    "skepticism": "Move limits and reproducible proof earlier as skepticism rises.",
+    "evidence": "Presentation may never promote a claim beyond its source evidence state."
+  },
+  "forbidden": [
+    "copying PSYSOC-X into Mega-Skills as a second authority",
+    "diagnosis or hidden-trait inference",
+    "covert persuasion or vulnerability exploitation",
+    "fact mutation",
+    "uncertainty suppression",
+    "uniform README length as a formatting goal",
+    "clever titles that sacrifice semantic clarity"
+  ]
+}
