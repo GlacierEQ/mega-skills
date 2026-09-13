@@ -14,14 +14,14 @@ Use this Combo Skill when a failing test harness, compiler error, or runtime exc
 
 ## Incremental value
 
-This Combo Skill establishes an autonomous self-healing execution loop. It combines stack trace parsing, AST chunk isolation with `ApexEpistemicChunker`, minimal diff synthesis, and repeated regression verification without human intervention.
+This Combo Skill establishes an autonomous self-healing execution loop. It combines stack trace parsing, AST chunk isolation with `ApexEpistemicChunker`, strong and smart diff synthesis, and repeated regression verification without human intervention.
 
 ## Member contract
 
 | Order | Member ID | Kind | Required | Role in this Combo | Receives | Must produce | Local validation |
 |---:|---|---|---|---|---|---|---|
 | 1 | `mission-contract` | Skill | Yes | Set test command and repair attempt bounds | Repair mandate | `MISSION.md` | Test command and attempt cutoff are explicit |
-| 2 | `ast-repair-core` | Skill | Yes | Parse traceback, extract AST, and apply patch | `MISSION.md` and failure trace | `ast-repair-execution-record.json` | Minimal surgical patch applied to disk |
+| 2 | `ast-repair-core` | Skill | Yes | Parse traceback, extract AST, and apply patch | `MISSION.md` and failure trace | `ast-repair-execution-record.json` | Strong and smart surgical patch applied to disk |
 | 3 | `quality-gate` | Skill | Yes | Verify re-executed test suite passes green | Test outputs and diffs | Gate record | 100% green test assertions on patched tree |
 
 ## Ordered execution
@@ -43,7 +43,7 @@ The Combo must record all failing tracebacks, isolated AST chunk coordinates, mo
 
 ## Quality gates
 
-The Combo is complete only when the failing test suite passes 100% green on hardware, the diff is minimal and idiomatic, and `closed-loop-repair-record.md` is emitted.
+The Combo is complete only when the failing test suite passes 100% green on hardware, the diff is strong, smart, and idiomatic, and `closed-loop-repair-record.md` is emitted.
 
 ## Compound output
 

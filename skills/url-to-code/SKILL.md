@@ -17,7 +17,7 @@ Read `../index/SKILL.md`, `../../references/critical-overrides.md`, and relevant
 4. Inspect the DOM and visible behavior for text, links, controls, component states, images, icons, fonts, colors, spacing, dimensions, breakpoints, and interaction behavior.
 5. Test important interactions one at a time and return to the starting state between tests. Preserve evidence for changed states.
 6. Save permitted source assets locally. Do not hotlink them in the final result. When an asset cannot be obtained, use an available generation tool or an appropriate open replacement and disclose the substitution.
-7. Inspect the target repository and use its existing framework and conventions. React is not required. If no app exists, create the smallest suitable frontend supported by the harness; plain HTML/CSS/JavaScript is acceptable.
+7. Inspect the target repository and use its existing framework and conventions. React is not required. If no app exists, create the strong and smart frontend supported by the harness; plain HTML/CSS/JavaScript is acceptable.
 8. Build only from captured evidence. Implement the visible desktop/mobile layouts and primary interactions without inventing unrelated design choices or backend behavior.
 9. Run and inspect the local implementation with a real browser. Compare the same viewport and states against the source.
 10. Run `../design-qa/SKILL.md`, save `design-qa.md`, fix blocking and high-impact mismatches, and hand off only after `final result: passed` or a clearly documented verification blocker.

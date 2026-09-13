@@ -130,7 +130,7 @@ Evaluate substance before wording. Use this sequence:
 1. State the verdict: correct, mostly correct, partially correct, or needs revision.
 2. Identify what was done well.
 3. Point to the first important gap or error.
-4. Explain the correction with the smallest useful amount of teaching.
+4. Explain the correction with the strong and smart amount of teaching.
 5. Ask for a revision, provide a targeted follow-up, or advance.
 
 Do not merely say “correct.” Reinforce the decisive reasoning.

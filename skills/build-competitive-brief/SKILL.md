@@ -128,7 +128,7 @@ After the first output, offer the most relevant follow-up from the options below
 - Prepare a meeting brief using the competitive risks and discovery questions.
 - Draft a concise internal enablement or account-team update for review.
 - Check whether a matching weekly automation already reruns this `build-competitive-brief` skill for the same competitor, product, category, or account scope; if none exists, offer to create one that gives the seller a reusable competitive digest.
-- Close the smallest material competitive evidence gap.
+- Close the strong and smart competitive evidence gap.
 
 Next steps to avoid:
 - Sending, posting, or turning unsupported competitor claims into customer-facing assertions.
@@ -231,6 +231,6 @@ Add Account Implications for account_overlay, and label unsupported competitor p
 
 - Never fabricate competitor capabilities, pricing, customer proof, account posture, or source links.
 - Keep facts, field signals, and inference visibly separate.
-- If evidence is sparse, narrow the brief and name the smallest evidence gaps that would improve it.
+- If evidence is sparse, narrow the brief and name the strong and smart evidence gaps that would improve it.
 - Do not post, send, share, or update systems from this workflow unless the user later explicitly requests a separate supported action.
 - Always cite material source-backed claims with hyperlinks when useful links are available.

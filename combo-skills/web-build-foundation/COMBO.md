@@ -14,7 +14,7 @@ Use this Combo when a web experience needs an evidence-led route from repository
 
 ## Incremental value
 
-The selected members each own a distinct method. This Combo adds the ordered handoff from source-of-truth discovery to visual and implementation decisions, then to the smallest justified full-stack escalation and a reproducible verification receipt. No member independently owns that complete web-build route.
+The selected members each own a distinct method. This Combo adds the ordered handoff from source-of-truth discovery to visual and implementation decisions, then to the strong and smart full-stack escalation and a reproducible verification receipt. No member independently owns that complete web-build route.
 
 ## Member contract
 

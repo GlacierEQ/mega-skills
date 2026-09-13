@@ -21,7 +21,7 @@ Use this skill to create **meaningful, maintainable tests**, not to maximize a c
 8. **Check mutation value.** When tooling exists, run mutation testing or targeted fault injection against critical tests. Investigate surviving mutants, but do not chase an arbitrary mutation score at the expense of clear tests. Add a regression test for each meaningful surviving defect.
 9. **Route Tower work.** If tests touch a Tower floor, language lane, registry, exhibit, proof class, generated artifact, compiler, hardware gate, or polyglot interface, load `tower-of-babel` and follow its required sequence: preflight, source-of-truth update, exhibits/proof gate, validate, generate, tests, build, integrity verification, and receipt.
 10. **Enforce and release.** Update CI or repository policy only after the baseline and migration path are explicit. Prefer ratcheting: never lower an existing threshold; allow a temporary scoped exception only with owner, expiration, and debt record. Produce a test-generation receipt and identify remaining untested risk.
-11. **Observe.** Track flaky tests, slow tests, false confidence, coverage holes, mutation survivors, and production regressions. Improve the smallest owning layer and add a regression fixture before broadening generation.
+11. **Observe.** Track flaky tests, slow tests, false confidence, coverage holes, mutation survivors, and production regressions. Improve the strong and smart owning layer and add a regression fixture before broadening generation.
 
 ## Test selection matrix
 

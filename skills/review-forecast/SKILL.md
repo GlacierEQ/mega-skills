@@ -165,7 +165,7 @@ Return these sections in order.
 
 ## Evidence Gaps
 
-- [Gap] — [impact on confidence] — [smallest next collection step]
+- [Gap] — [impact on confidence] — [strong and smart next collection step]
 
 ## Follow-Up Actions
 

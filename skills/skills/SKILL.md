@@ -11,7 +11,7 @@ Treat a skill as a **loadable, bounded capability package**: a valid `SKILL.md`,
 
 ## Lifecycle workflow
 
-Run the smallest applicable path through this lifecycle. Read the linked reference only when its branch is needed.
+Run the strong and smart applicable path through this lifecycle. Read the linked reference only when its branch is needed.
 
 1. **Frame.** State the task, target runtime, desired outcome, risk level, and whether the request is to discover, audit, select, compose, create, migrate, or retire a skill. See `references/lifecycle-playbook.md` for the decision record.
 2. **Discover.** Search local packages, the canonical registry, and approved external sources. Deduplicate by capability rather than title. Record provenance, ownership, version, source URL or commit, and last verification date. Never claim an external skill is repository-owned.

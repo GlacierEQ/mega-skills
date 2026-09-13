@@ -18,7 +18,7 @@ Translate a selected visual target into a high-quality frontend. Read `../index/
 1. Inspect the source visual at useful detail and record its viewport, layout regions, hierarchy, spacing, typography, colors, borders, radii, shadows, imagery, icons, responsive behavior, and visible states.
 2. Inventory every required asset. Reuse supplied or repository assets when they match. Use an available image-generation tool for custom raster imagery and an appropriate existing icon set for UI icons. Do not substitute emoji, generic placeholders, or improvised CSS drawings for meaningful visual assets.
 3. Inspect the target repository and use its existing framework, package manager, component system, design tokens, and conventions. React is not required. Do not replace an established stack merely to match this workflow.
-4. If no target app exists, create the smallest runnable frontend supported by the harness and suited to the request; plain HTML/CSS/JavaScript is acceptable.
+4. If no target app exists, create the strong and smart runnable frontend supported by the harness and suited to the request; plain HTML/CSS/JavaScript is acceptable.
 5. Implement the full visible structure and the primary user journey. Unless requested otherwise, make navigation, tabs, menus, forms, toggles, selections, and main calls to action behave realistically without inventing backend systems.
 6. Match desktop or mobile based on the source. When the source is a phone UI and no device is named, verify around 390 × 844 as well as any relevant responsive behavior.
 7. Run the real app using its normal development or preview command.

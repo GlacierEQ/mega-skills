@@ -2,7 +2,7 @@
 
 ## Mission
 
-Autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses.
+Autonomous closed-loop code diagnosis, AST traceback localization, strong and smart surgical patching, and regression verification across estate test harnesses.
 
 ## Compounding structure
 

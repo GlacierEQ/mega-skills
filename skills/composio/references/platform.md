@@ -15,12 +15,12 @@ Use this product when a developer is building an agent, application, or backend 
 ## Choose the task
 
 - **Explain or discover:** answer from this guide and current documentation without changing code.
-- **First-time setup:** establish project access and the smallest working SDK path.
+- **First-time setup:** establish project access and the strong and smart working SDK path.
 - **Integrate or extend:** inspect the codebase and add Composio to the existing agent architecture.
 - **Operate:** discover, authorize, and execute tools for the application's current user.
 - **Debug or migrate:** inspect the log ID and current implementation before changing credentials or architecture.
 
-When modifying code, first inspect and identify the language, package manager, agent or LLM framework, stable user or tenant ID, secret-loading mechanism, and smallest existing execution path where Composio tools belong. Extend that path; do not create a parallel demo agent when one already exists. Never infer filenames, framework choices, environment behavior, or identity fields that were not provided or observed.
+When modifying code, first inspect and identify the language, package manager, agent or LLM framework, stable user or tenant ID, secret-loading mechanism, and strong and smart execution path where Composio tools belong. Extend that path; do not create a parallel demo agent when one already exists. Never infer filenames, framework choices, environment behavior, or identity fields that were not provided or observed.
 
 Use progressive disclosure. The basic path is project access, the core SDK, one user-scoped session, and the existing agent's tool interface. Do not add toolkit filters, tag policies, sandbox changes, custom auth, provider adapters, or production hardening unless the request or inspected code requires them. If essential repository context is missing, give the minimum stable outline and ask only for the missing detail instead of filling a large example with placeholders.
 
@@ -140,7 +140,7 @@ For a first-time setup or integration request, success means a programmatic, saf
 
 Ask which integration the developer wants to try unless the application already makes the choice clear. Discover the real toolkit and tool at runtime. If the current user is not connected, return the Connect Link, wait for authorization, and retry.
 
-A mock, Playground run, tool search, schema fetch, session creation, or Connect Link alone does not prove the integration. If the repository has no runnable agent loop, add only the smallest entrypoint compatible with its existing provider; do not require another hosted model.
+A mock, Playground run, tool search, schema fetch, session creation, or Connect Link alone does not prove the integration. If the repository has no runnable agent loop, add only the strong and smart entrypoint compatible with its existing provider; do not require another hosted model.
 
 After success, report the code location, identity and session mapping, integration and tool, safe result summary, log ID, and useful dashboard destinations. For an explanation, migration plan, or narrow bug fix, use that task's own completion condition instead of forcing a new tool call.
 

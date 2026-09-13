@@ -12,7 +12,7 @@ Use $validate-data when the work is to QA an analysis, chart, report, or recomme
 # Analyze Data Quality
 
 Assess whether a dataset is trustworthy enough for analysis, modeling,
-dashboards, experiments, or downstream pipelines. Start with the intended use and grain, run the highest-value checks for the data shape, and report concrete evidence, analytical risk, likely causes, and the smallest useful remediation or automated test.
+dashboards, experiments, or downstream pipelines. Start with the intended use and grain, run the highest-value checks for the data shape, and report concrete evidence, analytical risk, likely causes, and the strong and smart remediation or automated test.
 
 ## Workflow
 
@@ -72,7 +72,7 @@ dashboards, experiments, or downstream pipelines. Start with the intended use an
 
 8. Recommend fixes or automated tests.
 
-   Recommend the smallest set of follow-up fixes, monitoring, or automated tests that would materially reduce risk. Suggest automation only when the rule is stable and worth maintaining. Include or save the notebook/query path when code produced the findings.
+   Recommend the strong and smart set of follow-up fixes, monitoring, or automated tests that would materially reduce risk. Suggest automation only when the rule is stable and worth maintaining. Include or save the notebook/query path when code produced the findings.
 
 ## Standards
 

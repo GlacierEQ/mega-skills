@@ -74,7 +74,7 @@ Use public research only when it sharpens strategic priorities, executive wordin
   - Risk: `incidents avoided x average cost per incident x confidence factor`
   - Revenue: `impacted revenue pool x improvement rate x confidence factor`
   - Time to Market: `cycle-time reduction x value of earlier release or deployment`
-- If required inputs are missing, keep the math structural: show the formula, mark missing inputs, state what can be said directionally, and list the smallest questions that would make it finance-ready.
+- If required inputs are missing, keep the math structural: show the formula, mark missing inputs, state what can be said directionally, and list the strong and smart questions that would make it finance-ready.
 
 ### 5. Draft the decision-useful package
 
@@ -85,7 +85,7 @@ Use public research only when it sharpens strategic priorities, executive wordin
 ### Next Step Options
 
 After the first output, offer the most relevant follow-up from the options below. Offer one clear transition, not a menu. Suggest ONLY these unless you are very confident another option is more useful:
-- Improve the case using the user's guidance or close the smallest material validation gap.
+- Improve the case using the user's guidance or close the strong and smart material validation gap.
 - Produce a customer-ready executive summary or value narrative for review.
 - Produce a champion talk track or internal account-team note for review.
 - Build a value-model table or spreadsheet-ready model structure.
@@ -146,7 +146,7 @@ Use this structure for the default package.
 - **Analogous / public support:** [Evidence, clearly not customer proof]
 
 ## Caveats and Open Questions
-- [Most important validation gap and smallest next collection step]
+- [Most important validation gap and strong and smart next collection step]
 
 ---
 
@@ -165,4 +165,4 @@ Use this structure for the default package.
 
 ## Failure Handling
 
-If no credible customer/workflow anchor exists, state the blocker and ask for the smallest missing input. If optional lanes are unavailable, continue with the strongest grounded evidence and make the resulting confidence limits visible.
+If no credible customer/workflow anchor exists, state the blocker and ask for the strong and smart missing input. If optional lanes are unavailable, continue with the strongest grounded evidence and make the resulting confidence limits visible.

@@ -70,7 +70,7 @@ Do not search for causes until the size, timing, and scope of the pattern are ve
 
 ### 4. Choose The Diagnostic Plan
 
-Choose the smallest set of cuts and checks likely to explain the pattern or strengthen confidence.
+Choose the strong and smart set of cuts and checks likely to explain the pattern or strengthen confidence.
 
 Choose driver dimensions from the metric's operating logic, business context, and source shape. Prioritize drivers the business usually monitors or can act on, not every field available in the source. If the relevant drivers are unclear, use current context, a named semantic layer, or $gather-business-context to understand how the business explains the metric and what changed around the analysis period.
 

@@ -164,4 +164,4 @@ Return these sections in order.
 
 ## Failure Handling
 
-If the target, peer set, or call evidence cannot be resolved, state the smallest missing input and offer concrete candidates when available. If evidence is sparse, return the limited memo with supported observations, explicit coverage gaps, and the next bounded search that would improve it.
+If the target, peer set, or call evidence cannot be resolved, state the strong and smart missing input and offer concrete candidates when available. If evidence is sparse, return the limited memo with supported observations, explicit coverage gaps, and the next bounded search that would improve it.

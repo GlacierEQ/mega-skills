@@ -40,7 +40,7 @@ After the first output, offer the most relevant follow-up from the options below
 - Draft an alternate outreach version for a different stakeholder or channel.
 - Hand the target to meeting prep or deal strategy when an active conversation or motion exists.
 - Create a concise research brief or internal account-team note after the content is reviewed.
-- Close the smallest material evidence gap that would change the outreach approach.
+- Close the strong and smart material evidence gap that would change the outreach approach.
 
 Next steps to avoid:
 - Sending outreach, creating external drafts, or writing CRM without a separate explicit request.

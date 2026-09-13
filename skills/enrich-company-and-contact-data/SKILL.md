@@ -48,14 +48,14 @@ Start with the category that owns the requested fields, then attempt only additi
 These enrichment-specific steps modify the corresponding default workflow stages in the index skill. Continue the remaining default stages, including the first output and proposed next steps.
 
 - 1. Clarify and Gather Context
-    - Resolve the smallest useful mode, entity scope, task shape, requested fields, ranking rule, and result limit.
+    - Resolve the strong and smart mode, entity scope, task shape, requested fields, ranking rule, and result limit.
     - If the anchor is ambiguous, make at most two narrow source calls to surface concrete candidates, then ask the user to choose before deeper enrichment. When two or three concrete modes, entities, or candidates are available, use `ask_user_input()`; otherwise ask one narrow text question.
 - 2. First Draft
     - Start from the user-defined working set or the canonical source for the request, then retrieve only evidence that materially improves the result.
     - When the selected connected Sales Intelligence provider is ZoomInfo, load `zoominfo` before provider-specific search, enrichment, intent, similarity, or recovery. When it is Apollo, load `apollo`; apply Apollo v2-specific guidance only after verifying app version 2 or later.
     - For broad discovery, search before heavy enrichment and enrich only the final shortlist unless the user explicitly asks for exhaustive treatment.
     - Verify hard filters before calling a row qualified. Put close but unsupported candidates in Near Matches, Unclear, or Excluded.
-    - Render the smallest useful table or shortlist, with field-level clickable source links, confidence, and visible gaps.
+    - Render the strong and smart table or shortlist, with field-level clickable source links, confidence, and visible gaps.
 
 ## Overall Rules
 
@@ -80,7 +80,7 @@ Every mode must include a compact `## Sources & Coverage` section before propose
 After the first output, offer the most relevant follow-up from the options below. Offer one clear transition, not a menu. Suggest ONLY these unless you are very confident another option is more useful:
 - Export the results to a spreadsheet with the visible evidence, confidence, and unresolved fields preserved.
 - Prepare reviewed updates to the source of truth, such as CRM records, for missing or corrected fields.
-- Verify near matches, ambiguous identities, or the smallest material coverage gap.
+- Verify near matches, ambiguous identities, or the strong and smart material coverage gap.
 - Refine the filters, ICP rule, requested fields, or result limit using the user's guidance.
 - Hand a qualified shortlist to account prioritization or company research when the user wants the next selling action.
 

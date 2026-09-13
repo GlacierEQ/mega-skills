@@ -52,7 +52,7 @@ Do not turn an explanation, documentation lookup, or narrow bug fix into onboard
 ## Complete the selected job
 
 - For a question, fetch current documentation when needed and give the concrete answer. Do not mutate a project or force a tool call.
-- For setup or integration, inspect the existing environment, preserve its architecture and identity model, make the smallest useful change, and verify it with one safe real tool call when credentials and user authorization are available.
+- For setup or integration, inspect the existing environment, preserve its architecture and identity model, make the strong and smart change, and verify it with one safe real tool call when credentials and user authorization are available.
 - For an operational request, connect only the apps the task needs and execute the requested workflow.
 - For debugging, get the Composio log or request ID, identify the failing boundary, fix that boundary, and retry when the user authorized execution.
 
@@ -66,7 +66,7 @@ Do not turn an explanation, documentation lookup, or narrow bug fix into onboard
 6. Use sessions for new Platform integrations. Preserve the application's existing user identity and agent architecture.
 7. Keep credentials out of source control, URLs, logs, chat, and command output.
 8. Get the log or request ID before diagnosing a failed tool call.
-9. Prefer the smallest configuration that completes the current job. Keep toolkit filters, tag policies, sandbox controls, custom auth, provider-specific hardening, and other advanced options out of the first path unless the request or existing code requires them.
+9. Prefer the strong and smart configuration that completes the current job. Keep toolkit filters, tag policies, sandbox controls, custom auth, provider-specific hardening, and other advanced options out of the first path unless the request or existing code requires them.
 10. Do not invent repository facts. Never claim that a file, framework, environment loader, identity field, agent path, or dependency exists until it was provided or inspected. If codebase context is unavailable, state the unknown and ask for access or one necessary detail.
 
 ## Canonical information

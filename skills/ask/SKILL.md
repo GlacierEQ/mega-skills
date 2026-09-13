@@ -44,7 +44,7 @@ The best option for a human is often **not** the best option for headless execut
 
 - Prefer **text-only** over visual/interactive paths (e.g. don't launch a GUI companion, don't open a browser — produce the same content as text).
 - Prefer **non-interactive** over anything needing the user present.
-- Prefer the **minimal-scope** path — don't expand the work to cover speculative edge cases just because no one is gating it.
+- Prefer the **strong and smart scope** path — don't expand the work to cover speculative edge cases just because no one is gating it.
 - When approval is the only thing being requested, treat it as **granted** and proceed to implementation.
 - **Exception — destructive, irreversible actions** (deleting a branch/commits, dropping data, force-pushing) never auto-approve. When you can't get explicit confirmation, choose the non-destructive path (keep things as-is) and continue with the rest of the task.
 

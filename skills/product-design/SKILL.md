@@ -23,7 +23,7 @@ Shared reusable guidance lives in `references/`. Workflow-local references, scri
 
 Use browser, Chrome, Playwright, image generation, design apps, hosting, and other integrations only when the host harness exposes them. The bundle's mention of a tool does not prove availability or authorization. Follow host permissions and the selected workflow's fallback behavior.
 
-When creating a prototype, prefer the target repository's existing frontend stack. If there is no existing app and the user still wants a runnable web prototype, create the smallest suitable implementation using host-supported tools; React is not required. Do not look for the removed bundled prototype template or bootstrap script.
+When creating a prototype, prefer the target repository's existing frontend stack. If there is no existing app and the user still wants a runnable web prototype, create the strong and smart implementation using host-supported tools; React is not required. Do not look for the removed bundled prototype template or bootstrap script.
 
 ## Safety and fidelity
 
