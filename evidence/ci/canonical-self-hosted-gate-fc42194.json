@@ -1,0 +1,49 @@
+{
+  "schema": "glaciereq.ci.provider-receipt.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "workflow_run_id": 34757557805,
+  "validated_sha": "fc42194b43b99af66fea0e199d80bdf96acdd68d",
+  "private_self_hosted_full": {
+    "job_id": 103724465891,
+    "conclusion": "success",
+    "runner_name": "glaciereq-mega-skills-mac",
+    "runner_version": "2.337.0",
+    "machine_name": "KcBs-MacBook-Air",
+    "python": "3.14.7",
+    "terminal_marker": "MEGA_SKILLS_CANONICAL_SELF_HOSTED_VALIDATION=PASS"
+  },
+  "canonical_validate": {
+    "job_id": 103724989759,
+    "conclusion": "success"
+  },
+  "validation": {
+    "recursive_hierarchy": "passed",
+    "genius_mastery_remote_verified": true,
+    "genius_mastery_freshness_verified": true,
+    "atomic_skills": 719,
+    "compound_skills": 36,
+    "mega_skills": 32,
+    "unresolved_owned_references": 0,
+    "compound_cycles": 0,
+    "regression_tests": 127,
+    "regression_skipped": 1,
+    "local_skill_tests": 7,
+    "branch_lifecycle_tests": 18,
+    "receipt_manifest_entries_sha256_verified": 13
+  },
+  "hosted_probe_results": {
+    "pyramids": "failure",
+    "local-skill": "failure",
+    "hierarchy": "failure",
+    "regression": "failure",
+    "branch-lifecycle": "failure",
+    "compile": "failure",
+    "genius-bridge": "failure"
+  },
+  "mission_boundary": {
+    "support_status": "SUPPORT_VERIFIED",
+    "mission_state_changed_by_validation": false,
+    "completion_eligible_from_validation": false,
+    "support_only": true
+  }
+}
