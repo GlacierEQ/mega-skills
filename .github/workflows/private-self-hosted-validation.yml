@@ -1,0 +1,75 @@
+name: Private Self-Hosted Full Validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/private-self-hosted-validation.yml'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'skills/**'
+
+permissions:
+  contents: read
+
+jobs:
+  mega-skills-contract:
+    runs-on: [self-hosted, mega-skills, macos-x64]
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Full validation parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$GITHUB_SHA"
+          echo "VALIDATION_SHA=$actual"
+          python3 --version
+          python3 -m compileall -q scripts tests skills
+          python3 scripts/validate_hierarchy.py
+          python3 scripts/validate_genius_mastery_bridge.py --mode freshness
+          python3 scripts/generate_mega_skill_pyramids.py --check
+          python3 -m unittest discover -s tests -v
+          python3 skills/local-skill/tests/test_local_skill.py -v
+          python3 skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
+          export RUN_DIR=/tmp/mega-skills-github-actions-run
+          rm -rf "$RUN_DIR"
+          python3 scripts/run_mega_mission.py --output-dir "$RUN_DIR"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          run_dir = Path(os.environ["RUN_DIR"])
+          receipt = json.loads((run_dir / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
+          assert receipt["status"] == "SUPPORT_VERIFIED"
+          assert receipt["mission_state_changed"] is False
+          assert receipt["completion_eligible"] is False
+          assert receipt["support_only"] is True
+          manifest = receipt["output_manifest"]
+          canonical = json.dumps(manifest, sort_keys=True, separators=(",", ":")).encode("utf-8")
+          assert hashlib.sha256(canonical).hexdigest() == receipt["output_manifest_sha256"]
+          for item in manifest:
+              path = run_dir / item["path"]
+              assert path.is_file(), item["path"]
+              assert path.stat().st_size == item["bytes"], item["path"]
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], item["path"]
+          print(f"Verified {len(manifest)} receipt-manifest entries and their SHA-256 hashes.")
+          PY
+          TRANSIENT_RECEIPT=evidence/casebuilding-activation/test-dry-run-receipt.json
+          changed="$(git diff --name-only)"
+          unexpected="$(printf '%s\n' "$changed" | grep -v '^$' | grep -v "^${TRANSIENT_RECEIPT}$" || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected tracked mutations after validation:" >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+          if ! git diff --quiet -- "$TRANSIENT_RECEIPT"; then
+            git checkout -- "$TRANSIENT_RECEIPT"
+          fi
+          git diff --exit-code
+          echo "MEGA_SKILLS_PRIVATE_SELF_HOSTED_VALIDATION=PASS"
