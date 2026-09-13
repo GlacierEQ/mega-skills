@@ -25,7 +25,7 @@ The watch is a standing read-only control, not an automatic cleanup mechanism.
 - **Baseline:** Treat `main` as the living canonical line. Never replace, reset, delete, or demote it because another branch is larger, newer, or noisier.
 - **Observe:** Maintain an evidence-backed inventory of branches and tags, their relationship to `main`, new divergence, check status, and any signs of credential-bearing paths or unsafe preservation refs.
 - **Assess value:** Inspect actual behavior and tests—not names or commit counts—to identify unique beneficial changes, duplicated work, regressions, and blocked reviews.
-- **Prepare:** Emit a `harmonious-merge-audit.json` or an escalation work packet with per-ref dispositions and the smallest proposed integration units.
+- **Prepare:** Emit a `harmonious-merge-audit.json` or an escalation work packet with per-ref dispositions and the smartest coherent integration units.
 - **Do not mutate:** The watch cannot merge, force-push, delete branches/tags, create archive refs, rotate credentials, or rewrite history.
 - **Security escalation:** A known credential exposure triggers immediate rotation/revocation escalation and a separately authorized all-ref history-cleanup plan. Never create a new tag or backup ref that preserves contaminated history.
 
