@@ -70,6 +70,7 @@ jobs:
           echo "MEGA_SKILLS_CANONICAL_SELF_HOSTED_VALIDATION=PASS"
 
   compile:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -77,10 +78,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Compile every Python source on the pinned interpreter
-        run: python -m compileall -q scripts tests skills
+      - run: python -m compileall -q scripts tests skills
 
   hierarchy:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -88,10 +89,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate capability hierarchy
-        run: python scripts/validate_hierarchy.py
+      - run: python scripts/validate_hierarchy.py
 
   genius-bridge:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -99,10 +100,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate current Genius-Mastery bridge authority
-        run: python scripts/validate_genius_mastery_bridge.py --mode freshness
+      - run: python scripts/validate_genius_mastery_bridge.py --mode freshness
 
   pyramids:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -110,10 +111,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate Mega-Skill pyramids
-        run: python scripts/generate_mega_skill_pyramids.py --check
+      - run: python scripts/generate_mega_skill_pyramids.py --check
 
   regression:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -121,10 +122,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Run regression tests
-        run: python -m unittest discover -s tests -v
+      - run: python -m unittest discover -s tests -v
 
   local-skill:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -132,10 +133,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate local skill creator behavior
-        run: python skills/local-skill/tests/test_local_skill.py -v
+      - run: python skills/local-skill/tests/test_local_skill.py -v
 
   branch-lifecycle:
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -143,31 +144,28 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - name: Validate branch lifecycle intelligence
-        run: python skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
+      - run: python skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
 
   validate:
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, mega-skills, macos-x64]
     needs: [private-self-hosted-full, compile, hierarchy, genius-bridge, pyramids, regression, local-skill, branch-lifecycle]
     steps:
-      - name: Require every validation lane to succeed
+      - name: Require canonical private validation and report hosted probes
         env:
           NEEDS_JSON: ${{ toJson(needs) }}
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           import json
           import os
           import sys
 
           needs = json.loads(os.environ["NEEDS_JSON"])
-          failed = {
-              name: data.get("result")
-              for name, data in needs.items()
-              if data.get("result") != "success"
-          }
-          if failed:
-              print("Validation lanes failed:", json.dumps(failed, sort_keys=True))
+          canonical = needs["private-self-hosted-full"].get("result")
+          hosted = {name: data.get("result") for name, data in needs.items() if name != "private-self-hosted-full"}
+          print("Hosted probe results:", json.dumps(hosted, sort_keys=True))
+          if canonical != "success":
+              print("Canonical private validation failed:", canonical)
               sys.exit(1)
-          print("All validation lanes succeeded.")
+          print("Canonical private self-hosted validation succeeded.")
           PY
