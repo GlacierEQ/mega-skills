@@ -14,20 +14,20 @@ Use this Combo Skill when a failing test harness, compiler error, or runtime exc
 
 ## Incremental value
 
-This Combo Skill establishes an autonomous self-healing execution loop. It combines stack trace parsing, AST chunk isolation with `ApexEpistemicChunker`, minimal diff synthesis, and repeated regression verification without human intervention.
+This Combo Skill establishes an autonomous self-healing execution loop. It combines stack trace parsing, AST chunk isolation with `ApexEpistemicChunker`, precise contract-preserving diff synthesis, and repeated regression verification without human intervention. Isolation narrows diagnosis; it never authorizes omission of required behavior.
 
 ## Member contract
 
 | Order | Member ID | Kind | Required | Role in this Combo | Receives | Must produce | Local validation |
 |---:|---|---|---|---|---|---|---|
 | 1 | `mission-contract` | Skill | Yes | Set test command and repair attempt bounds | Repair mandate | `MISSION.md` | Test command and attempt cutoff are explicit |
-| 2 | `ast-repair-core` | Skill | Yes | Parse traceback, extract AST, and apply patch | `MISSION.md` and failure trace | `ast-repair-execution-record.json` | Minimal surgical patch applied to disk |
+| 2 | `ast-repair-core` | Skill | Yes | Parse traceback, extract AST, and apply patch | `MISSION.md` and failure trace | `ast-repair-execution-record.json` | Precise contract-preserving patch applied to disk |
 | 3 | `quality-gate` | Skill | Yes | Verify re-executed test suite passes green | Test outputs and diffs | Gate record | 100% green test assertions on patched tree |
 
 ## Ordered execution
 
 1. **Repair boundary — `mission-contract`** consumes repair mandates and test commands, produces `MISSION.md`, and passes when failing commands and maximum iterations are defined.
-2. **AST repair loop — `ast-repair-core`** consumes `MISSION.md`, produces `ast-repair-execution-record.json`, and passes when stack traces are isolated and surgical diffs applied.
+2. **AST repair loop — `ast-repair-core`** consumes `MISSION.md`, produces `ast-repair-execution-record.json`, and passes when stack traces are isolated and precise contract-preserving diffs applied.
 3. **Green assertion gate — `quality-gate`** consumes test outputs, produces a gate record, and passes when test assertions pass 100% green with zero stubs.
 
 ## Handoff contracts
@@ -43,7 +43,7 @@ The Combo must record all failing tracebacks, isolated AST chunk coordinates, mo
 
 ## Quality gates
 
-The Combo is complete only when the failing test suite passes 100% green on hardware, the diff is minimal and idiomatic, and `closed-loop-repair-record.md` is emitted.
+The Combo is complete only when the failing test suite passes 100% green on hardware, the diff is precise and idiomatic for the defect, and `closed-loop-repair-record.md` is emitted.
 
 ## Compound output
 
@@ -52,5 +52,5 @@ The Combo is complete only when the failing test suite passes 100% green on hard
 **Ready for Mega Skill integration when:**
 
 1. Failing test stack trace is isolated to an exact AST chunk.
-2. Surgical patch is written to disk and compiles cleanly.
+2. Contract-preserving patch is written to disk and compiles cleanly.
 3. Full test suite re-execution confirms 100% green status.

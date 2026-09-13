@@ -31,8 +31,6 @@ This architecture positions your various MCPs into a functional hierarchy:
 - **Activator**: Automated configuration of Cline/IDE settings.
 - **Bridge**: Protocol for allowing one MCP to call another.
 
-
-
 ## When to Use
 
 Use this skill when a task requires designing, reviewing, or reorganizing a system that contains multiple MCP servers, tool providers, memory layers, or cross-server routes.
@@ -42,10 +40,10 @@ Use this skill when a task requires designing, reviewing, or reorganizing a syst
 1. Inventory the MCP servers, transports, authentication boundaries, and durable stores that actually exist.
 2. Classify each component by role: orchestration, operational execution, integration/sensing, or persistence.
 3. Trace the required data and authority flow between components before adding bridges.
-4. Define the smallest explicit contracts needed between servers: inputs, outputs, errors, identity, and retry behavior.
-5. Prefer direct provider-native integrations where they already satisfy the requirement; add a bridge only where it creates a real capability.
+4. Define complete explicit contracts between servers: inputs, outputs, errors, identity, retry behavior, observability, security, and approval semantics. Use local narrowing only to isolate uncertainty; do not omit mission-relevant contract fields to make the bridge smaller.
+5. Prefer direct provider-native integrations where they already satisfy the requirement; add a bridge wherever it creates justified capability, interoperability, resilience, or evidence value.
 6. Validate the proposed topology against actual endpoints, schemas, and available tools.
-7. Produce a concise architecture map plus the next executable implementation step.
+7. Produce a complete architecture map plus the next executable implementation steps, dependencies, and verification gates.
 
 ## Verification
 

@@ -151,10 +151,11 @@ You MUST complete each phase before proceeding to the next.
    - Write it down
    - Be specific, not vague
 
-2. **Test Minimally**
-   - Make the SMALLEST possible change to test hypothesis
+2. **Test the Hypothesis in Isolation**
+   - Make the most informative isolated change or experiment that can distinguish the hypothesis
    - One variable at a time
-   - Don't fix multiple things at once
+   - Do not bundle unrelated fixes
+   - This local narrowing reduces uncertainty; it does not reduce the mission or delivery standard
 
 3. **Verify Before Continuing**
    - Did it work? Yes → Phase 4
@@ -171,8 +172,8 @@ You MUST complete each phase before proceeding to the next.
 
 **Fix the root cause, not the symptom:**
 
-1. **Create Failing Test Case**
-   - Simplest possible reproduction
+1. **Create a Failing Contract Test Case**
+   - Use a focused but complete reproduction of the failure contract
    - Automated test if possible
    - One-off test script if no framework
    - MUST have before fixing
@@ -180,7 +181,7 @@ You MUST complete each phase before proceeding to the next.
 
 2. **Implement Single Fix**
    - Address the root cause identified
-   - ONE change at a time
+   - ONE change at a time during diagnosis
    - No "while I'm here" improvements
    - No bundled refactoring
 
@@ -261,8 +262,8 @@ If you catch yourself thinking:
 |-------|---------------|------------------|
 | **1. Root Cause** | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY |
 | **2. Pattern** | Find working examples, compare | Identify differences |
-| **3. Hypothesis** | Form theory, test minimally | Confirmed or new hypothesis |
-| **4. Implementation** | Create test, fix, verify | Bug resolved, tests pass |
+| **3. Hypothesis** | Form theory, run an informative isolated test | Confirmed or new hypothesis |
+| **4. Implementation** | Create contract test, fix, verify | Bug resolved, tests pass |
 
 ## When Process Reveals "No Root Cause"
 
