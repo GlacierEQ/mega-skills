@@ -21,7 +21,7 @@ After the shared pre-flight, also:
    - **What can it fail on?** (and what should it do then?)
    - **Is it policy-bound?** (any allowlist, identity check, or auth gate?)
 2. **Check if it already exists.** `grep` for similar names. If a near-match
-   exists, prefer extending it over adding a parallel one.
+   exists, prefer extending it over adding a parallel one when that preserves or strengthens the capability.
 3. **Check the project's conventions.** Are features added as new modules,
    new methods on existing classes, or new CLI subcommands? Match.
 4. **For APEX/mastermind features:** is this a new lane, a new capability,
@@ -32,10 +32,8 @@ on shape.
 
 ## In-Flight (Recipe-Specific)
 
-1. **Write the test first.** Even a one-liner that calls the new function
-   and asserts the return type. This catches import errors immediately.
-2. **Implement the minimum that passes the test.** Don't over-build.
-   Per `clean-code`: YAGNI.
+1. **Write the contract test first.** Use a test that exercises the real behavior and important acceptance criteria.
+2. **Implement the complete justified contract.** Do not add unrelated speculative features, but never omit required behavior, resilience, integration, observability, or proof to make the change smaller.
 3. **Add to the registry/allowlist/manifest** if the project has one.
    In make-it-heavy: `config.yaml` allowlist. In mastermind: identity
    registry. In job-app-helix: whatever the project uses.
@@ -46,8 +44,8 @@ on shape.
 
 Definition of done for "add a feature":
 
-- [ ] Test exists, named after the feature, fails without the change
-- [ ] Implementation makes the test pass
+- [ ] Contract test exists and fails without the change
+- [ ] Implementation satisfies the complete requested behavior
 - [ ] Feature is registered in the project's manifest (allowlist, identity, etc.)
 - [ ] User-facing docs (if any) mention the feature
 - [ ] Shared post-flight: diff reviewed, project tests pass, lint clean
@@ -60,7 +58,7 @@ Definition of done for "add a feature":
 |---------|-------|-----|
 | Test passes but feature doesn't actually work | Test doesn't cover the real call path | Test the real entry point (CLI, public API), not the internals |
 | Feature added but allowlist forgot | Allowlist is in a different file than the code | Check `config.yaml`, `identity/`, or whatever the project uses |
-| Feature added in 2 places (drift) | Two modules both implemented it | Pick one, delete the other, update callers |
+| Feature added in 2 places (drift) | Two modules both implemented it | Pick the stronger owner, preserve unique behavior, update callers |
 | Feature works but breaks 3 other tests | Side effect not in the test plan | Update the test plan; either fix the side effect or document the contract change |
 | Feature works locally but fails in CI | Environment assumption | Match the CI environment; check the project's CI config |
 
