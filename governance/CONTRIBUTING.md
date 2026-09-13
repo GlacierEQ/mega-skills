@@ -18,6 +18,6 @@ Before creating anything, inspect the registries and answer three questions: Is 
 4. Add the matching registry entry, including artifact, inputs, outputs, and validation.
 5. Confirm dependency direction is upward only: Skills → Combo Skills → Mega Skills.
 6. Run `python scripts/validate_hierarchy.py` and `python -m unittest discover -s tests -v`.
-7. Submit the smallest coherent change for review.
+7. Submit the smartest coherent change for review: complete enough to satisfy the contract, focused enough to avoid unrelated scope, and backed by validation evidence.
 
 Reviewers must reject a change if it copies lower-level instructions into a higher-level body, lacks a new artifact, creates a circular dependency, misstates external ownership, creates an empty placeholder package, or expands an active mission’s contract without a decision record.

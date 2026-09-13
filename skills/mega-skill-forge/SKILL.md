@@ -3,7 +3,6 @@ name: mega-skill-forge
 description: "Design, validate, and register a Mega Skill that orchestrates multiple Combo Skills into a bounded, evidence-backed end-to-end mission system. Use when a requested workflow needs mission-wide route selection, durable state, recovery, and integration beyond any single Combo Skill."
 ---
 
-
 # Mega Skill Forge
 
 ## Use this skill when
@@ -28,7 +27,7 @@ If the first three answers are no, improve or create a lower-layer Skill or Comb
 
 1. **Inspect before design.** Pull the target repository; read its Skills, Combo registry, Mega registry, validator, test suite, and any existing related contracts. Record current revision and unresolved gaps.
 2. **Write a mission contract.** State the intended user outcome, selection boundary, non-goals, final artifact, durable state, approval boundary, recovery rule, and what the Mega layer adds beyond each selected Combo.
-3. **Choose resolved Combos.** Select the smallest set of existing Combo IDs. Never invent a member, silently nest unregistered workflows, or duplicate a Combo procedure inside the Mega contract.
+3. **Choose resolved Combos.** Select the complete high-leverage set of existing Combo IDs required for mission coverage. Never invent a member, silently nest unregistered workflows, or duplicate a Combo procedure inside the Mega contract.
 4. **Gate advanced routes.** Add `capability-readiness` as a conditional Combo. For recurring, event-driven, or external-effect work, select a guarded route only after a mission-specific preflight and the applicable approval.
 5. **Author the contract.** Copy `templates/MEGA.md`, then describe selection criteria and the route algorithm in terms of named Combo artifacts—not inferred conversation history.
 6. **Register the Mega.** Copy `templates/mega-registry-entry.json`; set a unique ID, semantic version, resolved `required_combos`, conditional Combos, mission output, and five durable-state artifacts.
@@ -65,7 +64,7 @@ Documentation and reference material intended to be loaded into context to infor
 
 **Examples from other skills:**
 - Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
+- BigQuery: API reference documentation and schemas
 - Finance: Schema documentation, company policies
 
 **Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Manus should reference while working.

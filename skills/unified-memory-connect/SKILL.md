@@ -24,7 +24,7 @@ Expected runtime secret identifiers may include provider-specific names such as 
 ## Retrieval contract
 
 1. Reuse relevant known state before rediscovery.
-2. Query the smallest qualified peer set that can answer the proposition.
+2. Query the strongest qualified peer coalition capable of answering the proposition and covering contradiction risk; parallelize independent peers when safe, and let quota awareness remove redundancy rather than required coverage.
 3. Preserve provider identity, record IDs, timestamps, versions, hashes, and retrieval state where available.
 4. Deduplicate semantically equivalent hits without erasing distinct provenance.
 5. Treat `retrieval_pending`, `not_searched`, `searched_not_found`, and `unavailable` as retrieval states, not proof of falsity.

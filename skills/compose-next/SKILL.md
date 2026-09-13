@@ -5,7 +5,7 @@ description: "Use for multi-step feature work, bug fixes, or refactors where req
 
 # Compose Next
 
-Compact end-to-end contract for grill → spec → workspace → implement → verify → review → finalize → finish. One skill load, no internal skill hand-offs.
+Strong end-to-end contract for grill → spec → workspace → implement → verify → review → finalize → finish. One skill load, no internal skill hand-offs.
 
 ## Step 0 — Orient
 
@@ -37,7 +37,7 @@ Split requests spanning independent subsystems before refining each part. Do not
 If the `question` tool is unavailable or returns `[Never-Ask]`, resolve **this one decision** yourself and continue:
 
 1. Choose the option marked `(Recommended)` when repository evidence still supports it and it can run unattended.
-2. Otherwise choose the closest minimal-scope option supported by the evidence; prefer text-only, non-interactive work.
+2. Otherwise choose the strongest justified option supported by the evidence; prefer text-only or non-interactive work only when it preserves the same substantive outcome and verification.
 3. If the decision includes destructive or irreversible work, choose a non-destructive path that preserves progress; never auto-approve the destructive option.
 4. State the option selected and the reason in the response.
 
@@ -81,10 +81,10 @@ State explicit boundaries.
 - Leave `Report` empty and set `status: designed`.
 - Keep `[Sn]` anchors stable when headings change; never renumber existing anchors.
 - Record settled decisions and precise contracts, not exploration history or file-level code dumps. Include architecture, interfaces, data flow, error behavior, and testing boundaries when they affect the change.
-- Make each task the smallest independently verifiable work item; give it an observable acceptance criterion. Add `depends:` only for real prerequisites; dependencies must be acyclic.
+- Make each task a coherent independently verifiable work item with an observable acceptance criterion. Add `depends:` only for real prerequisites; dependencies must be acyclic.
 - Add `covers:` for every task implementing a design section. Every design requirement must be covered by at least one task; every reference must resolve.
 - Remove placeholders such as `TBD`, "handle edge cases", and references to unspecified similar work.
-- Scale detail to the change; do not pad small designs.
+- Scale detail to the actual change; do not pad, but never omit mission-relevant coverage to make a design shorter.
 
 Before implementation, fix ambiguous requirements, contradictions, unresolved references, and unverifiable acceptance criteria. If the user is available, request document approval with the `question` tool; otherwise continue.
 
@@ -104,7 +104,7 @@ Never begin implementation on `main` or `master` without explicit user consent.
 
 Use the feature document as the source of requirements, or the conversation for an undocumented mechanical change. When a feature document exists, set its `status: in-progress` on the first implementation commit. Execute tasks in dependency order. Track multi-step work with the `task` tool.
 
-For behavior changes with a cheap reproduction, write a failing test, confirm it fails for the intended reason, implement the smallest fix, and confirm it passes. A bug fix requires a regression test when one can be written. Skip test-first for generated code, configuration-only changes, throwaway prototypes, or explicit user direction.
+For behavior changes with a cheap reproduction, write a failing test, confirm it fails for the intended reason, implement the strongest justified contract-preserving fix, and confirm it passes. A bug fix requires a regression test when one can be written. Skip test-first for generated code, configuration-only changes, throwaway prototypes, or explicit user direction.
 
 Test public behavior. Do not duplicate production logic in expected values, add test-only production APIs, or assert only that mocks were called. Prefer real implementations over mocks.
 
@@ -132,7 +132,7 @@ Provide the reviewer:
 - the worktree path, base branch, base SHA, head SHA, and exact diff command or precomputed diff;
 - a compact verification summary: one line per command with `PASS`, `FAIL`, or `PRE-EXISTING`, plus test counts when available. Do not paste full command output unless a specific failure requires it.
 
-Do not provide an implementer-authored narrative. The reviewer may inspect the diff and run additional commands needed to validate its conclusions. It must not repeat a command already reported as passing, especially a heavy E2E suite, unless the result is stale, the code changed afterward, or concrete evidence makes the result suspect. Before any justified rerun, confirm no equivalent command is still running. Missing evidence should be reported or gathered with the cheapest non-duplicative command.
+Do not provide an implementer-authored narrative. The reviewer may inspect the diff and run additional commands needed to validate its conclusions. It must not repeat a command already reported as passing, especially a heavy E2E suite, unless the result is stale, the code changed afterward, or concrete evidence makes the result suspect. Missing evidence should be reported or gathered with the cheapest non-duplicative command.
 
 Use a reviewer model at least as capable as the strongest implementer it reviews.
 

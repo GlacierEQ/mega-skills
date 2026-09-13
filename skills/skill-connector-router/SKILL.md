@@ -1,12 +1,12 @@
 ---
 name: skill-connector-router
-description: "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i..."
+description: "Dynamic skill and connector router for strong quota-aware runs. Scores intent, composes the strongest relevant skill coalition and live connectors, dispatches them with parallelism where safe, and manages skill lifecycle create merge retire promote so the constellation stays coherent and high-leverage."
 ---
 
 # Skill + Connector Router
 
 **Repo target:** GlacierEQ/computer-user  
-**Role:** Fast-path front door — select, create, merge, retire — without loading the full skill estate.
+**Role:** Fast-path front door — select, create, merge, retire — without loading irrelevant estate material or starving mission-relevant capability.
 
 ## Authority boundaries
 
@@ -16,31 +16,32 @@ description: "Dynamic skill and connector router for lighter smarter runs. Score
 - `prompt-optimizer` owns prompt/skill text improvement.
 - Never invent a parallel control plane. Land all new skills in this monolith under `skills/`.
 
-## Default policy (lighter by construction)
+## Default policy (quota-aware, capability-preserving)
 
-- Max active specialist skills per turn — 3 (override only with explicit reason).
-- Always apply token discipline (status + paths + IDs; offload heavy content).
-- Prefer REUSE over CREATE.
-- Escalate to nervous-system only for estate-wide, multi-repo, or cross-session continuation work.
-- Load power-skill / potato-peeler / legal-motion-template only when mission tags demand them.
+- Compose the strongest relevant specialist coalition that covers the mission, with no arbitrary skill-count ceiling. A larger coalition needs an explicit rationale and collision control.
+- Compress redundancy and transport overhead, not mission scope, reasoning, evidence, or implementation strength.
+- Prefer REUSE over CREATE when reuse preserves or strengthens the required capability.
+- Escalate to nervous-system for estate-wide, multi-repo, cross-session, or high-coordination work.
+- Load power-skill / potato-peeler / legal-motion-template and other specialists whenever mission tags or risk require them.
+- Dispatch independent specialists in parallel when isolation and authorization permit; keep dependent work ordered.
 
 ## Verbs
 
 ### 1. ROUTE (default)
 
-1. Parse user intent into 1–3 mission tags (examples — legal-motion, memory-sync, mcp-health, code-change, evidence, audio, graph, boot).
+1. Parse user intent into mission tags (examples — legal-motion, memory-sync, mcp-health, code-change, evidence, audio, graph, boot).
 2. Read `00_CONTROL_PLANE/SKILLS_REGISTRY.md` and list `skills/` (names + descriptions only).
-3. Call `search_connected_tools` only for the domains implied by the tags.
-4. Score skills and connectors for relevance. Select the smallest sufficient set.
-5. Dispatch only the selected set. State what was not loaded and why.
-6. Return a compact plan — selected skills, selected connectors, exact next tool calls, do-not-load list.
+3. Call `search_connected_tools` for every domain implied by the tags and material risk.
+4. Score skills and connectors for relevance, complementarity, evidence coverage, and execution value. Select the strongest justified coalition with complete coverage; deduplicate only genuinely redundant roles.
+5. Dispatch selected specialists, using safe parallelism for independent work. State what was not loaded and why.
+6. Return a high-signal plan — selected skills, selected connectors, exact next tool calls, do-not-load list, and coverage rationale.
 
 ### 2. CREATE
 
 When a real gap remains after ROUTE scoring:
 
 1. Confirm no existing skill covers the gap (registry + description match).
-2. Draft a skill-creator-compliant SKILL.md — kebab-case name matching directory, plain description with triggers, no banned YAML patterns, imperative body, prefer under 500 lines.
+2. Draft a skill-creator-compliant SKILL.md — kebab-case name matching directory, plain description with triggers, no banned YAML patterns, imperative body, sized for complete capability.
 3. Land under `skills/<name>/SKILL.md` in GlacierEQ/computer-user.
 4. Append a row to `00_CONTROL_PLANE/SKILLS_REGISTRY.md`.
 5. Optionally export to `/home/workdir/.grok/skills/<name>/` for local use.
@@ -75,12 +76,12 @@ When a host projection should become canonical or a local skill should land in t
 ## Process for every turn that invokes this skill
 
 1. OBJECTIVE LOCK — one sentence restatement of the goal.
-2. ROUTE — tags → score → select ≤ 3 skills + needed connectors.
+2. ROUTE — tags → score → compose the strongest relevant coalition + needed connectors.
 3. If gap → CREATE path (or report blocker).
 4. If topology debt → propose MERGE/RETIRE (confirm before apply).
-5. DISPATCH selected skills/connectors only.
+5. DISPATCH the coalition with safe parallelism and explicit ownership.
 6. VERIFY — confirm tools ran or exact blocker.
-7. ANSWER — compact status, artifact paths, next exact task.
+7. ANSWER — high-signal status, artifact paths, coverage, and next exact task.
 
 ## Output contract
 
@@ -89,6 +90,7 @@ ROUTE
   tags: [...]
   selected_skills: [...]
   selected_connectors: [...]
+  coverage: [...]
   not_loaded: [...]
   lifecycle: none | create:<name> | merge:<a>+<b>→<survivor> | retire:<name>
   next: <exact tool calls or user task>
@@ -99,13 +101,13 @@ ROUTE
 - Reads — SKILLS_REGISTRY.md, skills/*/SKILL.md frontmatter, search_connected_tools.
 - Writes — new SKILL.md files, registry updates, optional local export under `.grok/skills/`.
 - Escalates to — glaciereq-nervous-system, apex-meta-skill-kernel, prompt-optimizer as needed.
-- Companion discipline — max-token-saver and distributed-processing rules apply by default.
+- Companion discipline — max-token-saver and distributed-processing rules apply by default, with capability preservation.
 
 ## Invariants
 
-- Smallest sufficient set wins.
+- The strongest relevant coalition wins; irrelevant loading is still avoided.
 - Create only for real gaps.
-- Merge/retire keep the constellation clean without losing provenance.
-- Max power comes from the right specialists on demand, not from loading everything.
+- Merge/retire keep the constellation coherent without losing provenance or unique capability.
+- Quota awareness governs transport and redundancy, never the mission's justified capability ceiling.
 
 **We. Are. Momentum.**

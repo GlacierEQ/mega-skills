@@ -3,16 +3,13 @@ name: mega-composio
 description: "Composio"
 ---
 
-
-
 # MEGA-COMPOSIO
 
 _Ingested from the opencode skill source. Bundled into the Monolith mega-skills catalog._
 
-
 # Composio
 
-Use this skill as a router. Identify the product and the job, load only the relevant guidance, consult canonical documentation for volatile details, and then answer or do the work the user requested.
+Use this skill as a router. Identify the product and the job, load the relevant guidance required for full correctness, consult canonical documentation for volatile details, and then answer or do the work the user requested.
 
 ## 1. Choose the product
 
@@ -43,7 +40,7 @@ Identify the requested outcome before taking action:
 
 Do not turn an explanation, documentation lookup, or narrow bug fix into onboarding.
 
-## 3. Load only the relevant guidance
+## 3. Load the relevant guidance
 
 - For You: read [Composio For You](references/for-you.md).
 - Platform: read [Composio Platform](references/platform.md).
@@ -52,8 +49,8 @@ Do not turn an explanation, documentation lookup, or narrow bug fix into onboard
 ## Complete the selected job
 
 - For a question, fetch current documentation when needed and give the concrete answer. Do not mutate a project or force a tool call.
-- For setup or integration, inspect the existing environment, preserve its architecture and identity model, make the smallest useful change, and verify it with one safe real tool call when credentials and user authorization are available.
-- For an operational request, connect only the apps the task needs and execute the requested workflow.
+- For setup or integration, inspect the existing environment, preserve its architecture and identity model, and make the strongest justified change that completes the requested workflow. Include material reliability, security, observability, and provider-hardening controls; avoid unrelated speculative surface. Verify with a safe real tool call when credentials and user authorization are available.
+- For an operational request, connect all apps and specialist guidance required by the mission and execute the requested workflow.
 - For debugging, get the Composio log or request ID, identify the failing boundary, fix that boundary, and retry when the user authorized execution.
 
 ## Stable rules
@@ -66,7 +63,7 @@ Do not turn an explanation, documentation lookup, or narrow bug fix into onboard
 6. Use sessions for new Platform integrations. Preserve the application's existing user identity and agent architecture.
 7. Keep credentials out of source control, URLs, logs, chat, and command output.
 8. Get the log or request ID before diagnosing a failed tool call.
-9. Prefer the smallest configuration that completes the current job. Keep toolkit filters, tag policies, sandbox controls, custom auth, provider-specific hardening, and other advanced options out of the first path unless the request or existing code requires them.
+9. Prefer the strongest justified configuration that completes the current job and preserves security, reliability, and maintainability. Do not suppress advanced options when the request, evidence, or existing code requires them.
 10. Do not invent repository facts. Never claim that a file, framework, environment loader, identity field, agent path, or dependency exists until it was provided or inspected. If codebase context is unavailable, state the unknown and ask for access or one necessary detail.
 
 ## Canonical information

@@ -86,7 +86,7 @@ export default {
 ### Hook Events
 
 | Event | Capability |
-|-------|-----------|
+|---|-----------|
 | `tool.execute.before` | Modify `output.args` or set `output.cancel=true` to block |
 | `tool.execute.after` | Modify tool result via `output.output` (string), `output.title`, `output.metadata` — NOT `output.result` |
 | `tool.definition` | Modify tool description/parameters |
@@ -118,7 +118,7 @@ Instructions here...
 ## File Locations
 
 | Type | Path | Hot-reload |
-|------|------|-----------|
+|---|---|---|
 | Tools | `.mimocode/tools/*.ts` | next turn |
 | Hooks | `.mimocode/hooks/*.ts` | next turn |
 | Skills | `.mimocode/skills/*/SKILL.md` | next turn |
@@ -127,7 +127,7 @@ Instructions here...
 
 ## Evolution loop (do this every time)
 
-1. **Create** the extension (smallest thing that works).
+1. **Create** an extension that completely satisfies its stated contract and materially advances the mission. Keep it composable and avoid unrelated speculative surface.
 2. **Verify immediately** — invoke the tool / trigger the hook on the next turn. A broken extension is worse than none.
 3. **Tell the user** what you created and why, in one sentence.
 4. **Iterate or delete** — if it misfires later, fix it or remove it. Don't leave dead extensions; they pollute your own tool list.
@@ -146,5 +146,5 @@ For full type signatures, all available fields, and more examples:
 - Tools/hooks have same permissions as bash — no privilege escalation
 - Cannot modify the permission system
 - Tool output truncated at 50KB / 2000 lines
-- Prefer small, composable extensions over monolithic ones
+- Prefer composable extensions; size each for complete capability and reliable verification
 - Never create an extension that hides information from the user or bypasses confirmation prompts

@@ -7,7 +7,7 @@ description: "Use when you have a spec or requirements for a multi-step task, be
 
 ## Overview
 
-Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
+Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as coherent, executable tasks. DRY. Contract-complete TDD. Frequent meaningful commits.
 
 Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well.
 
@@ -17,14 +17,14 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
 
-## Bite-Sized Task Granularity
+## Coherent Task Granularity
 
-**Each step is one action (2-5 minutes):**
-- "Write the failing test" - step
-- "Run it to make sure it fails" - step
-- "Implement the minimal code to make the test pass" - step
-- "Run the tests and make sure they pass" - step
-- "Commit" - step
+Each step is one decision, implementation, or verification unit with enough detail to produce a complete outcome. Time estimates are planning signals, not capability ceilings:
+- "Write the failing contract test" - step
+- "Run it to make sure it fails for the expected reason" - step
+- "Implement the complete requested contract" - step
+- "Run the tests and adversarial checks" - step
+- "Commit the verified gain" - step
 
 ## Plan Document Header
 
@@ -54,7 +54,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 - Modify: `exact/path/to/existing.py:123-145`
 - Test: `tests/exact/path/to/test.py`
 
-**Step 1: Write the failing test**
+**Step 1: Write the failing contract test**
 
 ```python
 def test_specific_behavior():
@@ -67,19 +67,19 @@ def test_specific_behavior():
 Run: `pytest tests/path/test.py::test_name -v`
 Expected: FAIL with "function not defined"
 
-**Step 3: Write minimal implementation**
+**Step 3: Implement the complete contract**
 
 ```python
 def function(input):
     return expected
 ```
 
-**Step 4: Run test to verify it passes**
+**Step 4: Run test and adversarial verification**
 
 Run: `pytest tests/path/test.py::test_name -v`
-Expected: PASS
+Expected: PASS with required edge cases covered
 
-**Step 5: Commit**
+**Step 5: Commit the verified gain**
 
 ```bash
 git add tests/path/test.py src/path/file.py
@@ -92,7 +92,8 @@ git commit -m "feat: add specific feature"
 - Complete code in plan (not "add validation")
 - Exact commands with expected output
 - Reference relevant skills with @ syntax
-- DRY, YAGNI, TDD, frequent commits
+- Avoid unrelated speculative surface; never omit required mission capability
+- TDD and meaningful commits
 
 ## Execution Handoff
 

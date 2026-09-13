@@ -21,7 +21,7 @@ A Mega Skill is the apex representation of a complete real capability built from
 
 ### Atomic Skill
 
-The smallest maintained independently useful procedure. It owns its trigger, input contract, method, output contract, artifact, source identity, and local validation.
+An independently useful procedure with a complete trigger, input contract, method, output contract, artifact, source identity, and local validation. Atomic means independently composable, not capability-starved or architecturally trivial.
 
 ### Compound Skill
 
@@ -33,7 +33,7 @@ Recursive Compound-Skill composition must form a directed acyclic graph. Direct 
 
 ### Mega Skill
 
-A proper end-to-end Skill at mission scale. It owns mission trigger, route selection, durable state, phase gates, cross-branch integration, recovery, final acceptance, and mission output. Its full dependency graph must recursively resolve to valid Compound/Atomic Skills or explicit external references.
+A proper end-to-end Skill at mission scale. It owns mission trigger, route selection, durable state, phase gates, cross-branch integration, recovery, final acceptance, and mission output. Its full dependency graph must recursively resolve to valid Compound/Atomic Skills or explicit external leaves.
 
 ## Identity law
 
