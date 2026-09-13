@@ -1,6 +1,8 @@
 steps:
   - label: ":satellite: Provider continuity preflight"
     key: "provider-continuity-preflight"
+    agents:
+      queue: "macos-self"
     timeout_in_minutes: 5
     command: |
       set -euo pipefail
@@ -14,6 +16,8 @@ steps:
 
   - label: ":python: Mega Skills full validation parity"
     key: "mega-skills-contract"
+    agents:
+      queue: "macos-self"
     timeout_in_minutes: 25
     command: |
       set -euo pipefail
@@ -104,6 +108,8 @@ steps:
 
   - label: ":compass: Harmonious Merge Watch (read-only)"
     key: "harmonious-merge-watch"
+    agents:
+      queue: "macos-self"
     timeout_in_minutes: 10
     command: |
       set -euo pipefail
