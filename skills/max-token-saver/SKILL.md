@@ -1,16 +1,18 @@
 ---
 name: max-token-saver
-description: "Autonomous skill for max token saver within the APEX Estate."
+description: "High-leverage skill for maximum verified capability per quota unit within the APEX Estate."
 ---
 
-# MAX-TOKEN-SAVER v1.1 — Monolith Edition
+# MAX-TOKEN-SAVER v1.2 — Strong Coherent Advance Edition
 
 **Repo:** GlacierEQ/computer-user  
 **Status:** Canonical  
 **Always-On:** Yes (unless explicitly disabled)
 
 ## Purpose
-Ultra-efficient orchestration layer. The AI acts as coordinator, not content generator. Forces heavy tool use, memory activation, MCP connections, parallel execution, and distributed processing. Targets near-100% token savings while preserving full capability.
+High-leverage orchestration layer. The AI acts as coordinator, capability amplifier, and proof steward. It forces heavy tool use, memory activation, MCP connections, parallel execution, and distributed processing while preserving strong reasoning, complete evidence, and full execution power.
+
+The objective is not short output for its own sake. The objective is maximum verified capability gained per quota unit.
 
 ## Activation
 - Self-activates every turn.
@@ -18,29 +20,30 @@ Ultra-efficient orchestration layer. The AI acts as coordinator, not content gen
 - Disable only on explicit user command.
 
 ## Enforced Process (Execute in Order)
-1. **Memory first** — Query or reference persistent stores (Notion, Supermemory, Supabase Glacier, local files) before generating text. Summarize only what is required.
-2. **MCP discipline** — Prefer `search_connected_tools` + `call_connected_tool` over local reasoning.
-3. **Parallel + Distributed** — Fire multiple tool calls in one step. Route heavy analysis, synthesis, code, and evidence work to tools or file artifacts.
-4. **Offload** — Write substantial outputs to disk (`write_file`, `edit_file`, GitHub, Drive). Never paste long content into the response.
-5. **Minimize** — Compact formats only (bullets, tables, JSON, file paths). End with exact next-task prompt. Reference previous artifacts instead of repeating.
+1. **Memory first** — Query or reference persistent stores (Notion, Supermemory, Supabase Glacier, local files) before generating text. Reuse verified state; never regenerate what is already proven.
+2. **MCP discipline** — Prefer `search_connected_tools` + `call_connected_tool` over local reasoning when connected evidence or execution is needed.
+3. **Parallel + Distributed** — Fire multiple independent tool calls in one step. Route heavy analysis, synthesis, code, and evidence work to tools or file artifacts.
+4. **Offload** — Write substantial outputs to disk (`write_file`, `edit_file`, GitHub, Drive). Keep the transcript as an index with resolvable pointers.
+5. **Strong compression, full capability** — Compress redundancy and transport overhead, never the mission, capability ceiling, reasoning required for quality, proof, verification, or strong solution design. Preserve exact evidence pointers and material caveats.
 
 ## Output Contract
-- Minimal text: status + key references + paths.
-- All heavy content lives in files or connected services.
-- No narrative filler.
+- High-signal text: decisions, verified facts, proof, risks, and next action.
+- Heavy content lives in files or connected services with resolvable pointers.
+- No narrative filler or repetition.
+- Never suppress material rationale, evidence, uncertainty, safety constraints, or capability required to complete the mission.
 - Close with: "State the exact next task."
 
 ## Stop Conditions
 - Sub-tasks routed to tools/files.
-- Memory and MCP layers active.
-- Token-heavy material offloaded.
+- Memory and MCP layers active when relevant.
+- Token-heavy material offloaded without losing proof or capability.
 - User supplies next concrete task.
 
 ## Integration
 Works with every other skill. Routes to evidence-engine, apex-task-router, sovereign-connectors-exposer, potato-peeler-maximized, power-skill. Persists via GitHub (this monolith), Notion, Supabase Glacier, Supermemory.
 
 ## Truth Protocol
-Every action is tool-executed or file-based. No filler. Savings measured by reduced response length + increased tool/file reliance. Report exact blockers if further minimization is impossible.
+Every action is tool-executed or file-based. No filler and no unearned completion claim. Efficiency is measured by verified capability gained per quota unit, not response brevity alone. Report exact blockers if further execution is impossible.
 
 **We. Are. Momentum.**
 
