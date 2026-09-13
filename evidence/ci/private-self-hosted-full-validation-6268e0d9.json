@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "provider": "github-actions",
+  "repository": "GlacierEQ/mega-skills",
+  "workflow": "Private Self-Hosted Full Validation",
+  "run_id": 34740863594,
+  "job_id": 103680224966,
+  "validated_sha": "6268e0d9fb7d93b0c9ddf88249b13cd927764b07",
+  "runner": {
+    "name": "glaciereq-mega-skills-mac",
+    "version": "2.337.0",
+    "machine": "KcBs-MacBook-Air",
+    "architecture": "x86_64"
+  },
+  "conclusion": "success",
+  "validation_marker": "MEGA_SKILLS_PRIVATE_SELF_HOSTED_VALIDATION=PASS",
+  "tests": {
+    "unittest_discover": {"ran": 127, "result": "OK", "skipped": 1},
+    "local_skill": {"ran": 7, "result": "OK"},
+    "branch_lifecycle": {"ran": 18, "result": "OK"}
+  },
+  "hierarchy": {
+    "recursive_validation": "passed",
+    "mega_pyramids": 32,
+    "atomic_skills": 719,
+    "compound_skills": 36,
+    "unresolved_owned_references": 0,
+    "compound_cycles": 0
+  },
+  "mission_support_receipt": {
+    "status": "SUPPORT_VERIFIED",
+    "mission_state_changed": false,
+    "completion_eligible": false,
+    "artifacts": 14,
+    "verified_manifest_entries": 13
+  },
+  "source": "provider-native GitHub Actions job logs",
+  "preservation_note": "This receipt preserves the first full private-repository validation proven on the dedicated self-hosted mega-skills runner. It does not claim mission completion and does not replace independent GitHub-hosted runner probes."
+}
