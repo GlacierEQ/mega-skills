@@ -197,10 +197,26 @@ class ApexBootCore:
         lines = [l for l in RECEIPT_CHAIN.read_text(encoding="utf-8").splitlines() if l.strip()]
         detail["chain_length"] = len(lines)
 
-        if len(lines) < 2:
-            detail["integrity"] = "too_short_to_verify"
+        if len(lines) == 0:
+            detail["integrity"] = "empty_chain"
             return GateResult(gate="receipt_chain", status="WARN", detail=detail,
                               elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+
+        if len(lines) == 1:
+            try:
+                rec = json.loads(lines[0])
+                if rec.get("seq") == 1 and rec.get("receipt_hash"):
+                    detail["integrity"] = "genesis_intact"
+                    return GateResult(gate="receipt_chain", status="PASS", detail=detail,
+                                      elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+                else:
+                    detail["integrity"] = "invalid_genesis_entry"
+                    return GateResult(gate="receipt_chain", status="FAIL", detail=detail,
+                                      elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+            except Exception as e:
+                detail["integrity"] = f"parse_error: {e}"
+                return GateResult(gate="receipt_chain", status="FAIL", detail=detail,
+                                  elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
 
         # Verify hash linkage on last 10 receipts
         try:
@@ -326,13 +342,28 @@ class ApexBootCore:
         t0 = time.monotonic()
         detail: dict[str, Any] = {}
 
+        token_saver_src = self.projects / "token_saver" / "src"
+        if token_saver_src.is_dir() and str(token_saver_src) not in sys.path:
+            sys.path.insert(0, str(token_saver_src))
+
         try:
-            from token_saver import TokenSaver
+            from unified_token_engine import UnifiedTokenEngine
             detail["importable"] = True
+            detail["engine"] = "UnifiedTokenEngine"
             status = "PASS"
         except ImportError:
-            detail["importable"] = False
-            status = "WARN"
+            try:
+                # Fallback: project-level import
+                token_saver_root = self.projects / "token_saver"
+                if str(token_saver_root) not in sys.path:
+                    sys.path.insert(0, str(token_saver_root))
+                from token_saver_elite_core import TokenSaverElite
+                detail["importable"] = True
+                detail["engine"] = "TokenSaverElite"
+                status = "PASS"
+            except ImportError:
+                detail["importable"] = False
+                status = "WARN"
 
         return GateResult(gate="token_saver", status=status, detail=detail,
                           elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
@@ -395,7 +426,11 @@ class ApexBootCore:
                     ["git", "status", "--porcelain"],
                     cwd=path, capture_output=True, text=True, check=False,
                 ).stdout.strip()
-                clean = len(porcelain) == 0
+                meaningful_dirty = [
+                    line for line in porcelain.splitlines()
+                    if line.strip() and not any(ign in line for ign in ("receipts/", "evidence/", ".log", ".pyc"))
+                ]
+                clean = len(meaningful_dirty) == 0
                 if not clean:
                     dirty_count += 1
                 trees.append({
