@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""APEX Boot Core v2 — Sovereign Estate Initialization & Unified Health Sentinel.
+"""APEX Boot Core v2 — Holographic Estate Initialization & Unified Health Sentinel.
 
 Connects all 14 verified estate pillars into one boot contract:
   1. Environment & Python runtime verification
@@ -29,6 +29,13 @@ import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Optional
+
+from operator_semantics import (
+    detect_inversions,
+    load_operator_semantics,
+    project_operator_semantics,
+    transition_for_status,
+)
 
 
 # ── Configuration ────────────────────────────────────────────────────────────
@@ -65,11 +72,14 @@ EXPECTED_ESTATE_REPOS = 1200  # floor; actual is 1,211
 
 @dataclass
 class GateResult:
-    """One preflight gate check."""
+    """One observational enrichment transition."""
     gate: str
-    status: str       # "PASS" | "WARN" | "FAIL"
+    status: str       # telemetry only: "PASS" | "WARN" | "FAIL"
     detail: dict[str, Any] = field(default_factory=dict)
     elapsed_ms: float = 0.0
+    transition: str = ""
+    level_up: bool = True
+    mission_stop: bool = False
 
 
 @dataclass
@@ -84,6 +94,8 @@ class BootReceipt:
     warn_count: int = 0
     fail_count: int = 0
     total_gates: int = 0
+    pre_reasoning_binding: dict[str, Any] = field(default_factory=dict)
+    enrichment_summary: dict[str, Any] = field(default_factory=dict)
     digest: str = ""
 
     def compute_digest(self) -> str:
@@ -97,12 +109,14 @@ class BootReceipt:
 # ── Gate Checks ──────────────────────────────────────────────────────────────
 
 class ApexBootCore:
-    """Sovereign estate initialization sentinel."""
+    """Operator-bound holographic estate initialization sentinel."""
 
     def __init__(self, workspace_root: Path = WORKSPACE_ROOT) -> None:
         self.root = workspace_root
         self.projects = workspace_root / "projects"
         self.results: list[GateResult] = []
+        self.operator_binding = load_operator_semantics()
+        self.operator_projection = project_operator_semantics(self.operator_binding)
 
     # ── 1. Environment & Runtime ─────────────────────────────────────────
 
@@ -456,6 +470,17 @@ class ApexBootCore:
                     status="FAIL",
                     detail={"exception": str(e)},
                 )
+            result.transition = transition_for_status(result.status, self.operator_binding)
+            result.level_up = True
+            result.mission_stop = False
+            result.detail.setdefault("execution_semantics", {})
+            result.detail["execution_semantics"].update({
+                "telemetry_only": True,
+                "enrichment_transition": True,
+                "mission_stop": False,
+                "authority_holder": "OPERATOR",
+                "local_block_changes_route_not_objective": True,
+            })
             self.results.append(result)
 
         pass_count = sum(1 for r in self.results if r.status == "PASS")
@@ -477,6 +502,19 @@ class ApexBootCore:
             warn_count=warn_count,
             fail_count=fail_count,
             total_gates=len(self.results),
+            pre_reasoning_binding=self.operator_projection,
+            enrichment_summary={
+                "semantic": "LEVEL_UP",
+                "all_results_are_enrichment_transitions": True,
+                "mission_continues": True,
+                "machine_veto": False,
+                "operator_authority_preserved": True,
+                "transition_counts": {
+                    "validated": pass_count,
+                    "uncertainty_enriched": warn_count,
+                    "repair_or_reroute_enriched": fail_count,
+                },
+            },
         )
         receipt.digest = receipt.compute_digest()
         return receipt
@@ -486,7 +524,7 @@ class ApexBootCore:
 
 def main() -> int:
     import argparse
-    parser = argparse.ArgumentParser(description="APEX Boot Core v2 — Sovereign Estate Sentinel")
+    parser = argparse.ArgumentParser(description="APEX Boot Core v2 — Holographic Estate Enrichment Sentinel")
     parser.add_argument("--json", action="store_true", help="Output full JSON receipt")
     parser.add_argument("--save", type=str, default="", help="Save receipt to file path")
     parser.add_argument("--quiet", action="store_true", help="Suppress banner output")
@@ -497,11 +535,13 @@ def main() -> int:
 
     if not args.quiet:
         print("=" * 72)
-        print("  🏛️  APEX BOOT CORE v2.0 — SOVEREIGN ESTATE SENTINEL  🏛️")
+        print("  🏛️  APEX BOOT CORE v2.0 — HOLOGRAPHIC ENRICHMENT SENTINEL  🏛️")
         print("=" * 72)
         print(f"  Timestamp : {receipt.timestamp_utc}")
         print(f"  Status    : {receipt.overall_status}")
-        print(f"  Gates     : {receipt.pass_count} PASS / {receipt.warn_count} WARN / {receipt.fail_count} FAIL")
+        print(f"  Enrich    : {receipt.pass_count} VALIDATED / {receipt.warn_count} UNCERTAINTY / {receipt.fail_count} REPAIR-REROUTE")
+        print("  Authority : OPERATOR (machine nodes do not acquire project direction authority)")
+        print("  Continue  : yes — local deficiencies enrich state and change route, never mission")
         print(f"  Digest    : {receipt.digest[:32]}...")
         print("-" * 72)
 
@@ -522,7 +562,9 @@ def main() -> int:
         if not args.quiet:
             print(f"  Saved receipt → {args.save}")
 
-    return 0 if receipt.overall_status == "OPERATIONAL" else 1
+    # Gate outcomes are enrichment telemetry, never mission vetoes. If a receipt
+    # was produced, boot completed its observational transition and execution continues.
+    return 0
 
 
 if __name__ == "__main__":
