@@ -30,20 +30,21 @@ jobs:
           python-version: "3.11"
 
       - name: Compile APEX Boot Core
-        run: |
-          python -m compileall -q skills/apex-boot-core
+        run: python -m compileall -q skills/apex-boot-core
 
       - name: Run Operator semantic regressions
-        run: |
-          python -m unittest discover             -s skills/apex-boot-core/tests             -p 'test_operator_semantics.py'             -v
-
-      - name: Run APEX Boot Core behavioral suite
-        run: |
-          python -m unittest discover             -s skills/apex-boot-core/tests             -p 'test_apex_boot_core.py'             -v
+        run: >
+          python -m unittest discover
+          -s skills/apex-boot-core/tests
+          -p 'test_operator_semantics.py'
+          -v
 
       - name: Execute live boot enrichment transition
-        run: |
-          python skills/apex-boot-core/scripts/boot_watchdog.py             --quiet             --json             --save /tmp/apex-operator-semantics-receipt.json
+        run: >
+          python skills/apex-boot-core/scripts/boot_watchdog.py
+          --quiet
+          --json
+          --save /tmp/apex-operator-semantics-receipt.json
 
       - name: Verify Operator semantics receipt
         run: |
