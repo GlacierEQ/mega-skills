@@ -30,6 +30,7 @@ steps:
       python3 scripts/validate_genius_mastery_bridge.py --mode freshness
       python3 scripts/generate_mega_skill_pyramids.py --check
       python3 -m unittest discover -s tests -v
+      python3 -m unittest discover -s skills/apex-boot-core/tests -v
       python3 skills/local-skill/tests/test_local_skill.py -v
       python3 skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
       export RUN_DIR=/tmp/mega-skills-buildkite-run
@@ -78,6 +79,7 @@ steps:
               "provider_continuity_preflight",
               "generate_mega_skill_pyramids_check",
               "unittest_discover",
+              "apex_boot_core_operator_semantics_regressions",
               "local_skill_tests",
               "branch_lifecycle_tests",
               "mega_mission_receipt_hashes"
