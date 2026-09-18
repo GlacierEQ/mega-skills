@@ -118,6 +118,23 @@ class ApexBootCore:
         self.operator_binding = load_operator_semantics()
         self.operator_projection = project_operator_semantics(self.operator_binding)
 
+    def audit_interpretation(self, text: str) -> dict[str, Any]:
+        """Detect ontology inversions before prose or plans propagate durably.
+
+        Findings are repair/enrichment telemetry. They never acquire veto power.
+        """
+        findings = detect_inversions(text)
+        return {
+            "schema": "glaciereq.operator-semantics-audit.v1",
+            "findings": findings,
+            "finding_count": len(findings),
+            "repair_required": bool(findings),
+            "mission_continues": True,
+            "creates_authority": False,
+            "authority_holder": "OPERATOR",
+            "semantic_contract_sha256": self.operator_binding["contract_sha256"],
+        }
+
     # ── 1. Environment & Runtime ─────────────────────────────────────────
 
     def gate_environment(self) -> GateResult:
