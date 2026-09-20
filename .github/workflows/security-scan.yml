@@ -1,0 +1,49 @@
+name: Security scan (free-path)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: "42 9 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  bandit:
+    name: Python SAST (bandit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bandit if Python present
+        run: |
+          if compgen -G "**/*.py" > /dev/null || [ -d backend ] || [ -d src ]; then
+            pip install -q bandit
+            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll || true
+            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll -f txt -o bandit.txt || true
+            if [ -f bandit.txt ]; then
+              echo "::group::bandit findings"
+              cat bandit.txt
+              echo "::endgroup::"
+            fi
+            # Fail only on high/medium dense signal: re-run with exit code for high
+            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -lll
+          else
+            echo "No Python tree detected; skipping bandit."
+          fi
