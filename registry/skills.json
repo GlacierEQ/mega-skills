@@ -6218,6 +6218,28 @@
       ]
     },
     {
+      "id": "frontier-architect-manager-worker",
+      "display_name": "Frontier Architect Manager Worker",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/frontier-architect-manager-worker",
+      "entrypoint": "skills/frontier-architect-manager-worker/SKILL.md",
+      "purpose": "Quality-first model orchestration concentrating frontier cognition at high-leverage execution points.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in skills/frontier-architect-manager-worker/tests/test_frontier_architect_manager_worker.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "game-animation-frames",
       "display_name": "Game Animation Frames",
       "ownership": "glaciereq",
@@ -8130,6 +8152,28 @@
       ],
       "local_validation": [
         "100% test assertions pass in tests/test_legal_automation_suite.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "legal-issue-assessment-matrix",
+      "display_name": "Legal Issue Assessment Matrix",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legal-issue-assessment-matrix",
+      "entrypoint": "skills/legal-issue-assessment-matrix/SKILL.md",
+      "purpose": "Reusable legal orientation layer: represent each potentially material issue beside the Operator own assessment.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in skills/legal-issue-assessment-matrix/tests/test_legal_issue_assessment_matrix.py"
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
