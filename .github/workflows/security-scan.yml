@@ -1,6 +1,7 @@
 name: Security scan (free-path)
 
 on:
+  workflow_dispatch:
   push:
     branches: [main, master]
   pull_request:
@@ -14,7 +15,7 @@ permissions:
 jobs:
   gitleaks:
     name: Secret scan (gitleaks)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, glaciereq-box]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,25 +26,27 @@ jobs:
 
   bandit:
     name: Python SAST (bandit)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, glaciereq-box]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Run bandit if Python present
+      - name: Run bandit with system Python (self-hosted)
         run: |
+          set -euo pipefail
+          python3 --version
           if compgen -G "**/*.py" > /dev/null || [ -d backend ] || [ -d src ]; then
-            pip install -q bandit
-            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll || true
-            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll -f txt -o bandit.txt || true
+            VENV="${RUNNER_TEMP:-/tmp}/bandit-venv"
+            python3 -m venv "$VENV"
+            "$VENV/bin/pip" install -q --upgrade pip
+            "$VENV/bin/pip" install -q bandit
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll || true
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll -f txt -o bandit.txt || true
             if [ -f bandit.txt ]; then
               echo "::group::bandit findings"
               cat bandit.txt
               echo "::endgroup::"
             fi
-            # Fail only on high/medium dense signal: re-run with exit code for high
-            bandit -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -lll
+            # Fail only on high severity
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -lll
           else
             echo "No Python tree detected; skipping bandit."
           fi
