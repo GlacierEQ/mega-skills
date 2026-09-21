@@ -27,18 +27,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Materialize registries and validate pyramids
-        run: python scripts/materialize_apex_max_research_engine.py
-      - name: Commit generated registries
+      - name: Materialize canonical source registries additively
         run: |
-          if git diff --quiet -- registry/mega-skills.json registry/combo-skills.json registry/mega-skill-pyramids.json; then
-            echo "Canonical registries already materialized."
+          sed '/^subprocess.run/d' scripts/materialize_apex_max_research_engine.py > scripts/.materialize_apex_max_research_engine_only.py
+          python scripts/.materialize_apex_max_research_engine_only.py
+          rm scripts/.materialize_apex_max_research_engine_only.py
+      - name: Commit canonical source registries
+        run: |
+          if git diff --quiet -- registry/mega-skills.json registry/combo-skills.json; then
+            echo "Canonical source registries already materialized."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add registry/mega-skills.json registry/combo-skills.json
+            git commit -m "Materialize APEX Max Research Engine source registries"
+            git push origin HEAD:feat/apex-max-research-engine-20260912
+          fi
+      - name: Regenerate and validate pyramid projection
+        run: |
+          python scripts/generate_mega_skill_pyramids.py
+          python scripts/generate_mega_skill_pyramids.py --check
+      - name: Commit validated pyramid projection
+        run: |
+          if git diff --quiet -- registry/mega-skill-pyramids.json; then
+            echo "Pyramid projection already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add registry/mega-skills.json registry/combo-skills.json registry/mega-skill-pyramids.json
-          git commit -m "Materialize APEX Max Research Engine registries"
+          git add registry/mega-skill-pyramids.json
+          git commit -m "Regenerate APEX Max Research Engine pyramid"
           git push origin HEAD:feat/apex-max-research-engine-20260912
-
-# Triggered after workflow registration; changes are idempotent and additive.
