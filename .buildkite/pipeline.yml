@@ -1,37 +1,4 @@
 steps:
-  - label: ":gear: Materialize APEX research registries"
-    key: "materialize-apex-research"
-    agents:
-      queue: "macos-self"
-    timeout_in_minutes: 5
-    command: |
-      set -euo pipefail
-      if [ "$BUILDKITE_BRANCH" != "feat/apex-max-research-engine-20260912" ]; then
-        echo "APEX materialization is scoped to its feature branch."
-        exit 0
-      fi
-      sed '/^subprocess.run/d' scripts/materialize_apex_max_research_engine.py > scripts/.materialize_apex_max_research_engine_only.py
-      python3 scripts/.materialize_apex_max_research_engine_only.py
-      rm scripts/.materialize_apex_max_research_engine_only.py
-      if ! git diff --quiet -- registry/mega-skills.json registry/combo-skills.json; then
-        git config user.name "buildkite[bot]"
-        git config user.email "buildkite@users.noreply.github.com"
-        git add registry/mega-skills.json registry/combo-skills.json
-        git commit -m "Materialize APEX Max Research Engine source registries"
-        git push origin HEAD:feat/apex-max-research-engine-20260912
-      fi
-      python3 scripts/generate_mega_skill_pyramids.py
-      python3 scripts/generate_mega_skill_pyramids.py --check
-      if ! git diff --quiet -- registry/mega-skill-pyramids.json; then
-        git config user.name "buildkite[bot]"
-        git config user.email "buildkite@users.noreply.github.com"
-        git add registry/mega-skill-pyramids.json
-        git commit -m "Regenerate APEX Max Research Engine pyramid"
-        git push origin HEAD:feat/apex-max-research-engine-20260912
-      fi
-
-  - wait
-
   - label: ":satellite: Provider continuity preflight"
     key: "provider-continuity-preflight"
     agents:
@@ -56,18 +23,19 @@ steps:
       set -euo pipefail
       mkdir -p artifacts/buildkite
       actual="$(git rev-parse HEAD)"
-      test "$actual" = "$BUILDKITE_COMMIT"
+      test "$$actual" = "$BUILDKITE_COMMIT"
       python3 --version
       python3 -m compileall -q scripts tests skills
       python3 scripts/validate_hierarchy.py
       python3 scripts/validate_genius_mastery_bridge.py --mode freshness
       python3 scripts/generate_mega_skill_pyramids.py --check
       python3 -m unittest discover -s tests -v
+      python3 -m unittest discover -s skills/apex-boot-core/tests -v
       python3 skills/local-skill/tests/test_local_skill.py -v
       python3 skills/branch-lifecycle-intelligence/tests/test_branch_lifecycle.py -v
       export RUN_DIR=/tmp/mega-skills-buildkite-run
-      rm -rf "$RUN_DIR"
-      python3 scripts/run_mega_mission.py --output-dir "$RUN_DIR"
+      rm -rf "$$RUN_DIR"
+      python3 scripts/run_mega_mission.py --output-dir "$$RUN_DIR"
       python3 - <<'PY'
       import hashlib
       import json
@@ -111,6 +79,7 @@ steps:
               "provider_continuity_preflight",
               "generate_mega_skill_pyramids_check",
               "unittest_discover",
+              "apex_boot_core_operator_semantics_regressions",
               "local_skill_tests",
               "branch_lifecycle_tests",
               "mega_mission_receipt_hashes"
@@ -121,17 +90,17 @@ steps:
       PY
       TRANSIENT_RECEIPT=evidence/casebuilding-activation/test-dry-run-receipt.json
       changed="$(git diff --name-only)"
-      unexpected="$(printf '%s\n' "$changed" | grep -v '^$' | grep -v "^${TRANSIENT_RECEIPT}$" || true)"
-      if [ -n "$unexpected" ]; then
+      unexpected="$(printf '%s\n' "$$changed" | grep -v '^$$' | grep -v "^$${TRANSIENT_RECEIPT}$$" || true)"
+      if [ -n "$$unexpected" ]; then
         echo "Unexpected tracked mutations after validation:" >&2
-        printf '%s\n' "$unexpected" >&2
+        printf '%s\n' "$$unexpected" >&2
         exit 1
       fi
-      if git diff --quiet -- "$TRANSIENT_RECEIPT"; then
+      if git diff --quiet -- "$$TRANSIENT_RECEIPT"; then
         echo "No transient dry-run receipt mutation observed."
       else
-        cp "$TRANSIENT_RECEIPT" artifacts/buildkite/test-dry-run-receipt.generated.json
-        git checkout -- "$TRANSIENT_RECEIPT"
+        cp "$$TRANSIENT_RECEIPT" artifacts/buildkite/test-dry-run-receipt.generated.json
+        git checkout -- "$$TRANSIENT_RECEIPT"
       fi
       git diff --exit-code
     artifact_paths:
