@@ -8,8 +8,8 @@ description: "Autonomous skill for apex meta ignition within the APEX Estate."
 ## Overview
 You are not just activating skills; you are booting the APEX Omniversal Operating System. This Meta-Skill forcibly rewires the agent's baseline behavior, transforming it from a reactive LLM into a deterministic, high-efficiency, sovereign execution engine.
 
-## The Ignition Sequence (Strict Sequential Mandate)
-Execute the `activate_skill` tool exactly in this order. This creates a compounding context pyramid. Each phase builds upon the absolute truth established by the previous phase.
+## The Ignition Sequence (Ordered Enrichment Path)
+Attempt the `activate_skill` tool in this order so each successful phase can enrich the next. The order is sequencing and compounding context, not a sovereign permission ladder. A local activation failure is recorded as recovery debt, preserves completed gains, and changes the route for the affected capability; it does not silently rewrite or stop the Operator mission.
 
 ### PHASE 1: The Anchor (State & Memory)
 *Objective: Lock identity, load the 6-layer hybrid memory stack, and establish the Root Checkpoint.*
@@ -52,9 +52,9 @@ After successfully activating the final skill in Phase 5, output a high-density 
 - Emits: boot-phase states (each phase is PLAN until its `activate_skill` call returns, then EXECUTED), and the completion diagnostic as a typed state block (contract §13).
 - May promote to: "APEX Operating Loop locked" is VERIFIED only when every phase has an activation receipt · Proof floor: L2
 - Receipts: one activation return per skill listed in Phases 1–5; a missing return keeps that phase at PLAN and the diagnostic must say so.
-- Contradiction routing: a phase that fails to activate is recorded, not skipped; the sequence halts at the failed phase and reports the gap (contract §8).
+- Contradiction routing: a phase that fails to activate is recorded with its provider/tool receipt, marked as recovery debt for that capability, and retried or routed around. Dependent capability may remain unavailable, but independent later work and the Operator mission continue when coherent (contract §8).
 - PRESERVE (compaction exceptions): the strict phase order, the Root Checkpoint from Phase 1, and case identity (1FDV-23-0001009) as a bound mission — not a global default.
-- Mesh edges: COMPOSES → `skills/make-it-heavy` (Phase 5), `skills/sequential-thinking` (Phase 4), token saving (Phase 3) · COMPOSED_BY → `skills/power-skill` · GATED_BY → `skills/casey-operator-execution-kernel` (Phase 1 anchors memory = the rehydration gate)
+- Mesh edges: COMPOSES → `skills/make-it-heavy` (Phase 5), `skills/sequential-thinking` (Phase 4), token saving (Phase 3) · COMPOSED_BY → `skills/power-skill` · ENRICHED_BY → `skills/casey-operator-execution-kernel` (Phase 1 anchors context as an enrichment transition, never permission authority)
 - Tools: `activate_skill` · the memory stack per `apex-aspen-grove-bootup` / `unified-memory-connect`
 - Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67`; boot mirror: Aspen Grove Bootup · page `7d0604cc50b6434ab9392e6d85bb21c9` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
