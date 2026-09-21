@@ -19,7 +19,7 @@ def main() -> int:
     parser.add_argument(
         "operation", nargs="?", default="mission_select",
         choices=(
-            "mission_select", "dispatch_gate", "completion_gate",
+            "context_gate", "mission_select", "dispatch_gate", "completion_gate",
             "retirement_gate", "growth_gate",
             "purpose", "procedure", "output_contract",
         ),
