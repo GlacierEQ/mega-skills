@@ -18,7 +18,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "operation", nargs="?", default="mission_select",
-        choices=("mission_select", "dispatch_gate", "completion_gate", "purpose", "procedure", "output_contract"),
+        choices=(
+            "context_gate", "mission_select", "dispatch_gate", "completion_gate",
+            "retirement_gate", "growth_gate",
+            "purpose", "procedure", "output_contract",
+        ),
     )
     parser.add_argument("--input", help="JSON payload file; stdin is used when omitted")
     args = parser.parse_args()

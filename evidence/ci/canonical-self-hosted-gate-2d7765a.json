@@ -1,0 +1,24 @@
+{
+  "schema": "glaciereq.ci.provider-receipt.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "workflow": "Validate Mega Skills Hierarchy",
+  "run_id": 34748180059,
+  "validated_source_sha": "2d7765a4a2439686d3237bb7dccd4a57523088bc",
+  "provider": "github-actions",
+  "canonical_blocking_authority": "private-self-hosted-full",
+  "jobs": {
+    "private-self-hosted-full": {"job_id": 103699840660, "conclusion": "success"},
+    "validate": {"job_id": 103700112409, "conclusion": "success"},
+    "hosted_probes": {
+      "compile": {"job_id": 103699840573, "conclusion": "failure"},
+      "regression": {"job_id": 103699840626, "conclusion": "failure"},
+      "local-skill": {"job_id": 103699840641, "conclusion": "failure"},
+      "branch-lifecycle": {"job_id": 103699840642, "conclusion": "failure"},
+      "pyramids": {"job_id": 103699840662, "conclusion": "failure"},
+      "genius-bridge": {"job_id": 103699840697, "conclusion": "failure"},
+      "hierarchy": {"job_id": 103699840702, "conclusion": "failure"}
+    }
+  },
+  "interpretation": "Canonical private self-hosted full validation and terminal validate gate succeeded. GitHub-hosted probes remain independently visible and failed; they are not represented as successful or suppressed evidence.",
+  "evidence_boundary": "This receipt records provider-native job conclusions returned for run 34748180059; it does not convert hosted-probe failures into passes."
+}

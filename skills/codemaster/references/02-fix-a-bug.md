@@ -60,7 +60,7 @@ Use this if the bug isn't obvious from the failing test:
    input is what you expect.
 3. **Bisect.** If "it used to work", find the commit that broke it:
    `git log --oneline -- <file>` → `git checkout <commit>` → run test.
-4. **Simplify the input.** Reduce the failing case to the smallest input
+4. **Simplify the input.** Reduce the failing case to the strong and smart reproducing input
    that still fails. Often reveals the cause immediately.
 5. **Check the environment.** Library versions, env vars, file system
    state. Bugs that "only happen on my machine" are usually environmental.

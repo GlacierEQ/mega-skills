@@ -1646,7 +1646,7 @@
       "version": "0.1.0",
       "path": "skills/automated-performance-profiling",
       "entrypoint": "skills/automated-performance-profiling/SKILL.md",
-      "purpose": "Measure performance, diagnose evidence-backed bottlenecks, generate minimal mitigations, and verify latency, throughput, resource, cost, and correctness outcomes.",
+      "purpose": "Measure performance, diagnose evidence-backed bottlenecks, generate strong and smart mitigations, and verify latency, throughput, resource, cost, and correctness outcomes.",
       "input_contract": [
         "Authorized repository, service, or artifact scope",
         "Representative workload, environment, baseline, and performance budget",
@@ -1676,7 +1676,7 @@
       "version": "0.1.0",
       "path": "skills/automated-security-scanning",
       "entrypoint": "skills/automated-security-scanning/SKILL.md",
-      "purpose": "Scan authorized code, dependencies, containers, secrets, and configuration; triage findings; generate minimal fixes; and verify remediation with fail-closed evidence gates.",
+      "purpose": "Scan authorized code, dependencies, containers, secrets, and configuration; triage findings; generate strong and smart fixes; and verify remediation with fail-closed evidence gates.",
       "input_contract": [
         "Authorized repository, artifact, or build scope",
         "Security policy, severity threshold, and disclosure boundary",
@@ -6218,6 +6218,28 @@
       ]
     },
     {
+      "id": "frontier-architect-manager-worker",
+      "display_name": "Frontier Architect Manager Worker",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/frontier-architect-manager-worker",
+      "entrypoint": "skills/frontier-architect-manager-worker/SKILL.md",
+      "purpose": "Quality-first model orchestration concentrating frontier cognition at high-leverage execution points.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in skills/frontier-architect-manager-worker/tests/test_frontier_architect_manager_worker.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
       "id": "game-animation-frames",
       "display_name": "Game Animation Frames",
       "ownership": "glaciereq",
@@ -8130,6 +8152,28 @@
       ],
       "local_validation": [
         "100% test assertions pass in tests/test_legal_automation_suite.py"
+      ],
+      "does_not_own": [
+        "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "legal-issue-assessment-matrix",
+      "display_name": "Legal Issue Assessment Matrix",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/legal-issue-assessment-matrix",
+      "entrypoint": "skills/legal-issue-assessment-matrix/SKILL.md",
+      "purpose": "Reusable legal orientation layer: represent each potentially material issue beside the Operator own assessment.",
+      "input_contract": [
+        "Domain mandate and parameters"
+      ],
+      "output_contract": [
+        "Verified task execution receipt and output payload"
+      ],
+      "local_validation": [
+        "100% test assertions pass in skills/legal-issue-assessment-matrix/tests/test_legal_issue_assessment_matrix.py"
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
@@ -13996,7 +14040,7 @@
       "version": "0.1.0",
       "path": "skills/skill-connector-router",
       "entrypoint": "skills/skill-connector-router/SKILL.md",
-      "purpose": "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i...",
+      "purpose": "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the strong and smart skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, strong and smart skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i...",
       "input_contract": [
         "Domain mandate and parameters"
       ],

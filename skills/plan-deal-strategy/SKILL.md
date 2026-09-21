@@ -150,7 +150,7 @@ For a full strategy pack, return sections in this exact order.
 
 - **Gap:** [Material missing/conflicting evidence]
   - **Impact:** [How confidence or execution is affected]
-  - **Smallest Next Collection Step:** [Most efficient way to close it]
+  - **Strong and Smart Next Collection Step:** [Most efficient way to close it]
 
 ## Inference Notes
 
@@ -174,4 +174,4 @@ For a full strategy pack, return sections in this exact order.
 
 ## Failure Handling
 
-If no credible active-deal anchor exists, state the blocker, offer concrete candidates when available, and ask for the smallest missing input. If optional lanes are unavailable, continue with the strongest grounded evidence and make the resulting confidence limits visible.
+If no credible active-deal anchor exists, state the blocker, offer concrete candidates when available, and ask for the strong and smart missing input. If optional lanes are unavailable, continue with the strongest grounded evidence and make the resulting confidence limits visible.

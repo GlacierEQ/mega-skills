@@ -1,0 +1,71 @@
+{
+  "chain_root_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "entries": [],
+  "entry_count": 0,
+  "generated_utc": "2026-09-13T17:50:36.359805+00:00",
+  "schema_version": 1,
+  "timestamp_report": {
+    "event_count": 7,
+    "events_normalized": [
+      {
+        "id": "dkt-213",
+        "timestamp_utc": "2025-11-17T00:00:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-215",
+        "timestamp_utc": "2026-07-01T09:54:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-217",
+        "timestamp_utc": "2026-07-02T00:00:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-219",
+        "timestamp_utc": "2026-07-02T00:00:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-221",
+        "timestamp_utc": "2026-07-02T00:00:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-223",
+        "timestamp_utc": "2026-07-06T00:00:00+00:00",
+        "type": "event"
+      },
+      {
+        "id": "dkt-225",
+        "timestamp_utc": "2026-07-19T09:58:00+00:00",
+        "type": "event"
+      }
+    ],
+    "largest_gap": [
+      {
+        "between": [
+          "dkt-213",
+          "dkt-215"
+        ],
+        "gap_seconds": 19562040.0
+      }
+    ],
+    "parsed_count": 7,
+    "problems": [],
+    "schema_version": 1,
+    "verified": true,
+    "warnings": [
+      {
+        "ids": [
+          "dkt-217",
+          "dkt-219",
+          "dkt-221"
+        ],
+        "kind": "duplicate_timestamp",
+        "timestamp_utc": "2026-07-02T00:00:00+00:00"
+      }
+    ]
+  }
+}

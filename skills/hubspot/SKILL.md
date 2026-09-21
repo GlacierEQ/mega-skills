@@ -18,7 +18,7 @@ Use this priority order when the requested HubSpot job or record is ambiguous.
 1. Explicit user request, named record, HubSpot ID, company, deal, contact, ticket, or stated action
 2. Read-only CRM context needed by the active Sales workflow
 3. Exact record or a high-confidence candidate resolved from the user's words and business context
-4. The smallest property set, associations, activity context, or page of results that answers the request
+4. The strong and smart property set, associations, activity context, or page of results that answers the request
 5. A reviewed draft of proposed HubSpot changes
 6. An explicitly approved, supported HubSpot write followed by verification
 
@@ -41,7 +41,7 @@ These HubSpot-specific steps override the default workflow in the index skill.
 - 1. Resolve access and target
     - Use get_user_details first to confirm the connected portal and exposed object read/write availability.
     - Resolve whether the user wants a read, a draft, or an approved write; identify object type, owner or team, pipeline, timeframe, stage, and exact record when those affect the answer.
-    - For an ambiguous record, do the smallest bounded candidate lookup and ask the user to choose before using it for a summary or write.
+    - For an ambiguous record, do the strong and smart bounded candidate lookup and ask the user to choose before using it for a summary or write.
 - 2. Discover properties and records
     - Use search_properties with at most five focused keywords when fields are uncertain; use get_properties to confirm enum values and writable properties.
     - Use search_crm_objects for search, counts, filters, pagination, and associations. Use get_crm_objects for known IDs. Do not use deprecated search or fetch.

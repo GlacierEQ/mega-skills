@@ -24,7 +24,7 @@ Doctrine: **mastery-not-skills**. This Skill routes to that kernel; it does not 
 | Need | Skill | Law |
 |---|---|---|
 | What do I know? | `epicenter` | L0 presence, L1 structure, L2 behavior. Untagged “facts” are illegal. |
-| May I act? | `epistemic-gate` | Local work ≥ L2. Enterprise ≥ L5. Stubs forbidden. |
+| How strong is the evidence? | `epistemic-gate` | Classify L0–L6; missing proof lowers claim strength and creates bounded verification debt, not execution permission. |
 | How do I build? | `helix-pro-code` | Gap analysis, one push, verify-readback. Not a skill dump. |
 | May I say done? | `verification-before-completion` | Fresh command output this turn, or the claim is false. |
 
@@ -46,7 +46,7 @@ The governing loop is `RECOVER → UNDERSTAND → CHALLENGE → EXECUTE → VERI
 ## Procedure
 
 1. Prefer the live kernel, not this file: `genius --version` then `genius validate .`, `genius doctor .`, and inspect `genius progress . --mission <mission>` so the current progress/run-quality contract is visible before execution.
-2. Classify every claim with `epicenter` before engineering. `epistemic-gate` denies below L2.
+2. Classify every material claim with `epicenter`, then use `epistemic-gate` to record the strongest evidence tier actually supported. A lower tier limits what may be claimed; it does not independently revoke already-established Operator/source authority to execute.
 3. All coding goes through `helix-pro-code`. Do not dump TDD/debug catalogs; load them only when that step needs them.
 4. Evidence is claim+vector, never a single mastery percentage. No done-claim without `verification-before-completion`.
 5. Tests: `pytest -q` in the Genius-Mastery tree (75 passed on glacier-agent 2026-09-04).

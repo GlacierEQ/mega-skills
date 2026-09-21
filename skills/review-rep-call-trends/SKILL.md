@@ -157,4 +157,4 @@ Return these sections in order.
 
 ## Failure Handling
 
-If the target or comparison basis cannot be resolved, state the smallest missing input and offer concrete candidates when available. If the sample is sparse or uneven, produce the limited readout, name which movement claims are unsupported, and suggest the smallest additional call set or window that would improve confidence.
+If the target or comparison basis cannot be resolved, state the strong and smart missing input and offer concrete candidates when available. If the sample is sparse or uneven, produce the limited readout, name which movement claims are unsupported, and suggest the smallest additional call set or window that would improve confidence.

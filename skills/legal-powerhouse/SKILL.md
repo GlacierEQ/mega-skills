@@ -111,3 +111,11 @@ For major legal work, run `hidden-caveat-detector`:
 - before stating that a case-building phase is complete.
 
 If a caveat is genuinely required by current law, evidence, jurisdiction, safety, or tool reality, localize it to the exact legal/analytical field it governs. Do not let it rewrite the source proposition or spread into unrelated allegations.
+
+## Issue / My Assessment Orientation Layer
+
+For legal scenarios where the distinction is useful, load `../legal-issue-assessment-matrix/SKILL.md` before deeper element or remedy analysis.
+
+Use the **Issue / My assessment** matrix to keep the Operator's account visible beside each potentially material issue. The matrix is an orientation layer, not a substitute for chronology, evidence, legal authority, element mapping, damages, remedies, or adversarial testing.
+
+Pointer-link matrix rows to stable fact/evidence/source objects rather than duplicating case facts. The Operator-authored assessment remains separate from assistant legal analysis. Material gaps trigger active resolution; they are not parked as `unresolved` merely because the first retrieval path failed.

@@ -127,7 +127,7 @@ Instructions here...
 
 ## Evolution loop (do this every time)
 
-1. **Create** the extension (smallest thing that works).
+1. **Create** the extension (strong and smart solution).
 2. **Verify immediately** — invoke the tool / trigger the hook on the next turn. A broken extension is worse than none.
 3. **Tell the user** what you created and why, in one sentence.
 4. **Iterate or delete** — if it misfires later, fix it or remove it. Don't leave dead extensions; they pollute your own tool list.

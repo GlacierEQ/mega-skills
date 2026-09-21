@@ -10,6 +10,17 @@ KERNEL = ROOT / "skills" / "casey-operator-execution-kernel" / "skill.py"
 
 
 def run_kernel(operation, payload):
+    if operation in {"mission_select", "dispatch_gate"} and "context_hydration" not in payload:
+        payload = dict(payload)
+        payload["context_hydration"] = {
+            "status": "PARTIAL",
+            "attempted": True,
+            "before_interpretation": True,
+            "silent_prompt_only_fallback_forbidden": True,
+            "sources": ["test-context"],
+            "failures": [],
+            "unknowns": ["full history coverage not asserted in fixture"],
+        }
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
         json.dump(payload, handle)
         input_path = handle.name
@@ -28,6 +39,68 @@ def run_kernel(operation, payload):
 class OperatorExecutionKernelTests(unittest.TestCase):
     def test_kernel_entrypoint_exists(self):
         self.assertTrue(KERNEL.is_file())
+
+
+    def test_context_gate_rejects_missing_turn_hydration(self):
+        result = run_kernel("context_gate", {})
+        self.assertFalse(result["valid"])
+        self.assertIn("turn_context_hydration_missing", result["reasons"])
+
+    def test_context_gate_accepts_partial_hydration_and_continues(self):
+        result = run_kernel("context_gate", {
+            "context_hydration": {
+                "status": "PARTIAL",
+                "attempted": True,
+                "before_interpretation": True,
+                "silent_prompt_only_fallback_forbidden": True,
+                "sources": ["conversation-history", "repository-state"],
+                "failures": [],
+                "unknowns": ["one connector unavailable"],
+            }
+        })
+        self.assertTrue(result["valid"])
+        self.assertTrue(result["mission_continues_if_partial_or_unavailable"])
+
+    def test_dispatch_rejects_prompt_only_cognition(self):
+        result = run_kernel("dispatch_gate", {
+            "context_hydration": {
+                "status": "PARTIAL",
+                "attempted": False,
+                "before_interpretation": False,
+                "silent_prompt_only_fallback_forbidden": False,
+                "sources": [],
+                "failures": [],
+                "unknowns": [],
+            },
+            "scope": {"mode": "specialized", "lane": "engineering"},
+            "continuation_hydrated": True,
+            "candidates": [{
+                "id": "candidate", "lane": "engineering",
+                "source_state_hydrated": True,
+                "authorized": True, "executable": True, "substantive": True,
+                "operator_impact": 1.0,
+            }],
+        })
+        self.assertFalse(result["dispatch_allowed"])
+        self.assertIn("turn_context_retrieval_not_attempted", result["hydration_reasons"])
+        self.assertIn("turn_context_not_hydrated_before_interpretation", result["hydration_reasons"])
+
+    def test_operator_invariants_use_aspen_grove_epistemology(self):
+        invariants = json.loads(
+            (ROOT / "skills" / "casey-operator-execution-kernel" / "OPERATOR_INVARIANTS.json")
+            .read_text(encoding="utf-8")
+        )
+        epistemology = invariants["epistemology"]
+        self.assertEqual(epistemology["model"], "ASPEN_GROVE")
+        self.assertEqual(epistemology["law"], "SHARED_ROOTS_INDEPENDENT_TRUNKS_COMPOSABLE_BRANCHES")
+        self.assertTrue(epistemology["context_before_interpretation"])
+        self.assertTrue(epistemology["domain_local_knowledge_by_default"])
+        self.assertTrue(epistemology["cross_domain_composition_requires_typed_bridge"])
+        self.assertTrue(epistemology["composition_must_not_merge_domain_identity"])
+        self.assertTrue(epistemology["retrieval_is_not_proof"])
+        self.assertTrue(epistemology["absence_of_retrieval_is_not_absence"])
+        self.assertTrue(epistemology["evidence_and_execution_axes_separate"])
+        self.assertTrue(epistemology["execution_is_not_verification"])
 
     def test_estate_dispatch_requires_real_objective_graph_hydration(self):
         result = run_kernel("dispatch_gate", {
@@ -155,6 +228,89 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertTrue(result["can_finalize"])
         self.assertEqual(result["finalization_kind"], "hard_boundary")
         self.assertFalse(result["continue_required"])
+
+    def test_retirement_gate_keeps_branch_active_while_unique_state_remains(self):
+        result = run_kernel("retirement_gate", {
+            "unique_sources_remaining": 1,
+            "unique_events_remaining": 2,
+            "unique_edges_remaining": 0,
+            "unique_contradictions_remaining": 1,
+            "unique_provenance_remaining": 0,
+            "unique_unresolved_dependencies_remaining": 0,
+            "unique_receipts_remaining": 0,
+            "merged_target_readback_verified": True,
+            "preserves_lineage": True,
+        })
+        self.assertFalse(result["can_retire"])
+        self.assertEqual(result["branch_state"], "ACTIVE_IN_MESH")
+        self.assertEqual(result["action"], "merge_continue")
+        self.assertEqual(result["total_unique_remaining"], 4)
+
+    def test_retirement_gate_allows_only_drained_lineage_preserved_branch(self):
+        result = run_kernel("retirement_gate", {
+            "unique_sources_remaining": 0,
+            "unique_events_remaining": 0,
+            "unique_edges_remaining": 0,
+            "unique_contradictions_remaining": 0,
+            "unique_provenance_remaining": 0,
+            "unique_unresolved_dependencies_remaining": 0,
+            "unique_receipts_remaining": 0,
+            "merged_target_readback_verified": True,
+            "preserves_lineage": True,
+        })
+        self.assertTrue(result["can_retire"])
+        self.assertEqual(result["branch_state"], "RETIRED_DERIVATIVE")
+        self.assertEqual(result["action"], "retire_with_lineage")
+
+    def test_mission_select_rejects_replacement_that_would_drop_unique_state(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "specialized", "lane": "case"},
+            "continuation_hydrated": True,
+            "candidates": [
+                {
+                    "id": "swap-tree", "lane": "case",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "replace_existing": True,
+                    "retirement_check": {
+                        "unique_sources_remaining": 1,
+                        "merged_target_readback_verified": True,
+                        "preserves_lineage": True,
+                    },
+                    "operator_impact": 1.0,
+                },
+                {
+                    "id": "grow-tree", "lane": "case",
+                    "source_state_hydrated": True,
+                    "authorized": True, "executable": True, "substantive": True,
+                    "merge_extends_existing_state": True,
+                    "continuation_valid": True,
+                    "operator_impact": 0.8,
+                },
+            ],
+        })
+        self.assertEqual(result["selected"]["id"], "grow-tree")
+        rejected = {item["id"]: item["reasons"] for item in result["rejected"]}
+        self.assertIn("replacement_would_discard_unique_state", rejected["swap-tree"])
+
+    def test_completion_gate_blocks_unproven_replacement(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": True,
+            "verified": True,
+            "verification_refs": ["receipt-1"],
+            "artifact_only": False,
+            "support_only": False,
+            "authorized_executable_action_exists": False,
+            "replacement_attempted": True,
+            "retirement_check": {
+                "unique_events_remaining": 1,
+                "merged_target_readback_verified": True,
+                "preserves_lineage": True,
+            },
+        })
+        self.assertFalse(result["can_finalize"])
+        self.assertIn("replacement_would_discard_unique_state", result["reasons"])
+        self.assertEqual(result["retirement"]["branch_state"], "ACTIVE_IN_MESH")
 
 
 if __name__ == "__main__":

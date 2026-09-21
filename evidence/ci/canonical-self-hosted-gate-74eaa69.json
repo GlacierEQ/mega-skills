@@ -1,0 +1,46 @@
+{
+  "schema": "glaciereq.mega-skills.canonical-self-hosted-validation.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "validated_commit": "74eaa69dbead5c78a88f49f25663af8ff9d600ef",
+  "workflow": ".github/workflows/validate-hierarchy.yml",
+  "workflow_id": 344170255,
+  "run_id": 34755072538,
+  "run_number": 476,
+  "check_suite_id": 94129272741,
+  "run_conclusion": "success",
+  "blocking_jobs": {
+    "private-self-hosted-full": {"job_id": 103717957969, "conclusion": "success"},
+    "validate": {"job_id": 103718226566, "conclusion": "success"}
+  },
+  "runner": {
+    "name": "glaciereq-mega-skills-mac",
+    "version": "2.337.0",
+    "machine": "KcBs-MacBook-Air"
+  },
+  "provider_log_evidence": {
+    "validation_sha": "74eaa69dbead5c78a88f49f25663af8ff9d600ef",
+    "python": "3.14.7",
+    "recursive_hierarchy": "passed",
+    "genius_mastery_bridge": {"ok": true, "remote_verified": true, "freshness_verified": true},
+    "atomic_skills": 719,
+    "compound_skills": 36,
+    "mega_skills": 32,
+    "unresolved_owned_references": 0,
+    "compound_cycles": 0,
+    "regression_tests": {"ran": 127, "result": "OK", "skipped": 1},
+    "local_skill_tests": {"ran": 7, "result": "OK"},
+    "branch_lifecycle_tests": {"ran": 18, "result": "OK"},
+    "receipt_manifest_entries_sha256_verified": 13,
+    "terminal_marker": "MEGA_SKILLS_CANONICAL_SELF_HOSTED_VALIDATION=PASS"
+  },
+  "hosted_probe_state": {
+    "compile": "failure",
+    "regression": "failure",
+    "local-skill": "failure",
+    "branch-lifecycle": "failure",
+    "pyramids": "failure",
+    "genius-bridge": "failure",
+    "hierarchy": "failure"
+  },
+  "boundary": "Canonical private self-hosted validation is provider-proven for the validated commit. Hosted probe failures remain independent evidence and are not represented as success. SUPPORT_VERIFIED mission artifacts are support-only and do not imply mission completion."
+}

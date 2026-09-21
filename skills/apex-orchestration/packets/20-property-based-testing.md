@@ -13,7 +13,7 @@ A property test is valid iff:
 1. The property is a pure function `f(state) -> bool` that always evaluates to True on correct code.
 2. The generator produces valid inputs across the full input space (no hard-coded narrow examples).
 3. The runner generates ≥ 100 random inputs by default; a counterexample falsifies the property.
-4. On falsification, the minimal failing example is shrunk to the smallest reproducer.
+4. On falsification, the minimal failing example is shrunk to the strong and smart reproducer.
 
 ## Property Categories (auto-detected from function signature)
 
@@ -56,7 +56,7 @@ A property test is valid iff:
 
 - Roundtrip test: define `parse(unparse(x)) == x` for several functions, run, all pass.
 - Idempotence test: `sorted(sorted(items)) == sorted(items)`, all pass.
-- Falsification test: deliberately break `f(x) = x + 1` with property `f(0) == 0` → falsifier found, minimal reproducer returned.
+- Falsification test: deliberately break `f(x) = x + 1` with property `f(0) == 0` → falsifier found, strong and smart reproducer returned.
 - Shrinking test: a falsifier `f(huge_input) != expected` shrinks to `f(small_input) != expected` automatically.
 - Coverage test: report includes `functions_covered: N, functions_uncovered: M`; if `M > 0`, F-VER-02 fires.
 

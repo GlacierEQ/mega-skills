@@ -83,7 +83,7 @@ When asked to change a behavior:
 2. Determine scope from the request. Treat model/provider setup as global unless the user says it is project-only; use project config for explicitly repo-local behavior.
 3. Inspect only the exact config candidates. Never recursively search the user's home directory. Prefer an existing higher-precedence `.jsonc` file and preserve comments, `$schema`, unrelated providers, and other settings.
 4. Keep secrets out of tool output and the final response. When inspecting a config, redact values for keys such as `apiKey`, `token`, `secret`, and `password`; never dump the whole unredacted file merely to find its shape.
-5. Edit minimally. If the request says configure, use, or make default, also set the top-level `model`; if it only says add, leave the current selection unchanged.
+5. Edit with strong and smart precision. If the request says configure, use, or make default, also set the top-level `model`; if it only says add, leave the current selection unchanged.
 6. When persisting a newly supplied API key and model, also put that exact `provider/model` at the front of the TUI recent-model state so the user can switch to it immediately. Follow the merge procedure in @reference/providers.md; never replace favorites, variants, or unrelated recent models.
 7. Validate the parsed configuration with the narrowest relevant command and report the config and recent-model state files changed, selected provider/model, and whether a new session or re-selection is needed. Never include the credential in the summary.
 

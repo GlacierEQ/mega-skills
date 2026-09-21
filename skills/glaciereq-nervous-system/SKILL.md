@@ -19,7 +19,7 @@ For complex GlacierEQ missions, enter through:
 1. Recover durable state before asking for information that may already exist.
 2. Boot through Apex Boot Core / ASPEN-CHK-001 when the mission touches existing GlacierEQ state.
 3. Inspect current skills, connectors, repositories, files, and tool authorization before selecting a route.
-4. Compose the **smallest sufficient** existing specialist skill set instead of copying or bulk-loading the skill estate.
+4. Compose the **strong and smart** existing specialist skill set instead of copying or bulk-loading the skill estate.
 5. Resolve the active model as a dynamic capability provider; do not hard-code one model repository as universal authority.
 6. When languages, runtimes, schemas, interfaces, hardware, benchmarks, or formal proof matter, delegate placement to `GlacierEQ/the-tower-of-babel` using `REQUIREMENT -> PLACEMENT -> INTERFACE -> PROOF`.
 7. Execute with authorized tools before substituting explanation for action.

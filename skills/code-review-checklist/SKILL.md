@@ -207,7 +207,7 @@ if (!API_KEY) {
 
 ### Maintainability
 - [ ] Code is modular and reusable
-- [ ] Dependencies are minimal
+- [ ] Dependencies are strong, smart, and lean
 - [ ] Changes are backwards compatible
 - [ ] Breaking changes are documented
 - [ ] Technical debt is noted

@@ -8,7 +8,7 @@ description: "Closed-loop AST traceback parsing, pinpoint defect localization, a
 
 ## Purpose
 
-Execute automated closed-loop code repair by executing test harnesses, intercepting failure tracebacks, isolating exact AST nodes with `ApexEpistemicChunker`, synthesizing minimal surgical patches, and verifying resolution.
+Execute automated closed-loop code repair by executing test harnesses, intercepting failure tracebacks, isolating exact AST nodes with `ApexEpistemicChunker`, synthesizing strong and smart surgical patches, and verifying resolution.
 
 ## Procedure
 

@@ -1,0 +1,89 @@
+name: Operator Semantics Verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/apex-boot-core/**"
+      - ".github/workflows/operator-semantics.yml"
+  pull_request:
+    paths:
+      - "skills/apex-boot-core/**"
+      - ".github/workflows/operator-semantics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  operator-semantics:
+    name: Operator semantics / enrichment transitions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile APEX Boot Core
+        run: python -m compileall -q skills/apex-boot-core
+
+      - name: Run Operator semantic regressions
+        run: >
+          python -m unittest discover
+          -s skills/apex-boot-core/tests
+          -p 'test_operator_semantics.py'
+          -v
+
+      - name: Execute live boot enrichment transition
+        run: >
+          python skills/apex-boot-core/scripts/boot_watchdog.py
+          --quiet
+          --json
+          --save /tmp/apex-operator-semantics-receipt.json
+
+      - name: Verify Operator semantics receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          receipt = json.loads(
+              Path("/tmp/apex-operator-semantics-receipt.json").read_text(encoding="utf-8")
+          )
+
+          binding = receipt["pre_reasoning_binding"]
+          assert binding["authority_holder"] == "OPERATOR"
+          assert binding["exclusive_project_direction_authority"] is True
+          assert binding["machine_project_direction_authority"] is False
+          assert binding["topology_model"] == "HOLOGRAPHIC_POLYCENTRIC_MESH"
+          assert binding["single_root"] is False
+          assert binding["gate_semantic"] == "ENRICHMENT_TRANSITION"
+          assert binding["gate_may_stop_mission"] is False
+          assert binding["local_block_changes_route"] is True
+          assert binding["local_block_changes_objective"] is False
+          assert binding["mission_changes_only_by"] == "OPERATOR"
+
+          enrichment = receipt["enrichment_summary"]
+          assert enrichment["semantic"] == "LEVEL_UP"
+          assert enrichment["all_results_are_enrichment_transitions"] is True
+          assert enrichment["mission_continues"] is True
+          assert enrichment["machine_veto"] is False
+          assert enrichment["operator_authority_preserved"] is True
+
+          assert receipt["gates"], "boot receipt must contain observations"
+          for gate in receipt["gates"]:
+              assert gate["level_up"] is True, gate
+              assert gate["mission_stop"] is False, gate
+              assert gate["transition"], gate
+
+          print(
+              "OPERATOR_SEMANTICS_VERIFIED",
+              receipt["digest"],
+              len(receipt["gates"]),
+          )
+          PY

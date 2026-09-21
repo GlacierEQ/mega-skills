@@ -36,7 +36,7 @@ A force that does not move is not weak. It is so mathematically, architecturally
 | 2 | **Read Before Write** | Audit every file, every module, every test BEFORE modifying anything | Eliminates rework cycles, prevents architectural contradictions |
 | 3 | **First Pass = Last Pass** | Treat every output as the final deliverable. No drafts, no "we'll fix later" | Removes the 3-5x cost of revision loops |
 | 4 | **Receipt-Driven Verification** | Every mutation produces a cryptographic receipt (SHA-256 hash of the change) | Enables instant rollback, audit trail, and proof of correctness |
-| 5 | **Smallest Sufficient Surface** | Load only the skills, tools, and context needed for the current objective | Keeps token budgets tight, keeps reasoning sharp |
+| 5 | **Strong and Smart Surface** | Load only the skills, tools, and context needed for the current objective | Keeps token budgets tight, keeps reasoning sharp |
 | 6 | **Adversarial Self-Audit** | After any "done" signal, run a second pass looking for what was missed | Catches the 10-20% of defects that confidence bias hides |
 | 7 | **Durable Memory Mesh** | Persist decisions, architecture context, and verification state across sessions | Eliminates cold-start re-discovery; every session inherits prior knowledge |
 
@@ -286,7 +286,7 @@ Model routing is dynamic. The orchestrator selects the optimal model per task ph
 4. **Zero Data Loss Theorem:** Source directories must be cryptographically verified and losslessly synced before any destructive operation. Data loss is out of line and unacceptable.
 
 ### Forbidden Defaults
-- Smallest possible version
+- Strong and smart version
 - Minimum slice as objective
 - Simplification for its own sake
 - Rewriting for novelty

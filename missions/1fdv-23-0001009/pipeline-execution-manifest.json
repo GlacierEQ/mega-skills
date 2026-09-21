@@ -1,8 +1,28 @@
 {
   "schema_version": 1,
   "pipeline_id": "1fdv-deep-casebuilding",
-  "state": "initialized",
-  "stages_completed": [],
-  "last_run_utc": null,
-  "notes": "Durable execution state for resume. Stages record completion here so an interrupted run resumes from the last verified stage."
+  "state": "completed",
+  "stages_completed": [
+    "assign-bates",
+    "audit-audio-custody",
+    "compile-casebuilding-dossier",
+    "compile-sample-transcript",
+    "emit-master-manifest",
+    "hash-evidence-intake",
+    "plan-audio-exhibit-serials",
+    "scan-anomalies",
+    "scan-pii",
+    "test-audio-forensic-core",
+    "test-epistemic-gate",
+    "test-forensic-evidence-chain-core",
+    "validate-intake",
+    "verify-alignment",
+    "verify-audio-exhibit-serials",
+    "verify-bates-contiguity",
+    "verify-diarization",
+    "verify-docket-timeline",
+    "verify-hashes",
+    "verify-manifest-chain"
+  ],
+  "last_run_utc": "2026-09-13T17:51:26.261042+00:00"
 }

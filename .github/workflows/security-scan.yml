@@ -1,0 +1,52 @@
+name: Security scan (free-path)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: "42 9 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Secret scan (gitleaks)
+    runs-on: [self-hosted, Linux, X64, glaciereq-box]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  bandit:
+    name: Python SAST (bandit)
+    runs-on: [self-hosted, Linux, X64, glaciereq-box]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run bandit with system Python (self-hosted)
+        run: |
+          set -euo pipefail
+          python3 --version
+          if compgen -G "**/*.py" > /dev/null || [ -d backend ] || [ -d src ]; then
+            VENV="${RUNNER_TEMP:-/tmp}/bandit-venv"
+            python3 -m venv "$VENV"
+            "$VENV/bin/pip" install -q --upgrade pip
+            "$VENV/bin/pip" install -q bandit
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll || true
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -ll -f txt -o bandit.txt || true
+            if [ -f bandit.txt ]; then
+              echo "::group::bandit findings"
+              cat bandit.txt
+              echo "::endgroup::"
+            fi
+            # Fail only on high severity
+            "$VENV/bin/bandit" -r . -x './.git,./node_modules,./venv,./.venv,./dist,./build' -lll
+          else
+            echo "No Python tree detected; skipping bandit."
+          fi

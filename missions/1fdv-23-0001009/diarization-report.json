@@ -1,0 +1,18 @@
+{
+  "overlap_regions": [],
+  "schema_version": 1,
+  "segment_count": 3,
+  "speaker_count": 2,
+  "speaking_time_seconds": {
+    "SPEAKER_1": 5.5,
+    "SPEAKER_2": 3.5
+  },
+  "timeline_monotonic": true,
+  "total_overlap_seconds": 0,
+  "turns": {
+    "SPEAKER_1": 2,
+    "SPEAKER_2": 1
+  },
+  "valid": true,
+  "violations": []
+}

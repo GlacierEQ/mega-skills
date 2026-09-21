@@ -1,60 +1,49 @@
 # Inception-to-Deployment Deep-Work Pipelines
 
-Mega Skills already describe complete workflows. These pipelines make that
-description **executable** without turning the repository into an autonomous
-deployer.
+Mega Skills describe complete workflows. These pipelines make that description **executable** while preserving source integrity, provider constraints, and scoped consequence boundaries.
 
 ## Span
 
 ```text
 inception → readiness → recon → design → build
-        → verify → package → deploy-gate → handoff → evolve
+        → verify → package → execute/deploy → readback → evolve
 ```
 
-Every family pipeline covers the same span. The master pipeline
-`inception-to-deployment` is the only graph that is allowed to claim the
-full product loop.
+Every family pipeline covers the same span. The master pipeline `inception-to-deployment` is the graph that may claim the full product loop when the requested target state is actually verified.
 
-## Deploy rule
+## Execution rule
 
-`deploy_mode` is `approval_packet_only`.
+There is no terminal `READY_PENDING_HUMAN_APPROVAL` permission gate.
 
-Pipelines may:
+Pipelines may, under active Operator mission authority:
 
-- validate hierarchy and Combo/Mega contracts
-- run local tests
-- write run artifacts and receipts
-- emit a deployment decision packet
+- validate hierarchy and Combo/Mega contracts;
+- run tests and repair failures;
+- write run artifacts and receipts;
+- mutate exact-target repositories/services through verified routes;
+- merge or deploy when that action is part of the current mission and provider permissions allow it;
+- read back the target state and persist receipts.
 
-Pipelines may not:
+A new scoped authority decision is required only when execution would introduce a **new major strategy**, destructive/irreversible act, credential or permission administration, or external consequence not already covered by current Operator direction.
 
-- mutate remotes
-- send network
-- merge
-- deploy
-- access credentials
-- file legal instruments
-
-A `READY_PENDING_HUMAN_APPROVAL` packet is the terminal deploy-gate result.
-Observed production change requires a separate human-approved mission.
+Missing optional providers, unrelated test surfaces, or a local route failure do not create a global deployment stop. `LOCAL_BLOCK != GLOBAL_BLOCK`.
 
 ## Families
 
 | Pipeline | Mega roots | Deep-work job |
 |---|---|---|
-| `control-plane` | always-on-core, adaptive-operations, sovereign-runtime, far-away-party | Session continuity and guarded operating loop |
+| `control-plane` | always-on-core, adaptive-operations, sovereign-runtime, far-away-party | Session continuity and mission-execution loop |
 | `memory-fleet` | omniversal-memory, fleet-harmonizer, docgen-synthesis | Recon, memory synthesis, fleet map |
-| `change-swe` | safe-change-orchestrator, self-healing-forge, autonomous-software-engineering, architectural-evolution-engine, dev-fork-orchestrator | Bounded repair and verification |
-| `ship-cloud` | web-build-system, vercel-web-foundry, backend-infrastructure-engine, secure-cloud-foundry | Build, package, approval-gated ship packet |
+| `change-swe` | safe-change-orchestrator, self-healing-forge, autonomous-software-engineering, architectural-evolution-engine, dev-fork-orchestrator | Repair, verification, and continued execution |
+| `ship-cloud` | web-build-system, vercel-web-foundry, backend-infrastructure-engine, secure-cloud-foundry | Build, package, execute/deploy, readback, and receipt |
 
 ## Runner
 
 ```bash
 python scripts/deep_work_stage.py --list
-python skills/pipeline-compositor/scripts/engine.py   # compositor API
+python skills/pipeline-compositor/scripts/engine.py
 python scripts/run_deep_work_pipeline.py --pipeline inception-to-deployment
 python tests/test_deep_work_pipelines.py -v
 ```
 
-Stage commands stay inside `scripts/deep_work_stage.py` so the DAG cannot
-grow hidden shell one-liners.
+Stage commands stay inside `scripts/deep_work_stage.py` so the DAG remains inspectable. Inspectability is an observability property, not a permission stage.

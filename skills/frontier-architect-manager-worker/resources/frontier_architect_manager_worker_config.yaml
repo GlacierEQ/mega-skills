@@ -1,0 +1,5 @@
+# Configuration schema for frontier-architect-manager-worker
+version: '1.0.0'
+enabled: true
+settings:
+  strict_validation: true

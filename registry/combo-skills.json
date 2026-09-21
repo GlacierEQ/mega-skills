@@ -1262,7 +1262,7 @@
           "Do not inject non-functional stubs (return True, pass) or tamper with test assertion files."
         ],
         "quality_gates": [
-          "Failing test suite passes 100% green on hardware with minimal, idiomatic diffs."
+          "Failing test suite passes 100% green on hardware with strong, smart, and idiomatic diffs."
         ],
         "state_updates": [
           "Record repaired files, applied patches, and green verification receipts in active state."
@@ -1274,7 +1274,7 @@
           "AST traceback isolation",
           "Regression test gating"
         ],
-        "adds": "Establishes an autonomous self-healing execution loop combining stack trace parsing, AST chunk isolation, minimal diff synthesis, and repeated regression verification.",
+        "adds": "Establishes an autonomous self-healing execution loop combining stack trace parsing, AST chunk isolation, strong and smart diff synthesis, and repeated regression verification.",
         "compound_artifact": "closed-loop-repair-record.md",
         "next_layer_ready_when": [
           "Failing stack trace isolated to exact AST chunk.",
@@ -4816,7 +4816,7 @@
         "adds": "A reusable inspect-before-change sequence that resolves repository role ambiguity into a safe routing map.",
         "compound_artifact": "repository-context-map.md",
         "next_layer_ready_when": [
-          "Repository roles and the smallest next verification are explicit."
+          "Repository roles and the strong and smart next verification are explicit."
         ]
       }
     },

@@ -5,7 +5,7 @@ description: "Use when a seller needs to find the best internal experts, owners,
 
 # Find Key Internal Sources
 
-Find the smallest reliable internal route that helps a seller get an answer or unblock work: the right people, maintained docs, public channels, decision forums, and escalation paths. The default output is a quick, evidence-backed routing map plus a draft-ready first ask. This workflow is read-only and never posts, assigns, or updates systems.
+Find the strong and smart reliable internal route that helps a seller get an answer or unblock work: the right people, maintained docs, public channels, decision forums, and escalation paths. The default output is a quick, evidence-backed routing map plus a draft-ready first ask. This workflow is read-only and never posts, assigns, or updates systems.
 
 ## Common Skill Instructions
 
@@ -44,7 +44,7 @@ Prefer canonical ownership and source-of-truth material over chat mentions. ~~CR
 - Treat ambiguous company-like names as possible account anchors. Use a bounded ~~CRM lookup when available before relying on internal docs or messages for account-specific routing.
 - Default to quick. Use deep only when requested or when a high-stakes question clearly needs broader corroboration.
 
-Choose the smallest answer route that satisfies the request:
+Choose the strong and smart answer route that satisfies the request:
 
 - owner_route — who owns, approves, knows, or should be contacted
 - doc_route — what to read, which page is maintained, or what wording is approved
@@ -94,7 +94,7 @@ Rank by:
 - Include a one-line rationale, direct link when available, evidence signal, and freshness or confidence when it affects trust.
 - If the user's wording conflates two surfaces, add a short framing note explaining the split and continue with both routes unless the distinction changes which sources are safe to use.
 - Recommended First Ask must be a concrete draft the seller can send to the best owner or public channel. Draft it in chat; do not post it.
-- Coverage Gaps must name unavailable or weak categories, the effect on confidence, and the smallest useful next step.
+- Coverage Gaps must name unavailable or weak categories, the effect on confidence, and the strong and smart next step.
 
 ### Next Step Options
 
@@ -103,7 +103,7 @@ After the first output, offer the most relevant follow-up from the options below
 - Open and synthesize the strongest source-of-truth document for the seller's question.
 - Prepare a concise escalation note when the supported route requires escalation.
 - Create a reusable routing note with the verified people, docs, channels, and caveats.
-- Find the smallest missing source that would resolve an ownership or approval gap.
+- Find the strong and smart missing source that would resolve an ownership or approval gap.
 
 Next steps to avoid:
 - Posting, assigning, escalating, or updating ownership automatically.
@@ -134,7 +134,7 @@ Next steps to avoid:
 > [Draft-ready question or handoff, addressed to the best owner or public channel.]
 
 ## Coverage Gaps
-- [Missing or weak source, confidence impact, and smallest useful next step]
+- [Missing or weak source, confidence impact, and strong and smart next step]
 
 ---
 

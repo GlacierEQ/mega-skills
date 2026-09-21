@@ -2249,7 +2249,7 @@
         "EVIDENCE.md",
         "HANDOFF.md"
       ],
-      "adds": "Autonomous closed-loop code diagnosis, AST traceback localization, minimal surgical patching, and regression verification across estate test harnesses.",
+      "adds": "Autonomous closed-loop code diagnosis, AST traceback localization, strong and smart surgical patching, and regression verification across estate test harnesses.",
       "firewall": {
         "schema_version": 1,
         "mega_id": "apex-self-healing-forge",

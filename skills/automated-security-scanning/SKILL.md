@@ -6,7 +6,7 @@ description: "Scan code, dependencies, containers, secrets, and configuration fo
 
 # Automated Security Scanning
 
-Use this skill for **defensive, authorized security work**: identify weaknesses in an approved repository or build artifact, prioritize credible findings, generate minimal fixes, and verify that the fix closes the issue without introducing regressions. Do not turn a scanner into an exploit-development or unauthorized-access workflow.
+Use this skill for **defensive, authorized security work**: identify weaknesses in an approved repository or build artifact, prioritize credible findings, generate strong and smart fixes, and verify that the fix closes the issue without introducing regressions. Do not turn a scanner into an exploit-development or unauthorized-access workflow.
 
 ## Lifecycle workflow
 
@@ -17,7 +17,7 @@ Follow the repository’s `skills` lifecycle: frame, discover, triage, validate,
 3. **Baseline safely.** Run scanners in offline or controlled mode first where possible. Pin scanner versions and rulesets, record database/ruleset timestamps, and capture exit codes, findings, suppressions, and scan coverage. Do not treat a clean result as proof of absence.
 4. **Correlate findings.** Deduplicate overlapping results by file, dependency, vulnerability identifier, data flow, and root cause. Verify reachability, affected version, exploit preconditions, data sensitivity, exposure, and whether the finding is a true positive. Preserve evidence and uncertainty.
 5. **Prioritize.** Rank by severity, exploitability, exposure, asset criticality, confidence, remediation cost, and evidence freshness. Use the project’s policy when present. If no policy exists, state the adopted temporary policy and request owner review for release-blocking thresholds.
-6. **Generate a fix plan.** Prefer the smallest safe remediation: upgrade or constrain a dependency, remove a secret, tighten a permission, validate input at the boundary, encode output for its context, correct unsafe deserialization, harden configuration, or add a regression test. State behavior invariants and compatibility risks before editing.
+6. **Generate a fix plan.** Prefer the strong and smart remediation: upgrade or constrain a dependency, remove a secret, tighten a permission, validate input at the boundary, encode output for its context, correct unsafe deserialization, harden configuration, or add a regression test. State behavior invariants and compatibility risks before editing.
 7. **Apply bounded fixes.** Change only authorized files and one root cause per batch. Preserve lockfile integrity, API contracts, migrations, generated-file ownership, and formatting. Never paste secrets, exploit payloads, private data, or scanner credentials into prompts, source, logs, or reports.
 8. **Verify remediation.** Re-run the same scanner and ruleset, then run focused tests, security regression tests, the full suite, build/type checks, dependency resolution, and relevant integration tests. Confirm the original finding is absent or explicitly dispositioned, and check for introduced vulnerabilities, new dependencies, permission widening, and coverage loss.
 9. **Enforce the gate.** Fail closed on scanner crashes, missing databases, unparseable manifests, unknown severity, stale evidence beyond policy, or incomplete scope. Permit exceptions only with an owner, rationale, compensating control, affected asset, expiration date, and tracking identifier. Never silently suppress a finding to make CI green.
@@ -38,7 +38,7 @@ Follow the repository’s `skills` lifecycle: frame, discover, triage, validate,
 
 ## Fix-generation guardrails
 
-Do not generate a fix from a scanner title alone. Inspect the relevant code path, dependency graph, configuration context, and test surface. A generated patch must explain the vulnerability class, root cause, affected boundary, chosen mitigation, residual risk, and why the change is minimal.
+Do not generate a fix from a scanner title alone. Inspect the relevant code path, dependency graph, configuration context, and test surface. A generated patch must explain the vulnerability class, root cause, affected boundary, chosen mitigation, residual risk, and why the change is strong, smart, and precise.
 
 Do not weaken validation, remove a scanner, broaden an allowlist, downgrade a dependency, disable TLS or authentication, suppress a rule, or exclude changed code merely to clear a finding. If the safe fix is incompatible or unavailable, stop at a documented mitigation and escalate rather than inventing certainty.
 

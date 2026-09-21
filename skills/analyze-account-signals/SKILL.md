@@ -93,7 +93,7 @@ Use ~~CRM as the default account anchor. Use sufficient user-provided/exported a
 ### Next Step Options
 
 After the first output, offer the most relevant follow-up from the options below. Offer one clear transition, not a menu. Suggest ONLY these unless you are very confident another option is more useful:
-- Deepen one account or close the smallest material evidence gap.
+- Deepen one account or close the strong and smart material evidence gap.
 - Draft a concise internal account-team update grounded in the signals.
 - Hand the selected account to deal strategy or meeting prep when the evidence points to an active motion or upcoming conversation.
 - Check whether a matching daily or weekly automation already reruns this `analyze-account-signals` skill for the same monitor scope; if none exists, offer to create one that reruns the skill and flags which accounts need attention, why it matters, and the next best sales action.

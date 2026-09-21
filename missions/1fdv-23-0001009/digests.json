@@ -1,0 +1,9 @@
+{
+  "algorithm": "sha256",
+  "chunk_size": 65536,
+  "file_count": 0,
+  "files": [],
+  "generated_utc": "2026-09-13T17:50:22.118897+00:00",
+  "root": "missions/1fdv-23-0001009/intake",
+  "schema_version": 1
+}

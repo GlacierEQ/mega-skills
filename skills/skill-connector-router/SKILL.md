@@ -1,6 +1,6 @@
 ---
 name: skill-connector-router
-description: "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the smallest sufficient skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, minimal skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i..."
+description: "Dynamic skill and connector router for lighter smarter runs. Scores intent, selects the strong and smart skill set and live connectors, dispatches only those, and manages skill lifecycle create merge retire promote so the constellation stays max-power and clean. Use for skill router, connector router, route skills, light run, strong and smart skill set, dynamic composition, create skill, merge skills, retire skill, or any request to load only what i..."
 ---
 
 # Skill + Connector Router
@@ -31,7 +31,7 @@ description: "Dynamic skill and connector router for lighter smarter runs. Score
 1. Parse user intent into 1–3 mission tags (examples — legal-motion, memory-sync, mcp-health, code-change, evidence, audio, graph, boot).
 2. Read `00_CONTROL_PLANE/SKILLS_REGISTRY.md` and list `skills/` (names + descriptions only).
 3. Call `search_connected_tools` only for the domains implied by the tags.
-4. Score skills and connectors for relevance. Select the smallest sufficient set.
+4. Score skills and connectors for relevance. Select the strong and smart set.
 5. Dispatch only the selected set. State what was not loaded and why.
 6. Return a compact plan — selected skills, selected connectors, exact next tool calls, do-not-load list.
 
@@ -103,7 +103,7 @@ ROUTE
 
 ## Invariants
 
-- Smallest sufficient set wins.
+- Strong and smart set wins.
 - Create only for real gaps.
 - Merge/retire keep the constellation clean without losing provenance.
 - Max power comes from the right specialists on demand, not from loading everything.

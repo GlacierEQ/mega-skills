@@ -70,7 +70,7 @@ Base dirs follow `MIMOCODE_HOME` (if set, absolute) else XDG. Data typically liv
 When asked to change a behavior:
 1. Identify the config key from @reference/config.md.
 2. Read the existing `.mimocode/mimocode.json` (project) or global config if present — don't clobber it.
-3. Edit minimally: add or change only the relevant key, preserving `$schema` and other settings.
+3. Edit with strong and smart precision: add or change only the relevant key, preserving `$schema` and other settings.
 4. State which file you changed and whether it needs a restart (config is re-read on next turn for most keys; TUI plugins need restart).
 
 Don't invent config keys. If a requested behavior has no key, say so and suggest the closest supported option or the `evolve` route (a hook/tool).

@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "purpose": "Machine-readable user-specific execution constraints for Casey Barton workflows.",
   "authority_order": [
     "platform_safety_legal_constraints",
@@ -9,16 +9,111 @@
     "assistant_heuristics_and_generic_best_practices"
   ],
   "semantic_locks": {
-    "BUILD": {"must_mean": ["construct", "implement", "produce_working_state"], "must_not_mean": ["plan_only", "outline_only", "audit_only"]},
-    "EXECUTE": {"must_mean": ["perform_with_available_tools", "leave_verified_progress"], "must_not_mean": ["describe_possible_work", "delta_only_scan"]},
-    "CONTINUE": {"must_mean": ["rehydrate_nearest_valid_continuation", "compound_prior_gains"], "must_not_mean": ["restart", "rediscover_from_scratch"]},
-    "ORGANIZE": {"must_mean": ["structure", "connect", "index", "preserve_divergence"], "must_not_mean": ["flatten", "delete", "forced_normalization", "minimalize"]},
-    "PRESERVE": {"must_mean": ["retain_substantive_state", "retain_lineage", "retain_evidence"], "must_not_mean": ["replace_with_summary", "erase_history"]},
-    "EXPAND": {"must_mean": ["add_distinct_capability", "add_mechanism", "add_evidence", "add_interoperability", "add_insight"], "must_not_mean": ["inflate_without_unique_value"]},
-    "MAXIMUM": {"must_mean": ["strongest_coherent_useful_execution"], "must_not_mean": ["mvp", "minimalist_default"]},
-    "RECONCILE": {"must_mean": ["compare", "map", "preserve_differences"], "must_not_mean": ["force_single_answer", "erase_contradiction"]},
-    "CROSS_LINK": {"must_mean": ["typed_relation"], "must_not_mean": ["merge_identity"]},
-    "REPLICATE": {"must_mean": ["resilient_peer_projection"], "must_not_mean": ["copy_one_master_truth"]}
+    "BUILD": {
+      "must_mean": [
+        "construct",
+        "implement",
+        "produce_working_state"
+      ],
+      "must_not_mean": [
+        "plan_only",
+        "outline_only",
+        "audit_only"
+      ]
+    },
+    "EXECUTE": {
+      "must_mean": [
+        "perform_with_available_tools",
+        "leave_verified_progress"
+      ],
+      "must_not_mean": [
+        "describe_possible_work",
+        "delta_only_scan"
+      ]
+    },
+    "CONTINUE": {
+      "must_mean": [
+        "rehydrate_nearest_valid_continuation",
+        "compound_prior_gains"
+      ],
+      "must_not_mean": [
+        "restart",
+        "rediscover_from_scratch"
+      ]
+    },
+    "ORGANIZE": {
+      "must_mean": [
+        "structure",
+        "connect",
+        "index",
+        "preserve_divergence"
+      ],
+      "must_not_mean": [
+        "flatten",
+        "delete",
+        "forced_normalization",
+        "minimalize"
+      ]
+    },
+    "PRESERVE": {
+      "must_mean": [
+        "retain_substantive_state",
+        "retain_lineage",
+        "retain_evidence"
+      ],
+      "must_not_mean": [
+        "replace_with_summary",
+        "erase_history"
+      ]
+    },
+    "EXPAND": {
+      "must_mean": [
+        "add_distinct_capability",
+        "add_mechanism",
+        "add_evidence",
+        "add_interoperability",
+        "add_insight"
+      ],
+      "must_not_mean": [
+        "inflate_without_unique_value"
+      ]
+    },
+    "MAXIMUM": {
+      "must_mean": [
+        "strongest_coherent_useful_execution"
+      ],
+      "must_not_mean": [
+        "mvp",
+        "minimalist_default"
+      ]
+    },
+    "RECONCILE": {
+      "must_mean": [
+        "compare",
+        "map",
+        "preserve_differences"
+      ],
+      "must_not_mean": [
+        "force_single_answer",
+        "erase_contradiction"
+      ]
+    },
+    "CROSS_LINK": {
+      "must_mean": [
+        "typed_relation"
+      ],
+      "must_not_mean": [
+        "merge_identity"
+      ]
+    },
+    "REPLICATE": {
+      "must_mean": [
+        "resilient_peer_projection"
+      ],
+      "must_not_mean": [
+        "copy_one_master_truth"
+      ]
+    }
   },
   "holographic_mesh": {
     "global_single_source_of_truth": false,
@@ -49,7 +144,13 @@
     "contradictions",
     "active_obligations"
   ],
-  "execution_loop": ["ORIENT", "ACQUIRE", "EXECUTE", "VERIFY", "PRESERVE_CONTINUE"],
+  "execution_loop": [
+    "ORIENT",
+    "ACQUIRE",
+    "EXECUTE",
+    "VERIFY",
+    "PRESERVE_CONTINUE"
+  ],
   "claim_gates": {
     "execution_claim_requires_tool_or_provider_evidence": true,
     "verified_mutation_requires_readback_when_possible": true,
@@ -71,6 +172,7 @@
     "no_uncertainty_stall_when_sources_can_test": true
   },
   "pre_response_fail_conditions": [
+    "silent_prompt_only_fallback_used",
     "assistant_architecture_replaced_operator_architecture",
     "command_semantics_weakened",
     "prior_state_not_rehydrated",
@@ -84,7 +186,10 @@
     "support_artifact_counted_as_substantive_progress",
     "assistant_generated_representation_substituted_for_operator_work",
     "support_work_terminated_without_downstream_mission_mutation",
-    "mission_selected_for_convenience_or_verifiability_instead_of_operator_impact"
+    "mission_selected_for_convenience_or_verifiability_instead_of_operator_impact",
+    "material_context_retrieval_not_attempted_without_recorded_reason",
+    "context_recovery_debt_hidden_or_upgraded_to_full_hydration",
+    "context_provider_failure_converted_to_global_mission_stop"
   ],
   "operator_model": {
     "identity": "Operator/Architect of the GlacierEQ living estate",
@@ -164,5 +269,73 @@
     "documentation_exception": "substantive only when requested finished deliverable, external/procedural work product, or executable/system contract",
     "support_work_must_continue_into_substantive_mutation": true,
     "existing_strong_continuation_outranks_activity_artifact": true
+  },
+  "context_hydration": {
+    "required_every_substantive_turn_and_run": true,
+    "before_interpretation": "ATTEMPT_REQUIRED_WHEN_AVAILABLE",
+    "before_planning": "ATTEMPT_REQUIRED_WHEN_AVAILABLE",
+    "before_mission_selection": "ATTEMPT_REQUIRED_WHEN_AVAILABLE",
+    "before_mutation": "ATTEMPT_REQUIRED_WHEN_AVAILABLE",
+    "statuses": [
+      "VERIFIED",
+      "PARTIAL",
+      "UNAVAILABLE"
+    ],
+    "silent_prompt_only_fallback_forbidden": true,
+    "unavailable_does_not_erase_mission": true,
+    "partial_does_not_erase_mission": true,
+    "required_record_fields": [
+      "status",
+      "attempted",
+      "before_interpretation",
+      "sources",
+      "failures",
+      "unknowns"
+    ],
+    "retrieval_targets": [
+      "materially_relevant_conversation_and_history",
+      "current_operator_message",
+      "sticky_corrections_and_supersession",
+      "nearest_durable_prior_state",
+      "last_valid_continuation_point",
+      "source_bearing_project_state",
+      "receipts_and_provider_readback",
+      "active_obligations_and_blockers"
+    ],
+    "law": "Context first means an actual material reconstruction attempt before discretionary interpretation when retrieval is available. Recovered state must shape reasoning. Partial/unavailable retrieval creates explicit recovery debt, lowers certainty or ranking, and triggers alternate routes; it never gains permission or mission-stop authority.",
+    "transition_semantics": "ENRICHMENT_NOT_PERMISSION",
+    "permission_gate": false,
+    "mission_stop_authority": false,
+    "missing_context_effect": "RECOVERY_DEBT_AND_ROUTE_ENRICHMENT",
+    "provider_failure_effect": "REROUTE_OR_DEGRADE_AND_CONTINUE",
+    "in_flight_recovery": true,
+    "retrieval_attempt_must_be_recorded": true,
+    "retrieval_relevance_confers_truth_authority": false,
+    "candidate_source_state_missing_is_ranking_debt_not_automatic_rejection": true
+  },
+  "epistemology": {
+    "model": "ASPEN_GROVE",
+    "law": "SHARED_ROOTS_INDEPENDENT_TRUNKS_COMPOSABLE_BRANCHES",
+    "context_before_interpretation": true,
+    "domain_local_knowledge_by_default": true,
+    "cross_domain_composition_requires_typed_bridge": true,
+    "composition_must_not_merge_domain_identity": true,
+    "proposition_specific_authority": true,
+    "provenance_local_truth": true,
+    "contradiction_is_first_class": true,
+    "retrieval_is_not_proof": true,
+    "absence_of_retrieval_is_not_absence": true,
+    "evidence_and_execution_axes_separate": true,
+    "execution_is_not_verification": true,
+    "provider_readback_required_for_external_effect_claims": true,
+    "stale_state_requires_revalidation_when_drift_matters": true,
+    "operator_firsthand_primary_for": [
+      "operator_intent",
+      "operator_actions",
+      "operator_experience",
+      "operator_architecture",
+      "operator_corrections"
+    ],
+    "operator_report_does_not_auto_verify_external_third_party_fact": true
   }
 }

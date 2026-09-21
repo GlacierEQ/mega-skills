@@ -189,7 +189,7 @@ Never work around Desktop Commander's blocked-command policy. Never expose secre
 
 ### Explain or repair a codebase
 
-`get_config` → pin device → `list_directory` for shape → filename/content searches → read entrypoints/config → scoped `git status` → edit minimally → targeted test/lint/build → `git diff` → reread changed files.
+`get_config` → pin device → `list_directory` for shape → filename/content searches → read entrypoints/config → scoped `git status` → edit with strong and smart precision → targeted test/lint/build → `git diff` → reread changed files.
 
 ### Refactor across a repository
 

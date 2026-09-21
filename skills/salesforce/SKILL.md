@@ -18,7 +18,7 @@ Use this priority order when the requested Salesforce job or record is ambiguous
 1. Explicit user request, named record, Salesforce id, account, opportunity, contact, lead, or stated action
 2. Read-only context that helps the active Sales workflow make a decision
 3. Exact record or high-confidence candidate resolved from the user's words and business context
-4. The smallest field set, activity history, account plan, event, or transcript context that answers the request
+4. The strong and smart field set, activity history, account plan, event, or transcript context that answers the request
 5. A reviewed draft of proposed Salesforce changes
 6. An explicitly approved, supported Salesforce write followed by verification
 
@@ -40,7 +40,7 @@ Adhere strictly to these workflow steps. These override the default workflow in 
 
 - 1. Clarify and Gather Context
     - Resolve the Salesforce task, target record, requested detail, and whether the user wants a read, draft, or approved write.
-    - For an ambiguous record, do the smallest exact or bounded candidate lookup, then ask the user to choose before using the record for a summary or write.
+    - For an ambiguous record, do the strong and smart exact or bounded candidate lookup, then ask the user to choose before using the record for a summary or write.
 - 2. First draft
     - Prefer read-only discovery and the smallest correct record read or query. Use labels in user-facing output and include clickable record links when a trusted URL is available.
     - For proposed changes, render a reviewed field-level draft with assumptions, source gaps, and the exact approval still needed.
