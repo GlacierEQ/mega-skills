@@ -233,8 +233,6 @@ def rejection_reasons(candidate: dict[str, Any], scope_mode: str, scope_lane: st
     reasons: list[str] = []
     if scope_mode == "specialized" and scope_lane and lane != scope_lane:
         reasons.append("outside_specialized_lane")
-    if not bool(candidate.get("source_state_hydrated", False)):
-        reasons.append("candidate_source_state_not_hydrated")
     if not bool(candidate.get("authorized", True)):
         reasons.append("not_authorized")
     if not bool(candidate.get("executable", True)):
@@ -276,6 +274,9 @@ def score_candidate(candidate: dict[str, Any]) -> tuple[float, dict[str, float]]
     if bool(candidate.get("merge_extends_existing_state", False)):
         score += 6.0
         components["merge_extends_existing_state"] = 6.0
+    if not bool(candidate.get("source_state_hydrated", False)):
+        score -= 4.0
+        components["context_recovery_debt"] = -4.0
     return round(score, 6), components
 
 
@@ -305,12 +306,30 @@ def mission_select(payload: dict[str, Any]) -> dict[str, Any]:
             "candidate": candidate,
         })
     ranked.sort(key=lambda item: (-item["score"], item["id"]))
-    selected = ranked[0] if ranked and not hydration_reasons else None
+    selected = ranked[0] if ranked else None
+    hydration = dict(payload.get("context_hydration") or {})
+    hydration_status = str(hydration.get("status") or "").upper().strip()
+    context_state = (
+        "hydrated"
+        if not hydration_reasons and hydration_status == "VERIFIED"
+        else "degraded"
+        if hydration_status == "PARTIAL"
+        else "recovery_pending"
+    )
     return {
         "scope": {"mode": scope_mode, "lane": scope_lane},
-        "context_hydration": dict(payload.get("context_hydration") or {}),
+        "context_hydration": hydration,
         "hydration_valid": not hydration_reasons,
         "hydration_reasons": hydration_reasons,
+        "context_state": context_state,
+        "context_transition_semantics": "enrichment_not_permission",
+        "context_mission_stop_authority": False,
+        "context_recovery_debt": {
+            "open": bool(hydration_reasons) or context_state != "hydrated",
+            "reasons": hydration_reasons,
+            "mission_stop": False,
+            "route_effect": "enrich_and_continue",
+        },
         "selected": selected,
         "ranked": ranked,
         "rejected": rejected,
@@ -330,7 +349,10 @@ def run_operator_mission_kernel(operation: str, payload: dict[str, Any]) -> dict
             "reasons": reasons,
             "context_hydration": dict(payload.get("context_hydration") or {}),
             "mission_continues_if_partial_or_unavailable": True,
-            "invariant": "context_history_first_before_interpretation",
+            "mission_continues_if_recovery_pending": True,
+            "context_transition_semantics": "enrichment_not_permission",
+            "context_mission_stop_authority": False,
+            "invariant": "context_history_first_enrich_and_continue",
         }
     if operation in {"purpose", "procedure", "output_contract"}:
         return {
@@ -347,7 +369,14 @@ def run_operator_mission_kernel(operation: str, payload: dict[str, Any]) -> dict
     if operation in {"mission_select", "dispatch_gate"}:
         result = mission_select(payload)
         if operation == "dispatch_gate":
-            result["status"] = "dispatch_allowed" if result["dispatch_allowed"] else "mission_hydration_or_substantive_candidate_required"
+            if result["dispatch_allowed"]:
+                result["status"] = (
+                    "dispatch_allowed"
+                    if result["context_state"] == "hydrated"
+                    else "dispatch_allowed_context_recovery_in_flight"
+                )
+            else:
+                result["status"] = "substantive_executable_candidate_required"
             result["continue_required"] = True
         return result
     raise KeyError(f"unsupported operator mission operation: {operation}")
