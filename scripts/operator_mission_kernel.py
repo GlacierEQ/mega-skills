@@ -134,8 +134,32 @@ def replacement_guard_reasons(candidate: dict[str, Any]) -> list[str]:
     return ["replacement_would_discard_unique_state", *gate["reasons"]]
 
 
-def hydration_gate(payload: dict[str, Any], scope_mode: str, scope_lane: str) -> list[str]:
+CONTEXT_HYDRATION_STATUSES = {"VERIFIED", "PARTIAL", "UNAVAILABLE"}
+
+
+def turn_context_hydration_gate(payload: dict[str, Any]) -> list[str]:
+    """Require retrieval-before-interpretation without making retrieval success a mission veto."""
     reasons: list[str] = []
+    hydration = payload.get("context_hydration")
+    if not isinstance(hydration, dict):
+        return ["turn_context_hydration_missing"]
+    status = str(hydration.get("status") or "").upper().strip()
+    if status not in CONTEXT_HYDRATION_STATUSES:
+        reasons.append("turn_context_hydration_status_invalid")
+    if hydration.get("attempted") is not True:
+        reasons.append("turn_context_retrieval_not_attempted")
+    if hydration.get("before_interpretation") is not True:
+        reasons.append("turn_context_not_hydrated_before_interpretation")
+    if hydration.get("silent_prompt_only_fallback_forbidden") is not True:
+        reasons.append("silent_prompt_only_fallback_not_forbidden")
+    for field in ("sources", "failures", "unknowns"):
+        if not isinstance(hydration.get(field), list):
+            reasons.append(f"turn_context_hydration_{field}_must_be_list")
+    return reasons
+
+
+def hydration_gate(payload: dict[str, Any], scope_mode: str, scope_lane: str) -> list[str]:
+    reasons: list[str] = turn_context_hydration_gate(payload)
     if scope_mode == "estate":
         if not bool(payload.get("objective_graph_hydrated", False)):
             reasons.append("operator_objective_graph_not_hydrated")
@@ -284,6 +308,7 @@ def mission_select(payload: dict[str, Any]) -> dict[str, Any]:
     selected = ranked[0] if ranked and not hydration_reasons else None
     return {
         "scope": {"mode": scope_mode, "lane": scope_lane},
+        "context_hydration": dict(payload.get("context_hydration") or {}),
         "hydration_valid": not hydration_reasons,
         "hydration_reasons": hydration_reasons,
         "selected": selected,
@@ -297,6 +322,16 @@ def mission_select(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 def run_operator_mission_kernel(operation: str, payload: dict[str, Any]) -> dict[str, Any]:
+    if operation == "context_gate":
+        reasons = turn_context_hydration_gate(payload)
+        return {
+            "operation": "context_gate",
+            "valid": not reasons,
+            "reasons": reasons,
+            "context_hydration": dict(payload.get("context_hydration") or {}),
+            "mission_continues_if_partial_or_unavailable": True,
+            "invariant": "context_history_first_before_interpretation",
+        }
     if operation in {"purpose", "procedure", "output_contract"}:
         return {
             "skill": "casey-operator-execution-kernel",
