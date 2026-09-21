@@ -10,6 +10,17 @@ KERNEL = ROOT / "skills" / "casey-operator-execution-kernel" / "skill.py"
 
 
 def run_kernel(operation, payload):
+    if operation in {"mission_select", "dispatch_gate"} and "context_hydration" not in payload:
+        payload = dict(payload)
+        payload["context_hydration"] = {
+            "status": "PARTIAL",
+            "attempted": True,
+            "before_interpretation": True,
+            "silent_prompt_only_fallback_forbidden": True,
+            "sources": ["test-context"],
+            "failures": [],
+            "unknowns": ["full history coverage not asserted in fixture"],
+        }
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
         json.dump(payload, handle)
         input_path = handle.name
@@ -28,6 +39,51 @@ def run_kernel(operation, payload):
 class OperatorExecutionKernelTests(unittest.TestCase):
     def test_kernel_entrypoint_exists(self):
         self.assertTrue(KERNEL.is_file())
+
+
+    def test_context_gate_rejects_missing_turn_hydration(self):
+        result = run_kernel("context_gate", {})
+        self.assertFalse(result["valid"])
+        self.assertIn("turn_context_hydration_missing", result["reasons"])
+
+    def test_context_gate_accepts_partial_hydration_and_continues(self):
+        result = run_kernel("context_gate", {
+            "context_hydration": {
+                "status": "PARTIAL",
+                "attempted": True,
+                "before_interpretation": True,
+                "silent_prompt_only_fallback_forbidden": True,
+                "sources": ["conversation-history", "repository-state"],
+                "failures": [],
+                "unknowns": ["one connector unavailable"],
+            }
+        })
+        self.assertTrue(result["valid"])
+        self.assertTrue(result["mission_continues_if_partial_or_unavailable"])
+
+    def test_dispatch_rejects_prompt_only_cognition(self):
+        result = run_kernel("dispatch_gate", {
+            "context_hydration": {
+                "status": "PARTIAL",
+                "attempted": False,
+                "before_interpretation": False,
+                "silent_prompt_only_fallback_forbidden": False,
+                "sources": [],
+                "failures": [],
+                "unknowns": [],
+            },
+            "scope": {"mode": "specialized", "lane": "engineering"},
+            "continuation_hydrated": True,
+            "candidates": [{
+                "id": "candidate", "lane": "engineering",
+                "source_state_hydrated": True,
+                "authorized": True, "executable": True, "substantive": True,
+                "operator_impact": 1.0,
+            }],
+        })
+        self.assertFalse(result["dispatch_allowed"])
+        self.assertIn("turn_context_retrieval_not_attempted", result["hydration_reasons"])
+        self.assertIn("turn_context_not_hydrated_before_interpretation", result["hydration_reasons"])
 
     def test_estate_dispatch_requires_real_objective_graph_hydration(self):
         result = run_kernel("dispatch_gate", {
