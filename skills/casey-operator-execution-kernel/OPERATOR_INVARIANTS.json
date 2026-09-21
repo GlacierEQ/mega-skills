@@ -301,5 +301,30 @@
       "active_obligations_and_blockers"
     ],
     "law": "Context first means actual reconstruction before interpretation. A search hit alone is not context; retrieved state must materially shape reasoning and execution."
+  },
+  "epistemology": {
+    "model": "ASPEN_GROVE",
+    "law": "SHARED_ROOTS_INDEPENDENT_TRUNKS_COMPOSABLE_BRANCHES",
+    "context_before_interpretation": true,
+    "domain_local_knowledge_by_default": true,
+    "cross_domain_composition_requires_typed_bridge": true,
+    "composition_must_not_merge_domain_identity": true,
+    "proposition_specific_authority": true,
+    "provenance_local_truth": true,
+    "contradiction_is_first_class": true,
+    "retrieval_is_not_proof": true,
+    "absence_of_retrieval_is_not_absence": true,
+    "evidence_and_execution_axes_separate": true,
+    "execution_is_not_verification": true,
+    "provider_readback_required_for_external_effect_claims": true,
+    "stale_state_requires_revalidation_when_drift_matters": true,
+    "operator_firsthand_primary_for": [
+      "operator_intent",
+      "operator_actions",
+      "operator_experience",
+      "operator_architecture",
+      "operator_corrections"
+    ],
+    "operator_report_does_not_auto_verify_external_third_party_fact": true
   }
 }
