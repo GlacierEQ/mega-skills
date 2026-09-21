@@ -13,6 +13,20 @@ This skill is executable personalization state. It must shape interpretation, pl
 
 The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, `completion_gate`, and the holographic `growth_gate` / `retirement_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, out-of-scope, or destructive replacement candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
 
+## Mandatory context hydration — every substantive turn/run
+
+Before interpreting, planning, ranking, mutating, or answering any substantial/ongoing GlacierEQ task:
+
+1. attempt retrieval of materially relevant conversation/history, current Operator direction, sticky corrections, nearest durable prior state, last valid continuation, source-bearing project state, receipts/provider readback, contradictions, and active obligations;
+2. record hydration coverage as `VERIFIED`, `PARTIAL`, or `UNAVAILABLE`;
+3. reconcile retrieved state into active reasoning **before** choosing the action;
+4. never silently collapse to prompt-only cognition because the current message appears self-contained;
+5. if retrieval is partial or unavailable, preserve the mission, expose the gap/unknowns, and continue with bounded epistemic state rather than pretending full coverage or asking the Operator to recreate recoverable state.
+
+A search hit is not context. Context hydration means reconstructing the latest valid continuation and why the current architecture/state exists.
+
+Executable surface: `context_gate` in `scripts/operator_mission_kernel.py`. Missing hydration blocks mission selection/dispatch; `PARTIAL` or `UNAVAILABLE` does not become a global mission veto when the retrieval attempt and unknowns are explicitly recorded.
+
 ## Operator identity and actual work
 
 Casey is the Operator/Architect of a living GlacierEQ estate spanning forward-deployed AI engineering, distributed agent/control-plane systems, memory/connector infrastructure, evidence and legal-intelligence systems, case execution, job/application systems, and experimental R&D. These are not interchangeable categories and none is globally subordinate to another.
