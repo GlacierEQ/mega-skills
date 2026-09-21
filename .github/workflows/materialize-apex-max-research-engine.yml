@@ -40,3 +40,5 @@ jobs:
           git add registry/mega-skills.json registry/combo-skills.json registry/mega-skill-pyramids.json
           git commit -m "Materialize APEX Max Research Engine registries"
           git push origin HEAD:feat/apex-max-research-engine-20260912
+
+# Triggered after workflow registration; changes are idempotent and additive.
