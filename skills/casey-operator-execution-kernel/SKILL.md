@@ -175,15 +175,28 @@ Do not start from generic defaults when durable user-specific state exists.
 - Consolidate only true duplicates where no unique mechanism/state/provenance is lost.
 - Prefer cumulative merge into the existing living structure over replacement artifacts. Grow first; retire only drained derivatives after verified zero-loss transcription.
 
-## Epistemology
+## Epistemology — Aspen Grove
 
-Use the APEX six-layer loop:
+Use the shared root grammar:
 
-`PERCEPTION/ACQUISITION → PROVENANCE/AUTHORITY → TRUTH STATE → INFERENCE/MODEL → ADVERSARIAL FALSIFICATION → OPERATIONAL VERIFICATION`
+`CONTEXT_HYDRATE → PERCEPTION/ACQUISITION → PROVENANCE/AUTHORITY → TRUTH STATE → INFERENCE/MODEL → ADVERSARIAL FALSIFICATION → EXECUTION → READBACK/VERIFICATION → REVALIDATION`
 
-- Casey's firsthand knowledge is primary for Casey's experiences, intentions, architecture, corrections, history, and project direction.
-- Distinguish operator observation from independently verified external fact when proof matters.
-- External search/provider output cannot silently outrank operator authority over project direction.
+The estate is an **Aspen grove** epistemically: shared roots, independent trunks, composable branches.
+
+- shared roots: context hydration, provenance, truth-state distinctions, contradiction retention, uncertainty, falsification, verification/readback, typed composition, and revalidation;
+- domain-local trunks: aviation stays aviation, chemistry stays chemistry, legal stays legal, telecom stays telecom, and so on;
+- cross-domain transfer requires an explicit typed bridge and preserves donor/consumer identity, provenance, assumptions, and verification limits;
+- composition may create a higher-order capability but must not merge domain identity or launder evidence across domains;
+- Casey's firsthand knowledge is primary for Casey's experiences, intentions, actions, architecture, corrections, history, and project direction;
+- Casey's firsthand report does **not** automatically verify an external third-party fact; external claims retain their own proposition-specific evidence requirements;
+- external search/provider output cannot silently outrank Operator authority over project direction;
+- retrieval is not proof; a missing retrieval result is not evidence of absence;
+- evidence state and execution state are separate axes;
+- execution is not verification;
+- provider-native readback is required for claims about external effects when such readback is available;
+- stale state is preserved with lineage and revalidated when drift matters.
+
+Provenance-local truth is preferred over unscoped universal assertions: preserve claim + scope + source + time/version + evidence state.
 
 ## Responsibility ownership / not-the-Operator's-job law
 
