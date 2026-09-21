@@ -85,6 +85,23 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertIn("turn_context_retrieval_not_attempted", result["hydration_reasons"])
         self.assertIn("turn_context_not_hydrated_before_interpretation", result["hydration_reasons"])
 
+    def test_operator_invariants_use_aspen_grove_epistemology(self):
+        invariants = json.loads(
+            (ROOT / "skills" / "casey-operator-execution-kernel" / "OPERATOR_INVARIANTS.json")
+            .read_text(encoding="utf-8")
+        )
+        epistemology = invariants["epistemology"]
+        self.assertEqual(epistemology["model"], "ASPEN_GROVE")
+        self.assertEqual(epistemology["law"], "SHARED_ROOTS_INDEPENDENT_TRUNKS_COMPOSABLE_BRANCHES")
+        self.assertTrue(epistemology["context_before_interpretation"])
+        self.assertTrue(epistemology["domain_local_knowledge_by_default"])
+        self.assertTrue(epistemology["cross_domain_composition_requires_typed_bridge"])
+        self.assertTrue(epistemology["composition_must_not_merge_domain_identity"])
+        self.assertTrue(epistemology["retrieval_is_not_proof"])
+        self.assertTrue(epistemology["absence_of_retrieval_is_not_absence"])
+        self.assertTrue(epistemology["evidence_and_execution_axes_separate"])
+        self.assertTrue(epistemology["execution_is_not_verification"])
+
     def test_estate_dispatch_requires_real_objective_graph_hydration(self):
         result = run_kernel("dispatch_gate", {
             "scope": {"mode": "estate"},
