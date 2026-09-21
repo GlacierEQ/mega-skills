@@ -25,7 +25,7 @@ Before interpreting, planning, ranking, mutating, or answering any substantial/o
 
 A search hit is not context. Context hydration means reconstructing the latest valid continuation and why the current architecture/state exists.
 
-Executable surface: `context_gate` in `scripts/operator_mission_kernel.py`. Missing hydration blocks mission selection/dispatch; `PARTIAL` or `UNAVAILABLE` does not become a global mission veto when the retrieval attempt and unknowns are explicitly recorded.
+Executable surface: `context_gate` in `scripts/operator_mission_kernel.py`. The gate is an enrichment transition, not permission authority: a material retrieval attempt is required and its result must be bound to the work lineage, but `PARTIAL` or `UNAVAILABLE` creates explicit recovery debt and rerouting rather than a generalized mission veto. A worker may continue the strongest coherent route while context recovery remains in flight; it may not falsely claim full hydration or skip the retrieval attempt without recording that evidence gap.
 
 ## Operator identity and actual work
 
@@ -136,17 +136,18 @@ The following are **not sufficient by themselves**:
 
 Documentation may be substantive when the document itself is the requested finished deliverable, has an external/procedural purpose, or is directly consumed as an executable/system contract. Otherwise it is support work.
 
-## Rehydration gate
+## Context enrichment transition
 
-Before substantive action:
+Before substantive discretionary action, attempt to:
 
 1. recover current operator intent;
 2. inspect nearest durable prior state;
 3. recover the last valid continuation point;
 4. preserve exact terminology, architecture, case/project identities, ledgers, decisions, receipts, contradictions, and active obligations;
-5. use accumulated context instead of requiring Casey to repeat known information.
+5. use accumulated context instead of requiring Casey to repeat known information;
+6. bind either the recovered context or a source-bearing recovery-debt receipt to the active work lineage.
 
-Do not start from generic defaults when durable user-specific state exists.
+This transition is not permission. Missing or partial context changes confidence, sequencing, and retrieval route; it does not change the Operator-selected mission. Do not start from generic defaults when durable user-specific state exists, and do not pretend unavailable context was recovered.
 
 ## Execution loop
 
@@ -265,7 +266,7 @@ When assistant-created state violates this kernel:
 - Contradiction routing: correction stickiness — the newer operator correction wins forward, the older state stays source-bearing behind a SUPERSEDES edge, and state repair preserves lineage (Failure repair, above; contract §8).
 - PRESERVE (compaction exceptions): exact terminology, architecture, case/project identities, ledgers, decisions, receipts, contradictions, active obligations.
 - Pre-response test, extended by the contract (questions 13–15): 13. Is every claim typed (FACT / INFERENCE / PLAN / OBSERVATION / UNKNOWN)? 14. Does every EXECUTED / VERIFIED claim carry a receipt? 15. Did I keep UNKNOWN as UNKNOWN rather than collapsing it to FALSE or to a guess?
-- Mesh edges: GATES → `skills/power-skill`, `registry/pipelines.json` pipelines, every write · DERIVED_FROM → `skills/holographic-case-mesh` · COMPOSED_BY → `mega-skills/apex-always-on-core`
+- Mesh edges: ENRICHES → `skills/power-skill`, `registry/pipelines.json` pipelines, every substantial work lineage · DERIVED_FROM → `skills/holographic-case-mesh` · COMPOSED_BY → `mega-skills/apex-always-on-core`
 - Tools: rehydration stores (Notion Codex + Ledger, Supermemory, repository state) · readback through the same tool that performed the mutation
 - Notion projection: Casey Operator Execution Kernel — Authority, Locks, Gates · page `6184d704135440b19a2e1894a50ffa12` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
