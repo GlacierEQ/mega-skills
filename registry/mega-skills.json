@@ -2701,6 +2701,90 @@
       "combos": [
         "long-horizon-core"
       ]
+    },
+    {
+      "id": "apex-strong-smart-execution-engine",
+      "display_name": "APEX Strong-Smart Execution Engine",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-strong-smart-execution-engine",
+      "entrypoint": "mega-skills/apex-strong-smart-execution-engine/MEGA.md",
+      "required_combos": [
+        "strong-smart-execution-stack",
+        "long-horizon-core",
+        "capability-readiness",
+        "epistemic-verification-chain",
+        "pipeline-orchestration"
+      ],
+      "conditional_combos": [
+        "guarded-automation-loop",
+        "mission-aware-operating-loop",
+        "recon-and-map",
+        "evidence-to-evolution-loop",
+        "closed-loop-code-repair"
+      ],
+      "mission_output": "STRONG_SMART_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "CONTEXT.md",
+        "POWER_FIT_ROUTE.json",
+        "EVIDENCE.md",
+        "READBACK.json",
+        "HANDOFF.md"
+      ],
+      "adds": "Enforceable strongest-intelligent-fit persona, routing, deep execution, adversarial verification, readback, and durable continuation without increasing authority.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-strong-smart-execution-engine",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "power_fit_route",
+          "phase_receipts",
+          "provider_readback",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "strong-smart-execution-stack",
+        "long-horizon-core",
+        "capability-readiness",
+        "epistemic-verification-chain",
+        "pipeline-orchestration"
+      ]
     }
   ],
   "layer": "mega-skills"

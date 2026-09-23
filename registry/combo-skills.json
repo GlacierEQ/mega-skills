@@ -6068,6 +6068,196 @@
           "Every handoff names an owner, accepted output, and close condition."
         ]
       }
+    },
+    {
+      "id": "strong-smart-execution-stack",
+      "display_name": "Strong-Smart Execution Stack",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/strong-smart-execution-stack",
+      "entrypoint": "combo-skills/strong-smart-execution-stack/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Mission requires strongest-intelligent-fit capability composition and evidence-backed execution."
+        ],
+        "do_not_use_when": [
+          "Candidate routes cannot yet be compared honestly; acquire evidence first."
+        ]
+      },
+      "members": [
+        {
+          "id": "casey-operator-execution-kernel",
+          "kind": "skill",
+          "role": "Own operator intent, semantic locks, corrections, and authority.",
+          "required": true
+        },
+        {
+          "id": "strong-smart-routing-kernel",
+          "kind": "skill",
+          "role": "Rank eligible routes by measurable power fit.",
+          "required": true
+        },
+        {
+          "id": "power-skill",
+          "kind": "skill",
+          "role": "Compose the strongest relevant capability set.",
+          "required": true
+        },
+        {
+          "id": "make-it-heavy",
+          "kind": "skill",
+          "role": "Expand useful engineering and reasoning density.",
+          "required": true
+        },
+        {
+          "id": "epistemic-gate",
+          "kind": "skill",
+          "role": "Type claims and enforce proof floors.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Block completion without acceptance evidence.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Preserve receipts, alternatives, and continuation state.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "casey-operator-execution-kernel",
+            "consumes": [
+              "operator message"
+            ],
+            "produces": [
+              "authority receipt"
+            ],
+            "validation": "Intent and semantic locks are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "strong-smart-routing-kernel",
+            "consumes": [
+              "authority receipt"
+            ],
+            "produces": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "validation": "Hard gates pass and route ranking is reproducible."
+          },
+          {
+            "step": 3,
+            "member_id": "power-skill",
+            "consumes": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "produces": [
+              "capability composition"
+            ],
+            "validation": "Composition covers the selected mission architecture."
+          },
+          {
+            "step": 4,
+            "member_id": "make-it-heavy",
+            "consumes": [
+              "capability composition"
+            ],
+            "produces": [
+              "deep execution artifact"
+            ],
+            "validation": "Useful depth is expanded without tool-count theater."
+          },
+          {
+            "step": 5,
+            "member_id": "epistemic-gate",
+            "consumes": [
+              "deep execution artifact"
+            ],
+            "produces": [
+              "typed evidence record"
+            ],
+            "validation": "Every consequential claim has an evidence state."
+          },
+          {
+            "step": 6,
+            "member_id": "quality-gate",
+            "consumes": [
+              "typed evidence record"
+            ],
+            "produces": [
+              "quality verdict"
+            ],
+            "validation": "Acceptance tests and unresolved gaps are recorded."
+          },
+          {
+            "step": 7,
+            "member_id": "handoff-record",
+            "consumes": [
+              "quality verdict"
+            ],
+            "produces": [
+              "STRONG_SMART_EXECUTION_RECEIPT.json"
+            ],
+            "validation": "Receipts and exact continuation state are preserved."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "casey-operator-execution-kernel",
+            "to_member": "strong-smart-routing-kernel",
+            "required_inputs": [
+              "operator intent and authority"
+            ],
+            "accepted_outputs": [
+              "ranked eligible routes"
+            ],
+            "failure_owner": "strong-smart-routing-kernel"
+          },
+          {
+            "from_member": "strong-smart-routing-kernel",
+            "to_member": "power-skill",
+            "required_inputs": [
+              "selected route"
+            ],
+            "accepted_outputs": [
+              "capability composition"
+            ],
+            "failure_owner": "power-skill"
+          }
+        ],
+        "evidence_requirements": [
+          "Typed claims, source locators, stage receipts, and provider-native readback for external effects."
+        ],
+        "risk_boundaries": [
+          "Capability may increase; authority, safety, privacy, and human-control requirements may not weaken."
+        ],
+        "quality_gates": [
+          "No completion claim without tests, readback, and unresolved-gap accounting."
+        ],
+        "state_updates": [
+          "Persist selected route, rejected alternatives, contradictions, evidence, and exact resume point."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Operator authority, power-skill composition, epistemic discipline, quality gates, and durable handoff."
+        ],
+        "adds": "A measurable strongest-intelligent-fit decision layer and enforceable end-to-end mission sequence.",
+        "compound_artifact": "STRONG_SMART_EXECUTION_RECEIPT.json",
+        "next_layer_ready_when": [
+          "All required members emit accepted artifacts and all hard gates pass."
+        ]
+      }
     }
   ],
   "schema": "../schemas/combo-skill.schema.json"
