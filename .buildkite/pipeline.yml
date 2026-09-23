@@ -1,4 +1,31 @@
 steps:
+  - label: ":brain: Materialize Strong-Smart canonical hierarchy"
+    key: "materialize-strong-smart"
+    agents:
+      queue: "macos-self"
+    timeout_in_minutes: 10
+    command: |
+      set -euo pipefail
+      python3 scripts/materialize_strong_smart_engine.py
+      python3 scripts/generate_mega_skill_pyramids.py
+      python3 scripts/generate_mega_skill_pyramids.py --check
+      python3 scripts/validate_hierarchy.py
+      python3 tests/test_recursive_skill_hierarchy.py -v
+      python3 -m unittest tests/test_strong_smart_routing_kernel.py
+      python3 scripts/materialize_strong_smart_engine.py --check
+      if git diff --quiet -- registry/skills.json registry/combo-skills.json registry/mega-skills.json registry/pipelines.json registry/mega-skill-pyramids.json; then
+        echo "Strong-Smart canonical hierarchy already materialized."
+        exit 0
+      fi
+      git config user.name "buildkite[bot]"
+      git config user.email "buildkite@users.noreply.github.com"
+      git rm -f .github/workflows/materialize-strong-smart-once.yml || true
+      git add registry/skills.json registry/combo-skills.json registry/mega-skills.json registry/pipelines.json registry/mega-skill-pyramids.json
+      git commit -m "registry: materialize APEX Strong-Smart Execution Engine"
+      git push origin HEAD:main
+
+  - wait
+
   - label: ":satellite: Provider continuity preflight"
     key: "provider-continuity-preflight"
     agents:
