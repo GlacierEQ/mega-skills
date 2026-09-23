@@ -6,6 +6,11 @@ on:
     paths:
       - ".github/workflows/materialize-strong-smart-once.yml"
       - "scripts/materialize_strong_smart_engine.py"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".strong-smart-materialize-trigger"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,6 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
