@@ -1,26 +1,4 @@
 steps:
-  - label: ":brain: Materialize Strong-Smart canonical hierarchy"
-    key: "materialize-strong-smart"
-    agents:
-      queue: "macos-self"
-    timeout_in_minutes: 10
-    command: |
-      set -euo pipefail
-      python3 scripts/materialize_strong_smart_engine.py
-      python3 scripts/generate_mega_skill_pyramids.py
-      git config user.name "buildkite[bot]"
-      git config user.email "buildkite@users.noreply.github.com"
-      git rm -f .github/workflows/materialize-strong-smart-once.yml || true
-      git add registry/skills.json registry/combo-skills.json registry/mega-skills.json registry/pipelines.json registry/mega-skill-pyramids.json
-      if git diff --cached --quiet; then
-        echo "Strong-Smart canonical hierarchy already materialized."
-        exit 0
-      fi
-      git commit -m "registry: materialize APEX Strong-Smart Execution Engine"
-      git push origin HEAD:main
-
-  - wait
-
   - label: ":satellite: Provider continuity preflight"
     key: "provider-continuity-preflight"
     agents:
@@ -63,6 +41,7 @@ steps:
       import json
       import os
       from pathlib import Path
+
       run_dir = Path(os.environ["RUN_DIR"])
       receipt = json.loads((run_dir / "RUN_RECEIPT.json").read_text(encoding="utf-8"))
       assert receipt["status"] == "SUPPORT_VERIFIED"
@@ -84,6 +63,7 @@ steps:
       import json
       import os
       import subprocess
+
       receipt = {
           "schema": "glaciereq.mega-skills.buildkite-ci.v1",
           "status": "PASS",
@@ -92,7 +72,18 @@ steps:
           "build_id": os.environ.get("BUILDKITE_BUILD_ID"),
           "build_number": os.environ.get("BUILDKITE_BUILD_NUMBER"),
           "pipeline": os.environ.get("BUILDKITE_PIPELINE_SLUG"),
-          "validation_contract": ["compileall:scripts-tests-skills","validate_hierarchy","validate_genius_mastery_bridge_freshness","provider_continuity_preflight","generate_mega_skill_pyramids_check","unittest_discover","apex_boot_core_operator_semantics_regressions","local_skill_tests","branch_lifecycle_tests","mega_mission_receipt_hashes"],
+          "validation_contract": [
+              "compileall:scripts-tests-skills",
+              "validate_hierarchy",
+              "validate_genius_mastery_bridge_freshness",
+              "provider_continuity_preflight",
+              "generate_mega_skill_pyramids_check",
+              "unittest_discover",
+              "apex_boot_core_operator_semantics_regressions",
+              "local_skill_tests",
+              "branch_lifecycle_tests",
+              "mega_mission_receipt_hashes"
+          ],
           "generated_at": datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat(),
       }
       print(json.dumps(receipt, indent=2, sort_keys=True))
@@ -127,10 +118,13 @@ steps:
       git fetch --quiet --prune origin \
         '+refs/heads/*:refs/remotes/origin/*' \
         '+refs/tags/*:refs/tags/*'
-      python3 scripts/harmonious_merge_watch.py --baseline main --output .verification-artifacts/harmonious-merge-watch.json
+      python3 scripts/harmonious_merge_watch.py \
+        --baseline main \
+        --output .verification-artifacts/harmonious-merge-watch.json
       python3 - <<'PY'
       import json
       from pathlib import Path
+
       receipt = json.loads(Path(".verification-artifacts/harmonious-merge-watch.json").read_text())
       assert receipt["schema"] == "glaciereq.harmonious-merge-watch.v1"
       assert receipt["mode"] == "read_only"
