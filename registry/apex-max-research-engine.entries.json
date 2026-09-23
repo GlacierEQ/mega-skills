@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "purpose": "Proposed registry entries to materialize APEX Max Research Engine without editing large generated registries in place.",
+  "apply_to": [
+    "registry/mega-skills.json",
+    "registry/combo-skills.json",
+    "registry/mega-skill-pyramids.json"
+  ],
+  "mega_skill_entry": {
+    "id": "apex-max-research-engine",
+    "display_name": "APEX Max Research Engine",
+    "ownership": "glaciereq",
+    "maturity": "candidate",
+    "version": "0.1.0",
+    "path": "mega-skills/apex-max-research-engine",
+    "entrypoint": "mega-skills/apex-max-research-engine/MEGA.md",
+    "required_combos": ["long-horizon-core", "recon-and-map", "cross-cloud-memory-synthesis", "epistemic-verification-chain", "max-research-spiral", "diamond-research-topography", "signal-to-decision-loop"],
+    "conditional_combos": ["capability-readiness", "multi-agent-orchestration-mesh", "guarded-automation-loop", "evidence-to-evolution-loop", "forensic-docket-intelligence", "court-evidence-compiler", "voice-evidence-authenticator", "runtime-operations"],
+    "mission_output": "MAX_RESEARCH_MISSION_RESULT.md",
+    "durable_state": ["MISSION.md", "intake.json", "SOURCE_MAP.md", "QUESTION_GRAPH.json", "lane-receipts/<lane_id>.json", "EVIDENCE.md", "CONTRADICTIONS.md", "SPIRAL_LOG.jsonl", "DIAMOND_REVIEW.md", "FUSION.md", "MAX_RESEARCH_MISSION_RESULT.md", "HANDOFF.md"],
+    "adds": "Recursive deep-research mission engine combining long-horizon state, source mapping, cross-cloud retrieval, epistemic verification, spiral re-querying, Diamond Agent Topography review, and action-ready synthesis.",
+    "firewall": {
+      "schema_version": 1,
+      "mega_id": "apex-max-research-engine",
+      "mode": "read_only",
+      "allowed_actions": ["read_repository", "search_workspace", "read_connected_sources", "load_public_sources", "run_local_tests", "write_run_artifacts", "emit_receipt"],
+      "approval_required_for": ["external_mutation", "network_send", "file_submission", "deletion", "deployment", "merge", "credential_access", "legal_filing", "autonomous_legal_decision", "execute_unknown_program", "public_accusation"],
+      "forbidden_actions": ["external_mutation", "network_send", "file_submission", "deletion", "deployment", "merge", "credential_access", "legal_filing", "autonomous_legal_decision", "execute_unknown_program", "public_accusation"],
+      "required_evidence": ["input_manifest", "source_map", "question_graph", "phase_receipts", "spiral_log", "diamond_review", "output_manifest", "failure_record"],
+      "human_control": "required"
+    },
+    "human_control_points": ["approve_scope_expansion", "resolve_conflict", "approve_external_action", "approve_legal_strategy"],
+    "combos": ["long-horizon-core", "recon-and-map", "cross-cloud-memory-synthesis", "epistemic-verification-chain", "max-research-spiral", "diamond-research-topography", "signal-to-decision-loop"]
+  },
+  "combo_skill_entry_ids": ["max-research-spiral", "diamond-research-topography"],
+  "pyramid_delta": {
+    "mega_root": ["m:apex-max-research-engine", "apex-max-research-engine", ["c:long-horizon-core", "c:recon-and-map", "c:cross-cloud-memory-synthesis", "c:epistemic-verification-chain", "c:max-research-spiral", "c:diamond-research-topography", "c:signal-to-decision-loop"], ["c:capability-readiness", "c:multi-agent-orchestration-mesh", "c:guarded-automation-loop", "c:evidence-to-evolution-loop", "c:forensic-docket-intelligence", "c:court-evidence-compiler", "c:voice-evidence-authenticator", "c:runtime-operations"]],
+    "compound_nodes": [
+      ["c:max-research-spiral", "max-research-spiral", [["a:mission-contract", 1], ["c:recon-and-map", 1], ["a:evidence-register", 1], ["a:claim-calibration", 1], ["a:quality-gate", 1]]],
+      ["c:diamond-research-topography", "diamond-research-topography", [["a:evidence-register", 1], ["a:claim-calibration", 1], ["a:epistemic-gate", 1], ["a:roadmap-builder", 1], ["a:quality-gate", 1]]]
+    ],
+    "new_leaf_keys": []
+  },
+  "validation_command": "python scripts/generate_mega_skill_pyramids.py --check"
+}
