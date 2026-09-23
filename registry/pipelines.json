@@ -299,6 +299,40 @@
       ],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_pipeline.py"
+    },
+    {
+      "id": "strong-smart-mission",
+      "display_name": "Strong-Smart Mission",
+      "description": "Approval-gated strongest-intelligent-fit deep execution pipeline.",
+      "family": "mission",
+      "path": "pipelines/strong-smart-mission.json",
+      "mega_roots": [
+        "apex-strong-smart-execution-engine"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "span": [
+        "intake",
+        "hydrate",
+        "power-fit",
+        "compose",
+        "execute",
+        "adversarial-verify",
+        "readback",
+        "preserve",
+        "handoff"
+      ],
+      "required_combos": [
+        "strong-smart-execution-stack",
+        "long-horizon-core",
+        "capability-readiness",
+        "epistemic-verification-chain",
+        "pipeline-orchestration"
+      ],
+      "runner": "scripts/run_deep_work_pipeline.py",
+      "stage_runner": "scripts/strong_smart_stage.py"
     }
   ]
 }
