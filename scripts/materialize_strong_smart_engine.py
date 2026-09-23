@@ -2,7 +2,7 @@
 """Exact-ID materialization for the Strong-Smart hierarchy.
 
 Preserves every unrelated registry entry and enriches the pipeline registry row
-from the canonical pipeline document before writing.
+from the canonical pipeline document before writing. This script is idempotent.
 """
 from pathlib import Path
 import argparse,json
