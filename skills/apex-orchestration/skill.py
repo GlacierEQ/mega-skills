@@ -30,53 +30,53 @@ SCHEMAS_DIR = SKILL_ROOT / "schemas"
 LANES = [
     (
         "REASON",
-        "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "nvidia/Nemotron-3-Ultra-550b-a55b",
         "plan_required OR invariants > 3 OR cross_domain",
     ),
-    ("CODE", "poolside/laguna-s-2.1:free", "code_edit OR code_create"),
+    ("CODE", "Qwen/Qwen3-235B-A22B-Instruct-2507", "code_edit OR code_create"),
     (
         "CODE-FAST",
-        "poolside/laguna-xs-2.1:free",
+        "Qwen/Qwen3.8-27B",
         "subagent == true AND scope < 200_lines",
     ),
-    ("VERIFY", "z-ai/glm-5.2:free", "verify_required OR audit"),
-    ("REVIEW", "cohere/north-mini-code:free", "refactor OR simplify"),
-    ("LONG-CTX", "thinkingmachines/inkling:free", "input_tokens > 500_000"),
+    ("VERIFY", "zai-org/GLM-5.2", "verify_required OR audit"),
+    ("REVIEW", "Qwen/Qwen3-30B-A3B-Instruct-2507", "refactor OR simplify"),
+    ("LONG-CTX", "Qwen/Qwen3.5-397B-A17B", "input_tokens > 500_000"),
     (
         "LONG-CTX-ALT",
-        "minimax/minimax-m3:free",
+        "MiniMaxAI/MiniMax-M3",
         "input_tokens > 500_000 AND inkling_unavailable",
     ),
     (
         "THINK-DEEP",
-        "minimax/minimax-m2.7:free",
+        "deepseek-ai/DeepSeek-V4-Pro",
         "mission.horizon == 'long' AND requires_evolution",
     ),
     (
         "NANO-PERCEPTION",
-        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "openbmb/MiniCPM-V-4_5",
         "input_modality IN {image, video, audio}",
     ),
     (
         "DOMAIN-MED",
-        "inclusionai/ling-3.0-flash-sante:free",
+        "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
         "domain == medical OR clinical",
     ),
     (
         "DOMAIN-FIN",
-        "inclusionai/ling-3.0-flash-fin:free",
+        "zai-org/GLM-5.3",
         "domain == finance OR quantitative",
     ),
     (
         "ROUTER-FREE",
-        "openrouter/free",
+        "google/gemma-3-27b-it",
         "smoke_test OR cost == 0 AND quality < critical",
     ),
 ]
 
 ROUTES = [
-    ("R-MEDICAL", "DOMAIN-MED", "subtask.domain IN {medical, clinical}", True),
-    ("R-FINANCE", "DOMAIN-FIN", "subtask.domain IN {finance, quantitative}", True),
+    ("R-MEDICAL", "DOMAIN-MED", "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B", True),
+    ("R-FINANCE", "DOMAIN-FIN", "zai-org/GLM-5.3", True),
     (
         "R-MULTIMODAL",
         "NANO-PERCEPTION",
@@ -97,7 +97,7 @@ ROUTES = [
         "subtask.subagent == true AND estimated_lines < 200",
         False,
     ),
-    ("R-DEFAULT", "ROUTER-FREE", "always (with VERIFY audit)", False),
+    ("R-DEFAULT", "ROUTER-FREE", "google/gemma-3-27b-it", False),
 ]
 
 FAILURE_CODES = [
@@ -118,7 +118,7 @@ FAILURE_CODES = [
         "F-VER-02",
         "three_sig_missing",
         "VERIFY",
-        "operator",
+        "zai-org/GLM-5.2",
         "re-dispatch missing signature",
     ),
     ("F-FUSE-01", "draft_input", "FUSE", "operator", "drop drafts, BLOCK if empty"),

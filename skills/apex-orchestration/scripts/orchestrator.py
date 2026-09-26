@@ -62,18 +62,18 @@ THREE_SIG_ROLES = ("producer", "auditor", "refiner")
 
 # Lane → model mapping (mirrors skill.py LANES, authoritative)
 LANE_MODELS: Dict[str, str] = {
-    "REASON": "nvidia/nemotron-3-ultra-550b-a550b:free",
-    "CODE": "poolside/laguna-s-2.1:free",
-    "CODE-FAST": "poolside/laguna-xs-2.1:free",
-    "VERIFY": "z-ai/glm-5.2:free",
-    "REVIEW": "cohere/north-mini-code:free",
-    "LONG-CTX": "thinkingmachines/inkling:free",
-    "LONG-CTX-ALT": "minimax/minimax-m3:free",
-    "THINK-DEEP": "minimax/minimax-m2.7:free",
-    "NANO-PERCEPTION": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "DOMAIN-MED": "inclusionai/ling-3.0-flash-sante:free",
-    "DOMAIN-FIN": "inclusionai/ling-3.0-flash-fin:free",
-    "ROUTER-FREE": "openrouter/free",
+    "REASON": "nvidia/Nemotron-3-Ultra-550b-a55b",
+    "CODE": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "CODE-FAST": "Qwen/Qwen3.8-27B",
+    "VERIFY": "zai-org/GLM-5.2",
+    "REVIEW": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "LONG-CTX": "Qwen/Qwen3.5-397B-A17B",
+    "LONG-CTX-ALT": "MiniMaxAI/MiniMax-M3",
+    "THINK-DEEP": "deepseek-ai/DeepSeek-V4-Pro",
+    "NANO-PERCEPTION": "openbmb/MiniCPM-V-4_5",
+    "DOMAIN-MED": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "DOMAIN-FIN": "zai-org/GLM-5.3",
+    "ROUTER-FREE": "google/gemma-3-27b-it",
 }
 
 # Lane priority for FUSE sort (lower = first)
