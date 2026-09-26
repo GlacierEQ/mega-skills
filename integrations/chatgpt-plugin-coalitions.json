@@ -121,12 +121,22 @@
           "state": "VERIFIED_READ"
         },
         {
-          "provider": "Postman|BrowserStack",
-          "action": "API/browser verification",
+          "provider": "Postman",
+          "action": "API verification",
+          "state": "IDENTITY_READ_VERIFIED_EXECUTION_UNVERIFIED"
+        },
+        {
+          "provider": "BrowserStack",
+          "action": "browser verification",
           "state": "UNVERIFIED_CANDIDATE"
         },
         {
-          "provider": "Vercel|Railway|Render",
+          "provider": "Vercel",
+          "action": "deployment/runtime verification",
+          "state": "IDENTITY_READ_VERIFIED_DEPLOYMENT_UNVERIFIED"
+        },
+        {
+          "provider": "Railway|Render",
           "action": "deployment/runtime verification",
           "state": "UNVERIFIED_CANDIDATE"
         },

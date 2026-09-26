@@ -5,7 +5,7 @@
   "observed": {
     "runtime_namespaces": 249,
     "runtime_mcp_tools": 5383,
-    "fresh_provider_read_tests": 9
+    "fresh_provider_read_tests": 11
   },
   "regression": {
     "old_behavior_red": {
@@ -33,11 +33,6 @@
     {
       "namespace": "Gateway",
       "tool_count": 277,
-      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
-    },
-    {
-      "namespace": "Postman",
-      "tool_count": 201,
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
     },
     {
@@ -129,6 +124,25 @@
       "namespace": "Atlassian_Rovo",
       "tool_count": 53,
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "ClickUp_MCP",
+      "tool_count": 51,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    }
+  ],
+  "frontier_advances": [
+    {
+      "provider": "Vercel",
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "list_teams",
+      "boundary": "identity/team discovery proved; project/deployment paths not yet exercised"
+    },
+    {
+      "provider": "Postman",
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "getAuthenticatedUser",
+      "boundary": "authenticated provider context proved; collection/API execution paths not yet exercised"
     }
   ]
 }

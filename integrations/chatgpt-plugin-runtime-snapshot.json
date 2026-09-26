@@ -48,6 +48,16 @@
     "Mem0": {
       "state": "VERIFIED_READ_THIS_TURN",
       "action": "list_entities"
+    },
+    "Vercel": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "list_teams",
+      "scope": "provider identity/team discovery only; project/deployment execution remains unverified"
+    },
+    "Postman": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "getAuthenticatedUser",
+      "scope": "provider identity/account context only; collection/API test execution remains unverified"
     }
   },
   "namespaces": [
@@ -1802,11 +1812,6 @@
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
     },
     {
-      "namespace": "Postman",
-      "tool_count": 201,
-      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
-    },
-    {
       "namespace": "Alchemy",
       "tool_count": 173,
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
@@ -2044,6 +2049,11 @@
     {
       "namespace": "Jam",
       "tool_count": 33,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "openFDA",
+      "tool_count": 32,
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
     }
   ]
