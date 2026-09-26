@@ -20,6 +20,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from orchestrator import (  # noqa: E402
+    LANE_MODELS,
     MissionOrchestrator,
     Subtask,
     Intake,
@@ -107,14 +108,20 @@ def make_code_receipt_with_sigs(**kwargs):
 
 def make_run_quality():
     return {
-        "source_coverage": {"scope": "bounded", "evidence": ["INTAKE.json", "VERIFY.json"]},
+        "source_coverage": {
+            "scope": "bounded",
+            "evidence": ["INTAKE.json", "VERIFY.json"],
+        },
         "mission_delta": {
             "changed": True,
             "before": "mission objective not yet delivered",
             "after": "verified durable mission output exists",
         },
         "durable_outputs": ["fused.json"],
-        "verification": {"status": "verified", "evidence": ["verified receipts passed gates"]},
+        "verification": {
+            "status": "verified",
+            "evidence": ["verified receipts passed gates"],
+        },
         "next_frontier": "continue from the verified delivery state",
     }
 
@@ -483,7 +490,9 @@ class TestDeliver:
             signatures=[],
             ts=now_iso(),
         )
-        delivery = orch.deliver(intake.mission_id, fused, intake, run_quality=make_run_quality())
+        delivery = orch.deliver(
+            intake.mission_id, fused, intake, run_quality=make_run_quality()
+        )
         assert delivery.status == "SHIPPED"
         assert delivery.memory_write_id.startswith("mem_")
 
@@ -534,7 +543,9 @@ class TestDeliver:
             signatures=[],
             ts=now_iso(),
         )
-        delivery = orch.deliver(intake.mission_id, fused, intake, run_quality=make_run_quality())
+        delivery = orch.deliver(
+            intake.mission_id, fused, intake, run_quality=make_run_quality()
+        )
         delivery_file = tmp_path / intake.mission_id / "delivery.json"
         assert delivery_file.exists()
         data = json.loads(delivery_file.read_text())
@@ -649,7 +660,8 @@ class TestCLI:
         )
         assert result["rule_id"] == "R-CODE-FAST"
         assert result["lane"] == "CODE-FAST"
-        assert result["model"] == "poolside/laguna-xs-2.1:free"
+        # derive from the source of truth so lane remaps cannot drift this test
+        assert result["model"] == LANE_MODELS["CODE-FAST"]
 
     def test_route_cli_medical(self, tmp_path):
         orch = fresh_orch(tmp_path)

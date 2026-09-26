@@ -1786,7 +1786,10 @@
           "read_repository",
           "run_local_tests",
           "write_run_artifacts",
-          "emit_receipt"
+          "emit_receipt",
+          "search_workspace",
+          "read_connected_sources",
+          "load_public_sources"
         ],
         "approval_required_for": [
           "external_mutation",

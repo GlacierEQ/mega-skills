@@ -16472,6 +16472,33 @@
         "External mutation approval",
         "Provider-native readback"
       ]
+    },
+    {
+      "id": "research-source-access",
+      "display_name": "Research Source Access",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/research-source-access",
+      "entrypoint": "skills/research-source-access/SKILL.md",
+      "purpose": "Read-only source access for the Max Research Engine: workspace search, configured connector reads, and guarded public HTTP GET.",
+      "input_contract": [
+        "Query and root for workspace search",
+        "Named read-only connector plus request path",
+        "Public URLs to load"
+      ],
+      "output_contract": [
+        "Per-action receipt with SHA-256 content digest",
+        "Refusal reason for every declined source"
+      ],
+      "local_validation": [
+        "python -m unittest discover -s skills/research-source-access/tests"
+      ],
+      "does_not_own": [
+        "External mutation",
+        "Credentialed or authenticated network access",
+        "Data transmission"
+      ]
     }
   ]
 }
