@@ -1,30 +1,37 @@
 ---
 name: aspen-grove-connectors
-description: "Universal multi-service MCP & API connector mesh. Bridges GitHub, Notion, Supabase, Dropbox, ClickUp, Linear, Vercel, DuckDB, Taskade, Pinecone, and E2B with rate-limiting, exponential backoff, credential sandboxing, and health telemetry."
+description: "Evidence-safe multi-service connector mesh for GlacierEQ. Models provider health, dispatch, and multi-plugin coalitions without promoting configuration, credentials, mocks, or unbound transports into verified provider state."
 ---
 
 # Aspen Grove Connectors Mesh
 
-Operate as the **centralized external service connector fabric** for the APEX Estate. Provides resilient, typed adapters to third-party APIs and MCP servers with automatic secret resolution, backoff retry policies, and sandboxed mock modes for safe local execution.
+Aspen Grove is the connector envelope for composing external services into reusable pipelines.
 
-## Supported Connector Services
+## Evidence law
 
-| Service | Protocol | Key Endpoints / Tools | Sandboxed Mode |
-|---|---|---|---|
-| **GitHub** | REST / GraphQL / MCP | Repo, PRs, Commits, Issues, Actions | Mock Git Fixtures |
-| **Notion** | REST / MCP | Pages, Databases, Blocks, Comments | Mock Workspace JSON |
-| **Supabase** | PostgREST / Realtime | Table queries, RPC functions, Auth | SQLite / Local Mock |
-| **Dropbox** | REST / Rclone | Files, Revisions, Shared Links | Local Virtual FS |
-| **Linear** | GraphQL | Issues, Cycles, Teams, Projects | Mock Issue Graph |
-| **ClickUp** | REST | Tasks, Lists, Spaces, Time Tracking | Mock Task DB |
-| **Vercel** | REST / MCP | Deployments, Domains, Projects, Logs | Mock Deployment State |
-| **DuckDB** | In-Process SQL | Parquet queries, OLAP analytics, Lakehouse | Embedded DuckDB |
-| **Pinecone** | REST / gRPC | Vector Upsert, Query, Namespace Index | In-Memory Cosine Index |
-| **Taskade** | REST | Workspaces, Agents, Task Outlines | Mock Outline DB |
+- **Credential present != provider verified.**
+- **Runtime tool exposure != authenticated connection.**
+- **Mock/sandbox output is SIMULATED, never VERIFIED.**
+- **A bound provider call without an explicit verification receipt remains SOURCE_BOUND.**
+- **Only an explicit provider-native receipt may promote a connector/action to VERIFIED.**
+- **Unbound live transports block. They never return fabricated live success.**
 
-## Core Operational Rules
+## Current connector surface
 
-1. **Credential Sandboxing**: Never hardcode secrets in source code. Credentials resolve from `os.environ` or `~/.secrets/<service>`. If missing in testing/CI, gracefully degrade to Sandboxed Mock Mode (`mock_mode=True`).
-2. **Backoff & Rate Limiting**: All outbound HTTP requests enforce exponential backoff with randomized jitter (100ms base, 5 retries max).
-3. **Fail-Closed Isolation**: Network errors or auth rejections emit structured error telemetry and never corrupt local mission state.
-4. **Health Telemetry**: All connectors expose a `.health_check()` probe reporting latency, quota, and authentication status.
+The default mesh includes GitHub, Notion, Supabase, Dropbox, Linear, ClickUp, Vercel, DuckDB, Pinecone, Taskade, Gmail, Google Drive, Slack, MemoryPlugin, Mem0, and E2B. Additional services may be injected dynamically.
+
+A service being listed here means the mesh can model it. It does **not** mean credentials, OAuth, provider health, or write authorization are current.
+
+## Pipeline composition
+
+`AspenGroveMesh.plan_pipeline(stages)` evaluates a connector coalition before execution. Required stages are runnable only when their provider health receipt explicitly sets `verified=true`.
+
+Use `integrations/chatgpt-plugin-runtime-snapshot.json` for the current ChatGPT runtime exposure census and `integrations/chatgpt-plugin-coalitions.json` for reusable multi-plugin DAG contracts.
+
+## Verification
+
+Focused behavior tests live at:
+
+`skills/aspen-grove-connectors/tests/test_evidence_semantics.py`
+
+They guard against the prior failure mode where credential presence was labeled "online (live)" and an unbound live request returned a fabricated success payload.

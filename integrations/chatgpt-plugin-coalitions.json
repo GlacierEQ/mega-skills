@@ -1,0 +1,167 @@
+{
+  "schema": "glaciereq.chatgpt-plugin-coalitions.v1",
+  "policy": {
+    "provider_native_evidence_required": true,
+    "runtime_exposure_does_not_imply_authentication": true,
+    "mock_or_configured_state_does_not_imply_verified": true,
+    "only_explicit_provider_receipts_promote_verified": true,
+    "blocked_stage_changes_route_not_objective": true
+  },
+  "coalitions": [
+    {
+      "id": "plugin-mesh-hardening",
+      "purpose": "Continuously turn runtime plugin exposure into tested, routed, receipt-bearing capability.",
+      "stages": [
+        {
+          "provider": "Plugin_Management",
+          "action": "discover/permission/dependency metadata",
+          "evidence": "SOURCE_BOUND"
+        },
+        {
+          "provider": "ChatGPT_RUNTIME",
+          "action": "census namespaces/tools",
+          "evidence": "OBSERVED_RUNTIME_EXPOSURE"
+        },
+        {
+          "provider": "TARGET_PROVIDER",
+          "action": "provider-native read probe",
+          "evidence": "VERIFIED required before health promotion"
+        },
+        {
+          "provider": "GitHub",
+          "action": "persist snapshot/tests/recipes",
+          "evidence": "provider readback required"
+        },
+        {
+          "provider": "Supabase",
+          "action": "project execution/receipt projection",
+          "evidence": "provider readback required when mutated"
+        },
+        {
+          "provider": "Linear|Notion",
+          "action": "operational projection when useful",
+          "evidence": "provider readback required when mutated"
+        }
+      ]
+    },
+    {
+      "id": "communications-to-action",
+      "purpose": "Convert communications into evidence-backed executable work without losing source provenance.",
+      "stages": [
+        {
+          "provider": "Gmail",
+          "action": "retrieve source communications",
+          "state": "VERIFIED_READ_THIS_TURN"
+        },
+        {
+          "provider": "Google_Drive",
+          "action": "bind supporting files",
+          "state": "VERIFIED_READ_THIS_TURN"
+        },
+        {
+          "provider": "Linear",
+          "action": "materialize actionable work item",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        },
+        {
+          "provider": "Notion",
+          "action": "project human-readable operating view",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        },
+        {
+          "provider": "Slack",
+          "action": "notify/collaborate",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        },
+        {
+          "provider": "Memory_plugin|Mem0",
+          "action": "preserve continuation cursor",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        }
+      ]
+    },
+    {
+      "id": "evidence-chain",
+      "purpose": "Carry source material through durable code/data/memory receipts.",
+      "stages": [
+        {
+          "provider": "Gmail|Google_Drive|Notion",
+          "action": "source acquisition",
+          "state": "MIXED_VERIFIED_READ"
+        },
+        {
+          "provider": "GitHub",
+          "action": "versioned artifact/provenance",
+          "state": "VERIFIED_READ_AND_WRITE_ON_THIS_RUN_AFTER_COMMIT"
+        },
+        {
+          "provider": "Supabase",
+          "action": "structured operational ledger",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        },
+        {
+          "provider": "Memory_plugin|Mem0",
+          "action": "continuity projection",
+          "state": "READ_VERIFIED_WRITE_UNVERIFIED"
+        }
+      ]
+    },
+    {
+      "id": "engineering-ship",
+      "purpose": "Connect implementation, testing, deployment, and notification providers.",
+      "stages": [
+        {
+          "provider": "GitHub",
+          "action": "source and change authority",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Linear",
+          "action": "work tracking",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Postman|BrowserStack",
+          "action": "API/browser verification",
+          "state": "UNVERIFIED_CANDIDATE"
+        },
+        {
+          "provider": "Vercel|Railway|Render",
+          "action": "deployment/runtime verification",
+          "state": "UNVERIFIED_CANDIDATE"
+        },
+        {
+          "provider": "Slack",
+          "action": "delivery notification",
+          "state": "VERIFIED_READ_WRITE_UNVERIFIED"
+        }
+      ]
+    },
+    {
+      "id": "memory-federation",
+      "purpose": "Preserve operational continuation across memory systems without treating projections as authority.",
+      "stages": [
+        {
+          "provider": "Memory_plugin",
+          "action": "context bucket projection",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Mem0",
+          "action": "entity/event memory projection",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Supabase",
+          "action": "authoritative structured ledger",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "GitHub",
+          "action": "versioned contracts/receipts",
+          "state": "VERIFIED_READ_AND_WRITE_ON_THIS_RUN_AFTER_COMMIT"
+        }
+      ]
+    }
+  ]
+}

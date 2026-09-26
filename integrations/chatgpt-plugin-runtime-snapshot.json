@@ -1,0 +1,2050 @@
+{
+  "schema": "glaciereq.chatgpt-plugin-runtime-snapshot.v1",
+  "observed_at": "2026-09-26T23:13:00Z",
+  "source_surface": "chatgpt",
+  "evidence_state": "OBSERVED_RUNTIME_EXPOSURE",
+  "semantics": {
+    "runtime_exposure_is_not_authentication": true,
+    "tool_name_classification_is_heuristic": true,
+    "provider_verification_requires_provider_native_receipt": true
+  },
+  "totals": {
+    "namespace_count": 249,
+    "tool_count": 5383
+  },
+  "provider_read_tests": {
+    "GitHub": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "repo/main/file/commit reads"
+    },
+    "Gmail": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "get_profile"
+    },
+    "Google_Drive": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "get_profile"
+    },
+    "Supabase": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "list_projects"
+    },
+    "Notion": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "notion_get_users(self)"
+    },
+    "Linear": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "get_workspace"
+    },
+    "Slack": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "slack_list_workspaces"
+    },
+    "Memory_plugin": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "list_buckets"
+    },
+    "Mem0": {
+      "state": "VERIFIED_READ_THIS_TURN",
+      "action": "list_entities"
+    }
+  },
+  "namespaces": [
+    {
+      "namespace": "Gateway",
+      "tool_count": 277,
+      "read_like_name_count": 109,
+      "write_capable_name_count": 61,
+      "other_name_count": 107
+    },
+    {
+      "namespace": "Postman",
+      "tool_count": 201,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 201
+    },
+    {
+      "namespace": "Alchemy",
+      "tool_count": 173,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 7,
+      "other_name_count": 156
+    },
+    {
+      "namespace": "LaunchDarkly",
+      "tool_count": 139,
+      "read_like_name_count": 72,
+      "write_capable_name_count": 52,
+      "other_name_count": 15
+    },
+    {
+      "namespace": "Aleph",
+      "tool_count": 115,
+      "read_like_name_count": 49,
+      "write_capable_name_count": 26,
+      "other_name_count": 40
+    },
+    {
+      "namespace": "Neon",
+      "tool_count": 106,
+      "read_like_name_count": 43,
+      "write_capable_name_count": 45,
+      "other_name_count": 18
+    },
+    {
+      "namespace": "DataCamp",
+      "tool_count": 101,
+      "read_like_name_count": 70,
+      "write_capable_name_count": 25,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Smithery",
+      "tool_count": 100,
+      "read_like_name_count": 34,
+      "write_capable_name_count": 25,
+      "other_name_count": 41
+    },
+    {
+      "namespace": "Ssmithery",
+      "tool_count": 100,
+      "read_like_name_count": 35,
+      "write_capable_name_count": 2,
+      "other_name_count": 63
+    },
+    {
+      "namespace": "GitHub",
+      "tool_count": 89,
+      "read_like_name_count": 47,
+      "write_capable_name_count": 33,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "Intuit_QuickBooks",
+      "tool_count": 88,
+      "read_like_name_count": 44,
+      "write_capable_name_count": 22,
+      "other_name_count": 22
+    },
+    {
+      "namespace": "WPWriter",
+      "tool_count": 83,
+      "read_like_name_count": 30,
+      "write_capable_name_count": 29,
+      "other_name_count": 24
+    },
+    {
+      "namespace": "Adobe",
+      "tool_count": 79,
+      "read_like_name_count": 7,
+      "write_capable_name_count": 27,
+      "other_name_count": 45
+    },
+    {
+      "namespace": "Linear",
+      "tool_count": 74,
+      "read_like_name_count": 41,
+      "write_capable_name_count": 30,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "ClickUp",
+      "tool_count": 61,
+      "read_like_name_count": 25,
+      "write_capable_name_count": 32,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "WP_Agent",
+      "tool_count": 61,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 26,
+      "other_name_count": 11
+    },
+    {
+      "namespace": "Miro",
+      "tool_count": 57,
+      "read_like_name_count": 20,
+      "write_capable_name_count": 31,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Box",
+      "tool_count": 56,
+      "read_like_name_count": 22,
+      "write_capable_name_count": 20,
+      "other_name_count": 14
+    },
+    {
+      "namespace": "TickTick_To_Do_List",
+      "tool_count": 55,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 24,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Seamless",
+      "tool_count": 54,
+      "read_like_name_count": 19,
+      "write_capable_name_count": 29,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Smartsheet_US",
+      "tool_count": 54,
+      "read_like_name_count": 20,
+      "write_capable_name_count": 27,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Atlassian_Rovo",
+      "tool_count": 53,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 50
+    },
+    {
+      "namespace": "ClickUp_MCP",
+      "tool_count": 51,
+      "read_like_name_count": 21,
+      "write_capable_name_count": 26,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "ChatGPT_Ads_Manager",
+      "tool_count": 49,
+      "read_like_name_count": 29,
+      "write_capable_name_count": 14,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "M_ke",
+      "tool_count": 49,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 18,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Microsoft_Outlook_Email",
+      "tool_count": 48,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 21,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Airtable",
+      "tool_count": 47,
+      "read_like_name_count": 22,
+      "write_capable_name_count": 20,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Todoist",
+      "tool_count": 47,
+      "read_like_name_count": 31,
+      "write_capable_name_count": 16,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Brainbase_MCP",
+      "tool_count": 46,
+      "read_like_name_count": 17,
+      "write_capable_name_count": 17,
+      "other_name_count": 12
+    },
+    {
+      "namespace": "Google_Drive",
+      "tool_count": 45,
+      "read_like_name_count": 28,
+      "write_capable_name_count": 11,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Floot",
+      "tool_count": 44,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 15,
+      "other_name_count": 13
+    },
+    {
+      "namespace": "Github_Glacier",
+      "tool_count": 44,
+      "read_like_name_count": 26,
+      "write_capable_name_count": 14,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "WarmHub",
+      "tool_count": 44,
+      "read_like_name_count": 15,
+      "write_capable_name_count": 7,
+      "other_name_count": 22
+    },
+    {
+      "namespace": "Eraser",
+      "tool_count": 42,
+      "read_like_name_count": 13,
+      "write_capable_name_count": 25,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Figma",
+      "tool_count": 41,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 10,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "MongoDB_Atlas",
+      "tool_count": 41,
+      "read_like_name_count": 11,
+      "write_capable_name_count": 11,
+      "other_name_count": 19
+    },
+    {
+      "namespace": "MotherDuck",
+      "tool_count": 41,
+      "read_like_name_count": 23,
+      "write_capable_name_count": 12,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Notion",
+      "tool_count": 41,
+      "read_like_name_count": 23,
+      "write_capable_name_count": 13,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Lovable",
+      "tool_count": 40,
+      "read_like_name_count": 23,
+      "write_capable_name_count": 9,
+      "other_name_count": 8
+    },
+    {
+      "namespace": "Canva",
+      "tool_count": 39,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 12,
+      "other_name_count": 11
+    },
+    {
+      "namespace": "xTiles",
+      "tool_count": 39,
+      "read_like_name_count": 20,
+      "write_capable_name_count": 16,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "BrowserStack",
+      "tool_count": 38,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 37
+    },
+    {
+      "namespace": "Microsoft_Teams",
+      "tool_count": 38,
+      "read_like_name_count": 22,
+      "write_capable_name_count": 16,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Slack",
+      "tool_count": 38,
+      "read_like_name_count": 18,
+      "write_capable_name_count": 19,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "FormHug",
+      "tool_count": 37,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 18,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Hjarni_Notes",
+      "tool_count": 37,
+      "read_like_name_count": 12,
+      "write_capable_name_count": 15,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "AgentMail",
+      "tool_count": 36,
+      "read_like_name_count": 19,
+      "write_capable_name_count": 15,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Calendly",
+      "tool_count": 36,
+      "read_like_name_count": 22,
+      "write_capable_name_count": 12,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Lucid",
+      "tool_count": 35,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 16,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "Coda",
+      "tool_count": 34,
+      "read_like_name_count": 8,
+      "write_capable_name_count": 16,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "Microsoft_Outlook_Calendar",
+      "tool_count": 34,
+      "read_like_name_count": 17,
+      "write_capable_name_count": 15,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Microsoft_SharePoint",
+      "tool_count": 34,
+      "read_like_name_count": 14,
+      "write_capable_name_count": 19,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Rhythms",
+      "tool_count": 34,
+      "read_like_name_count": 13,
+      "write_capable_name_count": 19,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Zite",
+      "tool_count": 34,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 18,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Jam",
+      "tool_count": 33,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 31
+    },
+    {
+      "namespace": "openFDA",
+      "tool_count": 32,
+      "read_like_name_count": 25,
+      "write_capable_name_count": 0,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Better_Design",
+      "tool_count": 31,
+      "read_like_name_count": 19,
+      "write_capable_name_count": 3,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "HappyScribe",
+      "tool_count": 31,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 9,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Attio",
+      "tool_count": 30,
+      "read_like_name_count": 22,
+      "write_capable_name_count": 7,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Foxit_PDF_Editor",
+      "tool_count": 30,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 5,
+      "other_name_count": 22
+    },
+    {
+      "namespace": "Glacier_Desktop_Commander",
+      "tool_count": 30,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 4,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "Remote_Desktop_Commander",
+      "tool_count": 30,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 4,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "Vercel",
+      "tool_count": 30,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 4,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Basic_Memory_Cloud",
+      "tool_count": 29,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 5,
+      "other_name_count": 14
+    },
+    {
+      "namespace": "supabase",
+      "tool_count": 29,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 11,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Supabase",
+      "tool_count": 29,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 11,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Reclaim_ai",
+      "tool_count": 28,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 9,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "Wix",
+      "tool_count": 28,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 27
+    },
+    {
+      "namespace": "Asana",
+      "tool_count": 27,
+      "read_like_name_count": 19,
+      "write_capable_name_count": 8,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Firecrawl",
+      "tool_count": 27,
+      "read_like_name_count": 11,
+      "write_capable_name_count": 3,
+      "other_name_count": 13
+    },
+    {
+      "namespace": "HubSpot",
+      "tool_count": 26,
+      "read_like_name_count": 14,
+      "write_capable_name_count": 0,
+      "other_name_count": 12
+    },
+    {
+      "namespace": "Railway",
+      "tool_count": 26,
+      "read_like_name_count": 15,
+      "write_capable_name_count": 6,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Amplitude",
+      "tool_count": 25,
+      "read_like_name_count": 19,
+      "write_capable_name_count": 3,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Tally",
+      "tool_count": 25,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 12,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Alpaca",
+      "tool_count": 24,
+      "read_like_name_count": 24,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Dropbox",
+      "tool_count": 24,
+      "read_like_name_count": 11,
+      "write_capable_name_count": 10,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Stack_Overflow_For_Agents",
+      "tool_count": 24,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 5,
+      "other_name_count": 14
+    },
+    {
+      "namespace": "Cloudinary",
+      "tool_count": 23,
+      "read_like_name_count": 11,
+      "write_capable_name_count": 11,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Mem",
+      "tool_count": 23,
+      "read_like_name_count": 11,
+      "write_capable_name_count": 9,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Render",
+      "tool_count": 22,
+      "read_like_name_count": 13,
+      "write_capable_name_count": 8,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "AiAkiv_Memory",
+      "tool_count": 21,
+      "read_like_name_count": 16,
+      "write_capable_name_count": 3,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Gmail",
+      "tool_count": 21,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 9,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Mesh",
+      "tool_count": 21,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 3,
+      "other_name_count": 15
+    },
+    {
+      "namespace": "XMemo",
+      "tool_count": 21,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 3,
+      "other_name_count": 14
+    },
+    {
+      "namespace": "Fireflies",
+      "tool_count": 20,
+      "read_like_name_count": 14,
+      "write_capable_name_count": 5,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "MindMap_AI",
+      "tool_count": 20,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 13,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Adobe_Acrobat",
+      "tool_count": 19,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 3,
+      "other_name_count": 16
+    },
+    {
+      "namespace": "Base44",
+      "tool_count": 19,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 7,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Coupler_io",
+      "tool_count": 19,
+      "read_like_name_count": 12,
+      "write_capable_name_count": 7,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Astrotheoros",
+      "tool_count": 18,
+      "read_like_name_count": 12,
+      "write_capable_name_count": 6,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Chartquery",
+      "tool_count": 18,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 15
+    },
+    {
+      "namespace": "Windsor_ai",
+      "tool_count": 18,
+      "read_like_name_count": 13,
+      "write_capable_name_count": 4,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "ClickHouse",
+      "tool_count": 17,
+      "read_like_name_count": 17,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "CMS_Coverage",
+      "tool_count": 17,
+      "read_like_name_count": 17,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Gamma",
+      "tool_count": 17,
+      "read_like_name_count": 12,
+      "write_capable_name_count": 0,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Unabyss",
+      "tool_count": 17,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 3,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Weavely_Forms",
+      "tool_count": 17,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 10,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Dropbox_Dash",
+      "tool_count": 15,
+      "read_like_name_count": 13,
+      "write_capable_name_count": 2,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Google_Calendar",
+      "tool_count": 15,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 3,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Trello",
+      "tool_count": 15,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 15
+    },
+    {
+      "namespace": "Clay",
+      "tool_count": 14,
+      "read_like_name_count": 9,
+      "write_capable_name_count": 2,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Memory_plugin",
+      "tool_count": 14,
+      "read_like_name_count": 8,
+      "write_capable_name_count": 2,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Semrush",
+      "tool_count": 14,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 1,
+      "other_name_count": 11
+    },
+    {
+      "namespace": "Wispr_Flow",
+      "tool_count": 14,
+      "read_like_name_count": 12,
+      "write_capable_name_count": 2,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Zapier",
+      "tool_count": 14,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 6,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "AI_Wisebase",
+      "tool_count": 13,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 2,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Finances",
+      "tool_count": 13,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 5,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Plugin_Creator",
+      "tool_count": 13,
+      "read_like_name_count": 8,
+      "write_capable_name_count": 5,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "A_I",
+      "tool_count": 12,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 6,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Forms_AI",
+      "tool_count": 12,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 8,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Read_AI",
+      "tool_count": 12,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 6,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Werify",
+      "tool_count": 12,
+      "read_like_name_count": 7,
+      "write_capable_name_count": 1,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Whimsical",
+      "tool_count": 12,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 2,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "CMS_Open_Data",
+      "tool_count": 11,
+      "read_like_name_count": 9,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Dropbox_Beast",
+      "tool_count": 11,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 6,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Health",
+      "tool_count": 11,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 1,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Mem0",
+      "tool_count": 11,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 5,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Rovyn",
+      "tool_count": 11,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 5,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Structured",
+      "tool_count": 11,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 4,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Beautiful_ai",
+      "tool_count": 10,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 2,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Crossbeam",
+      "tool_count": 10,
+      "read_like_name_count": 10,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Flourish",
+      "tool_count": 10,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 4,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Formula_Genius",
+      "tool_count": 10,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "Hebbia",
+      "tool_count": 10,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Operator_Powers",
+      "tool_count": 10,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 2,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "RewriteLy_Humanizer",
+      "tool_count": 10,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 1,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Shazam",
+      "tool_count": 10,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 10
+    },
+    {
+      "namespace": "AT_T",
+      "tool_count": 9,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "Coursera_Learning",
+      "tool_count": 9,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 1,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Fathom",
+      "tool_count": 9,
+      "read_like_name_count": 9,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Formspry",
+      "tool_count": 9,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 4,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Granola",
+      "tool_count": 9,
+      "read_like_name_count": 9,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Hugging_Face",
+      "tool_count": 9,
+      "read_like_name_count": 7,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Intuit_Mailchimp",
+      "tool_count": 9,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 1,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Jotform",
+      "tool_count": 9,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 2,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "LinkedIn_Ads",
+      "tool_count": 9,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Medicare_Care_Compare",
+      "tool_count": 9,
+      "read_like_name_count": 8,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Metricool",
+      "tool_count": 9,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 9
+    },
+    {
+      "namespace": "Netlify",
+      "tool_count": 9,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 2,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "Zillow",
+      "tool_count": 9,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "AccurateScribe_ai",
+      "tool_count": 8,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 2,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Adalo",
+      "tool_count": 8,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 4,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "AWS_Data_Analytics",
+      "tool_count": 8,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "B_A",
+      "tool_count": 8,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 3,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "IHate_ai_Humanaizer",
+      "tool_count": 8,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "MeetGeek",
+      "tool_count": 8,
+      "read_like_name_count": 7,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Opera_Browser_Connector",
+      "tool_count": 8,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 6
+    },
+    {
+      "namespace": "TinyFish",
+      "tool_count": 8,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 1,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Whisper_Transcribe_AI",
+      "tool_count": 8,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 2,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Adobe_Express",
+      "tool_count": 7,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "AnyPDF",
+      "tool_count": 7,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 3,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "ClinicalTrials_gov",
+      "tool_count": 7,
+      "read_like_name_count": 6,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Prompt_Perfect",
+      "tool_count": 7,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 2,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "PubMed",
+      "tool_count": 7,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "SlideForge",
+      "tool_count": 7,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 3,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Target",
+      "tool_count": 7,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 7
+    },
+    {
+      "namespace": "Alpic",
+      "tool_count": 6,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Canvs_io_whiteboard",
+      "tool_count": 6,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 4,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Casebrain",
+      "tool_count": 6,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Miyo",
+      "tool_count": 6,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Newegg",
+      "tool_count": 6,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Plugin_Management",
+      "tool_count": 6,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 1,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Sabre_Developer_Hub_MCP_Server",
+      "tool_count": 6,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Agentic_Search_by_Liner",
+      "tool_count": 5,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Agentic_Slides_by_SlidesGPT",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 3,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "ChatStack",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 2,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "DEWA",
+      "tool_count": 5,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Jotform_Apps",
+      "tool_count": 5,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Malwarebytes",
+      "tool_count": 5,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Manus",
+      "tool_count": 5,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 5
+    },
+    {
+      "namespace": "Midpage_Legal_Research",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Rhythm_AI_Personality_Tuner",
+      "tool_count": 5,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Smithery_migration",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 1,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Softonic",
+      "tool_count": 5,
+      "read_like_name_count": 5,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Spotify",
+      "tool_count": 5,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 2,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "supermemory",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Supermemory1",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Vivin",
+      "tool_count": 5,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 1,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "ApyHub_EU",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Browser_Use",
+      "tool_count": 4,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 3
+    },
+    {
+      "namespace": "Cyber_lazer_mermicorn",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 2,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "DailyMed",
+      "tool_count": 4,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Hex",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Internshala",
+      "tool_count": 4,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "MacroDroid_Macro_Builder",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "PDF_Editor_PRO_by_Playgram",
+      "tool_count": 4,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 4
+    },
+    {
+      "namespace": "Presentations_Craft",
+      "tool_count": 4,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "RxNorm",
+      "tool_count": 4,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "udictio",
+      "tool_count": 4,
+      "read_like_name_count": 4,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Veto_Pro_Pac",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Xmind",
+      "tool_count": 4,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Botpress",
+      "tool_count": 3,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 2,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "CALL_E",
+      "tool_count": 3,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Domain_Scan",
+      "tool_count": 3,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Exa_Search",
+      "tool_count": 3,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Goodnotes",
+      "tool_count": 3,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Google_Contacts",
+      "tool_count": 3,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Indeed_Job_Search",
+      "tool_count": 3,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Norton",
+      "tool_count": 3,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "NPI_Registry",
+      "tool_count": 3,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "OpenAI_Platform",
+      "tool_count": 3,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 1,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Otter_ai",
+      "tool_count": 3,
+      "read_like_name_count": 3,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "QRCM",
+      "tool_count": 3,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Resume_Builder",
+      "tool_count": 3,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Resume_io",
+      "tool_count": 3,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Tripadvisor",
+      "tool_count": 3,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Ace_Knowledge_Graph",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Acumen_by_Talarion",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Apixel",
+      "tool_count": 2,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Clerk",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Context7",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Exa",
+      "tool_count": 2,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Expedia",
+      "tool_count": 2,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "GoDaddy",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Sider_Recorder",
+      "tool_count": 2,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "SpeakApp",
+      "tool_count": 2,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Strive_PDF_Generator",
+      "tool_count": 2,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 2
+    },
+    {
+      "namespace": "Udemy",
+      "tool_count": 2,
+      "read_like_name_count": 2,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Writing_Style",
+      "tool_count": 2,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "24",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "AI_Voice_Generator",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Alhena_AI",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "ApplyBoard",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "AskLingxi",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Assessment_Generator",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Awesome_Record",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Awesome_Slides",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "B12_Website_Generator",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "CamScanner",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Camtasia",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Course_Studio",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "CVpop",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Enhancv",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Flixor",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Fyxer",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Genspark_AI_Slides",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Instant_Website",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "joblet_ai",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Khan_Academy",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "Kickresume",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "LinkedIn",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "MindMap",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Outliner",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "PostHog",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "ResumeBoost",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Sequential_Thinking",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Speechify",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 0,
+      "other_name_count": 1
+    },
+    {
+      "namespace": "Tarot",
+      "tool_count": 1,
+      "read_like_name_count": 0,
+      "write_capable_name_count": 1,
+      "other_name_count": 0
+    },
+    {
+      "namespace": "ZipRecruiter",
+      "tool_count": 1,
+      "read_like_name_count": 1,
+      "write_capable_name_count": 0,
+      "other_name_count": 0
+    }
+  ],
+  "unverified_high_leverage_frontier": [
+    {
+      "namespace": "Gateway",
+      "tool_count": 277,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Postman",
+      "tool_count": 201,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Alchemy",
+      "tool_count": 173,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "LaunchDarkly",
+      "tool_count": 139,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Aleph",
+      "tool_count": 115,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Neon",
+      "tool_count": 106,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "DataCamp",
+      "tool_count": 101,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Smithery",
+      "tool_count": 100,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Ssmithery",
+      "tool_count": 100,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Intuit_QuickBooks",
+      "tool_count": 88,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "WPWriter",
+      "tool_count": 83,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Adobe",
+      "tool_count": 79,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "ClickUp",
+      "tool_count": 61,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "WP_Agent",
+      "tool_count": 61,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Miro",
+      "tool_count": 57,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Box",
+      "tool_count": 56,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "TickTick_To_Do_List",
+      "tool_count": 55,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Seamless",
+      "tool_count": 54,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Smartsheet_US",
+      "tool_count": 54,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Atlassian_Rovo",
+      "tool_count": 53,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "ClickUp_MCP",
+      "tool_count": 51,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "ChatGPT_Ads_Manager",
+      "tool_count": 49,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "M_ke",
+      "tool_count": 49,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Microsoft_Outlook_Email",
+      "tool_count": 48,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Airtable",
+      "tool_count": 47,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Todoist",
+      "tool_count": 47,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Brainbase_MCP",
+      "tool_count": 46,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Floot",
+      "tool_count": 44,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Github_Glacier",
+      "tool_count": 44,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "WarmHub",
+      "tool_count": 44,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Eraser",
+      "tool_count": 42,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Figma",
+      "tool_count": 41,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "MongoDB_Atlas",
+      "tool_count": 41,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "MotherDuck",
+      "tool_count": 41,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Lovable",
+      "tool_count": 40,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Canva",
+      "tool_count": 39,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "xTiles",
+      "tool_count": 39,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "BrowserStack",
+      "tool_count": 38,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Microsoft_Teams",
+      "tool_count": 38,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "FormHug",
+      "tool_count": 37,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Hjarni_Notes",
+      "tool_count": 37,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "AgentMail",
+      "tool_count": 36,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Calendly",
+      "tool_count": 36,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Lucid",
+      "tool_count": 35,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Coda",
+      "tool_count": 34,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Microsoft_Outlook_Calendar",
+      "tool_count": 34,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Microsoft_SharePoint",
+      "tool_count": 34,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Rhythms",
+      "tool_count": 34,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Zite",
+      "tool_count": 34,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Jam",
+      "tool_count": 33,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    }
+  ]
+}

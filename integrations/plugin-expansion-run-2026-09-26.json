@@ -1,0 +1,134 @@
+{
+  "schema": "glaciereq.plugin-expansion-run-receipt.v1",
+  "run_date": "2026-09-26",
+  "objective": "Increase plugin understanding and leverage, harden evidence semantics, and create reusable multi-plugin coalitions.",
+  "observed": {
+    "runtime_namespaces": 249,
+    "runtime_mcp_tools": 5383,
+    "fresh_provider_read_tests": 9
+  },
+  "regression": {
+    "old_behavior_red": {
+      "tests": 2,
+      "failed": 2,
+      "failures": [
+        "credential presence was promoted to online (live)",
+        "unbound live dispatch returned fabricated success"
+      ]
+    },
+    "hardened_behavior_green": {
+      "focused_tests": 13,
+      "passed": 13
+    }
+  },
+  "durable_delta": [
+    "Aspen Grove evidence-safe health semantics",
+    "Aspen Grove evidence-safe dispatch semantics",
+    "provider-verified pipeline gating",
+    "expanded default connector surface",
+    "ChatGPT runtime plugin snapshot",
+    "reusable plugin coalition DAG contracts"
+  ],
+  "next_frontier": [
+    {
+      "namespace": "Gateway",
+      "tool_count": 277,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Postman",
+      "tool_count": 201,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Alchemy",
+      "tool_count": 173,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "LaunchDarkly",
+      "tool_count": 139,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Aleph",
+      "tool_count": 115,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Neon",
+      "tool_count": 106,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "DataCamp",
+      "tool_count": 101,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Smithery",
+      "tool_count": 100,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Ssmithery",
+      "tool_count": 100,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Intuit_QuickBooks",
+      "tool_count": 88,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "WPWriter",
+      "tool_count": 83,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Adobe",
+      "tool_count": 79,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "ClickUp",
+      "tool_count": 61,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "WP_Agent",
+      "tool_count": 61,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Miro",
+      "tool_count": 57,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Box",
+      "tool_count": 56,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "TickTick_To_Do_List",
+      "tool_count": 55,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Seamless",
+      "tool_count": 54,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Smartsheet_US",
+      "tool_count": 54,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    },
+    {
+      "namespace": "Atlassian_Rovo",
+      "tool_count": 53,
+      "state": "UNVERIFIED_RUNTIME_EXPOSURE"
+    }
+  ]
+}
