@@ -11,12 +11,36 @@ class FirewallViolation(PermissionError):
     """Raised when a mission attempts an action outside its declared policy."""
 
 
+# The local safe set. Every read_only Mega policy must match this exactly.
 ALLOWED_ACTIONS = {
     "read_repository",
     "run_local_tests",
     "write_run_artifacts",
     "emit_receipt",
 }
+
+# Read-only source access, implemented by skills/research-source-access.
+#
+# These are *pull* capabilities: they read a local corpus, a declared
+# read-only connector, or a public URL. None of them mutates a remote
+# system, attaches credentials, or transmits workspace data outward, so
+# they are compatible with read_only mode. They are listed separately
+# because a Mega must opt in explicitly, which keeps the default
+# posture identical to before and makes the widening auditable.
+#
+# The implementation enforces the boundary, not this registry:
+#   - search_workspace         local filesystem read only
+#   - read_connected_sources   refuses any connector that is not read_only
+#   - load_public_sources      GET only, https only, no credentials,
+#                              private/reserved address space refused (SSRF)
+SOURCE_ACCESS_ACTIONS = {
+    "search_workspace",
+    "read_connected_sources",
+    "load_public_sources",
+}
+
+PERMITTED_ACTIONS = ALLOWED_ACTIONS | SOURCE_ACCESS_ACTIONS
+
 REQUIRED_FORBIDDEN = {
     "external_mutation",
     "network_send",
@@ -62,8 +86,11 @@ def validate_policy(policy: dict[str, Any], mega_id: str | None = None) -> None:
     for field in ("allowed_actions", "approval_required_for", "forbidden_actions", "required_evidence"):
         if not _unique_strings(policy[field]):
             raise ValueError(f"firewall {field} must be a non-empty unique string list")
-    if set(policy["allowed_actions"]) != ALLOWED_ACTIONS:
-        raise ValueError("firewall allowed_actions must be exactly the safe local action set")
+    allowed = set(policy["allowed_actions"])
+    if not ALLOWED_ACTIONS.issubset(allowed):
+        raise ValueError("firewall allowed_actions must include the safe local action set")
+    if not allowed.issubset(PERMITTED_ACTIONS):
+        raise ValueError("firewall allowed_actions contains an action outside the permitted set")
     forbidden = set(policy["forbidden_actions"])
     approval = set(policy["approval_required_for"])
     if not REQUIRED_FORBIDDEN.issubset(forbidden):

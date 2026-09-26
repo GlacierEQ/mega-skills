@@ -17929,6 +17929,25 @@
       "behavioral_tests": [],
       "structural_tests": [],
       "reasons": []
+    },
+    {
+      "id": "research-source-access",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/research-source-access/skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/research-source-access/tests/test_research_source_access.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
     }
   ],
   "combos": [
