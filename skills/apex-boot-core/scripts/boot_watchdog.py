@@ -40,7 +40,21 @@ from operator_semantics import (
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-WORKSPACE_ROOT = Path("/root")
+
+def _env_path(name: str, default: Path) -> Path:
+    """Resolve a path from an environment override, else use ``default``.
+
+    Lets the sentinel run against any estate root -- a container, a laptop, or
+    a CI runner -- without editing source.
+    """
+    raw = os.environ.get(name)
+    return Path(raw).expanduser() if raw else default
+
+
+# Workspace root. Defaults to the container layout (/root) for backwards
+# compatibility; override with APEX_WORKSPACE_ROOT anywhere else. Every path
+# below derives from this one, so a single variable relocates the whole estate.
+WORKSPACE_ROOT = _env_path("APEX_WORKSPACE_ROOT", Path("/root"))
 PROJECTS_ROOT = WORKSPACE_ROOT / "projects"
 SECRETS_DIR = WORKSPACE_ROOT / ".secrets"
 VAULT_ENV = WORKSPACE_ROOT / ".vault_env"
@@ -111,12 +125,40 @@ class BootReceipt:
 class ApexBootCore:
     """Operator-bound holographic estate initialization sentinel."""
 
-    def __init__(self, workspace_root: Path = WORKSPACE_ROOT) -> None:
-        self.root = workspace_root
-        self.projects = workspace_root / "projects"
+    def __init__(self, workspace_root: Optional[Path] = None) -> None:
+        # An explicit root wins; otherwise honour APEX_WORKSPACE_ROOT; otherwise
+        # fall back to the configured default (/root). Gates read paths from
+        # ``self`` so an injected root is always respected.
+        self.root = Path(workspace_root).expanduser() if workspace_root else WORKSPACE_ROOT
+        self.projects = self.root / "projects"
+        self.secrets_dir = self.root / ".secrets"
+        self.vault_env = self.root / ".vault_env"
+        self.estate_receipt = self.root / "ESTATE_QUALITY_RECEIPT.json"
+        self.memory_dir = self.root / "MEMORY.md"
+        self.receipt_chain = self.projects / "mastermind" / "receipts" / "MEGA_KERNEL_CHAIN.jsonl"
+        self.monolith_library = self.projects / "monolith" / "catalog" / "library.json"
         self.results: list[GateResult] = []
         self.operator_binding = load_operator_semantics()
         self.operator_projection = project_operator_semantics(self.operator_binding)
+
+    def _not_configured(self, gate: str, reason: str, detail: dict[str, Any]) -> GateResult:
+        """Report an absent estate component as a distinct, non-fault state.
+
+        An estate that is not installed on this host is not the same as an
+        estate that is installed and broken. Both are enrichment telemetry and
+        neither is a mission veto, but only the second indicates a problem.
+        """
+        d = dict(detail)
+        d["configured"] = False
+        d["reason"] = reason
+        d["execution_semantics"] = {
+            "telemetry_only": True,
+            "enrichment_transition": True,
+            "mission_stop": False,
+            "authority_holder": "OPERATOR",
+        }
+        return GateResult(gate=gate, status="WARN", detail=d, elapsed_ms=0.0,
+                          transition="NOT_CONFIGURED")
 
     def audit_interpretation(self, text: str) -> dict[str, Any]:
         """Detect ontology inversions before prose or plans propagate durably.
@@ -160,25 +202,33 @@ class ApexBootCore:
 
     def gate_secrets_vault(self) -> GateResult:
         t0 = time.monotonic()
-        detail: dict[str, Any] = {}
+        detail: dict[str, Any] = {"secrets_dir": str(self.secrets_dir)}
         issues: list[str] = []
 
-        if SECRETS_DIR.is_dir():
-            files = list(SECRETS_DIR.iterdir())
+        if self.secrets_dir.is_dir():
+            files = list(self.secrets_dir.iterdir())
             detail["secret_files"] = len(files)
             for f in files:
                 mode = oct(f.stat().st_mode)[-3:]
                 if mode not in ("600", "700"):
                     issues.append(f"{f.name} has mode {mode}, expected 600")
         else:
-            issues.append("~/.secrets/ directory missing")
+            issues.append(f"{self.secrets_dir} directory missing")
             detail["secret_files"] = 0
 
-        detail["vault_env_exists"] = VAULT_ENV.is_file()
-        if not VAULT_ENV.is_file():
-            issues.append(".vault_env not found")
+        detail["vault_env_exists"] = self.vault_env.is_file()
+        if not self.vault_env.is_file():
+            issues.append(f"{self.vault_env} not found")
 
         detail["issues"] = issues
+
+        # An estate with no secrets directory at all is unconfigured, not faulty.
+        # The issues list is still reported so the receipt shape stays stable.
+        if not self.secrets_dir.is_dir() and not self.vault_env.is_file():
+            return self._not_configured(
+                "secrets_vault", "secrets_vault_absent", detail
+            )
+
         status = "PASS" if not issues else ("WARN" if len(issues) <= 2 else "FAIL")
         return GateResult(gate="secrets_vault", status=status, detail=detail,
                           elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
@@ -187,14 +237,15 @@ class ApexBootCore:
 
     def gate_receipt_chain(self) -> GateResult:
         t0 = time.monotonic()
-        detail: dict[str, Any] = {"chain_path": str(RECEIPT_CHAIN)}
+        detail: dict[str, Any] = {"chain_path": str(self.receipt_chain)}
 
-        if not RECEIPT_CHAIN.exists():
+        if not self.receipt_chain.exists():
             detail["chain_length"] = 0
-            return GateResult(gate="receipt_chain", status="WARN", detail=detail,
-                              elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+            return self._not_configured(
+                "receipt_chain", "receipt_chain_absent", detail
+            )
 
-        lines = [l for l in RECEIPT_CHAIN.read_text(encoding="utf-8").splitlines() if l.strip()]
+        lines = [l for l in self.receipt_chain.read_text(encoding="utf-8").splitlines() if l.strip()]
         detail["chain_length"] = len(lines)
 
         if len(lines) == 0:
@@ -239,15 +290,18 @@ class ApexBootCore:
 
     def gate_monolith_census(self) -> GateResult:
         t0 = time.monotonic()
-        detail: dict[str, Any] = {"library_path": str(MONOLITH_LIBRARY)}
+        detail: dict[str, Any] = {"library_path": str(self.monolith_library)}
 
-        if not MONOLITH_LIBRARY.is_file():
+        if not self.monolith_library.is_file():
             detail["status_detail"] = "library.json not found"
-            return GateResult(gate="monolith_census", status="FAIL", detail=detail,
-                              elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+            # A missing catalog means the monolith is not present on this host,
+            # which is unconfigured rather than a failed census.
+            return self._not_configured(
+                "monolith_census", "monolith_library_absent", detail
+            )
 
         try:
-            lib = json.loads(MONOLITH_LIBRARY.read_text(encoding="utf-8"))
+            lib = json.loads(self.monolith_library.read_text(encoding="utf-8"))
             # library.json is a dict with 'entries' list and 'scale_notes'
             if isinstance(lib, list):
                 count = len(lib)
@@ -317,10 +371,15 @@ class ApexBootCore:
 
     def gate_memory_engine(self) -> GateResult:
         t0 = time.monotonic()
-        detail: dict[str, Any] = {"memory_md_exists": MEMORY_DIR.is_file()}
+        detail: dict[str, Any] = {"memory_md_exists": self.memory_dir.is_file()}
 
         memory_project = self.projects / "memory"
         detail["memory_project_exists"] = memory_project.is_dir()
+
+        if not self.memory_dir.is_file() and not memory_project.is_dir():
+            return self._not_configured(
+                "memory_engine", "memory_engine_absent", detail
+            )
 
         try:
             memory_src = memory_project / "src"
@@ -372,15 +431,16 @@ class ApexBootCore:
 
     def gate_estate_receipt(self) -> GateResult:
         t0 = time.monotonic()
-        detail: dict[str, Any] = {"receipt_path": str(ESTATE_RECEIPT)}
+        detail: dict[str, Any] = {"receipt_path": str(self.estate_receipt)}
 
-        if not ESTATE_RECEIPT.is_file():
+        if not self.estate_receipt.is_file():
             detail["exists"] = False
-            return GateResult(gate="estate_receipt", status="WARN", detail=detail,
-                              elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+            return self._not_configured(
+                "estate_receipt", "estate_receipt_absent", detail
+            )
 
         try:
-            payload = json.loads(ESTATE_RECEIPT.read_text(encoding="utf-8"))
+            payload = json.loads(self.estate_receipt.read_text(encoding="utf-8"))
             detail["exists"] = True
             detail["all_green"] = payload.get("all_green", False)
             detail["total_projects"] = payload.get("total_projects", 0)
@@ -413,8 +473,10 @@ class ApexBootCore:
         trees: list[dict[str, Any]] = []
         dirty_count = 0
 
-        for p in CORE_PILLARS[:6]:  # Check top 6 pillars for speed
-            path = p["path"]
+        for pillar in CORE_PILLARS[:6]:  # Check top 6 pillars for speed
+            # Resolve the pillar under THIS instance's projects root so an
+            # injected or env-configured root is honoured.
+            path = self.projects / Path(pillar["path"]).name
             if not (path / ".git").exists():
                 continue
             try:
@@ -455,8 +517,10 @@ class ApexBootCore:
         detail: dict[str, Any] = {"local_bin_exists": local_bin.is_dir()}
 
         if not local_bin.exists():
-            return GateResult(gate="toolchain", status="WARN", detail=detail,
-                              elapsed_ms=round((time.monotonic() - t0) * 1000, 2))
+            return self._not_configured(
+                "toolchain", "local_bin_absent",
+                {**detail, "bin_dir": str(local_bin)},
+            )
 
         checked = []
         for p in sorted(local_bin.glob("apex-*")):
@@ -489,6 +553,16 @@ class ApexBootCore:
         detail["estate_projects"] = estate_count
         detail["genius_lineages"] = genius_count
         detail["total_capabilities"] = estate_count + genius_count
+
+        # No projects directory at all means the estate is not present here,
+        # which is distinct from a present-but-thin estate. The counters above
+        # are still reported so receipt shape stays stable.
+        if not self.projects.is_dir():
+            return self._not_configured(
+                "capability_bus", "projects_root_absent",
+                {"projects_root": str(self.projects), **detail},
+            )
+
         status = "PASS" if (estate_count + genius_count) >= 10 else "WARN"
         return GateResult(gate="capability_bus", status=status, detail=detail,
                           elapsed_ms=round((time.monotonic() - t0) * 1000, 2))

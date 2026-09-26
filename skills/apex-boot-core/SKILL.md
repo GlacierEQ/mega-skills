@@ -107,6 +107,35 @@ python skill.py --json
 
 All four entrypoints delegate to the same v2 implementation.
 
+## Portability
+
+The sentinel runs against any estate root — container, laptop, or CI runner —
+with no source edits and no local-machine assumptions. Standard library only.
+
+The workspace root defaults to `/root` (the container layout) for backwards
+compatibility. Point it anywhere with one environment variable; every gate path
+is derived from it:
+
+```bash
+# Verify the estate on a workstation or CI runner
+APEX_WORKSPACE_ROOT="$HOME" python scripts/boot_watchdog.py --json
+```
+
+`ApexBootCore(workspace_root=Path(...))` is honoured by every gate, so the root
+can also be injected programmatically:
+
+```python
+core = ApexBootCore(workspace_root=Path("/srv/estate"))
+```
+
+**`not_configured` vs fault.** An estate that is not installed on this host is
+reported as `not_configured` with a `reason`, and is distinct from an estate
+that is installed and broken. Gate outcomes that are absence rather than
+malfunction report `detail.configured: false` and `transition:
+NOT_CONFIGURED`; they never produce a `FAIL`, and they never stop a mission.
+This keeps a boot on a non-estate host honest instead of flooding the receipt
+with WARNs that look like degradation but are only a path mismatch.
+
 ## Current Estate Observations
 
 The 12 estate observations currently cover environment/runtime, secrets posture, receipt-chain linkage, Monolith census, APEX-IMPACT availability, personalization-kernel availability, memory-engine availability, token-saver availability, estate-quality receipt state, Git working-tree telemetry, POSIX toolchain executability, and capability-bus discovery.

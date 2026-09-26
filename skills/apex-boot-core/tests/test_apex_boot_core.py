@@ -29,6 +29,7 @@ from boot_watchdog import (
     RECEIPT_CHAIN,
     SECRETS_DIR,
     WORKSPACE_ROOT,
+    _env_path,
 )
 
 
@@ -183,9 +184,26 @@ class TestCapabilityBusGate(unittest.TestCase):
         self.assertIn("total_capabilities", r.detail)
 
     def test_capability_count_above_minimum(self):
-        core = ApexBootCore()
-        r = core.gate_capability_bus()
-        self.assertGreater(r.detail["total_capabilities"], 5)
+        """Count capabilities against a synthetic estate root.
+
+        Previously this read the real /root/projects, so it failed on any host
+        that is not the container. It now builds a fixture estate, which also
+        serves as a regression test for workspace_root injection.
+        """
+        import shutil
+        import tempfile
+
+        tmp = tempfile.mkdtemp()
+        try:
+            root = Path(tmp) / "estate"
+            names = ("proj-a", "proj-b", "Genius-Lineage", "proj-c", "proj-d", "proj-e")
+            for name in names:
+                (root / "projects" / name).mkdir(parents=True)
+            core = ApexBootCore(workspace_root=root)
+            r = core.gate_capability_bus()
+            self.assertGreater(r.detail["total_capabilities"], 5)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
 
 class TestFullBoot(unittest.TestCase):
@@ -282,6 +300,116 @@ class TestCoreConfig(unittest.TestCase):
         for p in CORE_PILLARS:
             self.assertIn("min_tests", p)
             self.assertGreater(p["min_tests"], 0)
+
+
+class TestPortability(unittest.TestCase):
+    """Guards the universal/no-local-dependency contract for the sentinel.
+
+    The estate root must be configurable and every gate must honour it --
+    otherwise a host that is not the container silently reports on paths that
+    do not exist, which is indistinguishable from a genuinely broken estate.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.root = Path(self.tmp) / "estate"
+
+    def tearDown(self):
+        import shutil
+
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_env_path_uses_override(self):
+        with patch.dict(os.environ, {"APEX_TEST_ROOT": "/tmp/override-root"}):
+            resolved = _env_path("APEX_TEST_ROOT", Path("/fallback"))
+        self.assertEqual(resolved, Path("/tmp/override-root"))
+
+    def test_env_path_falls_back_when_unset(self):
+        with patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("APEX_TEST_ROOT", None)
+            resolved = _env_path("APEX_TEST_ROOT", Path("/fallback"))
+        self.assertEqual(resolved, Path("/fallback"))
+
+    def test_constructor_root_is_honoured_by_every_gate(self):
+        """Regression: gates read module constants, ignoring an injected root."""
+        core = ApexBootCore(workspace_root=self.root)
+        self.assertEqual(core.root, self.root)
+        self.assertEqual(core.projects, self.root / "projects")
+        self.assertEqual(core.secrets_dir, self.root / ".secrets")
+        self.assertEqual(core.vault_env, self.root / ".vault_env")
+        self.assertEqual(core.memory_dir, self.root / "MEMORY.md")
+        self.assertEqual(
+            core.estate_receipt, self.root / "ESTATE_QUALITY_RECEIPT.json"
+        )
+        self.assertEqual(
+            core.receipt_chain,
+            self.root / "projects" / "mastermind" / "receipts" / "MEGA_KERNEL_CHAIN.jsonl",
+        )
+        self.assertEqual(
+            core.monolith_library,
+            self.root / "projects" / "monolith" / "catalog" / "library.json",
+        )
+
+    def test_injected_root_actually_reaches_gates(self):
+        """Regression: injecting a root produced results from /root anyway."""
+        core = ApexBootCore(workspace_root=self.root)
+        r = core.gate_secrets_vault()
+        self.assertEqual(r.detail["secrets_dir"], str(self.root / ".secrets"))
+        r2 = core.gate_receipt_chain()
+        self.assertEqual(r2.detail["chain_path"], str(core.receipt_chain))
+        r3 = core.gate_monolith_census()
+        self.assertEqual(r3.detail["library_path"], str(core.monolith_library))
+
+    def test_absent_estate_reports_not_configured(self):
+        """An uninstalled estate is not a fault; it must be distinguishable."""
+        core = ApexBootCore(workspace_root=self.root)
+        for gate in (
+            core.gate_secrets_vault,
+            core.gate_receipt_chain,
+            core.gate_monolith_census,
+            core.gate_memory_engine,
+            core.gate_estate_receipt,
+        ):
+            with self.subTest(gate=gate.__name__):
+                r = gate()
+                self.assertFalse(r.detail.get("configured", True))
+                self.assertIn("reason", r.detail)
+                self.assertNotEqual(r.status, "FAIL")
+
+    def test_boot_never_vetoes_on_missing_estate(self):
+        core = ApexBootCore(workspace_root=self.root)
+        receipt = core.boot()
+        self.assertFalse(receipt.overall_status == "BLOCKED")
+        self.assertTrue(all(not g.get("mission_stop") for g in receipt.gates))
+
+    def test_present_but_broken_is_still_detected(self):
+        """not_configured must not mask a real fault in a present estate."""
+        self.root.mkdir(parents=True)
+        (self.root / "projects" / "monolith" / "catalog").mkdir(parents=True)
+        # library.json present but malformed -> a genuine fault, not absence.
+        (self.root / "projects" / "monolith" / "catalog" / "library.json").write_text(
+            "{not json", encoding="utf-8"
+        )
+        core = ApexBootCore(workspace_root=self.root)
+        r = core.gate_monolith_census()
+        self.assertTrue(r.detail.get("configured", True))
+        self.assertIn(r.status, ("WARN", "FAIL"))
+
+    def test_env_var_configures_root(self):
+        with patch.dict(os.environ, {"APEX_WORKSPACE_ROOT": str(self.root)}):
+            with patch("boot_watchdog.WORKSPACE_ROOT", self.root):
+                core = ApexBootCore()
+                self.assertEqual(core.root, self.root)
+                self.assertEqual(core.secrets_dir, self.root / ".secrets")
+
+    def test_no_hardcoded_developer_paths(self):
+        src = (SKILL_ROOT / "scripts" / "boot_watchdog.py").read_text(encoding="utf-8")
+        self.assertNotIn("/Users/", src)
+
+    def test_stdlib_only(self):
+        src = (SKILL_ROOT / "scripts" / "boot_watchdog.py").read_text(encoding="utf-8")
+        for mod in ("import requests", "import yaml", "import numpy", "import httpx"):
+            self.assertNotIn(mod, src)
 
 
 if __name__ == "__main__":
