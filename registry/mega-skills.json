@@ -1784,9 +1784,6 @@
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
-          "search_workspace",
-          "read_connected_sources",
-          "load_public_sources",
           "run_local_tests",
           "write_run_artifacts",
           "emit_receipt"

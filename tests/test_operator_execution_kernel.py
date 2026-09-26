@@ -61,7 +61,13 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertTrue(result["valid"])
         self.assertTrue(result["mission_continues_if_partial_or_unavailable"])
 
-    def test_dispatch_rejects_prompt_only_cognition(self):
+    def test_dispatch_surfaces_prompt_only_hydration_debt_without_vetoing(self):
+        """Un-hydrated turn context must be reported as debt, not as a veto.
+
+        The kernel implements "enrichment, not permission": a degraded context
+        cannot stop a mission, but it must never pass silently. This asserts
+        both halves -- dispatch may proceed, and the debt is still on the record.
+        """
         result = run_kernel("dispatch_gate", {
             "context_hydration": {
                 "status": "PARTIAL",
@@ -81,9 +87,19 @@ class OperatorExecutionKernelTests(unittest.TestCase):
                 "operator_impact": 1.0,
             }],
         })
-        self.assertFalse(result["dispatch_allowed"])
+        # The debt is recorded and remains open.
         self.assertIn("turn_context_retrieval_not_attempted", result["hydration_reasons"])
         self.assertIn("turn_context_not_hydrated_before_interpretation", result["hydration_reasons"])
+        self.assertFalse(result["hydration_valid"])
+        self.assertNotEqual(result["context_state"], "hydrated")
+        self.assertTrue(result["context_recovery_debt"]["open"])
+        self.assertFalse(result["context_recovery_debt"]["mission_stop"])
+        # Hydration is enrichment, not permission: it does not veto dispatch.
+        self.assertTrue(result["dispatch_allowed"])
+        self.assertEqual(
+            result["status"], "dispatch_allowed_context_recovery_in_flight"
+        )
+        self.assertEqual(result["context_transition_semantics"], "enrichment_not_permission")
 
     def test_operator_invariants_use_aspen_grove_epistemology(self):
         invariants = json.loads(
@@ -102,7 +118,12 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertTrue(epistemology["evidence_and_execution_axes_separate"])
         self.assertTrue(epistemology["execution_is_not_verification"])
 
-    def test_estate_dispatch_requires_real_objective_graph_hydration(self):
+    def test_estate_dispatch_records_objective_graph_hydration_debt(self):
+        """Estate scope must surface objective-graph debt without vetoing dispatch.
+
+        Matches the kernel's "enrichment, not permission" law: the missing
+        hydration is recorded as open debt, and dispatch is not blocked by it.
+        """
         result = run_kernel("dispatch_gate", {
             "scope": {"mode": "estate"},
             "candidates": [{
@@ -112,9 +133,12 @@ class OperatorExecutionKernelTests(unittest.TestCase):
                 "operator_impact": 1.0,
             }],
         })
-        self.assertFalse(result["dispatch_allowed"])
         self.assertIn("operator_objective_graph_not_hydrated", result["hydration_reasons"])
         self.assertIn("cross_estate_front_comparison_missing", result["hydration_reasons"])
+        self.assertFalse(result["hydration_valid"])
+        self.assertTrue(result["context_recovery_debt"]["open"])
+        self.assertFalse(result["context_recovery_debt"]["mission_stop"])
+        self.assertTrue(result["dispatch_allowed"])
 
     def test_broad_estate_rejects_recent_artifact_lane_capture(self):
         result = run_kernel("mission_select", {
@@ -157,10 +181,15 @@ class OperatorExecutionKernelTests(unittest.TestCase):
                 "support_only": True, "operator_impact": 1.0,
             }],
         })
+        # Rejection behaviour is unchanged: a support-only candidate is never
+        # dispatchable, and the reason is recorded on the rejection entry.
         self.assertFalse(result["dispatch_allowed"])
+        self.assertIsNone(result["selected"])
+        self.assertEqual([r["id"] for r in result["rejected"]], ["ci-watch"])
+        self.assertIn("support_only", result["rejected"][0]["reasons"])
         self.assertEqual(
             result["status"],
-            "mission_hydration_or_substantive_candidate_required",
+            "substantive_executable_candidate_required",
         )
 
     def test_specialized_worker_stays_in_lane(self):
