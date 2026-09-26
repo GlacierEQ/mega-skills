@@ -144,5 +144,37 @@
       "action": "getAuthenticatedUser",
       "boundary": "authenticated provider context proved; collection/API execution paths not yet exercised"
     }
+  ],
+  "continuation_rounds": [
+    {
+      "round": "vercel-postman-deploy-contract",
+      "observed_at": "2026-09-26T23:31:00Z",
+      "verified": [
+        "Vercel authenticated team read",
+        "Vercel project inventory read",
+        "Vercel production deployment list/read for apex-legal-ops-dashboard",
+        "Vercel deployment READY state correlated to GitHub main commit metadata",
+        "Postman authenticated user read",
+        "Postman workspace inventory read",
+        "Postman API DEV collection inventory read",
+        "Postman End-to-End Tests collection structure read",
+        "Postman environment inventory read"
+      ],
+      "discovered": [
+        "Postman End-to-End Tests collection exists as a reusable regression asset.",
+        "No Postman monitor is currently bound to that E2E collection.",
+        "A non-empty token-like Postman collection variable is present; raw value excluded from all durable artifacts."
+      ],
+      "durable_delta": [
+        "engineering-ship coalition promoted Vercel and Postman read paths from unverified to provider-verified",
+        "deploy-contract-verification coalition added",
+        "security finding recorded without credential material"
+      ],
+      "next_frontier": [
+        "sanitize/rotate Postman token-like variable if it is live, then bind collection execution safely",
+        "verify BrowserStack or equivalent browser execution provider and connect it after Vercel deployment",
+        "verify Railway/Render deployment fallback providers"
+      ]
+    }
   ]
 }

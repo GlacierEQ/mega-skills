@@ -1,0 +1,30 @@
+{
+  "schema": "glaciereq.provider-verification-receipt.v1",
+  "observed_at": "2026-09-26T23:31:00Z",
+  "providers": {
+    "Vercel": {
+      "state": "VERIFIED_READ",
+      "team": "casey's projects",
+      "project": "apex-legal-ops-dashboard",
+      "deployment_state": "READY",
+      "target": "production",
+      "github_commit_correlated": true,
+      "mutation_tested": false
+    },
+    "Postman": {
+      "state": "VERIFIED_READ",
+      "workspace": "API DEV",
+      "collection": "End-to-End Tests",
+      "environment": "Enviro variables A (sanitized)",
+      "monitor_bound": false,
+      "collection_execution_tested": false,
+      "security_finding": "PM-SECRET-2026-09-26-01"
+    }
+  },
+  "claims_not_made": [
+    "Postman collection execution passed",
+    "Postman token-like value is valid",
+    "Vercel write/deploy capability was tested",
+    "BrowserStack/Railway/Render are verified"
+  ]
+}

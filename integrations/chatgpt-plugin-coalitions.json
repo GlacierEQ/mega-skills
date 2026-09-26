@@ -172,6 +172,50 @@
           "state": "VERIFIED_READ_AND_WRITE_ON_THIS_RUN_AFTER_COMMIT"
         }
       ]
+    },
+    {
+      "id": "deploy-contract-verification",
+      "purpose": "Correlate source authority, production deployment, and API regression assets into one deploy-verification chain.",
+      "stages": [
+        {
+          "provider": "GitHub",
+          "action": "identify source commit and expected artifact",
+          "state": "VERIFIED_READ_WRITE"
+        },
+        {
+          "provider": "Vercel",
+          "action": "resolve production deployment and correlate GitHub commit",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Postman",
+          "action": "resolve API workspace/collection/environment and regression asset",
+          "state": "VERIFIED_READ"
+        },
+        {
+          "provider": "Postman",
+          "action": "execute collection via CI/monitor only after credential/baseUrl sanitation",
+          "state": "BLOCKED_PENDING_SANITATION"
+        },
+        {
+          "provider": "GitHub|Supabase",
+          "action": "persist run receipt and deployment/test correlation",
+          "state": "ROUTE_READY"
+        }
+      ],
+      "verified_assets": {
+        "vercel_project": "apex-legal-ops-dashboard",
+        "vercel_deployment_state": "READY",
+        "postman_workspace": "API DEV",
+        "postman_collection": "End-to-End Tests",
+        "postman_environment": "Enviro variables A (sanitized)"
+      },
+      "blockers": [
+        "Postman E2E collection contains a non-empty token-like collection variable; value intentionally not persisted.",
+        "No monitor is bound to the E2E collection.",
+        "Collection execution has not been verified in this run."
+      ]
     }
-  ]
+  ],
+  "updated_at": "2026-09-26T23:31:00Z"
 }

@@ -1,6 +1,6 @@
 {
   "schema": "glaciereq.chatgpt-plugin-runtime-snapshot.v1",
-  "observed_at": "2026-09-26T23:13:00Z",
+  "observed_at": "2026-09-26T23:31:00Z",
   "source_surface": "chatgpt",
   "evidence_state": "OBSERVED_RUNTIME_EXPOSURE",
   "semantics": {
@@ -51,13 +51,29 @@
     },
     "Vercel": {
       "state": "VERIFIED_READ_THIS_TURN",
-      "action": "list_teams",
-      "scope": "provider identity/team discovery only; project/deployment execution remains unverified"
+      "action": "list_teams + list_projects + list_deployments + get_deployment",
+      "evidence": {
+        "team_count": 1,
+        "project_count_observed": 20,
+        "verified_project": "apex-legal-ops-dashboard",
+        "deployment_state": "READY",
+        "target": "production",
+        "github_commit_correlated": true
+      },
+      "write_state": "UNVERIFIED"
     },
     "Postman": {
       "state": "VERIFIED_READ_THIS_TURN",
-      "action": "getAuthenticatedUser",
-      "scope": "provider identity/account context only; collection/API test execution remains unverified"
+      "action": "getAuthenticatedUser + getWorkspaces + getCollections + getCollection + getEnvironments + getMonitors",
+      "evidence": {
+        "workspace_count_observed": 4,
+        "api_dev_collection_count": 16,
+        "e2e_collection_found": true,
+        "environment_count_observed": 1,
+        "e2e_monitors_found": 0
+      },
+      "execution_state": "UNVERIFIED",
+      "security_finding_ref": "integrations/plugin-security-findings.json#PM-SECRET-2026-09-26-01"
     }
   },
   "namespaces": [
@@ -2056,5 +2072,6 @@
       "tool_count": 32,
       "state": "UNVERIFIED_RUNTIME_EXPOSURE"
     }
-  ]
+  ],
+  "verified_provider_count": 11
 }

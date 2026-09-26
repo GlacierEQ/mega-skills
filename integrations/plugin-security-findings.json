@@ -1,0 +1,30 @@
+{
+  "schema": "glaciereq.plugin-security-findings.v1",
+  "updated_at": "2026-09-26T23:31:00Z",
+  "findings": [
+    {
+      "id": "PM-SECRET-2026-09-26-01",
+      "provider": "Postman",
+      "state": "OPEN",
+      "severity": "high",
+      "classification": "potential_plaintext_credential_material",
+      "source": "End-to-End Tests collection variable",
+      "evidence": {
+        "non_empty": true,
+        "token_like": true,
+        "raw_value_persisted": false,
+        "raw_value_echoed_to_user": false
+      },
+      "impact": "If valid, a synced collection-level credential can be exposed to anyone with collection read access and can leak into exports, logs, or automation.",
+      "remediation": [
+        "Determine whether the value is still valid without reproducing it.",
+        "Rotate/revoke it if valid.",
+        "Replace the synced plaintext value with a Postman Vault/secret-backed reference or runtime-injected secret.",
+        "Read back the collection and confirm no plaintext credential remains.",
+        "Only then enable automated collection execution or monitors."
+      ],
+      "destructive_or_external_fix_applied": false,
+      "reason": "No credential mutation or rotation was performed without a verified dependency-safe remediation path."
+    }
+  ]
+}
