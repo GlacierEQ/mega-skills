@@ -17912,6 +17912,23 @@
         "skills/zoominfo/tests/test_zoominfo.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "strong-smart-routing-kernel",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/strong-smart-routing-kernel/skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
     }
   ],
   "combos": [

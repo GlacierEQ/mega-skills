@@ -2713,7 +2713,6 @@
       "required_combos": [
         "strong-smart-execution-stack",
         "long-horizon-core",
-        "capability-readiness",
         "epistemic-verification-chain",
         "pipeline-orchestration"
       ],
@@ -2722,7 +2721,8 @@
         "mission-aware-operating-loop",
         "recon-and-map",
         "evidence-to-evolution-loop",
-        "closed-loop-code-repair"
+        "closed-loop-code-repair",
+        "capability-readiness"
       ],
       "mission_output": "STRONG_SMART_MISSION_RESULT.md",
       "durable_state": [

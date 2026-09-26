@@ -1,3 +1,11 @@
+---
+id: strong-smart-execution-stack
+display_name: Strong-Smart Execution Stack
+schema: ../../schemas/combo-skill.schema.json
+version: 1.0.0
+status: active
+---
+
 # Strong-Smart Execution Stack
 
 ## Mission
