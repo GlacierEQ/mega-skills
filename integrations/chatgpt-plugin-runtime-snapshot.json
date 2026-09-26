@@ -1,6 +1,6 @@
 {
   "schema": "glaciereq.chatgpt-plugin-runtime-snapshot.v1",
-  "observed_at": "2026-09-26T23:31:00Z",
+  "observed_at": "2026-09-26T23:36:00Z",
   "source_surface": "chatgpt",
   "evidence_state": "OBSERVED_RUNTIME_EXPOSURE",
   "semantics": {
@@ -74,6 +74,18 @@
       },
       "execution_state": "UNVERIFIED",
       "security_finding_ref": "integrations/plugin-security-findings.json#PM-SECRET-2026-09-26-01"
+    },
+    "BrowserStack": {
+      "state": "SOURCE_BOUND_EMPTY_PROBE",
+      "action": "listTestCaseTemplates",
+      "evidence": {
+        "call_completed": true,
+        "result": "No templates found",
+        "provider_identity_verified": false,
+        "project_binding_verified": false
+      },
+      "defect_ref": "integrations/plugin-runtime-defects.json#BS-DISCOVERY-2026-09-26-01",
+      "verification_state": "UNVERIFIED"
     }
   },
   "namespaces": [

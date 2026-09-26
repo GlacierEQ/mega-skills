@@ -175,6 +175,24 @@
         "verify BrowserStack or equivalent browser execution provider and connect it after Vercel deployment",
         "verify Railway/Render deployment fallback providers"
       ]
+    },
+    {
+      "round": "browserstack-discovery-falsification",
+      "observed_at": "2026-09-26T23:36:00Z",
+      "observed": [
+        "BrowserStack tool call completed and returned no test-case templates."
+      ],
+      "falsified": [
+        "BrowserStack cannot be promoted to VERIFIED solely because a tool call returned successfully.",
+        "The advertised Test Management discovery route is not complete in the current runtime."
+      ],
+      "defect": {
+        "id": "BS-DISCOVERY-2026-09-26-01",
+        "affected_tool_descriptions": 13,
+        "referenced_resolver": "askBrowserStackAI",
+        "resolver_present": false
+      },
+      "route_change": "Keep BrowserStack in the engineering coalition as degraded/unverified; use Vercel + Postman as the verified deploy/API path while repairing or replacing BrowserStack project discovery."
     }
   ]
 }

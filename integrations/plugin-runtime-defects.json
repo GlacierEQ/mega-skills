@@ -1,0 +1,24 @@
+{
+  "schema": "glaciereq.plugin-runtime-defects.v1",
+  "updated_at": "2026-09-26T23:36:00Z",
+  "defects": [
+    {
+      "id": "BS-DISCOVERY-2026-09-26-01",
+      "provider": "BrowserStack",
+      "state": "OPEN",
+      "severity": "high",
+      "classification": "missing_declared_discovery_dependency",
+      "evidence": {
+        "exposed_tool_count": 38,
+        "descriptions_referencing_missing_tool": 13,
+        "missing_tool_name": "askBrowserStackAI",
+        "missing_tool_present": false,
+        "source_bound_probe": "listTestCaseTemplates completed with no templates"
+      },
+      "affected_capability": "Test Management project/folder/test-case/test-run/test-plan discovery and execution routing",
+      "consequence": "An agent following the provider's own tool instructions can dead-end when a project identifier is unknown.",
+      "route": "Do not promote BrowserStack to VERIFIED. Recover project/build identifiers from provider-native config or another supported BrowserStack read path if available; otherwise use alternate verification providers until the connector exposes a valid resolver.",
+      "objective_preserved": true
+    }
+  ]
+}

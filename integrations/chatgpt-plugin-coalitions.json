@@ -201,6 +201,12 @@
           "provider": "GitHub|Supabase",
           "action": "persist run receipt and deployment/test correlation",
           "state": "ROUTE_READY"
+        },
+        {
+          "provider": "BrowserStack",
+          "action": "browser/runtime verification after deploy",
+          "state": "DEGRADED_DISCOVERY_BINDING",
+          "detail": "Runtime exposes BrowserStack tools, but Test Management project discovery is not currently self-contained."
         }
       ],
       "verified_assets": {
@@ -217,5 +223,5 @@
       ]
     }
   ],
-  "updated_at": "2026-09-26T23:31:00Z"
+  "updated_at": "2026-09-26T23:36:00Z"
 }
