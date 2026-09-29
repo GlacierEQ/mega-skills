@@ -1,0 +1,32 @@
+{
+  "schema": "glaciereq.plugin-mesh-delta.v1",
+  "observed_at": "2026-09-29T02:20:00Z",
+  "provider": "Context7",
+  "evidence": {
+    "state": "VERIFIED_READ",
+    "receipt_id": "6a7c75ea-9b86-4c45-aa3f-61da444077a0",
+    "receipt_store": "supabase-glaciereq.everything_mcp_plugin_receipts",
+    "scope": ["resolve_library_id", "query_docs"]
+  },
+  "reconciliation": {
+    "legacy_profile_state": "PROFILED_NOT_PROMOTED",
+    "legacy_frontier_action": "profile_sync",
+    "canonical_backend_ops_registry_row": "ABSENT",
+    "classification": "CONTROL_PLANE_PROJECTION_DRIFT"
+  },
+  "coalition": {
+    "id": "documentation-evidence-grounding",
+    "route": ["Context7:resolve", "Context7:query", "target-provider:runtime-revalidate-when-needed", "GitHub|Supabase:persist-with-readback"],
+    "invariants": [
+      "Documentation evidence does not substitute for owning-provider runtime evidence.",
+      "Read-only provider surfaces do not require artificial write verification.",
+      "Preserve receipt scope and provenance downstream."
+    ]
+  },
+  "repair_status": {
+    "supabase_profile_sync": "BLOCKED_BEFORE_ACCEPTANCE",
+    "github_existing_contract_update": "BLOCKED_BEFORE_ACCEPTANCE",
+    "this_delta": "PENDING_PROVIDER_ACCEPTANCE"
+  },
+  "next_executable_frontier": "Project this receipt into the canonical Backend Ops connector registry and legacy profile without re-probing Context7; then consume the repaired frontier."
+}
