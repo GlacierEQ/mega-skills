@@ -6,7 +6,10 @@
     "state": "VERIFIED_READ",
     "receipt_id": "6a7c75ea-9b86-4c45-aa3f-61da444077a0",
     "receipt_store": "supabase-glaciereq.everything_mcp_plugin_receipts",
-    "scope": ["resolve_library_id", "query_docs"]
+    "scope": [
+      "resolve_library_id",
+      "query_docs"
+    ]
   },
   "reconciliation": {
     "legacy_profile_state": "PROFILED_NOT_PROMOTED",
@@ -16,7 +19,12 @@
   },
   "coalition": {
     "id": "documentation-evidence-grounding",
-    "route": ["Context7:resolve", "Context7:query", "target-provider:runtime-revalidate-when-needed", "GitHub|Supabase:persist-with-readback"],
+    "route": [
+      "Context7:resolve",
+      "Context7:query",
+      "target-provider:runtime-revalidate-when-needed",
+      "GitHub|Supabase:persist-with-readback"
+    ],
     "invariants": [
       "Documentation evidence does not substitute for owning-provider runtime evidence.",
       "Read-only provider surfaces do not require artificial write verification.",
@@ -26,7 +34,9 @@
   "repair_status": {
     "supabase_profile_sync": "BLOCKED_BEFORE_ACCEPTANCE",
     "github_existing_contract_update": "BLOCKED_BEFORE_ACCEPTANCE",
-    "this_delta": "PENDING_PROVIDER_ACCEPTANCE"
+    "this_delta": "VERIFIED_GITHUB_READBACK",
+    "github_commit": "2d1381b0eab0dfc7ca6b89e172c41bc9b33396d7",
+    "github_blob_sha": "f043bd85f0326627d949a48da367593804106bfb"
   },
   "next_executable_frontier": "Project this receipt into the canonical Backend Ops connector registry and legacy profile without re-probing Context7; then consume the repaired frontier."
 }
