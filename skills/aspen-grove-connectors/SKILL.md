@@ -74,3 +74,10 @@ Counter-pattern:
 `DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST`
 
 Executable gates live in `worker_policy.py`; regressions are locked by `tests/test_hidden_harm_policy.py`.
+
+## Hidden-harm connector owner
+
+Compose `hidden-harm-connectors` for every material provider/plugin/MCP transition. Aspen Grove owns connector mechanics and evidence semantics; the specialist owns cross-transition loss analysis, including fallback parity, account ambiguity, projection loss, privacy widening, scope overgeneralization, reversible-write prestate, and unjustified demotion.
+
+A route is not considered equivalent merely because it executes successfully.
+
