@@ -17,6 +17,12 @@ RULES = {
     "security_mutations_require_access_path_preservation": True,
     "stale_failed_deployment_requires_source_comparison_before_repair": True,
     "every_run_requires_material_delta": True,
+    "authority_domains_must_not_be_collapsed": True,
+    "retrieval_failure_is_not_absence": True,
+    "fallback_equivalence_requires_capability_parity": True,
+    "protected_projection_fields_must_survive": True,
+    "reversible_mutations_require_prestate": True,
+    "demotion_requires_disconfirming_evidence": True,
 }
 
 EVIDENCE_RANK = {
@@ -163,6 +169,184 @@ class WorkerPolicy:
         return {
             "runnable": True,
             "state": "CURRENT_FAILURE_REPAIRABLE",
+        }
+
+    @classmethod
+    def authority_aware_reconcile(
+        cls,
+        prior: Dict[str, Any],
+        incoming: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """Preserve claims from distinct authority domains instead of collapsing them."""
+        prior_authority = str(prior.get("authority", "UNKNOWN"))
+        incoming_authority = str(incoming.get("authority", "UNKNOWN"))
+        incoming_value = incoming.get("value")
+        incoming_rank = cls.evidence_rank(
+            str(incoming.get("evidence", "UNVERIFIED"))
+        )
+        prior_rank = cls.evidence_rank(
+            str(prior.get("evidence", "UNVERIFIED"))
+        )
+
+        if prior_authority != incoming_authority:
+            if incoming_value is None or incoming_rank < prior_rank:
+                return {
+                    "state": "PRESERVE_DISTINCT_AUTHORITY",
+                    "selected": dict(prior),
+                    "preserved": [dict(prior), dict(incoming)],
+                    "reason": (
+                        "different_authority_domain_does_not_demote_prior_claim"
+                    ),
+                }
+            return {
+                "state": "PRESERVE_DISTINCT_AUTHORITY",
+                "selected": None,
+                "preserved": [dict(prior), dict(incoming)],
+                "reason": "different_authority_domains_are_not_collapsed",
+            }
+
+        selected = dict(
+            incoming if incoming_rank >= prior_rank else prior
+        )
+        return {
+            "state": "RECONCILED_SAME_AUTHORITY",
+            "selected": selected,
+            "preserved": [dict(prior), dict(incoming)],
+        }
+
+    @staticmethod
+    def interpret_negative_result(
+        query_completed: bool,
+        source_complete: bool,
+        matches: int,
+    ) -> Dict[str, Any]:
+        """Missing retrieval and partial coverage are never promoted to absence."""
+        if not query_completed:
+            return {
+                "state": "RETRIEVAL_GAP",
+                "proves_absence": False,
+                "matches": matches,
+            }
+        if matches > 0:
+            return {
+                "state": "MATCH_FOUND",
+                "proves_absence": False,
+                "matches": matches,
+            }
+        if not source_complete:
+            return {
+                "state": "NO_MATCH_IN_PARTIAL_COVERAGE",
+                "proves_absence": False,
+                "matches": 0,
+            }
+        return {
+            "state": "ABSENCE_SUPPORTED_WITHIN_COMPLETE_SOURCE",
+            "proves_absence": True,
+            "matches": 0,
+        }
+
+    @staticmethod
+    def fallback_gate(
+        required_capabilities: Any,
+        fallback_capabilities: Any,
+    ) -> Dict[str, Any]:
+        """Classify fallback loss instead of silently treating substitutes as equal."""
+        required = set(required_capabilities)
+        fallback = set(fallback_capabilities)
+        lost = sorted(required - fallback)
+        return {
+            "equivalent": not lost,
+            "state": (
+                "EQUIVALENT_FALLBACK"
+                if not lost
+                else "DEGRADED_FALLBACK"
+            ),
+            "lost_capabilities": lost,
+        }
+
+    @staticmethod
+    def projection_loss_gate(
+        source_fields: Any,
+        projected_fields: Any,
+        protected_fields: Any,
+    ) -> Dict[str, Any]:
+        """Prevent projections from silently dropping authority/provenance semantics."""
+        source = set(source_fields)
+        projected = set(projected_fields)
+        protected = set(protected_fields)
+        lost = sorted((source - projected) & protected)
+        return {
+            "runnable": not lost,
+            "state": (
+                "LOSSLESS_PROJECTION"
+                if not lost
+                else "BLOCKED_HIDDEN_HARM_PROJECTION_LOSS"
+            ),
+            "lost_protected_fields": lost,
+        }
+
+    @staticmethod
+    def mutation_reversibility_gate(
+        reversible_surface: bool,
+        pre_state_captured: bool,
+        rollback_route_known: bool,
+        idempotency_key_present: bool,
+    ) -> Dict[str, Any]:
+        """Require recovery information before reversible connector mutations."""
+        checks = {
+            "pre_state_captured": bool(pre_state_captured),
+            "rollback_route_known": bool(rollback_route_known),
+            "idempotency_key_present": bool(idempotency_key_present),
+        }
+        missing = (
+            [name for name, passed in checks.items() if not passed]
+            if reversible_surface
+            else []
+        )
+        return {
+            "runnable": not missing,
+            "state": (
+                "READY"
+                if not missing
+                else "BLOCKED_HIDDEN_HARM_IRREVERSIBLE_WRITE"
+            ),
+            "missing": missing,
+        }
+
+    @classmethod
+    def demotion_gate(
+        cls,
+        current_state: str,
+        proposed_state: str,
+        disconfirming_provider_evidence: bool,
+        provider_scope_changed: bool,
+    ) -> Dict[str, Any]:
+        """A missing/weaker observation cannot silently demote stronger state."""
+        is_demotion = (
+            cls.evidence_rank(proposed_state)
+            < cls.evidence_rank(current_state)
+        )
+        if not is_demotion:
+            return {"allowed": True, "state": "NO_DEMOTION"}
+        if provider_scope_changed:
+            return {
+                "allowed": False,
+                "state": "SCOPE_SPLIT_REQUIRED",
+                "reason": (
+                    "new_scope_must_not_demote_previous_verified_scope"
+                ),
+            }
+        if not disconfirming_provider_evidence:
+            return {
+                "allowed": False,
+                "state": "BLOCKED_HIDDEN_HARM_DEMOTION",
+                "reason": (
+                    "missing_or_weaker_evidence_cannot_demote_stronger_state"
+                ),
+            }
+        return {
+            "allowed": True,
+            "state": "DEMOTION_SUPPORTED_BY_PROVIDER_EVIDENCE",
         }
 
     @staticmethod
