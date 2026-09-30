@@ -74,3 +74,10 @@ Validation passes when all phase gates have evidence-backed results, no original
 ## Non-goals
 
 Do not impose a single architectural authority, silently flatten source differences, make persuasive legal arguments, choose litigation strategy, file with a court, or mutate external systems without the required authorization.
+
+## Hidden-harm casebuild owner
+
+Every casebuilding run composes `hidden-harm-casebuild` before elevating a procedural gap, evidentiary uncertainty, generated theory, outbound action, or administrative status into priority work.
+
+The specialist protects Casey's stated case position and strategy, native evidence/provenance, attribution boundaries, contradiction state, privacy, remedy posture, and the actual human outcome. An unresolved docket/status field is metadata until a source-bound causal path shows that resolving it materially advances the case objective.
+
