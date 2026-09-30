@@ -11,7 +11,8 @@
     "retrieval_failure_does_not_prove_absence": true,
     "fallback_requires_capability_loss_accounting": true,
     "demotion_requires_same_scope_disconfirming_evidence": true,
-    "reversible_mutations_require_prestate_and_rollback": true
+    "reversible_mutations_require_prestate_and_rollback": true,
+    "privacy_boundary_must_not_silently_widen": true
   },
   "coalitions": [
     {
@@ -257,6 +258,14 @@
           ]
         },
         {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "verify source privacy boundary is preserved by the target projection/fallback",
+          "state": "REQUIRED",
+          "outputs": [
+            "privacy_boundary_state"
+          ]
+        },
+        {
           "provider": "TARGET_PROVIDER",
           "action": "capture pre-state for reversible mutation, execute, then read back owning-provider state",
           "state": "PROVIDER_NATIVE_EVIDENCE_REQUIRED"
@@ -280,7 +289,8 @@
         "RETRIEVAL_GAP",
         "NO_MATCH_IN_PARTIAL_COVERAGE",
         "SCOPE_SPLIT_REQUIRED",
-        "PRESERVE_DISTINCT_AUTHORITY"
+        "PRESERVE_DISTINCT_AUTHORITY",
+        "BLOCKED_HIDDEN_HARM_PRIVACY_WIDENING"
       ],
       "invariant": "A route may be truthful yet still be rejected when it silently destroys a stronger capability or meaning."
     }
