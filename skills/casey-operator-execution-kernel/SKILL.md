@@ -270,3 +270,10 @@ When assistant-created state violates this kernel:
 - Tools: rehydration stores (Notion Codex + Ledger, Supermemory, repository state) · readback through the same tool that performed the mutation
 - Notion projection: Casey Operator Execution Kernel — Authority, Locks, Gates · page `6184d704135440b19a2e1894a50ffa12` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
+
+## Hidden-harm context owner
+
+Compose `hidden-harm-context` during context hydration, memory reconciliation, correction handling, summary/projection, mission selection, and continuation recovery.
+
+The protected semantic dimensions are Casey's **word, intention, information, strategy, position, corrections, scope, and priority**. Derived state may route work but may not silently replace those dimensions. Machine labels such as `UNRESOLVED`, `OPEN`, `BLOCKED`, or `NEXT_FRONTIER` never create a mission by themselves.
+
