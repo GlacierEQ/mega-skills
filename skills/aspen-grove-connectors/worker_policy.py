@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""Executable routing policy for the GlacierEQ plugin-expansion worker."""
+
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
+
+RULES = {
+    "provider_evidence_over_stale_projection": True,
+    "verified_core_requires_regression_signal": True,
+    "same_route_retry_requires_material_change": True,
+    "blockers_change_route_not_objective": True,
+    "writes_require_provider_readback_for_promotion": True,
+    "verification_scope_must_match_exercised_surface": True,
+    "ambiguous_account_binding_must_not_be_guessed": True,
+    "security_mutations_require_access_path_preservation": True,
+    "stale_failed_deployment_requires_source_comparison_before_repair": True,
+    "every_run_requires_material_delta": True,
+}
+
+EVIDENCE_RANK = {
+    "UNVERIFIED": 0,
+    "OBSERVED": 1,
+    "OBSERVED_RUNTIME_EXPOSURE": 1,
+    "INFERRED": 1,
+    "ATTEMPTED": 2,
+    "BLOCKED": 2,
+    "SOURCE_BOUND": 3,
+    "VERIFIED": 4,
+    "VERIFIED_READ": 4,
+    "VERIFIED_WRITE": 4,
+    "VERIFIED_READ_WRITE": 5,
+}
+
+TRANSIENT_BLOCKERS = {
+    "quota",
+    "rate_limit",
+    "account_disambiguation",
+    "interactive_confirmation",
+    "auth_expired",
+    "project_binding",
+    "provider_write_gate",
+    "upstream_block",
+}
+
+
+class WorkerPolicy:
+    """Deterministic rules that prevent churn, overclaiming, and unsafe repair."""
+
+    @staticmethod
+    def evidence_rank(state: str) -> int:
+        return EVIDENCE_RANK.get(str(state).upper(), -1)
+
+    @classmethod
+    def reconcile_evidence(cls, prior_state: str, incoming_state: str) -> str:
+        """Do not let a weaker stale projection demote stronger evidence."""
+        if cls.evidence_rank(incoming_state) >= cls.evidence_rank(prior_state):
+            return incoming_state
+        return prior_state
+
+    @staticmethod
+    def should_probe_verified_core(
+        evidence_state: str,
+        regression_signal: bool = False,
+        explicit_recheck: bool = False,
+    ) -> bool:
+        verified = str(evidence_state).upper().startswith("VERIFIED")
+        if not verified:
+            return True
+        return bool(regression_signal or explicit_recheck)
+
+    @staticmethod
+    def should_retry_same_route(
+        blocker_kind: str,
+        materially_different_route: bool = False,
+        provider_state_changed: bool = False,
+    ) -> bool:
+        if materially_different_route or provider_state_changed:
+            return True
+        return str(blocker_kind).lower() not in TRANSIENT_BLOCKERS
+
+    @staticmethod
+    def account_binding_decision(
+        candidate_count: int,
+        explicit_binding: bool,
+    ) -> Dict[str, Any]:
+        if explicit_binding:
+            return {"runnable": True, "state": "BOUND"}
+        if candidate_count > 1:
+            return {
+                "runnable": False,
+                "state": "BLOCKED_ACCOUNT_DISAMBIGUATION",
+                "reason": "multiple_provider_accounts_without_explicit_binding",
+            }
+        return {"runnable": True, "state": "SINGLE_CANDIDATE"}
+
+    @staticmethod
+    def can_promote_write(
+        provider_accepted: bool,
+        provider_readback: bool,
+        exercised_surface: Optional[str],
+    ) -> Dict[str, Any]:
+        verified = bool(
+            provider_accepted and provider_readback and exercised_surface
+        )
+        return {
+            "verified": verified,
+            "state": "VERIFIED_WRITE" if verified else "UNVERIFIED",
+            "scope": exercised_surface if verified else None,
+            "reason": (
+                None
+                if verified
+                else "write_requires_acceptance_readback_and_scope"
+            ),
+        }
+
+    @staticmethod
+    def security_mutation_gate(
+        current_state_read: bool,
+        legitimate_access_paths_recovered: bool,
+        intended_roles_explicit: bool,
+        post_mutation_readback_planned: bool,
+    ) -> Dict[str, Any]:
+        checks = {
+            "current_state_read": bool(current_state_read),
+            "legitimate_access_paths_recovered": bool(
+                legitimate_access_paths_recovered
+            ),
+            "intended_roles_explicit": bool(intended_roles_explicit),
+            "post_mutation_readback_planned": bool(
+                post_mutation_readback_planned
+            ),
+        }
+        missing = [
+            name for name, passed in checks.items() if not passed
+        ]
+        return {
+            "runnable": not missing,
+            "state": (
+                "READY"
+                if not missing
+                else "BLOCKED_SECURITY_PRECONDITION"
+            ),
+            "missing": missing,
+        }
+
+    @staticmethod
+    def deployment_repair_gate(
+        failed_commit_is_current: bool,
+        source_comparison_completed: bool,
+    ) -> Dict[str, Any]:
+        if not source_comparison_completed:
+            return {
+                "runnable": False,
+                "state": "BLOCKED_PENDING_SOURCE_COMPARISON",
+            }
+        if not failed_commit_is_current:
+            return {
+                "runnable": False,
+                "state": "STALE_FAILURE_DO_NOT_REPAIR_CURRENT_SOURCE",
+            }
+        return {
+            "runnable": True,
+            "state": "CURRENT_FAILURE_REPAIRABLE",
+        }
+
+    @staticmethod
+    def material_delta(
+        newly_verified: bool = False,
+        seam_repaired: bool = False,
+        coalition_strengthened: bool = False,
+    ) -> bool:
+        return bool(
+            newly_verified or seam_repaired or coalition_strengthened
+        )
