@@ -23,6 +23,7 @@ RULES = {
     "protected_projection_fields_must_survive": True,
     "reversible_mutations_require_prestate": True,
     "demotion_requires_disconfirming_evidence": True,
+    "privacy_boundary_must_not_silently_widen": True,
 }
 
 EVIDENCE_RANK = {
@@ -311,6 +312,38 @@ class WorkerPolicy:
                 else "BLOCKED_HIDDEN_HARM_IRREVERSIBLE_WRITE"
             ),
             "missing": missing,
+        }
+
+    @staticmethod
+    def privacy_projection_gate(
+        source_boundary: str,
+        target_boundary: str,
+        explicit_declassification: bool = False,
+    ) -> Dict[str, Any]:
+        """Prevent private/restricted material from silently widening visibility."""
+        rank = {
+            "PUBLIC": 0,
+            "INTERNAL": 1,
+            "PRIVATE": 2,
+            "RESTRICTED": 3,
+        }
+        source = str(source_boundary).upper()
+        target = str(target_boundary).upper()
+        source_rank = rank.get(source, 3)
+        target_rank = rank.get(target, 3)
+        widening = target_rank < source_rank
+        if widening and not explicit_declassification:
+            return {
+                "runnable": False,
+                "state": "BLOCKED_HIDDEN_HARM_PRIVACY_WIDENING",
+                "source_boundary": source,
+                "target_boundary": target,
+            }
+        return {
+            "runnable": True,
+            "state": "PRIVACY_BOUNDARY_PRESERVED",
+            "source_boundary": source,
+            "target_boundary": target,
         }
 
     @classmethod
