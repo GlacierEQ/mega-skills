@@ -1,0 +1,47 @@
+{
+  "schema": "glaciereq.plugin-worker-beneficial-rules.v1",
+  "created_at": "2026-09-29",
+  "purpose": "Prevent verification drift, repeated work, unsafe mutations, and blocked-route churn while maximizing material plugin-mesh progress.",
+  "rules": [
+    {
+      "id": "provider-evidence-precedence",
+      "effect": "Fresh provider-native evidence cannot be demoted by stale aggregate projections."
+    },
+    {
+      "id": "verified-core-cooldown",
+      "effect": "Skip VERIFIED core surfaces absent regression signal or explicit recheck."
+    },
+    {
+      "id": "material-route-change",
+      "effect": "Retry transient blockers only after provider-state change or a materially different route."
+    },
+    {
+      "id": "route-not-objective",
+      "effect": "Blockers change route, not objective; preserve the unresolved scope explicitly."
+    },
+    {
+      "id": "write-readback",
+      "effect": "VERIFIED_WRITE requires provider acceptance, independent owning-provider readback, and explicit verified scope."
+    },
+    {
+      "id": "surface-scoping",
+      "effect": "Verification applies only to the exercised action/surface and cannot be generalized to unrelated capability."
+    },
+    {
+      "id": "account-disambiguation",
+      "effect": "Never guess among multiple provider accounts or workspaces in non-interactive execution."
+    },
+    {
+      "id": "security-access-preservation",
+      "effect": "Security mutations require a fresh state read, legitimate access-path recovery, explicit intended roles, and a post-change readback plan."
+    },
+    {
+      "id": "stale-deployment-failure",
+      "effect": "Compare a failed deployment commit to current source before repairing source; stale failures cannot prove current source is broken."
+    },
+    {
+      "id": "material-delta",
+      "effect": "A successful run must verify a new capability, repair a real seam, or strengthen a reusable coalition; inventory-only and prose-only runs do not count."
+    }
+  ]
+}
