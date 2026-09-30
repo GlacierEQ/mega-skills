@@ -53,3 +53,23 @@ Apply the executable policy in `worker_policy.py` on every plugin-expansion run:
 
 Machine-readable contract: `integrations/plugin-worker-beneficial-rules.json`.
 Focused behavior tests: `tests/test_worker_policy.py`.
+
+## Hidden-harm counter-engineering
+
+A connector transition can be harmful without being factually false. Before accepting a route, projection, fallback, demotion, or mutation, evaluate what capability or meaning would be lost.
+
+Protect these dimensions:
+
+- **Authority domain:** Operator-reported facts, provider-native facts, memory projections, and inference remain distinct. Failure to recover a provider artifact never erases a legitimate fact from another authority domain.
+- **Negative evidence:** Retrieval failure is not falsity, and zero matches from partial coverage is not proof of absence.
+- **Fallback parity:** A fallback is equivalent only when it preserves the required capability set. Otherwise label it `DEGRADED_FALLBACK` and name the lost capabilities.
+- **Projection fidelity:** Preserve authority, provenance, evidence state, and contradictions across projections. Block a projection that silently drops protected semantics.
+- **Demotion safety:** Stronger evidence may be demoted only by disconfirming provider-native evidence for the same scope. A scope change requires a split state, not a global downgrade.
+- **Reversible mutation safety:** For reversible connector writes, capture pre-state, retain a rollback route, and use idempotency before mutation.
+- **Continuation preservation:** Route changes must keep the objective, unresolved slice, and strongest known cursor intact.
+
+Counter-pattern:
+
+`DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST`
+
+Executable gates live in `worker_policy.py`; regressions are locked by `tests/test_hidden_harm_policy.py`.
