@@ -278,3 +278,10 @@ response = requests.post(
 - Technology selection for projects
 - Evidence states for code quality
 - Proof classes for verification
+
+## Hidden-harm owner
+
+Before any branch, PR, merge, CI, release, deployment, retirement, or repository-wide mutation, compose `hidden-harm-github`.
+
+That skill owns loss detection for unique donor capability, stale-failure gravity, provenance destruction, destructive simplification, CI authority inflation, and merge/deploy/completion overclaim. GitHub mechanics remain here; hidden-harm judgment routes through the specialist.
+
