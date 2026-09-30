@@ -67,6 +67,7 @@ Protect these dimensions:
 - **Demotion safety:** Stronger evidence may be demoted only by disconfirming provider-native evidence for the same scope. A scope change requires a split state, not a global downgrade.
 - **Reversible mutation safety:** For reversible connector writes, capture pre-state, retain a rollback route, and use idempotency before mutation.
 - **Continuation preservation:** Route changes must keep the objective, unresolved slice, and strongest known cursor intact.
+- **Privacy boundary:** Private or restricted source material may not silently widen into a less restrictive projection; preserve the boundary or require explicit declassification/redaction.
 
 Counter-pattern:
 
