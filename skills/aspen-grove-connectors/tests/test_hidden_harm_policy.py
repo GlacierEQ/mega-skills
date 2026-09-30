@@ -19,7 +19,7 @@ class HiddenHarmTests(unittest.TestCase):
     def test_operator_report_is_preserved_without_provider_verification(self):
         result = policy.WorkerPolicy.authority_aware_reconcile(
             prior={
-                "value": "locator last ping Sep 1",
+                "value": "operator-reported event occurred",
                 "authority": "OPERATOR_REPORTED",
                 "evidence": "SOURCE_BOUND",
             },
@@ -118,6 +118,18 @@ class HiddenHarmTests(unittest.TestCase):
         self.assertIn(
             "pre_state_captured",
             result["missing"],
+        )
+
+    def test_private_projection_cannot_silently_widen_visibility(self):
+        result = policy.WorkerPolicy.privacy_projection_gate(
+            source_boundary="PRIVATE",
+            target_boundary="PUBLIC",
+            explicit_declassification=False,
+        )
+        self.assertFalse(result["runnable"])
+        self.assertEqual(
+            result["state"],
+            "BLOCKED_HIDDEN_HARM_PRIVACY_WIDENING",
         )
 
     def test_demotion_requires_disconfirming_evidence(self):
