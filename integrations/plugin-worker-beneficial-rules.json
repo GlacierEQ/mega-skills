@@ -66,6 +66,10 @@
     {
       "id": "demotion-requires-disconfirmation",
       "effect": "A stronger state may be demoted only by disconfirming provider-native evidence for the same scope. Missing/weaker evidence cannot demote; scope changes require a split state."
+    },
+    {
+      "id": "privacy-boundary-preservation",
+      "effect": "A connector projection or fallback may not silently widen PRIVATE/RESTRICTED material into a less restrictive boundary. Preserve the boundary or require explicit declassification/redaction."
     }
   ],
   "hidden_harm_counter_engineering": {
@@ -78,7 +82,8 @@
       "capability surface",
       "write/readback ability",
       "reversibility",
-      "continuation state"
+      "continuation state",
+      "privacy boundary"
     ],
     "counter_pattern": "DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST"
   }
