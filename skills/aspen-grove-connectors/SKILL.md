@@ -35,3 +35,21 @@ Focused behavior tests live at:
 `skills/aspen-grove-connectors/tests/test_evidence_semantics.py`
 
 They guard against the prior failure mode where credential presence was labeled "online (live)" and an unbound live request returned a fabricated success payload.
+
+## Worker execution rules
+
+Apply the executable policy in `worker_policy.py` on every plugin-expansion run:
+
+1. Fresh provider-native evidence outranks stale aggregate projections; stale snapshots may not demote stronger later evidence.
+2. Do not retest a VERIFIED core surface without a concrete regression signal or explicit recheck.
+3. Do not retry the same transiently blocked route unless provider state changed or the route is materially different.
+4. Blockers change route, not objective; preserve the unresolved slice explicitly.
+5. A write is not VERIFIED_WRITE until provider acceptance, independent owning-provider readback, and explicit exercised scope all exist.
+6. Verification is surface-scoped; never generalize one exercised action into unrelated provider capability.
+7. Never guess among multiple provider accounts/workspaces in non-interactive execution.
+8. Before security mutations, recover current state, legitimate access paths, intended roles, and a post-mutation readback plan.
+9. A failed deployment on a stale commit is not evidence current source is broken; compare source first.
+10. Every run must create a material delta: newly verified capability, repaired seam, or strengthened reusable coalition.
+
+Machine-readable contract: `integrations/plugin-worker-beneficial-rules.json`.
+Focused behavior tests: `tests/test_worker_policy.py`.
