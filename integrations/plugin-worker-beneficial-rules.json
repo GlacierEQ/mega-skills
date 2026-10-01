@@ -1,0 +1,90 @@
+{
+  "schema": "glaciereq.plugin-worker-beneficial-rules.v2",
+  "created_at": "2026-09-29",
+  "purpose": "Prevent verification drift, hidden capability loss, authority collapse, repeated work, unsafe mutations, and blocked-route churn while maximizing material plugin-mesh progress.",
+  "rules": [
+    {
+      "id": "provider-evidence-precedence",
+      "effect": "Fresh provider-native evidence cannot be demoted by stale aggregate projections."
+    },
+    {
+      "id": "verified-core-cooldown",
+      "effect": "Skip VERIFIED core surfaces absent regression signal or explicit recheck."
+    },
+    {
+      "id": "material-route-change",
+      "effect": "Retry transient blockers only after provider-state change or a materially different route."
+    },
+    {
+      "id": "route-not-objective",
+      "effect": "Blockers change route, not objective; preserve the unresolved scope explicitly."
+    },
+    {
+      "id": "write-readback",
+      "effect": "VERIFIED_WRITE requires provider acceptance, independent owning-provider readback, and explicit verified scope."
+    },
+    {
+      "id": "surface-scoping",
+      "effect": "Verification applies only to the exercised action/surface and cannot be generalized to unrelated capability."
+    },
+    {
+      "id": "account-disambiguation",
+      "effect": "Never guess among multiple provider accounts or workspaces in non-interactive execution."
+    },
+    {
+      "id": "security-access-preservation",
+      "effect": "Security mutations require a fresh state read, legitimate access-path recovery, explicit intended roles, and a post-change readback plan."
+    },
+    {
+      "id": "stale-deployment-failure",
+      "effect": "Compare a failed deployment commit to current source before repairing source; stale failures cannot prove current source is broken."
+    },
+    {
+      "id": "material-delta",
+      "effect": "A successful run must verify a new capability, repair a real seam, or strengthen a reusable coalition; inventory-only and prose-only runs do not count."
+    },
+    {
+      "id": "authority-domain-preservation",
+      "effect": "Operator-reported facts, provider facts, memory projections, and inference are distinct authority domains. Lack of provider recovery never erases a fact carried in another legitimate authority domain."
+    },
+    {
+      "id": "retrieval-gap-not-absence",
+      "effect": "A failed retrieval or zero matches from incomplete coverage is not proof of absence. Preserve RETRIEVAL_GAP or NO_MATCH_IN_PARTIAL_COVERAGE."
+    },
+    {
+      "id": "fallback-loss-accounting",
+      "effect": "Fallbacks must declare lost capabilities. A weaker route is DEGRADED_FALLBACK, never silently equivalent."
+    },
+    {
+      "id": "lossless-projection-gate",
+      "effect": "Connector projections must preserve protected semantics such as authority, provenance, contradictions, and evidence state; otherwise block and report the lost fields."
+    },
+    {
+      "id": "reversible-write-prestate",
+      "effect": "For reversible mutations, capture pre-state, know the rollback route, and carry an idempotency key before mutation."
+    },
+    {
+      "id": "demotion-requires-disconfirmation",
+      "effect": "A stronger state may be demoted only by disconfirming provider-native evidence for the same scope. Missing/weaker evidence cannot demote; scope changes require a split state."
+    },
+    {
+      "id": "privacy-boundary-preservation",
+      "effect": "A connector projection or fallback may not silently widen PRIVATE/RESTRICTED material into a less restrictive boundary. Preserve the boundary or require explicit declassification/redaction."
+    }
+  ],
+  "hidden_harm_counter_engineering": {
+    "objective": "Detect and prevent silent losses that can occur even when individual connector claims are technically truthful.",
+    "protected_dimensions": [
+      "authority domain",
+      "provider provenance",
+      "evidence strength",
+      "contradictions",
+      "capability surface",
+      "write/readback ability",
+      "reversibility",
+      "continuation state",
+      "privacy boundary"
+    ],
+    "counter_pattern": "DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST"
+  }
+}

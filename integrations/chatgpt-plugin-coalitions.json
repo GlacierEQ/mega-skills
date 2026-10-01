@@ -5,7 +5,14 @@
     "runtime_exposure_does_not_imply_authentication": true,
     "mock_or_configured_state_does_not_imply_verified": true,
     "only_explicit_provider_receipts_promote_verified": true,
-    "blocked_stage_changes_route_not_objective": true
+    "blocked_stage_changes_route_not_objective": true,
+    "hidden_harm_counter_engineering_required": true,
+    "authority_domains_must_remain_distinct": true,
+    "retrieval_failure_does_not_prove_absence": true,
+    "fallback_requires_capability_loss_accounting": true,
+    "demotion_requires_same_scope_disconfirming_evidence": true,
+    "reversible_mutations_require_prestate_and_rollback": true,
+    "privacy_boundary_must_not_silently_widen": true
   },
   "coalitions": [
     {
@@ -221,7 +228,72 @@
         "No monitor is bound to the E2E collection.",
         "Collection execution has not been verified in this run."
       ]
+    },
+    {
+      "id": "hidden-harm-counter-engineering",
+      "purpose": "Prevent connector routes from silently losing authority, provenance, evidence strength, capability, reversibility, contradictions, or continuation state.",
+      "stages": [
+        {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "recover strongest current cursor and partition claims by authority domain",
+          "state": "REQUIRED"
+        },
+        {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "diff required capability surface against candidate route/fallback",
+          "state": "REQUIRED",
+          "outputs": [
+            "lost_capabilities",
+            "fallback_classification"
+          ]
+        },
+        {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "gate demotion, negative evidence, and projection loss before execution",
+          "state": "REQUIRED",
+          "outputs": [
+            "authority_preservation",
+            "retrieval_state",
+            "lost_protected_fields"
+          ]
+        },
+        {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "verify source privacy boundary is preserved by the target projection/fallback",
+          "state": "REQUIRED",
+          "outputs": [
+            "privacy_boundary_state"
+          ]
+        },
+        {
+          "provider": "TARGET_PROVIDER",
+          "action": "capture pre-state for reversible mutation, execute, then read back owning-provider state",
+          "state": "PROVIDER_NATIVE_EVIDENCE_REQUIRED"
+        },
+        {
+          "provider": "AspenGrove.WorkerPolicy",
+          "action": "compare post-state to pre-state and desired state; block silent loss or split scope instead of global demotion",
+          "state": "REQUIRED"
+        },
+        {
+          "provider": "GitHub|Supabase|Notion|Linear|ClickUp|Memory",
+          "action": "persist hidden-harm receipt, unresolved slice, and strongest continuation cursor",
+          "state": "READBACK_REQUIRED_WHEN_MUTATED"
+        }
+      ],
+      "hidden_harm_states": [
+        "BLOCKED_HIDDEN_HARM_DEMOTION",
+        "BLOCKED_HIDDEN_HARM_PROJECTION_LOSS",
+        "BLOCKED_HIDDEN_HARM_IRREVERSIBLE_WRITE",
+        "DEGRADED_FALLBACK",
+        "RETRIEVAL_GAP",
+        "NO_MATCH_IN_PARTIAL_COVERAGE",
+        "SCOPE_SPLIT_REQUIRED",
+        "PRESERVE_DISTINCT_AUTHORITY",
+        "BLOCKED_HIDDEN_HARM_PRIVACY_WIDENING"
+      ],
+      "invariant": "A route may be truthful yet still be rejected when it silently destroys a stronger capability or meaning."
     }
   ],
-  "updated_at": "2026-09-26T23:36:00Z"
+  "updated_at": "2026-09-30T12:29:00Z"
 }

@@ -1,0 +1,109 @@
+{
+  "schema": "glaciereq.hidden-harm-skill-matrix.v1",
+  "purpose": "Route work through a domain-specific hidden-harm counter-engineering skill before material execution.",
+  "counter_pattern": "DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST",
+  "skills": [
+    {
+      "id": "hidden-harm-github",
+      "path": "skills/hidden-harm-github/SKILL.md",
+      "domains": [
+        "github",
+        "git",
+        "branches",
+        "pull_requests",
+        "ci",
+        "releases",
+        "deployments"
+      ],
+      "protects": [
+        "unique_capability",
+        "lineage",
+        "source_provenance",
+        "deployment_correspondence",
+        "optionality"
+      ]
+    },
+    {
+      "id": "hidden-harm-context",
+      "path": "skills/hidden-harm-context/SKILL.md",
+      "domains": [
+        "context",
+        "memory",
+        "summaries",
+        "continuity",
+        "operator_authority"
+      ],
+      "protects": [
+        "word",
+        "intention",
+        "information",
+        "strategy",
+        "position",
+        "corrections",
+        "scope"
+      ]
+    },
+    {
+      "id": "hidden-harm-connectors",
+      "path": "skills/hidden-harm-connectors/SKILL.md",
+      "domains": [
+        "connectors",
+        "plugins",
+        "mcp",
+        "providers",
+        "cross_service_pipelines"
+      ],
+      "protects": [
+        "provider_provenance",
+        "verification_scope",
+        "capability_surface",
+        "readback",
+        "privacy",
+        "reversibility"
+      ]
+    },
+    {
+      "id": "hidden-harm-casebuild",
+      "path": "skills/hidden-harm-casebuild/SKILL.md",
+      "domains": [
+        "casebuilding",
+        "evidence",
+        "legal",
+        "family_court",
+        "claims",
+        "relief"
+      ],
+      "protects": [
+        "operator_strategy",
+        "native_evidence",
+        "attribution",
+        "contradictions",
+        "remedy",
+        "privacy",
+        "human_outcome"
+      ]
+    },
+    {
+      "id": "hidden-harm-cross-domain",
+      "path": "skills/hidden-harm-cross-domain/SKILL.md",
+      "domains": [
+        "other",
+        "jobs",
+        "research",
+        "operations",
+        "documents",
+        "planning",
+        "systems"
+      ],
+      "protects": [
+        "human_outcome",
+        "capability",
+        "truth_fidelity",
+        "optionality",
+        "reversibility",
+        "completion_quality"
+      ]
+    }
+  ],
+  "routing_rule": "Select the narrowest applicable specialist. Compose multiple specialists when a work unit crosses domains. Always include hidden-harm-cross-domain when no specialist fully covers the material risk."
+}

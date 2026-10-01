@@ -69,3 +69,20 @@ The Operator is Casey Barton / GlacierEQ: Advanced Forward-Deployed / Applied AI
 - Tools: MCP connectors, parallel workers, repository engineering, the legal casebuilder stack when the mission is legal
 - Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
+
+## Hidden-harm domain router
+
+Hidden-harm removal is a cross-cutting execution concern. Before material execution, route through the narrowest applicable specialist:
+
+- GitHub / branches / PRs / CI / release / deployment → `hidden-harm-github`
+- context / memory / summaries / continuity / Operator semantics → `hidden-harm-context`
+- connectors / plugins / MCP / provider pipelines → `hidden-harm-connectors`
+- legal / evidence / casebuilding → `hidden-harm-casebuild`
+- all other work, or multi-domain remainder risk → `hidden-harm-cross-domain`
+
+Compose multiple specialists when a work unit crosses domains. The shared invariant is:
+
+`DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST`
+
+The hidden-harm layer does not become a new bureaucracy or permission ladder. It exists to prevent technically-valid actions from silently making the actual mission weaker.
+
