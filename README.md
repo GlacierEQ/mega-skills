@@ -23,7 +23,7 @@ Existing `combo-skills/` manifests remain canonical and supported; their semanti
 | `registry/combo-skills.json` | Compound workflow Skills | 33 |
 | `registry/mega-skills.json` | Mega apex Skills | 29 |
 | `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 29 Mega roots |
-| `registry/pipelines.json` | Executable deep-work DAGs | 6 |
+| `registry/pipelines.json` | Executable deep-work DAGs | 7 |
 
 Counts describe repository objects, not production/adoption claims.
 
@@ -37,6 +37,7 @@ Pipelines make Mega pyramids executable from **inception through a human-gated d
 | `control-plane` | control-plane | Always-on session and guarded operating loop |
 | `memory-fleet` | memory-fleet | Recon, memory synthesis, fleet map |
 | `change-swe` | change-swe | Bounded repair and verification |
+| `ship-cloud` | ship-cloud | Web/backend/cloud packaging through a deployment approval packet |
 | `cultivate-main` | change-swe | Assess/merge unique safe work into living `main` |
 | `anthropic-applied-ai-readiness` | mission | Career evidence backbone |
 
