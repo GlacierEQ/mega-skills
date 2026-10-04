@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Call the GitHub GraphQL API — the big-call path for bulk operations.
+
+One GraphQL query replaces dozens of REST calls (estate census: 14 queries
+for 1313 repos). Same auth and rate-limit retries as github-api.
+
+Usage:
+  github-graphql --query '{ viewer { login } rateLimit { remaining } }'
+  github-graphql --query-file query.graphql --vars '{"n": 5}'
+  echo '{ "query": "{ viewer { login } }" }' | github-graphql --stdin
+
+  # auto-paginate a connection (query must take $after and select
+  # pageInfo { hasNextPage endCursor } + nodes/edges):
+  github-graphql --paginate viewer.repositories --page-size 100 --query '
+    query($after: String, $page_size: Int) {
+      viewer { repositories(first: $page_size, after: $after,
+                orderBy: {field: PUSHED_AT, direction: DESC}) {
+        pageInfo { hasNextPage endCursor }
+        nodes { name pushedAt isPrivate }
+      } }
+    }'
+
+Prints {"status": <code>, "body": <json>} — or with --paginate,
+{"status": 200, "pages": N, "nodes": [...]}.
+"""
+import argparse
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from gh_common import graphql_request, paginate_graphql
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Call the GitHub GraphQL API.")
+    ap.add_argument("--query", help="GraphQL query string")
+    ap.add_argument("--query-file", help="File containing the GraphQL query")
+    ap.add_argument("--vars", help="JSON object of query variables")
+    ap.add_argument("--stdin", action="store_true",
+                    help="Read {\"query\":..., \"variables\":...} from stdin")
+    ap.add_argument("--paginate", metavar="CONNECTION",
+                    help="Dotted path to auto-paginate, e.g. viewer.repositories")
+    ap.add_argument("--page-size", type=int, default=100)
+    ap.add_argument("--no-retry", action="store_true")
+    ap.add_argument("--timeout", type=int, default=60)
+    args = ap.parse_args()
+
+    if args.stdin:
+        payload = json.load(sys.stdin)
+        query, variables = payload.get("query"), payload.get("variables")
+    else:
+        if args.query_file:
+            with open(args.query_file) as f:
+                query = f.read()
+        elif args.query:
+            query = args.query
+        else:
+            ap.error("one of --query, --query-file, --stdin is required")
+        variables = json.loads(args.vars) if args.vars else None
+
+    if args.paginate:
+        result = paginate_graphql(query, variables, args.paginate,
+                                  no_retry=args.no_retry, timeout=args.timeout,
+                                  page_size=args.page_size)
+    else:
+        result = graphql_request(query, variables, no_retry=args.no_retry,
+                                 timeout=args.timeout)
+        result.pop("headers", None)
+    print(json.dumps(result, indent=2)[:200000])
+    ok = result["status"] == 200 and not result.get("body", {}).get("errors") \
+        and not result.get("error")
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

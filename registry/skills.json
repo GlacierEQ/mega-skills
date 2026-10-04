@@ -16525,6 +16525,33 @@
         "Text uploads (use the Box upload_file MCP tool)",
         "Credential storage (uses the existing box-cli, hatch_gws_cli, and dropbox connections)"
       ]
+    },
+    {
+      "id": "github",
+      "display_name": "GitHub Connector",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "2.0.0",
+      "path": "skills/github",
+      "entrypoint": "skills/github/SKILL.md",
+      "purpose": "Live authenticated GitHub connector: REST and GraphQL APIs with rate-limit-aware retries, gh CLI, and git credential helper. Repos, PRs, issues, and bulk estate-scale operations.",
+      "input_contract": [
+        "REST: method + api.github.com path (+ params/data)",
+        "GraphQL: query string (+ variables); --paginate auto-walks connections",
+        "gh CLI and git work directly \u2014 auth is wired at the user level"
+      ],
+      "output_contract": [
+        "Single JSON object: {status, body}; exit 0 on success",
+        "Rate limits are retried with backoff (never 401s); 401s surface a re-auth hint"
+      ],
+      "local_validation": [
+        "bin/github-api GET /user returns 200 as the authenticated user",
+        "bin/github-graphql --query '{ viewer { login } }' returns 200"
+      ],
+      "does_not_own": [
+        "GitHub workflow documentation (see github-power skill)",
+        "Credential storage (uses the gh CLI secure store)"
+      ]
     }
   ]
 }
