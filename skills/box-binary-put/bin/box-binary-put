@@ -1,0 +1,394 @@
+#!/usr/bin/env python3
+"""box_binary_put — hardened byte-faithful file upload to Box.
+
+Puts one file into a Box folder through the native binary path (box-cli),
+never the text-only MCP upload_file tool. Fail-closed with readback
+verification.
+
+Usage:
+  box_binary_put.py --source drive:<drive_id> --name "a.m4a" --box-folder 123
+  box_binary_put.py --source dbx:/path/in/dropbox --name "a.m4a" --box-folder 123
+  box_binary_put.py --source /local/path/a.m4a --name "a.m4a" --box-folder 123
+  box_binary_put.py --self-test --box-folder 123   # round-trip a scratch file
+
+Optional integrity gates (refuse the upload on mismatch):
+  --expected-size 15926312
+  --expected-sha256 <hex>
+  --expected-sha1 <hex>            # cross-checked against Box's own upload receipt
+  --expected-dropbox-hash <hex>   # Dropbox content-hash of the source bytes
+
+Conflict handling when a same-named file already exists in the folder:
+  --on-conflict skip-if-identical  (default: download it, compare bytes;
+                                    skip when identical, refuse when different)
+  --on-conflict refuse
+  --on-conflict new-version        (upload as a new Box version of the file)
+
+Hardening:
+  - Preflight: Box folder must exist and be writable BEFORE any bytes move.
+  - Transient network errors retried 3x with backoff. Refusals, 429s, 409s,
+    and integrity mismatches are NEVER retried.
+  - Box's own SHA-1 receipt cross-checked against the local file on upload,
+    in addition to the readback download verification.
+
+Output: single JSON object on stdout.
+Exit codes: 0 = verified | skipped-identical | self-test pass
+            2 = refused (integrity/conflict) | 1 = failed.
+"""
+import argparse
+import hashlib
+import json
+import os
+import random
+import subprocess
+import sys
+import tempfile
+import time
+
+DBX_CLI = "/opt/hatch/bin/dropbox"
+DBX_NS = "14869138675"
+RETRIES = 3
+
+
+class TransientError(Exception):
+    """Network/server hiccup — safe to retry."""
+
+
+class FatalError(Exception):
+    """Will not get better by retrying."""
+
+
+class Refusal(Exception):
+    """Integrity or policy refusal — exit 2."""
+
+
+def run(cmd, timeout=3600):
+    return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+
+
+def with_retries(desc, fn):
+    last = None
+    for attempt in range(1, RETRIES + 1):
+        try:
+            return fn()
+        except TransientError as e:
+            last = e
+            time.sleep(5 * attempt)
+    raise FatalError(f"{desc} failed after {RETRIES} attempts: {last}")
+
+
+def _transient_or_fatal(desc, p):
+    blob = (p.stdout + p.stderr)
+    low = blob.lower()
+    if any(s in low for s in ("timeout", "timed out", "connection reset",
+                              "connection refused", "temporary failure",
+                              "http_status\":5", " 500", " 502", " 503", " 504")):
+        raise TransientError(f"{desc}: {blob[:200]}")
+    raise FatalError(f"{desc}: {blob[:300]}")
+
+
+def sha256_of(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8 * 1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def sha1_of(path):
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8 * 1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def dropbox_content_hash(path):
+    block_hashes = []
+    with open(path, "rb") as f:
+        while True:
+            block = f.read(4 * 1024 * 1024)
+            if not block:
+                break
+            block_hashes.append(hashlib.sha256(block).digest())
+    return hashlib.sha256(b"".join(block_hashes)).hexdigest()
+
+
+def box_folder_ok(folder_id):
+    """Preflight: folder exists and is reachable. Raises on failure."""
+    def _check():
+        p = run(["box-cli", "call-tool", "--name", "get_folder_details",
+                 "--arguments-json", json.dumps({"folder_id": folder_id})])
+        try:
+            d = json.loads(p.stdout)
+        except Exception:
+            raise TransientError(f"folder check unreadable: {p.stdout[:150]}")
+        if not d.get("ok"):
+            raise FatalError(f"Box folder {folder_id} not reachable: {p.stdout[:200]}")
+        return True
+    return with_retries(f"box folder {folder_id} preflight", _check)
+
+
+def fetch_source(source, dest):
+    def _fetch():
+        if source.startswith("drive:"):
+            fid = source[len("drive:"):]
+            p = run(["hatch_gws_cli", "drive", "files", "get", "--params",
+                     json.dumps({"fileId": fid, "alt": "media"}), "--output", dest])
+            if not os.path.exists(dest) or os.path.getsize(dest) == 0:
+                _transient_or_fatal(f"Drive download {fid}", p)
+        elif source.startswith("dbx:"):
+            dbx_path = source[len("dbx:"):]
+            if not dbx_path.startswith("/"):
+                dbx_path = "/" + dbx_path
+            ns_path = f"ns:{DBX_NS}/" + dbx_path
+            p = run([DBX_CLI, "call-tool", "--name", "download",
+                     "--arguments-json", json.dumps({"entries": [ns_path]}),
+                     "--output", dest])
+            if "could not issue a download URL" in (p.stdout + p.stderr):
+                raise FatalError("Dropbox MCP download is broken server-side right now "
+                                 "(cannot mint download URLs); use the drive: source instead")
+            if not os.path.exists(dest) or os.path.getsize(dest) == 0:
+                _transient_or_fatal(f"Dropbox download {dbx_path}", p)
+        else:
+            if not os.path.isfile(source):
+                raise FatalError(f"local source not found: {source}")
+            with open(source, "rb") as fin, open(dest, "wb") as fout:
+                for chunk in iter(lambda: fin.read(8 * 1024 * 1024), b""):
+                    fout.write(chunk)
+        return os.path.getsize(dest)
+    return with_retries(f"source fetch {source[:60]}", _fetch)
+
+
+def box_folder_entries(folder_id):
+    def _list():
+        p = run(["box-cli", "call-tool", "--name", "list_folder_content_by_folder_id",
+                 "--arguments-json", json.dumps({"folder_id": folder_id, "limit": 1000})])
+        try:
+            d = json.loads(p.stdout)
+            text = d["result"]["content"][0]["text"]
+            return json.loads(text).get("entries", [])
+        except Exception:
+            raise TransientError(f"folder list unreadable: {p.stdout[:150]}")
+    return with_retries(f"list Box folder {folder_id}", _list)
+
+
+def box_upload(local, name, folder_id):
+    """Upload; returns dict with id + box sha1 receipt. 409 -> conflict_id."""
+    def _up():
+        p = run(["box-cli", "upload", "--input", local, "--name", name,
+                 "--parent-folder-id", folder_id])
+        if p.returncode != 0:
+            try:
+                d = json.loads(p.stdout)
+                conflict = (d.get("result", {}) or {}).get("context_info", {}).get("conflicts", {})
+                if conflict.get("id"):
+                    return {"conflict_id": str(conflict["id"])}
+                if d.get("http_status") and int(d["http_status"]) >= 500:
+                    raise TransientError(f"box upload 5xx: {p.stdout[:200]}")
+            except (ValueError, KeyError, TypeError):
+                pass
+            low = (p.stdout + p.stderr).lower()
+            if any(s in low for s in ("timeout", "connection reset", "temporary failure")):
+                raise TransientError(f"box upload network: {(p.stdout + p.stderr)[:200]}")
+            raise FatalError(f"box upload failed: {(p.stdout + p.stderr)[:300]}")
+        try:
+            d = json.loads(p.stdout)
+        except Exception:
+            raise FatalError(f"box upload returned non-JSON: {p.stdout[:200]}")
+        res = d.get("result") if isinstance(d, dict) else None
+        file_id = None
+        box_sha1 = None
+        if isinstance(res, dict):
+            # shape varies: result.id OR result.entries[0].id (201 created)
+            file_id = res.get("id")
+            box_sha1 = res.get("sha1")
+            if not file_id:
+                entries = res.get("entries") or []
+                if entries and isinstance(entries[0], dict):
+                    file_id = entries[0].get("id")
+                    box_sha1 = entries[0].get("sha1") or box_sha1
+        if not file_id:
+            file_id = d.get("id")
+        if not file_id or not str(file_id).isdigit():
+            raise FatalError(f"box upload returned no numeric file id: {p.stdout[:300]}")
+        return {"id": str(file_id), "box_sha1": box_sha1}
+    return with_retries(f"box upload {name}", _up)
+
+
+def box_download(file_id, dest):
+    def _dl():
+        p = run(["box-cli", "download", "--file-id", str(file_id), "--output", dest])
+        if not os.path.exists(dest) or os.path.getsize(dest) == 0:
+            _transient_or_fatal(f"box download {file_id}", p)
+    with_retries(f"box download {file_id}", _dl)
+
+
+def box_delete_file(file_id):
+    p = run(["box-cli", "delete-file", "--file-id", str(file_id)])
+    if p.returncode != 0:
+        raise FatalError(f"cleanup delete failed for {file_id}: {(p.stdout + p.stderr)[:200]}")
+
+
+def emit(obj, code=0):
+    obj["ts"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+    print(json.dumps(obj))
+    sys.exit(code)
+
+
+def self_test(folder_id):
+    """Round-trip a 1MB random scratch file through the full pipeline."""
+    tmp = tempfile.mkdtemp(prefix="boxput_selftest_")
+    src = os.path.join(tmp, "selftest.bin")
+    name = f"__boxput_selftest_{int(time.time())}.bin"
+    try:
+        box_folder_ok(folder_id)
+        with open(src, "wb") as f:
+            f.write(random.randbytes(1024 * 1024))
+        want_sha = sha256_of(src)
+        want_sha1 = sha1_of(src)
+        up = box_upload(src, name, folder_id)
+        if "conflict_id" in up:
+            raise FatalError("self-test name collided — retry")
+        fid = up["id"]
+        if up.get("box_sha1") and up["box_sha1"] != want_sha1:
+            raise FatalError(f"self-test: Box sha1 receipt {up['box_sha1']} != local {want_sha1}")
+        rb = os.path.join(tmp, "rb.bin")
+        box_download(fid, rb)
+        if sha256_of(rb) != want_sha:
+            raise FatalError("self-test: readback sha256 mismatch")
+        box_delete_file(fid)
+        emit({"status": "self-test-pass", "box_folder": folder_id,
+              "bytes": 1048576, "sha256": want_sha,
+              "box_file_id": fid, "note": "scratch file removed from Box"})
+    except (FatalError, TransientError) as e:
+        emit({"status": "self-test-fail", "error": str(e)[:300]}, code=1)
+    finally:
+        for root, _, files in os.walk(tmp):
+            for fn in files:
+                try:
+                    os.remove(os.path.join(root, fn))
+                except Exception:
+                    pass
+        try:
+            os.rmdir(tmp)
+        except Exception:
+            pass
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Byte-faithful binary upload to Box.")
+    ap.add_argument("--source", help="drive:<id> | dbx:</path> | /local/path")
+    ap.add_argument("--name", help="filename in Box")
+    ap.add_argument("--box-folder", required=True, help="destination Box folder id")
+    ap.add_argument("--expected-size", type=int, default=None)
+    ap.add_argument("--expected-sha256", default=None)
+    ap.add_argument("--expected-sha1", default=None)
+    ap.add_argument("--expected-dropbox-hash", default=None)
+    ap.add_argument("--on-conflict", default="skip-if-identical",
+                    choices=["skip-if-identical", "refuse", "new-version"])
+    ap.add_argument("--self-test", action="store_true",
+                    help="round-trip a scratch file instead of uploading")
+    a = ap.parse_args()
+
+    if a.self_test:
+        self_test(a.box_folder)
+        return
+    if not a.source or not a.name:
+        ap.error("--source and --name are required (unless --self-test)")
+
+    # Preflight FIRST: never move bytes toward a folder that isn't there.
+    try:
+        box_folder_ok(a.box_folder)
+    except (FatalError, TransientError) as e:
+        emit({"status": "failed", "error": str(e)[:300]}, code=1)
+
+    tmp = tempfile.mkdtemp(prefix="boxput_")
+    local = os.path.join(tmp, "source.bin")
+    try:
+        size = fetch_source(a.source, local)
+
+        if a.expected_size is not None and size != a.expected_size:
+            raise Refusal(f"size mismatch: got {size}, expected {a.expected_size}")
+        src_sha = sha256_of(local)
+        if a.expected_sha256 and src_sha != a.expected_sha256.lower():
+            raise Refusal(f"sha256 mismatch: got {src_sha}")
+        if a.expected_sha1:
+            src_sha1 = sha1_of(local)
+            if src_sha1 != a.expected_sha1.lower():
+                raise Refusal(f"sha1 mismatch: got {src_sha1}")
+        else:
+            src_sha1 = sha1_of(local)
+        if a.expected_dropbox_hash:
+            got = dropbox_content_hash(local)
+            if got != a.expected_dropbox_hash.lower():
+                raise Refusal(f"dropbox content-hash mismatch: got {got}")
+
+        existing = None
+        for e in box_folder_entries(a.box_folder):
+            if e.get("name") == a.name and e.get("type") == "file":
+                existing = e
+                break
+        if existing:
+            eid = str(existing["id"])
+            if a.on_conflict == "refuse":
+                raise Refusal(f"'{a.name}' already exists in Box folder as {eid}")
+            probe = os.path.join(tmp, "existing.bin")
+            box_download(eid, probe)
+            if sha256_of(probe) == src_sha and os.path.getsize(probe) == size:
+                emit({"status": "skipped-identical", "name": a.name,
+                      "box_file_id": eid, "size": size, "sha256": src_sha})
+            if a.on_conflict == "skip-if-identical":
+                raise Refusal(f"'{a.name}' exists as {eid} but bytes differ — refusing; "
+                              f"use --on-conflict new-version")
+            p = run(["box-cli", "upload-version", "--file-id", eid, "--input", local])
+            if p.returncode != 0:
+                raise FatalError(f"box upload-version failed: {(p.stdout + p.stderr)[:300]}")
+            box_download(eid, probe)
+            if sha256_of(probe) != src_sha or os.path.getsize(probe) != size:
+                raise FatalError("new-version readback mismatch")
+            emit({"status": "verified", "mode": "new-version", "name": a.name,
+                  "box_file_id": eid, "size": size, "sha256": src_sha})
+
+        up = box_upload(local, a.name, a.box_folder)
+        if "conflict_id" in up:
+            eid = up["conflict_id"]
+            probe = os.path.join(tmp, "existing.bin")
+            box_download(eid, probe)
+            if sha256_of(probe) == src_sha and os.path.getsize(probe) == size:
+                emit({"status": "skipped-identical", "name": a.name,
+                      "box_file_id": eid, "size": size, "sha256": src_sha,
+                      "note": "upload raced; existing copy byte-identical"})
+            raise Refusal(f"upload raced with an existing different file {eid}")
+        fid = up["id"]
+        if up.get("box_sha1") and up["box_sha1"] != src_sha1:
+            raise FatalError(f"Box sha1 receipt {up['box_sha1']} != local sha1 {src_sha1} — "
+                             f"bytes diverged in transit")
+        rb = os.path.join(tmp, "readback.bin")
+        box_download(fid, rb)
+        rb_size = os.path.getsize(rb)
+        rb_sha = sha256_of(rb)
+        if rb_size != size or rb_sha != src_sha:
+            raise FatalError(f"readback mismatch: size {rb_size}/{size} "
+                             f"sha {rb_sha[:16]}/{src_sha[:16]}")
+        emit({"status": "verified", "name": a.name, "box_file_id": fid,
+              "box_folder": a.box_folder, "size": size, "sha256": src_sha,
+              "box_sha1_receipt": up.get("box_sha1")})
+    except Refusal as e:
+        emit({"status": "refused", "error": str(e)[:300]}, code=2)
+    except (FatalError, TransientError) as e:
+        emit({"status": "failed", "error": str(e)[:300]}, code=1)
+    finally:
+        for root, _, files in os.walk(tmp):
+            for fn in files:
+                try:
+                    os.remove(os.path.join(root, fn))
+                except Exception:
+                    pass
+        try:
+            os.rmdir(tmp)
+        except Exception:
+            pass
+
+
+if __name__ == "__main__":
+    main()
