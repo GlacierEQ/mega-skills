@@ -2,9 +2,9 @@
 
 ## Why this control exists
 
-A Mega Skills repository may describe ambitious future capability, but a description is not evidence that the needed software, data, access, compute, permissions, or validation environment exists. A capability is **active** only when an operator can satisfy its prerequisites and reproduce its named local validation. Until then, it is a candidate route with stated assumptions.
+A Mega Skills repository may describe ambitious future capability, but a description is not evidence that the needed software, data, access, compute, permissions, or validation environment exists. A capability may be **claimed active** only when its prerequisites and named local validation are reproducible in the declared environment. Missing proof limits the claim; it does **not** forbid evaluating, repairing, rerouting, or retesting the capability.
 
-This document introduces a reusable readiness route rather than retroactively mutating existing specialized packages. Existing packages retain their current metadata until their maintainers supply the evidence required for an explicit maturity decision.
+This document introduces a reusable readiness route rather than retroactively mutating existing specialized packages. Existing packages retain their history. Historical labels are observations, not permanent execution authority; a current probe or changed environment can justify a new maturity decision without erasing prior evidence.
 
 ## Maturity model
 
@@ -12,24 +12,28 @@ This document introduces a reusable readiness route rather than retroactively mu
 |---|---|---|---|
 | `candidate` | Concept, design, or unverified procedure | “designed to,” “requires,” “proposed” | Scope, owner, known prerequisites, test plan |
 | `active` | Repeatable in the declared environment | “can,” “produces,” “validated by” | Available dependencies, reproducible local validation, evidence record |
-| `conditional` | Usable only after named preflight checks pass | “available when,” “requires verified” | Active preflight and a clear fallback route |
-| `deprecated` | Kept for compatibility only | “deprecated; do not select” | Replacement or retirement decision |
+| `conditional` | Current route needs a named dependency | “available when,” “requires verified” | Exact missing prerequisite, alternate route, recheck trigger |
+| `deprecated` | Explicitly retired from default selection after a substantive decision; still eligible for re-evaluation | “retired from default routing; reassess when premises change” | Decision authority, specific reason, replacement/retirement evidence, recheck trigger |
 
-## Readiness gate
+## Readiness evaluation — never an invented mission gate
 
-Before selecting an advanced capability, record the following:
+When establishing the *claimed maturity* of an advanced capability, record the following; do not require this ceremony to attempt otherwise-authorized reversible work:
 
 1. **Claim boundary.** What can the capability actually do now, in what environment, and what does it explicitly not prove?
 2. **Dependency inventory.** Identify executable tools, scripts, models, data, licenses, account access, hardware, external services, and human approval requirements.
-3. **Resource preflight.** Verify that every required item exists, is accessible, matches the expected version, and is allowed for the mission.
+3. **Resource preflight.** Check resources needed for the selected route. Missing proof is `unknown`, not `nonexistent`; absence or incompatibility limits only the affected route.
 4. **Validation evidence.** Run or inspect the stated local acceptance check and preserve its exact output or artifact reference.
-5. **Fallback.** If a prerequisite is missing or validation fails, mark the route blocked or candidate, record the owner, and return a safe next action.
+5. **Fallback and recovery.** If a prerequisite fails, record its exact environment, reason and time; try alternate feasible routes and identify a recheck condition. Do not label the capability, whole mission, or unrelated tools superseded.
 
 ## Claim discipline
 
 Do not use absolute claims such as “court-certified,” “tamper-proof,” “zero data loss,” “air-gapped,” “100%,” or “autonomous” unless the exact requirement, environment, evidence, and limitation are documented. Prefer scoped claims: “hash manifest generated for the supplied files,” “test command passed at revision X,” or “designed to preserve originals when the declared procedure is followed.”
 
-Never infer an operational dependency from a filename in a Skill. If a procedure refers to a script, executable, service, dataset, model, or credential, treat it as unavailable until the preflight records a verified source and version.
+Never infer an operational dependency from a filename in a Skill. A script, service, dataset, model, or credential not yet observed is **unverified in this environment**, not intrinsically unavailable. Discover and validate the named item or an equivalent route before making a capability claim.
+
+## Supersession and reactivation
+
+A single failed attempt must not cause permanent retirement, suppression from discovery, or a global `unavailable` conclusion. `deprecated` requires an explicit, scoped retirement decision grounded in functional evidence (not a timeout, auth failure, connector gap, or missing test). Re-evaluate on new evidence, changed infrastructure, verified success elsewhere, or operator reopening. Retain failure receipts as local diagnostics and verified successes as reusable routes; do not treat mirrored copies as independent corroboration. Protective restrictions for credentials, privacy, consequential external actions, and destructive work remain independently binding where applicable.
 
 ## Use in the hierarchy
 
