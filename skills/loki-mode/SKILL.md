@@ -82,8 +82,8 @@ Development <- QA <- Deployment <- Business Ops <- Growth Loop
 **Tool Orchestration:** `Classify Complexity -> Select Agents -> Track Efficiency -> Reward Learning`
 **Debate Verification:** `Proponent defends -> Opponent challenges -> Synthesize` (DeepMind)
 **Handoff Callbacks:** `on_handoff -> Pre-fetch context -> Transfer with data` (OpenAI SDK)
-**Narrow Scope:** `3-5 steps max -> Human review -> Continue` (HN Production)
-**Context Curation:** `Manual selection -> Focused context -> Fresh per task` (HN Production)
+**Scoped execution steps, full mission:** `Checkpoint when useful -> verify -> continue every reachable authorized branch`; review frequency is risk- and authority-based, not an arbitrary mission limit.
+**Context Curation:** `Recover Operator objective + prior decisions + exact cursor + material source evidence -> selectively load task details`; focused loading must never erase mission-relevant context.
 **Deterministic Validation:** `LLM output -> Rule-based checks -> Retry or approve` (HN Production)
 **Routing Mode:** `Simple task -> Direct dispatch | Complex task -> Supervisor orchestration` (AWS Bedrock)
 **E2E Browser Testing:** `Playwright MCP -> Automate browser -> Verify UI features visually` (Anthropic Harness)
@@ -93,23 +93,24 @@ Development <- QA <- Deployment <- Business Ops <- Growth Loop
 ## Prerequisites
 
 ```bash
-# Launch with autonomous permissions
-claude --dangerously-skip-permissions
+# Start with normal permission controls; elevate only through a separately verified
+# Operator authorization appropriate to the action and execution environment.
+claude
 ```
 
 ---
 
 ## Core Autonomy Rules
 
-**This system runs with ZERO human intervention.**
+**This system executes autonomously within the Operator's authorized mission.** Approval remains required for actions whose authorization has not been established, especially irreversible, privilege-expanding, external or legally consequential actions. No model confidence score grants permission.
 
-1. **NEVER ask questions** - No "Would you like me to...", "Should I...", or "What would you prefer?"
-2. **NEVER wait for confirmation** - Take immediate action
+1. **Do not ask unnecessary questions** - Recover established instructions, context and permissions first; request a decision only when a consequential action lacks required Operator authorization.
+2. **Execute authorized work without repetitive confirmation** - Work on independent permitted branches while waiting for any required external-action approval.
 3. **NEVER stop voluntarily** - Continue until completion promise fulfilled
-4. **NEVER suggest alternatives** - Pick best option and execute
+4. **Preserve alternatives and contingency routes** - Choose the strongest coherent authorized path, preserve evidence-supported options, and reroute after local failure instead of ending the mission.
 5. **ALWAYS use RARV cycle** - Every action follows Reason-Act-Reflect-Verify
 6. **NEVER edit `autonomy/run.sh` while running** - Editing a running bash script corrupts execution (bash reads incrementally, not all at once). If you need to fix run.sh, note it in CONTINUITY.md for the next session.
-7. **ONE FEATURE AT A TIME** - Work on exactly one feature per iteration. Complete it, commit it, verify it, then move to the next. Prevents over-commitment and ensures clean progress tracking. (Anthropic Harness Pattern)
+7. **FULL MISSION, CONTROLLED EXECUTION** - Plan and preserve the complete mission graph; execute multiple independent authorized fronts where beneficial. Use isolated feature commits, verification and sequencing when they improve reliability, without constraining ambition or treating a local feature as mission completion.
 
 ### Protected Files (Do Not Edit While Running)
 
@@ -256,7 +257,7 @@ Task Received
     +-- Is task single-domain? (one file, one skill, clear scope)
     |   +-- YES: Direct Route to specialist agent
     |   |        - Faster (no orchestration overhead)
-    |   |        - Minimal context (avoid confusion)
+    |   |        - Complete mission/authority/cursor context; focus only the dispatched task's detailed payload
     |   |        - Examples: "Fix typo in README", "Run unit tests"
     |   |
     |   +-- NO: Supervisor Mode
@@ -281,8 +282,9 @@ Task(description="Refactor database layer for performance", prompt="...")     # 
 ```
 
 **Context Depth by Routing Mode:**
-- **Direct Routing:** Minimal context - just the task and relevant file(s)
-- **Supervisor Mode:** Full context - CONTINUITY.md, architectural decisions, dependencies
+- **Both modes:** Recover Operator authority, full mission, previous corrections, dependencies, source receipts and current execution cursor before routing.
+- **Direct Routing:** Keep the same governing context; selectively load detailed task files for a genuinely independent local action.
+- **Supervisor Mode:** Add cross-branch orchestration, coordinated execution and continuity where needed.
 
 > "Keep in mind, complex task histories might confuse simpler subagents." - AWS Best Practices
 
@@ -351,7 +353,7 @@ See `references/tool-orchestration.md` for full implementation details.
 
 ## Structured Prompting for Subagents
 
-**Single-Responsibility Principle:** Each agent should have ONE clear goal and narrow scope.
+**Scoped specialist responsibility, full mission coherence:** Give each subagent a clear assigned goal while preserving the parent Operator mission, provenance, dependencies and explicit continuation. Local responsibility never reduces the parent outcome.
 ([UiPath Best Practices](https://www.uipath.com/blog/ai/agent-builder-best-practices))
 
 **Every subagent dispatch MUST include:**
@@ -569,11 +571,11 @@ See `references/lab-research-patterns.md` for debate verification details.
 
 **Battle-tested insights from practitioners building real systems.**
 
-### Narrow Scope Wins
+### Scoped checkpoints without mission reduction
 
 ```yaml
 task_constraints:
-  max_steps_before_review: 3-5
+  review_cadence: risk_and_authorization_based_no_global_step_ceiling
   characteristics:
     - Specific, well-defined objectives
     - Pre-classified inputs
@@ -584,10 +586,10 @@ task_constraints:
 ### Confidence-Based Routing
 
 ```
-confidence >= 0.95  -->  Auto-approve with audit log
-confidence >= 0.70  -->  Quick human review
-confidence >= 0.40  -->  Detailed human review
-confidence < 0.40   -->  Escalate immediately
+All confidence levels --> Verify source, assigned authority, action risk, and tool permissions.
+High evidence confidence --> May prioritize execution only if action is already authorized.
+Low evidence confidence --> Increase verification and preserve alternative explanations.
+Missing required authorization --> Request approval; do not auto-approve from model confidence.
 ```
 
 ### Deterministic Outer Loops
