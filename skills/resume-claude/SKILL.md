@@ -15,12 +15,12 @@ Use this skill when the requested task matches the capability described above an
 
 ## Operating Method
 
-1. Identify the concrete outcome, inputs, and constraints.
-2. Inspect relevant project state or artifacts before making changes.
-3. Load only the bundled resources needed for the current task.
-4. Execute the narrowest complete workflow that produces the requested outcome.
-5. Verify the result with observable output, tests, or source-backed evidence.
-6. Report the produced artifact or exact resulting state. Never claim execution that did not occur.
+1. Recover the exact Operator objective, existing mission graph, corrections, verified gains, source pointers, and completion test.
+2. Refresh relevant owning-source state and reconcile it with recovered evidence before treating a historical gap or task label as current.
+3. Map affected workstreams, critical dependencies, useful independent routes, and downstream consequences; load the resources needed to cover that work.
+4. Select and execute the strongest coherent workflow by outcome gain, dependency unlock, evidence value, and preservation of verified strengths. Skill ownership scopes each operation; it never shrinks the mission.
+5. Verify the resulting state, propagate material corrections across affected work, and continue through reachable authorized work. A prepared next action or completed artifact is a checkpoint; completion requires the requested outcome.
+6. Report the resulting outcome and observable proof, unfinished obligations, and exact continuation frontier. Never claim execution that did not occur.
 
 ## Progressive Disclosure
 
