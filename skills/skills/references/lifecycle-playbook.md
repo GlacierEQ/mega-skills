@@ -27,7 +27,7 @@ Before release, attach the manifest validation result, body/resource review, rep
 
 ## Observation record
 
-After use, record the task type, selected skill, trigger outcome, tool behavior, output defect, context cost, safety issue, and proposed owning layer. Fix the narrowest owning layer and add a regression example for every recurring failure.
+After use, record the task type, selected skill, trigger outcome, tool behavior, output defect, context cost, safety issue, and proposed owning layer. Trace recurring failures through source generators, skill selection, routing, implementation, and consumers. Repair all implicated owning layers, preserve compatible verified capability, and add regression and consumer-path checks.
 
 ## Retirement record
 
