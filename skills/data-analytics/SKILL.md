@@ -10,10 +10,10 @@ This is the single entry point for a code-agent-oriented Data Analytics bundle. 
 ## Route the request
 
 1. Read `workflows/index/SKILL.md` completely. Treat it as the authoritative plugin-level eligibility and analytical routing policy, except where its UI/runtime delivery rules conflict with the code-agent overrides below.
-2. Select the narrowest focused workflow named by that index. Read every selected workflow's `SKILL.md` completely before acting.
+2. Compose the strongest complementary focused workflows required for the complete requested analytical outcome, including data validation, diagnosis, decision support, reporting and implementation where materially linked. Read every selected workflow's `SKILL.md` completely before acting. Missing one optional skill changes the affected route, not the entire analytical objective.
 3. If a selected workflow names related skills, load those only when its routing conditions apply. Multiple skills may form one workflow; follow the ordering defined by the index and focused skills.
 4. Resolve relative links from the file that contains the link. Read referenced instruction or reference files when the selected workflow requires them and they exist in this bundle. Prefer bundled scripts and sample data over recreating them.
-5. Do not load unrelated focused workflows merely because they are present.
+5. Do not load genuinely unrelated focused workflows merely because they are present; use as many complementary capabilities as the complete outcome requires.
 
 ## Bundled capabilities
 
