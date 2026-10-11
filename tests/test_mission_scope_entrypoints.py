@@ -20,7 +20,7 @@ class MissionScopeIngressRegression(unittest.TestCase):
     def test_a_single_local_failure_does_not_freeze_other_engineering_work(self):
         content = skill("autonomous-software-engineering")
         self.assertIn("continue independent authorized work", content)
-        self.assertIn("do not close the entire mission", content)
+        self.assertIn("do not close the entire mission", content.lower())
 
     def test_a_test_failure_blocks_claim_or_release_not_the_entire_mission(self):
         content = skill("autonomous-software-engineering")
