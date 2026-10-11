@@ -10,10 +10,10 @@ This is the single entry point for a code-agent-oriented Sales bundle. The origi
 ## Route the request
 
 1. Read `workflows/index/SKILL.md` completely. Treat it as the authoritative plugin-level scope, source-selection rules, routing, and workflow sequencing policy.
-2. Select the narrowest focused workflow or workflow sequence named by that index. Read every selected workflow's `SKILL.md` completely before acting.
+2. Compose the strongest relevant workflow sequence capable of delivering the complete requested customer or revenue outcome, including independent CRM, evidence, communications, account and follow-up workstreams when material. Read each selected workflow's `SKILL.md` completely before acting; a failed source changes that route without vetoing unaffected authorized work.
 3. Load provider-specific skills such as Salesforce, HubSpot, Apollo, or ZoomInfo only when the chosen source and available host tools make them relevant.
 4. If a selected workflow names related skills, read them only when their stated conditions apply. Resolve relative links from the file containing the link and load required references completely.
-5. Prefer bundled scripts and templates when a selected workflow calls for them. Do not load unrelated sales workflows merely because they are present.
+5. Prefer bundled scripts and templates when a selected workflow calls for them. Load all complementary and materially relevant sales workflows while excluding genuinely unrelated loads; do not interpret efficient loading as a ceiling on mission coverage.
 
 ## Bundled capabilities
 
