@@ -3,12 +3,12 @@
   "profile_id": "chatgpt-estate-cartographer-executor",
   "source_surface": "chatgpt",
   "source_repository": "GlacierEQ/mega-skills",
-  "source_main_sha_at_selection": "5b499018624e3e6df62ed14a4338d4cef79819f2",
+  "source_main_sha_at_selection": "491c9a8e9af87cf9d6d56847c2b4cd5bb845e7b9",
   "state": "ACTIVE_PROFILE",
   "purpose": "Load the GlacierEQ skills that materially improve estate-wide source recovery, codebase understanding, topology and classification work, GitHub execution, connector use, evidence discipline, verification, continuation, and source-bound human presentation without globally loading unrelated domain specializations.",
   "activation_contract": {
     "host_activate_skill_tool_available": false,
-    "activation_semantics": "A ChatGPT consumer may claim a skill or external capability CONTRACT_LOADED only after reading its canonical contract/manifest for the active session. The existence of this profile alone is not a host-runtime activation receipt.",
+    "activation_semantics": "A repository profile is a selection plan, not proof of activation. In each new ChatGPT session, a consumer must actually load the selected skill contract and reconcile pinned SHA to live main before claiming CONTRACT_LOADED. If a pin is stale or a tool unavailable, use the current source and other qualified routes; do not turn a source mismatch into global mission STOP. No automatic host invocation is claimed.",
     "always_on_policy": "Read and apply all always_on entries for substantive GlacierEQ estate work, subject to higher-priority platform constraints and current Operator scope.",
     "conditional_policy": "Load a conditional entry only when its trigger matches the current mission. Do not globally inject domain-specific or stale instructions.",
     "external_binding_policy": "For source-bound capabilities such as PSYSOC-X, preserve the owning repository as authority and load through the binding instead of copying the capability into Mega-Skills.",
@@ -63,7 +63,7 @@
       "id": "skills",
       "kind": "atomic",
       "path": "skills/skills/SKILL.md",
-      "selected_blob_sha": "86615fd7692a77708b21d4b5ae930596df3208fb",
+      "selected_blob_sha": "b18660e06a1b389c1731ca21620208f9e93f27bc",
       "role": "Skill discovery, selection, validation, composition, and lifecycle discipline"
     },
     {
@@ -144,21 +144,5 @@
       "reason": "Useful as a donor/conditional connector pattern, but its current contract contains case-bound mission language and provider/tool names that must be reconciled to the live runtime before use."
     }
   ],
-  "runtime_loaded_this_session": [
-    "casey-operator-execution-kernel",
-    "power-skill",
-    "agent-memory-systems",
-    "evidence-register",
-    "context-capsule",
-    "quality-gate",
-    "skills",
-    "github-power",
-    "mcp",
-    "stone-psysoc-x",
-    "compose-next",
-    "long-horizon-core",
-    "capability-readiness",
-    "mission-aware-operating-loop",
-    "fleet-recon-and-harmonize"
-  ]
+  "runtime_loaded_this_session": []
 }
