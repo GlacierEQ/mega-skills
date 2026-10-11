@@ -11,7 +11,7 @@ Score each dimension from 0 to 3. A score of 0 means absent or unsafe, 1 means w
 | Maintainability | Is ownership clear, is the body concise, are references separated, and is versioning meaningful? |
 | Safety | Are data boundaries, destructive actions, secrets, external content, and approval points handled explicitly? |
 
-Compute a raw score out of 18, but do not reduce safety to arithmetic. Reject a candidate with a safety score below 2 for mutation-capable work, or with any unresolved blocking manifest failure. Prefer the highest-scoring candidate only after checking that it has the narrowest sufficient scope.
+Compute a raw score out of 18, but do not reduce safety to arithmetic. Reject a candidate with a safety score below 2 for mutation-capable work, or with any unresolved blocking manifest failure. Choose the strongest coherent skill or composition that covers the complete requested outcome, preserves complementary verified capability, and satisfies evidence, compatibility, and safety requirements. Narrow triggers and least privilege constrain activation and consequences, not the mission's ambition.
 
 ## Composition gate
 
