@@ -15,11 +15,11 @@ Use this as a lightweight decision record. Keep the record next to the audit or 
 
 ## Discovery and selection record
 
-Record each serious candidate with its source, commit or version, trigger summary, capability boundary, tool requirements, compatibility result, score, and rejection reason if not selected. Prefer a maintained local skill with a narrow trigger over a more impressive but unverified prompt.
+Record each serious candidate with its source, commit or version, trigger summary, capability boundary, tool requirements, compatibility result, score, and rejection reason if not selected. Prefer reusable, evidenced capabilities and the strongest qualified composition that delivers the whole Operator outcome; precise triggers regulate activation, not mission ambition. A missing candidate changes the route rather than ending the entire mission.
 
 ## Creation and upgrade record
 
-Define one job-to-be-done, three representative examples, the minimum reusable resources, the acceptance test, and the non-goals before editing. For an upgrade, state whether the change is patch, minor, or major and identify any changed trigger, input, output, tool, or safety behavior.
+Define the complete job-to-be-done and intended outcome, representative examples covering normal and failure paths, all reusable resources necessary to deliver it, an independently observable acceptance test, and the non-goals before editing. For an upgrade, state whether the change is patch, minor, or major and identify any changed trigger, input, output, tool, or safety behavior.
 
 ## Release record
 
