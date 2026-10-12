@@ -1,0 +1,92 @@
+{
+  "schema_id": "glaciereq.progressive-pyramid.contract.v1",
+  "protocol": "Progressive Pyramid Protocol - Four Corners + Center Point",
+  "governing_principle": {
+    "one_inherited_result": true,
+    "target": "original_mission_finish_line",
+    "recover_before_recreating": true,
+    "compound_before_replacing": true,
+    "execute_before_declaring_completion": true
+  },
+  "stages": [
+    {
+      "stage": "corner_1_context",
+      "produces": "V1",
+      "inherits": null,
+      "must": [
+        "recover prior work, evidence, and decisions",
+        "produce substantive work immediately",
+        "record provenance and unresolved uncertainty"
+      ],
+      "output": "first substantive working result"
+    },
+    {
+      "stage": "corner_2_objective",
+      "produces": "V2",
+      "inherits": "V1",
+      "must": [
+        "inherit V1 without discarding verified gains",
+        "strengthen against the original finish line",
+        "address missing objectives and dependencies"
+      ],
+      "output": "improved working result"
+    },
+    {
+      "stage": "corner_3_constraints",
+      "produces": "V3",
+      "inherits": "V2",
+      "must": [
+        "inherit V2",
+        "adversarially inspect errors, regressions, hidden harms, contradictions, safety, legality, requirements",
+        "correct defects without weakening prior capabilities"
+      ],
+      "output": "hardened working result"
+    },
+    {
+      "stage": "corner_4_resources",
+      "produces": "V4",
+      "inherits": "V3",
+      "must": [
+        "inherit V3",
+        "apply available agents, tools, connectors, sources, and authorized execution surfaces",
+        "advance the actual deliverable and operational outcome"
+      ],
+      "output": "executed deliverable"
+    },
+    {
+      "stage": "center_point",
+      "produces": "verified_result_or_active_continuation",
+      "inherits": "V4",
+      "must": [
+        "integrate accumulated result",
+        "reconcile corner conflicts",
+        "execute outstanding requirements",
+        "independently verify real-world effects",
+        "continue unresolved work instead of claiming completion"
+      ],
+      "output": "MISSION_COMPLETE only when original acceptance conditions are demonstrably satisfied"
+    }
+  ],
+  "invariants": [
+    "every_version_inherits_the_previous",
+    "no_corner_starts_from_zero",
+    "no_intermediate_deliverable_may_be_called_the_final_outcome",
+    "processing_complete_is_not_mission_complete",
+    "subordinate_recursion_returns_validated_results_to_parent"
+  ],
+  "completion_rule": {
+    "mission_complete_requires": "demonstrated satisfaction of original externally observable acceptance criteria",
+    "blocked_execution": "preserve blocker and alternate routes; never claim completion",
+    "spiral_engine_alignment": "distinguishes local quality completion from mission-outcome completion"
+  },
+  "required_execution_proof": [
+    "protocol_version_and_mission_identity",
+    "inherited_result_lineage",
+    "material_improvements_across_corners",
+    "actual_actions_performed",
+    "validation_and_source_native_receipts",
+    "remaining_work_or_verified_terminal_outcome"
+  ],
+  "certification": "certification.md",
+  "worked_example": "examples/unified-boot-chain.md"
+}
