@@ -58,6 +58,18 @@ def expect_all_registered(layer_dir: Path, registered: set[str], manifest: str, 
     expect(not missing, f"{registry_name}: packages on disk but not registered: {', '.join(missing)}")
 
 
+def skill_frontmatter_name(text: str) -> str | None:
+    """Read plain or quoted YAML name values without changing source identity."""
+    sections = text.split("---", 2)
+    if len(sections) < 3:
+        return None
+    for line in sections[1].splitlines():
+        if line.strip().startswith("name:"):
+            value = line.split(":", 1)[1].strip()
+            return value[1:-1] if len(value) >= 2 and value[0] == value[-1] and value[0] in ("\'", '"') else value
+    return None
+
+
 def validate_skills(data: dict) -> set[str]:
     expect(data.get("schema_version") == 1, "skills.json: unsupported schema version")
     expect(data.get("layer") == "skills", "skills.json: invalid layer")
@@ -71,7 +83,7 @@ def validate_skills(data: dict) -> set[str]:
         frontmatter = text.split("---", 2)
         expect(len(frontmatter) >= 3, f"{entry['id']}: SKILL.md lacks frontmatter")
         expect("name:" in frontmatter[1] and "description:" in frontmatter[1], f"{entry['id']}: missing required frontmatter")
-        expect(f"name: {entry['id']}" in frontmatter[1], f"{entry['id']}: registry and SKILL.md name differ")
+        expect(skill_frontmatter_name(text) == entry["id"], f"{entry['id']}: registry and SKILL.md name differ")
         resolved.add(entry["id"])
     expect(len(resolved) >= 2, "skills.json: the initial graph needs more than one atomic Skill")
     expect_all_registered(ROOT / "skills", resolved, "SKILL.md", "skills.json")

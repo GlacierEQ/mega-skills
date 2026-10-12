@@ -101,3 +101,30 @@ Never copy private case facts into unrelated scopes.
 - Actual actions performed
 - Validation and source-native receipts
 - Remaining work or verified terminal outcome
+
+
+## Executable handoff and completion gate
+
+This Skill is registered as an Atomic Skill because the inherited-result
+validation is reusable inside multiple Compound and Mega missions. The
+pyramid of work can still be mission-scale; scale does not duplicate the
+contract or entitle any agent to call an intermediate pass MISSION_COMPLETE.
+
+The host may validate an active/blocked run receipt with:
+
+    python3 skills/progressive-pyramid/scripts/validate_run.py RUN.json
+
+The CLI deliberately rejects MISSION_COMPLETE: only a trusted host that
+injects an independent provider-aware `verifier(criterion, receipt_ref)`
+into `validate_run(..., verifier=...)` can verify the terminal condition.
+A JSON flag claiming verification is not proof.
+
+Run local behavior tests:
+
+    python3 -m unittest discover -s skills/progressive-pyramid/tests -v
+
+This validator checks stage order, inherited artifact references, preserved
+verified-gain IDs, mission context, blocked continuation, and outcome-proof
+coverage. It does not by itself certify agent startup loading, discoverability
+in every host, external evidence authenticity, or live cross-agent handoff.
+These remain required before claiming multi-host certification.

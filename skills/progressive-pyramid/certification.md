@@ -59,3 +59,22 @@ and tested before any host can be described as enforcing this protocol.
 Only report `CERTIFIED` for a specific versioned runtime after the complete
 suite passes with recorded evidence. Otherwise report `NOT_VERIFIED` or a
 specific failing test, preserve the original mission, and continue.
+
+
+## Executable local gate and registry readback (2026-10-11 HST)
+
+The canonical Skill now includes a provider-verifier-injected machine gate at
+`scripts/validate_run.py` and 12 deterministic behavioral tests under
+`tests/test_validator.py`. These prove structural inheritance/continuity and
+that MISSION_COMPLETE is rejected without an independent verifier.
+
+The atomic Skill registry includes `progressive-pyramid`; the generated
+recursive graph is refreshed from source registries. Package-local tests also
+cover the formerly unverified strong-smart-routing-kernel and github helpers.
+Readiness classification distinguishes those local behaviors from live
+network/runtime certification.
+
+These are LOCAL CODE AND REGISTRY VERIFICATIONS, not evidence of automatic
+Codex/Claude/OMP startup injection or verified external mission outcomes.
+The seven cross-host certification cases remain unexecuted until each host's
+receipts are gathered. Do not promote local unit tests into host certification.

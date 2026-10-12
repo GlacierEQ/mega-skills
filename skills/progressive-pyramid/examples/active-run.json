@@ -1,0 +1,53 @@
+{
+  "protocol": "glaciereq.progressive-pyramid.contract.v1",
+  "mission_id": "SYNTHETIC-CERTIFICATION-FIXTURE",
+  "original_outcome": "Demonstrate an active, nonterminal inherited result",
+  "recovered_sources": [
+    "example://synthetic-input"
+  ],
+  "acceptance_criteria": [
+    "externally-observed-result"
+  ],
+  "stages": [
+    {
+      "stage": "corner_1_context",
+      "version": "V1",
+      "artifact_ref": "example://V1",
+      "inherits": null,
+      "verified_gains": [
+        "source-context-reviewed"
+      ]
+    },
+    {
+      "stage": "corner_2_objective",
+      "version": "V2",
+      "artifact_ref": "example://V2",
+      "inherits": "example://V1",
+      "verified_gains": [
+        "source-context-reviewed"
+      ]
+    },
+    {
+      "stage": "corner_3_constraints",
+      "version": "V3",
+      "artifact_ref": "example://V3",
+      "inherits": "example://V2",
+      "verified_gains": [
+        "source-context-reviewed"
+      ]
+    },
+    {
+      "stage": "corner_4_resources",
+      "version": "V4",
+      "artifact_ref": "example://V4",
+      "inherits": "example://V3",
+      "verified_gains": [
+        "source-context-reviewed"
+      ]
+    }
+  ],
+  "center_point": {
+    "status": "ACTIVE",
+    "outcome_proofs": []
+  }
+}
