@@ -78,3 +78,29 @@ These are LOCAL CODE AND REGISTRY VERIFICATIONS, not evidence of automatic
 Codex/Claude/OMP startup injection or verified external mission outcomes.
 The seven cross-host certification cases remain unexecuted until each host's
 receipts are gathered. Do not promote local unit tests into host certification.
+
+## Runtime adoption receipts — 2026-10-11 HST
+
+The following source-specific facts were independently read back after
+implementation. **Installation, discovery, and local test success are not
+equivalent to full seven-case cross-agent behavioral certification.**
+
+| Surface | Verified implementation/readback | Remaining certification |
+|---|---|---|
+| Canonical Mega Skills | Source and installer at `14c42591685098c88f530b52aeda2f9ccf3ef609`; 12 structural validator and 6 installer tests passed on connected Mac | Full seven-case independent agent replay |
+| APEX startup | `GlacierEQ/apex-control-plane@19aff0121b409ffc06b6c43474a6edc301ff589f`; pinned source readback LOADED, startup mission-complete self-claim rejected, 931 repository tests passed (10 skipped) | Prove automatically bound production worker uses startup requirements across each hosted agent |
+| Spiral mission | `GlacierEQ/spiral-engine@8d579f8a298dec33e75e5295e031f08725676de9`; 64 tests passed; live test executed mission runner and checked provider outcome AND Pyramid Center Point before terminal journal state | Real non-fixture provider outcome in deployed client |
+| OMP on Mac | `omp v18.9.1` `omp skill list -g --json` discovered `progressive-pyramid` as nonhidden `agents:user` Skill; source revision and contract content hash matched; `~/.omp/agent/AGENTS.md` now contains a pointer to the canonical protocol | Fresh generated turn failed to complete (deadline exceeded); agent use not behavior-certified |
+| Codex / Claude on Mac | Portable Skill copied and checksum-verified in `~/.agents/skills` and `~/.claude/skills` | Respective CLIs were not available on the Mac; no live host run or certification |
+
+Provider CI for the referenced Spiral commit showed `Spiral Revolution Verification`
+SUCCESS. APEX's `APEX Control Plane Non-Regression`, `Secret Leakage Scanner`,
+and `CASEBRAIN Pro-Code Gates` were SUCCESS. Its general `ci.yml` reported
+FAILURE with no job logs, but older commits also reported that same jobless
+failure; cause remains unresolved, so full CI green is **not** claimed.
+
+The invariant remains: **the finish line is externally observed outcome,
+not successful explanation, local tests, versioned instructions, or file
+installation.** The source implementation has advanced; cross-host
+certification remains an open frontier until each agent demonstrably
+loads, uses, hands off, and completes the same real mission with receipts.
