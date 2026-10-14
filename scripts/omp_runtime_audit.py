@@ -34,7 +34,7 @@ ACCEPTANCE_GATES = (
     "receipt_preserved",
     "second_run_reuse",
 )
-YAML_KEY_RE = re.compile(r"^(\\s*)([A-Za-z][A-Za-z0-9_-]*):(?:\\s*(.*))?$")
+YAML_KEY_RE = re.compile(r"^(\s*)([A-Za-z][A-Za-z0-9_-]*):(?:\s*(.*))?$")
 
 
 def extract_config_value(text: str, dotted_key: str) -> Optional[str]:
