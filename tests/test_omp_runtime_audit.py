@@ -15,13 +15,7 @@ from omp_runtime_audit import audit_omp, extract_config_value  # noqa: E402
 
 class OmpRuntimeAuditTests(unittest.TestCase):
     def test_nested_yaml_scalar_no_arbitrary_fields(self):
-        source = '''tools:
-  approvalMode: "yolo" # danger
-memory:
-  backend: hindsight
-providers:
-  secret: NEVER_ECHO_THIS
-'''
+        source = '''tools:\n  approvalMode: "yolo" # danger\nmemory:\n  backend: hindsight\nproviders:\n  secret: NEVER_ECHO_THIS\n'''
         self.assertEqual(extract_config_value(source, "tools.approvalMode"), "yolo")
         self.assertEqual(extract_config_value(source, "memory.backend"), "hindsight")
         self.assertIsNone(extract_config_value(source, "tools.nonexistent"))
