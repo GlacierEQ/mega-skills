@@ -147,8 +147,11 @@ CoreMaximized Profile  →  +baseline efficiency
 ### Rules
 1. **No Simplifications:** Never use placeholders, "todo" comments, or summarized code blocks. Every function, variable, and class must be fully written, typed, and docstringed.
 2. **Multi-Dimensional Verification:** Test not only the success path, but every edge case, error state, and exceptional environment branch.
-3. **Legal Standard Integration:** Trace arguments back to bedrock code or case precedents. Cite specific rules (FRCP Rule 58, 42 USC 1983).
-4. **Comprehensive Evidence Mapping:** Log SHA-256 signatures, Blake2b hashes, file path trees, and modification timestamps for every document touched.
+3. **Legal Standard Integration:** Trace arguments to applicable controlling law, the chosen court, and the actual filing route. Do not use an unrelated federal rule as a substitute for state-court requirements.
+4. **Comprehensive Evidence Mapping:** Preserve original exhibits, source IDs, timing and provenance. Generate full SHA-256/Blake2b manifests and file-tree inventories when they advance authentication or an ordered proof issue; NEVER delay a live filing, appeal, preservation notice, or other irreversible deadline to compute hashes, reconcile duplicate bytes, or perfect a nonrequired exhibit index.
+5. **Deadline-first preemption (overrides all three modes):** When a live court/agency deadline could expire before the next work phase, first establish the current forum/time/cutoff, identify the shortest authorized filing-ready route, produce required initiating papers, and move to actual submission/official acceptance receipt if tools and authorization permit. If only the human or an attorney can file, immediately surface that exact action while completing all preparatory work in parallel. Nonmandatory forensic reviews, citation expansion, record migrations, and internal governance are POST-SUBMISSION tasks.
+6. **Do not relabel preparation as filing:** A draft, ZIP, hash match, perfect test suite, or upload to Box does not constitute judicial filing. Record FILED only against a native acceptance timestamp/case number; retain PREPARED/UNFILED otherwise.
+7. **Scope protection:** An emergency filing pass preserves the complete alleged facts, counts, remedies, and amendment/discovery routes as a separate protected case graph. Omission from a time-critical pleading must be recorded explicitly with reason and revival action, never silently treated as waiver or irrelevance.
 
 ---
 
