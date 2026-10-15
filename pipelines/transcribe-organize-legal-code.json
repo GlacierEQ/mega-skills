@@ -220,7 +220,7 @@
         "missions/transcribe-organize/FUSE.json"
       ],
       "resume_safe": true,
-      "approval_required": true,
+      "approval_required": false,
       "timeout_seconds": 300
     },
     {
@@ -248,7 +248,7 @@
         "missions/transcribe-organize/DELIVER.json"
       ],
       "resume_safe": true,
-      "approval_required": true,
+      "approval_required": false,
       "timeout_seconds": 180
     }
   ]
