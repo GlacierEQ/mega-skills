@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -132,7 +132,7 @@ def analyze_file(path: Path) -> dict[str, Any]:
     elif isinstance(raw, dict):
         issues = raw.get("issues") or raw.get("data") or []
         if isinstance(issues, dict):
-            issues = issues.get("issues') or []
+            issues = issues.get("issues") or []
     else:
         issues = []
     if not isinstance(issues, list):
