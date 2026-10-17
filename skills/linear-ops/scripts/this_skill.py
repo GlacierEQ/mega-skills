@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Compatibility adapter for linear-ops; package discovery only."""
+import json
+import sys
+
+
+def main() -> int:
+    wants_execute = "--execute" in sys.argv[1:]
+    payload = {
+        "skill": "linear-ops",
+        "adapter": True,
+        "capability_executed": False,
+        "status": "execution_unavailable" if wants_execute else "adapter_ready",
+        "reason": (
+            "Generic compatibility adapter has no live Linear credentials. Use SKILL.md + host connector."
+            if wants_execute
+            else "Compatibility adapter is installed and discoverable."
+        ),
+    }
+    print(json.dumps(payload, indent=2, sort_keys=True))
+    return 2 if wants_execute else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
