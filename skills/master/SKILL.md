@@ -51,6 +51,11 @@ Are you following the standard execution protocol?
   └─ Yes → research-study-act
 ```
 
+## External candidate discovery — provenance first
+
+When a task could materially benefit from externally supplied skills, read `registry/pocketclaw-external-skill-candidates.json` as **candidate-only** metadata (59 user-supplied names; 5 host built-ins and 54 third parties). This read-only discovery edge feeds the existing `skill-connector-router` and `capability-admission` skill; it never installs, enables, grants access, runs code or copies vendor instructions into governing Operator authority. The canonical version-verified `registry/external-skills.json` remains separate. Compare against existing owned capabilities before calling any vendor skill complementary or useful. Only provider/host-native verification of exact publisher, version, source/script integrity, permissions, and behavior can justify promotion or execution. Do not invent a new router or restrict a complete mission to a fixed number of specialists. **Preserve user-facing vendor names in display_name; internal IDs must be distinct lowercase kebab-case.**
+
+
 ## Skill Catalog
 
 ### Core engineering

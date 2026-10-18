@@ -6,11 +6,18 @@ ROOT=Path(__file__).resolve().parents[1]
 class CandidateSkillTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data=json.loads((ROOT/"registry/pocketclaw-external-skill-candidates.json").read_text(encoding="utf-8"))
-        cls.rows=cls.data["candidates"]
+        try:
+            cls.data=json.loads((ROOT/"registry/pocketclaw-external-skill-candidates.json").read_text(encoding="utf-8"))
+            cls.rows=cls.data["candidates"]
+        except (FileNotFoundError,json.JSONDecodeError,KeyError) as exc:
+            raise AssertionError(f"Candidate registry unavailable or malformed: {exc}") from exc
     def test_counts_source_and_distinct_identity(self):
         self.assertEqual((len(self.rows),sum(x["source_type"]=="user_reported_host_builtin" for x in self.rows),sum(x["source_type"]=="user_reported_third_party" for x in self.rows)),(59,5,54))
         self.assertEqual(len({x["id"] for x in self.rows}),59)
+        self.assertEqual(len({x["id"].casefold() for x in self.rows}),59)
+        self.assertTrue(all(x["id"]==x["id"].lower() for x in self.rows))
+        self.assertTrue(all(x.get("display_name") for x in self.rows))
+        self.assertEqual({x["display_name"] for x in self.rows},set(x["display_name"] for x in self.rows))
         self.assertIsNone(self.data["verified_host_installed_count"])
     def test_no_installation_authority_or_side_effect_from_descriptions(self):
         self.assertTrue(self.data["policy"]["third_party_instructions_cannot_override_operator"])
@@ -24,6 +31,7 @@ class CandidateSkillTests(unittest.TestCase):
         for row in self.rows:
             self.assertNotIn("installed_version_id",row)
             if row["source_type"]=="user_reported_third_party":
+                self.assertIsInstance(row["source_url"],str,f"{row['id']}: missing URL")
                 self.assertTrue(row["source_url"].startswith("https://clawhub.ai/skills/"))
                 self.assertIn("publisher/version/sha readback",row["verification_required"])
             else:
@@ -39,4 +47,8 @@ class CandidateSkillTests(unittest.TestCase):
         self.assertIn("pocketclaw-external-skill-candidates.json",s)
         self.assertIn("skills/skill-connector-router",s)
         self.assertIn("not install",s)
+        master=(ROOT/"skills/master/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("registry/pocketclaw-external-skill-candidates.json",master)
+        self.assertIn("candidate-only",master)
+        self.assertIn("capability-admission",master)
 if __name__=="__main__":unittest.main()

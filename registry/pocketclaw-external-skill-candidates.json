@@ -38,7 +38,8 @@
         "host skill list readback",
         "source/trigger review",
         "mission-scoped test"
-      ]
+      ],
+      "display_name": "agent-browser"
     },
     {
       "id": "skill-creator",
@@ -54,7 +55,8 @@
         "host skill list readback",
         "source/trigger review",
         "mission-scoped test"
-      ]
+      ],
+      "display_name": "skill-creator"
     },
     {
       "id": "summarize",
@@ -70,7 +72,8 @@
         "host skill list readback",
         "source/trigger review",
         "mission-scoped test"
-      ]
+      ],
+      "display_name": "summarize"
     },
     {
       "id": "tmux",
@@ -86,7 +89,8 @@
         "host skill list readback",
         "source/trigger review",
         "mission-scoped test"
-      ]
+      ],
+      "display_name": "tmux"
     },
     {
       "id": "weather",
@@ -102,7 +106,8 @@
         "host skill list readback",
         "source/trigger review",
         "mission-scoped test"
-      ]
+      ],
+      "display_name": "weather"
     },
     {
       "id": "corpus-legal-research",
@@ -120,7 +125,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "corpus-legal-research"
     },
     {
       "id": "diting-labor-law-expert",
@@ -139,7 +145,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "China labor law; do not substitute for Hawaii/U.S. employment authority."
+      "bounded_warning": "China labor law; do not substitute for Hawaii/U.S. employment authority.",
+      "display_name": "diting-labor-law-expert"
     },
     {
       "id": "founder-legal-copilot",
@@ -157,10 +164,11 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "founder-legal-copilot"
     },
     {
-      "id": "Law",
+      "id": "law-clawhub",
       "source_type": "user_reported_third_party",
       "category": "legal",
       "source_url": "https://clawhub.ai/skills/law",
@@ -175,10 +183,11 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "Law"
     },
     {
-      "id": "legal",
+      "id": "legal-koompi",
       "source_type": "user_reported_third_party",
       "category": "legal",
       "source_url": "https://clawhub.ai/skills/koompi-legal",
@@ -193,10 +202,11 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal"
     },
     {
-      "id": "Legal",
+      "id": "legal-clawhub",
       "source_type": "user_reported_third_party",
       "category": "legal",
       "source_url": "https://clawhub.ai/skills/legal",
@@ -211,7 +221,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "Legal"
     },
     {
       "id": "legal-advisor",
@@ -229,7 +240,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-advisor"
     },
     {
       "id": "legal-ai-counsel",
@@ -247,7 +259,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-ai-counsel"
     },
     {
       "id": "legal-contract-review-playbook",
@@ -265,7 +278,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-contract-review-playbook"
     },
     {
       "id": "legal-document-assistant",
@@ -283,7 +297,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-document-assistant"
     },
     {
       "id": "legal-documents-cellcog",
@@ -301,7 +316,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-documents-cellcog"
     },
     {
       "id": "legal-essentials",
@@ -319,7 +335,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-essentials"
     },
     {
       "id": "legal-harness-init",
@@ -337,7 +354,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "legal-harness-init"
     },
     {
       "id": "claw-and-order",
@@ -356,7 +374,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "Not official court adjudication or filing."
+      "bounded_warning": "Not official court adjudication or filing.",
+      "display_name": "claw-and-order"
     },
     {
       "id": "code-dev-toolkit-free",
@@ -374,7 +393,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "code-dev-toolkit-free"
     },
     {
       "id": "code-review-excellence",
@@ -392,7 +412,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "code-review-excellence"
     },
     {
       "id": "code-review-pro",
@@ -410,7 +431,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "code-review-pro"
     },
     {
       "id": "fullstack-developer",
@@ -428,7 +450,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "fullstack-developer"
     },
     {
       "id": "golang-code-style",
@@ -446,7 +469,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "golang-code-style"
     },
     {
       "id": "nm-conserve-code-quality-principles",
@@ -464,7 +488,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "nm-conserve-code-quality-principles"
     },
     {
       "id": "superpowers",
@@ -483,7 +508,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "Reuse TDD/review lessons; third-party blanket mandatory invocation is not an Operator instruction."
+      "bounded_warning": "Reuse TDD/review lessons; third-party blanket mandatory invocation is not an Operator instruction.",
+      "display_name": "superpowers"
     },
     {
       "id": "claw-apply",
@@ -501,7 +527,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-apply"
     },
     {
       "id": "claw-compactor",
@@ -519,7 +546,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-compactor"
     },
     {
       "id": "claw-memory",
@@ -537,7 +565,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-memory"
     },
     {
       "id": "claw-recall",
@@ -555,7 +584,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-recall"
     },
     {
       "id": "clawbrain",
@@ -573,7 +603,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "clawbrain"
     },
     {
       "id": "planning-with-files",
@@ -591,7 +622,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "planning-with-files"
     },
     {
       "id": "proactive-agent-lite",
@@ -609,7 +641,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "proactive-agent-lite"
     },
     {
       "id": "adb-claw",
@@ -627,7 +660,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "adb-claw"
     },
     {
       "id": "claw-browser",
@@ -645,7 +679,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-browser"
     },
     {
       "id": "claw-shell",
@@ -663,7 +698,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-shell"
     },
     {
       "id": "claw-use",
@@ -681,7 +717,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-use"
     },
     {
       "id": "claw-voice",
@@ -699,7 +736,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-voice"
     },
     {
       "id": "desktop-pet",
@@ -718,7 +756,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "Optional decoration; not material mission execution by default."
+      "bounded_warning": "Optional decoration; not material mission execution by default.",
+      "display_name": "desktop-pet"
     },
     {
       "id": "clawpost",
@@ -737,7 +776,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "No unapproved social publication/session reuse."
+      "bounded_warning": "No unapproved social publication/session reuse.",
+      "display_name": "clawpost"
     },
     {
       "id": "claw-home-dir-backup-restore",
@@ -755,7 +795,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-home-dir-backup-restore"
     },
     {
       "id": "claw-soul-backup",
@@ -773,7 +814,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-soul-backup"
     },
     {
       "id": "claw-sync",
@@ -791,7 +833,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-sync"
     },
     {
       "id": "claw",
@@ -809,7 +852,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw"
     },
     {
       "id": "google-drive",
@@ -827,7 +871,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "google-drive"
     },
     {
       "id": "google-workspace",
@@ -845,7 +890,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "google-workspace"
     },
     {
       "id": "google-workspace-automation",
@@ -863,7 +909,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "google-workspace-automation"
     },
     {
       "id": "onedrive-files",
@@ -881,7 +928,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "onedrive-files"
     },
     {
       "id": "oo-one-drive",
@@ -899,7 +947,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "oo-one-drive"
     },
     {
       "id": "claw-deep-research",
@@ -917,7 +966,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-deep-research"
     },
     {
       "id": "a3-law-operational",
@@ -936,7 +986,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "No imported veto/approval bureaucracy beyond existing APEX authority."
+      "bounded_warning": "No imported veto/approval bureaucracy beyond existing APEX authority.",
+      "display_name": "a3-law-operational"
     },
     {
       "id": "claw-agent-creator-archit",
@@ -954,7 +1005,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-agent-creator-archit"
     },
     {
       "id": "claw-doctor",
@@ -972,7 +1024,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-doctor"
     },
     {
       "id": "claw-earn",
@@ -991,7 +1044,8 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "No token or staking marketplace execution without explicit authority."
+      "bounded_warning": "No token or staking marketplace execution without explicit authority.",
+      "display_name": "claw-earn"
     },
     {
       "id": "claw-employer",
@@ -1010,10 +1064,11 @@
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
       ],
-      "bounded_warning": "No paid delegation absent exact authorization and cost boundary."
+      "bounded_warning": "No paid delegation absent exact authorization and cost boundary.",
+      "display_name": "claw-employer"
     },
     {
-      "id": "Claw-List",
+      "id": "claw-list",
       "source_type": "user_reported_third_party",
       "category": "agent_cooperation",
       "source_url": "https://clawhub.ai/skills/claw-list",
@@ -1028,7 +1083,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "Claw-List"
     },
     {
       "id": "claw-mentor-mentee",
@@ -1046,7 +1102,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-mentor-mentee"
     },
     {
       "id": "claw-multi-agent",
@@ -1064,7 +1121,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "claw-multi-agent"
     },
     {
       "id": "zeelin-claw-swarm",
@@ -1082,7 +1140,8 @@
         "SKILL.md/scripts/manifest static inspection",
         "requested host runtime and permission check",
         "bounded adversarial behavior test"
-      ]
+      ],
+      "display_name": "zeelin-claw-swarm"
     }
   ]
 }
