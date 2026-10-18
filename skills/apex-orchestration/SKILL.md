@@ -2,7 +2,7 @@
 name: apex-orchestration
 description: "Complete APEX operational framework. Holographic Mesh Orchestrator across 12 free-model lanes, six-stage mission lifecycle, receipt-chain verification, 26 production-grade logic packets (12 base + 4 ML/self-improving + 5 cutting-edge dev techniques + 5 elite hardening). Use when executing APEX workflows, dispatching multi-model missions, fusing verified outputs, online-learning, speculative decoding, semantic caching, DAG scheduling, property-based testing, mutation testing, adaptive token compression, contract testing, model cascading, retrieval-augmented context, or constitutional gate."
 schema: ../../schemas/combo-skill.schema.json
-version: 1.3.0
+version: 1.3.1
 status: active
 ---
 
@@ -29,6 +29,27 @@ APEX MESH (Holographic, 12 lanes, free-tier)
 ├── Token Economy              — cache-hit, surgical injection, budget gate
 └── Observability              — append-only logs, replayable, inspectable
 ```
+
+---
+
+## Token-Aware Depth Law — Above Compression, Not Instead of It
+
+Canonical source: https://github.com/GlacierEQ/aspen-grove-core/blob/main/TOKEN_AWARE_EXECUTION.md
+
+The Aspen doctrine decides **how much useful depth the mission deserves**. Packet 11 (Token Economy) and Packet 22 (Adaptive Compression) then optimize cost and context waste inside that depth allocation. They must never silently turn cost optimization into objective minimization.
+
+Before DECOMPOSE/DISPATCH, scale reasoning, context, tool, and verification effort with:
+- mission **criticality**;
+- context/dependency surface;
+- uncertainty and ambiguity;
+- executable opportunity;
+- **verification burden**;
+- compounding/reuse value;
+- remaining frontier size.
+
+**Depth is not verbosity.** Prefer source recovery, dependency reasoning, code/tool execution, adversarial tests, provider readback, and receipts over repeated explanation. If further reasoning no longer changes the route, execute. A successful lane or packet is a checkpoint, not an automatic mission stop. Continue until **the executable frontier is exhausted**, a genuine external dependency blocks, or marginal work has sharply diminishing value.
+
+Derived skills and workers reference this canonical Aspen doctrine; they do not duplicate its full text or invent competing token-allocation laws.
 
 ---
 
