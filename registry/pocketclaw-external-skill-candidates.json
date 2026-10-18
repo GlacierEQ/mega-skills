@@ -21,7 +21,9 @@
     "retains_owner_driven_routing": true,
     "admit_to_external_registry_only_after_verified_version_and_owner": true,
     "claims_of_chatgpt_host_activation_require_live_evidence": true,
-    "do_not_shrink_mission_for_tool_limit": true
+    "do_not_shrink_mission_for_tool_limit": true,
+    "no_cross_host_identity_aliasing": true,
+    "explicit_privileged_builtin_risk": true
   },
   "candidates": [
     {
@@ -39,10 +41,11 @@
         "source/trigger review",
         "mission-scoped test"
       ],
-      "display_name": "agent-browser"
+      "display_name": "agent-browser",
+      "execution_risk": "high"
     },
     {
-      "id": "skill-creator",
+      "id": "pocketclaw-builtin-skill-creator",
       "source_type": "user_reported_host_builtin",
       "category": "engineering",
       "source_url": null,
@@ -56,7 +59,9 @@
         "source/trigger review",
         "mission-scoped test"
       ],
-      "display_name": "skill-creator"
+      "display_name": "skill-creator",
+      "execution_risk": "contextual",
+      "source_native_id": "skill-creator"
     },
     {
       "id": "summarize",
@@ -73,7 +78,8 @@
         "source/trigger review",
         "mission-scoped test"
       ],
-      "display_name": "summarize"
+      "display_name": "summarize",
+      "execution_risk": "contextual"
     },
     {
       "id": "tmux",
@@ -90,7 +96,8 @@
         "source/trigger review",
         "mission-scoped test"
       ],
-      "display_name": "tmux"
+      "display_name": "tmux",
+      "execution_risk": "high"
     },
     {
       "id": "weather",
@@ -107,7 +114,8 @@
         "source/trigger review",
         "mission-scoped test"
       ],
-      "display_name": "weather"
+      "display_name": "weather",
+      "execution_risk": "contextual"
     },
     {
       "id": "corpus-legal-research",

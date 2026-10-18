@@ -51,4 +51,19 @@ class CandidateSkillTests(unittest.TestCase):
         self.assertIn("registry/pocketclaw-external-skill-candidates.json",master)
         self.assertIn("candidate-only",master)
         self.assertIn("capability-admission",master)
+
+    def test_candidate_ids_do_not_shadow_other_external_runtime_ids(self):
+        external=json.loads((ROOT/"registry/external-skills.json").read_text(encoding="utf-8"))
+        existing={x["id"].casefold() for x in external["entries"]}
+        for row in self.rows:
+            self.assertNotIn(row["id"].casefold(),existing,f"{row['id']}: cross-runtime collision")
+
+    def test_privileged_builtins_have_explicit_risk(self):
+        by_id={x["id"]:x for x in self.rows}
+        for id in ("agent-browser","tmux"):
+            self.assertEqual(by_id[id]["execution_risk"],"high",id)
+        self.assertIn("pocketclaw-builtin-skill-creator",by_id)
+        for row in self.rows:
+            self.assertIn(row["execution_risk"],("high","contextual"))
+
 if __name__=="__main__":unittest.main()
