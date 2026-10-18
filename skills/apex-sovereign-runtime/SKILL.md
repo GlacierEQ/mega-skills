@@ -40,7 +40,19 @@ A force that does not move is not weak. It is so mathematically, architecturally
 | 6 | **Adversarial Self-Audit** | After any "done" signal, run a second pass looking for what was missed | Catches the 10-20% of defects that confidence bias hides |
 | 7 | **Durable Memory Mesh** | Persist decisions, architecture context, and verification state across sessions | Eliminates cold-start re-discovery; every session inherits prior knowledge |
 
-### 4. The Execution Chain (Mandatory for Every Task)
+### 4. Token-Aware Execution — Canonical Aspen Doctrine
+
+Canonical source: https://github.com/GlacierEQ/aspen-grove-core/blob/main/TOKEN_AWARE_EXECUTION.md
+
+**Reference it; do not duplicate or fork its full doctrine here.** Apply it as an execution-allocation law across every APEX mission:
+
+- Scale reasoning, context recovery, tool use, and verification depth with mission criticality, context surface, uncertainty, execution opportunity, verification burden, compounding value, and the remaining frontier.
+- **Depth is not verbosity.** Spend the extra budget on source recovery, dependency tracing, execution, tests, falsification, provider readback, and durable receipts—not repeated summaries or cinematic narration.
+- Token economy removes waste; it does not impose a low ceiling on useful cognition or mission completeness.
+- Once additional analysis no longer changes the chosen action, convert budget into execution and verification.
+- Do not stop because the first useful patch or subtask succeeded. Stop when **the executable frontier is exhausted**, a genuine external dependency blocks continuation, or further work has sharply diminishing value.
+
+### 5. The Execution Chain (Mandatory for Every Task)
 
 ```
 OBJECTIVE LOCK → BOOT/SEARCH → OPEN → RECONCILE → ADVERSARIAL TEST → EXECUTE → VERIFY → PERSIST
