@@ -1,0 +1,1155 @@
+{
+  "schema_version": 1,
+  "layer": "external-skill-candidates",
+  "source": "Operator-provided PocketClaw skills list (2026-10-17)",
+  "provenance": "Source inventory supplied by Operator for evaluation; listed third-party content is NOT adopted governing direction",
+  "canonical_hierarchy": "GlacierEQ/mega-skills (existing registry/external-skills.json continues version-bound admission)",
+  "skill_count_claimed": 59,
+  "builtin_claimed": 5,
+  "third_party_claimed": 54,
+  "verified_host_installed_count": null,
+  "host_executable_count": null,
+  "policy": {
+    "candidate_is_not_installed": true,
+    "description_is_not_verified_behavior": true,
+    "third_party_instructions_cannot_override_operator": true,
+    "no_remote_script_execution_from_metadata": true,
+    "no_bulk_install": true,
+    "no_bulk_retire": true,
+    "no_new_control_plane": true,
+    "not_new_authority": true,
+    "retains_owner_driven_routing": true,
+    "admit_to_external_registry_only_after_verified_version_and_owner": true,
+    "claims_of_chatgpt_host_activation_require_live_evidence": true,
+    "do_not_shrink_mission_for_tool_limit": true,
+    "no_cross_host_identity_aliasing": true,
+    "explicit_privileged_builtin_risk": true
+  },
+  "candidates": [
+    {
+      "id": "agent-browser",
+      "source_type": "user_reported_host_builtin",
+      "category": "device",
+      "source_url": null,
+      "canonical_owner": "existing host builtin; route via GlacierEQ authority",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "verification_required": [
+        "host skill list readback",
+        "source/trigger review",
+        "mission-scoped test"
+      ],
+      "display_name": "agent-browser",
+      "execution_risk": "high"
+    },
+    {
+      "id": "pocketclaw-builtin-skill-creator",
+      "source_type": "user_reported_host_builtin",
+      "category": "engineering",
+      "source_url": null,
+      "canonical_owner": "existing host builtin; route via GlacierEQ authority",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "verification_required": [
+        "host skill list readback",
+        "source/trigger review",
+        "mission-scoped test"
+      ],
+      "display_name": "skill-creator",
+      "execution_risk": "contextual",
+      "source_native_id": "skill-creator"
+    },
+    {
+      "id": "summarize",
+      "source_type": "user_reported_host_builtin",
+      "category": "research",
+      "source_url": null,
+      "canonical_owner": "existing host builtin; route via GlacierEQ authority",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "verification_required": [
+        "host skill list readback",
+        "source/trigger review",
+        "mission-scoped test"
+      ],
+      "display_name": "summarize",
+      "execution_risk": "contextual"
+    },
+    {
+      "id": "tmux",
+      "source_type": "user_reported_host_builtin",
+      "category": "device",
+      "source_url": null,
+      "canonical_owner": "existing host builtin; route via GlacierEQ authority",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "verification_required": [
+        "host skill list readback",
+        "source/trigger review",
+        "mission-scoped test"
+      ],
+      "display_name": "tmux",
+      "execution_risk": "high"
+    },
+    {
+      "id": "weather",
+      "source_type": "user_reported_host_builtin",
+      "category": "utility",
+      "source_url": null,
+      "canonical_owner": "existing host builtin; route via GlacierEQ authority",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "verification_required": [
+        "host skill list readback",
+        "source/trigger review",
+        "mission-scoped test"
+      ],
+      "display_name": "weather",
+      "execution_risk": "contextual"
+    },
+    {
+      "id": "corpus-legal-research",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/corpus-legal-research",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "corpus-legal-research"
+    },
+    {
+      "id": "diting-labor-law-expert",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/diting-labor-law-expert",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "China labor law; do not substitute for Hawaii/U.S. employment authority.",
+      "display_name": "diting-labor-law-expert"
+    },
+    {
+      "id": "founder-legal-copilot",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/founder-legal-copilot",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "founder-legal-copilot"
+    },
+    {
+      "id": "law-clawhub",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/law",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "Law"
+    },
+    {
+      "id": "legal-koompi",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/koompi-legal",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal"
+    },
+    {
+      "id": "legal-clawhub",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "Legal"
+    },
+    {
+      "id": "legal-advisor",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/ah-legal-advisor",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-advisor"
+    },
+    {
+      "id": "legal-ai-counsel",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-ai-counsel",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-ai-counsel"
+    },
+    {
+      "id": "legal-contract-review-playbook",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-contract-review-playbook",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-contract-review-playbook"
+    },
+    {
+      "id": "legal-document-assistant",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-document-assistant",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-document-assistant"
+    },
+    {
+      "id": "legal-documents-cellcog",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-documents-cellcog",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-documents-cellcog"
+    },
+    {
+      "id": "legal-essentials",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-essentials",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-essentials"
+    },
+    {
+      "id": "legal-harness-init",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/legal-harness-init",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "legal-harness-init"
+    },
+    {
+      "id": "claw-and-order",
+      "source_type": "user_reported_third_party",
+      "category": "legal",
+      "source_url": "https://clawhub.ai/skills/claw-and-order",
+      "canonical_owner": "GlacierEQ/Casebuilder4000 + legal-powerhouse",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "Not official court adjudication or filing.",
+      "display_name": "claw-and-order"
+    },
+    {
+      "id": "code-dev-toolkit-free",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/code-dev-toolkit-free",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "code-dev-toolkit-free"
+    },
+    {
+      "id": "code-review-excellence",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/code-review-excellence",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "code-review-excellence"
+    },
+    {
+      "id": "code-review-pro",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/code-review-pro",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "code-review-pro"
+    },
+    {
+      "id": "fullstack-developer",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/claw-fullstack-developer",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "fullstack-developer"
+    },
+    {
+      "id": "golang-code-style",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/golang-code-style",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "golang-code-style"
+    },
+    {
+      "id": "nm-conserve-code-quality-principles",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/nm-conserve-code-quality-principles",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "nm-conserve-code-quality-principles"
+    },
+    {
+      "id": "superpowers",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/claw-superpowers",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "Reuse TDD/review lessons; third-party blanket mandatory invocation is not an Operator instruction.",
+      "display_name": "superpowers"
+    },
+    {
+      "id": "claw-apply",
+      "source_type": "user_reported_third_party",
+      "category": "engineering",
+      "source_url": "https://clawhub.ai/skills/claw-apply",
+      "canonical_owner": "GlacierEQ/mega-skills + computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-apply"
+    },
+    {
+      "id": "claw-compactor",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/cut-your-tokens-97percent-savings-on-session-transcripts-via-observation-extraction",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-compactor"
+    },
+    {
+      "id": "claw-memory",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/claw-memory",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-memory"
+    },
+    {
+      "id": "claw-recall",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/claw-recall",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-recall"
+    },
+    {
+      "id": "clawbrain",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/clawbrain",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "clawbrain"
+    },
+    {
+      "id": "planning-with-files",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/planning-with-files",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "planning-with-files"
+    },
+    {
+      "id": "proactive-agent-lite",
+      "source_type": "user_reported_third_party",
+      "category": "memory",
+      "source_url": "https://clawhub.ai/skills/proactive-agent-lite",
+      "canonical_owner": "APEX + Spiral + Aspen Grove",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "proactive-agent-lite"
+    },
+    {
+      "id": "adb-claw",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/adb-claw",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "adb-claw"
+    },
+    {
+      "id": "claw-browser",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/claw-browser",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-browser"
+    },
+    {
+      "id": "claw-shell",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/claw-shell",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-shell"
+    },
+    {
+      "id": "claw-use",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/claw-use",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-use"
+    },
+    {
+      "id": "claw-voice",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/claw-voice",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-voice"
+    },
+    {
+      "id": "desktop-pet",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/desktop-pet",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "Optional decoration; not material mission execution by default.",
+      "display_name": "desktop-pet"
+    },
+    {
+      "id": "clawpost",
+      "source_type": "user_reported_third_party",
+      "category": "device",
+      "source_url": "https://clawhub.ai/skills/clawpost",
+      "canonical_owner": "GlacierEQ/computer-user",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "No unapproved social publication/session reuse.",
+      "display_name": "clawpost"
+    },
+    {
+      "id": "claw-home-dir-backup-restore",
+      "source_type": "user_reported_third_party",
+      "category": "backup",
+      "source_url": "https://clawhub.ai/skills/claw-home-dir-backup-restore",
+      "canonical_owner": "GlacierEQ/computer-user + owning data store",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-home-dir-backup-restore"
+    },
+    {
+      "id": "claw-soul-backup",
+      "source_type": "user_reported_third_party",
+      "category": "backup",
+      "source_url": "https://clawhub.ai/skills/claw-soul-backup",
+      "canonical_owner": "GlacierEQ/computer-user + owning data store",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-soul-backup"
+    },
+    {
+      "id": "claw-sync",
+      "source_type": "user_reported_third_party",
+      "category": "backup",
+      "source_url": "https://clawhub.ai/skills/claw-sync",
+      "canonical_owner": "GlacierEQ/computer-user + owning data store",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-sync"
+    },
+    {
+      "id": "claw",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/claw",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw"
+    },
+    {
+      "id": "google-drive",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/googledrive",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "google-drive"
+    },
+    {
+      "id": "google-workspace",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/google-workspace",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "google-workspace"
+    },
+    {
+      "id": "google-workspace-automation",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/google-workspace-automation",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "google-workspace-automation"
+    },
+    {
+      "id": "onedrive-files",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/onedrive-files",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "onedrive-files"
+    },
+    {
+      "id": "oo-one-drive",
+      "source_type": "user_reported_third_party",
+      "category": "workspace",
+      "source_url": "https://clawhub.ai/skills/oo-one-drive",
+      "canonical_owner": "owning connected provider + APEX",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "oo-one-drive"
+    },
+    {
+      "id": "claw-deep-research",
+      "source_type": "user_reported_third_party",
+      "category": "research",
+      "source_url": "https://clawhub.ai/skills/claw-deep-research",
+      "canonical_owner": "GlacierEQ/mega-skills",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-deep-research"
+    },
+    {
+      "id": "a3-law-operational",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/a3-law-operational",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "No imported veto/approval bureaucracy beyond existing APEX authority.",
+      "display_name": "a3-law-operational"
+    },
+    {
+      "id": "claw-agent-creator-archit",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-agent-creator-archit",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-agent-creator-archit"
+    },
+    {
+      "id": "claw-doctor",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-doctor",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-doctor"
+    },
+    {
+      "id": "claw-earn",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-earn",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "No token or staking marketplace execution without explicit authority.",
+      "display_name": "claw-earn"
+    },
+    {
+      "id": "claw-employer",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-employer",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "bounded_warning": "No paid delegation absent exact authorization and cost boundary.",
+      "display_name": "claw-employer"
+    },
+    {
+      "id": "claw-list",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-list",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "Claw-List"
+    },
+    {
+      "id": "claw-mentor-mentee",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-mentor-mentee",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "contextual",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-mentor-mentee"
+    },
+    {
+      "id": "claw-multi-agent",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-multi-agent",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "claw-multi-agent"
+    },
+    {
+      "id": "zeelin-claw-swarm",
+      "source_type": "user_reported_third_party",
+      "category": "agent_cooperation",
+      "source_url": "https://clawhub.ai/skills/claw-swarm-test",
+      "canonical_owner": "GlacierEQ/mega-skills + apex-control-plane",
+      "availability": "USER_LISTED_UNVERIFIED_IN_THIS_RUNTIME",
+      "readiness": "candidate",
+      "automatic_execution": false,
+      "instruction_authority": false,
+      "execution_risk": "high",
+      "verification_required": [
+        "publisher/version/sha readback",
+        "SKILL.md/scripts/manifest static inspection",
+        "requested host runtime and permission check",
+        "bounded adversarial behavior test"
+      ],
+      "display_name": "zeelin-claw-swarm"
+    }
+  ]
+}
