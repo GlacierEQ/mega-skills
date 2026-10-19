@@ -125,4 +125,77 @@ class BrowserOSNeoTests(unittest.TestCase):
         with patch('browseros_neo_setup.send_mcp_request', side_effect=fake_send):
             with self.assertRaises(ValidationError): probe_mcp(ENDPOINT)
 
+    def test_real_local_http_json_mcp_handshake(self):
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        from browseros_neo_setup import send_mcp_request
+        calls = []
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_POST(self):
+                body = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
+                calls.append((body['method'], self.headers.get('Mcp-Session-Id')))
+                if body['method'] == 'initialize':
+                    payload = {'jsonrpc': '2.0', 'id': 1, 'result': {'protocolVersion': '2025-06-18'}}
+                elif body['method'] == 'notifications/initialized':
+                    self.send_response(202); self.end_headers(); return
+                else:
+                    payload = {'jsonrpc': '2.0', 'id': 2, 'result': {'tools': [{'name': 'snapshot'}, {'name': 'tabs'}]}}
+                wire = json.dumps(payload).encode()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Mcp-Session-Id', 'test-session')
+                self.send_header('Content-Length', str(len(wire)))
+                self.end_headers(); self.wfile.write(wire)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        thread = Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            endpoint = f'http://127.0.0.1:{server.server_port}/mcp'
+            self.assertEqual(probe_mcp(endpoint), ['snapshot', 'tabs'])
+            self.assertEqual(calls, [('initialize', None), ('notifications/initialized', 'test-session'), ('tools/list', 'test-session')])
+        finally:
+            server.shutdown(); server.server_close(); thread.join(timeout=2)
+
+    def test_real_local_sse_transport(self):
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        from browseros_neo_setup import send_mcp_request
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_POST(self):
+                self.rfile.read(int(self.headers['Content-Length']))
+                wire = b'event: message\ndata: {"jsonrpc":"2.0","id":5,"result":{"tools":[]}}\n\n'
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/event-stream')
+                self.send_header('Content-Length', str(len(wire)))
+                self.end_headers(); self.wfile.write(wire)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        thread = Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            response, _ = send_mcp_request(f'http://127.0.0.1:{server.server_port}/mcp', 'tools/list', {}, 5)
+            self.assertEqual(response['result']['tools'], [])
+        finally:
+            server.shutdown(); server.server_close(); thread.join(timeout=2)
+
+    def test_sse_missing_blank_line_reports_validation_error_not_name_error(self):
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+        from threading import Thread
+        from browseros_neo_setup import send_mcp_request
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_POST(self):
+                self.rfile.read(int(self.headers['Content-Length']))
+                wire = b'data: {"jsonrpc":"2.0","id":5,"result":{"tools":[]}}\n'
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/event-stream')
+                self.send_header('Content-Length', str(len(wire)))
+                self.end_headers(); self.wfile.write(wire)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        thread = Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            with self.assertRaises(ValidationError):
+                send_mcp_request(f'http://127.0.0.1:{server.server_port}/mcp', 'tools/list', {}, 5)
+        finally:
+            server.shutdown(); server.server_close(); thread.join(timeout=2)
+
 if __name__ == '__main__': unittest.main()
