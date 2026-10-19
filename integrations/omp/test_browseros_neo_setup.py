@@ -198,4 +198,32 @@ class BrowserOSNeoTests(unittest.TestCase):
         finally:
             server.shutdown(); server.server_close(); thread.join(timeout=2)
 
+    def test_dry_run_does_not_install_skill_or_create_config(self):
+        from browseros_neo_setup import main
+        with tempfile.TemporaryDirectory() as temp:
+            cfg = Path(temp)/'mcp.json'
+            with patch('sys.argv', ['setup', '--config', str(cfg)]), \
+                 patch('browseros_neo_setup.assert_target_mac'), \
+                 patch('browseros_neo_setup.probe_mcp', return_value=['tabs']), \
+                 patch('browseros_neo_setup.subprocess.run') as run, \
+                 patch('browseros_neo_setup.write_config_atomically') as write:
+                self.assertEqual(main(), 0)
+                run.assert_not_called(); write.assert_not_called()
+            self.assertFalse(cfg.exists())
+
+    def test_failed_skill_install_leaves_omp_config_untouched(self):
+        import subprocess
+        from browseros_neo_setup import main
+        with tempfile.TemporaryDirectory() as temp:
+            cfg = Path(temp)/'mcp.json'; cfg.write_text('{"mcpServers":{"existing":{"command":"foo"}}}')
+            before = cfg.read_bytes()
+            with patch('sys.argv', ['setup', '--apply', '--config', str(cfg)]), \
+                 patch('browseros_neo_setup.assert_target_mac'), \
+                 patch('browseros_neo_setup.probe_mcp', return_value=['tabs']), \
+                 patch('browseros_neo_setup.shutil.which', return_value='/fake/npx'), \
+                 patch('browseros_neo_setup.skill_installed', return_value=False), \
+                 patch('browseros_neo_setup.subprocess.run', side_effect=subprocess.CalledProcessError(1, ['npx'])):
+                self.assertEqual(main(), 2)
+            self.assertEqual(cfg.read_bytes(), before)
+
 if __name__ == '__main__': unittest.main()
