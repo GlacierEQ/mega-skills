@@ -7971,14 +7971,18 @@
       "state": "instruction_ready",
       "declared_maturity": "candidate",
       "instruction_ready": true,
-      "real_implementation_files": [],
+      "real_implementation_files": [
+        "skills/linear-frontier-deduplicator/scripts/decision_gate.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "tests/test_correspondence_decision_gate.py"
+      ],
       "structural_tests": [],
       "reasons": [
-        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+        "Pure-logic decision admission locally tested (17 focus tests), but full hierarchy and external connected-provider end-to-end runtime integration not yet verified"
       ]
     },
     {
