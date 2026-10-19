@@ -67,7 +67,7 @@ class BrowserOSNeoTests(unittest.TestCase):
     def test_atomic_write_retains_old_config_and_permissions(self):
         with tempfile.TemporaryDirectory() as temp:
             cfg = Path(temp)/'mcp.json'
-            original = '{"mcpServers":{"legacy":{"command":"legacy"}}}\\n'
+            original = '{"mcpServers":{"legacy":{"command":"legacy"}}}\n'
             cfg.write_text(original)
             cfg.chmod(0o600)
             backup = write_config_atomically(cfg, merge_config(json.loads(original), ENDPOINT))
@@ -84,11 +84,11 @@ class BrowserOSNeoTests(unittest.TestCase):
 
     def test_restore_backup_reverts_existing_and_no_clobber_on_conflict(self):
         with tempfile.TemporaryDirectory() as temp:
-            cfg = Path(temp)/'mcp.json'; cfg.write_text('{"x":1}\\n')
+            cfg = Path(temp)/'mcp.json'; cfg.write_text('{"x":1}\n')
             backup = write_config_atomically(cfg, {'x': 2})
             self.assertEqual(json.loads(cfg.read_text()), {'x': 2})
             restore_backup(cfg, backup, expected_current={'x': 2})
-            self.assertEqual(cfg.read_text(), '{"x":1}\\n')
+            self.assertEqual(cfg.read_text(), '{"x":1}\n')
             with self.assertRaises(ValidationError): restore_backup(cfg, backup, expected_current={'x': 2})
 
     def test_installed_skill_respects_supported_roots(self):
@@ -96,7 +96,7 @@ class BrowserOSNeoTests(unittest.TestCase):
             home = Path(temp)
             self.assertFalse(skill_installed(home))
             skill = home/'.agents/skills/browseros-neo/SKILL.md'
-            skill.parent.mkdir(parents=True); skill.write_text('---\\nname: browseros-neo\\n---\\n')
+            skill.parent.mkdir(parents=True); skill.write_text('---\nname: browseros-neo\n---\n')
             self.assertTrue(skill_installed(home))
             skill.write_text('not a skill')
             self.assertFalse(skill_installed(home))
