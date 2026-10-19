@@ -5,6 +5,7 @@ performed here. Caller must source original provider events and approvals.
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from typing import Mapping, Sequence
 
 KNOWN_STAGES = frozenset({
@@ -52,7 +53,19 @@ def decide_correspondence(
         dates = [e.get('observed_at') for e in relevant]
         if not all(isinstance(d, str) and d for d in dates):
             return _result('NEEDS_PROOF', 'UNKNOWN', 'Conflicting event order lacks complete timestamps')
-        relevant.sort(key=lambda e: str(e['observed_at']))
+        try:
+            normalized = []
+            for event in relevant:
+                instant = datetime.fromisoformat(str(event['observed_at']).replace('Z', '+00:00'))
+                if instant.tzinfo is None:
+                    raise ValueError('Offset required')
+                normalized.append((instant.astimezone(timezone.utc), event))
+            normalized.sort(key=lambda pair: pair[0])
+        except (TypeError, ValueError, OverflowError):
+            return _result('NEEDS_PROOF', 'UNKNOWN', 'Provider event timestamp invalid or timezone missing')
+        if normalized[-1][0] == normalized[-2][0] and normalized[-1][1]['stage'] != normalized[-2][1]['stage']:
+            return _result('NEEDS_PROOF', 'UNKNOWN', 'Two contradictory stages share the same observed instant')
+        relevant = [event for _, event in normalized]
 
     stage = str(relevant[-1]['stage'])
     if stage == 'AMBIGUOUS_SEND':
