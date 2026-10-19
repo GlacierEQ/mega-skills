@@ -181,6 +181,7 @@ def send_mcp_request(endpoint: str, method: str, params: object, request_id: int
         ctype = res.getheader('Content-Type', '').lower()
         if 'text/event-stream' in ctype:
             messages = []
+            payload = None
             for _ in range(300):
                 line = res.readline(8193)
                 if not line:
@@ -194,8 +195,8 @@ def send_mcp_request(endpoint: str, method: str, params: object, request_id: int
                     break
             else:
                 raise ValidationError('MCP SSE response too long')
-            if not messages:
-                raise ValidationError('No MCP response event')
+            if payload is None:
+                raise ValidationError('Incomplete MCP SSE event (missing delimiter or data)')
         elif 'application/json' in ctype:
             payload = res.read(1024 * 1024 + 1)
             if len(payload) > 1024 * 1024:
@@ -284,9 +285,7 @@ def main() -> int:
             raise ValidationError('BrowserOS skill absent from recognized global skill roots')
         backup = write_config_atomically(path, candidate) if changed else None
         if _load_config(path) != candidate:
-            if backup:
-                restore_backup(path, backup, expected_current=candidate)
-            raise ValidationError('OMP config readback mismatch')
+            raise ValidationError('OMP config changed during readback; preserved backup, not overwriting intervening changes')
         print('LOCAL_CONFIG_VERIFIED=1 SKILL_FILE_VERIFIED=1')
         print(f'CONFIG_CHANGED={int(changed)} BACKUP={backup or "none"}')
         print('OMP_RUNTIME_MCP_TEST_PENDING=1')
