@@ -1,0 +1,73 @@
+"""Pure, fail-closed action-admission decision helper.
+
+No network, email sending, Linear writes, legal conclusions or authentication is
+performed here. Caller must source original provider events and approvals.
+"""
+from __future__ import annotations
+
+from typing import Mapping, Sequence
+
+KNOWN_STAGES = frozenset({
+    'DRAFT', 'SENT', 'RECEIVED', 'ACKNOWLEDGED', 'ASSIGNED', 'PROCESSING',
+    'PARTIAL', 'PRODUCED', 'DENIED', 'AMBIGUOUS_SEND', 'WITHDRAWN', 'REMEDIED',
+})
+WAITING = frozenset({'SENT', 'RECEIVED', 'ACKNOWLEDGED', 'ASSIGNED', 'PROCESSING'})
+
+
+def _result(decision: str, stage: str, reason: str) -> dict[str, object]:
+    return {
+        'decision': decision,
+        'latest_stage': stage,
+        'reason': reason,
+        'outcome_verified': False,
+        'external_effect_executed': False,
+    }
+
+
+def decide_correspondence(
+    *, action_key: str, expected_sender: str, authenticated_sender: str,
+    approved: bool, events: Sequence[Mapping[str, object]],
+) -> dict[str, object]:
+    """Choose a safe next *classification*, never execute external effects.
+
+    action_key must combine beneficiary, case, custodian, intended effect and
+    stable provider-thread identity where known. The caller must fetch events
+    from ALL relevant mailboxes and provider sources before using this result.
+    """
+    if not action_key or not expected_sender or not authenticated_sender:
+        return _result('BLOCK_IDENTITY_UNRESOLVED', 'UNKNOWN', 'Mission, sender or connected-account identity unavailable')
+    if expected_sender.strip().casefold() != authenticated_sender.strip().casefold():
+        return _result('BLOCK_WRONG_SENDER', 'UNKNOWN', 'Authenticated mailbox does not match expected first-party sender')
+
+    relevant = [e for e in events if e.get('action_key') == action_key]
+    for e in relevant:
+        if e.get('stage') not in KNOWN_STAGES:
+            return _result('NEEDS_PROOF', 'UNKNOWN', 'Unrecognized or missing provider stage')
+
+    if not relevant:
+        return _result('READY_FOR_DISPATCH' if approved else 'DRAFT_ONLY',
+                       'NONE', 'No existing action event found in supplied source scope; independent coverage verification still required')
+
+    if len(relevant) > 1:
+        dates = [e.get('observed_at') for e in relevant]
+        if not all(isinstance(d, str) and d for d in dates):
+            return _result('NEEDS_PROOF', 'UNKNOWN', 'Conflicting event order lacks complete timestamps')
+        relevant.sort(key=lambda e: str(e['observed_at']))
+
+    stage = str(relevant[-1]['stage'])
+    if stage == 'AMBIGUOUS_SEND':
+        return _result('NEEDS_PROOF', stage, 'Unknown delivery must be read back before retry')
+    if stage in WAITING:
+        return _result('WAITING_EXTERNAL', stage, 'An outbound request already exists; do not replay')
+    if stage == 'PARTIAL':
+        return _result('RECONCILE_PARTIAL', stage, 'Reconcile received and unfulfilled categories before further contact')
+    if stage == 'PRODUCED':
+        return _result('VERIFY_PRODUCTION', stage, 'Audit native production; source receipt alone does not prove remedy')
+    if stage == 'DENIED':
+        return _result('REVIEW_ADVERSE_DETERMINATION', stage, 'Preserve actual written denial and check applicable review path')
+    if stage == 'REMEDIED':
+        return _result('VERIFY_REMEDY', stage, 'Independently test requested real-world outcome before mission closure')
+    if stage == 'WITHDRAWN':
+        return _result('REASSESS_AUTHORIZATION', stage, 'Prior action withdrawn; fresh consent and cause required')
+    return _result('READY_FOR_DISPATCH' if approved else 'DRAFT_ONLY',
+                   stage, 'Draft is not sent; authorization and pre-dispatch provider recheck required')
