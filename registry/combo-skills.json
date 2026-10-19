@@ -5490,6 +5490,457 @@
       }
     },
     {
+      "id": "source-bound-correspondence-loop",
+      "display_name": "Source-Bound Correspondence Loop",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "combo-skills/source-bound-correspondence-loop",
+      "entrypoint": "combo-skills/source-bound-correspondence-loop/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A case, agency or employer needs defensible correspondence and reliable provider follow-up."
+        ],
+        "do_not_use_when": [
+          "Simple factual replies without provider state, legal risk or durable action."
+        ]
+      },
+      "members": [
+        {
+          "id": "long-horizon-core",
+          "kind": "compound-skill",
+          "role": "Recover exact mission, constraints, source evidence, existing context and safe handoff",
+          "required": true
+        },
+        {
+          "id": "correspondence-identity-gate",
+          "kind": "skill",
+          "role": "Verify first-party author and connected account",
+          "required": true
+        },
+        {
+          "id": "provider-thread-forensics",
+          "kind": "skill",
+          "role": "Reconcile provider chronological evidence",
+          "required": true
+        },
+        {
+          "id": "linear-frontier-deduplicator",
+          "kind": "skill",
+          "role": "Match existing issue and suppress duplicate contact",
+          "required": true
+        },
+        {
+          "id": "jurisdiction-authority-citation-check",
+          "kind": "skill",
+          "role": "Check lawful authority and actual time rules",
+          "required": true
+        },
+        {
+          "id": "adverse-outcome-remedy-router",
+          "kind": "skill",
+          "role": "Map favorable, partial, adverse and missing response to lawful options",
+          "required": true
+        },
+        {
+          "id": "precision-provider-email",
+          "kind": "skill",
+          "role": "Prepare professional evidence-backed message",
+          "required": true
+        },
+        {
+          "id": "receipt-provenance-continuation",
+          "kind": "skill",
+          "role": "Read back provider effect and resume without replay",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "long-horizon-core",
+            "consumes": [
+              "Mission",
+              "Provider evidence"
+            ],
+            "produces": [
+              "MISSION.md",
+              "CONTEXT.md"
+            ],
+            "validation": "Mission recovered and no unverified assumption promoted"
+          },
+          {
+            "step": 2,
+            "member_id": "correspondence-identity-gate",
+            "consumes": [
+              "MISSION.md",
+              "Provider account metadata"
+            ],
+            "produces": [
+              "IDENTITY_ROUTE.json"
+            ],
+            "validation": "Authenticated sender matches beneficiary and consent or blocks"
+          },
+          {
+            "step": 3,
+            "member_id": "provider-thread-forensics",
+            "consumes": [
+              "IDENTITY_ROUTE.json",
+              "Full thread"
+            ],
+            "produces": [
+              "PROVIDER_TIMELINE.md"
+            ],
+            "validation": "DRAFT/SENT/ACK and later responses correctly separate"
+          },
+          {
+            "step": 4,
+            "member_id": "linear-frontier-deduplicator",
+            "consumes": [
+              "PROVIDER_TIMELINE.md",
+              "Linear work graph"
+            ],
+            "produces": [
+              "LINEAR_RECONCILIATION.md"
+            ],
+            "validation": "Owning issue and action state evidenced"
+          },
+          {
+            "step": 5,
+            "member_id": "jurisdiction-authority-citation-check",
+            "consumes": [
+              "Current facts",
+              "Custodian and venue"
+            ],
+            "produces": [
+              "AUTHORITY_MATRIX.md"
+            ],
+            "validation": "Pinpoint source and scope/exception checked"
+          },
+          {
+            "step": 6,
+            "member_id": "adverse-outcome-remedy-router",
+            "consumes": [
+              "Provider position",
+              "AUTHORITY_MATRIX.md"
+            ],
+            "produces": [
+              "REMEDY_BRANCHES.md"
+            ],
+            "validation": "No automatic win or unsupported misconduct allegation"
+          },
+          {
+            "step": 7,
+            "member_id": "precision-provider-email",
+            "consumes": [
+              "Remedy analysis",
+              "Approved account route"
+            ],
+            "produces": [
+              "EMAIL_DRAFT.md",
+              "PRE_SEND_GATE.md"
+            ],
+            "validation": "Wrong sender, repeat, unsourced law or protected information blocked"
+          },
+          {
+            "step": 8,
+            "member_id": "receipt-provenance-continuation",
+            "consumes": [
+              "Draft or authorized provider result",
+              "Canonical issue"
+            ],
+            "produces": [
+              "ACTION_RECEIPT.json",
+              "RESUME_CURSOR.md"
+            ],
+            "validation": "Native status and Linear projection match or NEEDS_PROOF"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "long-horizon-core",
+            "to_member": "correspondence-identity-gate",
+            "required_inputs": [
+              "Recovered mission",
+              "Existing authority"
+            ],
+            "accepted_outputs": [
+              "Correct connected sender/beneficiary"
+            ],
+            "failure_owner": "mission controller"
+          },
+          {
+            "from_member": "provider-thread-forensics",
+            "to_member": "linear-frontier-deduplicator",
+            "required_inputs": [
+              "Source event IDs",
+              "Provider timeline"
+            ],
+            "accepted_outputs": [
+              "Existing owner and no-replay classification"
+            ],
+            "failure_owner": "source auditor"
+          },
+          {
+            "from_member": "jurisdiction-authority-citation-check",
+            "to_member": "precision-provider-email",
+            "required_inputs": [
+              "Applicable authority",
+              "Response window and exceptions"
+            ],
+            "accepted_outputs": [
+              "Source-bound professional draft"
+            ],
+            "failure_owner": "legal verifier"
+          },
+          {
+            "from_member": "precision-provider-email",
+            "to_member": "receipt-provenance-continuation",
+            "required_inputs": [
+              "Draft or approved send",
+              "Provider account and owning issue"
+            ],
+            "accepted_outputs": [
+              "Native receipt or draft-only resume cursor"
+            ],
+            "failure_owner": "effect verifier"
+          }
+        ],
+        "evidence_requirements": [
+          "Use original provider records, complete thread and immutable message IDs rather than unverified summaries."
+        ],
+        "risk_boundaries": [
+          "Explicit human permission for any external send, consent or filing.",
+          "No cross-account impersonation or disclosure of protected source material.",
+          "Uncertain delivery remains NEEDS_PROOF, never blind retry.",
+          "Denial is evidence and potential lawful review; no automatic victory."
+        ],
+        "quality_gates": [
+          "Correct mission, source identity and recipient are verified.",
+          "No previously verified request is repeated.",
+          "Specific cited law and policy checked against jurisdiction and effective dates.",
+          "Actual effect proved by provider readback before Linear projection."
+        ],
+        "state_updates": [
+          "Append provider-native receipt to existing issue.",
+          "Retire only proven completed subaction.",
+          "Preserve exact actor/case/source identity and resume cursor."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "long-horizon-core",
+          "correspondence-identity-gate",
+          "provider-thread-forensics",
+          "linear-frontier-deduplicator",
+          "jurisdiction-authority-citation-check",
+          "adverse-outcome-remedy-router",
+          "precision-provider-email",
+          "receipt-provenance-continuation"
+        ],
+        "adds": "Composes long-horizon context and seven proper atomic skills into a complete defendable correspondence workflow with provenance, lawful response branches and duplicate-safe case continuation.",
+        "compound_artifact": "SOURCE_BOUND_CORRESPONDENCE_RUN.md",
+        "next_layer_ready_when": [
+          "Registry references resolve to owning atomic skills.",
+          "Real provider negative-path and authority tests pass.",
+          "Cross-session readback proves no duplicate external actions."
+        ]
+      }
+    },
+    {
+      "id": "strong-smart-execution-stack",
+      "display_name": "Strong-Smart Execution Stack",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/strong-smart-execution-stack",
+      "entrypoint": "combo-skills/strong-smart-execution-stack/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Mission requires strongest-intelligent-fit capability composition and evidence-backed execution."
+        ],
+        "do_not_use_when": [
+          "Candidate routes cannot yet be compared honestly; acquire evidence first."
+        ]
+      },
+      "members": [
+        {
+          "id": "casey-operator-execution-kernel",
+          "kind": "skill",
+          "role": "Own operator intent, semantic locks, corrections, and authority.",
+          "required": true
+        },
+        {
+          "id": "strong-smart-routing-kernel",
+          "kind": "skill",
+          "role": "Rank eligible routes by measurable power fit.",
+          "required": true
+        },
+        {
+          "id": "power-skill",
+          "kind": "skill",
+          "role": "Compose the strongest relevant capability set.",
+          "required": true
+        },
+        {
+          "id": "make-it-heavy",
+          "kind": "skill",
+          "role": "Expand useful engineering and reasoning density.",
+          "required": true
+        },
+        {
+          "id": "epistemic-gate",
+          "kind": "skill",
+          "role": "Type claims and enforce proof floors.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Block completion without acceptance evidence.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Preserve receipts, alternatives, and continuation state.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "casey-operator-execution-kernel",
+            "consumes": [
+              "operator message"
+            ],
+            "produces": [
+              "authority receipt"
+            ],
+            "validation": "Intent and semantic locks are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "strong-smart-routing-kernel",
+            "consumes": [
+              "authority receipt"
+            ],
+            "produces": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "validation": "Hard gates pass and route ranking is reproducible."
+          },
+          {
+            "step": 3,
+            "member_id": "power-skill",
+            "consumes": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "produces": [
+              "capability composition"
+            ],
+            "validation": "Composition covers the selected mission architecture."
+          },
+          {
+            "step": 4,
+            "member_id": "make-it-heavy",
+            "consumes": [
+              "capability composition"
+            ],
+            "produces": [
+              "deep execution artifact"
+            ],
+            "validation": "Useful depth is expanded without tool-count theater."
+          },
+          {
+            "step": 5,
+            "member_id": "epistemic-gate",
+            "consumes": [
+              "deep execution artifact"
+            ],
+            "produces": [
+              "typed evidence record"
+            ],
+            "validation": "Every consequential claim has an evidence state."
+          },
+          {
+            "step": 6,
+            "member_id": "quality-gate",
+            "consumes": [
+              "typed evidence record"
+            ],
+            "produces": [
+              "quality verdict"
+            ],
+            "validation": "Acceptance tests and unresolved gaps are recorded."
+          },
+          {
+            "step": 7,
+            "member_id": "handoff-record",
+            "consumes": [
+              "quality verdict"
+            ],
+            "produces": [
+              "STRONG_SMART_EXECUTION_RECEIPT.json"
+            ],
+            "validation": "Receipts and exact continuation state are preserved."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "casey-operator-execution-kernel",
+            "to_member": "strong-smart-routing-kernel",
+            "required_inputs": [
+              "operator intent and authority"
+            ],
+            "accepted_outputs": [
+              "ranked eligible routes"
+            ],
+            "failure_owner": "strong-smart-routing-kernel"
+          },
+          {
+            "from_member": "strong-smart-routing-kernel",
+            "to_member": "power-skill",
+            "required_inputs": [
+              "selected route"
+            ],
+            "accepted_outputs": [
+              "capability composition"
+            ],
+            "failure_owner": "power-skill"
+          }
+        ],
+        "evidence_requirements": [
+          "Typed claims, source locators, stage receipts, and provider-native readback for external effects."
+        ],
+        "risk_boundaries": [
+          "Capability may increase; authority, safety, privacy, and human-control requirements may not weaken."
+        ],
+        "quality_gates": [
+          "No completion claim without tests, readback, and unresolved-gap accounting."
+        ],
+        "state_updates": [
+          "Persist selected route, rejected alternatives, contradictions, evidence, and exact resume point."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Operator authority, power-skill composition, epistemic discipline, quality gates, and durable handoff."
+        ],
+        "adds": "A measurable strongest-intelligent-fit decision layer and enforceable end-to-end mission sequence.",
+        "compound_artifact": "STRONG_SMART_EXECUTION_RECEIPT.json",
+        "next_layer_ready_when": [
+          "All required members emit accepted artifacts and all hard gates pass."
+        ]
+      }
+    },
+    {
       "id": "upstream-fork-harmonization",
       "display_name": "Upstream Fork Harmonization",
       "ownership": "glaciereq",
@@ -6066,196 +6517,6 @@
         "next_layer_ready_when": [
           "All required outputs are present and the conditional full-stack route is explicitly resolved.",
           "Every handoff names an owner, accepted output, and close condition."
-        ]
-      }
-    },
-    {
-      "id": "strong-smart-execution-stack",
-      "display_name": "Strong-Smart Execution Stack",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "combo-skills/strong-smart-execution-stack",
-      "entrypoint": "combo-skills/strong-smart-execution-stack/COMBO.md",
-      "selection": {
-        "use_when": [
-          "Mission requires strongest-intelligent-fit capability composition and evidence-backed execution."
-        ],
-        "do_not_use_when": [
-          "Candidate routes cannot yet be compared honestly; acquire evidence first."
-        ]
-      },
-      "members": [
-        {
-          "id": "casey-operator-execution-kernel",
-          "kind": "skill",
-          "role": "Own operator intent, semantic locks, corrections, and authority.",
-          "required": true
-        },
-        {
-          "id": "strong-smart-routing-kernel",
-          "kind": "skill",
-          "role": "Rank eligible routes by measurable power fit.",
-          "required": true
-        },
-        {
-          "id": "power-skill",
-          "kind": "skill",
-          "role": "Compose the strongest relevant capability set.",
-          "required": true
-        },
-        {
-          "id": "make-it-heavy",
-          "kind": "skill",
-          "role": "Expand useful engineering and reasoning density.",
-          "required": true
-        },
-        {
-          "id": "epistemic-gate",
-          "kind": "skill",
-          "role": "Type claims and enforce proof floors.",
-          "required": true
-        },
-        {
-          "id": "quality-gate",
-          "kind": "skill",
-          "role": "Block completion without acceptance evidence.",
-          "required": true
-        },
-        {
-          "id": "handoff-record",
-          "kind": "skill",
-          "role": "Preserve receipts, alternatives, and continuation state.",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "casey-operator-execution-kernel",
-            "consumes": [
-              "operator message"
-            ],
-            "produces": [
-              "authority receipt"
-            ],
-            "validation": "Intent and semantic locks are explicit."
-          },
-          {
-            "step": 2,
-            "member_id": "strong-smart-routing-kernel",
-            "consumes": [
-              "authority receipt"
-            ],
-            "produces": [
-              "POWER_FIT_ROUTE.json"
-            ],
-            "validation": "Hard gates pass and route ranking is reproducible."
-          },
-          {
-            "step": 3,
-            "member_id": "power-skill",
-            "consumes": [
-              "POWER_FIT_ROUTE.json"
-            ],
-            "produces": [
-              "capability composition"
-            ],
-            "validation": "Composition covers the selected mission architecture."
-          },
-          {
-            "step": 4,
-            "member_id": "make-it-heavy",
-            "consumes": [
-              "capability composition"
-            ],
-            "produces": [
-              "deep execution artifact"
-            ],
-            "validation": "Useful depth is expanded without tool-count theater."
-          },
-          {
-            "step": 5,
-            "member_id": "epistemic-gate",
-            "consumes": [
-              "deep execution artifact"
-            ],
-            "produces": [
-              "typed evidence record"
-            ],
-            "validation": "Every consequential claim has an evidence state."
-          },
-          {
-            "step": 6,
-            "member_id": "quality-gate",
-            "consumes": [
-              "typed evidence record"
-            ],
-            "produces": [
-              "quality verdict"
-            ],
-            "validation": "Acceptance tests and unresolved gaps are recorded."
-          },
-          {
-            "step": 7,
-            "member_id": "handoff-record",
-            "consumes": [
-              "quality verdict"
-            ],
-            "produces": [
-              "STRONG_SMART_EXECUTION_RECEIPT.json"
-            ],
-            "validation": "Receipts and exact continuation state are preserved."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "casey-operator-execution-kernel",
-            "to_member": "strong-smart-routing-kernel",
-            "required_inputs": [
-              "operator intent and authority"
-            ],
-            "accepted_outputs": [
-              "ranked eligible routes"
-            ],
-            "failure_owner": "strong-smart-routing-kernel"
-          },
-          {
-            "from_member": "strong-smart-routing-kernel",
-            "to_member": "power-skill",
-            "required_inputs": [
-              "selected route"
-            ],
-            "accepted_outputs": [
-              "capability composition"
-            ],
-            "failure_owner": "power-skill"
-          }
-        ],
-        "evidence_requirements": [
-          "Typed claims, source locators, stage receipts, and provider-native readback for external effects."
-        ],
-        "risk_boundaries": [
-          "Capability may increase; authority, safety, privacy, and human-control requirements may not weaken."
-        ],
-        "quality_gates": [
-          "No completion claim without tests, readback, and unresolved-gap accounting."
-        ],
-        "state_updates": [
-          "Persist selected route, rejected alternatives, contradictions, evidence, and exact resume point."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "Operator authority, power-skill composition, epistemic discipline, quality gates, and durable handoff."
-        ],
-        "adds": "A measurable strongest-intelligent-fit decision layer and enforceable end-to-end mission sequence.",
-        "compound_artifact": "STRONG_SMART_EXECUTION_RECEIPT.json",
-        "next_layer_ready_when": [
-          "All required members emit accepted artifacts and all hard gates pass."
         ]
       }
     }
