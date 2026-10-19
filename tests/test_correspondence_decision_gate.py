@@ -63,6 +63,13 @@ class CorrespondenceDecisionTests(unittest.TestCase):
         ev=[{'action_key':'case-1|custodian-1|records-request','stage':'ACKNOWLEDGED','observed_at':'2026-10-16T00:00:00Z'}, {'action_key':'case-1|custodian-1|records-request','stage':'DRAFT'}]
         self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
 
+    def test_mixed_timezone_offsets_do_not_resurrect_old_draft(self):
+        events = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'SENT', 'observed_at': '2026-10-19T19:27:00-07:00'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-20T01:00:00+00:00'},
+        ]
+        self.assertEqual(self.invoke(events=events, authorized=True)['decision'], 'WAITING_EXTERNAL')
+
     def test_unrecognized_stage_blocks(self):
         self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'HYPOTHETICAL_VICTORY'}])['decision'], 'NEEDS_PROOF')
 
