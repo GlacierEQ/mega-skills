@@ -179,6 +179,29 @@
       ]
     },
     {
+      "id": "adverse-outcome-remedy-router",
+      "display_name": "Adverse Outcome Remedy Router",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/adverse-outcome-remedy-router",
+      "entrypoint": "skills/adverse-outcome-remedy-router/SKILL.md",
+      "purpose": "Branch actual grant, partial grant, denial, no-response or ambiguous state to lawful next action.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
       "id": "aerospace-trajectory-core",
       "display_name": "Aerospace Trajectory Core",
       "ownership": "glaciereq",
@@ -2202,6 +2225,32 @@
       ]
     },
     {
+      "id": "box-binary-put",
+      "display_name": "Box Binary Put",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/box-binary-put",
+      "entrypoint": "skills/box-binary-put/SKILL.md",
+      "purpose": "Byte-faithful binary file upload to Box with readback verification. Use whenever a file must land in Box bit-identical to the source — evidence, originals, anything hash-bound. Replaces the text-only Box upload_file tool for binaries.",
+      "input_contract": [
+        "Source file: Google Drive file id (drive:<id>), Dropbox path (dbx:</path>), or local path",
+        "Destination: Box folder id and filename",
+        "Optional integrity gates: expected size, SHA-256, SHA-1, Dropbox content-hash"
+      ],
+      "output_contract": [
+        "Single JSON result object on stdout: verified | skipped-identical | refused | failed",
+        "Verified result carries the Box file id, size, and SHA-256 of the byte-identical upload"
+      ],
+      "local_validation": [
+        "bin/box-binary-put --self-test --box-folder <id> round-trips a 1MB scratch file end to end"
+      ],
+      "does_not_own": [
+        "Text uploads (use the Box upload_file MCP tool)",
+        "Credential storage (uses the existing box-cli, hatch_gws_cli, and dropbox connections)"
+      ]
+    },
+    {
       "id": "brain",
       "display_name": "Brain",
       "ownership": "glaciereq",
@@ -3766,6 +3815,29 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "correspondence-identity-gate",
+      "display_name": "Correspondence Identity Gate",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/correspondence-identity-gate",
+      "entrypoint": "skills/correspondence-identity-gate/SKILL.md",
+      "purpose": "Resolve authenticated sender, beneficiary and first-party authority while preserving historical threads.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
       ]
     },
     {
@@ -6970,6 +7042,33 @@
       ]
     },
     {
+      "id": "github",
+      "display_name": "GitHub Connector",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "2.0.0",
+      "path": "skills/github",
+      "entrypoint": "skills/github/SKILL.md",
+      "purpose": "Live authenticated GitHub connector: REST and GraphQL APIs with rate-limit-aware retries, gh CLI, and git credential helper. Repos, PRs, issues, and bulk estate-scale operations.",
+      "input_contract": [
+        "REST: method + api.github.com path (+ params/data)",
+        "GraphQL: query string (+ variables); --paginate auto-walks connections",
+        "gh CLI and git work directly — auth is wired at the user level"
+      ],
+      "output_contract": [
+        "Single JSON object: {status, body}; exit 0 on success",
+        "Rate limits are retried with backoff (never 401s); 401s surface a re-auth hint"
+      ],
+      "local_validation": [
+        "bin/github-api GET /user returns 200 as the authenticated user",
+        "bin/github-graphql --query '{ viewer { login } }' returns 200"
+      ],
+      "does_not_own": [
+        "GitHub workflow documentation (see github-power skill)",
+        "Credential storage (uses the gh CLI secure store)"
+      ]
+    },
+    {
       "id": "github-nexus",
       "display_name": "Github Nexus",
       "ownership": "glaciereq",
@@ -7286,6 +7385,121 @@
         "Suppressing genuine uncertainty",
         "Bypassing actual safety/legal/tool constraints",
         "Fabricating stronger support"
+      ]
+    },
+    {
+      "id": "hidden-harm-casebuild",
+      "display_name": "Hidden Harm Casebuild",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-casebuild",
+      "entrypoint": "skills/hidden-harm-casebuild/SKILL.md",
+      "purpose": "Counter-engineer hidden harms in legal/casebuilding work: preserve Operator strategy, native evidence, attribution, evidentiary scope, contradictions, remedies, privacy, and case objectives while preventing procedural-gap gravity and assistant-authored strategy substitution.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "hidden-harm-connectors",
+      "display_name": "Hidden Harm Connectors",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-connectors",
+      "entrypoint": "skills/hidden-harm-connectors/SKILL.md",
+      "purpose": "Counter-engineer hidden harms in connectors/plugins/MCP: prevent false verification, weaker-fallback substitution, account ambiguity, projection loss, unsafe writes, privacy widening, scope overgeneralization, and provider-state demotion.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "hidden-harm-context",
+      "display_name": "Hidden Harm Context",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-context",
+      "entrypoint": "skills/hidden-harm-context/SKILL.md",
+      "purpose": "Counter-engineer hidden harms in context, memory, summaries, and continuity: preserve the Operator's word, intention, information, strategy, position, corrections, provenance, scope, and active execution path.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "hidden-harm-cross-domain",
+      "display_name": "Hidden Harm Cross Domain",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-cross-domain",
+      "entrypoint": "skills/hidden-harm-cross-domain/SKILL.md",
+      "purpose": "General hidden-harm removal skill for work outside GitHub/context/connectors/casebuild. Detects technically-valid transitions that reduce human-outcome leverage, capability, truth fidelity, optionality, privacy, reversibility, or completion quality.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "hidden-harm-github",
+      "display_name": "Hidden Harm Github",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-github",
+      "entrypoint": "skills/hidden-harm-github/SKILL.md",
+      "purpose": "Counter-engineer hidden harms in GitHub/repository work: prevent branch/donor capability loss, stale-CI authority, destructive simplification, false merge/completion claims, and provenance loss while preserving stronger code and optionality.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
       ]
     },
     {
@@ -7935,6 +8149,29 @@
       ]
     },
     {
+      "id": "jurisdiction-authority-citation-check",
+      "display_name": "Jurisdiction Authority Citation Check",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/jurisdiction-authority-citation-check",
+      "entrypoint": "skills/jurisdiction-authority-citation-check/SKILL.md",
+      "purpose": "Verify applicable jurisdiction, current rule, primary-law citation and actual deadline before correspondence.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
       "id": "kaizen",
       "display_name": "Kaizen",
       "ownership": "glaciereq",
@@ -8246,6 +8483,29 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "linear-frontier-deduplicator",
+      "display_name": "Linear Frontier Deduplicator",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/linear-frontier-deduplicator",
+      "entrypoint": "skills/linear-frontier-deduplicator/SKILL.md",
+      "purpose": "Reconcile provider evidence against existing Linear issue graph and prevent duplicate external actions.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
       ]
     },
     {
@@ -10892,6 +11152,75 @@
       ]
     },
     {
+      "id": "monolith-docket-forensics",
+      "display_name": "Monolith Docket Forensics",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/monolith-docket-forensics",
+      "entrypoint": "skills/monolith-docket-forensics/SKILL.md",
+      "purpose": "Docket timestamp and NEF forensics from raw sources. Use for filing-date disputes, timestamp anomalies, and notice-timing questions on the 1FDV docket.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "monolith-history",
+      "display_name": "Monolith History",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/monolith-history",
+      "entrypoint": "skills/monolith-history/SKILL.md",
+      "purpose": "History-only rule for case claims. Use when stating anything about the 1FDV case: every claim must trace to the raw record (docket, NEF, document, Operator's attested account). No motive theories, no statistical guessing about what likely happened.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
+      "id": "monolith-holdings",
+      "display_name": "Monolith Holdings",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/monolith-holdings",
+      "entrypoint": "skills/monolith-holdings/SKILL.md",
+      "purpose": "Consult local case holdings before any remote fetch. Use on any 1FDV/docket/evidence question: read the holdings index first, work local sources in consult order, reach remote only when local holdings lack it.",
+      "input_contract": [
+        "Scoped request and available authoritative evidence"
+      ],
+      "output_contract": [
+        "Source-bound findings, corrections and/or documented actions"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py",
+        "python3 scripts/readiness_assay.py --pass 2"
+      ],
+      "does_not_own": [
+        "Unverified claims of production execution or mission completion"
+      ]
+    },
+    {
       "id": "moodle-external-api-development",
       "display_name": "Moodle External Api Development",
       "ownership": "glaciereq",
@@ -12139,6 +12468,29 @@
       ]
     },
     {
+      "id": "precision-provider-email",
+      "display_name": "Precision Provider Email",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/precision-provider-email",
+      "entrypoint": "skills/precision-provider-email/SKILL.md",
+      "purpose": "Draft evidence-and-law-grounded correspondence without avoidable admissions, repetition or unsupported claims.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
       "id": "prepare-for-meeting",
       "display_name": "Prepare For Meeting",
       "ownership": "glaciereq",
@@ -12428,6 +12780,34 @@
       ]
     },
     {
+      "id": "progressive-pyramid",
+      "display_name": "Progressive Pyramid Protocol - Four Corners + Center Point",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.1.0",
+      "path": "skills/progressive-pyramid",
+      "entrypoint": "skills/progressive-pyramid/SKILL.md",
+      "purpose": "Build one inherited V1->V4 result, reconcile at Center Point, and reject mission completion without independent original-outcome proof; works across specialized agents.",
+      "input_contract": [
+        "Original mission ID, desired outcome, acceptance criteria, recovered source references",
+        "Existing V1-V4 state, prior verified gains, scoped memory, applicable safety/authorization requirements"
+      ],
+      "output_contract": [
+        "Version-linked run receipt and material stage output",
+        "Active continuation or independently provider-verified terminal outcome"
+      ],
+      "local_validation": [
+        "python3 -m unittest discover -s skills/progressive-pyramid/tests -p 'test_*.py' -v",
+        "python3 scripts/generate_mega_skill_pyramids.py --check",
+        "python3 scripts/validate_hierarchy.py"
+      ],
+      "does_not_own": [
+        "Rewriting original mission acceptance criteria",
+        "Independent attestation of external/provider effects",
+        "Cross-agent installation without a host-specific loader"
+      ]
+    },
+    {
       "id": "project",
       "display_name": "Project",
       "ownership": "glaciereq",
@@ -12623,6 +13003,29 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "provider-thread-forensics",
+      "display_name": "Provider Thread Forensics",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/provider-thread-forensics",
+      "entrypoint": "skills/provider-thread-forensics/SKILL.md",
+      "purpose": "Reconstruct provider-native email chronology and exact draft/sent/received/decision stages.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
       ]
     },
     {
@@ -12987,6 +13390,29 @@
       ]
     },
     {
+      "id": "receipt-provenance-continuation",
+      "display_name": "Receipt Provenance Continuation",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/receipt-provenance-continuation",
+      "entrypoint": "skills/receipt-provenance-continuation/SKILL.md",
+      "purpose": "Read back actual provider effects and write a safe source-bound resume cursor in existing Linear issue.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
       "id": "receiving-code-review",
       "display_name": "Receiving Code Review",
       "ownership": "glaciereq",
@@ -13314,6 +13740,33 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "research-source-access",
+      "display_name": "Research Source Access",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/research-source-access",
+      "entrypoint": "skills/research-source-access/SKILL.md",
+      "purpose": "Read-only source access for the Max Research Engine: workspace search, configured connector reads, and guarded public HTTP GET.",
+      "input_contract": [
+        "Query and root for workspace search",
+        "Named read-only connector plus request path",
+        "Public URLs to load"
+      ],
+      "output_contract": [
+        "Per-action receipt with SHA-256 content digest",
+        "Refusal reason for every declined source"
+      ],
+      "local_validation": [
+        "python -m unittest discover -s skills/research-source-access/tests"
+      ],
+      "does_not_own": [
+        "External mutation",
+        "Credentialed or authenticated network access",
+        "Data transmission"
       ]
     },
     {
@@ -14520,6 +14973,31 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
+      ]
+    },
+    {
+      "id": "strong-smart-routing-kernel",
+      "display_name": "Strong-Smart Routing Kernel",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/strong-smart-routing-kernel",
+      "entrypoint": "skills/strong-smart-routing-kernel/SKILL.md",
+      "purpose": "Executable strongest-intelligent-fit route selection with hard authorization, evidence, safety, and human-control gates.",
+      "input_contract": [
+        "Mission profile and comparable candidate routes"
+      ],
+      "output_contract": [
+        "POWER_FIT_ROUTE.json",
+        "SHA-256 decision receipt"
+      ],
+      "local_validation": [
+        "python -m unittest tests/test_strong_smart_routing_kernel.py"
+      ],
+      "does_not_own": [
+        "Operator authority",
+        "External mutation approval",
+        "Provider-native readback"
       ]
     },
     {
@@ -16446,323 +16924,6 @@
       ],
       "does_not_own": [
         "Unbounded operations outside declared domain scope"
-      ]
-    },
-    {
-      "id": "strong-smart-routing-kernel",
-      "display_name": "Strong-Smart Routing Kernel",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/strong-smart-routing-kernel",
-      "entrypoint": "skills/strong-smart-routing-kernel/SKILL.md",
-      "purpose": "Executable strongest-intelligent-fit route selection with hard authorization, evidence, safety, and human-control gates.",
-      "input_contract": [
-        "Mission profile and comparable candidate routes"
-      ],
-      "output_contract": [
-        "POWER_FIT_ROUTE.json",
-        "SHA-256 decision receipt"
-      ],
-      "local_validation": [
-        "python -m unittest tests/test_strong_smart_routing_kernel.py"
-      ],
-      "does_not_own": [
-        "Operator authority",
-        "External mutation approval",
-        "Provider-native readback"
-      ]
-    },
-    {
-      "id": "research-source-access",
-      "display_name": "Research Source Access",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/research-source-access",
-      "entrypoint": "skills/research-source-access/SKILL.md",
-      "purpose": "Read-only source access for the Max Research Engine: workspace search, configured connector reads, and guarded public HTTP GET.",
-      "input_contract": [
-        "Query and root for workspace search",
-        "Named read-only connector plus request path",
-        "Public URLs to load"
-      ],
-      "output_contract": [
-        "Per-action receipt with SHA-256 content digest",
-        "Refusal reason for every declined source"
-      ],
-      "local_validation": [
-        "python -m unittest discover -s skills/research-source-access/tests"
-      ],
-      "does_not_own": [
-        "External mutation",
-        "Credentialed or authenticated network access",
-        "Data transmission"
-      ]
-    },
-    {
-      "id": "box-binary-put",
-      "display_name": "Box Binary Put",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/box-binary-put",
-      "entrypoint": "skills/box-binary-put/SKILL.md",
-      "purpose": "Byte-faithful binary file upload to Box with readback verification. Use whenever a file must land in Box bit-identical to the source — evidence, originals, anything hash-bound. Replaces the text-only Box upload_file tool for binaries.",
-      "input_contract": [
-        "Source file: Google Drive file id (drive:<id>), Dropbox path (dbx:</path>), or local path",
-        "Destination: Box folder id and filename",
-        "Optional integrity gates: expected size, SHA-256, SHA-1, Dropbox content-hash"
-      ],
-      "output_contract": [
-        "Single JSON result object on stdout: verified | skipped-identical | refused | failed",
-        "Verified result carries the Box file id, size, and SHA-256 of the byte-identical upload"
-      ],
-      "local_validation": [
-        "bin/box-binary-put --self-test --box-folder <id> round-trips a 1MB scratch file end to end"
-      ],
-      "does_not_own": [
-        "Text uploads (use the Box upload_file MCP tool)",
-        "Credential storage (uses the existing box-cli, hatch_gws_cli, and dropbox connections)"
-      ]
-    },
-    {
-      "id": "github",
-      "display_name": "GitHub Connector",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "2.0.0",
-      "path": "skills/github",
-      "entrypoint": "skills/github/SKILL.md",
-      "purpose": "Live authenticated GitHub connector: REST and GraphQL APIs with rate-limit-aware retries, gh CLI, and git credential helper. Repos, PRs, issues, and bulk estate-scale operations.",
-      "input_contract": [
-        "REST: method + api.github.com path (+ params/data)",
-        "GraphQL: query string (+ variables); --paginate auto-walks connections",
-        "gh CLI and git work directly — auth is wired at the user level"
-      ],
-      "output_contract": [
-        "Single JSON object: {status, body}; exit 0 on success",
-        "Rate limits are retried with backoff (never 401s); 401s surface a re-auth hint"
-      ],
-      "local_validation": [
-        "bin/github-api GET /user returns 200 as the authenticated user",
-        "bin/github-graphql --query '{ viewer { login } }' returns 200"
-      ],
-      "does_not_own": [
-        "GitHub workflow documentation (see github-power skill)",
-        "Credential storage (uses the gh CLI secure store)"
-      ]
-    },
-    {
-      "id": "progressive-pyramid",
-      "display_name": "Progressive Pyramid Protocol - Four Corners + Center Point",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.1.0",
-      "path": "skills/progressive-pyramid",
-      "entrypoint": "skills/progressive-pyramid/SKILL.md",
-      "purpose": "Build one inherited V1->V4 result, reconcile at Center Point, and reject mission completion without independent original-outcome proof; works across specialized agents.",
-      "input_contract": [
-        "Original mission ID, desired outcome, acceptance criteria, recovered source references",
-        "Existing V1-V4 state, prior verified gains, scoped memory, applicable safety/authorization requirements"
-      ],
-      "output_contract": [
-        "Version-linked run receipt and material stage output",
-        "Active continuation or independently provider-verified terminal outcome"
-      ],
-      "local_validation": [
-        "python3 -m unittest discover -s skills/progressive-pyramid/tests -p 'test_*.py' -v",
-        "python3 scripts/generate_mega_skill_pyramids.py --check",
-        "python3 scripts/validate_hierarchy.py"
-      ],
-      "does_not_own": [
-        "Rewriting original mission acceptance criteria",
-        "Independent attestation of external/provider effects",
-        "Cross-agent installation without a host-specific loader"
-      ]
-    },
-    {
-      "id": "hidden-harm-casebuild",
-      "display_name": "Hidden Harm Casebuild",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-casebuild",
-      "entrypoint": "skills/hidden-harm-casebuild/SKILL.md",
-      "purpose": "Counter-engineer hidden harms in legal/casebuilding work: preserve Operator strategy, native evidence, attribution, evidentiary scope, contradictions, remedies, privacy, and case objectives while preventing procedural-gap gravity and assistant-authored strategy substitution.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "hidden-harm-connectors",
-      "display_name": "Hidden Harm Connectors",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-connectors",
-      "entrypoint": "skills/hidden-harm-connectors/SKILL.md",
-      "purpose": "Counter-engineer hidden harms in connectors/plugins/MCP: prevent false verification, weaker-fallback substitution, account ambiguity, projection loss, unsafe writes, privacy widening, scope overgeneralization, and provider-state demotion.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "hidden-harm-context",
-      "display_name": "Hidden Harm Context",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-context",
-      "entrypoint": "skills/hidden-harm-context/SKILL.md",
-      "purpose": "Counter-engineer hidden harms in context, memory, summaries, and continuity: preserve the Operator's word, intention, information, strategy, position, corrections, provenance, scope, and active execution path.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "hidden-harm-cross-domain",
-      "display_name": "Hidden Harm Cross Domain",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-cross-domain",
-      "entrypoint": "skills/hidden-harm-cross-domain/SKILL.md",
-      "purpose": "General hidden-harm removal skill for work outside GitHub/context/connectors/casebuild. Detects technically-valid transitions that reduce human-outcome leverage, capability, truth fidelity, optionality, privacy, reversibility, or completion quality.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "hidden-harm-github",
-      "display_name": "Hidden Harm Github",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-github",
-      "entrypoint": "skills/hidden-harm-github/SKILL.md",
-      "purpose": "Counter-engineer hidden harms in GitHub/repository work: prevent branch/donor capability loss, stale-CI authority, destructive simplification, false merge/completion claims, and provenance loss while preserving stronger code and optionality.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "monolith-docket-forensics",
-      "display_name": "Monolith Docket Forensics",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/monolith-docket-forensics",
-      "entrypoint": "skills/monolith-docket-forensics/SKILL.md",
-      "purpose": "Docket timestamp and NEF forensics from raw sources. Use for filing-date disputes, timestamp anomalies, and notice-timing questions on the 1FDV docket.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "monolith-history",
-      "display_name": "Monolith History",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/monolith-history",
-      "entrypoint": "skills/monolith-history/SKILL.md",
-      "purpose": "History-only rule for case claims. Use when stating anything about the 1FDV case: every claim must trace to the raw record (docket, NEF, document, Operator's attested account). No motive theories, no statistical guessing about what likely happened.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "monolith-holdings",
-      "display_name": "Monolith Holdings",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/monolith-holdings",
-      "entrypoint": "skills/monolith-holdings/SKILL.md",
-      "purpose": "Consult local case holdings before any remote fetch. Use on any 1FDV/docket/evidence question: read the holdings index first, work local sources in consult order, reach remote only when local holdings lack it.",
-      "input_contract": [
-        "Scoped request and available authoritative evidence"
-      ],
-      "output_contract": [
-        "Source-bound findings, corrections and/or documented actions"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py",
-        "python3 scripts/readiness_assay.py --pass 2"
-      ],
-      "does_not_own": [
-        "Unverified claims of production execution or mission completion"
       ]
     }
   ]
