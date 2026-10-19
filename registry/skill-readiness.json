@@ -2,13 +2,13 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 734,
+    "skills": 741,
     "combos": 39,
     "megas": 34,
     "ready_total": 807,
-    "not_ready_total": 0,
+    "not_ready_total": 7,
     "skill_states": {
-      "instruction_ready": 686,
+      "instruction_ready": 693,
       "behavior_verified": 48
     },
     "combo_states": {
@@ -186,6 +186,23 @@
         "skills/address-github-comments/tests/test_address_github_comments.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "adverse-outcome-remedy-router",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
     },
     {
       "id": "aerospace-trajectory-core",
@@ -2088,6 +2105,21 @@
       "reasons": []
     },
     {
+      "id": "box-binary-put",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "brain",
       "layer": "skill",
       "ready": true,
@@ -3574,6 +3606,23 @@
         "skills/core-components/tests/test_core_components.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "correspondence-identity-gate",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
     },
     {
       "id": "create-data-context",
@@ -6609,6 +6658,25 @@
       "reasons": []
     },
     {
+      "id": "github",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/github/bin/gh_common.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/github/tests/test_github_behavior.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "github-nexus",
       "layer": "skill",
       "ready": true,
@@ -6897,6 +6965,81 @@
       "ready": true,
       "state": "instruction_ready",
       "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-casebuild",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-connectors",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-context",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-cross-domain",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-github",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
@@ -7506,6 +7649,23 @@
       "reasons": []
     },
     {
+      "id": "jurisdiction-authority-citation-check",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
+    },
+    {
       "id": "kaizen",
       "layer": "skill",
       "ready": true,
@@ -7803,6 +7963,23 @@
         "skills/library-of-links/tests/test_library_of_links.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "linear-frontier-deduplicator",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
     },
     {
       "id": "lint-and-validate",
@@ -10239,6 +10416,51 @@
       "reasons": []
     },
     {
+      "id": "monolith-docket-forensics",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "monolith-history",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "monolith-holdings",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "moodle-external-api-development",
       "layer": "skill",
       "ready": true,
@@ -11425,6 +11647,23 @@
       "reasons": []
     },
     {
+      "id": "precision-provider-email",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
+    },
+    {
       "id": "prepare-for-meeting",
       "layer": "skill",
       "ready": true,
@@ -11700,6 +11939,25 @@
       "reasons": []
     },
     {
+      "id": "progressive-pyramid",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/progressive-pyramid/scripts/validate_run.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/progressive-pyramid/tests/test_validator.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
       "id": "project",
       "layer": "skill",
       "ready": true,
@@ -11887,6 +12145,23 @@
         "skills/protein-sequence-similarity-search/tests/test_protein_sequence_similarity_search.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "provider-thread-forensics",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
     },
     {
       "id": "pubchem-database",
@@ -12237,6 +12512,23 @@
       "reasons": []
     },
     {
+      "id": "receipt-provenance-continuation",
+      "layer": "skill",
+      "ready": false,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "New procedural skill; no evidence of runtime integration or independent behavioral verification"
+      ]
+    },
+    {
       "id": "receiving-code-review",
       "layer": "skill",
       "ready": true,
@@ -12549,6 +12841,25 @@
       "structural_tests": [
         "skills/research-paper-writing/tests/test_research_paper_writing.py"
       ],
+      "reasons": []
+    },
+    {
+      "id": "research-source-access",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/research-source-access/skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/research-source-access/tests/test_research_source_access.py"
+      ],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -13704,6 +14015,25 @@
       "structural_tests": [
         "skills/stripe-integration/tests/test_stripe_integration.py"
       ],
+      "reasons": []
+    },
+    {
+      "id": "strong-smart-routing-kernel",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/strong-smart-routing-kernel/skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/strong-smart-routing-kernel/tests/test_routing_behavior.py"
+      ],
+      "structural_tests": [],
       "reasons": []
     },
     {
@@ -15546,217 +15876,6 @@
       "structural_tests": [
         "skills/zoominfo/tests/test_zoominfo.py"
       ],
-      "reasons": []
-    },
-    {
-      "id": "strong-smart-routing-kernel",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/strong-smart-routing-kernel/skill.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/strong-smart-routing-kernel/tests/test_routing_behavior.py"
-      ],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "research-source-access",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/research-source-access/skill.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/research-source-access/tests/test_research_source_access.py"
-      ],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "box-binary-put",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "github",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/github/bin/gh_common.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/github/tests/test_github_behavior.py"
-      ],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "progressive-pyramid",
-      "layer": "skill",
-      "ready": true,
-      "state": "behavior_verified",
-      "declared_maturity": "active",
-      "instruction_ready": true,
-      "real_implementation_files": [
-        "skills/progressive-pyramid/scripts/validate_run.py"
-      ],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [
-        "skills/progressive-pyramid/tests/test_validator.py"
-      ],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "hidden-harm-casebuild",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "hidden-harm-connectors",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "hidden-harm-context",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "hidden-harm-cross-domain",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "hidden-harm-github",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "monolith-docket-forensics",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "monolith-history",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": []
-    },
-    {
-      "id": "monolith-holdings",
-      "layer": "skill",
-      "ready": true,
-      "state": "instruction_ready",
-      "declared_maturity": "candidate",
-      "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [],
-      "scaffold_files": [],
-      "stub_files": [],
-      "behavioral_tests": [],
-      "structural_tests": [],
       "reasons": []
     }
   ],
