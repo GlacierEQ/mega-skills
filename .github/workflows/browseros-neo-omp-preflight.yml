@@ -1,0 +1,40 @@
+name: BrowserOS Neo OMP Mac Preflight
+
+on:
+  push:
+    branches: [feat/browseros-neo-omp-bootstrap-20261018]
+    paths: ['.github/workflows/browseros-neo-omp-preflight.yml']
+  pull_request:
+    paths: ['.github/workflows/browseros-neo-omp-preflight.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mac-preflight:
+    runs-on: [self-hosted, mega-skills, macos-x64]
+    timeout-minutes: 5
+    steps:
+      - name: Identify local runner and BrowserOS endpoint without changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "RUNNER_NAME=${RUNNER_NAME:-unknown}"
+          host="$(scutil --get ComputerName 2>/dev/null || hostname)"
+          echo "HOST_NAME=$host"
+          echo "ARCH=$(uname -m)"
+          echo "CURRENT_USER=$(id -un)"
+          if [[ "$host" != "KcBs-MacBook-Air" && "$(hostname)" != KcBs-MacBook-Air* ]]; then
+            echo "WRONG_MAC=1"; exit 1
+          fi
+          if command -v omp >/dev/null 2>&1; then echo "OMP_ON_PATH=1"; else echo "OMP_ON_PATH=0"; fi
+          if command -v npx >/dev/null 2>&1; then echo "NPX_ON_PATH=1"; else echo "NPX_ON_PATH=0"; fi
+          if [[ -f "$HOME/.omp/agent/mcp.json" ]]; then
+            echo "OMP_CONFIG_EXISTS=1"
+            python3 -m json.tool "$HOME/.omp/agent/mcp.json" >/dev/null
+            echo "OMP_CONFIG_VALID_JSON=1"
+          else echo "OMP_CONFIG_EXISTS=0"; fi
+          port_status="$(curl --max-time 3 --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:9012/mcp || true)"
+          echo "BROWSEROS_PORT_9012_HTTP=${port_status:-000}"
+          echo "PREFLIGHT_READ_ONLY=1"
