@@ -36,7 +36,7 @@ def decide_correspondence(
     stable provider-thread identity where known. The caller must fetch events
     from ALL relevant mailboxes and provider sources before using this result.
     """
-    if not action_key or not expected_sender or not authenticated_sender:
+    if not all(isinstance(v, str) and v.strip() for v in (action_key, expected_sender, authenticated_sender)):
         return _result('BLOCK_IDENTITY_UNRESOLVED', 'UNKNOWN', 'Mission, sender or connected-account identity unavailable')
     if expected_sender.strip().casefold() != authenticated_sender.strip().casefold():
         return _result('BLOCK_WRONG_SENDER', 'UNKNOWN', 'Authenticated mailbox does not match expected first-party sender')
