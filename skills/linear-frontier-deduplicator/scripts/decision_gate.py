@@ -68,6 +68,13 @@ def decide_correspondence(
         relevant = [event for _, event in normalized]
 
     stage = str(relevant[-1]['stage'])
+    # A later unsent draft cannot undo a prior effect for the same action key.
+    # A distinct appeal or follow-up must use a distinct action identity.
+    if stage == 'DRAFT':
+        for prior in reversed(relevant[:-1]):
+            if prior['stage'] != 'DRAFT':
+                stage = str(prior['stage'])
+                break
     if stage == 'AMBIGUOUS_SEND':
         return _result('NEEDS_PROOF', stage, 'Unknown delivery must be read back before retry')
     if stage in WAITING:
