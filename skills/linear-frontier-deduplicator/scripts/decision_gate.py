@@ -53,23 +53,28 @@ def decide_correspondence(
         return _result('READY_FOR_DISPATCH' if approved else 'DRAFT_ONLY',
                        'NONE', 'No existing action event found in verified source scope; pre-dispatch recheck and reservation still required')
 
-    if len(relevant) > 1:
-        dates = [e.get('observed_at') for e in relevant]
-        if not all(isinstance(d, str) and d for d in dates):
-            return _result('NEEDS_PROOF', 'UNKNOWN', 'Conflicting event order lacks complete timestamps')
-        try:
-            normalized = []
-            for event in relevant:
-                instant = datetime.fromisoformat(str(event['observed_at']).replace('Z', '+00:00'))
-                if instant.tzinfo is None:
-                    raise ValueError('Offset required')
-                normalized.append((instant.astimezone(timezone.utc), event))
-            normalized.sort(key=lambda pair: pair[0])
-        except (TypeError, ValueError, OverflowError):
-            return _result('NEEDS_PROOF', 'UNKNOWN', 'Provider event timestamp invalid or timezone missing')
-        if normalized[-1][0] == normalized[-2][0] and normalized[-1][1]['stage'] != normalized[-2][1]['stage']:
-            return _result('NEEDS_PROOF', 'UNKNOWN', 'Two contradictory stages share the same observed instant')
-        relevant = [event for _, event in normalized]
+    try:
+        normalized = []
+        for event in relevant:
+            instant = datetime.fromisoformat(str(event.get('observed_at', '')).replace('Z', '+00:00'))
+            if instant.tzinfo is None:
+                raise ValueError('Offset required')
+            normalized.append((instant.astimezone(timezone.utc), event))
+        normalized.sort(key=lambda pair: pair[0])
+    except (TypeError, ValueError, OverflowError):
+        return _result('NEEDS_PROOF', 'UNKNOWN', 'Provider event timestamp invalid or timezone missing')
+    for left, right in zip(normalized, normalized[1:]):
+        if left[0] == right[0] and left[1]['stage'] != right[1]['stage']:
+            return _result('NEEDS_PROOF', 'UNKNOWN', 'Contradictory stages share an observed instant')
+    relevant = [event for _, event in normalized]
+    ambiguous = [e for e in relevant if e['stage'] == 'AMBIGUOUS_SEND']
+    if ambiguous and relevant[-1]['stage'] != 'AMBIGUOUS_SEND':
+        latest_ambiguous = max(
+            datetime.fromisoformat(str(e['observed_at']).replace('Z', '+00:00')).astimezone(timezone.utc)
+            for e in ambiguous
+        )
+        if not any(t > latest_ambiguous and e.get('resolution_verified') is True for t, e in normalized):
+            return _result('NEEDS_PROOF', 'AMBIGUOUS_SEND', 'Ambiguous delivery lacks independent resolution proof')
 
     stage = str(relevant[-1]['stage'])
     # A later unsent draft cannot undo a prior effect for the same action key.
