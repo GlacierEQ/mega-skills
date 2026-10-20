@@ -19,13 +19,15 @@ Existing `combo-skills/` manifests remain canonical and supported; their semanti
 
 | Registry | Role | Current entries |
 |---|---|---:|
-| `registry/skills.json` | Atomic Skills | 709 |
-| `registry/combo-skills.json` | Compound workflow Skills | 33 |
-| `registry/mega-skills.json` | Mega apex Skills | 29 |
-| `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 29 Mega roots |
+| `registry/skills.json` | Atomic Skills | 741 (7 correspondence candidates) |
+| `registry/combo-skills.json` | Compound workflow Skills | 40 (1 correspondence candidate) |
+| `registry/mega-skills.json` | Mega apex Skills | 34 |
+| `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 34 Mega roots |
 | `registry/pipelines.json` | Executable deep-work DAGs | 7 |
 
 Counts describe repository objects, not production/adoption claims.
+
+**Case/email execution capability:** [Source-Bound Correspondence Workflow](docs/SOURCE_BOUND_CORRESPONDENCE_WORKFLOW.md) connects seven source-, identity-, law-, drafting-, and receipt-based atomic skills with existing `long-horizon-core` in the candidate `source-bound-correspondence-loop` Compound Skill. The included pure decision admission gate has focused regression tests; automatic provider/ChatGPT enforcement and external email delivery are not claimed. See `registry/skill-readiness.json` for candidate readiness.
 
 ## Deep-work pipelines
 
