@@ -16764,6 +16764,28 @@
       "does_not_own": [
         "Unverified claims of production execution or mission completion"
       ]
+    },
+    {
+      "id": "linear-ops",
+      "display_name": "Linear Ops",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/linear-ops",
+      "entrypoint": "skills/linear-ops/SKILL.md",
+      "purpose": "Operate Linear as a shared ops queue with protected-field rules, cleanup and triage playbooks, WIP controls, and connector-safe fallback behavior.",
+      "input_contract": [
+        "Linear issue, project, label, WIP, or queue request and available connector context"
+      ],
+      "output_contract": [
+        "Protected ops action, offline analysis, or ready-to-paste ticket without invented live execution"
+      ],
+      "local_validation": [
+        "python3 -m unittest skills/linear-ops/tests/test_linear_ops.py"
+      ],
+      "does_not_own": [
+        "Credentials, sealed case strategy, medical details, or unverified live Linear mutations"
+      ]
     }
   ]
 }

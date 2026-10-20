@@ -2785,6 +2785,76 @@
         "epistemic-verification-chain",
         "pipeline-orchestration"
       ]
+    },
+    {
+      "id": "apex-repository-continuity-steward",
+      "display_name": "APEX Repository Continuity Steward",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-repository-continuity-steward",
+      "entrypoint": "mega-skills/apex-repository-continuity-steward/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "branch-sprawl-control-loop",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "upstream-fork-harmonization",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "REPOSITORY_CONTINUITY_STEWARD_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Estate-level continuity governance that reconciles branch lifecycle, protected fork overlays, and evidence-backed decisions into a recoverable approval-scoped record without claiming autonomous cleanup or synchronization.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-repository-continuity-steward",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      }
     }
   ],
   "layer": "mega-skills"

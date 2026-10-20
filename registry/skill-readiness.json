@@ -2,14 +2,14 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 734,
+    "skills": 735,
     "combos": 39,
     "megas": 34,
-    "ready_total": 807,
+    "ready_total": 808,
     "not_ready_total": 0,
     "skill_states": {
       "instruction_ready": 686,
-      "behavior_verified": 48
+      "behavior_verified": 49
     },
     "combo_states": {
       "composition_ready": 39
@@ -15756,6 +15756,28 @@
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "linear-ops",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/linear-ops/skill.py",
+        "skills/linear-ops/scripts/analyze_board.py",
+        "skills/linear-ops/scripts/run.py",
+        "skills/linear-ops/scripts/this_skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/linear-ops/tests/test_linear_ops.py"
+      ],
       "structural_tests": [],
       "reasons": []
     }
