@@ -70,6 +70,20 @@ class CorrespondenceDecisionTests(unittest.TestCase):
         ]
         self.assertEqual(self.invoke(events=events, authorized=True)['decision'], 'WAITING_EXTERNAL')
 
+    def test_new_draft_after_sent_cannot_reauthorize_same_action(self):
+        ev = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'SENT', 'observed_at': '2026-10-11T00:00:00Z'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-19T00:00:00Z'},
+        ]
+        self.assertEqual(self.invoke(events=ev, authorized=True)['decision'], 'WAITING_EXTERNAL')
+
+    def test_later_draft_cannot_override_ambiguous_delivery(self):
+        ev = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'AMBIGUOUS_SEND', 'observed_at': '2026-10-11T00:00:00Z'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-19T00:00:00Z'},
+        ]
+        self.assertEqual(self.invoke(events=ev, authorized=True)['decision'], 'NEEDS_PROOF')
+
     def test_unrecognized_stage_blocks(self):
         self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'HYPOTHETICAL_VICTORY'}])['decision'], 'NEEDS_PROOF')
 
