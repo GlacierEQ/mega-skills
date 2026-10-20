@@ -10,7 +10,7 @@ from typing import Mapping, Sequence
 
 KNOWN_STAGES = frozenset({
     'DRAFT', 'SENT', 'RECEIVED', 'ACKNOWLEDGED', 'ASSIGNED', 'PROCESSING',
-    'PARTIAL', 'PRODUCED', 'DENIED', 'AMBIGUOUS_SEND', 'WITHDRAWN', 'REMEDIED',
+    'PARTIAL', 'PRODUCED', 'DENIED', 'APPEALED', 'AMBIGUOUS_SEND', 'WITHDRAWN', 'REMEDIED',
 })
 WAITING = frozenset({'SENT', 'RECEIVED', 'ACKNOWLEDGED', 'ASSIGNED', 'PROCESSING'})
 
@@ -28,6 +28,7 @@ def _result(decision: str, stage: str, reason: str) -> dict[str, object]:
 def decide_correspondence(
     *, action_key: str, expected_sender: str, authenticated_sender: str,
     approved: bool, events: Sequence[Mapping[str, object]],
+    coverage_verified: bool = False,
 ) -> dict[str, object]:
     """Choose a safe next *classification*, never execute external effects.
 
@@ -40,6 +41,9 @@ def decide_correspondence(
     if expected_sender.strip().casefold() != authenticated_sender.strip().casefold():
         return _result('BLOCK_WRONG_SENDER', 'UNKNOWN', 'Authenticated mailbox does not match expected first-party sender')
 
+    if not coverage_verified:
+        return _result('NEEDS_SOURCE_COVERAGE', 'UNKNOWN', 'Relevant accounts, complete threads and owning action graph have not been verified')
+
     relevant = [e for e in events if e.get('action_key') == action_key]
     for e in relevant:
         if e.get('stage') not in KNOWN_STAGES:
@@ -47,7 +51,7 @@ def decide_correspondence(
 
     if not relevant:
         return _result('READY_FOR_DISPATCH' if approved else 'DRAFT_ONLY',
-                       'NONE', 'No existing action event found in supplied source scope; independent coverage verification still required')
+                       'NONE', 'No existing action event found in verified source scope; pre-dispatch recheck and reservation still required')
 
     if len(relevant) > 1:
         dates = [e.get('observed_at') for e in relevant]
@@ -79,6 +83,8 @@ def decide_correspondence(
         return _result('NEEDS_PROOF', stage, 'Unknown delivery must be read back before retry')
     if stage in WAITING:
         return _result('WAITING_EXTERNAL', stage, 'An outbound request already exists; do not replay')
+    if stage == 'APPEALED':
+        return _result('WAITING_APPEAL', stage, 'An appeal is already pending; verify its disposition before another appeal')
     if stage == 'PARTIAL':
         return _result('RECONCILE_PARTIAL', stage, 'Reconcile received and unfulfilled categories before further contact')
     if stage == 'PRODUCED':
