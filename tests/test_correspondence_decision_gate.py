@@ -10,8 +10,17 @@ spec.loader.exec_module(gate)
 
 
 class CorrespondenceDecisionTests(unittest.TestCase):
-    def invoke(self, events=None, expected='cherry@example.com', actual='cherry@example.com', authorized=False, key='case-1|custodian-1|records-request'):
-        return gate.decide_correspondence(action_key=key, expected_sender=expected, authenticated_sender=actual, approved=authorized, events=events or [])
+    def invoke(self, events=None, expected='cherry@example.com', actual='cherry@example.com', authorized=False, key='case-1|custodian-1|records-request', coverage=True):
+        return gate.decide_correspondence(action_key=key, expected_sender=expected, authenticated_sender=actual, approved=authorized, events=events or [], coverage_verified=coverage)
+
+    def test_unverified_coverage_blocks_even_approved_new_action(self):
+        self.assertEqual(self.invoke(authorized=True, coverage=False)['decision'], 'NEEDS_SOURCE_COVERAGE')
+
+    def test_unverified_coverage_blocks_even_approved_existing_action(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'DRAFT'}], authorized=True, coverage=False)['decision'], 'NEEDS_SOURCE_COVERAGE')
+
+    def test_pending_appeal_is_not_replayed(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'APPEALED'}], authorized=True)['decision'], 'WAITING_APPEAL')
 
     def test_wrong_mailbox_blocks_even_with_explicit_approval(self):
         self.assertEqual(self.invoke(actual='casey@example.com', authorized=True)['decision'], 'BLOCK_WRONG_SENDER')
