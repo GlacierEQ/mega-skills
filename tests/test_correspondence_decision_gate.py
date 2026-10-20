@@ -96,6 +96,28 @@ class CorrespondenceDecisionTests(unittest.TestCase):
         ]
         self.assertEqual(self.invoke(events=ev, authorized=True)['decision'], 'NEEDS_PROOF')
 
+    def test_single_invalid_timestamp_needs_proof(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'SENT','observed_at':'bad'}])['decision'], 'NEEDS_PROOF')
+
+    def test_earlier_equal_time_conflict_needs_proof(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'SENT','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'DENIED','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'DRAFT','observed_at':'2026-10-20T10:00:00Z'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
+
+    def test_ambiguous_delivery_cannot_be_silently_overwritten(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'AMBIGUOUS_SEND','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'SENT','observed_at':'2026-10-20T10:00:00Z'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
+
+    def test_ambiguous_delivery_can_be_resolved_by_later_verified_receipt(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'AMBIGUOUS_SEND','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'SENT','observed_at':'2026-10-20T10:00:00Z','resolution_verified':True}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'WAITING_EXTERNAL')
+
     def test_unrecognized_stage_blocks(self):
         self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'HYPOTHETICAL_VICTORY'}])['decision'], 'NEEDS_PROOF')
 
