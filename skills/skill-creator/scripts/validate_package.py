@@ -45,9 +45,9 @@ def inspect_skill(path):
                     errors.append(f"DUPLICATE_METADATA:{key}")
                 if value.startswith(("'", '"')) and (len(value) < 2 or value[-1] != value[0]):
                     errors.append(f"UNTERMINATED_FRONTMATTER_QUOTE:{key}")
-                if key not in {"name", "description", "license", "allowed-tools", "metadata"}:
-                    warnings.append(f"HOST_METADATA_REQUIRES_NATIVE_VALIDATION:{key}")
                 properties[key] = value.strip(' "\'')
+                if key not in {"name", "description", "license", "allowed-tools", "metadata"}:
+                    warnings.append(f"HOST_METADATA_REQUIRES_NATIVE_VALIDATION:{key}")(' "\'')
         name, description = properties.get("name", ""), properties.get("description", "")
         if not NAME.fullmatch(name) or len(name) > 64 or name != root.name:
             errors.append("INVALID_OR_MISMATCHED_SKILL_NAME")
