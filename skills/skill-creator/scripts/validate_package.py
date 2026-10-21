@@ -12,8 +12,8 @@ import re
 from pathlib import Path
 
 NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
-SECRET = re.compile(r"(?i)(?:\b(?:api[_-]?key|access[_-]?token|client[_-]?secret)\b\s*[:=]\s*['\"]?(?!example\b|placeholder\b|your\b|\$\{)[a-z0-9_./+\-]{20,}|\bgh[pousr]_[A-Za-z0-9]{30,}\b)")
+LINK = re.compile(r"!?\[[^]]*\]\(([^)]+)\)")
+SECRET = re.compile(r"(?i)(?:(?:\b|_)(?:[a-z0-9]+_)*(?:api[_-]?key|access[_-]?token|client[_-]?secret|auth[_-]?token)\b\s*[:=]\s*['\"]?(?!example\b|placeholder\b|your\b|\$\{)[a-z0-9_./+\-]{20,}|\bgh[pousr]_[A-Za-z0-9]{30,}\b)")
 
 
 def _source_resource(path, root):
@@ -45,12 +45,16 @@ def inspect_skill(path):
                     errors.append(f"DUPLICATE_METADATA:{key}")
                 if value.startswith(("'", '"')) and (len(value) < 2 or value[-1] != value[0]):
                     errors.append(f"UNTERMINATED_FRONTMATTER_QUOTE:{key}")
+                if key not in {"name", "description", "license", "allowed-tools", "metadata"}:
+                    warnings.append(f"HOST_METADATA_REQUIRES_NATIVE_VALIDATION:{key}")
                 properties[key] = value.strip(' "\'')
         name, description = properties.get("name", ""), properties.get("description", "")
         if not NAME.fullmatch(name) or len(name) > 64 or name != root.name:
             errors.append("INVALID_OR_MISMATCHED_SKILL_NAME")
         if not description or len(description) > 1024:
             errors.append("DESCRIPTION_MISSING_OR_TOO_LONG")
+        elif description.startswith(("[", "{", "!", "|", ">")):
+            errors.append("DESCRIPTION_NOT_A_SIMPLE_SCALAR")
         elif not re.search(r"\b(?:use|when|for|trigger|create|update|analy[sz]e)\b", description, re.I):
             warnings.append("DESCRIPTION_TRIGGER_NEEDS_REVIEW")
         checks.append("frontmatter_extracted")
@@ -69,24 +73,28 @@ def inspect_skill(path):
             errors.append(f"SYMLINK_RESOURCE:{p.relative_to(root)}")
         elif p.is_file():
             files.append(p)
-    for raw in LINK.findall(content):
-        target = raw.split("#", 1)[0].split("?", 1)[0].strip().strip('<>')
-        scheme = re.match(r"^([a-z][a-z0-9+.-]*):", target, re.I)
-        if scheme:
-            if scheme.group(1).lower() not in {"https", "http", "mailto"}:
-                errors.append(f"UNSAFE_REFERENCE_SCHEME:{scheme.group(1).lower()}")
-            continue
-        if not target:
-            continue
-        resolved = (root / target).resolve()
-        if not resolved.is_relative_to(root):
-            errors.append(f"REFERENCE_ESCAPES_SKILL:{target}")
-        elif not resolved.is_file() or resolved.is_symlink():
-            errors.append(f"BROKEN_LOCAL_REFERENCE:{target}")
+    # Verify both linked text and images in each packaged Markdown resource.
+    # Relative links resolve from their containing document, not the package root.
+    for document in (p for p in files if p.suffix.lower() == ".md"):
+        document_content = document.read_text(encoding="utf-8", errors="replace")
+        for raw in LINK.findall(document_content):
+            target = raw.split("#", 1)[0].split("?", 1)[0].strip().strip('<>')
+            scheme = re.match(r"^([a-z][a-z0-9+.-]*):", target, re.I)
+            if scheme:
+                if scheme.group(1).lower() not in {"https", "http", "mailto"}:
+                    errors.append(f"UNSAFE_REFERENCE_SCHEME:{document.relative_to(root)}:{scheme.group(1).lower()}")
+                continue
+            if not target:
+                continue
+            resolved = (document.parent / target).resolve()
+            if not resolved.is_relative_to(root):
+                errors.append(f"REFERENCE_ESCAPES_SKILL:{document.relative_to(root)}:{target}")
+            elif not resolved.is_file() or resolved.is_symlink():
+                errors.append(f"BROKEN_LOCAL_REFERENCE:{document.relative_to(root)}:{target}")
     digest = hashlib.sha256()
     for p in files:
         rel = p.relative_to(root).as_posix()
-        if p.name in {".env", "id_rsa", "id_ed25519", "credentials.json"} or p.name.startswith(".env.") or p.suffix.lower() in {".pem", ".p12", ".pfx", ".key"}:
+        if p.name in {".env", "id_rsa", "id_ed25519", "credentials.json", ".npmrc", ".pypirc", ".netrc"} or p.name.startswith(".env.") or p.suffix.lower() in {".pem", ".p12", ".pfx", ".key"}:
             errors.append(f"SENSITIVE_RESOURCE_PATH:{rel}")
         data = p.read_bytes()
         digest.update(rel.encode() + b"\0" + data + b"\0")
