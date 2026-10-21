@@ -5,6 +5,8 @@ This is not a behavioral evaluator, runtime activation, or release certification
 """
 import argparse
 import hashlib
+import io
+import zipfile
 import json
 import re
 from pathlib import Path
@@ -89,11 +91,53 @@ def inspect_skill(path):
     }
 
 
+
+def package_validated_skill(path, output_directory):
+    """Create a stable ZIP-based .skill; never overwrite a different existing artifact."""
+    root = Path(path).resolve()
+    destination = Path(output_directory).resolve()
+    if destination == root or destination.is_relative_to(root):
+        raise ValueError("PACKAGE_OUTPUT_INSIDE_SOURCE")
+    assessment = inspect_skill(root)
+    if assessment["status"] != "PASS_STATIC_ONLY":
+        raise ValueError("PACKAGE_STATIC_VALIDATION_FAILED:" + ",".join(assessment["errors"]))
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for file_path in sorted(root.rglob("*")):
+            if not file_path.is_file():
+                continue
+            if file_path.is_symlink():
+                raise ValueError("SYMLINK_RESOURCE")
+            path_in_archive = root.name + "/" + file_path.relative_to(root).as_posix()
+            info = zipfile.ZipInfo(path_in_archive, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            archive.writestr(info, file_path.read_bytes())
+    blob = buffer.getvalue()
+    digest = hashlib.sha256(blob).hexdigest()
+    destination.mkdir(parents=True, exist_ok=True)
+    artifact = destination / (root.name + ".skill")
+    if artifact.exists():
+        if artifact.is_symlink() or hashlib.sha256(artifact.read_bytes()).hexdigest() != digest:
+            raise FileExistsError("PACKAGE_ARTIFACT_ALREADY_EXISTS_DIFFERENT")
+    else:
+        artifact.write_bytes(blob)
+    return {"artifact": artifact, "sha256": digest, "status": "PACKAGE_CREATED_NOT_ACTIVATED"}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("skill_directory", type=Path)
+    parser.add_argument("--package", metavar="OUTPUT_DIRECTORY", type=Path, help="Package only after static validation; never install or activate")
     args = parser.parse_args(argv)
     result = inspect_skill(args.skill_directory)
+    if args.package and result["status"] == "PASS_STATIC_ONLY":
+        try:
+            bundle = package_validated_skill(args.skill_directory, args.package)
+            result["packaging"] = {"artifact": str(bundle["artifact"]), "sha256": bundle["sha256"], "status": bundle["status"]}
+        except (OSError, ValueError) as exc:
+            result["status"] = "FAIL"
+            result["errors"].append(f"PACKAGING_FAILED:{exc}")
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["status"] == "PASS_STATIC_ONLY" else 2
 
