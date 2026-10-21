@@ -77,6 +77,17 @@ class SkillPreflightTests(unittest.TestCase):
             self.assertIn("my-skill/SKILL.md", zf.namelist())
             self.assertTrue(all(p.startswith("my-skill/") for p in zf.namelist()))
 
+    def test_generated_bytecode_does_not_change_source_digest_or_archive(self):
+        before = self.result()["package_sha256"]
+        cache = self.root / "scripts" / "__pycache__"
+        cache.mkdir(parents=True)
+        (cache / "run.cpython-311.pyc").write_bytes(b"generated content")
+        (self.root / ".DS_Store").write_bytes(b"os generated")
+        self.assertEqual(before, self.result()["package_sha256"])
+        archive = validator.package_validated_skill(self.root, Path(self.temp.name) / "dist")
+        with zipfile.ZipFile(archive["artifact"]) as zf:
+            self.assertFalse(any("__pycache__" in x or x.endswith(".pyc") or x.endswith(".DS_Store") for x in zf.namelist()))
+
     def test_packaging_rejects_invalid_or_nested_destination(self):
         p = self.root / "SKILL.md"
         p.write_text(p.read_text().replace("name: my-skill", "name: other-skill"))
