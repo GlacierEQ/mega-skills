@@ -77,6 +77,20 @@ class SkillPreflightTests(unittest.TestCase):
             self.assertIn("my-skill/SKILL.md", zf.namelist())
             self.assertTrue(all(p.startswith("my-skill/") for p in zf.namelist()))
 
+    def test_unclosed_frontmatter_quote_is_blocking(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text().replace("'Use when validating a reusable skill.'", "'Use when validating a reusable skill."))
+        self.assertEqual(self.result()["status"], "FAIL")
+
+    def test_unsafe_url_scheme_is_blocking(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text() + "\n[do not trust](javascript:alert(1))\n")
+        self.assertTrue(any(e.startswith("UNSAFE_REFERENCE_SCHEME:") for e in self.result()["errors"]))
+
+    def test_secret_bearing_path_is_blocking(self):
+        (self.root / ".env").write_text("PLACEHOLDER=not-a-real-key")
+        self.assertIn("SENSITIVE_RESOURCE_PATH:.env", self.result()["errors"])
+
     def test_generated_bytecode_does_not_change_source_digest_or_archive(self):
         before = self.result()["package_sha256"]
         cache = self.root / "scripts" / "__pycache__"
