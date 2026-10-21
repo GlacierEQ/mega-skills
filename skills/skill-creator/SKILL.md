@@ -87,3 +87,14 @@ For upstream scaffolding methods and retained design rules, read [preserved pack
 ## Required handoff
 
 Report the **actual capability advanced**, source commit/diff, owner and caller, which tests executed, provider-verified state, what remains, and one precise resumption step. Unsupported environments are recorded, not silently patched over. A plugin's installation or an L2 manifest check does not by itself prove task execution.
+## Executable authoring path
+
+The package includes a bounded local authoring implementation, not a model inference service. The agent should first reason about the user's actual workflow, existing owner, and constraints, then provide a structured JSON specification following [the authoring input contract](references/authoring-spec.md). Use:
+
+```bash
+python skills/skill-creator/skill.py --execute --spec /safe/authoring-spec.json --output /safe/new-skills
+```
+
+The CLI creates a new skill folder with `SKILL.md`, reference resources, and an independent six-family eval corpus. It rejects unsafe names, missing evidence contracts, suspicious bundled content, symlink destinations, and conflicting existing files. Identical reruns are idempotent. It uses an isolated staging directory and validates before the final directory move. A produced skill remains **statically validated, not model-tested, installed, or deployed**.
+
+After generation, independently inspect the output, use the platform-native validator, run the host's behavior/eval suite, package using the existing validated packager, read back the loaded version, and only then report host readiness. If a live host is unavailable, preserve the complete artifact and precise activation cursor; never replace that gap with generic prose or a fabricated success claim.
