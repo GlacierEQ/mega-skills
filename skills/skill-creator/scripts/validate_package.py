@@ -43,6 +43,8 @@ def inspect_skill(path):
                 key, value = match.groups()
                 if key in properties:
                     errors.append(f"DUPLICATE_METADATA:{key}")
+                if value.startswith(("'", '"')) and (len(value) < 2 or value[-1] != value[0]):
+                    errors.append(f"UNTERMINATED_FRONTMATTER_QUOTE:{key}")
                 properties[key] = value.strip(' "\'')
         name, description = properties.get("name", ""), properties.get("description", "")
         if not NAME.fullmatch(name) or len(name) > 64 or name != root.name:
@@ -69,7 +71,12 @@ def inspect_skill(path):
             files.append(p)
     for raw in LINK.findall(content):
         target = raw.split("#", 1)[0].split("?", 1)[0].strip().strip('<>')
-        if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):
+        scheme = re.match(r"^([a-z][a-z0-9+.-]*):", target, re.I)
+        if scheme:
+            if scheme.group(1).lower() not in {"https", "http", "mailto"}:
+                errors.append(f"UNSAFE_REFERENCE_SCHEME:{scheme.group(1).lower()}")
+            continue
+        if not target:
             continue
         resolved = (root / target).resolve()
         if not resolved.is_relative_to(root):
@@ -79,6 +86,8 @@ def inspect_skill(path):
     digest = hashlib.sha256()
     for p in files:
         rel = p.relative_to(root).as_posix()
+        if p.name in {".env", "id_rsa", "id_ed25519", "credentials.json"} or p.name.startswith(".env.") or p.suffix.lower() in {".pem", ".p12", ".pfx", ".key"}:
+            errors.append(f"SENSITIVE_RESOURCE_PATH:{rel}")
         data = p.read_bytes()
         digest.update(rel.encode() + b"\0" + data + b"\0")
         if len(data) > 2_000_000:
