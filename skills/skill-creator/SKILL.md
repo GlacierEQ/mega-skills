@@ -62,10 +62,11 @@ Run the target host's own validator when available. Also run the bundled **read-
 
 ```bash
 python skills/skill-creator/scripts/validate_package.py /absolute/path/to/skill
+python skills/skill-creator/scripts/validate_package.py /absolute/path/to/skill --package /safe/output/directory
 python -m unittest discover -s skills/skill-creator/tests -v
 ```
 
-The checker reports `PASS_STATIC_ONLY` or `FAIL`; it always reports behavioral and provider execution as `NOT_RUN`. It is not a replacement for the host's manifest validator. Run changed scripts against real, isolated fixtures; exercise the actual host-trigger/agent workflow and its external provider boundary where authorized. Recheck the exact changed commit. Do not promote `PASS_STATIC_ONLY` into `LIVE_VERIFIED`.
+The checker reports `PASS_STATIC_ONLY` or `FAIL`; it always reports behavioral and provider execution as `NOT_RUN`. The optional `--package` builds a reproducible `.skill` archive only after static validation; it neither installs nor activates it. It is not a replacement for the host's manifest validator. Run changed scripts against real, isolated fixtures; exercise the actual host-trigger/agent workflow and its external provider boundary where authorized. Recheck the exact changed commit. Do not promote `PASS_STATIC_ONLY` into `LIVE_VERIFIED`.
 
 ### 6. Release with provenance and continuation
 
@@ -80,6 +81,8 @@ Record changed package hashes, source/branch/commit, explicit test commands and 
 - **Evidence laundering:** a staged draft, mocked test, green CI, or PR is reported as a deployed outcome → demote to last observed stage, request actual provider proof.
 - **Security or path escape:** symlink, traversal, embedded secret, or injected external instructions → refuse unsafe package/release; preserve isolation.
 - **Stale evaluation:** corpus or package changes after evaluation → invalidate maturity claim and rerun affected/holdout suites.
+
+For upstream scaffolding methods and retained design rules, read [preserved package mechanics](references/legacy-package-mechanics.md).
 
 ## Required handoff
 
