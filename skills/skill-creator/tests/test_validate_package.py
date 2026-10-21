@@ -117,5 +117,53 @@ class SkillPreflightTests(unittest.TestCase):
         self.assertEqual(self.result()["status"], "PASS_STATIC_ONLY")
 
 
+    def test_description_yaml_sequence_is_rejected(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text().replace("'Use when validating a reusable skill.'", "[not, scalar]"))
+        self.assertEqual(self.result()["status"], "FAIL")
+
+    def test_missing_image_link_is_rejected(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text() + "\n![image](references/missing.png)\n")
+        self.assertTrue(any(e.startswith("BROKEN_LOCAL_REFERENCE:") for e in self.result()["errors"]))
+
+    def test_unsafe_image_scheme_is_rejected(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text() + "\n![image](javascript:alert(1))\n")
+        self.assertTrue(any(e.startswith("UNSAFE_REFERENCE_SCHEME:") for e in self.result()["errors"]))
+
+    def test_missing_link_in_reference_is_rejected(self):
+        refs = self.root / "references"
+        refs.mkdir()
+        (refs / "setup.md").write_text("[not-there](absent.md)")
+        self.assertTrue(any(e.startswith("BROKEN_LOCAL_REFERENCE:") for e in self.result()["errors"]))
+
+    def test_unsafe_link_in_reference_is_rejected(self):
+        refs = self.root / "references"
+        refs.mkdir()
+        (refs / "setup.md").write_text("[danger](javascript:alert(1))")
+        self.assertTrue(any(e.startswith("UNSAFE_REFERENCE_SCHEME:") for e in self.result()["errors"]))
+
+    def test_openai_prefixed_env_secret_is_rejected(self):
+        (self.root / "config.txt").write_text("OPENAI_API_KEY=" + ("x" * 40))
+        self.assertTrue(any(e.startswith("POTENTIAL_EMBEDDED_SECRET:") for e in self.result()["errors"]))
+
+    def test_npmrc_auth_token_is_rejected(self):
+        (self.root / ".npmrc").write_text("//registry.npmjs.org/:_authToken=" + ("x" * 40))
+        self.assertEqual(self.result()["status"], "FAIL")
+
+    def test_host_specific_metadata_is_flagged_for_native_validation(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text().replace("---\n# My Skill", "host-specific-key: value\n---\n# My Skill"))
+        self.assertIn("HOST_METADATA_REQUIRES_NATIVE_VALIDATION:host-specific-key", self.result()["warnings"])
+
+    def test_valid_reference_image_and_http_link_are_allowed(self):
+        refs = self.root / "references"
+        refs.mkdir()
+        (refs / "picture.png").write_bytes(b"not a real image; presence test")
+        (refs / "guide.md").write_text("![image](picture.png)\n[docs](https://example.org/x)\n")
+        self.assertEqual(self.result()["status"], "PASS_STATIC_ONLY")
+
+
 if __name__ == "__main__":
     unittest.main()
