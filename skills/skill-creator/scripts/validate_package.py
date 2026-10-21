@@ -16,6 +16,11 @@ LINK = re.compile(r"(?<!!)\[[^]]*\]\(([^)]+)\)")
 SECRET = re.compile(r"(?i)(?:\b(?:api[_-]?key|access[_-]?token|client[_-]?secret)\b\s*[:=]\s*['\"]?(?!example\b|placeholder\b|your\b|\$\{)[a-z0-9_./+\-]{20,}|\bgh[pousr]_[A-Za-z0-9]{30,}\b)")
 
 
+def _source_resource(path, root):
+    relative = path.relative_to(root)
+    return not any(part in {"__pycache__", ".git", ".DS_Store"} or part.endswith(".pyc") for part in relative.parts)
+
+
 def inspect_skill(path):
     root = Path(path).resolve()
     errors, warnings, checks = [], [], []
@@ -56,6 +61,8 @@ def inspect_skill(path):
     # Scan resources without following symlinks or allowing local references to escape root.
     files = []
     for p in sorted(root.rglob("*")):
+        if not _source_resource(p, root):
+            continue
         if p.is_symlink():
             errors.append(f"SYMLINK_RESOURCE:{p.relative_to(root)}")
         elif p.is_file():
@@ -104,7 +111,7 @@ def package_validated_skill(path, output_directory):
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
         for file_path in sorted(root.rglob("*")):
-            if not file_path.is_file():
+            if not _source_resource(file_path, root) or not file_path.is_file():
                 continue
             if file_path.is_symlink():
                 raise ValueError("SYMLINK_RESOURCE")
