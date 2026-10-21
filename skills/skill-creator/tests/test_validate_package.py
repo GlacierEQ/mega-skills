@@ -1,6 +1,7 @@
 """Contract tests for the Skill Creator's read-only preflight."""
 import importlib.util
 import tempfile
+import zipfile
 import unittest
 from pathlib import Path
 
@@ -66,6 +67,24 @@ class SkillPreflightTests(unittest.TestCase):
         before = self.result()["package_sha256"]
         (self.root / "SKILL.md").write_text((self.root / "SKILL.md").read_text() + "\nExtra evidence.\n")
         self.assertNotEqual(before, self.result()["package_sha256"])
+
+    def test_package_is_deterministic_and_uses_safe_prefix(self):
+        output = Path(self.temp.name) / "dist"
+        first = validator.package_validated_skill(self.root, output)
+        self.assertTrue(first["artifact"].is_file())
+        self.assertEqual(first["sha256"], validator.package_validated_skill(self.root, output)["sha256"])
+        with zipfile.ZipFile(first["artifact"]) as zf:
+            self.assertIn("my-skill/SKILL.md", zf.namelist())
+            self.assertTrue(all(p.startswith("my-skill/") for p in zf.namelist()))
+
+    def test_packaging_rejects_invalid_or_nested_destination(self):
+        p = self.root / "SKILL.md"
+        p.write_text(p.read_text().replace("name: my-skill", "name: other-skill"))
+        with self.assertRaises(ValueError):
+            validator.package_validated_skill(self.root, Path(self.temp.name) / "dist")
+        p.write_text(p.read_text().replace("name: other-skill", "name: my-skill"))
+        with self.assertRaises(ValueError):
+            validator.package_validated_skill(self.root, self.root / "dist")
 
     def test_one_missing_candidate_does_not_invalidate_other_skill(self):
         result = validator.inspect_skill(self.root / "missing")
