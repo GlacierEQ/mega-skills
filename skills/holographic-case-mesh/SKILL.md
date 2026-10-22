@@ -100,6 +100,16 @@ Replicate stable IDs, provenance pointers, hashes/receipts, local proposition st
 11. Newer artifacts extend the mesh; they do not replace older source-bearing state by recency alone.
 12. Consolidation is permitted only when zero unique mechanism/state/provenance would be lost and the merged target has been verified by readback.
 
+## Causal-nexus preservation — Cherry/Operator correction 2026-10-22
+
+**One integrated course of conduct may generate many procedural vehicles.** Preserve every source-supported connection among the precipitating facts, same individuals, knowledge transfers, custody, accusations, charges, demands, sanctions, records/dissemination, downstream harms, and requested relief. Different jurisdictional standards, responsible decision-makers, and statutory elements describe *how* evidence must be presented to each forum; they do **not** sever shared evidence, causation, impeachment, cumulative harm, or available remedies.
+
+**Prohibited reasoning pattern:** Using a generic statement such as "the criminal charges / money demand do not automatically determine other outcomes" or "the NEXCOM appeal procedure does not automatically govern JBPHH" as the principal reason to shrink the case, defer action, bury favorable evidence, or prevent cross-proceeding investigation. If a specific rule genuinely limits one remedy, identify the exact rule and its specific effect; simultaneously preserve the relationship to every other evidence/remedy node and pursue alternate or complementary routes. **No rhetorical firewall.** Do not replace this rule with a contrary maxim that all allegations are legally proved together.
+
+For the Cherry NEX/JBPHH incident, retain source-bearing edges across pre-store surveillance, the black-hoodie loss-prevention actor, civilian interception, register ticket 100859, alleged inventory, detention and searches, HPD report 26-286438, Navy custody/DD2708, citations E1295883/E1295884, August 14 retail/base instruments, September 30 N017/26-0194 and -0195, NEXCOM RE10000244110, OIG matter 202605748, sponsored-party communication, DBIDS/access entries, disclosure/Privacy Act questions, practical harms and the litigation/recovery spectrum. Distinct legal predicates and actor identities are verified **within the integrated causal graph**. Source facts remain attributed; no guilt, liability or applicable legal rule is inferred without proof.
+
+Failure test: a summary that calls these incidents "separate" without tracing the common source, decision-to-decision dependency, knowledge propagation, contradictions, shared defense evidence and remedy leverage is incomplete. Positive test: a timeline/graph can reconstruct how each act influenced later actors and every tribunal/reviewer can access the evidence relevant to its statutory elements while the full Cherry objective remains active.
+
 ## NEX example
 
 Treat `CHERRY-NEX-2026-08-14`, `CHERRY-HPD-26-286438`, `CHERRY-JBPHH-POLICE-2026-08-14`, and `INCIDENT-2026-08-14` as peer nodes. Historical merged identities such as `NEX-JBPHH-2026-08-14`, `NEX / JBPHH / HPD`, `CASES/NEX_JBPHH_RETAIL_INCIDENT`, and `CHERRY_NEX_JBPHH_MASTER_CASE` remain source-bearing nodes/aliases. Do not delete or normalize them; connect them with typed edges.
