@@ -16786,6 +16786,407 @@
       "does_not_own": [
         "Credentials, sealed case strategy, medical details, or unverified live Linear mutations"
       ]
+    },
+    {
+      "id": "openrewrite-recipes",
+      "display_name": "OpenRewrite Recipes",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/openrewrite-recipes",
+      "entrypoint": "skills/openrewrite-recipes/SKILL.md",
+      "purpose": "Operate OpenRewrite as the estate's recipe engine: select, compose, dry-run, and apply refactoring recipes for API migrations, framework upgrades, and deprecation removal, with the produced diff as the verification artifact.",
+      "input_contract": [
+        "Repository root and target recipe list (fully-qualified recipe names)",
+        "Build tool in use (Maven or Gradle) and baseline test command"
+      ],
+      "output_contract": [
+        "Recipe run report with per-recipe change counts",
+        "Migration receipt with diff, tests, and rollback path"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_openrewrite_recipes.py"
+      ],
+      "does_not_own": [
+        "Authoring or forking the upstream OpenRewrite tool",
+        "Non-JVM structural transforms (route to ast-grep-structural-rewrite or jscodeshift-codemods)"
+      ]
+    },
+    {
+      "id": "jscodeshift-codemods",
+      "display_name": "Jscodeshift Codemods",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/jscodeshift-codemods",
+      "entrypoint": "skills/jscodeshift-codemods/SKILL.md",
+      "purpose": "Operate jscodeshift as the estate's JS/TS transform engine: author fixture-tested codemods, dry-run them over a target tree, and apply them in bounded, reversible batches.",
+      "input_contract": [
+        "Repository root and the API migration specification (old contract, new contract)",
+        "Representative source fixtures covering the transform's edge cases"
+      ],
+      "output_contract": [
+        "Codemod transform module with passing fixture tests",
+        "Codemod run receipt with files changed/skipped and test results"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_jscodeshift_codemods.py"
+      ],
+      "does_not_own": [
+        "JVM migrations (route to openrewrite-recipes)",
+        "Polyglot structural search (route to ast-grep-structural-rewrite)"
+      ]
+    },
+    {
+      "id": "codemod-cli",
+      "display_name": "Codemod CLI",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/codemod-cli",
+      "entrypoint": "skills/codemod-cli/SKILL.md",
+      "purpose": "Operate the codemod CLI as the estate's codemod lifecycle manager: scaffold new codemods, publish and reuse shared ones, and run multi-step migrations with dry-run reports before any write.",
+      "input_contract": [
+        "Migration specification and target repositories",
+        "Engine choice per step (ast-grep pattern or jscodeshift transform)"
+      ],
+      "output_contract": [
+        "Scaffolded codemod package with tests",
+        "Codemod run report (dry-run and applied) with receipts"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_codemod_cli.py"
+      ],
+      "does_not_own": [
+        "The transform engines themselves (ast-grep, jscodeshift own their semantics)",
+        "Promotion decisions (route to spiral-promotion-gate)"
+      ]
+    },
+    {
+      "id": "ast-grep-structural-rewrite",
+      "display_name": "Ast Grep Structural Rewrite",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/ast-grep-structural-rewrite",
+      "entrypoint": "skills/ast-grep-structural-rewrite/SKILL.md",
+      "purpose": "Operate ast-grep as the estate's default structural engine: write AST patterns and YAML rules to search, lint, and rewrite code by syntax tree shape across many languages, with dry-run diff review before applying.",
+      "input_contract": [
+        "Target tree and the structural pattern (example code shape to match and its replacement)",
+        "Language and rule scope (paths to include/exclude)"
+      ],
+      "output_contract": [
+        "ast-grep rule set (YAML) with match/rewrite evidence",
+        "Rewrite receipt with files matched/changed/skipped and test results"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_ast_grep_structural_rewrite.py"
+      ],
+      "does_not_own": [
+        "Semantic transforms needing full type information (route to jscodeshift-codemods or openrewrite-recipes)",
+        "Purely textual bulk renames (route to fastmod-bulk-rewrite)"
+      ]
+    },
+    {
+      "id": "comby-structural-replace",
+      "display_name": "Comby Structural Replace",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/comby-structural-replace",
+      "entrypoint": "skills/comby-structural-replace/SKILL.md",
+      "purpose": "Operate Comby as the estate's lightweight structural replacement tool: match code with hole-based templates that respect balanced delimiters, review matches, and rewrite in bounded batches.",
+      "input_contract": [
+        "Target tree and match/rewrite templates with holes (e.g. `:[x]`)",
+        "File extensions / languages in scope"
+      ],
+      "output_contract": [
+        "Comby review report of all matches",
+        "Replacement receipt with counts and test results"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_comby_structural_replace.py"
+      ],
+      "does_not_own": [
+        "Semantic or type-aware transforms (route to jscodeshift-codemods or openrewrite-recipes)",
+        "Grammar-precise rewrites (route to ast-grep-structural-rewrite)"
+      ]
+    },
+    {
+      "id": "fastmod-bulk-rewrite",
+      "display_name": "Fastmod Bulk Rewrite",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/fastmod-bulk-rewrite",
+      "entrypoint": "skills/fastmod-bulk-rewrite/SKILL.md",
+      "purpose": "Operate fastmod as the estate's bulk mechanical rewrite tool: run guarded regex replacements across many files and repositories at speed, with extensions filters, accept/review flow, and post-run verification.",
+      "input_contract": [
+        "Regex pattern and replacement, with the guardrail justification (why regex is safe here)",
+        "Target roots and file extensions in scope"
+      ],
+      "output_contract": [
+        "fastmod run report (changed/unchanged files)",
+        "Bulk rewrite receipt with counts, spot-check evidence, and test results"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_fastmod_bulk_rewrite.py"
+      ],
+      "does_not_own": [
+        "Any change where syntax nesting, strings, or comments carry meaning (route to ast-grep-structural-rewrite)",
+        "Semantic migrations (route to jscodeshift-codemods or openrewrite-recipes)"
+      ]
+    },
+    {
+      "id": "piranha-flag-retirement",
+      "display_name": "Piranha Flag Retirement",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/piranha-flag-retirement",
+      "entrypoint": "skills/piranha-flag-retirement/SKILL.md",
+      "purpose": "Operate Piranha as the estate's stale-flag deletion specialist: configure flag name, treated and control values, run the cleanup, and verify the resulting code compiles and tests green with the flag fully gone.",
+      "input_contract": [
+        "Flag name, treated value, control value, and the flag API used by the codebase",
+        "Confirmation the flag is fully rolled out or fully rolled back (the retirement decision)"
+      ],
+      "output_contract": [
+        "Piranha cleanup diff with dead branches removed",
+        "Flag retirement receipt with compile/test results and zero-reference proof"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_piranha_flag_retirement.py"
+      ],
+      "does_not_own": [
+        "The decision that a flag is stale (that is an Operator/product decision recorded before this skill runs)",
+        "General deprecated-API removal (route to deprecation-removal, which orchestrates this engine)"
+      ]
+    },
+    {
+      "id": "dependency-update-operator",
+      "display_name": "Dependency Update Operator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/dependency-update-operator",
+      "entrypoint": "skills/dependency-update-operator/SKILL.md",
+      "purpose": "Keep estate dependencies current through automated, grouped, scheduled update pull requests whose candidates enter the Spiral Promotion Gate before merge — closing the registry's dependency-automation gap without inventing a new tool.",
+      "input_contract": [
+        "Repository inventory with ecosystems and current update posture",
+        "Grouping, schedule, and automerge policy decisions for the estate"
+      ],
+      "output_contract": [
+        "Per-repository dependabot.yml and/or renovate configuration, committed",
+        "Update-candidate ledger feeding spiral-promotion-gate decisions"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_dependency_update_operator.py"
+      ],
+      "does_not_own": [
+        "The update tools themselves (GitHub Dependabot platform; Renovate as an external service)",
+        "Merge decisions for major upgrades (route to spiral-promotion-gate)",
+        "Vulnerability triage (route to automated-security-scanning)"
+      ]
+    },
+    {
+      "id": "deprecation-removal",
+      "display_name": "Deprecation Removal",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/deprecation-removal",
+      "entrypoint": "skills/deprecation-removal/SKILL.md",
+      "purpose": "Own the deprecation-retirement discipline end-to-end — the registry's second named gap: a deprecated surface is not retired when it is marked, but when consumers are migrated, the code is deleted, and absence is proven by search.",
+      "input_contract": [
+        "The deprecated surface (API, flag, feature) and its replacement or removal rationale",
+        "Retirement decision record (owner, date, treated outcome)"
+      ],
+      "output_contract": [
+        "Consumer migration plan with per-consumer disposition",
+        "Deletion diff plus zero-reference proof and retirement receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_deprecation_removal.py"
+      ],
+      "does_not_own": [
+        "The consumer migrations themselves (route to openrewrite-recipes, piranha-flag-retirement, ast-grep-structural-rewrite)",
+        "The promotion decision for the replacement (route to spiral-promotion-gate)"
+      ]
+    },
+    {
+      "id": "spiral-promotion-gate",
+      "display_name": "Spiral Promotion Gate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/spiral-promotion-gate",
+      "entrypoint": "skills/spiral-promotion-gate/SKILL.md",
+      "purpose": "Decide upgrade promotions with the Spiral Engine's evidence-bound gate: measure before/after quality states, emit a CONTINUE / REVISE / PROMOTE / COMPLETE / CONSTRAINED signal, and bind any promotion to a short-lived HMAC grant and a SHA-256-chained receipt.",
+      "input_contract": [
+        "Candidate under decision (upgraded dependency, framework migration, transformed module, frontier specialist)",
+        "Before/after quality measurements and promotion evidence (parity, rollback readiness, interface, benchmark)"
+      ],
+      "output_contract": [
+        "Revolution receipt with the decision signal and its reasons",
+        "Promotion grant (when PROMOTE) bound to repo, source SHA, and proof-receipt digest"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_spiral_promotion_gate.py"
+      ],
+      "does_not_own": [
+        "Executing the upgrade itself (route to the transform engine skills)",
+        "Measuring quality states (the upstream optimizer/evaluator owns measurement)"
+      ]
+    },
+    {
+      "id": "test-drift-archaeology-repair",
+      "display_name": "Test Drift Archaeology Repair",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/test-drift-archaeology-repair",
+      "entrypoint": "skills/test-drift-archaeology-repair/SKILL.md",
+      "purpose": "Own the estate's proven drift-repair pattern (executed 2026-10-14 on Casebuilder4000, apex-control-plane, operator-administration): restore a rotted suite to fully green by repairing the code/test mismatch at its archaeological root, never by weakening tests.",
+      "input_contract": [
+        "Repository whose suite fails against its own code",
+        "Full suite output (complete enumeration, not a sample)"
+      ],
+      "output_contract": [
+        "Fully green suite with the drift root cause named",
+        "Repair commit(s) to main with the archaeology recorded in the message"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_test_drift_archaeology_repair.py"
+      ],
+      "does_not_own": [
+        "Feature work disguised as repair (scope is the drift, nothing else)",
+        "Deleting or weakening tests to reach green (forbidden by this method)"
+      ]
+    },
+    {
+      "id": "genius-engineering-execution",
+      "display_name": "Genius Engineering Execution",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/genius-engineering-execution",
+      "entrypoint": "skills/genius-engineering-execution/SKILL.md",
+      "purpose": "Run multi-repo or multi-stage upgrades so partial completion cannot be mistaken for done: the mission (the terminal engineering outcome) is compiled to a dependency-aware execution graph and driven to verified completion with deterministic receipts.",
+      "input_contract": [
+        "Mission statement naming the terminal engineering outcome (not the smallest completable task)",
+        "Work items with dependencies and per-change verification gates"
+      ],
+      "output_contract": [
+        "Executed mission with per-wave receipts (deterministic SHA-256)",
+        "Completion verdict: exit 0 only on genuine, verified mission completion"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_genius_engineering_execution.py"
+      ],
+      "does_not_own": [
+        "The upgrade decisions themselves (route to spiral-promotion-gate)",
+        "The transforms themselves (route to the engine skills)"
+      ]
+    },
+    {
+      "id": "strangler-fig-migration",
+      "display_name": "Strangler Fig Migration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/strangler-fig-migration",
+      "entrypoint": "skills/strangler-fig-migration/SKILL.md",
+      "purpose": "Modernize legacy subsystems without a big-bang rewrite: place a facade in front of the old system, grow the replacement behind it slice by slice, and retire the old system only on proven zero traffic.",
+      "input_contract": [
+        "Legacy subsystem and its call surface (the seam where the facade will sit)",
+        "Replacement implementation plan ordered by usage slices"
+      ],
+      "output_contract": [
+        "Facade with per-slice routing and traffic evidence",
+        "Retirement receipt when the old system reaches zero routed usage"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_strangler_fig_migration.py"
+      ],
+      "does_not_own": [
+        "Building the replacement's internals (route to codemaster / automated-code-refactoring)",
+        "The decision that replacement is warranted (route to spiral-promotion-gate)"
+      ]
+    },
+    {
+      "id": "branch-by-abstraction",
+      "display_name": "Branch By Abstraction",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/branch-by-abstraction",
+      "entrypoint": "skills/branch-by-abstraction/SKILL.md",
+      "purpose": "Make large in-place replacements safely inside one codebase on main: an abstraction layer decouples consumers from the implementation being replaced, so the swap happens as a sequence of small, verified, reversible steps.",
+      "input_contract": [
+        "The widely-used dependency/subsystem to replace and its consumer surface",
+        "The replacement and the configuration flag that will flip implementations"
+      ],
+      "output_contract": [
+        "Abstraction seam with old and new implementations behind it",
+        "Flip record and old-implementation removal receipt"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_branch_by_abstraction.py"
+      ],
+      "does_not_own": [
+        "Replacing systems across a network seam (route to strangler-fig-migration)",
+        "Authoring the replacement implementation (route to codemaster)"
+      ]
+    },
+    {
+      "id": "characterization-tests-first",
+      "display_name": "Characterization Tests First",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/characterization-tests-first",
+      "entrypoint": "skills/characterization-tests-first/SKILL.md",
+      "purpose": "Make legacy upgrades verifiable: write tests that document what the code actually does today — including its quirks — before any change, so the upgrade's correctness is judged against pinned behavior.",
+      "input_contract": [
+        "Legacy code area about to change, with its real inputs (production-shaped data, call sequences)",
+        "The change the characterization is protecting"
+      ],
+      "output_contract": [
+        "Characterization test suite pinning current behavior",
+        "Quirk register: pinned behaviors that look wrong but are load-bearing"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_characterization_tests_first.py"
+      ],
+      "does_not_own": [
+        "Judging whether a pinned behavior is a bug (that is a decision for the Operator/change owner, recorded in the quirk register)",
+        "The upgrade itself (this skill only builds its safety net)"
+      ]
+    },
+    {
+      "id": "recipe-based-migration",
+      "display_name": "Recipe Based Migration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/recipe-based-migration",
+      "entrypoint": "skills/recipe-based-migration/SKILL.md",
+      "purpose": "Own the recipe method independent of any one engine: a migration is not a one-off edit but a named, versioned, composable recipe whose dry-run diff is reviewed before application and whose identity is recorded in every receipt.",
+      "input_contract": [
+        "Migration specification (from-state, to-state) and the engine that will execute the recipe",
+        "Target repository set and per-repo acceptance tests"
+      ],
+      "output_contract": [
+        "Named, versioned recipe definition (declarative or transform code) with dry-run evidence",
+        "Per-repo application receipts referencing the recipe identity"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_recipe_based_migration.py"
+      ],
+      "does_not_own": [
+        "Any single engine's operation (route to openrewrite-recipes, jscodeshift-codemods, codemod-cli)",
+        "The promotion decision for migrated repos (route to spiral-promotion-gate)"
+      ]
     }
   ]
 }

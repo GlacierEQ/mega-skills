@@ -6258,6 +6258,390 @@
           "All required members emit accepted artifacts and all hard gates pass."
         ]
       }
+    },
+    {
+      "id": "code-upgrade-pipeline",
+      "display_name": "Code Upgrade Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/code-upgrade-pipeline",
+      "entrypoint": "combo-skills/code-upgrade-pipeline/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Upgrading, modernizing, or migrating code across one or more GlacierEQ repositories under evidence gates.",
+          "Retiring deprecated APIs, flags, or frameworks estate-wide with proof of completion."
+        ],
+        "do_not_use_when": [
+          "Single-file typo, lint, or one-line fixes.",
+          "Net-new feature development with no upgrade or migration component."
+        ]
+      },
+      "members": [
+        {
+          "id": "automated-architecture-analysis",
+          "kind": "skill",
+          "role": "Assess: build the typed dependency graph; find cycles, forbidden edges, and the safe decoupling order.",
+          "required": true
+        },
+        {
+          "id": "characterization-tests-first",
+          "kind": "skill",
+          "role": "Assess: pin the current behavior of untested legacy code before it changes.",
+          "required": true
+        },
+        {
+          "id": "dependency-update-operator",
+          "kind": "skill",
+          "role": "Decide (feed): produce governed dependency-update candidates via the Dependabot baseline and Renovate patterns.",
+          "required": true
+        },
+        {
+          "id": "spiral-promotion-gate",
+          "kind": "skill",
+          "role": "Decide: judge each candidate on parity, rollback readiness, and measured gain; issue or withhold the promotion grant.",
+          "required": true
+        },
+        {
+          "id": "automated-code-refactoring",
+          "kind": "skill",
+          "role": "Transform: run bounded, reversible transformation batches under a changed-file budget.",
+          "required": true
+        },
+        {
+          "id": "openrewrite-recipes",
+          "kind": "skill",
+          "role": "Transform (JVM lane): execute API migrations and deprecation removal as versioned OpenRewrite recipes.",
+          "required": false
+        },
+        {
+          "id": "ast-grep-structural-rewrite",
+          "kind": "skill",
+          "role": "Transform (polyglot lane): execute structural rewrites by AST pattern with audited match sets.",
+          "required": false
+        },
+        {
+          "id": "deprecation-removal",
+          "kind": "skill",
+          "role": "Transform: retire deprecated surfaces after consumers migrate; prove zero remaining references.",
+          "required": false
+        },
+        {
+          "id": "test-drift-archaeology-repair",
+          "kind": "skill",
+          "role": "Verify: return a drifted suite to green by archaeology, without weakening a single test.",
+          "required": true
+        },
+        {
+          "id": "verification-before-completion",
+          "kind": "skill",
+          "role": "Verify: block any completion claim that lacks command output.",
+          "required": true
+        },
+        {
+          "id": "release",
+          "kind": "skill",
+          "role": "Promote: run release gates, bump the version, commit and push to main.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "automated-architecture-analysis",
+            "consumes": [
+              "Target repository set",
+              "Upgrade goal"
+            ],
+            "produces": [
+              "Dependency graph and decoupling plan",
+              "Risk register"
+            ],
+            "validation": "Graph covers every in-scope repository; cycles and forbidden edges are named with a decoupling order."
+          },
+          {
+            "step": 2,
+            "member_id": "characterization-tests-first",
+            "consumes": [
+              "Decoupling plan",
+              "Legacy code areas"
+            ],
+            "produces": [
+              "Characterization test suite",
+              "Quirk register"
+            ],
+            "validation": "Suite passes 100% on untouched code; surprising behaviors are registered, not assumed."
+          },
+          {
+            "step": 3,
+            "member_id": "dependency-update-operator",
+            "consumes": [
+              "Repository inventory",
+              "Update policy"
+            ],
+            "produces": [
+              "Update candidate ledger",
+              "dependabot.yml / renovate configuration"
+            ],
+            "validation": "Every repository has an update posture; candidates are grouped, scheduled, and classified patch/minor/major."
+          },
+          {
+            "step": 4,
+            "member_id": "spiral-promotion-gate",
+            "consumes": [
+              "Update candidate ledger",
+              "Before/after quality states"
+            ],
+            "produces": [
+              "Promotion decision and chained receipt",
+              "Promotion grant (on PROMOTE)"
+            ],
+            "validation": "No candidate advances without parity, rollback, and measured-gain evidence."
+          },
+          {
+            "step": 5,
+            "member_id": "automated-code-refactoring",
+            "consumes": [
+              "Decoupling plan",
+              "Approved transformation scope"
+            ],
+            "produces": [
+              "Bounded transformation batches",
+              "Refactor receipts"
+            ],
+            "validation": "Each batch is one conceptual change, within budget, and independently reversible."
+          },
+          {
+            "step": 6,
+            "member_id": "openrewrite-recipes",
+            "consumes": [
+              "API migration specification",
+              "Recipe list"
+            ],
+            "produces": [
+              "Recipe dry-run diff",
+              "Applied migration diff"
+            ],
+            "validation": "Dry-run diff reviewed before apply; one recipe per batch."
+          },
+          {
+            "step": 7,
+            "member_id": "ast-grep-structural-rewrite",
+            "consumes": [
+              "Structural pattern set",
+              "Target trees"
+            ],
+            "produces": [
+              "Audited match list",
+              "Rewrite diff"
+            ],
+            "validation": "Match set audited for false positives; post-run search returns zero live matches."
+          },
+          {
+            "step": 8,
+            "member_id": "deprecation-removal",
+            "consumes": [
+              "Deprecated surface inventory",
+              "Retirement decision record"
+            ],
+            "produces": [
+              "Consumer dispositions",
+              "Deletion diff with zero-reference proof"
+            ],
+            "validation": "No surface deleted with live consumers; absence proven by search output."
+          },
+          {
+            "step": 9,
+            "member_id": "test-drift-archaeology-repair",
+            "consumes": [
+              "Full suite failure enumeration",
+              "Git history"
+            ],
+            "produces": [
+              "Green suite",
+              "Drift root-cause record"
+            ],
+            "validation": "Full suite green with zero tests weakened, skipped, or deleted."
+          },
+          {
+            "step": 10,
+            "member_id": "verification-before-completion",
+            "consumes": [
+              "All stage receipts",
+              "Suite and build output"
+            ],
+            "produces": [
+              "Verification verdict"
+            ],
+            "validation": "Every completion claim in the record cites command output."
+          },
+          {
+            "step": 11,
+            "member_id": "release",
+            "consumes": [
+              "Promotion grant",
+              "Verification verdict"
+            ],
+            "produces": [
+              "Version bump and artifacts",
+              "Commit and push to main"
+            ],
+            "validation": "Release gates pass; the upgrade lands on main with receipts attached."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "automated-architecture-analysis",
+            "to_member": "characterization-tests-first",
+            "required_inputs": [
+              "Dependency graph and decoupling plan"
+            ],
+            "accepted_outputs": [
+              "Characterization test suite"
+            ],
+            "failure_owner": "assessor"
+          },
+          {
+            "from_member": "characterization-tests-first",
+            "to_member": "dependency-update-operator",
+            "required_inputs": [
+              "Characterization test suite"
+            ],
+            "accepted_outputs": [
+              "Update candidate ledger"
+            ],
+            "failure_owner": "test-engineer"
+          },
+          {
+            "from_member": "dependency-update-operator",
+            "to_member": "spiral-promotion-gate",
+            "required_inputs": [
+              "Update candidate ledger"
+            ],
+            "accepted_outputs": [
+              "Promotion decision and chained receipt"
+            ],
+            "failure_owner": "dependency-operator"
+          },
+          {
+            "from_member": "spiral-promotion-gate",
+            "to_member": "automated-code-refactoring",
+            "required_inputs": [
+              "Promotion decision and chained receipt"
+            ],
+            "accepted_outputs": [
+              "Bounded transformation batches"
+            ],
+            "failure_owner": "promotion-authority"
+          },
+          {
+            "from_member": "automated-code-refactoring",
+            "to_member": "openrewrite-recipes",
+            "required_inputs": [
+              "Bounded transformation batches"
+            ],
+            "accepted_outputs": [
+              "Recipe dry-run diff"
+            ],
+            "failure_owner": "lead-coder"
+          },
+          {
+            "from_member": "openrewrite-recipes",
+            "to_member": "ast-grep-structural-rewrite",
+            "required_inputs": [
+              "Recipe dry-run diff"
+            ],
+            "accepted_outputs": [
+              "Audited match list"
+            ],
+            "failure_owner": "recipe-engineer"
+          },
+          {
+            "from_member": "ast-grep-structural-rewrite",
+            "to_member": "deprecation-removal",
+            "required_inputs": [
+              "Audited match list"
+            ],
+            "accepted_outputs": [
+              "Consumer dispositions"
+            ],
+            "failure_owner": "transform-engineer"
+          },
+          {
+            "from_member": "deprecation-removal",
+            "to_member": "test-drift-archaeology-repair",
+            "required_inputs": [
+              "Consumer dispositions"
+            ],
+            "accepted_outputs": [
+              "Green suite"
+            ],
+            "failure_owner": "retirement-engineer"
+          },
+          {
+            "from_member": "test-drift-archaeology-repair",
+            "to_member": "verification-before-completion",
+            "required_inputs": [
+              "Green suite"
+            ],
+            "accepted_outputs": [
+              "Verification verdict"
+            ],
+            "failure_owner": "repair-engineer"
+          },
+          {
+            "from_member": "verification-before-completion",
+            "to_member": "release",
+            "required_inputs": [
+              "Verification verdict"
+            ],
+            "accepted_outputs": [
+              "Version bump and artifacts"
+            ],
+            "failure_owner": "verifier"
+          }
+        ],
+        "evidence_requirements": [
+          "Dependency graph and decoupling plan for the assessed scope.",
+          "Full before/after test-suite outputs for every transformed repository.",
+          "SHA-256-chained promotion receipts for every promoted candidate.",
+          "Zero-reference search output for every retired deprecated surface."
+        ],
+        "risk_boundaries": [
+          "No transformation batch exceeds its changed-file budget or crosses its approved scope.",
+          "No candidate is promoted without parity and rollback evidence (Spiral Promotion Gate).",
+          "Deprecated surfaces are never deleted while live consumers remain.",
+          "Renovate code is never lifted into the estate (AGPL-3.0); it runs as a tool or service only."
+        ],
+        "quality_gates": [
+          "Full test suite green in every transformed repository.",
+          "Dry-run diff reviewed before every recipe or codemod application.",
+          "Zero tests weakened, skipped, or deleted to reach green."
+        ],
+        "state_updates": [
+          "Append chained receipts to the upgrade record.",
+          "Update the update-candidate ledger with final dispositions.",
+          "Record exemptions (deprecated surfaces, skipped repositories) with reasons and expiries."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "automated-architecture-analysis dependency graphs",
+          "characterization-tests-first behavior pinning",
+          "spiral-promotion-gate evidence standard",
+          "automated-code-refactoring bounded batches",
+          "test-drift-archaeology-repair pattern"
+        ],
+        "adds": "One governed pipeline for code upgrades — assess, decide, transform, verify, promote — where every stage is owned by a registered skill and every transition is receipted, so an upgrade is provable end-to-end instead of asserted.",
+        "compound_artifact": "CODE_UPGRADE_RECORD.md",
+        "next_layer_ready_when": [
+          "A full upgrade run completes with all stage receipts chained.",
+          "Zero unresolved REVISE signals remain in the run record."
+        ]
+      }
     }
   ],
   "schema": "../schemas/combo-skill.schema.json"

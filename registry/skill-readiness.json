@@ -2,17 +2,17 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 735,
-    "combos": 39,
+    "skills": 751,
+    "combos": 40,
     "megas": 34,
-    "ready_total": 808,
+    "ready_total": 825,
     "not_ready_total": 0,
     "skill_states": {
-      "instruction_ready": 686,
+      "instruction_ready": 702,
       "behavior_verified": 49
     },
     "combo_states": {
-      "composition_ready": 39
+      "composition_ready": 40
     },
     "mega_states": {
       "mission_contract_ready": 34
@@ -15780,6 +15780,310 @@
       ],
       "structural_tests": [],
       "reasons": []
+    },
+    {
+      "id": "openrewrite-recipes",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/openrewrite-recipes/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/openrewrite-recipes/tests/test_openrewrite_recipes.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "jscodeshift-codemods",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/jscodeshift-codemods/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/jscodeshift-codemods/tests/test_jscodeshift_codemods.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "codemod-cli",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/codemod-cli/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/codemod-cli/tests/test_codemod_cli.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "ast-grep-structural-rewrite",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/ast-grep-structural-rewrite/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/ast-grep-structural-rewrite/tests/test_ast_grep_structural_rewrite.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "comby-structural-replace",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/comby-structural-replace/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/comby-structural-replace/tests/test_comby_structural_replace.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "fastmod-bulk-rewrite",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/fastmod-bulk-rewrite/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/fastmod-bulk-rewrite/tests/test_fastmod_bulk_rewrite.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "piranha-flag-retirement",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/piranha-flag-retirement/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/piranha-flag-retirement/tests/test_piranha_flag_retirement.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "dependency-update-operator",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/dependency-update-operator/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/dependency-update-operator/tests/test_dependency_update_operator.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "deprecation-removal",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/deprecation-removal/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/deprecation-removal/tests/test_deprecation_removal.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "spiral-promotion-gate",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/spiral-promotion-gate/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/spiral-promotion-gate/tests/test_spiral_promotion_gate.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "test-drift-archaeology-repair",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/test-drift-archaeology-repair/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/test-drift-archaeology-repair/tests/test_test_drift_archaeology_repair.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "genius-engineering-execution",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/genius-engineering-execution/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/genius-engineering-execution/tests/test_genius_engineering_execution.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "strangler-fig-migration",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/strangler-fig-migration/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/strangler-fig-migration/tests/test_strangler_fig_migration.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "branch-by-abstraction",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/branch-by-abstraction/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/branch-by-abstraction/tests/test_branch_by_abstraction.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "characterization-tests-first",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/characterization-tests-first/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/characterization-tests-first/tests/test_characterization_tests_first.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "recipe-based-migration",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/recipe-based-migration/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/recipe-based-migration/tests/test_recipe_based_migration.py"
+      ],
+      "reasons": []
     }
   ],
   "combos": [
@@ -16089,6 +16393,14 @@
     },
     {
       "id": "strong-smart-execution-stack",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
+      "id": "code-upgrade-pipeline",
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",
