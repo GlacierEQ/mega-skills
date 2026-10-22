@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0.0",
+  "id": "glaciereq.mem.cross-agent-bootstrap",
+  "maintainer": "GlacierEQ",
+  "updated": "2026-10-22",
+  "scope": "Portable routing manifest for agent access to Mem.ai; does not grant permissions or install an agent.",
+  "providers": {
+    "mem_ai": {
+      "mcp_url": "https://mcp.mem.ai/mcp",
+      "rest_base": "https://api.mem.ai/v2",
+      "auth": "OAuth through each MCP client; server-side REST secret reference only",
+      "status": "DOCUMENTED_BY_PROVIDER_NOT_CROSS_AGENT_CERTIFIED"
+    },
+    "glaciereq_gateway": {
+      "mcp_url": "https://glaciereq-memory-gateway.onrender.com/mcp",
+      "status": "RECOVERED_CONFIGURATION_UNVERIFIED",
+      "auth": "gateway credential from authorized runtime secret store only"
+    }
+  },
+  "clients": {
+    "claude_code": {
+      "install": "claude mcp add --transport http mem https://mcp.mem.ai/mcp",
+      "auth": "/mcp"
+    },
+    "codex_cli": {
+      "install": "codex mcp add mem --url https://mcp.mem.ai/mcp",
+      "auth": "browser OAuth when prompted"
+    },
+    "gemini_cli": {
+      "install": "gemini mcp add -s user -t http mem https://mcp.mem.ai/mcp",
+      "auth": "/mcp auth mem"
+    },
+    "claude_web": {
+      "install": "Customize > Connectors > Mem OR custom connector https://mcp.mem.ai/mcp",
+      "auth": "OAuth"
+    },
+    "chatgpt": {
+      "install": "Mem app in ChatGPT plugin directory",
+      "auth": "OAuth"
+    },
+    "omp_glacier": {
+      "install": "Use existing OMP native .omp MCP profile; resolve exact supported transport and syntax in running build",
+      "auth": "per-runtime authorized OAuth/secret integration; do not inherit ChatGPT auth",
+      "status": "HOST_UNVERIFIED"
+    }
+  },
+  "mem_note_anchors": {
+    "living_handoff": "c3054a58-409e-5ee6-9c15-eec694b9a34a",
+    "systems_auto_boot": "6925915b-33d6-5fc9-b499-4fbe78790413",
+    "memory_mesh_map": "e959992a-9df3-56fa-b811-f83a183d473b",
+    "federation_charter": "63f1d7cd-9202-577a-8d0d-211c40a07606",
+    "portability_contract": "a2fd85e9-5196-5911-93af-f10bf843eb16",
+    "worker_execution_contract": "ffd1101e-d209-5bf7-8009-0d190bd3263c"
+  },
+  "boot_sequence": [
+    "Resolve current Operator intent to the correct work-unit and permission scope",
+    "Authenticate Mem from THIS host through supported MCP or API and inspect enabled capabilities",
+    "Initialize MCP and enumerate available provider tools",
+    "Exact-ID read living_handoff and compare current version/supersession",
+    "For systems work exact-ID read systems_auto_boot, federation_charter and memory_mesh_map; otherwise resolve and read the task-specific owner note",
+    "Recover authoritative source objects from their source providers, not inferred from Mem",
+    "Execute within authorized boundaries then independently verify material provider-side effects",
+    "Version-checked Mem continuation update to existing owner note when supported, followed by exact-ID readback"
+  ],
+  "certification_stages": [
+    "CONFIGURED",
+    "INITIALIZED",
+    "DISCOVERED",
+    "READ_VERIFIED",
+    "WRITE_VERIFIED",
+    "CROSS_SESSION_APPLIED"
+  ],
+  "requirements": {
+    "write_semantics": "Mem update replaces complete Markdown note; require exact latest version and independent readback",
+    "no_secrets": true,
+    "no_auto_replay_on_ambiguous_write": true,
+    "no_domain_payload_on_global_boot": true,
+    "no_cross_matter_contamination": true,
+    "no_unapproved_messages_permissions_merges_deployments": true,
+    "source_native_authority_by_proposition": true,
+    "one_outcome_one_count": true
+  },
+  "references": {
+    "skill": "skills/unified-memory-connect/SKILL.md",
+    "operator_runtime": "GlacierEQ/computer-user",
+    "skill_owner": "GlacierEQ/mega-skills",
+    "mem_provider_docs": "https://docs.mem.ai/mcp/setup"
+  }
+}
