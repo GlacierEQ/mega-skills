@@ -1,0 +1,11 @@
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.env
+.env*
+__pycache__/
+*.pyc
+.cache/
+*.key
+*.pem
