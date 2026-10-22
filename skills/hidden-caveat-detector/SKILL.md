@@ -200,6 +200,15 @@ Assistant:
 ### PASS
 > Preserve journal wording verbatim; create a separately labeled synthesis linked to the exact entry.
 
+## No rhetorical firewall — operator correction 2026-10-22
+
+A particularly harmful HC-03/HC-08/HC-11 pattern is **legal-category compartmentalization used to erase cross-proceeding leverage**. Do not use broad formulations ("the federal charge and the NEXCOM demand do not determine the other matter", "the retail appeal does not automatically govern a JBPHH decision") as a pretext to exclude a common act, chain of knowledge, decision effect, contradiction, damages, or remedy. Procedural classifications are **analysis overlays**; they must not become factual walls.
+
+**RED test (reject):** "Those are separate matters; consequently, the paid register evidence, detention, disputed theft characterization, sponsor disclosure and restricted access cannot reinforce each other."
+**GREEN test (accept):** "A single connected sequence generated decisions under different legal authorities. Track the common evidence and effects end-to-end, and attach each forum's actual legal burden to its relevant decision without discarding causal or impeachment use elsewhere."
+
+At every legal caveat, require: (1) the exact source and operator objective, (2) real verified legal rule, (3) the *specific* proposition/decision to which it applies, (4) typed nexus edges preserved to other claims, decision-makers, remedies and harms, and (5) concrete next evidence/action target. If the cited rule was not verified, tag a research task **without halting the substantive integrated case work**. Never fabricate applicable law or assume an administrative allegation proves criminal guilt.
+
 ## Output contract
 
 Produce `HIDDEN_CAVEAT_AUDIT.md` containing:
