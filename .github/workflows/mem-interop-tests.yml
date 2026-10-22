@@ -1,0 +1,32 @@
+name: GlacierEQ Mem Interop
+on:
+  pull_request:
+    paths:
+      - 'integrations/mem-interop/**'
+      - '.github/workflows/mem-interop-tests.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: integrations/mem-interop
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Synthetic MCP and installer tests (no private dataset)
+        run: python -m unittest discover -s tests -v
+      - name: OMP boot-hook deterministic behavior
+        run: node --experimental-strip-types tests/test_omp_boot.mjs
+      - name: Verify original source never committed
+        run: |
+          if git ls-files integrations/mem-interop | grep -E '\.(sqlite|sqlite3|db|zip|pem|key)$'; then
+            echo 'Private data file detected'; exit 1;
+          fi

@@ -2,14 +2,18 @@ import os, pathlib, sqlite3, subprocess, sys, tempfile, unittest, json
 from unittest import mock
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'bridge'))
-DB=pathlib.Path(os.environ.get('MEM_TEST_DB',str(ROOT/'.state-source-do-not-commit.sqlite')))
+if os.environ.get('MEM_TEST_DB'):
+ DB=pathlib.Path(os.environ['MEM_TEST_DB'])
+else:
+ from fixture_db import create
+ DB=create(pathlib.Path(tempfile.gettempdir())/'glaciereq-mem-mcp-synthetic-fixture.sqlite')
 class BridgeTest(unittest.TestCase):
  def setUp(self):
   from mem_archive_mcp import MemoryArchive
   self.archive=MemoryArchive(DB)
  def tearDown(self): self.archive.close()
  def test_status_truthful(self):
-  data=self.archive.status();self.assertEqual(data['notes'],835);self.assertEqual(data['bodies'],219);self.assertEqual(data['source_class'],'MEM_SECONDARY')
+  data=self.archive.status();self.assertEqual(data['notes'],self.archive.db.execute('SELECT COUNT(*) FROM notes').fetchone()[0]);self.assertGreater(data['notes'],0);self.assertEqual(data['source_class'],'MEM_SECONDARY')
  def test_search_bounded_and_source_class(self):
   out=self.archive.search('JBPHH',limit=4);self.assertLessEqual(len(out),4);self.assertTrue(out);self.assertTrue(all(item['source_class']=='MEM_SECONDARY' for item in out))
  def test_mission_not_native_proof(self):
@@ -28,7 +32,7 @@ class BridgeTest(unittest.TestCase):
    reqs=[{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2025-06-18','capabilities':{},'clientInfo':{'name':'test','version':'1'}}},{'jsonrpc':'2.0','method':'notifications/initialized'},{'jsonrpc':'2.0','id':2,'method':'tools/list'},{'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'name':'memory_status','arguments':{}}}]
    out,_=p.communicate(''.join(json.dumps(v)+'\n' for v in reqs),timeout=8)
    rows=[json.loads(l) for l in out.splitlines()];self.assertEqual([1,2,3],[v['id'] for v in rows]);self.assertGreaterEqual(len(rows[1]['result']['tools']),4)
-   self.assertIn('835',rows[2]['result']['content'][0]['text'])
+   self.assertIn(str(self.archive.status()['notes']),rows[2]['result']['content'][0]['text'])
   finally:
    if p.poll() is None:p.kill()
  def test_missing_db_fails_closed(self):
