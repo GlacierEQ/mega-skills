@@ -37,6 +37,16 @@ class SdkInspectTests(unittest.TestCase):
             found = {x["package"] for x in module.inspect(root)["sdk_candidates"]}
             self.assertEqual(found, {"@openai/agents", "ai", "openai", "anthropic", "boto3"})
 
+    def test_identifies_sdk_package_itself_and_declared_entrypoints(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "package.json").write_text(json.dumps({"name": "supermemory", "version": "3.0.0-alpha.26", "types": "dist/index.d.ts", "exports": {".": {"import": "./dist/index.mjs", "require": "./dist/index.js"}}, "dependencies": {}}))
+            report = module.inspect(root)
+            self.assertEqual(report["package_identity"]["package"], "supermemory")
+            self.assertEqual(report["package_identity"]["declared_version"], "3.0.0-alpha.26")
+            self.assertEqual(report["package_identity"]["export_conditions"], ["import", "require"])
+            self.assertFalse(report["package_identity"]["exports_verified"])
+
     def test_invalid_json_warns_instead_of_claiming_success(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
