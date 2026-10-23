@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "command_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+  "transport": "real HTTP over 127.0.0.1, ephemerally allocated test port",
+  "result": "PASS",
+  "request_count": 8,
+  "success_case": true,
+  "errors_observed": [
+    401,
+    429,
+    503
+  ],
+  "retry_attempts": 3,
+  "timeout_class": "APIConnectionTimeoutError",
+  "abort_class": "APIUserAbortError",
+  "external_provider_reached": false,
+  "external_provider_mutation": false,
+  "provider_readback": "UNVERIFIED"
+}

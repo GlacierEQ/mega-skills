@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "mission_id": "sdk-master-operational-20261023",
+  "decision": "OPEN",
+  "accepted": false,
+  "grounds": [
+    "CI_NOT_PASSED",
+    "PROVIDER_UNVERIFIED",
+    "OUTSTANDING_ACTIONS",
+    "MISSION_NOT_VERIFIED"
+  ],
+  "positive_execution": "AWS SSM one-command full reproduction succeeds",
+  "external_provider_mutation": false,
+  "validated_at": "2026-10-23T22:52:09.568Z",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461"
+}

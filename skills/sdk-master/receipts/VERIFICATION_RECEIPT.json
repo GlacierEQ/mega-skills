@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "verified_environment": "AWS SSM managed instance running",
+  "aws_provider_readback": {
+    "command_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+    "status": "Success",
+    "response_code": 0,
+    "observed_at": "2026-10-23T22:52:09.568Z"
+  },
+  "github_repo": "GlacierEQ/mega-skills",
+  "previous_pr": {
+    "number": 52,
+    "state": "closed",
+    "merged": false,
+    "head_deleted": true
+  },
+  "github_actions": {
+    "sdk_master_workflow_run": 40034771936,
+    "conclusion": "failure",
+    "runner_assigned": false,
+    "steps_executed": 0,
+    "interpretation": "Runner allocation/CI infrastructure not SDK test assertion"
+  },
+  "sdk_runtime": {
+    "build": "PASS",
+    "lint": "PASS",
+    "tests": "216 PASSED,33 SKIPPED",
+    "skill_tests": "33 PASSED",
+    "http_conformance": "PASS"
+  },
+  "supermemory_provider": {
+    "verified": false,
+    "explanation": "No authenticated SDK provider credential or recorded native readback"
+  },
+  "mac_runner": "OFFLINE until OS reinstall",
+  "financial": "AWS Cost Explorer reported nonzero October spend; free-tier label is not a billing receipt"
+}

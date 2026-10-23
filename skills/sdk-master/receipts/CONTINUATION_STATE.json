@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "state": "OPEN",
+  "mission_id": "sdk-master-operational-20261023",
+  "owning_repo": "GlacierEQ/mega-skills",
+  "branch": "feat/sdk-master-aws-verified-20261023",
+  "source_revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "continue_from": "AWS runtime and SDK test suites PASS, acceptance still OPEN",
+  "protected_constraints": [
+    "Keep Mac out of scheduling until OS reinstall",
+    "Use existing EC2; do not start new paid resources",
+    "Preserve 33 skipped upstream tests as coverage gap, not passed",
+    "Do not invent GitHub CI success or Supermemory provider verification"
+  ],
+  "next_executable_steps": [
+    "GitHub-hosted CI job 40034771936 failed without runner allocation or executed steps; establish zero-additional-cost CI runner or equivalent CI readback",
+    "Authenticate an authorized Supermemory provider sandbox; execute a reversible SDK operation and native provider readback before external acceptance",
+    "Independently verify any final provider/deployment mutation; do not reinterpret loopback tests as provider verification"
+  ],
+  "readback_refs": {
+    "aws_ssm_command_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+    "github_ci_run": 40034771936
+  }
+}

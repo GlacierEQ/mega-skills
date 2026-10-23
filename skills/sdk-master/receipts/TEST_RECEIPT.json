@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "command_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+  "success": true,
+  "skill_regressions": {
+    "language": "Python",
+    "runtime": "3.12.14",
+    "passed": 33,
+    "failed": 0
+  },
+  "sdk_tests": {
+    "tool": "Jest",
+    "passed": 216,
+    "failed": 0,
+    "skipped": 33,
+    "total": 249,
+    "suites_passed": 7,
+    "suites_skipped": 4,
+    "snapshots_passed": 3
+  },
+  "build": {
+    "exit_code": 0,
+    "tsc_mjs_errors": 0,
+    "tsc_js_errors": 0
+  },
+  "typecheck": {
+    "result": "Types ok!"
+  },
+  "lint": {
+    "publint": "All good!"
+  },
+  "imports": {
+    "cjs": true,
+    "esm": true
+  },
+  "warning": "Skipped tests are coverage gaps and are not counted as passed"
+}

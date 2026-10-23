@@ -1,49 +1,35 @@
-# SDK Master — independent execution and reproduction
+# SDK Master - independent cloud execution and reproduction
 
-**Canonical SDK:** `GlacierEQ/sdk-ts` commit `8594587e77a6d31f649ebd4b40fe4a6189770461`, `supermemory@3.0.0-alpha.26`.
+Mission: `sdk-master-operational-20261023`  
+SDK: `GlacierEQ/sdk-ts` pinned to `8594587e77a6d31f649ebd4b40fe4a6189770461`  
+Current acceptance: **OPEN** (the script passed, provider and CI admission remain unverified).
 
-**Owning skill:** `GlacierEQ/mega-skills/skills/sdk-master`. This is composition and verification of existing code—not a replacement orchestrator.
+## Free-tier-first execution
 
-## Run on an existing Node/Python build host
+Use the existing AWS Linux EC2 instance tagged `github-runner` (`us-west-2`, instance `i-09e62d6012bc289ed`). Its Systems Manager agent is online. Python 3.12, Node 24, Git and Yarn have been installed on the existing instance; no new compute was launched for this execution. **Cost Explorer has nonzero October EC2/VPC/Secrets Manager charges; a FreeTier tag does not prove zero cost.** Do not provision replacement machines, hosted browsers or paid runners without an explicit cost review. The Mac is offline until its operating system reinstall; no macOS job is required for SDK Master.
 
-Requires Git, Node.js 24, Yarn 1.22.22, Python 3.12, and network access to published dependencies and the SDK's OpenAPI specification. On Amazon Linux 2023, the already-operational runner was provisioned through AWS Systems Manager with `git`, `nodejs24`, `nodejs24-npm`, `python3.12`, and `lsof`.
+## Reproduce against the exact real SDK
 
-```bash
-git clone https://github.com/GlacierEQ/sdk-ts.git /path/sdk-ts
-git -C /path/sdk-ts checkout --detach 8594587e77a6d31f649ebd4b40fe4a6189770461
-# Run from a checked-out mega-skills tree with the SDK Master skill:
-bash skills/sdk-master/scripts/reproduce.sh /path/sdk-ts verify
-```
-
-`verify` executes unit/regression tests, static manifest inspection, the SDK's frozen-lockfile install, build, lint and 216 active SDK tests, plus an independent real HTTP loopback conformance scenario covering positive response, 401, 429, 503, retries, timeout, and abort. The SDK's default tests use an OpenAPI Prism mock server; the conformance suite uses an actual local HTTP server, **not** a remote authenticated provider.
+On an authorized Linux host with Node 24, Python 3.12, git, Yarn 1.22.22 and dependencies:
 
 ```bash
-# Explicit fail-closed external mission acceptance; expected to fail while OPEN:
-bash skills/sdk-master/scripts/reproduce.sh /path/sdk-ts accept
+git clone https://github.com/GlacierEQ/sdk-ts.git sdk-ts
+cd sdk-ts
+git checkout --detach 8594587e77a6d31f649ebd4b40fe4a6189770461
+cd ..
+bash mega-skills/skills/sdk-master/scripts/reproduce.sh "$PWD/sdk-ts" verify
 ```
 
-## Verified AWS execution context
+The command runs the SDK Master's 33 Python regression tests, read-only manifest inspection, locked Yarn install, full TypeScript build, lint/typecheck, the SDK's Jest suites against Prism OpenAPI, and eight real loopback HTTP conformance requests covering success, 401, 429, 503, retry, timeout and cancellation. The script has **two distinct modes**: `verify` preserves an OPEN gate without conflating verified build with operational acceptance; `accept` returns nonzero until the signed evidence requirements, CI and provider readback succeed.
 
-An existing EC2 instance in `us-west-2` named `github-runner` was found RUNNING and SSM ONLINE; it was **not** a registered GitHub Actions runner. AWS SSM commands installed the needed build tools and executed the pinned SDK from `/opt/sdk-master-run/sdk-ts`. Relevant readback IDs:
+AWS SSM provider readback confirms the exact run: `69478d9d-a9e9-4702-8c1a-ca9c3d10436a`, start `2026-10-23T22:51:29.568Z`, finish `2026-10-23T22:52:09.568Z`, response code `0`. Script output contains `REPRODUCE_EXECUTION=PASS` and `SDK_REVISION=8594587e77a6d31f649ebd4b40fe4a6189770461`. The upstream test suite reported 216 passed and 33 skipped (7 passed, 4 skipped suites). The separate Python regressions reported 33 passed. The contract test executes SDK calls against **local HTTP**, not the external Supermemory API; no external provider mutation or provider-native state readback has been claimed.
 
-| Activity | AWS SSM command ID | Observation |
-| --- | --- | --- |
-| Git, Node 24, npm | `e177fcf5-f90b-406d-9072-d4070c635681` | success |
-| Pinned SDK Git checkout | `0faa64a2-ca89-421f-b1f2-3bfbc840b920` | exact SHA matched |
-| Frozen Yarn install | `66adfe19-471a-41e4-9082-7019de6fff70` | success |
-| SDK build/lint/test initial | `4b354db1-fb6f-4361-9827-cd3db9a6c9fd` | build/lint passed; test startup collided on Prism port 4010 |
-| SDK suite, existing Prism | `c594daa5-7268-4a73-b585-a3a873699a54` | 216 passed; 33 skipped |
-| Real HTTP conformance | `d5491b4e-2eda-47e6-a54f-aefb45590206` | pass, 9 HTTP requests |
-| Python 3.12 gate + inspector | `b475b43c-7cb2-4997-95ba-d8b63077c719` | 33 tests passed |
+## Source-bound receipts and truth gates
 
-A Python 3.9 probe yielded three expected TOML-dependent test failures because Python 3.9 lacks standard-library `tomllib`. The CI-matching Python 3.12 runtime passed all 33 tests. These are different execution environments, not contradictory conclusions.
+`receipts/MISSION_STATE.json` indexes SHA-256-bound criterion evidence under `receipts/evidence/`. The gate independently verifies expected criterion, tested SDK commit, executor run ID, exit code, kind, path containment, and SHA-256. This is **local evidence integrity** and does not magically verify provider facts. Required Supermemory provider readback and reliable CI runner allocation remain deliberately OPEN.
 
-## Provider and CI boundaries
+Previous PR #52 was closed without merge and its source branch deleted. This work resumes from its recovered exact commit on `feat/sdk-master-aws-verified-20261023`; do not silently reopen or assume merged.
 
-- SDK exports, CommonJS/ESM imports, TypeScript compilation, local HTTP error mapping, and retry behavior have been exercised.
-- Live Supermemory provider authentication, authorized mutations and state readback have **not** been established. The local HTTP server and Prism cannot prove provider state.
-- GitHub Actions hosted-runner jobs failed before runner assignment (zero executed steps). Existing private full-validation workflow requires `[self-hosted, mega-skills, macos-x64]`; the available AWS instance is Linux x64.
-- The AWS runner's SSM repository URL parameter was the literal placeholder `https://github.com/YOUR_ORG/YOUR_REPO`; its registration-token parameter was issued much earlier and needs a fresh token. Neither a placeholder nor a stored stale token establishes GitHub registration.
-- GitHub PR #52 was closed **without merge**, and its head branch deleted by an external concurrent action on October 23, 2026. The verified head `5fc75af12bdda5886fdd3c54376579a3b26c1fb7` was recovered into continuation branch `feat/sdk-master-aws-verified-20261023`. No force push or merge occurred.
+## No new spending / no dependency on local Mac
 
-Recheck AWS SSM command invocations and GitHub source revision before promoting any evidence to completion. Unverified remains OPEN.
+Do not provision extra EC2/RDS, enable unpriced services, register a paid hosted runner, or wait for the Mac. Keep the current SSM run proof, check actual charges before prolonging AWS runtime, and make all external mutations reversible and authorized.

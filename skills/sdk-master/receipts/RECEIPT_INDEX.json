@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "mission_id": "sdk-master-operational-20261023",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "receipt_files": [
+    "EXECUTION_RECEIPT.json",
+    "TEST_RECEIPT.json",
+    "INTEGRATION_RECEIPT.json",
+    "VERIFICATION_RECEIPT.json",
+    "COMPLETION_DECISION.json",
+    "CONTINUATION_STATE.json",
+    "MISSION_STATE.json"
+  ],
+  "criterion_evidence_sha256": {
+    "recovery": "2294c64d6057de7b0405bd357b2ef858c4c59be6b54be8214c7021951bdea740",
+    "implementation": "a7a69db05f4ffc95d4f006199e24a5867539d8733986e43e3562c905c932d7ed",
+    "integration": "68206beb69e76b21381d4c82bcbeb0b76d93ad3e44c3a8021b700bd2c93f882a",
+    "real_execution": "dfd506846f237677ded67f4af0b26af10a5a4b517eacda1f1c9ab4d5430e418a",
+    "tests": "02e2b2521ba099f5ab1bf974f7bc2a07479ff8b6e43368147c492bffe1acb269",
+    "build": "330638ad7548825cd196e9d201e245dd3c560725ae6363abb1eb8312f7a339e3",
+    "typecheck": "8482abd68973b4d4b6b0192d226893118f06bb7b792be497dd10679aeacad782",
+    "imports": "71dbcd1e4589c06616cb5140b38cc024e10f337429da1526ac692c690dff1114",
+    "error_paths": "70a21b2760fccd6d350905b7f8642660c0f3bc6473ddc09d7a8eba94819026da",
+    "defect_regression": "244d012dc7c9c991b72c5ffa20e9144bae32081fb24a51d535fad56380e54b5c",
+    "revision_readback": "dfc6623b6c65aaa3a9cff3d5a40c5f520a106f810cad78731e869a06db7e3688",
+    "durable_receipts": "d898a7a835057b58c7e904f369d8dd13eae87b5f052480f4d7c423d49bdd96ea",
+    "reproduction": "e78da693257033a811e023c78f41a8760200200d3effee68de101a77ea057c92"
+  },
+  "provider": "GitHub Git tree files + independent AWS SSM readback",
+  "not_a_provider_attestation": true
+}

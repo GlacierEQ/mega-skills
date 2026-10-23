@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "mission_id": "sdk-master-operational-20261023",
+  "source_revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "execution": {
+    "ssm_command_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+    "status": "Success",
+    "exit_code": 0,
+    "start": "2026-10-23T22:51:29.568Z",
+    "end": "2026-10-23T22:52:09.568Z",
+    "reproduce_script_git_blob": "bcbcde23b5688956262446535257cf9b9dcf23d5",
+    "command": "bash skills/sdk-master/scripts/reproduce.sh /opt/sdk-master-run/sdk-ts verify",
+    "output_markers": [
+      "FULL_REPRODUCE_EXIT:0",
+      "REPRODUCE_EXECUTION=PASS",
+      "SDK_REVISION=8594587e77a6d31f649ebd4b40fe4a6189770461"
+    ]
+  },
+  "provenance": "AWS SSM GetCommandInvocation provider-native readback",
+  "side_effects": "No Supermemory provider mutation; existing AWS host and packages used"
+}

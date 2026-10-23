@@ -4,23 +4,142 @@
   "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
   "ci": "unverified",
   "criteria": {
+    "recovery": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/recovery.json",
+        "sha256": "2294c64d6057de7b0405bd357b2ef858c4c59be6b54be8214c7021951bdea740"
+      }
+    },
+    "implementation": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/implementation.json",
+        "sha256": "a7a69db05f4ffc95d4f006199e24a5867539d8733986e43e3562c905c932d7ed"
+      }
+    },
+    "integration": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/integration.json",
+        "sha256": "68206beb69e76b21381d4c82bcbeb0b76d93ad3e44c3a8021b700bd2c93f882a"
+      }
+    },
+    "real_execution": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/real_execution.json",
+        "sha256": "dfd506846f237677ded67f4af0b26af10a5a4b517eacda1f1c9ab4d5430e418a"
+      }
+    },
+    "tests": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/tests.json",
+        "sha256": "02e2b2521ba099f5ab1bf974f7bc2a07479ff8b6e43368147c492bffe1acb269"
+      }
+    },
     "build": {
       "status": "passed",
       "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
-      "evidence": "Sprites apexfs-ci-20261004 ./scripts/build"
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/build.json",
+        "sha256": "330638ad7548825cd196e9d201e245dd3c560725ae6363abb1eb8312f7a339e3"
+      }
+    },
+    "typecheck": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/typecheck.json",
+        "sha256": "8482abd68973b4d4b6b0192d226893118f06bb7b792be497dd10679aeacad782"
+      }
+    },
+    "imports": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/imports.json",
+        "sha256": "71dbcd1e4589c06616cb5140b38cc024e10f337429da1526ac692c690dff1114"
+      }
+    },
+    "error_paths": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/error_paths.json",
+        "sha256": "70a21b2760fccd6d350905b7f8642660c0f3bc6473ddc09d7a8eba94819026da"
+      }
+    },
+    "defect_regression": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/defect_regression.json",
+        "sha256": "244d012dc7c9c991b72c5ffa20e9144bae32081fb24a51d535fad56380e54b5c"
+      }
+    },
+    "revision_readback": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/revision_readback.json",
+        "sha256": "dfc6623b6c65aaa3a9cff3d5a40c5f520a106f810cad78731e869a06db7e3688"
+      }
+    },
+    "durable_receipts": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/durable_receipts.json",
+        "sha256": "d898a7a835057b58c7e904f369d8dd13eae87b5f052480f4d7c423d49bdd96ea"
+      }
+    },
+    "reproduction": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/reproduction.json",
+        "sha256": "e78da693257033a811e023c78f41a8760200200d3effee68de101a77ea057c92"
+      }
     }
   },
   "outstanding_actions": [
-    "Run completion gate and full tests in CI",
-    "Verify actual GitHub Actions status",
-    "Exercise SDK public success and failure paths",
-    "Verify live provider or authorized sandbox readback",
-    "Produce all required receipts and independently reproduce"
+    "GitHub-hosted CI job 40034771936 failed without runner allocation or executed steps; establish zero-additional-cost CI runner or equivalent CI readback",
+    "Authenticate an authorized Supermemory provider sandbox; execute a reversible SDK operation and native provider readback before external acceptance",
+    "Independently verify any final provider/deployment mutation; do not reinterpret loopback tests as provider verification"
   ],
-  "unresolved_defects": [
-    "33 SDK tests skipped",
-    "Missing lsof in test cleanup"
+  "unresolved_defects": [],
+  "coverage_gaps": [
+    "The upstream sdk-ts Jest suite intentionally skips 33 tests across 4 suites; report as skipped, not passed",
+    "Real authenticated Supermemory API readback not possible without the appropriate SDK credential",
+    "New macOS runner-dependent workflow cannot execute while Mac operating system is down"
   ],
+  "provider_mutation": false,
+  "require_provider_readback": true,
+  "provider_readback": null,
+  "deployed": false,
+  "claims_complete": false,
+  "draft_only": true,
   "accountability_score": -35,
-  "claims_complete": false
+  "free_tier_constraint": "Use existing infrastructure; no new paid compute or browser usage; AWS has nonzero October costs",
+  "mac_status": "offline_until_OS_reinstall"
 }

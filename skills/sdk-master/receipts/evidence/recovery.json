@@ -1,0 +1,13 @@
+{
+  "criterion": "recovery",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "status": "passed",
+  "kind": "aws_runtime",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "run_id": "0faa64a2-ca89-421f-b1f2-3bfbc840b920",
+  "finished_at": "2026-10-23T22:30:03.299Z",
+  "command": "git checkout --detach 8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "exit_code": 0,
+  "observed": "SDK HEAD pinned and observed by git rev-parse; GitHub package manifest fetched at exact revision",
+  "limitations": null
+}
