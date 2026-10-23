@@ -4,18 +4,20 @@
  "summary": {
   "skills": 1296,
   "combos": 41,
-  "megas": 34,
-  "ready_total": 1371,
-  "not_ready_total": 0,
+  "megas": 35,
+  "ready_total": 1209,
+  "not_ready_total": 163,
   "skill_states": {
-   "instruction_ready": 1227,
-   "behavior_verified": 69
+   "instruction_ready": 1063,
+   "behavior_verified": 70,
+   "implementation_unverified": 137,
+   "contract_incomplete": 26
   },
   "combo_states": {
    "composition_ready": 41
   },
   "mega_states": {
-   "mission_contract_ready": 34
+   "mission_contract_ready": 35
   }
  },
  "skills": [
@@ -16548,18 +16550,22 @@
   {
    "id": "13c-metabolic-flux",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/13c-metabolic-flux/scripts/_mfa_fit.py",
+    "skills/13c-metabolic-flux/scripts/_mfa_model.py",
+    "skills/13c-metabolic-flux/scripts/mfa.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -16752,18 +16758,20 @@
   {
    "id": "agent-self-evaluation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/agent-self-evaluation/scripts/evaluate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -16854,35 +16862,49 @@
   {
    "id": "alphagenome",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/alphagenome/scripts/_common.py",
+    "skills/alphagenome/scripts/atlas_link.py",
+    "skills/alphagenome/scripts/atlas_query.py",
+    "skills/alphagenome/scripts/score_variants.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "analytical-method-validation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/analytical-method-validation/scripts/_catalog.py",
+    "skills/analytical-method-validation/scripts/_common.py",
+    "skills/analytical-method-validation/scripts/check_accuracy_precision.py",
+    "skills/analytical-method-validation/scripts/check_bioanalytical_run.py",
+    "skills/analytical-method-validation/scripts/check_detection_limits.py",
+    "skills/analytical-method-validation/scripts/check_response.py",
+    "skills/analytical-method-validation/scripts/compare_methods.py",
+    "skills/analytical-method-validation/scripts/plan_validation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -16973,35 +16995,39 @@
   {
    "id": "arbor",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/arbor/scripts/tree.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "arboreto",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/arboreto/scripts/basic_grn_inference.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17126,18 +17152,29 @@
   {
    "id": "autoskill",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/autoskill/scripts/autoskill.py",
+    "skills/autoskill/scripts/backends.py",
+    "skills/autoskill/scripts/cluster.py",
+    "skills/autoskill/scripts/doctor.py",
+    "skills/autoskill/scripts/fetch_window.py",
+    "skills/autoskill/scripts/match_skills.py",
+    "skills/autoskill/scripts/promote.py",
+    "skills/autoskill/scripts/redact.py",
+    "skills/autoskill/scripts/run.py",
+    "skills/autoskill/scripts/synthesize.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17262,18 +17299,20 @@
   {
    "id": "bids",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/bids/scripts/update_schema.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17296,18 +17335,23 @@
   {
    "id": "bioservices",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/bioservices/scripts/batch_id_converter.py",
+    "skills/bioservices/scripts/compound_cross_reference.py",
+    "skills/bioservices/scripts/pathway_analysis.py",
+    "skills/bioservices/scripts/protein_analysis_workflow.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17432,18 +17476,22 @@
   {
    "id": "bulk-rnaseq",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/bulk-rnaseq/scripts/_tabular.py",
+    "skills/bulk-rnaseq/scripts/build_counts_matrix.py",
+    "skills/bulk-rnaseq/scripts/validate_samplesheet.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17483,18 +17531,20 @@
   {
    "id": "cantera",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/cantera/scripts/ignition_delay.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17517,18 +17567,20 @@
   {
    "id": "cellprofiler",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/cellprofiler/scripts/nuclei_assay.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17619,18 +17671,27 @@
   {
    "id": "citation-management",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/citation-management/scripts/_common.py",
+    "skills/citation-management/scripts/doi_to_bibtex.py",
+    "skills/citation-management/scripts/extract_metadata.py",
+    "skills/citation-management/scripts/format_bibtex.py",
+    "skills/citation-management/scripts/search_google_scholar.py",
+    "skills/citation-management/scripts/search_openalex.py",
+    "skills/citation-management/scripts/search_pubmed.py",
+    "skills/citation-management/scripts/validate_citations.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17653,18 +17714,23 @@
   {
    "id": "claude-api",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/claude-api/shared/preserved-thinking-migration/drop_block_probe.py",
+    "skills/claude-api/shared/preserved-thinking-migration/prefix_diff.py",
+    "skills/claude-api/shared/evals/report/build-report-lite.mjs",
+    "skills/claude-api/shared/evals/report/runner-scaffold.mjs"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from anthropics/skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -17738,35 +17804,54 @@
   {
    "id": "clinical-decision-support",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/clinical-decision-support/scripts/_common.py",
+    "skills/clinical-decision-support/scripts/cohort_table_generator.py",
+    "skills/clinical-decision-support/scripts/decision_logic_traceability.py",
+    "skills/clinical-decision-support/scripts/deidentification_checklist.py",
+    "skills/clinical-decision-support/scripts/evidence_profile_check.py",
+    "skills/clinical-decision-support/scripts/model_biomarker_evaluation.py",
+    "skills/clinical-decision-support/scripts/survival_plan_validator.py",
+    "skills/clinical-decision-support/scripts/validate_cds_artifact.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "clinical-reports",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/clinical-reports/scripts/_common.py",
+    "skills/clinical-reports/scripts/check_deidentification.py",
+    "skills/clinical-reports/scripts/consistency_checker.py",
+    "skills/clinical-reports/scripts/format_adverse_events.py",
+    "skills/clinical-reports/scripts/generate_report_template.py",
+    "skills/clinical-reports/scripts/provenance_validator.py",
+    "skills/clinical-reports/scripts/terminology_validator.py",
+    "skills/clinical-reports/scripts/validate_case_report.py",
+    "skills/clinical-reports/scripts/validate_trial_report.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18197,18 +18282,20 @@
   {
    "id": "council-multi-model",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/council-multi-model/scripts/review-with-codex.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18486,18 +18573,23 @@
   {
    "id": "deepchem",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/deepchem/scripts/_common.py",
+    "skills/deepchem/scripts/graph_neural_network.py",
+    "skills/deepchem/scripts/predict_solubility.py",
+    "skills/deepchem/scripts/transfer_learning.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18537,18 +18629,21 @@
   {
    "id": "deeptools",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/deeptools/scripts/validate_files.py",
+    "skills/deeptools/scripts/workflow_generator.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18571,18 +18666,20 @@
   {
    "id": "delivery-gate",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/delivery-gate/hooks/quality-gate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18605,18 +18702,20 @@
   {
    "id": "depmap",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/depmap/scripts/depmap_data.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18673,18 +18772,20 @@
   {
    "id": "diagnosing-bugs",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/diagnosing-bugs/scripts/hitl-loop.template.sh"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18707,18 +18808,22 @@
   {
    "id": "diffdock",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/diffdock/scripts/analyze_results.py",
+    "skills/diffdock/scripts/prepare_batch_csv.py",
+    "skills/diffdock/scripts/setup_check.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18843,18 +18948,21 @@
   {
    "id": "dnanexus-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/dnanexus-integration/scripts/inspect_dxpy.py",
+    "skills/dnanexus-integration/scripts/validate_dxapp.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -18877,18 +18985,21 @@
   {
    "id": "docs-governance",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/docs-governance/scripts/audit-docs.py",
+    "skills/docs-governance/scripts/markdown_links.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19149,35 +19260,40 @@
   {
    "id": "esm",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/esm/scripts/esm_embeddings.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "etetoolkit",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/etetoolkit/scripts/quick_visualize.py",
+    "skills/etetoolkit/scripts/tree_operations.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19217,52 +19333,71 @@
   {
    "id": "exa-search",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/exa-search/scripts/exa_extract.py",
+    "skills/exa-search/scripts/exa_search.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "experimental-design",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/experimental-design/scripts/doe_designs.py",
+    "skills/experimental-design/scripts/randomization.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "exploratory-data-analysis",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/exploratory-data-analysis/scripts/_capabilities.py",
+    "skills/exploratory-data-analysis/scripts/_common.py",
+    "skills/exploratory-data-analysis/scripts/_structured.py",
+    "skills/exploratory-data-analysis/scripts/_tabular.py",
+    "skills/exploratory-data-analysis/scripts/capability_manifest.py",
+    "skills/exploratory-data-analysis/scripts/distribution_sensitivity.py",
+    "skills/exploratory-data-analysis/scripts/eda_analyzer.py",
+    "skills/exploratory-data-analysis/scripts/image_inspector.py",
+    "skills/exploratory-data-analysis/scripts/missingness_leakage_audit.py",
+    "skills/exploratory-data-analysis/scripts/report_scaffold.py",
+    "skills/exploratory-data-analysis/scripts/sequence_inspector.py",
+    "skills/exploratory-data-analysis/scripts/tabular_profile.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19302,18 +19437,22 @@
   {
    "id": "fictiv",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/fictiv/scripts/check_cad_file.py",
+    "skills/fictiv/scripts/list_dropdown_options.js",
+    "skills/fictiv/scripts/quote_state.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19336,35 +19475,39 @@
   {
    "id": "flowio",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/flowio/scripts/inspect_fcs.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "flowkit",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/flowkit/scripts/analyze_gates.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19387,18 +19530,28 @@
   {
    "id": "fluidsim",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/fluidsim/scripts/_common.py",
+    "skills/fluidsim/scripts/_profiles.py",
+    "skills/fluidsim/scripts/_schema.py",
+    "skills/fluidsim/scripts/budget_summary.py",
+    "skills/fluidsim/scripts/grid_resource_estimator.py",
+    "skills/fluidsim/scripts/output_inventory.py",
+    "skills/fluidsim/scripts/restart_compatibility.py",
+    "skills/fluidsim/scripts/simulation_dry_run.py",
+    "skills/fluidsim/scripts/solver_config_validator.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19574,18 +19727,20 @@
   {
    "id": "generate-image",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/generate-image/scripts/generate_image.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19608,35 +19763,49 @@
   {
    "id": "geniml",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/geniml/scripts/_common.py",
+    "skills/geniml/scripts/bed_validator.py",
+    "skills/geniml/scripts/consensus_plan.py",
+    "skills/geniml/scripts/corpus_auditor.py",
+    "skills/geniml/scripts/embedding_plan.py",
+    "skills/geniml/scripts/model_artifact_inspector.py",
+    "skills/geniml/scripts/tokenizer_compatibility.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "genomic-coordinates",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/genomic-coordinates/scripts/_common.py",
+    "skills/genomic-coordinates/scripts/audit_intervals.py",
+    "skills/genomic-coordinates/scripts/check_contigs.py",
+    "skills/genomic-coordinates/scripts/convert_coords.py",
+    "skills/genomic-coordinates/scripts/normalize_variant.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19659,69 +19828,89 @@
   {
    "id": "geomaster",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/geomaster/scripts/raster_workflows.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "geopandas",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/geopandas/scripts/_common.py",
+    "skills/geopandas/scripts/crs_reprojection_plan.py",
+    "skills/geopandas/scripts/export_plan.py",
+    "skills/geopandas/scripts/geometry_validity_report.py",
+    "skills/geopandas/scripts/sensitive_coordinates_checklist.py",
+    "skills/geopandas/scripts/spatial_join_audit.py",
+    "skills/geopandas/scripts/vector_inventory.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "get-available-resources",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/get-available-resources/scripts/_common.py",
+    "skills/get-available-resources/scripts/accelerator_diagnostics.py",
+    "skills/get-available-resources/scripts/detect_resources.py",
+    "skills/get-available-resources/scripts/plan_workload.py",
+    "skills/get-available-resources/scripts/snapshot_tools.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "gget",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/gget/scripts/batch_sequence_analysis.py",
+    "skills/gget/scripts/enrichment_pipeline.py",
+    "skills/gget/scripts/gene_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19744,18 +19933,20 @@
   {
    "id": "git-guardrails-claude-code",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19795,18 +19986,21 @@
   {
    "id": "glycoengineering",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/glycoengineering/scripts/glycoengineering_tools.py",
+    "skills/glycoengineering/scripts/glytoucan_lookup.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -19863,10 +20057,10 @@
   {
    "id": "grill-me",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -19874,16 +20068,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "grill-with-docs",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -19891,7 +20086,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -19931,18 +20127,26 @@
   {
    "id": "gtars",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/gtars/scripts/_common.py",
+    "skills/gtars/scripts/artifact_inspector.py",
+    "skills/gtars/scripts/bed_validator.py",
+    "skills/gtars/scripts/coverage_preflight.py",
+    "skills/gtars/scripts/execution_plan.py",
+    "skills/gtars/scripts/refget_digest_plan.py",
+    "skills/gtars/scripts/tokenizer_manifest.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20203,52 +20407,70 @@
   {
    "id": "hugging-science",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/hugging-science/scripts/fetch_catalog.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "hypogenic",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/hypogenic/scripts/_common.py",
+    "skills/hypogenic/scripts/audit_dataset.py",
+    "skills/hypogenic/scripts/evaluate_local.py",
+    "skills/hypogenic/scripts/inspect_outputs.py",
+    "skills/hypogenic/scripts/plan_run.py",
+    "skills/hypogenic/scripts/validate_config.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "hypothesis-generation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/hypothesis-generation/scripts/_common.py",
+    "skills/hypothesis-generation/scripts/audit_evidence_ledger.py",
+    "skills/hypothesis-generation/scripts/check_falsification_controls.py",
+    "skills/hypothesis-generation/scripts/check_operationalization.py",
+    "skills/hypothesis-generation/scripts/generate_preregistration_scaffold.py",
+    "skills/hypothesis-generation/scripts/lint_causal_claims.py",
+    "skills/hypothesis-generation/scripts/validate_hypothesis_schema.py",
+    "skills/hypothesis-generation/scripts/validate_prediction_matrix.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20271,18 +20493,20 @@
   {
    "id": "imaging-data-commons",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/imaging-data-commons/scripts/check_version.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20322,18 +20546,21 @@
   {
    "id": "infographics",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/infographics/scripts/generate_infographic.py",
+    "skills/infographics/scripts/generate_infographic_ai.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20441,18 +20668,29 @@
   {
    "id": "iso-standards-readiness",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/iso-standards-readiness/scripts/_catalog.py",
+    "skills/iso-standards-readiness/scripts/_common.py",
+    "skills/iso-standards-readiness/scripts/audit_document_records.py",
+    "skills/iso-standards-readiness/scripts/check_capa.py",
+    "skills/iso-standards-readiness/scripts/check_qmsr_transition.py",
+    "skills/iso-standards-readiness/scripts/check_supplier_controls.py",
+    "skills/iso-standards-readiness/scripts/check_traceability.py",
+    "skills/iso-standards-readiness/scripts/gap_analyzer.py",
+    "skills/iso-standards-readiness/scripts/validate_evidence_manifest.py",
+    "skills/iso-standards-readiness/scripts/validate_scope_intake.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20475,18 +20713,20 @@
   {
    "id": "ito-baskets",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/ito-baskets/scripts/ito-baskets.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20713,35 +20953,44 @@
   {
    "id": "lab-hardware-cad",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/lab-hardware-cad/scripts/_common.py",
+    "skills/lab-hardware-cad/scripts/check.py",
+    "skills/lab-hardware-cad/scripts/gen.py",
+    "skills/lab-hardware-cad/scripts/snapshot.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "labarchive-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/labarchive-integration/scripts/entry_operations.py",
+    "skills/labarchive-integration/scripts/notebook_operations.py",
+    "skills/labarchive-integration/scripts/setup_config.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20849,18 +21098,20 @@
   {
    "id": "latchbio-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/latchbio-integration/scripts/inspect_latch_sdk.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20883,27 +21134,31 @@
   {
    "id": "latex-posters",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/latex-posters/scripts/generate_schematic.py",
+    "skills/latex-posters/scripts/generate_schematic_ai.py",
+    "skills/latex-posters/scripts/review_poster.sh"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "lead-intelligence",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -20911,16 +21166,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "liquid-glass-design",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -20928,41 +21184,50 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "liteparse",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/liteparse/scripts/batch_parse_dir.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "literature-review",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/literature-review/scripts/generate_pdf.py",
+    "skills/literature-review/scripts/generate_schematic.py",
+    "skills/literature-review/scripts/generate_schematic_ai.py",
+    "skills/literature-review/scripts/search_databases.py",
+    "skills/literature-review/scripts/verify_citations.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -20985,10 +21250,10 @@
   {
    "id": "llm-trading-agent-security",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -20996,16 +21261,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "logistics-exception-management",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21013,7 +21279,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -21053,18 +21320,20 @@
   {
    "id": "mageck",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/mageck/scripts/screen_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21087,10 +21356,10 @@
   {
    "id": "make-interfaces-feel-better",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21098,16 +21367,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "manim-video",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21115,24 +21385,27 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "marine-carbonate-chemistry",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/marine-carbonate-chemistry/scripts/solve_carbonate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21172,18 +21445,27 @@
   {
    "id": "market-research-reports",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/market-research-reports/scripts/_common.py",
+    "skills/market-research-reports/scripts/audit_claim_citations.py",
+    "skills/market-research-reports/scripts/calculate_market_sizing.py",
+    "skills/market-research-reports/scripts/check_unit_consistency.py",
+    "skills/market-research-reports/scripts/forecast_sensitivity.py",
+    "skills/market-research-reports/scripts/generate_report_scaffold.py",
+    "skills/market-research-reports/scripts/validate_competitor_matrix.py",
+    "skills/market-research-reports/scripts/validate_evidence_ledger.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21206,86 +21488,106 @@
   {
    "id": "markitdown",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/markitdown/scripts/batch_convert.py",
+    "skills/markitdown/scripts/convert_literature.py",
+    "skills/markitdown/scripts/inspect_installation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "master-agreement-generator",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/master-agreement-generator/scripts/build-agreement.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "matchms",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/matchms/scripts/library_search.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "matlab",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/matlab/scripts/_common.py",
+    "skills/matlab/scripts/generate_function_scaffold.py",
+    "skills/matlab/scripts/inventory_mat_file.py",
+    "skills/matlab/scripts/plan_batch_command.py",
+    "skills/matlab/scripts/plan_python_compatibility.py",
+    "skills/matlab/scripts/reproducibility_report.py",
+    "skills/matlab/scripts/scan_m_code.py",
+    "skills/matlab/scripts/validate_project_manifest.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "matplotlib",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/matplotlib/scripts/plot_template.py",
+    "skills/matplotlib/scripts/style_configurator.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21325,27 +21627,29 @@
   {
    "id": "medchem",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/medchem/scripts/filter_molecules.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "messages-ops",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21353,7 +21657,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -21478,10 +21783,10 @@
   {
    "id": "motion-advanced",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21489,16 +21794,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "motion-foundations",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21506,16 +21812,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "motion-patterns",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21523,7 +21830,7 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small"
    ]
   },
   {
@@ -21546,10 +21853,10 @@
   {
    "id": "mysql-patterns",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21557,16 +21864,16 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small"
    ]
   },
   {
    "id": "nanoclaw-repl",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21574,7 +21881,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -21597,18 +21905,20 @@
   {
    "id": "ncats-arax",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/ncats-arax/scripts/arax_client.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21631,10 +21941,10 @@
   {
    "id": "netmiko-ssh-automation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21642,16 +21952,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "network-bgp-diagnostics",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21659,16 +21970,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "network-config-validation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -21676,7 +21988,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -21716,35 +22029,52 @@
   {
    "id": "neurokit2",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/neurokit2/scripts/_common.py",
+    "skills/neurokit2/scripts/ecg_hrv_pipeline.py",
+    "skills/neurokit2/scripts/eda_pipeline.py",
+    "skills/neurokit2/scripts/generate_synthetic.py",
+    "skills/neurokit2/scripts/inspect_signal.py",
+    "skills/neurokit2/scripts/plan_epochs.py",
+    "skills/neurokit2/scripts/validate_multimodal.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "neuropixels-analysis",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/neuropixels-analysis/assets/analysis_template.py",
+    "skills/neuropixels-analysis/scripts/_common.py",
+    "skills/neuropixels-analysis/scripts/compute_metrics.py",
+    "skills/neuropixels-analysis/scripts/explore_recording.py",
+    "skills/neuropixels-analysis/scripts/export_to_phy.py",
+    "skills/neuropixels-analysis/scripts/neuropixels_pipeline.py",
+    "skills/neuropixels-analysis/scripts/preprocess_recording.py",
+    "skills/neuropixels-analysis/scripts/run_sorting.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21784,18 +22114,20 @@
   {
    "id": "nmrglue",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/nmrglue/scripts/process_1d.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21852,86 +22184,110 @@
   {
    "id": "nwb-conversion",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/nwb-conversion/scripts/convert_session.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "omero-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/omero-integration/scripts/export_image_metadata.py",
+    "skills/omero-integration/scripts/inventory.py",
+    "skills/omero-integration/scripts/omero_common.py",
+    "skills/omero-integration/scripts/plan_transfer.py",
+    "skills/omero-integration/scripts/validate_config.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "onekgpd",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/onekgpd/scripts/onekgpd_api.py",
+    "skills/onekgpd/scripts/onekgpd_meta.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "ontology-term-resolution",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/ontology-term-resolution/scripts/id_client.py",
+    "skills/ontology-term-resolution/scripts/lookup_prefix.py",
+    "skills/ontology-term-resolution/scripts/map_terms.py",
+    "skills/ontology-term-resolution/scripts/ols_client.py",
+    "skills/ontology-term-resolution/scripts/resolve_terms.py",
+    "skills/ontology-term-resolution/scripts/validate_terms.py",
+    "skills/ontology-term-resolution/scripts/zooma_client.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "open-notebook",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/open-notebook/scripts/_common.py",
+    "skills/open-notebook/scripts/chat_interaction.py",
+    "skills/open-notebook/scripts/notebook_management.py",
+    "skills/open-notebook/scripts/source_ingestion.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21954,18 +22310,22 @@
   {
    "id": "openpiv",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/openpiv/scripts/analyze.py",
+    "skills/openpiv/scripts/run_example.py",
+    "skills/openpiv/scripts/runner.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -21988,35 +22348,44 @@
   {
    "id": "opentrons-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/opentrons-integration/scripts/absorbance_reader_template.py",
+    "skills/opentrons-integration/scripts/basic_protocol_template.py",
+    "skills/opentrons-integration/scripts/ot2_basic_protocol_template.py",
+    "skills/opentrons-integration/scripts/pcr_setup_template.py",
+    "skills/opentrons-integration/scripts/runtime_parameters_template.py",
+    "skills/opentrons-integration/scripts/serial_dilution_template.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "operator-approval-loop",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/operator-approval-loop/references/approval_claims.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22158,35 +22527,43 @@
   {
    "id": "pacsomatic",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pacsomatic/scripts/run_pacsomatic.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "paper-lookup",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/paper-lookup/scripts/_common.py",
+    "skills/paper-lookup/scripts/arxiv_atom.py",
+    "skills/paper-lookup/scripts/jats_to_text.py",
+    "skills/paper-lookup/scripts/openalex_abstract.py",
+    "skills/paper-lookup/scripts/paginate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22260,69 +22637,93 @@
   {
    "id": "pathml",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pathml/scripts/_common.py",
+    "skills/pathml/scripts/image_qc.py",
+    "skills/pathml/scripts/plan_inference.py",
+    "skills/pathml/scripts/plan_pipeline.py",
+    "skills/pathml/scripts/slide_manifest.py",
+    "skills/pathml/scripts/validate_spatial_schema.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pathogen-variant-surveillance",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pathogen-variant-surveillance/scripts/lapis_client.py",
+    "skills/pathogen-variant-surveillance/scripts/lineage_prevalence.py",
+    "skills/pathogen-variant-surveillance/scripts/mutation_profile.py",
+    "skills/pathogen-variant-surveillance/scripts/reporting_lag.py",
+    "skills/pathogen-variant-surveillance/scripts/resolve_lineage.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pathway-enrichment",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pathway-enrichment/scripts/run_enrichment.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "peer-review",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/peer-review/scripts/_common.py",
+    "skills/peer-review/scripts/audit_citations.py",
+    "skills/peer-review/scripts/audit_statistics_reproducibility.py",
+    "skills/peer-review/scripts/generate_review_scaffold.py",
+    "skills/peer-review/scripts/lint_review.py",
+    "skills/peer-review/scripts/select_reporting_guidelines.py",
+    "skills/peer-review/scripts/validate_claim_evidence.py",
+    "skills/peer-review/scripts/validate_review_intake.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22379,10 +22780,10 @@
   {
    "id": "perl-testing",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22390,24 +22791,27 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "phylogenetics",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/phylogenetics/scripts/phylogenetic_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22430,18 +22834,30 @@
   {
    "id": "pkpd-modeling",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pkpd-modeling/scripts/_common.py",
+    "skills/pkpd-modeling/scripts/_models.py",
+    "skills/pkpd-modeling/scripts/allometry_and_fih.py",
+    "skills/pkpd-modeling/scripts/bioequivalence.py",
+    "skills/pkpd-modeling/scripts/check_popk_dataset.py",
+    "skills/pkpd-modeling/scripts/ddi_static.py",
+    "skills/pkpd-modeling/scripts/exposure_response.py",
+    "skills/pkpd-modeling/scripts/fit_compartmental.py",
+    "skills/pkpd-modeling/scripts/nca.py",
+    "skills/pkpd-modeling/scripts/simulate_regimen.py",
+    "skills/pkpd-modeling/scripts/tdm_bayes.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22464,10 +22880,10 @@
   {
    "id": "plan-orchestrate",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22475,16 +22891,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "plankton-code-quality",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22492,7 +22909,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -22549,18 +22967,29 @@
   {
    "id": "pptx-posters",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pptx-posters/scripts/_common.py",
+    "skills/pptx-posters/scripts/_manifest.py",
+    "skills/pptx-posters/scripts/_pptx.py",
+    "skills/pptx-posters/scripts/check_layout.py",
+    "skills/pptx-posters/scripts/check_palette.py",
+    "skills/pptx-posters/scripts/generate_poster.py",
+    "skills/pptx-posters/scripts/inspect_pptx.py",
+    "skills/pptx-posters/scripts/inventory_images.py",
+    "skills/pptx-posters/scripts/plan_export.py",
+    "skills/pptx-posters/scripts/validate_manifest.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22617,35 +23046,43 @@
   {
    "id": "primekg",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/primekg/scripts/query_primekg.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "primer-design",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/primer-design/scripts/_common.py",
+    "skills/primer-design/scripts/_specificity.py",
+    "skills/primer-design/scripts/check_thermodynamics.py",
+    "skills/primer-design/scripts/design_primers.py",
+    "skills/primer-design/scripts/screen_specificity.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22685,10 +23122,10 @@
   {
    "id": "product-lens",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22696,16 +23133,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "production-audit",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22713,16 +23151,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "production-scheduling",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22730,16 +23169,17 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "project-flow-ops",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -22747,7 +23187,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -22787,18 +23228,25 @@
   {
    "id": "protocolsio-integration",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/protocolsio-integration/scripts/_common.py",
+    "skills/protocolsio-integration/scripts/pagination_helper.py",
+    "skills/protocolsio-integration/scripts/plan_write_request.py",
+    "skills/protocolsio-integration/scripts/protocols_read.py",
+    "skills/protocolsio-integration/scripts/validate_auth_config.py",
+    "skills/protocolsio-integration/scripts/validate_protocol_json.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -22821,222 +23269,307 @@
   {
    "id": "pufferlib",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pufferlib/scripts/_common.py",
+    "skills/pufferlib/scripts/benchmark_vectorization.py",
+    "skills/pufferlib/scripts/env_contract_validator.py",
+    "skills/pufferlib/scripts/env_template.py",
+    "skills/pufferlib/scripts/inspect_checkpoint.py",
+    "skills/pufferlib/scripts/repro_plan.py",
+    "skills/pufferlib/scripts/train_template.py",
+    "skills/pufferlib/scripts/validate_plan.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pybamm",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pybamm/scripts/simulate_battery.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pycalphad",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pycalphad/scripts/equilibrate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pydeseq2",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pydeseq2/scripts/run_deseq2_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pydicom",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pydicom/scripts/_common.py",
+    "skills/pydicom/scripts/anonymize_dicom.py",
+    "skills/pydicom/scripts/deidentification_audit.py",
+    "skills/pydicom/scripts/dicom_inventory.py",
+    "skills/pydicom/scripts/dicom_to_image.py",
+    "skills/pydicom/scripts/extract_metadata.py",
+    "skills/pydicom/scripts/pixel_frame_planner.py",
+    "skills/pydicom/scripts/transfer_syntax_inspector.py",
+    "skills/pydicom/scripts/uid_mapping_validator.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pyhealth",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pyhealth/assets/starter_pipeline.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pylabrobot",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pylabrobot/scripts/_common.py",
+    "skills/pylabrobot/scripts/check_deck_geometry.py",
+    "skills/pylabrobot/scripts/generate_simulation_plan.py",
+    "skills/pylabrobot/scripts/inspect_backends.py",
+    "skills/pylabrobot/scripts/plan_transfers.py",
+    "skills/pylabrobot/scripts/validate_manifest.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pymatgen",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pymatgen/scripts/_common.py",
+    "skills/pymatgen/scripts/artifact_manifest.py",
+    "skills/pymatgen/scripts/composition_structure_validator.py",
+    "skills/pymatgen/scripts/io_conversion_plan.py",
+    "skills/pymatgen/scripts/mp_query.py",
+    "skills/pymatgen/scripts/phase_diagram_generator.py",
+    "skills/pymatgen/scripts/structure_analyzer.py",
+    "skills/pymatgen/scripts/structure_converter.py",
+    "skills/pymatgen/scripts/symmetry_sensitivity_report.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pymc",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pymc/assets/hierarchical_model_template.py",
+    "skills/pymc/assets/linear_regression_template.py",
+    "skills/pymc/scripts/model_comparison.py",
+    "skills/pymc/scripts/model_diagnostics.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pymoo",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pymoo/scripts/custom_problem_example.py",
+    "skills/pymoo/scripts/decision_making_example.py",
+    "skills/pymoo/scripts/many_objective_example.py",
+    "skills/pymoo/scripts/multi_objective_example.py",
+    "skills/pymoo/scripts/single_objective_example.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pyopenms",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pyopenms/scripts/_common.py",
+    "skills/pyopenms/scripts/accurate_mass_search.py",
+    "skills/pyopenms/scripts/align_link_quantify.py",
+    "skills/pyopenms/scripts/consensus_to_matrix.py",
+    "skills/pyopenms/scripts/convert_format.py",
+    "skills/pyopenms/scripts/detect_adducts.py",
+    "skills/pyopenms/scripts/detect_features_centroided.py",
+    "skills/pyopenms/scripts/detect_features_metabo.py",
+    "skills/pyopenms/scripts/digest_protein.py",
+    "skills/pyopenms/scripts/export_gnps_sirius.py",
+    "skills/pyopenms/scripts/extract_chromatograms.py",
+    "skills/pyopenms/scripts/inspect_ms_data.py",
+    "skills/pyopenms/scripts/mass_calculator.py",
+    "skills/pyopenms/scripts/plot_ms_data.py",
+    "skills/pyopenms/scripts/process_identifications.py",
+    "skills/pyopenms/scripts/process_spectra.py",
+    "skills/pyopenms/scripts/theoretical_spectrum.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pysam",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pysam/scripts/alignment_qc.py",
+    "skills/pysam/scripts/filter_alignments.py",
+    "skills/pysam/scripts/inspect_hts.py",
+    "skills/pysam/scripts/variant_summary.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "pytdc",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pytdc/scripts/_common.py",
+    "skills/pytdc/scripts/benchmark_evaluation.py",
+    "skills/pytdc/scripts/cache_audit.py",
+    "skills/pytdc/scripts/discover_metadata.py",
+    "skills/pytdc/scripts/load_and_split_data.py",
+    "skills/pytdc/scripts/molecular_generation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23059,18 +23592,22 @@
   {
    "id": "pytorch-lightning",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/pytorch-lightning/scripts/quick_trainer_setup.py",
+    "skills/pytorch-lightning/scripts/template_datamodule.py",
+    "skills/pytorch-lightning/scripts/template_lightning_module.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23110,44 +23647,50 @@
   {
    "id": "qiime2-amplicon",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/qiime2-amplicon/scripts/amplicon_workflow.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "qiskit",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/qiskit/scripts/check_environment.py",
+    "skills/qiskit/scripts/inspect_runtime.py",
+    "skills/qiskit/scripts/run_local_primitives.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "quality-nonconformance",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -23155,7 +23698,8 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
@@ -23229,18 +23773,26 @@
   {
    "id": "qutip",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/qutip/scripts/_common.py",
+    "skills/qutip/scripts/convergence_sweep.py",
+    "skills/qutip/scripts/qobj_model_validator.py",
+    "skills/qutip/scripts/result_audit.py",
+    "skills/qutip/scripts/solver_config_planner.py",
+    "skills/qutip/scripts/steady_state_spectrum_planner.py",
+    "skills/qutip/scripts/two_level_simulation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23280,18 +23832,23 @@
   {
    "id": "rdkit",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/rdkit/scripts/_common.py",
+    "skills/rdkit/scripts/molecular_properties.py",
+    "skills/rdkit/scripts/similarity_search.py",
+    "skills/rdkit/scripts/substructure_filter.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23416,35 +23973,42 @@
   {
    "id": "relion",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/relion/scripts/spa_workflow.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "relsa-severity-assessment",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/relsa-severity-assessment/scripts/_common.py",
+    "skills/relsa-severity-assessment/scripts/forecast_relsa.py",
+    "skills/relsa-severity-assessment/scripts/kde_thresholds.py",
+    "skills/relsa-severity-assessment/scripts/relsa_score.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23518,18 +24082,21 @@
   {
    "id": "research-lookup",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/research-lookup/scripts/manuscript_packet.py",
+    "skills/research-lookup/scripts/research_lookup.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23705,52 +24272,83 @@
   {
    "id": "scanpy",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scanpy/assets/analysis_template.py",
+    "skills/scanpy/scripts/_common.py",
+    "skills/scanpy/scripts/annotate.py",
+    "skills/scanpy/scripts/batch_correct.py",
+    "skills/scanpy/scripts/cluster.py",
+    "skills/scanpy/scripts/convert.py",
+    "skills/scanpy/scripts/find_markers.py",
+    "skills/scanpy/scripts/inspect_data.py",
+    "skills/scanpy/scripts/plot.py",
+    "skills/scanpy/scripts/preprocess.py",
+    "skills/scanpy/scripts/pseudobulk.py",
+    "skills/scanpy/scripts/qc_analysis.py",
+    "skills/scanpy/scripts/reduce_dimensions.py",
+    "skills/scanpy/scripts/run_pipeline.py",
+    "skills/scanpy/scripts/score_genes.py",
+    "skills/scanpy/scripts/subset.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scholar-evaluation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scholar-evaluation/scripts/_common.py",
+    "skills/scholar-evaluation/scripts/calculate_scores.py",
+    "skills/scholar-evaluation/scripts/check_process.py",
+    "skills/scholar-evaluation/scripts/check_traceability.py",
+    "skills/scholar-evaluation/scripts/generate_report_scaffold.py",
+    "skills/scholar-evaluation/scripts/summarize_agreement.py",
+    "skills/scholar-evaluation/scripts/validate_rubric.py",
+    "skills/scholar-evaluation/scripts/weight_sensitivity.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scientific-brainstorming",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scientific-brainstorming/scripts/_common.py",
+    "skills/scientific-brainstorming/scripts/evaluate_matrix.py",
+    "skills/scientific-brainstorming/scripts/session_scaffold.py",
+    "skills/scientific-brainstorming/scripts/validate_register.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23824,35 +24422,47 @@
   {
    "id": "scientific-schematics",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scientific-schematics/scripts/example_usage.sh",
+    "skills/scientific-schematics/scripts/generate_schematic.py",
+    "skills/scientific-schematics/scripts/generate_schematic_ai.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scientific-slides",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scientific-slides/scripts/generate_schematic.py",
+    "skills/scientific-slides/scripts/generate_schematic_ai.py",
+    "skills/scientific-slides/scripts/generate_slide_image.py",
+    "skills/scientific-slides/scripts/generate_slide_image_ai.py",
+    "skills/scientific-slides/scripts/pdf_to_images.py",
+    "skills/scientific-slides/scripts/slides_to_pdf.py",
+    "skills/scientific-slides/scripts/validate_presentation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23892,35 +24502,54 @@
   {
    "id": "scientific-visualization",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scientific-visualization/assets/color_palettes.py",
+    "skills/scientific-visualization/scripts/_common.py",
+    "skills/scientific-visualization/scripts/export_plan.py",
+    "skills/scientific-visualization/scripts/figure_export.py",
+    "skills/scientific-visualization/scripts/image_metadata.py",
+    "skills/scientific-visualization/scripts/palette_audit.py",
+    "skills/scientific-visualization/scripts/style_presets.py",
+    "skills/scientific-visualization/scripts/style_preview.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scientific-writing",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scientific-writing/scripts/_common.py",
+    "skills/scientific-writing/scripts/audit_claims.py",
+    "skills/scientific-writing/scripts/check_consistency.py",
+    "skills/scientific-writing/scripts/check_references.py",
+    "skills/scientific-writing/scripts/lint_manuscript.py",
+    "skills/scientific-writing/scripts/scaffold_manuscript.py",
+    "skills/scientific-writing/scripts/select_reporting_guidelines.py",
+    "skills/scientific-writing/scripts/validate_authorship.py",
+    "skills/scientific-writing/scripts/validate_manifest.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -23943,52 +24572,64 @@
   {
    "id": "scikit-learn",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scikit-learn/scripts/classification_pipeline.py",
+    "skills/scikit-learn/scripts/clustering_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scikit-survival",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scikit-survival/scripts/_common.py",
+    "skills/scikit-survival/scripts/competing_risk_cif.py",
+    "skills/scikit-survival/scripts/evaluate_survival_metrics.py",
+    "skills/scikit-survival/scripts/model_report.py",
+    "skills/scikit-survival/scripts/train_survival_model.py",
+    "skills/scikit-survival/scripts/validate_survival_csv.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "scvelo",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/scvelo/scripts/rna_velocity_workflow.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24130,52 +24771,64 @@
   {
    "id": "setup-ts-deep-modules",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/setup-ts-deep-modules/dependency-cruiser.config.cjs"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "shap",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/shap/scripts/tabular_report.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "simpy",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/simpy/scripts/_common.py",
+    "skills/simpy/scripts/basic_simulation_template.py",
+    "skills/simpy/scripts/bounded_queue_scenario.py",
+    "skills/simpy/scripts/event_trace_summary.py",
+    "skills/simpy/scripts/replication_runner.py",
+    "skills/simpy/scripts/resource_monitor.py",
+    "skills/simpy/scripts/validate_simulation_config.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24351,52 +25004,61 @@
   {
    "id": "stable-baselines3",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/stable-baselines3/scripts/custom_env_template.py",
+    "skills/stable-baselines3/scripts/evaluate_agent.py",
+    "skills/stable-baselines3/scripts/train_rl_agent.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "statistical-analysis",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/statistical-analysis/scripts/assumption_checks.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "statistical-power",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/statistical-power/scripts/power.py",
+    "skills/statistical-power/scripts/simulate_power.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24419,18 +25081,20 @@
   {
    "id": "story-lifecycle",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/story-lifecycle/scripts/ledger.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24573,34 +25237,103 @@
    "id": "taste-application",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/taste-application/scripts/apply.py",
+    "skills/taste-application/scripts/blender_prop.py",
+    "skills/taste-application/scripts/distill.py",
+    "skills/taste-application/scripts/falapi.py",
+    "skills/taste-application/scripts/forge.py",
+    "skills/taste-application/scripts/mint.py",
+    "skills/taste-application/scripts/mint3d.py",
+    "skills/taste-application/scripts/pipeline.py",
+    "skills/taste-application/scripts/resolve_ingest.py",
+    "skills/taste-application/scripts/verify.py",
+    "skills/taste-application/scripts/workflow_graphs.py",
+    "skills/taste-application/scripts/taste/assemble.py",
+    "skills/taste-application/scripts/taste/cadence.py",
+    "skills/taste-application/scripts/taste/falapi.py",
+    "skills/taste-application/scripts/taste/frames.py",
+    "skills/taste-application/scripts/taste/grade.py",
+    "skills/taste-application/scripts/taste/pack.py",
+    "skills/taste-application/scripts/taste/plates.py",
+    "skills/taste-application/scripts/taste/render3d.py",
+    "skills/taste-application/scripts/taste/resolve.py",
+    "skills/taste-application/scripts/taste/timeline.py",
+    "skills/taste-application/scripts/tasteforge/apply.py",
+    "skills/taste-application/scripts/tasteforge/assets.py",
+    "skills/taste-application/scripts/tasteforge/cli.py",
+    "skills/taste-application/scripts/tasteforge/contract.py",
+    "skills/taste-application/scripts/tasteforge/distill.py",
+    "skills/taste-application/scripts/tasteforge/export.py",
+    "skills/taste-application/scripts/tasteforge/integration.py",
+    "skills/taste-application/scripts/tasteforge/interview.py",
+    "skills/taste-application/scripts/tasteforge/pack.py",
+    "skills/taste-application/scripts/tasteforge/provenance.py",
+    "skills/taste-application/scripts/tasteforge/providers.py",
+    "skills/taste-application/scripts/tasteforge/resolve.py",
+    "skills/taste-application/scripts/tasteforge/schema.py",
+    "skills/taste-application/scripts/tasteforge/timeline.py",
+    "skills/taste-application/scripts/tasteforge/workflow.py",
+    "skills/taste-application/scripts/tasteforge/media/capcut.py",
+    "skills/taste-application/scripts/tasteforge/media/common.py",
+    "skills/taste-application/scripts/tasteforge/media/glitch.py",
+    "skills/taste-application/scripts/tasteforge/media/manim_geo.py",
+    "skills/taste-application/scripts/tasteforge/media/stills.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/taste-application/tests/test_apply.py",
+    "skills/taste-application/tests/test_assets.py",
+    "skills/taste-application/tests/test_cli.py",
+    "skills/taste-application/tests/test_distill.py",
+    "skills/taste-application/tests/test_integration.py",
+    "skills/taste-application/tests/test_interview.py",
+    "skills/taste-application/tests/test_media_utilities.py",
+    "skills/taste-application/tests/test_multimodal_contract.py",
+    "skills/taste-application/tests/test_multimodal_workflow.py",
+    "skills/taste-application/tests/test_offline_fixture.py",
+    "skills/taste-application/tests/test_pack.py",
+    "skills/taste-application/tests/test_provenance.py",
+    "skills/taste-application/tests/test_providers.py",
+    "skills/taste-application/tests/test_resolve.py",
+    "skills/taste-application/tests/test_schema.py",
+    "skills/taste-application/tests/test_timeline_export.py"
+   ],
    "structural_tests": [],
-   "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
-   ]
+   "reasons": []
   },
   {
    "id": "taste-distillation",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/taste-distillation/scripts/distill.py",
+    "skills/taste-distillation/scripts/mint.py",
+    "skills/taste-distillation/scripts/taste/assemble.py",
+    "skills/taste-distillation/scripts/taste/cadence.py",
+    "skills/taste-distillation/scripts/taste/falapi.py",
+    "skills/taste-distillation/scripts/taste/frames.py",
+    "skills/taste-distillation/scripts/taste/grade.py",
+    "skills/taste-distillation/scripts/taste/pack.py",
+    "skills/taste-distillation/scripts/taste/plates.py",
+    "skills/taste-distillation/scripts/taste/render3d.py",
+    "skills/taste-distillation/scripts/taste/timeline.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24674,27 +25407,29 @@
   {
    "id": "tellurium",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/tellurium/scripts/kinetic_experiment.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
    "id": "template",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "contract_incomplete",
    "declared_maturity": "collected",
-   "instruction_ready": true,
+   "instruction_ready": false,
    "real_implementation_files": [],
    "generic_adapter_files": [],
    "scaffold_files": [],
@@ -24702,24 +25437,27 @@
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from anthropics/skills 2026-10-23; instruction present, local harness pending"
+    "instruction body too small",
+    "no actionable procedure/capability language"
    ]
   },
   {
    "id": "terminal-opener",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/terminal-opener/scripts/open-terminal.js"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from affaan-m/ECC 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24776,18 +25514,29 @@
   {
    "id": "timesfm-forecasting",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/timesfm-forecasting/scripts/check_system.py",
+    "skills/timesfm-forecasting/scripts/forecast_csv.py",
+    "skills/timesfm-forecasting/examples/anomaly-detection/detect_anomalies.py",
+    "skills/timesfm-forecasting/examples/covariates-forecasting/demo_covariates.py",
+    "skills/timesfm-forecasting/examples/global-temperature/generate_animation_data.py",
+    "skills/timesfm-forecasting/examples/global-temperature/generate_gif.py",
+    "skills/timesfm-forecasting/examples/global-temperature/generate_html.py",
+    "skills/timesfm-forecasting/examples/global-temperature/run_example.sh",
+    "skills/timesfm-forecasting/examples/global-temperature/run_forecast.py",
+    "skills/timesfm-forecasting/examples/global-temperature/visualize_forecast.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -24946,18 +25695,27 @@
   {
    "id": "treatment-plans",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/treatment-plans/scripts/_common.py",
+    "skills/treatment-plans/scripts/check_completeness.py",
+    "skills/treatment-plans/scripts/check_consistency.py",
+    "skills/treatment-plans/scripts/generate_template.py",
+    "skills/treatment-plans/scripts/privacy_process_check.py",
+    "skills/treatment-plans/scripts/timeline_generator.py",
+    "skills/treatment-plans/scripts/validate_traceability.py",
+    "skills/treatment-plans/scripts/validate_treatment_plan.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -25031,18 +25789,26 @@
   {
    "id": "uncertainty-and-units",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/uncertainty-and-units/scripts/_common.py",
+    "skills/uncertainty-and-units/scripts/audit_units.py",
+    "skills/uncertainty-and-units/scripts/check_plausibility.py",
+    "skills/uncertainty-and-units/scripts/convert_units.py",
+    "skills/uncertainty-and-units/scripts/format_result.py",
+    "skills/uncertainty-and-units/scripts/propagate_uncertainty.py",
+    "skills/uncertainty-and-units/scripts/uncertainty_budget.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -25133,18 +25899,22 @@
   {
    "id": "venue-templates",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/venue-templates/scripts/customize_template.py",
+    "skills/venue-templates/scripts/query_template.py",
+    "skills/venue-templates/scripts/validate_format.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -25286,18 +26056,21 @@
   {
    "id": "waypoint-bio",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/waypoint-bio/scripts/profiler_to_waypoint.py",
+    "skills/waypoint-bio/scripts/vocab_coverage.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from K-Dense-AI/scientific-agent-skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -25337,18 +26110,20 @@
   {
    "id": "wizard",
    "layer": "skill",
-   "ready": true,
-   "state": "instruction_ready",
+   "ready": false,
+   "state": "implementation_unverified",
    "declared_maturity": "collected",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/wizard/template.sh"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [],
    "stub_files": [],
    "behavioral_tests": [],
    "structural_tests": [],
    "reasons": [
-    "Collected verbatim from mattpocock/skills 2026-10-23; instruction present, local harness pending"
+    "implementation exists without behavioral verification"
    ]
   },
   {
@@ -26106,6 +26881,15 @@
    "state": "mission_contract_ready",
    "execution_scope": "read_only",
    "declared_maturity": "active",
+   "reasons": []
+  },
+  {
+   "id": "apex-repository-continuity-steward",
+   "layer": "mega",
+   "ready": true,
+   "state": "mission_contract_ready",
+   "execution_scope": "read_only",
+   "declared_maturity": "candidate",
    "reasons": []
   }
  ],

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Two-pass readiness reconciliation for GlacierEQ mega-skills."""
-# reconciliation-version: 4
+# reconciliation-version: 5
+# v5: substantive-instruction test is multilingual (EN/ES/JA procedural
+# vocabulary) with a structural fallback; v4's English-only keyword list
+# scored substantive collected translations as contract_incomplete.
 from __future__ import annotations
 import argparse, json, re
 from collections import Counter
@@ -86,6 +89,32 @@ def repair_generic_adapters() -> list[str]:
             changed.append(path.relative_to(ROOT).as_posix())
     return changed
 
+ACTIONABLE_TOKENS = (
+    # English, including common variants ("using"/"usage" do not contain "use")
+    "use", "using", "usage", "purpose", "procedure", "workflow", "when to",
+    "capabilit", "steps", "pattern", "role", "method", "sequence", "framework",
+    # Spanish (ECC collected translations)
+    "cuándo usar", "cuando usar", "procedimiento", "flujo de trabajo",
+    "propósito", "proposito", "método", "metodo", "pasos", "guía", "guia",
+    "capacidad", "función", "funcion",
+    # Japanese (ECC collected translations)
+    "使用", "目的", "手順", "方法", "役割", "機能",
+    "ワークフロー", "フレームワーク", "ステップ", "ガイド",
+)
+
+def has_actionable_language(body: str) -> bool:
+    lowered = body.lower()
+    if any(t in lowered for t in ACTIONABLE_TOKENS):
+        return True
+    # Structural fallback: an enumerated procedure, or a sectioned document
+    # with list structure, is actionable on its face, whatever its vocabulary.
+    has_section = any(line.startswith("## ") for line in body.splitlines())
+    enumerated = len(re.findall(r"^\s*\d+[.)]\s", body, re.M))
+    bullets = sum(
+        1 for line in body.splitlines() if line.lstrip().startswith(("- ", "* "))
+    )
+    return enumerated >= 3 or (has_section and (enumerated >= 1 or bullets >= 3))
+
 def substantive_instruction(skill_md: Path) -> tuple[bool, list[str]]:
     if not skill_md.is_file():
         return False, ["missing SKILL.md"]
@@ -95,7 +124,7 @@ def substantive_instruction(skill_md: Path) -> tuple[bool, list[str]]:
     reasons = []
     if len(body) < 180:
         reasons.append("instruction body too small")
-    if not any(t in body.lower() for t in ("use","purpose","procedure","workflow","when to","capabilit","steps","pattern","role","method","sequence","framework")):
+    if not has_actionable_language(body):
         reasons.append("no actionable procedure/capability language")
     if "TODO: Add reference documentation" in body and len(body) < 600:
         reasons.append("placeholder reference content")
