@@ -8,7 +8,7 @@ from pathlib import Path
 
 SDK_NAME = re.compile(r"(?:^|[-_/.@])(?:sdk|client|api)(?:$|[-_/])", re.I)
 KNOWN_CLIENT_PACKAGES = {"openai", "anthropic", "ai", "@openai/agents", "boto3", "botocore", "google-genai", "@google/genai", "@modelcontextprotocol/sdk", "mcp", "@anthropic-ai/sdk", "@ai-sdk/openai", "@ai-sdk/anthropic", "@ai-sdk/google", "stripe", "@stripe/stripe-js", "aws-sdk", "@aws-sdk/client-s3", "@azure/identity", "azure-identity"}
-SAFE_SPEC = re.compile(r"^[\\^~<>=!v*0-9][\\w.*+~^<>=!|, \\-]*$|^workspace:[\\w.*^~\\-]+$")
+SAFE_SPEC = re.compile(r"^[\^~<>=!v*0-9][\w.*+~^<>=!|, \-]*$|^workspace:[\w.*^~\-]+$")
 
 
 def safe_spec(value):
@@ -55,7 +55,7 @@ def inspect(root):
                     for seq in dep_sections:
                         for dep in seq:
                             if isinstance(dep, str):
-                                match = re.match(r"^([A-Za-z0-9_.-]+)\\s*(.*)$", dep)
+                                match = re.match(r"^([A-Za-z0-9_.-]+)\s*(.*)$", dep)
                                 if match:
                                     add_candidate(report["sdk_candidates"], "pypi", match[1], match[2].strip() or "*", name)
                     for pkg, spec in obj.get("tool", {}).get("poetry", {}).get("dependencies", {}).items():
@@ -67,7 +67,7 @@ def inspect(root):
                 report["warnings"].append("PARSE_FAILED_OR_TOMLLIB_UNAVAILABLE:" + name)
         elif name == "go.mod":
             for line in blob.decode("utf-8", errors="replace").splitlines():
-                match = re.match(r"^\\s*([A-Za-z0-9._/-]+)\\s+(v\\d[^\\s]*)", line)
+                match = re.match(r"^\s*([A-Za-z0-9._/-]+)\s+(v\d[^\s]*)", line)
                 if match:
                     add_candidate(report["sdk_candidates"], "go", match[1], match[2], name)
     report["sdk_candidates"].sort(key=lambda c: (c["ecosystem"], c["package"], c["source"]))
