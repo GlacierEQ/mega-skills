@@ -53,7 +53,7 @@ Focused source-check commands (provider execution still required for actual chan
     python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
     python -m compileall -q scripts tests
 
-Red-before-green reproduced missing native OMP activation. Fifteen focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, and no arbitrary skill cap.
+Red-before-green reproduced missing native OMP activation. Eighteen committed focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, no arbitrary skill cap, and cross-checks for source drift during write, unexpected adapter readback, and concurrent modifications during rollback.
 
 **Release proof ladder:**
 1. Exact branch blob hashes match locally tested bytes; upstream hierarchy and native CI pass.
@@ -64,4 +64,4 @@ Red-before-green reproduced missing native OMP activation. Fifteen focused regre
 6. Kill/restart OMP process, recover exact cursor, demonstrate Mission 2 benefits from extracted capability.
 7. Complete existing 20-task action-quality evaluation: at least 90/100, zero critical authority, replay or evidence-integrity failures.
 
-**Current proof:** local unit/byte-compilation only until branch CI and real host readback. Mac host and external OMP installation have not been verified here. Do not claim an operational release from files, links, skill listings, or passing isolated tests.
+**Current proof:** original activation behavior independently replayed in a local Python fixture (15/15 checks passing), with the 18-case regression suite committed and source-read-back from GitHub. The exact full branch suite remains pending native CI/checkout execution; profile bootstrap has a separate exact-byte-tested 11-case suite on Computer User PR #84. Mac host and external OMP installation have not been verified here. Do not claim an operational release from files, links, skill listings, or passing isolated tests.
