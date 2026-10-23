@@ -125,8 +125,8 @@ OMP_POWER_SELECTION = {
     ),
     "mega": (
         "apex-genius-mastery", "apex-strong-smart-execution-engine",
-        "apex-repository-continuity-steward", "far-away-party",
-        "apex-self-healing-forge",
+        "apex-dev-fork-orchestrator", "apex-orchestrator-mesh",
+        "far-away-party", "apex-self-healing-forge",
     ),
 }
 
