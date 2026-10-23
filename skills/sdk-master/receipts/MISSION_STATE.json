@@ -1,0 +1,26 @@
+{
+  "mission_id": "sdk-master-operational-20261023",
+  "state": "OPEN",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "ci": "unverified",
+  "criteria": {
+    "build": {
+      "status": "passed",
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "evidence": "Sprites apexfs-ci-20261004 ./scripts/build"
+    }
+  },
+  "outstanding_actions": [
+    "Run completion gate and full tests in CI",
+    "Verify actual GitHub Actions status",
+    "Exercise SDK public success and failure paths",
+    "Verify live provider or authorized sandbox readback",
+    "Produce all required receipts and independently reproduce"
+  ],
+  "unresolved_defects": [
+    "33 SDK tests skipped",
+    "Missing lsof in test cleanup"
+  ],
+  "accountability_score": -35,
+  "claims_complete": false
+}

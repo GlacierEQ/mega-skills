@@ -29776,6 +29776,31 @@
         "Unbounded operations outside declared domain scope"
       ],
       "source_repo": "https://github.com/K-Dense-AI/scientific-agent-skills"
+    },
+    {
+      "id": "sdk-master",
+      "display_name": "SDK Master",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/sdk-master",
+      "entrypoint": "skills/sdk-master/SKILL.md",
+      "purpose": "Master SDK literacy and engineering across Python, TypeScript/JavaScript, Go, Rust, Java, and .NET: recover the SDK actually present (owning repo, lockfile, runtime, provider state), understand its public contract from source and docs, implement or debug integrations, and verify provider behavior with version-bound conformance evidence \u2014 composing existing GlacierEQ specialist skills rather than creating a second orchestration system. Ships an executable fail-closed mission completion gate (scripts/completion_gate.py) that rejects unsupported completion claims.",
+      "input_contract": [
+        "An SDK task: explore, choose, upgrade, integrate, debug, generate, publish, or verify an SDK or client library",
+        "The target repository and its authoritative revision, dependency lockfile, and compatible runtime"
+      ],
+      "output_contract": [
+        "Working integration or SDK code with tests and inspectable, version-bound verification evidence",
+        "Mission-state and completion-gate decisions: OPEN until every acceptance criterion is evidenced, COMPLETE only when the gate accepts"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_completion_gate.py and tests/test_inspect_sdk.py (21 tests)"
+      ],
+      "does_not_own": [
+        "Provider-side state changes beyond the authorized verification scope",
+        "Declaring a mission complete \u2014 the completion gate decides from evidence, not the author"
+      ]
     }
   ]
 }

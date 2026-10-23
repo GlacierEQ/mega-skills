@@ -2,14 +2,14 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 1296,
+    "skills": 1297,
     "combos": 41,
     "megas": 35,
-    "ready_total": 1264,
+    "ready_total": 1265,
     "not_ready_total": 108,
     "skill_states": {
       "instruction_ready": 1085,
-      "behavior_verified": 103,
+      "behavior_verified": 104,
       "implementation_unverified": 105,
       "contract_incomplete": 3
     },
@@ -26755,6 +26755,28 @@
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "sdk-master",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "maturity_hold": null,
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/sdk-master/scripts/inspect_sdk.py",
+        "skills/sdk-master/scripts/completion_gate.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/sdk-master/tests/test_inspect_sdk.py",
+        "skills/sdk-master/tests/test_completion_gate.py"
+      ],
       "structural_tests": [],
       "reasons": []
     }
