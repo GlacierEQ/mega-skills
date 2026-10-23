@@ -131,6 +131,17 @@ OMP_POWER_SELECTION = {
 }
 
 
+def has_native_omp_description(document: Path) -> bool:
+    """Match the top-level description field required by OMP's native loader."""
+    import re
+
+    content = document.read_text(encoding="utf-8")
+    if not content.startswith("---\n"):
+        return False
+    frontmatter, separator, _ = content[4:].partition("\n---\n")
+    return bool(separator and re.search(r"(?m)^description:[ \t]*\S[^\r\n]*$", frontmatter))
+
+
 def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) -> dict:
     """Preview or add source-bound native OMP Skills without replacing profile state.
 
@@ -168,6 +179,8 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
                     "target": str(target), "sha256": ""}
             if not source.is_dir() or not document.is_file():
                 item["status"] = "missing_source"
+            elif adapter_kind is None and not has_native_omp_description(document):
+                item["status"] = "invalid_source"
             else:
                 item["sha256"] = hashlib.sha256(document.read_bytes()).hexdigest()
                 present = target.is_symlink() or target.exists()
@@ -232,7 +245,7 @@ def main() -> None:
         return
     result = sync_omp_skills(args.omp_skills_dir, apply=args.apply)
     print(json.dumps(result, indent=2))
-    if result["counts"].get("missing_source", 0) or result["counts"].get("conflict", 0) or result["counts"].get("install_error", 0):
+    if result["counts"].get("missing_source", 0) or result["counts"].get("conflict", 0) or result["counts"].get("install_error", 0) or result["counts"].get("invalid_source", 0):
         raise SystemExit(2)
 
 
