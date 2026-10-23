@@ -19,8 +19,8 @@ Existing `combo-skills/` manifests remain canonical and supported; their semanti
 
 | Registry | Role | Current entries |
 |---|---|---:|
-| `registry/skills.json` | Atomic Skills | 735 |
-| `registry/combo-skills.json` | Compound workflow Skills | 39 |
+| `registry/skills.json` | Atomic Skills | 751 (743 active, 8 candidate) |
+| `registry/combo-skills.json` | Compound workflow Skills | 40 (38 active, 2 candidate) |
 | `registry/mega-skills.json` | Mega apex Skills | 35 |
 | `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 35 Mega roots |
 | `registry/pipelines.json` | Executable deep-work DAGs | 7 |
