@@ -38,3 +38,15 @@ A single failed attempt must not cause permanent retirement, suppression from di
 ## Use in the hierarchy
 
 `capability-admission`, `resource-preflight`, and `claim-calibration` are atomic Skills. Their required composition is `capability-readiness`. A Mega Skill may select this Combo before an advanced route whose dependencies, evidence, or claim boundaries are not already verified.
+
+## Readiness-record reconciliation — 2026-10-23
+
+The bulk collection in commit `1cbe82d` (+525 gathered skills) wrote `registry/skill-readiness.json` records directly, assigning every collected skill `instruction_ready` without running `scripts/readiness_assay.py` on it. A later assay run disagreed on 211 of the 525. Reconciliation, per class:
+
+- **137 skills** ship real implementation code with no tests. The stored `instruction_ready` overstated them; corrected to `implementation_unverified` (an instruction-only state cannot certify unverified code).
+- **26 skills** are placeholder or thin instruction cards (translation-in-progress stubs pointing at an external path, a blank template, sub-180-character bodies). Corrected to `contract_incomplete`.
+- **47 skills** are substantive instruction documents in Spanish or Japanese (or English in vocabulary the assay's keyword list missed). The stored state was right; the assay was wrong. `substantive_instruction` in `scripts/readiness_assay.py` (reconciliation-version 5) now tests multilingual procedural vocabulary and enumerated/sectioned structure instead of an English-only keyword list.
+- **1 skill** (`taste-application`) was understated; it carries implementation plus behavioral tests and was corrected up to `behavior_verified`.
+- The stored report also omitted one live Mega Skill record (`apex-repository-continuity-steward`); restored from the assay.
+
+Net effect: `ready_total` 1371 → 1209, `not_ready_total` 0 → 163, and a fresh assay agrees with the stored records on state and readiness for every entry. Lesson: a bulk registration must run the assay it feeds; a readiness state written by the collecting process itself is a claim, not evidence.

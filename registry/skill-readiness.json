@@ -27484,7 +27484,6 @@
   ],
   "pass": 2,
   "maturity_changes": {
-    "skills.json": 102,
     "held": [
       {
         "file": "mega-skills.json",
