@@ -108,6 +108,60 @@ class OmpNativeSyncTests(unittest.TestCase):
         self.assertFalse((self.target / "genius-epistemic-engineering").exists())
         self.assertFalse((self.target / "apex-genius-mastery").exists())
 
+    def test_source_changed_during_install_rolls_back_all_additions(self):
+        original = Path.symlink_to
+
+        def mutate(path, target, *args, **kwargs):
+            if path.name == "power-skill":
+                (self.skills / "power-skill" / "SKILL.md").write_text(
+                    "---\nname: power-skill\ndescription: Changed during activation\n---\n")
+            return original(path, target, *args, **kwargs)
+
+        with patch.object(Path, "symlink_to", autospec=True, side_effect=mutate):
+            result = self.run_sync(apply=True)
+        self.assertTrue(result["verification_failed"])
+        self.assertFalse((self.target / "power-skill").exists())
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+        self.assertFalse((self.target / "apex-genius-mastery").exists())
+
+    def test_corrupted_adapter_readback_rolls_back_owned_bytes(self):
+        original = mod.render_adapter
+        calls = {"count": 0}
+
+        def corrupt(document, name, kind):
+            if name == "genius-epistemic-engineering":
+                calls["count"] += 1
+                if calls["count"] == 2:
+                    return original(document, name, kind) + "UNVERIFIED CHANGE\n"
+            return original(document, name, kind)
+
+        with patch.object(mod, "render_adapter", side_effect=corrupt):
+            result = self.run_sync(apply=True)
+        self.assertTrue(result["verification_failed"])
+        self.assertFalse((self.target / "power-skill").exists())
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+        self.assertFalse((self.target / "apex-genius-mastery").exists())
+
+    def test_rollback_does_not_destroy_an_out_of_band_edit(self):
+        original = mod.render_adapter
+        calls = {"count": 0}
+
+        def concurrent_edit(document, name, kind):
+            if name == "genius-epistemic-engineering":
+                calls["count"] += 1
+                if calls["count"] == 2:
+                    (self.target / name / "SKILL.md").write_text(
+                        "Changed by another actor after installation")
+            return original(document, name, kind)
+
+        with patch.object(mod, "render_adapter", side_effect=concurrent_edit):
+            result = self.run_sync(apply=True)
+        self.assertTrue(result["verification_failed"])
+        self.assertGreater(result["counts"].get("rollback_conflict", 0), 0)
+        self.assertEqual(
+            (self.target / "genius-epistemic-engineering" / "SKILL.md").read_text(),
+            "Changed by another actor after installation")
+
     def test_idempotence_never_rewrites_identical_adapters(self):
         self.run_sync(apply=True)
         path = self.target / "apex-genius-mastery" / "SKILL.md"
