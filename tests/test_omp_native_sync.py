@@ -1,0 +1,117 @@
+"""Prove OMP skill activation preserves existing profiles and source authority."""
+from __future__ import annotations
+
+import importlib.util
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+MODULE = Path(__file__).resolve().parents[1] / "scripts" / "sync_runtime_skills.py"
+spec = importlib.util.spec_from_file_location("skill_sync", MODULE)
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+
+
+class OmpNativeSyncTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        root = Path(self.temp.name)
+        self.skills = root / "canonical" / "skills"
+        self.combos = root / "canonical" / "combo-skills"
+        self.megas = root / "canonical" / "mega-skills"
+        self.target = root / "omp-profile" / "skills"
+        for base, name, doc in [(self.skills, "power-skill", "SKILL.md"), (self.combos, "genius-epistemic-engineering", "COMBO.md"), (self.megas, "apex-genius-mastery", "MEGA.md")]:
+            d = base / name
+            d.mkdir(parents=True)
+            (d / doc).write_text(f"# {name} authoritative source\n", encoding="utf-8")
+        for name, value in [("SKILLS_DIR", self.skills), ("COMBOS_DIR", self.combos), ("MEGAS_DIR", self.megas)]:
+            p = patch.object(mod, name, value)
+            p.start()
+            self.addCleanup(p.stop)
+        self.selection = {"atomic": ["power-skill"], "compound": ["genius-epistemic-engineering"], "mega": ["apex-genius-mastery"]}
+
+    def run_sync(self, **kwargs):
+        return mod.sync_omp_skills(self.target, selection=self.selection, **kwargs)
+
+    def test_preview_does_not_create_target_or_touch_existing_files(self):
+        result = self.run_sync(apply=False)
+        self.assertFalse(self.target.exists())
+        self.assertEqual([item["status"] for item in result["items"]], ["planned"] * 3)
+        self.assertTrue(all(item["sha256"] for item in result["items"]))
+
+    def test_apply_installs_source_link_and_native_compound_mega_adapters(self):
+        result = self.run_sync(apply=True)
+        self.assertEqual(result["counts"].get("created"), 3)
+        self.assertTrue((self.target / "power-skill").is_symlink())
+        self.assertEqual((self.target / "power-skill").resolve(), (self.skills / "power-skill").resolve())
+        for layer, name, doc in [("compound", "genius-epistemic-engineering", "COMBO.md"), ("mega", "apex-genius-mastery", "MEGA.md")]:
+            adapter = self.target / name / "SKILL.md"
+            self.assertTrue(adapter.is_file())
+            self.assertIn(f"name: {name}", adapter.read_text())
+            self.assertTrue((self.target / name / doc).is_symlink())
+
+    def test_existing_profile_skill_is_preserved_and_reported_conflict(self):
+        existing = self.target / "power-skill"
+        existing.mkdir(parents=True)
+        (existing / "SKILL.md").write_text("Original operator skill", encoding="utf-8")
+        result = self.run_sync(apply=True)
+        self.assertEqual((existing / "SKILL.md").read_text(), "Original operator skill")
+        self.assertIn("conflict", [item["status"] for item in result["items"]])
+        self.assertEqual(result["counts"].get("created"), 2)
+
+    def test_idempotence_never_rewrites_identical_adapters(self):
+        self.run_sync(apply=True)
+        path = self.target / "apex-genius-mastery" / "SKILL.md"
+        original = path.stat().st_mtime_ns
+        second = self.run_sync(apply=True)
+        self.assertEqual(second["counts"].get("already_present"), 3)
+        self.assertEqual(path.stat().st_mtime_ns, original)
+
+    def test_missing_source_never_manifests_a_fake_skill(self):
+        selection = {"atomic": ["missing-skill"], "compound": [], "mega": []}
+        result = mod.sync_omp_skills(self.target, selection=selection, apply=True)
+        self.assertEqual(result["items"][0]["status"], "missing_source")
+        self.assertFalse((self.target / "missing-skill").exists())
+
+    def test_unrelated_profile_entries_survive_apply(self):
+        neighbor = self.target / "operator-custom" / "SKILL.md"
+        neighbor.parent.mkdir(parents=True)
+        neighbor.write_text("Must survive", encoding="utf-8")
+        self.run_sync(apply=True)
+        self.assertEqual(neighbor.read_text(), "Must survive")
+
+    def test_rejects_path_escape_or_ambiguous_selection(self):
+        for name in ["../secrets", "/tmp/foo", "fake/child", "-x", "Bad Name"]:
+            with self.subTest(name=name):
+                selection = {"atomic": [name], "compound": [], "mega": []}
+                with self.assertRaises(ValueError):
+                    mod.sync_omp_skills(self.target, selection=selection, apply=False)
+
+    def test_changed_canonical_adapter_is_detected_not_silently_rewritten(self):
+        self.run_sync(apply=True)
+        (self.combos / "genius-epistemic-engineering" / "COMBO.md").write_text("# revised authority\n")
+        after = self.run_sync(apply=True)
+        self.assertIn("conflict", [item["status"] for item in after["items"]])
+        self.assertIn("authoritative source", (self.target / "genius-epistemic-engineering" / "SKILL.md").read_text())
+
+    def test_other_symlink_is_not_replaced(self):
+        foreign = Path(self.temp.name) / "unrelated"
+        foreign.mkdir()
+        self.target.mkdir(parents=True)
+        (self.target / "power-skill").symlink_to(foreign, target_is_directory=True)
+        after = self.run_sync(apply=True)
+        self.assertEqual((self.target / "power-skill").resolve(), foreign.resolve())
+        self.assertIn("conflict", [item["status"] for item in after["items"]])
+
+    def test_default_power_coalition_is_not_arbitrarily_skill_capped(self):
+        ids = [x for layer in mod.OMP_POWER_SELECTION.values() for x in layer]
+        self.assertGreaterEqual(len(ids), 20)
+        for name in ["power-skill", "genius-mastery", "strong-smart-routing-kernel", "systematic-debugging", "apex-genius-mastery", "far-away-party"]:
+            self.assertIn(name, ids)
+        self.assertEqual(len(ids), len(set(ids)))
+
+
+if __name__ == "__main__":
+    unittest.main()
