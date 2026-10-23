@@ -120,3 +120,29 @@ Claudeが回答する前にレスポンスフローをインターセプトし�
 
 [TBA — Claude CodeのToken Budget Advisor](https://github.com/Xabilimon1/Token-Budget-Advisor-Claude-Code-)から引用した独立スキル。
 元のプロジェクトにはPython推定スクリプトも付属しているが、本リポジトリではスキルを自己完結型に保ち、ヒューリスティックスのみを使用する。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+回答する前に、どれだけの回答深度を消費するかについてユーザーに情報に基づいた選択を提供する。ユーザーが回答の長さ、深さ、またはトークンバジェットを明示的に制御したい場合にこのスキルを使用する。トリガー条件："token budget", "token count", "token usage", "token limit", "response length", "answer depth", "short version", "brief answer", "detailed answer", "exhaustive answer", "respuesta corta vs larga", "cuántos tokens", "ahorrar tokens", "responde al 50%", "dame la versión corta", "quiero controlar cuánto usas"、またはユーザーが回答のサイズや深さの制御を明示的に求めるその他の明確なバリエーション。トリガーしない条件：ユーザーが現在のセッションでレベルを指定済み（そのレベルを維持）、リクエストが明らかに一言の回答、または「token」が認証/セッション/支払いトークンを指している。
+### When to use
+
+**トリガーしない場合**：ユーザーが本セッションですでにレベルを設定している（静かに維持）、または回答が本質的に一行。
+## 動作原理
+### ステップ 1 — 入力トークンを推定する
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用場面
+2. 動作原理
+3. ステップ 1 — 入力トークンを推定する
+4. ステップ 2 — 複雑度に応じてレスポンスサイズを推定する
+5. ステップ 3 — 深さのオプションを提示する
+6. ステップ 4 — 選択されたレベルで回答する
+7. ショートカット——質問をスキップ
+8. 精度について
+9. 例
+10. トリガーシナリオ
+11. トリガーしないシナリオ
+12. 出典

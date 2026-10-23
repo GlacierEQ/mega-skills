@@ -41,3 +41,19 @@ Remotion のコードを扱い、ドメイン固有の知識が必要な場合�
 * [rules/transitions.md](rules/transitions.md) - Remotion のシーントランジションパターン
 * [rules/trimming.md](rules/trimming.md) - Remotion のトリミングパターン——アニメーションの最初または最後をトリミングする
 * [rules/videos.md](rules/videos.md) - Remotion への動画埋め込み——トリミング、音量、速度、ループ、ピッチ
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+Remotion のベストプラクティス - React で動画を作成する。3D、アニメーション、音声、字幕、チャート、トランジションなどをカバーするドメイン固有の29のルール。
+### When to use
+
+Remotion のコードを扱い、ドメイン固有の知識が必要な場合にこのスキルを使用してください。
+## 使い方
+詳細な説明とコード例については、各ルールファイルをお読みください：
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用場面
+2. 使い方

@@ -90,3 +90,22 @@ ip access-list extended WEB-IN
   10 permit tcp 192.0.2.0 0.0.0.255 any eq 443
   999 deny ip any any log
 ```
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+showコマンド、コンフィグ階層、ワイルドカードマスク、ACL配置、インターフェースハイジーン、安全な変更ウィンドウ検証のためのCisco IOSおよびIOS-XEレビューパターン。
+### When to use
+
+Cisco IOSまたはIOS-XEスニペットをレビューする場合、変更ウィンドウチェックリストを構築する場合、またはルーターまたはスイッチから証拠を収集し、インシデントを悪化させない方法を説明する場合に、このスキルを使用します。
+## 使用時期
+- 計画的な変更前にIOSまたはIOS-XE構成をレビュー。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 操作規則
+3. モード参照
+4. 読み取り専用コレクション
+5. ワイルドカードマスク

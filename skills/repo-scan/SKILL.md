@@ -168,3 +168,20 @@ fi
 ## リンク
 
 * [GitHub リポジトリ](https://github.com/haibindev/repo-scan)
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+固定されレビュー可能なコミットから外部の repo-scan スキルをインストールするブートストラップ用ポインター。クロススタックのソースコード資産監査を実行する前に repo-scan のインストールが必要な場合に使用する。この ECC ポインター自体は監査を実行しない。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 適用場面
+2. インストール
+3. コア機能
+4. 分析の深さレベル
+5. 動作原理
+6. 例
+7. ベストプラクティス
+8. リンク

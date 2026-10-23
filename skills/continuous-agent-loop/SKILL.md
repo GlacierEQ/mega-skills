@@ -43,3 +43,16 @@ Start
 - `/harness-audit`を実行する
 - スコープを失敗ユニットに縮小する
 - 明示的な受け入れ基準でリプレイする
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+品質ゲート、評価、リカバリーコントロールを備えた継続的な自律エージェントループのパターン。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. ループ選択フロー
+2. 組み合わせパターン
+3. 失敗モード
+4. リカバリー

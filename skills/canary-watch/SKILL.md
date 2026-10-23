@@ -94,3 +94,28 @@ info:      # ログのみ
 - `/benchmark`とペアリングしてパフォーマンス比較
 - `/browser-qa`とペアリングして完全なUIテスト
 - CI/CDパイプラインに組み込んでオートメーション監視
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+このスキルを使用して、デプロイメント、マージ、または依存関係アップグレード後にデプロイされたURLの回帰を監視します。
+### When to use
+
+## 使用時期
+- 本番またはステージングへのデプロイ後
+- 危険なPRをマージした後
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. 監視内容
+4. 監視モード
+5. 警告しきい値
+6. 通知
+7. 出力
+8. Canary Report — myapp.com — 2026-03-23 03:15 PST
+9. Status
+10. Diffs from Baseline
+11. 統合

@@ -1673,7 +1673,7 @@
       "id": "diamond-research-topography",
       "display_name": "Diamond Research Topography",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "combo-skills/diamond-research-topography",
       "entrypoint": "combo-skills/diamond-research-topography/COMBO.md",
@@ -2180,7 +2180,7 @@
     },
     {
       "id": "fleet-recon-and-harmonize",
-      "display_name": "Fleet Recon and Harmonize — Harmonious Merge Route",
+      "display_name": "Fleet Recon and Harmonize \u2014 Harmonious Merge Route",
       "ownership": "glaciereq",
       "maturity": "active",
       "version": "0.2.0",
@@ -3851,7 +3851,7 @@
       "id": "max-research-spiral",
       "display_name": "Max Research Spiral",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "combo-skills/max-research-spiral",
       "entrypoint": "combo-skills/max-research-spiral/COMBO.md",
@@ -6635,7 +6635,7 @@
           "automated-code-refactoring bounded batches",
           "test-drift-archaeology-repair pattern"
         ],
-        "adds": "One governed pipeline for code upgrades — assess, decide, transform, verify, promote — where every stage is owned by a registered skill and every transition is receipted, so an upgrade is provable end-to-end instead of asserted.",
+        "adds": "One governed pipeline for code upgrades \u2014 assess, decide, transform, verify, promote \u2014 where every stage is owned by a registered skill and every transition is receipted, so an upgrade is provable end-to-end instead of asserted.",
         "compound_artifact": "CODE_UPGRADE_RECORD.md",
         "next_layer_ready_when": [
           "A full upgrade run completes with all stage receipts chained.",
@@ -6653,7 +6653,7 @@
       "entrypoint": "combo-skills/reverse-engineering-pipeline/COMBO.md",
       "selection": {
         "use_when": [
-          "Reverse engineering a shipped artifact end-to-end — binary, package, app, firmware, capture, or bytecode — under authorization and evidence gates.",
+          "Reverse engineering a shipped artifact end-to-end \u2014 binary, package, app, firmware, capture, or bytecode \u2014 under authorization and evidence gates.",
           "Rebuilding a behavior from a shipped artifact and verifying the reconstruction against the original."
         ],
         "do_not_use_when": [
@@ -6713,7 +6713,7 @@
         {
           "id": "re-apple-bundles",
           "kind": "skill",
-          "role": "STATIC (Apple lane): bundle resources — plist, Interface Builder, asset catalogs, keyed archives.",
+          "role": "STATIC (Apple lane): bundle resources \u2014 plist, Interface Builder, asset catalogs, keyed archives.",
           "required": false
         },
         {
@@ -6773,13 +6773,13 @@
         {
           "id": "re-evidence-record",
           "kind": "skill",
-          "role": "EVIDENCE: maintain the finding ledger — conclusions tied to Evidence IDs, unknowns as first-class records, checklist closeout.",
+          "role": "EVIDENCE: maintain the finding ledger \u2014 conclusions tied to Evidence IDs, unknowns as first-class records, checklist closeout.",
           "required": true
         },
         {
           "id": "re-reconstruction-verification",
           "kind": "skill",
-          "role": "RECONSTRUCT → VERIFY: rebuild behavior from the ledger and verify against the original under a finite typed specification.",
+          "role": "RECONSTRUCT \u2192 VERIFY: rebuild behavior from the ledger and verify against the original under a finite typed specification.",
           "required": false
         }
       ],
@@ -7004,7 +7004,7 @@
               "Decoded Evidence record",
               "Decoder discovery record"
             ],
-            "validation": "Window counts are identified as display lines, annotations, or samples — never blurred."
+            "validation": "Window counts are identified as display lines, annotations, or samples \u2014 never blurred."
           },
           {
             "step": 18,
@@ -7043,7 +7043,7 @@
               "Reconstruction with verification result",
               "Claim-scope statement (passed / failed / unverified)"
             ],
-            "validation": "A pass is claimed at exactly the specification's scope — never as global equivalence with the original."
+            "validation": "A pass is claimed at exactly the specification's scope \u2014 never as global equivalence with the original."
           }
         ]
       },
@@ -7267,7 +7267,7 @@
         ],
         "risk_boundaries": [
           "No target is touched before the re-safety-gate decision; excluded purposes are refused at the gate.",
-          "Target execution happens only in a throwaway environment, within the declared lifecycle — REA is not a sandbox.",
+          "Target execution happens only in a throwaway environment, within the declared lifecycle \u2014 REA is not a sandbox.",
           "REA and its engines come only from official channels at pinned versions; lookalike installers are treated as hostile artifacts.",
           "Recorded captures are read offline; recorded URLs are never fetched and live attribution is never claimed from a recording."
         ],
@@ -7289,7 +7289,7 @@
           "re-untrusted-content-defense provenance marking",
           "verification-before-completion completion-claim gate"
         ],
-        "adds": "One governed pipeline for reverse engineering — gate, connect, triage, provenance, static lanes, engine bridges, dynamic lanes, comparison, evidence, reconstruction, verification — where the safety gate is a required first-class member, every finding carries its evidence and its unknowns, and a reconstruction is claimed only at the scope its verification actually covered.",
+        "adds": "One governed pipeline for reverse engineering \u2014 gate, connect, triage, provenance, static lanes, engine bridges, dynamic lanes, comparison, evidence, reconstruction, verification \u2014 where the safety gate is a required first-class member, every finding carries its evidence and its unknowns, and a reconstruction is claimed only at the scope its verification actually covered.",
         "compound_artifact": "RE_INVESTIGATION_RECORD.md",
         "next_layer_ready_when": [
           "A full investigation completes with gate, ledger, and closeout receipts chained.",

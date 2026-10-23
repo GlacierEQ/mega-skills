@@ -82,3 +82,30 @@ origin: ECC
 - `/benchmark`とペアリングしてパフォーマンス確認
 - `/canary-watch`とペアリングしてデプロイ後の監視を自動化
 - PullRequestワークフローに組み込んでフロントエンドPRをキャッチ
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+このスキルを使用して、機能をデプロイ後にブラウザ自動化を使用した自動ビジュアルテストとUI相互作用検証を自動化します。
+### When to use
+
+## 使用時期
+- ステージング/プレビューに機能をデプロイ後
+- ページ全体のUIの動作を検証する必要がある場合
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. フェーズ1：スモークテスト
+4. フェーズ2：相互作用テスト
+5. フェーズ3：ビジュアル回帰
+6. フェーズ4：アクセシビリティ
+7. 出力形式
+8. QA Report — [URL] — [timestamp]
+9. Smoke Test
+10. 相互作用テスト
+11. ビジュアル回帰
+12. アクセシビリティ
+13. 統合

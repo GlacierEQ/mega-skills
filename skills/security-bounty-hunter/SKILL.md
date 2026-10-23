@@ -97,3 +97,30 @@ semgrep --config=auto --severity=ERROR --severity=WARNING --json
 - PoC が動作する
 - 問題がアドバイザリー、CVE、またはオープンチケットでまだカバーされていない
 - ターゲットがバウンティプログラムの実際の範囲内
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+リポジトリ内の悪用可能なバウンティ対象のセキュリティ問題を発見します。ノイズの多いローカルのみの発見ではなく、実際のレポートに適格なリモートから到達可能な脆弱性に焦点を当てます。
+### When to use
+
+## 対象範囲内のパターン
+継続的に重要な問題の種類:
+| パターン | CWE | 典型的な影響 |
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. 動作の仕組み
+3. 対象範囲内のパターン
+4. スキップするもの
+5. ワークフロー
+6. トリアージループの例
+7. レポート構造
+8. 説明
+9. 脆弱なコード
+10. 概念実証
+11. 影響
+12. 影響を受けるバージョン
+13. 品質ゲート

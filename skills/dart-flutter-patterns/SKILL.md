@@ -51,3 +51,20 @@ final router = GoRouter(
 ```
 
 詳細については、ドキュメントを参照してください。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+本番環境対応のDartおよびFlutterパターンは、null安全性、不変状態、非同期構成、ウィジェットアーキテクチャ、人気のある状態管理フレームワーク（BLoC、Riverpod、Provider）、GoRouterナビゲーション、Dioネットワーキング、Freezedコード生成、クリーンアーキテクチャをカバー。
+### When to use
+
+## 使用時期
+次の場合にこのスキルを使用：
+- 新しいFlutter機能を開始し、状態管理、ナビゲーション、またはデータアクセスのイディオマティックパターンが必要
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. 例

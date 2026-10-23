@@ -1739,7 +1739,7 @@
       "id": "apex-max-research-engine",
       "display_name": "APEX Max Research Engine",
       "ownership": "glaciereq",
-      "maturity": "candidate",
+      "maturity": "active",
       "version": "0.1.0",
       "path": "mega-skills/apex-max-research-engine",
       "entrypoint": "mega-skills/apex-max-research-engine/MEGA.md",
@@ -2791,6 +2791,9 @@
       "display_name": "APEX Repository Continuity Steward",
       "ownership": "glaciereq",
       "maturity": "candidate",
+      "maturity_hold": {
+        "reason": "Deliberate candidate posture \u2014 read_only firewall, human_control required; promotion is a human decision. The assay measures readiness; it does not promote."
+      },
       "version": "0.1.0",
       "path": "mega-skills/apex-repository-continuity-steward",
       "entrypoint": "mega-skills/apex-repository-continuity-steward/MEGA.md",

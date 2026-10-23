@@ -152,3 +152,19 @@ R(m) = B_ext(m) · (1 + β · engagement(m))
 * `connections-optimizer` は誰を保持、トリミング、または追加するかを決定する際に同じブリッジロジックを使用する
 * `brand-voice` は紹介リクエストや直接アウトリーチを起草する前に実行する
 * `x-api` はXグラフへのアクセスとオプションの実行パスを提供する
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+XとLinkedInでのウォームイントロ発見、ブリッジスコアリング、ネットワークギャップ分析のための重み付きソーシャルグラフランキング。ユーザーがランキングエンジン自体を必要としている場合（より広いプロモーションやネットワーク維持ワークフローではなく）に使用する。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 単独での使用場面
+2. 入力
+3. コアモデル
+4. スコアリングシグナル
+5. ワークフロー
+6. 出力フォーマット
+7. 関連スキル

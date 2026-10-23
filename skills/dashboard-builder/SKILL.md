@@ -56,3 +56,24 @@ version: "1.0.0"
 ### 4. レイアウトの構築
 
 質問ごとにパネルをグループ化。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+Grafana、SigNoz、および同様のプラットフォーム用の実際のオペレータ質問に答える監視ダッシュボードを構築します。メトリクスを虚栄ボードではなく機能するダッシュボードに変える場合に使用します。
+### When to use
+
+## 使用時期
+- 「Kafkaモニタリングダッシュボードを構築」
+- 「Elasticsearch用のGrafanaダッシュボードを作成」
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. ガードレール
+3. ワークフロー
+4. 1. 運用質問を定義
+5. 2. ターゲットプラットフォームスキーマを研究
+6. 3. メトリクスを選択
+7. 4. レイアウトの構築

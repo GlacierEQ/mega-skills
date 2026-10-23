@@ -177,3 +177,23 @@ php artisan route:cache
 php artisan view:cache
 php artisan schedule:list
 ```
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+Bucle de verificación para proyectos Laravel: verificaciones de entorno, linting, análisis estático, pruebas con cobertura, escaneos de seguridad y preparación para despliegue.
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. Cuándo Usar
+2. Cómo Funciona
+3. Fase 1: Verificaciones de Entorno
+4. Fase 1.5: Composer y Autoload
+5. Fase 2: Linting y Análisis Estático
+6. Fase 3: Pruebas y Cobertura
+7. Fase 4: Seguridad y Verificación de Dependencias
+8. Fase 5: Base de Datos y Migraciones
+9. Fase 6: Preparación de Build y Despliegue
+10. Fase 7: Verificaciones de Cola y Scheduler
+11. Ejemplos

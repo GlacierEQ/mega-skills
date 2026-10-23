@@ -141,3 +141,30 @@ def parse_show_interfaces(raw: str) -> list[dict[str, Any]]:
 - エージェント: `network-troubleshooter`
 - スキル: `network-config-validation`
 - スキル: `homelab-network-setup`
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+ルーター、スイッチ、Linuxホスト上のインターフェースエラー、ドロップ、CRC、デュプレックス不一致、フラッピング、速度ネゴシエーション問題、カウンタートレンドを診断する。
+### When to use
+
+ネットワークの症状が物理リンク、スイッチポート、ケーブル、トランシーバー、デュプレックス設定、または輻輳したインターフェースによって引き起こされている可能性がある場合にこのスキルを使用する。
+## 使用するタイミング
+- ホストまたはVLANにパケットロス、レイテンシスパイク、または断続的な到達不能がある。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. 仕組み
+3. カウンターリファレンス
+4. 診断フロー
+5. CRCまたは入力エラー
+6. ドロップ
+7. デュプレックスと速度
+8. 安全なパーサーの例
+9. 例
+10. 1つのスイッチポートのCRC
+11. インターネットは遅いがLANは正常
+12. アンチパターン
+13. 関連情報

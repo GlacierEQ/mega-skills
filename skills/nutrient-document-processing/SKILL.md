@@ -162,3 +162,24 @@ curl -X POST https://api.nutrient.io/build \
 - [API Playground](https://dashboard.nutrient.io/processor-api/playground/)
 - [完全な API ドキュメント](https://www.nutrient.io/guides/dws-processor/)
 - [npm MCP サーバー](https://www.npmjs.com/package/@nutrient-sdk/dws-mcp-server)
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+Nutrient DWS API を使用してドキュメントの処理、変換、OCR、抽出、編集、署名、フォーム入力を行います。PDF、DOCX、XLSX、PPTX、HTML、画像に対応しています。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. セットアップ
+2. 操作
+3. ドキュメントの変換
+4. テキストとデータの抽出
+5. スキャンされたドキュメントの OCR
+6. 機密情報の編集
+7. ウォーターマークの追加
+8. デジタル署名
+9. PDF フォームの入力
+10. MCP サーバー（代替）
+11. 使用タイミング
+12. リンク

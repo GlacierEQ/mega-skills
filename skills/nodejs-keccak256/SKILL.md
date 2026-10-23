@@ -100,3 +100,22 @@ grep -rn "keccak256" --include="*.ts" --include="*.js" . | grep -v node_modules
 ## ルール
 
 Ethereumコンテキストでは、`crypto.createHash('sha3-256')`を絶対に使用しない。`ethers`、`viem`、`web3`、または別の明示的なKeccak実装のKeccak対応ヘルパーを使用すること。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+JavaScriptとTypeScriptにおけるEthereumハッシュバグを防ぐ。NodeのSHA3-256はNIST SHA3であり、Ethereum Keccak-256ではなく、セレクター、署名、ストレージスロット、アドレス導出を静かに破壊する。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. 仕組み
+3. 例
+4. ethers v6
+5. viem
+6. web3.js
+7. 一般的なパターン
+8. 公開鍵からアドレス
+9. コードベースの監査
+10. ルール

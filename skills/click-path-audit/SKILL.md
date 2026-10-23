@@ -83,3 +83,22 @@ TOUCHPOINT: [ボタンラベル] in [Component:line]
 ```
 
 詳細については、ドキュメントを参照してください。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+ユーザー向けボタン/タッチポイントを完全な状態変更シーケンスを通して追跡し、機能が個別に機能するが互いにキャンセルされたり、間違った最終状態を生成したり、UIを矛盾した状態にしたままにするバグを見つけます。次の場合に使用します：体系的なデバッグがバグを見つけたが、ユーザーは壊れたボタンを報告する場合、または共有状態ストアに触れる主要なリファクター後。
+### When to use
+
+対象領域のすべてのインタラクティブなタッチポイントについて：
+```
+1. ハンドラーを特定（onClick、onSubmit、onChangeなど）
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. この解決する問題
+2. 動作方法
+3. 実行ステップ
+4. ステップ1：マップ状態ストア
+5. ステップ2：各タッチポイントを監査

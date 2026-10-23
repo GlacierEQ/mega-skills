@@ -65,3 +65,24 @@ origin: ECC
 - unit scorecards
 - dependency graph snapshot
 - integration risk summary
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+RFC駆動の複数エージェントDAG実行パターン、品質ゲート、マージキュー、ワークユニットオーケストレーション。
+### When to use
+
+単一エージェントパスでは大きすぎる機能を独立して検証可能なワークユニットに分割する必要がある場合、このスキルを使用します。
+## Pipeline Stages
+1. RFC intake
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. Pipeline Stages
+2. Unit Spec Template
+3. Complexity Tiers
+4. Quality Pipeline per Unit
+5. Merge Queue Rules
+6. Recovery
+7. Outputs

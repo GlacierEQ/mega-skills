@@ -70,3 +70,26 @@ app.conf.beat_schedule = {
 - [ ] モニタリング設定（Flower）
 
 詳細については、ドキュメントを参照してください。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+DjangoおよびCeleryを使用した非同期タスク処理。タスクキューイング、ワーカー管理、エラー処理、スケジューリング。Redis/RabbitMQ ブローカー統合。
+### When to use
+
+## 使用時期
+- メール送信をバックグラウンドで実行
+- 重い処理をスケジュール
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. セットアップ
+3. 1. Celery インストール
+4. 2. タスク定義
+5. 3. ワーカー起動
+6. タスク
+7. 非同期実行
+8. スケジューリング
+9. エラーハンドリング

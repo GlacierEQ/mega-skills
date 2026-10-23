@@ -91,3 +91,25 @@ APIエンドポイントをベンチマーク：
 - CI：すべてのPRで`/benchmark compare`を実行
 - `/canary-watch`とペアリングしてデプロイ後の監視
 - `/browser-qa`とペアリングして完全な出荷前チェックリスト
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+このスキルを使用して、パフォーマンスベースラインを測定し、PR前後の回帰を検出し、スタック代替案を比較します。
+### When to use
+
+## 使用時期
+- PR前後にパフォーマンスへの影響を測定
+- プロジェクトのパフォーマンスベースラインを設定
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. モード1：ページパフォーマンス
+4. モード2：APIパフォーマンス
+5. モード3：ビルドパフォーマンス
+6. モード4：前後の比較
+7. 出力
+8. 統合

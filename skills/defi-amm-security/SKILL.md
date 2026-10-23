@@ -44,3 +44,24 @@ origin: ECC
 - [ ] アクセス制御とロール分離
 
 詳細については、ドキュメントを参照してください。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+DeFi自動マーケットメーカー（AMM）スマートコントラクトセキュリティ監査パターン。フラッシュローン、スリッページ、サンドイッチング攻撃、価格操作、再入攻撃、不正確な整数演算をカバー。
+### When to use
+
+## 使用時期
+- Uniswap、Curve、BalancerなどのようなAMMコントラクトをレビュー
+- スワップ関数、ミント、バーンロジックでセキュリティの問題を検出
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 一般的な脆弱性
+3. 1. フラッシュローン攻撃
+4. 2. スリッページ不足
+5. 3. 再入攻撃
+6. 4. 価格操作
+7. セキュリティチェックリスト

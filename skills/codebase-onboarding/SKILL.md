@@ -56,3 +56,23 @@ origin: ECC
 - 主要なエントリポイントと流れ
 - 規約とスタイルガイド
 - スターターCLAUDE.md
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+不慣れなコードベースを分析し、アーキテクチャマップ、主要なエントリポイント、規約、スターターCLAUDE.mdを含む構造化オンボーディングガイドを生成します。新しいプロジェクトに参加するか、リポでClaude Codeを初めてセットアップする場合に使用します。
+### When to use
+
+## 使用時期
+- Claude Codeでプロジェクトを初めて開く
+- 新しいチームまたはリポに参加
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. フェーズ1：偵察
+4. フェーズ2：アーキテクチャマップ
+5. フェーズ3：規約とスタイル
+6. 出力

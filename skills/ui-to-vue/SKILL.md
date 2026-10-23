@@ -84,3 +84,22 @@ npx ui-to-vue-converter@1.0.2 --input ./screenshots --ui vant --output ./src
 ## リファレンス
 
 - npmパッケージ：`ui-to-vue-converter`
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+UIスクリーンショットやデザインエクスポートをVue 3コンポーネントに一括変換する際に使用。Vant、Element Plus、Ant Design Vueに対応。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. 使用しないタイミング
+3. 入力
+4. 変換モデル
+5. CLI使用方法
+6. オプション
+7. セキュリティとプライバシー
+8. 出力レビューチェックリスト
+9. トラブルシューティング
+10. リファレンス

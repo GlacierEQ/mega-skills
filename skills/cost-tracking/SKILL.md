@@ -135,3 +135,28 @@ sqlite3 -header -column ~/.claude-cost-tracker/usage.db "
 - `cost-aware-llm-pipeline` - モデルルーティングと予算設計のパターン。
 - `token-budget-advisor` - コンテキストとトークン予算の計画。
 - `strategic-compact` - 繰り返しのトークン支出を削減するためのコンテキスト圧縮。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+ローカルのコスト追跡データベースからClaude Codeのトークン使用量、支出、予算を追跡・レポートします。コスト、支出、使用量、トークン、予算、またはプロジェクト、ツール、セッション、日付によるコスト内訳について質問する場合に使用します。
+### When to use
+
+このスキルを使用して、ローカルSQLiteデータベースからClaude Codeのコストと使用履歴を分析します。これは、`~/.claude-cost-tracker/usage.db`に使用行を書き込むコスト追跡フックまたはプラグインをすでに持っているユーザーを対象としています。
+出典: `MayurBhavsar`によるコミュニティのPR #1304から救済されました。
+## 使用時期
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 動作方法
+3. 例
+4. クイックサマリー
+5. プロジェクト別コスト
+6. ツール別コスト
+7. 過去7日間
+8. セッション詳細
+9. レポートガイダンス
+10. アンチパターン
+11. 関連

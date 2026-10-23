@@ -128,3 +128,22 @@ cast call <token_address> "decimals()(uint8)" --rpc-url <rpc>
 - floatではなく`Decimal`、`BigInt`、または同等の正確な数学を使用する
 - ブリッジングやラッパーの変更後は小数点を再照会する
 - 比較や価格計算の前に内部会計を一貫して正規化する
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+EVMチェーン全体でサイレントな小数点不一致バグを防ぐ。ランタイムでの小数点照会、チェーン対応キャッシング、ブリッジドトークンの精度ドリフト、ボット・ダッシュボード・DeFiツール向けの安全な正規化をカバーします。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. 仕組み
+3. 使用例
+4. ランタイムで小数点を照会する
+5. チェーンとトークンでキャッシュする
+6. 特殊なトークンを防御的に処理する
+7. SolidityでWAD（18小数点）に正規化する
+8. ethersを使ったTypeScript
+9. クイックなオンチェーン確認
+10. ルール

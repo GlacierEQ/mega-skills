@@ -156,3 +156,27 @@ print(response.json())
 - [PatentSearch API リファレンス](https://search.patentsview.org/docs/docs/Search%20API/SearchAPIReference/)
 - [PatentSearch API アップデート](https://search.patentsview.org/docs/)
 - [TSDR API バルクダウンロード FAQ](https://developer.uspto.gov/faq/tsdr-api-bulk-download)
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+公式記録の検索、PatentSearch クエリ、TSDR チェック、譲渡データ、および再現可能な IP 調査ログのための USPTO 特許・商標データワークフロー。
+### When to use
+
+USPTO システムから米国の公式特許・商標記録が必要なタスクにこのスキルを使用します。
+## 使用するタイミング
+- 付与済み特許または出願前公開の検索。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用するタイミング
+2. ソース選択
+3. 認証とシークレット
+4. PatentSearch ワークフロー
+5. 商標/TSDR ワークフロー
+6. ファイルラッパーと訴追履歴
+7. 譲渡ワークフロー
+8. 再現可能な出力
+9. レビューチェックリスト
+10. 参考文献

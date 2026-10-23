@@ -55,3 +55,18 @@ schedule   summarises Sheets /
 ## 例
 
 - ジョブボード監視：新しい公開
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+任意のパブリックソース（ジョブボード、価格、ニュース、GitHub、スポーツなど）用の完全自動化されたAI搭載データ収集エージェントを構築します。スケジュールでスクレイプし、無料LLM（Gemini Flash）でデータを豊かにし、Notion/Sheets/Supabaseに結果を保存し、ユーザーフィードバックから学習します。GitHub Actions上で100％無料で実行。ユーザーがパブリックデータを自動的に監視、収集、または追跡したい場合に使用します。
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. アクティベーション時期
+2. コアコンセプト
+3. 3つのレイヤー
+4. 無料スタック
+5. ワークフロー
+6. 例

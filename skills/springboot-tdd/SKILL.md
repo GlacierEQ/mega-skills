@@ -156,3 +156,23 @@ class MarketBuilder {
 - Gradle: `./gradlew test jacocoTestReport`
 
 **Recuerda**: Mantener las pruebas rápidas, aisladas y deterministas. Probar comportamiento, no detalles de implementación.
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+Desarrollo guiado por pruebas para Spring Boot usando JUnit 5, Mockito, MockMvc, Testcontainers y JaCoCo. Usar al agregar funcionalidades, corregir bugs o refactorizar.
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. Cuándo Usar
+2. Flujo de Trabajo
+3. Pruebas Unitarias (JUnit 5 + Mockito)
+4. Pruebas de Capa Web (MockMvc)
+5. Pruebas de Integración (SpringBootTest)
+6. Pruebas de Persistencia (DataJpaTest)
+7. Testcontainers
+8. Cobertura (JaCoCo)
+9. Aserciones
+10. Builders de Datos de Prueba
+11. Comandos de CI

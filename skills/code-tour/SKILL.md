@@ -55,3 +55,23 @@ origin: ECC
 ## ツアー形式
 
 Code Tour `.tour`ファイルはJSON形式で、各ステップはファイルパス、ライン番号、説明を含みます。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+CodeTour `.tour`ファイルを作成 — ペルソナターゲット、ステップバイステップウォークスルー（実際のファイルとラインアンカー付き）。オンボーディングツアー、アーキテクチャウォークスルー、PRツアー、RCAツアー、構造化「これがどのように機能するかを説明」リクエストに使用。
+### When to use
+
+コードベースウォークスルー用のCodeTour `.tour`ファイルを作成し、実際のファイルとラインの範囲に直接開きます。ツアーは`.tours/`にあり、アドホックなMarkdownノートではなくCodeTour形式を対象としています。
+良いツアーは特定の読者への物語：
+- 彼らが何を見ているか
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. 使用しないとき
+3. ワークフロー
+4. 1. 発見
+5. 2. 読者を推測
+6. ツアー形式

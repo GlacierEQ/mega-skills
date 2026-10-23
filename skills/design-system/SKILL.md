@@ -51,3 +51,25 @@ SVGベースのアイコンライブラリ。
 - [ ] チーム採用
 
 詳細については、ドキュメントを参照してください。
+
+## Contract (structured from this skill's own content)
+### Purpose
+
+アクセシビリティ、レスポンシブネス、テーマ設定、コンポーネント群、トークンを備えた本番環境対応デザインシステムの構築。Figma、Storybook、コンポーネントライブラリ統合。
+### When to use
+
+## 使用時期
+- デザインシステムを初期化
+- コンポーネントライブラリを拡張
+### Procedure and method
+
+This skill's own section sequence, verbatim:
+
+1. 使用時期
+2. コア要素
+3. 1. デザイントークン
+4. 2. コンポーネント
+5. 3. レイアウトパターン
+6. 4. アイコン
+7. ツール
+8. チェックリスト
