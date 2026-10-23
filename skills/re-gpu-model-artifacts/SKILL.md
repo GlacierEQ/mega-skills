@@ -9,15 +9,14 @@ Own the accelerator/model lane — the artifacts whose *declarations* are eviden
 
 ## GPU code objects
 
-`inspect_gpu_code_objects` inventories embedded CUDA/HIP code objects (including PTX) inside a carrier artifact. Inventory targets first, then decode selected payloads and query the retained GPU Evidence. Findings name the target architecture each object was built for and what was decoded — a payload's presence proves it shipped, not that any host code path executes it.
+**6.7.0 surface note:** `rea-agents` 6.7.0 exposes no GPU-code-object tool (no `inspect_gpu_code_objects` in the 207-tool surface) and `open_binary` refuses PTX carriers as unsupported formats. The lane is carried locally: inventory embedded CUDA/HIP code objects (including PTX) inside a carrier artifact with this skill's scanner (`scripts/model_artifacts.py`). Findings name the target architecture each object was built for and what was decoded — a payload's presence proves it shipped, not that any host code path executes it.
 
 ## Model artifacts (GGUF / safetensors)
 
-`inspect_model_artifact` takes the explicit local file and reads its declarations: architecture metadata, tensor names, types, and shapes.
+**6.7.0 surface note:** there is likewise no `inspect_model_artifact` tool in 6.7.0, and `open_binary` refuses GGUF and safetensors files outright. The local header parsers in `scripts/model_artifacts.py` read the declarations: architecture metadata, tensor names, types, and shapes.
 
-- Hash scope is part of the evidence: the default hashes headers only, which leaves full-file identity **unknown**; `hash: "full"` additionally reads all weights for a complete SHA-256. Never report a header hash as a file identity.
-- Use `inspect_analysis_view` kind `model-artifact` for batched metadata keys, tensor name/type totals, and selected pages; preserve header-scoped indices and note array-preview omissions.
-- The standing rule of this lane, from REA's own guide: **do not infer model behavior from declared architecture or tensor types.** A GGUF header can tell you what a file claims to be; it cannot tell you what the model does.
+- Hash scope is part of the evidence: the default hashes headers only, which leaves full-file identity **unknown**; a full hash additionally reads all weights for a complete SHA-256. Never report a header hash as a file identity.
+- The standing rule of this lane: **do not infer model behavior from declared architecture or tensor types.** A GGUF header can tell you what a file claims to be; it cannot tell you what the model does.
 
 ## Safety gates
 

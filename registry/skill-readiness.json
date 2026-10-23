@@ -8,8 +8,8 @@
   "ready_total": 1371,
   "not_ready_total": 0,
   "skill_states": {
-   "instruction_ready": 1247,
-   "behavior_verified": 49
+   "instruction_ready": 1227,
+   "behavior_verified": 69
   },
   "combo_states": {
    "composition_ready": 41
@@ -16089,16 +16089,20 @@
    "id": "rea-operator",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/rea-operator/scripts/rea_installation.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/rea-operator/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/rea-operator/tests/test_operator_behavior.py"
+   ],
    "structural_tests": [
     "skills/rea-operator/tests/test_rea_operator.py"
    ],
@@ -16108,16 +16112,20 @@
    "id": "re-target-triage",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-target-triage/scripts/triage.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-target-triage/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-target-triage/tests/test_triage_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-target-triage/tests/test_re_target_triage.py"
    ],
@@ -16127,16 +16135,20 @@
    "id": "re-safety-gate",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-safety-gate/scripts/gate.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-safety-gate/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-safety-gate/tests/test_gate_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-safety-gate/tests/test_re_safety_gate.py"
    ],
@@ -16146,16 +16158,20 @@
    "id": "re-evidence-record",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-evidence-record/scripts/ledger.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-evidence-record/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-evidence-record/tests/test_ledger_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-evidence-record/tests/test_re_evidence_record.py"
    ],
@@ -16165,16 +16181,20 @@
    "id": "re-untrusted-content-defense",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-untrusted-content-defense/scripts/provenance.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-untrusted-content-defense/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-untrusted-content-defense/tests/test_provenance_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-untrusted-content-defense/tests/test_re_untrusted_content_defense.py"
    ],
@@ -16184,16 +16204,20 @@
    "id": "re-javascript-electron",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-javascript-electron/scripts/jsapp_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-javascript-electron/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-javascript-electron/tests/test_jsapp_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-javascript-electron/tests/test_re_javascript_electron.py"
    ],
@@ -16203,16 +16227,20 @@
    "id": "re-native-static-readers",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-native-static-readers/scripts/readers.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-native-static-readers/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-native-static-readers/tests/test_readers_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-native-static-readers/tests/test_re_native_static_readers.py"
    ],
@@ -16222,16 +16250,20 @@
    "id": "re-managed-dotnet",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-managed-dotnet/scripts/managed.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-managed-dotnet/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-managed-dotnet/tests/test_managed_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-managed-dotnet/tests/test_re_managed_dotnet.py"
    ],
@@ -16241,16 +16273,20 @@
    "id": "re-mobile-android",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-mobile-android/scripts/apk.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-mobile-android/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-mobile-android/tests/test_apk_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-mobile-android/tests/test_re_mobile_android.py"
    ],
@@ -16260,16 +16296,20 @@
    "id": "re-apple-bundles",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-apple-bundles/scripts/bundle.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-apple-bundles/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-apple-bundles/tests/test_bundle_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-apple-bundles/tests/test_re_apple_bundles.py"
    ],
@@ -16279,16 +16319,20 @@
    "id": "re-game-artifacts",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-game-artifacts/scripts/game.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-game-artifacts/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-game-artifacts/tests/test_game_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-game-artifacts/tests/test_re_game_artifacts.py"
    ],
@@ -16298,16 +16342,20 @@
    "id": "re-wasm-evm",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-wasm-evm/scripts/wasm_evm.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-wasm-evm/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-wasm-evm/tests/test_wasm_evm_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-wasm-evm/tests/test_re_wasm_evm.py"
    ],
@@ -16317,16 +16365,20 @@
    "id": "re-firmware-extraction",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-firmware-extraction/scripts/firmware.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-firmware-extraction/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-firmware-extraction/tests/test_firmware_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-firmware-extraction/tests/test_re_firmware_extraction.py"
    ],
@@ -16336,16 +16388,20 @@
    "id": "re-gpu-model-artifacts",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-gpu-model-artifacts/scripts/model_artifacts.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-gpu-model-artifacts/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-gpu-model-artifacts/tests/test_model_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-gpu-model-artifacts/tests/test_re_gpu_model_artifacts.py"
    ],
@@ -16355,16 +16411,20 @@
    "id": "re-engine-bridges",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-engine-bridges/scripts/bridges.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-engine-bridges/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-engine-bridges/tests/test_bridges_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-engine-bridges/tests/test_re_engine_bridges.py"
    ],
@@ -16374,16 +16434,20 @@
    "id": "re-dynamic-analysis",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-dynamic-analysis/scripts/dynamic.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-dynamic-analysis/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-dynamic-analysis/tests/test_dynamic_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-dynamic-analysis/tests/test_re_dynamic_analysis.py"
    ],
@@ -16393,16 +16457,20 @@
    "id": "re-web-network-analysis",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-web-network-analysis/scripts/har_analysis.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-web-network-analysis/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-web-network-analysis/tests/test_har_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-web-network-analysis/tests/test_re_web_network_analysis.py"
    ],
@@ -16412,16 +16480,20 @@
    "id": "re-signal-recordings",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-signal-recordings/scripts/sigrok.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-signal-recordings/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-signal-recordings/tests/test_sigrok_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-signal-recordings/tests/test_re_signal_recordings.py"
    ],
@@ -16431,16 +16503,20 @@
    "id": "re-version-comparison",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-version-comparison/scripts/compare.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-version-comparison/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-version-comparison/tests/test_compare_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-version-comparison/tests/test_re_version_comparison.py"
    ],
@@ -16450,16 +16526,20 @@
    "id": "re-reconstruction-verification",
    "layer": "skill",
    "ready": true,
-   "state": "instruction_ready",
+   "state": "behavior_verified",
    "declared_maturity": "active",
    "instruction_ready": true,
-   "real_implementation_files": [],
+   "real_implementation_files": [
+    "skills/re-reconstruction-verification/scripts/verify_recon.py"
+   ],
    "generic_adapter_files": [],
    "scaffold_files": [
     "skills/re-reconstruction-verification/scripts/run.py"
    ],
    "stub_files": [],
-   "behavioral_tests": [],
+   "behavioral_tests": [
+    "skills/re-reconstruction-verification/tests/test_verify_behavior.py"
+   ],
    "structural_tests": [
     "skills/re-reconstruction-verification/tests/test_re_reconstruction_verification.py"
    ],

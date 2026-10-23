@@ -11,8 +11,8 @@ Own the REA installation and operation discipline — REA (Reverse Engineer Anyt
 
 1. Acquire only from official channels: the GitHub repository `morluto/rea`, `rea.tools`, or the npm package `rea-agents`. Anything else is a copy — malicious lookalikes carrying installer tags are already in the wild, and a copied README does not make a download official.
 2. Pin the version. Record the exact `rea-agents` version in the registration receipt; never float on `@latest` for a registered server.
-3. Diagnose before repairing: `npx -y rea-agents@<pinned> doctor --client <client> --json`. Doctor inspects registration; it cannot prove the current session is connected.
-4. For a configuration repair, prepare the read-only plan first — `setup --client <client> --dry-run --json` — show exact paths, backups, and the bundled-skill replacement, and obtain approval before setup writes anything. Apply the approved scope with `setup --client <client> --yes`; add `--install-hopper` only when that separate install was explicitly approved.
+3. Diagnose before repairing: `npx -y rea-agents@<pinned> doctor --client <client> --format json`. Doctor inspects registration; it cannot prove the current session is connected.
+4. For a configuration repair, prepare the read-only plan first — `setup --client <client> --dry-run --format json` — show exact paths, backups, and the bundled-skill replacement, and obtain approval before setup writes anything. Apply the approved scope with `setup --client <client> --yes`; add `--install-hopper` only when that separate install was explicitly approved.
 5. Restart/reconnect the client and verify REA tools actually appear in the session before declaring registration done.
 6. Prefer the compact input-schema profile for routine work: the full 207-tool handshake is context-expensive (measured ~200K tokens of schemas; the compact profile cuts it to ~55K). Load the full surface only when a task needs it.
 
@@ -22,7 +22,7 @@ Client approval, shell PATH, registration, and engine availability are different
 
 ## CLI fallback
 
-When MCP is unavailable but package acquisition is in scope, the CLI runs the same workflows: `npx -y rea-agents@<pinned> analyze-javascript-application /absolute/path/to/app --json` returns the Evidence record directly for a JavaScript tree or ASAR. A CLI result does not establish that MCP is configured; native CLI tasks still require their selected engine.
+When MCP is unavailable but package acquisition is in scope, the CLI runs the same workflows: `npx -y rea-agents@<pinned> analyze-javascript-application /absolute/path/to/app --format json` returns the Evidence record directly for a JavaScript tree or ASAR. A CLI result does not establish that MCP is configured; native CLI tasks still require their selected engine.
 
 ## Safety gates
 
