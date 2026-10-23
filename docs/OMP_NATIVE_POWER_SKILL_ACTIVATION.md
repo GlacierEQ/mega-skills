@@ -30,6 +30,8 @@ After inspecting the preview and selecting the correct profile, apply only missi
 
 A nonzero return indicates a missing source, collision, or installation error. A collision is reported, not silently overwritten. The synchronizer never deletes or retires existing OMP skills. Atomic Skills point directly at canonical skill directories. Compound and Mega Skills use native SKILL.md adapters with source-linked COMBO.md/MEGA.md; changed source that invalidates an existing adapter is reported as drift/conflict, not silently rebaselined.
 
+**Upstream OMP discovery proof:** Current native `scanSkillsFromDir` enumerates immediate children with `isDirectory()` **or** `isSymbolicLink()`, then checks each `SKILL.md`. Native source discovery requires `description` frontmatter. The activation tool now detects missing native description and returns `invalid_source` instead of silently installing an undiscoverable skill. All 20 selected atomic entrypoints were independently inspected for a non-empty description; all passed. See `https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/src/discovery/helpers.ts` and `https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md`. This is upstream source verification, not a local OMP host activation claim.
+
 **Provenance boundary:** emitted SHA-256 values describe source bytes at inspection time. Source symlinks are *not* immutable revision pins. Lock repository revision and verify provider-native state before promoting to host-certified operation.
 
 ## Native integration boundary
@@ -51,7 +53,7 @@ Local focused test commands:
     python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
     python -m compileall -q scripts tests
 
-Red-before-green reproduced missing native OMP activation. Ten focused regressions cover preview/no-write, additive symlinks/adapters, collisions, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation and no arbitrary skill cap.
+Red-before-green reproduced missing native OMP activation. Twelve focused regressions cover preview/no-write, additive symlinks/adapters, collisions, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, no arbitrary skill cap, and OMP-required description validation (including multiline YAML).
 
 **Release proof ladder:**
 1. Exact branch blob hashes match locally tested bytes; upstream hierarchy and native CI pass.
