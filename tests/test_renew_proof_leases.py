@@ -124,7 +124,7 @@ class RenewProofLeasesTests(unittest.TestCase):
             subprocess.run(['git','init','-q','-b','main'],cwd=root,check=True)
             subprocess.run(['git','config','user.email','test@example.com'],cwd=root,check=True)
             subprocess.run(['git','config','user.name','Test'],cwd=root,check=True)
-            remote=Path(rd)/'remote.git'; subprocess.run(['git','init','--bare','-q',str(remote)],check=True)
+            remote=Path(rd)/'remote.git'; subprocess.run(['git','init','--bare','-q','-b','main',str(remote)],check=True)
             subprocess.run(['git','remote','add','origin',str(remote)],cwd=root,check=True)
             for name,data in [('LATEST.json',{}),('provider-readback-manifest-v2.json',{'p':1}),('host-skills-lifecycle-latest.json',{'h':1}),('proof-renewal-latest.json',{'r':1})]:
                 (ev/name).write_text(json.dumps(data))
@@ -152,7 +152,7 @@ class RenewProofLeasesTests(unittest.TestCase):
         subprocess.run(["git","init","-q","-b","main"],cwd=root,check=True)
         subprocess.run(["git","config","user.email","test@example.com"],cwd=root,check=True)
         subprocess.run(["git","config","user.name","Test"],cwd=root,check=True)
-        subprocess.run(["git","init","--bare","-q",str(remote)],check=True)
+        subprocess.run(["git","init","--bare","-q","-b","main",str(remote)],check=True)
         subprocess.run(["git","remote","add","origin",str(remote)],cwd=root,check=True)
         (root/"base").write_text("base")
         subprocess.run(["git","add","."],cwd=root,check=True); subprocess.run(["git","commit","-qm","base"],cwd=root,check=True)

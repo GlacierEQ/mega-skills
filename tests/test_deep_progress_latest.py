@@ -438,7 +438,7 @@ class DeepProgressLatestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as remote_dir, tempfile.TemporaryDirectory() as source_dir, tempfile.TemporaryDirectory() as clone_parent:
             remote = Path(remote_dir) / "remote.git"
             source = Path(source_dir)
-            subprocess.run(["git", "init", "--bare", "-q", str(remote)], check=True)
+            subprocess.run(["git", "init", "--bare", "-q", "-b", "main", str(remote)], check=True)
             subprocess.run(["git", "init", "-q", "-b", "main"], cwd=source, check=True)
             subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=source, check=True)
             subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
