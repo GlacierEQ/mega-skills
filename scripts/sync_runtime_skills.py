@@ -221,9 +221,10 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
                             target.mkdir()
                             try:
                                 (target / document_name).symlink_to(document)
-                                (target / "SKILL.md").write_text(
-                                    render_adapter(document, name, adapter_kind), encoding="utf-8"
-                                )
+                                adapter_text = render_adapter(document, name, adapter_kind)
+                                (target / "SKILL.md").write_text(adapter_text, encoding="utf-8")
+                                item["adapter_sha256"] = hashlib.sha256(
+                                    adapter_text.encode("utf-8")).hexdigest()
                             except Exception:
                                 # Roll back only the entries this invocation created.
                                 for child in target.iterdir():
@@ -270,12 +271,15 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
                             and link.is_symlink()
                             and link.resolve() == (source / doc_name).resolve()
                             and wrapper.is_file()
-                            and wrapper.read_text(encoding="utf-8") ==
-                                render_adapter(source / doc_name, item["name"], layers[layer][2])):
+                            and hashlib.sha256(wrapper.read_bytes()).hexdigest() ==
+                                item.get("adapter_sha256")):
                         link.unlink()
                         wrapper.unlink()
                         target.rmdir()
-                item["status"] = "rolled_back"
+                if not (target.is_symlink() or target.exists()):
+                    item["status"] = "rolled_back"
+                else:
+                    item["status"] = "rollback_conflict"
             return {"runtime": "omp", "apply": False, "apply_requested": True,
                     "blocked_preflight": False, "verification_failed": True,
                     "profile_skills_dir": str(runtime_root),
@@ -307,7 +311,8 @@ def main() -> None:
     print(json.dumps(result, indent=2))
     if (result.get("blocked_preflight") or result.get("verification_failed")
             or any(result["counts"].get(name, 0) for name in
-                   ("missing_source", "conflict", "install_error", "invalid_source", "rolled_back"))):
+                   ("missing_source", "conflict", "install_error", "invalid_source",
+                    "rolled_back", "rollback_conflict"))):
         raise SystemExit(2)
 
 
