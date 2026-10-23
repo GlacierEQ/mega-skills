@@ -169,6 +169,18 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
         raise ValueError("Unknown Skill layer")
 
     runtime_root = Path(runtime_root).expanduser()
+    if apply:
+        # Inspect the complete activation before writing to any destination.
+        # A single invalid source/conflict must not create a half-installed OMP coalition.
+        preflight = sync_omp_skills(runtime_root, selection=chosen, apply=False)
+        admissible = {"planned", "already_present"}
+        blockers = [item for item in preflight["items"] if item["status"] not in admissible]
+        if blockers:
+            return {**preflight, "apply": False, "apply_requested": True,
+                    "blocked_preflight": True,
+                    "blockers": [{"name": x["name"], "status": x["status"]}
+                                 for x in blockers]}
+
     results = []
     for layer, (root, document_name, adapter_kind) in layers.items():
         for name in chosen.get(layer, ()):
@@ -223,6 +235,54 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
                         item["status"] = "install_error"
                         item["error"] = type(exc).__name__
             results.append(item)
+
+    if apply:
+        # Verify installed bytes and paths against the preflight baseline.
+        # Do not silently trust installation success or a concurrently changed source.
+        postflight = sync_omp_skills(runtime_root, selection=chosen, apply=False)
+        expected = {(i["layer"], i["name"]): i for i in preflight["items"]}
+        verified = {(i["layer"], i["name"]): i for i in postflight["items"]}
+        problems = []
+        for item in results:
+            key = (item["layer"], item["name"])
+            after = verified[key]
+            if (item["status"] == "install_error"
+                    or after["status"] != "already_present"
+                    or after["sha256"] != expected[key]["sha256"]):
+                problems.append({"name": item["name"], "status": item["status"],
+                                 "readback_status": after["status"]})
+        if problems:
+            # Delete only objects this invocation created AND still owns.
+            for item in reversed(results):
+                if item["status"] != "created":
+                    continue
+                target = Path(item["target"])
+                layer = item["layer"]
+                source = Path(item["source"])
+                if layer == "atomic":
+                    if target.is_symlink() and target.resolve() == source.resolve():
+                        target.unlink()
+                else:
+                    doc_name = layers[layer][1]
+                    link = target / doc_name
+                    wrapper = target / "SKILL.md"
+                    if (target.is_dir() and not target.is_symlink()
+                            and link.is_symlink()
+                            and link.resolve() == (source / doc_name).resolve()
+                            and wrapper.is_file()
+                            and wrapper.read_text(encoding="utf-8") ==
+                                render_adapter(source / doc_name, item["name"], layers[layer][2])):
+                        link.unlink()
+                        wrapper.unlink()
+                        target.rmdir()
+                item["status"] = "rolled_back"
+            return {"runtime": "omp", "apply": False, "apply_requested": True,
+                    "blocked_preflight": False, "verification_failed": True,
+                    "profile_skills_dir": str(runtime_root),
+                    "problems": problems,
+                    "counts": dict(sorted(Counter(i["status"] for i in results).items())),
+                    "items": results}
+
     return {"runtime": "omp", "apply": apply, "profile_skills_dir": str(runtime_root),
             "counts": dict(sorted(Counter(item["status"] for item in results).items())),
             "items": results}
@@ -245,7 +305,9 @@ def main() -> None:
         return
     result = sync_omp_skills(args.omp_skills_dir, apply=args.apply)
     print(json.dumps(result, indent=2))
-    if result["counts"].get("missing_source", 0) or result["counts"].get("conflict", 0) or result["counts"].get("install_error", 0) or result["counts"].get("invalid_source", 0):
+    if (result.get("blocked_preflight") or result.get("verification_failed")
+            or any(result["counts"].get(name, 0) for name in
+                   ("missing_source", "conflict", "install_error", "invalid_source", "rolled_back"))):
         raise SystemExit(2)
 
 
