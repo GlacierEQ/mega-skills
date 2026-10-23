@@ -1,0 +1,34 @@
+{
+  "receipt": "VERIFICATION",
+  "mission_id": "sdk-master-operational-20261023",
+  "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
+  "live_provider": {
+    "via": "sdk-ts built dist, Supermemory client",
+    "key_route": "stored name 'Raycast' via get-env-key (value never printed or committed)",
+    "read": "namespaces.list -> 10 namespaces",
+    "write": "add(ns 'sdk-master-verify') -> id qppycY8sVP48v3Zuxbjb2y, queued -> processing -> done",
+    "readback": "documents.get content contains marker SDK-MASTER-LIVE-VERIFY-2026-10-23-c1c7ce",
+    "provider_behavior": "delete while processing refused: {count:0, errors:[{error:'Document is still processing'}]}; search v5 field is 'query' (v4 'q' -> BadRequestError 400)",
+    "delete": "{count:1, errors:[]}",
+    "deletion_verified": "documents.get after delete threw NotFoundError statusCode=404"
+  },
+  "error_paths": {
+    "missing_key": "SupermemoryError (validation message)",
+    "bad_key_live": "SupermemoryError 401, provider body {error:'Unauthorized'}",
+    "unreachable_host": "SupermemoryError 'fetch failed'",
+    "timeout": "SupermemoryTimeoutError",
+    "pre_aborted": "SupermemoryError 'The user aborted a request' \u2014 no dispatch",
+    "malformed_json_200": "DEFECT \u2014 error envelope resolved as data (see defect_regression)"
+  },
+  "defect": {
+    "id": "sdk-ts-v5.0.2-nonjson-2xx-delivered-as-data",
+    "severity": "correctness \u2014 silent data corruption class: transport errors masquerade as typed response data",
+    "source_chain": [
+      "getResponseBody.ts returns {ok:false,error:{reason:'non-json',statusCode,rawBody}} as the body VALUE on parse failure",
+      "Fetcher.ts fetcherImpl wraps any 2xx body unconditionally as {ok:true, body}",
+      "handleNonStatusCodeError 'non-json' branch is unreachable dead code"
+    ],
+    "repair": "throwaway copy sdk-ts-repair: Fetcher success branch reroutes the internal error envelope (reason in {non-json, body-is-null}) to the error channel",
+    "upstream_status": "not merged upstream (supermemoryai's repo); patch + regression test preserved in ~/workspace/sdk-ts-exercise/sdk-ts-repair as a ready report"
+  }
+}

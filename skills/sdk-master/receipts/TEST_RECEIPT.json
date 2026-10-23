@@ -1,0 +1,28 @@
+{
+  "receipt": "TEST",
+  "mission_id": "sdk-master-operational-20261023",
+  "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
+  "sdk_ts_bun_test": {
+    "pass": 50,
+    "fail": 0,
+    "expect_calls": 184,
+    "files": 3,
+    "note": "stubbed-fetch suite; never touches the live provider"
+  },
+  "sdk_master_unittest": {
+    "pass": 21,
+    "fail": 0,
+    "where": "local + CI run 40033990251"
+  },
+  "mega_skills_pytest_landed_tree": {
+    "pass": 185,
+    "skipped": 4,
+    "fail": 0,
+    "baseline_before_landing": "183 pass / 4 skipped / 0 failed"
+  },
+  "defect_regression": {
+    "file": "tests/non-json-error.test.ts (throwaway copy sdk-ts-repair)",
+    "unpatched": "1 pass / 1 fail \u2014 defect detected",
+    "patched_full_suite": "52 pass / 0 fail, build + check-types clean"
+  }
+}

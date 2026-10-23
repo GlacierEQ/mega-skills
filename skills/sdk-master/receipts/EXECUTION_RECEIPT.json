@@ -1,0 +1,19 @@
+{
+  "receipt": "EXECUTION",
+  "mission_id": "sdk-master-operational-20261023",
+  "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
+  "executed_by": "Kai (Muse), in-session, 2026-10-23 HST \u2014 coordinator delegation recalled on the Operator's order; all steps executed firsthand",
+  "sdk_ts": {
+    "repo": "supermemoryai/sdk-ts",
+    "head": "dc1cf8595095b3358867b5feb11971d1b39aca80",
+    "version": "5.0.2",
+    "install": "bun install OK (9 packages)",
+    "build": "PASS \u2014 dist/esm + dist/cjs, zero TS errors",
+    "error_paths_output": "~/workspace/sdk-ts-exercise/error-paths-output.txt",
+    "exercise_summary": "~/workspace/sdk-ts-exercise/EXERCISE_SUMMARY.md"
+  },
+  "mega_skills_main": {
+    "landing_commit": "5cf92506fcd7ab029e9ab12128719523d35f6f00",
+    "ci_retarget_commit": "e90c105927df4ab24094697207034b8535b83b36"
+  }
+}
