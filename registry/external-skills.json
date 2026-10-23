@@ -16,6 +16,7 @@
     {"id": "webdev-readme-fullstack", "role": "web-foundation", "installed_version_id": "kVtFWAXVf69TS2PMaGNicr"},
     {"id": "webdev-readme-mobile", "role": "mobile-foundation", "installed_version_id": "VYL8aoEfCWvUVFTSpkd2qi"},
     {"id": "finance-pro-playbooks", "role": "finance-specialist", "installed_version_id": "GzVD2Up3o5cd6VwbZjYUem"},
-    {"id": "imagegen", "role": "visual-media", "installed_version_id": "YtGzn32fVaRt7yJ5yBU88z"}
+    {"id": "imagegen", "role": "visual-media", "installed_version_id": "YtGzn32fVaRt7yJ5yBU88z"},
+    {"id": "rea-agents", "role": "reverse-engineering-execution-backend (MIT, morluto/rea; official channels only: github.com/morluto/rea, rea.tools, npm rea-agents; gated by re-safety-gate)", "installed_version_id": "npm:rea-agents@6.7.0"}
   ]
 }

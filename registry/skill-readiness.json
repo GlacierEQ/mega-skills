@@ -2,17 +2,17 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 751,
-    "combos": 40,
+    "skills": 771,
+    "combos": 41,
     "megas": 34,
-    "ready_total": 825,
+    "ready_total": 846,
     "not_ready_total": 0,
     "skill_states": {
-      "instruction_ready": 702,
+      "instruction_ready": 722,
       "behavior_verified": 49
     },
     "combo_states": {
-      "composition_ready": 40
+      "composition_ready": 41
     },
     "mega_states": {
       "mission_contract_ready": 34
@@ -16084,6 +16084,386 @@
         "skills/recipe-based-migration/tests/test_recipe_based_migration.py"
       ],
       "reasons": []
+    },
+    {
+      "id": "rea-operator",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/rea-operator/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/rea-operator/tests/test_rea_operator.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-target-triage",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-target-triage/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-target-triage/tests/test_re_target_triage.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-safety-gate",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-safety-gate/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-safety-gate/tests/test_re_safety_gate.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-evidence-record",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-evidence-record/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-evidence-record/tests/test_re_evidence_record.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-untrusted-content-defense",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-untrusted-content-defense/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-untrusted-content-defense/tests/test_re_untrusted_content_defense.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-javascript-electron",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-javascript-electron/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-javascript-electron/tests/test_re_javascript_electron.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-native-static-readers",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-native-static-readers/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-native-static-readers/tests/test_re_native_static_readers.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-managed-dotnet",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-managed-dotnet/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-managed-dotnet/tests/test_re_managed_dotnet.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-mobile-android",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-mobile-android/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-mobile-android/tests/test_re_mobile_android.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-apple-bundles",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-apple-bundles/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-apple-bundles/tests/test_re_apple_bundles.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-game-artifacts",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-game-artifacts/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-game-artifacts/tests/test_re_game_artifacts.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-wasm-evm",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-wasm-evm/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-wasm-evm/tests/test_re_wasm_evm.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-firmware-extraction",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-firmware-extraction/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-firmware-extraction/tests/test_re_firmware_extraction.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-gpu-model-artifacts",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-gpu-model-artifacts/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-gpu-model-artifacts/tests/test_re_gpu_model_artifacts.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-engine-bridges",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-engine-bridges/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-engine-bridges/tests/test_re_engine_bridges.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-dynamic-analysis",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-dynamic-analysis/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-dynamic-analysis/tests/test_re_dynamic_analysis.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-web-network-analysis",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-web-network-analysis/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-web-network-analysis/tests/test_re_web_network_analysis.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-signal-recordings",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-signal-recordings/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-signal-recordings/tests/test_re_signal_recordings.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-version-comparison",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-version-comparison/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-version-comparison/tests/test_re_version_comparison.py"
+      ],
+      "reasons": []
+    },
+    {
+      "id": "re-reconstruction-verification",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [
+        "skills/re-reconstruction-verification/scripts/run.py"
+      ],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [
+        "skills/re-reconstruction-verification/tests/test_re_reconstruction_verification.py"
+      ],
+      "reasons": []
     }
   ],
   "combos": [
@@ -16401,6 +16781,14 @@
     },
     {
       "id": "code-upgrade-pipeline",
+      "layer": "combo",
+      "ready": true,
+      "state": "composition_ready",
+      "declared_maturity": "active",
+      "reasons": []
+    },
+    {
+      "id": "reverse-engineering-pipeline",
       "layer": "combo",
       "ready": true,
       "state": "composition_ready",

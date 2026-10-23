@@ -6642,6 +6642,660 @@
           "Zero unresolved REVISE signals remain in the run record."
         ]
       }
+    },
+    {
+      "id": "reverse-engineering-pipeline",
+      "display_name": "Reverse Engineering Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/reverse-engineering-pipeline",
+      "entrypoint": "combo-skills/reverse-engineering-pipeline/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Reverse engineering a shipped artifact end-to-end — binary, package, app, firmware, capture, or bytecode — under authorization and evidence gates.",
+          "Rebuilding a behavior from a shipped artifact and verifying the reconstruction against the original."
+        ],
+        "do_not_use_when": [
+          "Ordinary analysis of a complete source repository (use normal repository tools; REA is for shipped artifacts).",
+          "Any purpose on the REA disclaimer exclusion list (DRM/license/anti-cheat circumvention, cheat development, unauthorized access)."
+        ]
+      },
+      "members": [
+        {
+          "id": "re-safety-gate",
+          "kind": "skill",
+          "role": "GATE: establish authority, scope, exclusions, and environment before any target is touched.",
+          "required": true
+        },
+        {
+          "id": "rea-operator",
+          "kind": "skill",
+          "role": "CONNECT: register the pinned REA backend from official channels and verify tools in the live session.",
+          "required": true
+        },
+        {
+          "id": "re-target-triage",
+          "kind": "skill",
+          "role": "TRIAGE: identify the artifact, choose the first tool, and route to the owning family lane.",
+          "required": true
+        },
+        {
+          "id": "re-untrusted-content-defense",
+          "kind": "skill",
+          "role": "PROVENANCE: arm the untrusted-content discipline before any target-derived content is read.",
+          "required": true
+        },
+        {
+          "id": "re-javascript-electron",
+          "kind": "skill",
+          "role": "STATIC (JavaScript/Electron lane): ASAR and app-tree analysis, module graphs, IPC boundaries, source maps, fuses.",
+          "required": false
+        },
+        {
+          "id": "re-native-static-readers",
+          "kind": "skill",
+          "role": "STATIC (portable readers lane): PE/ELF structure, certificates, resources, notes, exports, Go, Rust, pyc, BEAM, SQLite.",
+          "required": false
+        },
+        {
+          "id": "re-managed-dotnet",
+          "kind": "skill",
+          "role": "STATIC (.NET lane): static CIL/metadata inspection; NativeAOT detection and routing.",
+          "required": false
+        },
+        {
+          "id": "re-mobile-android",
+          "kind": "skill",
+          "role": "STATIC (Android lane): package/code inspection, apktool resources, APK signature and lineage, adb device analysis.",
+          "required": false
+        },
+        {
+          "id": "re-apple-bundles",
+          "kind": "skill",
+          "role": "STATIC (Apple lane): bundle resources — plist, Interface Builder, asset catalogs, keyed archives.",
+          "required": false
+        },
+        {
+          "id": "re-game-artifacts",
+          "kind": "skill",
+          "role": "STATIC (game lane): IL2CPP metadata, Flutter packages, Godot PCK.",
+          "required": false
+        },
+        {
+          "id": "re-wasm-evm",
+          "kind": "skill",
+          "role": "STATIC (bytecode lane): WASM decoded to WAT via WABT; EVM interface inference via evmole.",
+          "required": false
+        },
+        {
+          "id": "re-firmware-extraction",
+          "kind": "skill",
+          "role": "STATIC (firmware lane): region mapping first; extraction only on request into a fresh directory via Binwalk/Unblob.",
+          "required": false
+        },
+        {
+          "id": "re-gpu-model-artifacts",
+          "kind": "skill",
+          "role": "STATIC (GPU/model lane): GPU code-object inventories and GGUF/safetensors declaration reading.",
+          "required": false
+        },
+        {
+          "id": "re-engine-bridges",
+          "kind": "skill",
+          "role": "BRIDGE: deep decompilation through the operator's Ghidra, IDA Pro, Hopper, Cutter/Rizin, JEB, or Kuna.",
+          "required": false
+        },
+        {
+          "id": "re-dynamic-analysis",
+          "kind": "skill",
+          "role": "DYNAMIC: Frida instrumentation, LLDB/GDB/pwndbg debugging, process capture, recorded-crash analysis.",
+          "required": false
+        },
+        {
+          "id": "re-web-network-analysis",
+          "kind": "skill",
+          "role": "DYNAMIC (web/network lane): browser/Electron observation, declared scenarios, HAR/SAZ/qlog/PCAP capture reading.",
+          "required": false
+        },
+        {
+          "id": "re-signal-recordings",
+          "kind": "skill",
+          "role": "DYNAMIC (recorded signals lane): sigrok decoder discovery and paged trace decoding.",
+          "required": false
+        },
+        {
+          "id": "re-version-comparison",
+          "kind": "skill",
+          "role": "COMPARE: artifact/function/bundle differentials, changed-behavior candidates, call paths, static-runtime correlation.",
+          "required": false
+        },
+        {
+          "id": "re-evidence-record",
+          "kind": "skill",
+          "role": "EVIDENCE: maintain the finding ledger — conclusions tied to Evidence IDs, unknowns as first-class records, checklist closeout.",
+          "required": true
+        },
+        {
+          "id": "re-reconstruction-verification",
+          "kind": "skill",
+          "role": "RECONSTRUCT → VERIFY: rebuild behavior from the ledger and verify against the original under a finite typed specification.",
+          "required": false
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "re-safety-gate",
+            "consumes": [
+              "Target identity",
+              "Operator authority basis and requested operations"
+            ],
+            "produces": [
+              "Gate decision with authorized scope",
+              "Effect classification for executing/destructive operations"
+            ],
+            "validation": "No analysis call happens before the gate decision is recorded; excluded purposes are refused, not renegotiated."
+          },
+          {
+            "step": 2,
+            "member_id": "rea-operator",
+            "consumes": [
+              "Gate decision",
+              "Agent client identity and pinned rea-agents version"
+            ],
+            "produces": [
+              "Registration receipt",
+              "Doctor/session verification"
+            ],
+            "validation": "REA tools are visibly present in the session, or the blocker is named with its remedy; setup writes only followed a reviewed dry-run plan."
+          },
+          {
+            "step": 3,
+            "member_id": "re-target-triage",
+            "consumes": [
+              "Supplied artifact",
+              "Investigation question and constraints"
+            ],
+            "produces": [
+              "Triage record with artifact identity and digest",
+              "Family-lane handoff"
+            ],
+            "validation": "Artifact class and route are named from the artifact itself; session tool availability is checked before broader work."
+          },
+          {
+            "step": 4,
+            "member_id": "re-untrusted-content-defense",
+            "consumes": [
+              "Triage record",
+              "Authorized instruction set (operator request, skill workflows)"
+            ],
+            "produces": [
+              "Provenance-marking rule active for the investigation",
+              "Injection-attempt reporting channel"
+            ],
+            "validation": "Every target-derived item entering the record carries the untrusted-content provenance mark."
+          },
+          {
+            "step": 5,
+            "member_id": "re-javascript-electron",
+            "consumes": [
+              "ASAR archive or extracted app tree",
+              "Investigation question"
+            ],
+            "produces": [
+              "Application Evidence record",
+              "Feature trace with IPC boundaries"
+            ],
+            "validation": "Findings carry file/line locations; fuse state is recorded before any runtime attempt is planned."
+          },
+          {
+            "step": 6,
+            "member_id": "re-native-static-readers",
+            "consumes": [
+              "Explicit native or packaged artifact path",
+              "Structural question"
+            ],
+            "produces": [
+              "Reader Evidence records with raw ranges and digests",
+              "Structural findings with per-reader limitations"
+            ],
+            "validation": "Raw locations and digests are preserved verbatim; each reader's coverage limit is stated beside its findings."
+          },
+          {
+            "step": 7,
+            "member_id": "re-managed-dotnet",
+            "consumes": [
+              "Managed PE/CLI assembly",
+              "Investigation question"
+            ],
+            "produces": [
+              "Managed Evidence record",
+              "NativeAOT routing note when applicable"
+            ],
+            "validation": "The assembly is never executed in this lane; NativeAOT artifacts are routed, not reported as empty."
+          },
+          {
+            "step": 8,
+            "member_id": "re-mobile-android",
+            "consumes": [
+              "APK/AAB path or operator-owned device",
+              "Investigation question"
+            ],
+            "produces": [
+              "Android Evidence records",
+              "Signature report with fingerprints and lineage"
+            ],
+            "validation": "Signature results are reported as identity/integrity evidence, never as a trust verdict."
+          },
+          {
+            "step": 9,
+            "member_id": "re-apple-bundles",
+            "consumes": [
+              "Apple bundle or resource path",
+              "Investigation question"
+            ],
+            "produces": [
+              "Bundle Evidence records",
+              "Executable routing note"
+            ],
+            "validation": "Declared capabilities are recorded as declarations, never as exercised behavior."
+          },
+          {
+            "step": 10,
+            "member_id": "re-game-artifacts",
+            "consumes": [
+              "global-metadata.dat, Flutter package, or Godot PCK",
+              "Investigation question"
+            ],
+            "produces": [
+              "Metadata Evidence records",
+              "Coverage note (versions, linkage, unknowns)"
+            ],
+            "validation": "Metadata version support and binary-linkage status are stated; same-build pairing is never claimed from metadata alone."
+          },
+          {
+            "step": 11,
+            "member_id": "re-wasm-evm",
+            "consumes": [
+              "WASM artifact or EVM bytecode carrier",
+              "Investigation question"
+            ],
+            "produces": [
+              "WASM Evidence record with retained WAT",
+              "EVM Evidence record with labeled inference candidates"
+            ],
+            "validation": "Decoded facts and inferred candidates are labeled distinctly; no chain lookup or execution occurs."
+          },
+          {
+            "step": 12,
+            "member_id": "re-firmware-extraction",
+            "consumes": [
+              "Firmware image path",
+              "Extraction request and fresh output directory when applicable"
+            ],
+            "produces": [
+              "Firmware region Evidence record",
+              "Extraction receipt with recovered inventory"
+            ],
+            "validation": "Inspection precedes extraction; extracted artifacts re-enter through triage with their own identities."
+          },
+          {
+            "step": 13,
+            "member_id": "re-gpu-model-artifacts",
+            "consumes": [
+              "GPU-bearing artifact or model file",
+              "Investigation question"
+            ],
+            "produces": [
+              "GPU Evidence record",
+              "Model Evidence record with hash scope stated"
+            ],
+            "validation": "Hash scope (header vs full) is stated with every identity claim; behavior is never inferred from declarations."
+          },
+          {
+            "step": 14,
+            "member_id": "re-engine-bridges",
+            "consumes": [
+              "Native or managed target",
+              "Deep-analysis question and available engines"
+            ],
+            "produces": [
+              "Provider Evidence records with addresses",
+              "Provider selection note with blind spots"
+            ],
+            "validation": "Built-in readers were exhausted first; provider identity/version and coverage limits ride with every finding."
+          },
+          {
+            "step": 15,
+            "member_id": "re-dynamic-analysis",
+            "consumes": [
+              "Gate decision authorizing execution",
+              "Runtime question static evidence left open"
+            ],
+            "produces": [
+              "Runtime Evidence records labeled as observations",
+              "Crash analysis records for core work"
+            ],
+            "validation": "Execution happens only in the gate-named throwaway environment, within the declared lifecycle."
+          },
+          {
+            "step": 16,
+            "member_id": "re-web-network-analysis",
+            "consumes": [
+              "User-owned runtime target or recorded capture file",
+              "Investigation question"
+            ],
+            "produces": [
+              "Observation Evidence records",
+              "Capture Evidence records with digests preserved"
+            ],
+            "validation": "Recorded URLs are never fetched; capture coverage limits and credential exclusions are honored."
+          },
+          {
+            "step": 17,
+            "member_id": "re-signal-recordings",
+            "consumes": [
+              "Recorded signal trace file",
+              "Decoder/channel settings"
+            ],
+            "produces": [
+              "Decoded Evidence record",
+              "Decoder discovery record"
+            ],
+            "validation": "Window counts are identified as display lines, annotations, or samples — never blurred."
+          },
+          {
+            "step": 18,
+            "member_id": "re-version-comparison",
+            "consumes": [
+              "Comparable Evidence sets from the family lanes",
+              "Differential question"
+            ],
+            "produces": [
+              "Comparison Evidence record",
+              "Changed-behavior candidates with evidence class"
+            ],
+            "validation": "Equivalence or absence is claimed only over complete, compatible page sets; static deltas stay candidates."
+          },
+          {
+            "step": 19,
+            "member_id": "re-evidence-record",
+            "consumes": [
+              "All lane Evidence records",
+              "Investigation checklist"
+            ],
+            "produces": [
+              "Finding ledger",
+              "Checklist closeout (answered / partial / unresolved)"
+            ],
+            "validation": "Every conclusion cites Evidence IDs with limitations preserved; no required question is silently dropped."
+          },
+          {
+            "step": 20,
+            "member_id": "re-reconstruction-verification",
+            "consumes": [
+              "Finding ledger",
+              "Typed reconstruction specification"
+            ],
+            "produces": [
+              "Reconstruction with verification result",
+              "Claim-scope statement (passed / failed / unverified)"
+            ],
+            "validation": "A pass is claimed at exactly the specification's scope — never as global equivalence with the original."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "re-safety-gate",
+            "to_member": "rea-operator",
+            "required_inputs": [
+              "Gate decision with authorized scope"
+            ],
+            "accepted_outputs": [
+              "Registration receipt"
+            ],
+            "failure_owner": "gatekeeper"
+          },
+          {
+            "from_member": "rea-operator",
+            "to_member": "re-target-triage",
+            "required_inputs": [
+              "Registration receipt"
+            ],
+            "accepted_outputs": [
+              "Triage record with artifact identity and digest"
+            ],
+            "failure_owner": "tool-operator"
+          },
+          {
+            "from_member": "re-target-triage",
+            "to_member": "re-untrusted-content-defense",
+            "required_inputs": [
+              "Triage record with artifact identity and digest"
+            ],
+            "accepted_outputs": [
+              "Provenance-marking rule active for the investigation"
+            ],
+            "failure_owner": "triager"
+          },
+          {
+            "from_member": "re-untrusted-content-defense",
+            "to_member": "re-javascript-electron",
+            "required_inputs": [
+              "Provenance-marking rule active for the investigation"
+            ],
+            "accepted_outputs": [
+              "Application Evidence record"
+            ],
+            "failure_owner": "provenance-warden"
+          },
+          {
+            "from_member": "re-javascript-electron",
+            "to_member": "re-native-static-readers",
+            "required_inputs": [
+              "Application Evidence record"
+            ],
+            "accepted_outputs": [
+              "Reader Evidence records with raw ranges and digests"
+            ],
+            "failure_owner": "js-analyst"
+          },
+          {
+            "from_member": "re-native-static-readers",
+            "to_member": "re-managed-dotnet",
+            "required_inputs": [
+              "Reader Evidence records with raw ranges and digests"
+            ],
+            "accepted_outputs": [
+              "Managed Evidence record"
+            ],
+            "failure_owner": "native-reader"
+          },
+          {
+            "from_member": "re-managed-dotnet",
+            "to_member": "re-mobile-android",
+            "required_inputs": [
+              "Managed Evidence record"
+            ],
+            "accepted_outputs": [
+              "Android Evidence records"
+            ],
+            "failure_owner": "managed-analyst"
+          },
+          {
+            "from_member": "re-mobile-android",
+            "to_member": "re-apple-bundles",
+            "required_inputs": [
+              "Android Evidence records"
+            ],
+            "accepted_outputs": [
+              "Bundle Evidence records"
+            ],
+            "failure_owner": "android-analyst"
+          },
+          {
+            "from_member": "re-apple-bundles",
+            "to_member": "re-game-artifacts",
+            "required_inputs": [
+              "Bundle Evidence records"
+            ],
+            "accepted_outputs": [
+              "Metadata Evidence records"
+            ],
+            "failure_owner": "apple-analyst"
+          },
+          {
+            "from_member": "re-game-artifacts",
+            "to_member": "re-wasm-evm",
+            "required_inputs": [
+              "Metadata Evidence records"
+            ],
+            "accepted_outputs": [
+              "WASM Evidence record with retained WAT"
+            ],
+            "failure_owner": "game-analyst"
+          },
+          {
+            "from_member": "re-wasm-evm",
+            "to_member": "re-firmware-extraction",
+            "required_inputs": [
+              "WASM Evidence record with retained WAT"
+            ],
+            "accepted_outputs": [
+              "Firmware region Evidence record"
+            ],
+            "failure_owner": "bytecode-analyst"
+          },
+          {
+            "from_member": "re-firmware-extraction",
+            "to_member": "re-gpu-model-artifacts",
+            "required_inputs": [
+              "Firmware region Evidence record"
+            ],
+            "accepted_outputs": [
+              "GPU Evidence record"
+            ],
+            "failure_owner": "firmware-analyst"
+          },
+          {
+            "from_member": "re-gpu-model-artifacts",
+            "to_member": "re-engine-bridges",
+            "required_inputs": [
+              "GPU Evidence record"
+            ],
+            "accepted_outputs": [
+              "Provider Evidence records with addresses"
+            ],
+            "failure_owner": "artifact-analyst"
+          },
+          {
+            "from_member": "re-engine-bridges",
+            "to_member": "re-dynamic-analysis",
+            "required_inputs": [
+              "Provider Evidence records with addresses"
+            ],
+            "accepted_outputs": [
+              "Runtime Evidence records labeled as observations"
+            ],
+            "failure_owner": "bridge-operator"
+          },
+          {
+            "from_member": "re-dynamic-analysis",
+            "to_member": "re-web-network-analysis",
+            "required_inputs": [
+              "Runtime Evidence records labeled as observations"
+            ],
+            "accepted_outputs": [
+              "Observation Evidence records"
+            ],
+            "failure_owner": "dynamic-analyst"
+          },
+          {
+            "from_member": "re-web-network-analysis",
+            "to_member": "re-signal-recordings",
+            "required_inputs": [
+              "Observation Evidence records"
+            ],
+            "accepted_outputs": [
+              "Decoded Evidence record"
+            ],
+            "failure_owner": "web-analyst"
+          },
+          {
+            "from_member": "re-signal-recordings",
+            "to_member": "re-version-comparison",
+            "required_inputs": [
+              "Decoded Evidence record"
+            ],
+            "accepted_outputs": [
+              "Comparison Evidence record"
+            ],
+            "failure_owner": "signal-analyst"
+          },
+          {
+            "from_member": "re-version-comparison",
+            "to_member": "re-evidence-record",
+            "required_inputs": [
+              "Comparison Evidence record"
+            ],
+            "accepted_outputs": [
+              "Finding ledger"
+            ],
+            "failure_owner": "diff-analyst"
+          },
+          {
+            "from_member": "re-evidence-record",
+            "to_member": "re-reconstruction-verification",
+            "required_inputs": [
+              "Finding ledger"
+            ],
+            "accepted_outputs": [
+              "Reconstruction with verification result"
+            ],
+            "failure_owner": "ledger-keeper"
+          }
+        ],
+        "evidence_requirements": [
+          "Gate decision recorded before the first analysis call, with authority basis, scope, and environment.",
+          "Finding ledger linking every conclusion to Evidence IDs, coverage, and residual unknowns.",
+          "Provenance marks on all target-derived content, with injection attempts reported.",
+          "For reconstructions: the typed specification and the claim-scope statement beside the verification result."
+        ],
+        "risk_boundaries": [
+          "No target is touched before the re-safety-gate decision; excluded purposes are refused at the gate.",
+          "Target execution happens only in a throwaway environment, within the declared lifecycle — REA is not a sandbox.",
+          "REA and its engines come only from official channels at pinned versions; lookalike installers are treated as hostile artifacts.",
+          "Recorded captures are read offline; recorded URLs are never fetched and live attribution is never claimed from a recording."
+        ],
+        "quality_gates": [
+          "Every conclusion in the closeout cites Evidence IDs with limitations preserved.",
+          "Absence and equivalence claims rest on complete, compatible evidence sets, with coverage named.",
+          "Reconstruction verification passes are reported at claim scope (passed / failed / unverified), never blended."
+        ],
+        "state_updates": [
+          "Append the gate decision, triage record, and all Evidence IDs to the investigation record.",
+          "Update unknowns as they are recorded, revised, and resolved in the ledger.",
+          "Record exemptions and unrun lanes with reasons (lane not applicable vs provider unavailable)."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "re-safety-gate authorization discipline",
+          "re-evidence-record finding-ledger standard",
+          "re-untrusted-content-defense provenance marking",
+          "verification-before-completion completion-claim gate"
+        ],
+        "adds": "One governed pipeline for reverse engineering — gate, connect, triage, provenance, static lanes, engine bridges, dynamic lanes, comparison, evidence, reconstruction, verification — where the safety gate is a required first-class member, every finding carries its evidence and its unknowns, and a reconstruction is claimed only at the scope its verification actually covered.",
+        "compound_artifact": "RE_INVESTIGATION_RECORD.md",
+        "next_layer_ready_when": [
+          "A full investigation completes with gate, ledger, and closeout receipts chained.",
+          "Zero unresolved gate or provenance exceptions remain in the run record."
+        ]
+      }
     }
   ],
   "schema": "../schemas/combo-skill.schema.json"

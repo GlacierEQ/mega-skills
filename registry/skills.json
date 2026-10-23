@@ -17187,6 +17187,520 @@
         "Any single engine's operation (route to openrewrite-recipes, jscodeshift-codemods, codemod-cli)",
         "The promotion decision for migrated repos (route to spiral-promotion-gate)"
       ]
+    },
+    {
+      "id": "rea-operator",
+      "display_name": "REA Operator",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/rea-operator",
+      "entrypoint": "skills/rea-operator/SKILL.md",
+      "purpose": "Own the REA tool lifecycle end-to-end: acquire rea-agents only from official channels at a pinned version, register the MCP server with a reviewed setup plan, keep context cost bounded with the compact input-schema profile, and recover connections by diagnosing the actual blocker instead of repeating setup.",
+      "input_contract": [
+        "The agent client to register (claude_code, codex, cursor, gemini_cli, or another REA-supported client ID)",
+        "The pinned rea-agents version and the operator's install authorization scope"
+      ],
+      "output_contract": [
+        "Registration receipt: client, pinned version, config paths changed, backups taken",
+        "Doctor report showing REA tools present in the live session, or the named blocker and its remedy"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_rea_operator.py"
+      ],
+      "does_not_own": [
+        "Installing or upgrading Node.js, Java, Ghidra, IDA, JADX, Binwalk, or Unblob (bring-your-own engines; route to re-engine-bridges)",
+        "Any analysis of a target (route to re-target-triage and the family skills)",
+        "Authorization decisions for a target (route to re-safety-gate)"
+      ]
+    },
+    {
+      "id": "re-target-triage",
+      "display_name": "RE Target Triage",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-target-triage",
+      "entrypoint": "skills/re-target-triage/SKILL.md",
+      "purpose": "Own target identification and routing for reverse-engineering work: choose the first REA tool from the artifact actually supplied, establish session state and tool availability, and hand the target to the correct family skill with its identity and constraints recorded.",
+      "input_contract": [
+        "The supplied artifact (path, package, capture, or running target) and the question the investigation must answer",
+        "Any operator constraints on scope, execution, or environment"
+      ],
+      "output_contract": [
+        "Triage record: artifact identity (type, digest), chosen route and first tool, session/tool-availability state",
+        "Handoff to the owning family skill with the investigation question and known constraints"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_target_triage.py"
+      ],
+      "does_not_own": [
+        "The analysis itself (route to the family skills: re-javascript-electron, re-native-static-readers, re-mobile-android, and peers)",
+        "Authorization for the target (route to re-safety-gate)",
+        "REA installation or registration repair (route to rea-operator)"
+      ]
+    },
+    {
+      "id": "re-safety-gate",
+      "display_name": "RE Safety Gate",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-safety-gate",
+      "entrypoint": "skills/re-safety-gate/SKILL.md",
+      "purpose": "Own the gate every RE investigation passes through before a target is touched: establish legal authority and scope, enforce REA's responsible-use exclusions, classify each planned operation by its effect flags, and confine target execution to throwaway environments.",
+      "input_contract": [
+        "The target and the operator's authority over it (ownership, written authorization, CTF/research scope)",
+        "The planned operation set, including any runtime execution, interception, or device interaction"
+      ],
+      "output_contract": [
+        "Gate decision: authorized scope, excluded operations, and environment requirements, recorded before work begins",
+        "Per-operation effect classification for anything flagged executesForeignCode or destructive"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_safety_gate.py"
+      ],
+      "does_not_own": [
+        "Legal advice — the gate records the operator's authority claim and scope; it does not certify legality",
+        "The analysis workflows themselves (route to the family skills)",
+        "REA installation approval (route to rea-operator; setup has its own plan-approve-apply gate)"
+      ]
+    },
+    {
+      "id": "re-evidence-record",
+      "display_name": "RE Evidence Record",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-evidence-record",
+      "entrypoint": "skills/re-evidence-record/SKILL.md",
+      "purpose": "Own the finding ledger for RE investigations: structure every result as an Evidence record with provenance, coverage, and stated limitations; track residual unknowns as first-class records until qualifying evidence resolves them; and make the final report answer the original checklist question by question.",
+      "input_contract": [
+        "REA tool results (Evidence records with evidence_id, normalized_result, limitations, coverage)",
+        "The investigation checklist: the questions asked and the evidence each answer requires"
+      ],
+      "output_contract": [
+        "Finding ledger linking each conclusion to Evidence IDs, evidence type, search boundary, and remaining unknowns",
+        "Closeout report marking each question answered, partially answered, or unresolved — with the unknowns named"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_evidence_record.py"
+      ],
+      "does_not_own": [
+        "Producing the analysis (route to the family skills)",
+        "Deciding a conclusion is true — the ledger records evidence class and coverage; verification of reconstructions routes to re-reconstruction-verification"
+      ]
+    },
+    {
+      "id": "re-untrusted-content-defense",
+      "display_name": "RE Untrusted-Content Defense",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-untrusted-content-defense",
+      "entrypoint": "skills/re-untrusted-content-defense/SKILL.md",
+      "purpose": "Own the provenance discipline that keeps a hostile target from steering the agent: mark target-derived content as untrusted at the moment it enters the record, treat embedded instructions as evidence of an injection attempt, and keep the investigation's instruction stream exclusively operator- and skill-sourced.",
+      "input_contract": [
+        "Any content derived from an analysis target: extracted strings, decompiled pseudocode, disassembly comments, page text, capture payloads, metadata fields",
+        "The current investigation's authorized instruction set (operator request and skill workflows)"
+      ],
+      "output_contract": [
+        "Provenance-marked evidence entries for target-derived content",
+        "Injection-attempt reports naming the target, the embedded directive, and where it was found"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_untrusted_content_defense.py"
+      ],
+      "does_not_own": [
+        "Analyzing the content's meaning (route to the family skills — this skill governs its trust class, not its interpretation)",
+        "Target authorization (route to re-safety-gate)"
+      ]
+    },
+    {
+      "id": "re-javascript-electron",
+      "display_name": "RE JavaScript & Electron",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-javascript-electron",
+      "entrypoint": "skills/re-javascript-electron/SKILL.md",
+      "purpose": "Own the JavaScript/Electron static lane: analyze ASAR archives and extracted app trees into module graphs and findings, trace features from entry points through IPC boundaries, recover original structure from source maps, and check packaged Electron fuses before any runtime attempt.",
+      "input_contract": [
+        "An ASAR archive or extracted JavaScript/Electron application tree (absolute path)",
+        "The investigation question (feature behavior, version delta, IPC surface, embedded secrets or endpoints)"
+      ],
+      "output_contract": [
+        "Application Evidence record: module graph, findings with file/line locations, limitations and unknowns",
+        "Feature trace from entry point to result, with IPC boundaries named"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_javascript_electron.py"
+      ],
+      "does_not_own": [
+        "Live Electron/browser runtime observation (route to re-web-network-analysis)",
+        "Native addons (.node) inside the app (route to re-native-static-readers or re-engine-bridges)",
+        "Rebuilding the app (route to re-reconstruction-verification)"
+      ]
+    },
+    {
+      "id": "re-native-static-readers",
+      "display_name": "RE Native Static Readers",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-native-static-readers",
+      "entrypoint": "skills/re-native-static-readers/SKILL.md",
+      "purpose": "Own the portable static-reader lane: extract structural facts from native and packaged artifacts with REA's built-in target-free inspectors, preserving raw ranges, digests, and the coverage limits of each reader, before any engine-based decompilation is considered.",
+      "input_contract": [
+        "An explicit local artifact path (ELF, PE, Mach-O, .pyc, .beam, Go/Rust binary, SQLite database)",
+        "The structural question (layout, provenance, dependencies, signing material, embedded data)"
+      ],
+      "output_contract": [
+        "Reader Evidence records with raw locations (ranges, offsets, digests) and per-reader limitations",
+        "Structural findings: layout, symbols, relocations, mitigations, embedded metadata, dependency inventories"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_native_static_readers.py"
+      ],
+      "does_not_own": [
+        "Decompilation or pseudocode (route to re-engine-bridges)",
+        "Executing or debugging the artifact (route to re-dynamic-analysis)",
+        "Signature verification verdicts — readers report certificate material and self-consistency, never trust"
+      ]
+    },
+    {
+      "id": "re-managed-dotnet",
+      "display_name": "RE Managed .NET",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-managed-dotnet",
+      "entrypoint": "skills/re-managed-dotnet/SKILL.md",
+      "purpose": "Own the managed-code lane: inspect .NET PE/CLI assemblies statically — metadata, types, methods, and CIL — without ever executing them, and recognize NativeAOT artifacts whose managed surface is gone and route them to native analysis.",
+      "input_contract": [
+        "A managed PE/CLI assembly (explicit local path)",
+        "The investigation question (API surface, behavior, embedded configuration, version delta)"
+      ],
+      "output_contract": [
+        "Managed Evidence record: metadata inventory, type/method findings with locations, limitations",
+        "Routing note when the artifact is NativeAOT (managed surface absent; native lane required)"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_managed_dotnet.py"
+      ],
+      "does_not_own": [
+        "Executing or debugging the assembly (route to re-dynamic-analysis)",
+        "NativeAOT pseudocode (route to re-engine-bridges with the Ghidra NativeAOT workflow)",
+        "Java/JVM bytecode — outside REA's managed surface"
+      ]
+    },
+    {
+      "id": "re-mobile-android",
+      "display_name": "RE Mobile Android",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-mobile-android",
+      "entrypoint": "skills/re-mobile-android/SKILL.md",
+      "purpose": "Own the Android lane end-to-end: inventory and inspect APK code and resources, verify signing identity and key-rotation lineage, decompile through the bring-your-own JADX bridge, and analyze connected devices through adb — each under its own prerequisites and gates.",
+      "input_contract": [
+        "An explicit local APK (or ZIP/AAB) path, or an operator-owned Android device reachable by adb",
+        "The investigation question (behavior, permissions, signing provenance, version delta)"
+      ],
+      "output_contract": [
+        "Android Evidence records: package inventory, class/method findings, resource findings",
+        "Signature report: schemes present, signer certificate SHA-256 fingerprints, rotation lineage, digest self-consistency"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_mobile_android.py"
+      ],
+      "does_not_own": [
+        "Runtime instrumentation of the app (route to re-dynamic-analysis — Frida lane)",
+        "Trust or authenticity verdicts on signatures — identity and integrity evidence only",
+        "iOS application code (route to re-apple-bundles for resources; native code via re-engine-bridges)"
+      ]
+    },
+    {
+      "id": "re-apple-bundles",
+      "display_name": "RE Apple Bundles",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-apple-bundles",
+      "entrypoint": "skills/re-apple-bundles/SKILL.md",
+      "purpose": "Own the Apple bundle-resource lane: open app bundles and read their declared resources — plists, storyboards/xibs, asset catalogs, and NSKeyedArchiver payloads — as located evidence, and route executable code to the native lanes.",
+      "input_contract": [
+        "An Apple application bundle or its resource files (explicit local path)",
+        "The investigation question (declared capabilities, configuration, bundled data, resource provenance)"
+      ],
+      "output_contract": [
+        "Bundle Evidence records: resource inventory and per-resource findings with locations",
+        "Routing note for the bundle's executable (native lane) when code questions arise"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_apple_bundles.py"
+      ],
+      "does_not_own": [
+        "Mach-O code analysis (route to re-native-static-readers for structure, re-engine-bridges for pseudocode)",
+        "Runtime observation of the app on a device (route to re-dynamic-analysis)"
+      ]
+    },
+    {
+      "id": "re-game-artifacts",
+      "display_name": "RE Game Artifacts (IL2CPP / Flutter / Godot)",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-game-artifacts",
+      "entrypoint": "skills/re-game-artifacts/SKILL.md",
+      "purpose": "Own the packaged-game/cross-platform lane: recover the symbolic surface of IL2CPP, Flutter, and Godot artifacts from their metadata and package formats, optionally link IL2CPP metadata to native addresses in a matching binary, and state precisely what metadata alone cannot prove.",
+      "input_contract": [
+        "An explicit local artifact: global-metadata.dat (with optional matching IL2CPP binary), a Flutter application package, or a Godot PCK",
+        "The investigation question (API/type surface, string content, version delta, feature location)"
+      ],
+      "output_contract": [
+        "Metadata Evidence records: type/method/field inventories, string literals, package contents with locations",
+        "Coverage note: metadata version support, binary-linkage status, and what remains unknown without the binary"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_game_artifacts.py"
+      ],
+      "does_not_own": [
+        "Native code analysis of the IL2CPP/Flutter engine binaries (route to re-engine-bridges)",
+        "Runtime hooking of a live game (route to re-dynamic-analysis) — and never cheat development or anti-cheat circumvention (re-safety-gate exclusions)"
+      ]
+    },
+    {
+      "id": "re-wasm-evm",
+      "display_name": "RE WASM & EVM Bytecode",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-wasm-evm",
+      "entrypoint": "skills/re-wasm-evm/SKILL.md",
+      "purpose": "Own the bytecode lane: decode WebAssembly modules to exact WAT with byte/tool identity preserved, and infer EVM contract interfaces (selectors, argument shapes, mutability) from bytecode carriers — while keeping the line between decoded fact and inferred candidate explicit in every finding.",
+      "input_contract": [
+        "An explicit local WebAssembly artifact (with WABT 1.0.42 supplied via REA_WABT_BIN_DIRECTORY), or an EVM bytecode carrier in raw or hex encoding",
+        "The investigation question (exports/calls, interface surface, embedded logic)"
+      ],
+      "output_contract": [
+        "WASM Evidence record: retained WAT, byte/tool identity, module structure findings",
+        "EVM Evidence record: carrier/decoded digests, inferred interface candidates with coverage limits"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_wasm_evm.py"
+      ],
+      "does_not_own": [
+        "On-chain lookups or any chain interaction — the EVM inspector performs none",
+        "Executing the bytecode (route to re-dynamic-analysis under gate, where a runtime exists)",
+        "Treating WAT as original source or inferred selectors as a complete interface"
+      ]
+    },
+    {
+      "id": "re-firmware-extraction",
+      "display_name": "RE Firmware Extraction",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-firmware-extraction",
+      "entrypoint": "skills/re-firmware-extraction/SKILL.md",
+      "purpose": "Own the firmware lane: inspect firmware image regions to map what an image contains, and extract only into a caller-selected new directory with operator-supplied Binwalk/Unblob — preserving the distinction between an inventory of regions and the contents extraction actually recovers.",
+      "input_contract": [
+        "An explicit local firmware image path",
+        "For extraction: a caller-selected new absolute output directory, and Binwalk/Unblob available on Linux"
+      ],
+      "output_contract": [
+        "Firmware Evidence record: region map with offsets, identified structures, coverage limits",
+        "Extraction receipt: output directory, recovered tree inventory, extraction-tool identity and failures"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_firmware_extraction.py"
+      ],
+      "does_not_own": [
+        "Analyzing extracted binaries (route each recovered artifact back through re-target-triage)",
+        "Emulation or execution of firmware (route to re-dynamic-analysis behind re-safety-gate)",
+        "Installing Binwalk/Unblob (bring-your-own; rea-operator records availability)"
+      ]
+    },
+    {
+      "id": "re-gpu-model-artifacts",
+      "display_name": "RE GPU & Model Artifacts",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-gpu-model-artifacts",
+      "entrypoint": "skills/re-gpu-model-artifacts/SKILL.md",
+      "purpose": "Own the GPU/model artifact lane: inventory embedded GPU code objects and decode selected payloads, and read GGUF/safetensors declarations (metadata, tensor inventories, header vs full hashing) — reporting what the artifact declares while never inferring runtime behavior from declarations.",
+      "input_contract": [
+        "An explicit local artifact carrying GPU code objects, or a GGUF/safetensors model file",
+        "The investigation question (embedded kernels, target architectures, tensor inventory, provenance)"
+      ],
+      "output_contract": [
+        "GPU Evidence record: code-object inventory and decoded payload findings with targets named",
+        "Model Evidence record: declared metadata, tensor names/types/shapes, hash scope (header or full) stated"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_gpu_model_artifacts.py"
+      ],
+      "does_not_own": [
+        "Executing kernels or running the model (route to re-dynamic-analysis behind re-safety-gate)",
+        "Conclusions about model behavior, capability, or safety from declared architecture or tensor types",
+        "Native host-binary analysis around the payloads (route to re-native-static-readers)"
+      ]
+    },
+    {
+      "id": "re-engine-bridges",
+      "display_name": "RE Engine Bridges",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-engine-bridges",
+      "entrypoint": "skills/re-engine-bridges/SKILL.md",
+      "purpose": "Own the deep-analysis lane: select the right engine bridge for a native or managed target, run it under REA's session hygiene (isolated projects, capability-token bridges, read-only IDA), and record each engine's coverage and limitations as part of the evidence.",
+      "input_contract": [
+        "A native or managed target (explicit path) and the deep-analysis question (pseudocode, xrefs, call graph, function analysis)",
+        "The operator's available engines and licenses (Ghidra, IDA Pro, Hopper, JEB are bring-your-own; REA grants none)"
+      ],
+      "output_contract": [
+        "Provider Evidence records: pseudocode/assembly findings with addresses, provider identity and version, coverage and limitations",
+        "Provider selection note: why this engine, what it cannot establish for this target"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_engine_bridges.py"
+      ],
+      "does_not_own": [
+        "Engine licenses or installation (bring-your-own; rea-operator records availability, re-safety-gate records authority)",
+        "Built-in structural reading (route to re-native-static-readers first — engines are the escalation, not the default)",
+        "Executing the target (route to re-dynamic-analysis)"
+      ]
+    },
+    {
+      "id": "re-dynamic-analysis",
+      "display_name": "RE Dynamic Analysis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-dynamic-analysis",
+      "entrypoint": "skills/re-dynamic-analysis/SKILL.md",
+      "purpose": "Own the runtime lane: observe executing targets through Frida hooks, debugger sessions, and process capture, and read recorded crashes from ELF cores offline — with every execution scoped, gated, and recorded as runtime evidence distinct from static findings.",
+      "input_contract": [
+        "A re-safety-gate decision authorizing execution of this target in a named throwaway environment",
+        "The runtime question static evidence could not answer (behavior, data flow, crash cause, anti-analysis response)"
+      ],
+      "output_contract": [
+        "Runtime Evidence records: traces, hook observations, debugger state, capture inventories — labeled as runtime observations",
+        "Crash analysis record for recorded cores: threads, notes, registers, and mapping candidates with limits"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_dynamic_analysis.py"
+      ],
+      "does_not_own": [
+        "Authorization (route to re-safety-gate — this lane never self-authorizes)",
+        "Static findings (route to the static family skills; runtime corroboration cites them, never rewrites them)",
+        "Live network interception of third-party services (excluded by the gate)"
+      ]
+    },
+    {
+      "id": "re-web-network-analysis",
+      "display_name": "RE Web & Network Analysis",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-web-network-analysis",
+      "entrypoint": "skills/re-web-network-analysis/SKILL.md",
+      "purpose": "Own the web/network lane: observe user-owned browser and Electron runtimes passively or through declared scenarios, and mine recorded network evidence (HAR, SAZ, qlog, mitmproxy, PCAP) offline — with recorded facts never upgraded into live attribution.",
+      "input_contract": [
+        "A user-owned browser/Electron target already open, a declared browser scenario, or a recorded capture file (HAR, SAZ, qlog, mitmproxy flow, PCAP)",
+        "The investigation question (endpoint behavior, feature flow, protocol shape, version delta)"
+      ],
+      "output_contract": [
+        "Observation Evidence records: page/runtime findings and scenario results with locations",
+        "Capture Evidence records: selected records/pages with producer fields, digests preserved, and coverage limits stated"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_web_network_analysis.py"
+      ],
+      "does_not_own": [
+        "Interception of third-party traffic or any live capture against systems the operator does not own (excluded by re-safety-gate)",
+        "Static analysis of the web app's shipped JS (route to re-javascript-electron)",
+        "Executing native targets (route to re-dynamic-analysis)"
+      ]
+    },
+    {
+      "id": "re-signal-recordings",
+      "display_name": "RE Signal Recordings",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-signal-recordings",
+      "entrypoint": "skills/re-signal-recordings/SKILL.md",
+      "purpose": "Own the recorded-signal lane: discover the right protocol decoder for a recorded trace, decode selected channels with explicit settings through caller-supplied sigrok-cli, and report decoded annotations with their display-window limits — without ever acquiring or scanning live hardware.",
+      "input_contract": [
+        "An explicit recorded logic/signal trace file",
+        "Decoder selection inputs: protocol suspicion, channel mapping, or a request to search installed decoders"
+      ],
+      "output_contract": [
+        "Decoded Evidence record: annotation lines for the selected decoder/channels, source digest preserved, window limits stated",
+        "Decoder discovery record: candidate decoder IDs, channels, and options considered"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_signal_recordings.py"
+      ],
+      "does_not_own": [
+        "Live signal acquisition or hardware interaction — this lane reads existing files only",
+        "Protocol reverse engineering beyond the recording (route the decoded facts into the investigation ledger; new targets re-triage)"
+      ]
+    },
+    {
+      "id": "re-version-comparison",
+      "display_name": "RE Version Comparison",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-version-comparison",
+      "entrypoint": "skills/re-version-comparison/SKILL.md",
+      "purpose": "Own the differential lane: compare artifacts, functions, and bundles across versions or builds with complete, compatible evidence sets; surface changed behavior as candidates with their evidence class; and build call paths only from explicit dossiers — never from fuzzy whole-binary matching.",
+      "input_contract": [
+        "Two or more comparable artifacts/versions (or one artifact plus its runtime record) with Evidence already produced by the family skills",
+        "The differential question (what changed, what is new/removed, which behavior moved)"
+      ],
+      "output_contract": [
+        "Comparison Evidence record: per-item deltas with the page/coverage sets compared",
+        "Changed-behavior candidate list, each labeled static-difference (candidate) vs runtime-corroborated"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_version_comparison.py"
+      ],
+      "does_not_own": [
+        "Producing the underlying per-version analysis (route to the family skills)",
+        "Causal claims — static differences are candidates, not proof of changed behavior; causality needs runtime corroboration (re-dynamic-analysis)"
+      ]
+    },
+    {
+      "id": "re-reconstruction-verification",
+      "display_name": "RE Reconstruction & Verification",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/re-reconstruction-verification",
+      "entrypoint": "skills/re-reconstruction-verification/SKILL.md",
+      "purpose": "Own the RECONSTRUCT → VERIFY stage: turn evidence-backed findings into a reconstruction with a finite typed specification of comparable claims, track readiness, coverage, and obligations, and verify the reconstruction against the original — claiming exactly what the verification covers and no more.",
+      "input_contract": [
+        "The finding ledger for the behavior to rebuild (re-evidence-record), with Evidence IDs and unknowns",
+        "A finite typed specification: the comparable claims the reconstruction must satisfy"
+      ],
+      "output_contract": [
+        "Reconstruction with its specification, readiness/coverage/obligation ledger, and verification result",
+        "Claim-scope statement: exactly which declared claims passed, which failed, which remain unverified"
+      ],
+      "local_validation": [
+        "100% test assertions pass in tests/test_re_reconstruction_verification.py"
+      ],
+      "does_not_own": [
+        "The findings themselves (route to the family skills and re-evidence-record)",
+        "Reproducing protected code or assets, or circumventing the target's protections (excluded by re-safety-gate — reconstruction targets behavior the operator is authorized to rebuild: interoperability, preservation, research)",
+        "General code promotion (route estate code through spiral-promotion-gate and the code-upgrade-pipeline)"
+      ]
     }
   ]
 }
