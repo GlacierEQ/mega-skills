@@ -28,7 +28,7 @@ After inspecting the preview and selecting the correct profile, apply only missi
 
     python scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills" --apply
 
-A nonzero return indicates a missing source, collision, or installation error. A collision is reported, not silently overwritten. The synchronizer never deletes or retires existing OMP skills. Atomic Skills point directly at canonical skill directories. Compound and Mega Skills use native SKILL.md adapters with source-linked COMBO.md/MEGA.md; changed source that invalidates an existing adapter is reported as drift/conflict, not silently rebaselined.
+Apply first preflights the entire coalition. A source conflict, missing file, or invalid native metadata prevents every write; a simulated or actual install/readback failure triggers ownership-checked rollback for newly created entries, never deletion of pre-existing skill directories. A nonzero return indicates a missing source, collision, installation error, or unsuccessful readback. A collision is reported, not silently overwritten. The synchronizer never deletes or retires existing OMP skills. Atomic Skills point directly at canonical skill directories. Compound and Mega Skills use native SKILL.md adapters with source-linked COMBO.md/MEGA.md; changed source that invalidates an existing adapter is reported as drift/conflict, not silently rebaselined. The returned per-item SHA-256, created/rolled_back status, and blocked_preflight/verification_failed flags let CI and host operators independently reconcile the attempt.
 
 **Upstream OMP discovery proof:** Current native `scanSkillsFromDir` enumerates immediate children with `isDirectory()` **or** `isSymbolicLink()`, then checks each `SKILL.md`. Native source discovery requires `description` frontmatter. The activation tool now detects missing native description and returns `invalid_source` instead of silently installing an undiscoverable skill. All 20 selected atomic entrypoints were independently inspected for a non-empty description; all passed. See `https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/src/discovery/helpers.ts` and `https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md`. This is upstream source verification, not a local OMP host activation claim.
 
@@ -48,12 +48,12 @@ This activation does not overwrite RULES.md, AGENTS.md, MCP profile/config, sess
 
 ## Evidence and release requirements
 
-Local focused test commands:
+Focused source-check commands (provider execution still required for actual changed branch):
 
     python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
     python -m compileall -q scripts tests
 
-Red-before-green reproduced missing native OMP activation. Twelve focused regressions cover preview/no-write, additive symlinks/adapters, collisions, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, no arbitrary skill cap, and OMP-required description validation (including multiline YAML).
+Red-before-green reproduced missing native OMP activation. Fifteen focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, and no arbitrary skill cap.
 
 **Release proof ladder:**
 1. Exact branch blob hashes match locally tested bytes; upstream hierarchy and native CI pass.
