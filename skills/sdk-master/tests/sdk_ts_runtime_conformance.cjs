@@ -56,16 +56,16 @@ async function main() {
     let timedOut;
     try {await cTimeout.get("/slow");} catch (err) {timedOut=err;}
     assert(timedOut,"timeout must reject");
-    assert.equal(timedOut.name,"APIConnectionTimeoutError","timeout classification");
+    assert(timedOut instanceof sdk.APIConnectionTimeoutError, "timeout must have SDK timeout error type");
     const ctl=new AbortController();
     const p=c.get("/slow",{signal:ctl.signal});
     setTimeout(()=>ctl.abort(),20);
     let aborted;
     try {await p;} catch(err) {aborted=err;}
     assert(aborted,"abort must reject");
-    assert.equal(aborted.name,"APIUserAbortError","abort classification");
+    assert(aborted instanceof sdk.APIUserAbortError, "abort must have SDK abort error type");
     assert(events.every(e=>!("path" in e)||e.authPresent),"all HTTP requests carry configured auth header");
-    console.log(JSON.stringify({status:"PASS",sdkRevision:process.env.SDK_REVISION||"unknown",positive:true,errorStatuses:[401,429,503],retriedAttempts:attempts,timeout:timedOut.name,abort:aborted.name,httpRequests:events.filter(e=>e.path).length,mode:"real HTTP loopback, no provider mutation"},null,2));
+    console.log(JSON.stringify({status:"PASS",sdkRevision:process.env.SDK_REVISION||"unknown",positive:true,errorStatuses:[401,429,503],retriedAttempts:attempts,timeout:timedOut.constructor.name,abort:aborted.constructor.name,httpRequests:events.filter(e=>e.path).length,mode:"real HTTP loopback, no provider mutation"},null,2));
   } finally {
     server.closeAllConnections();
     await new Promise(resolve=>server.close(resolve));
