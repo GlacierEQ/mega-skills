@@ -25,7 +25,7 @@ class OmpNativeSyncTests(unittest.TestCase):
         for base, name, doc in [(self.skills, "power-skill", "SKILL.md"), (self.combos, "genius-epistemic-engineering", "COMBO.md"), (self.megas, "apex-genius-mastery", "MEGA.md")]:
             d = base / name
             d.mkdir(parents=True)
-            (d / doc).write_text(f"# {name} authoritative source\n", encoding="utf-8")
+            (d / doc).write_text((f"---\nname: {name}\ndescription: Mission-specific skill execution\n---\n\n" if doc == "SKILL.md" else "") + f"# {name} authoritative source\n", encoding="utf-8")
         for name, value in [("SKILLS_DIR", self.skills), ("COMBOS_DIR", self.combos), ("MEGAS_DIR", self.megas)]:
             p = patch.object(mod, name, value)
             p.start()
@@ -104,6 +104,17 @@ class OmpNativeSyncTests(unittest.TestCase):
         after = self.run_sync(apply=True)
         self.assertEqual((self.target / "power-skill").resolve(), foreign.resolve())
         self.assertIn("conflict", [item["status"] for item in after["items"]])
+
+    def test_atomic_without_native_omp_description_is_reported_instead_of_installed(self):
+        (self.skills / "power-skill" / "SKILL.md").write_text("---\nname: power-skill\n---\n\n# content\n")
+        result = self.run_sync(apply=True)
+        self.assertEqual(result["items"][0]["status"], "invalid_source")
+        self.assertFalse((self.target / "power-skill").exists())
+
+    def test_native_multiline_description_is_accepted(self):
+        (self.skills / "power-skill" / "SKILL.md").write_text("---\nname: power-skill\ndescription: >\n  Native agent skill in OMP\n---\n# content\n")
+        result = self.run_sync(apply=False)
+        self.assertEqual(result["items"][0]["status"], "planned")
 
     def test_default_power_coalition_is_not_arbitrarily_skill_capped(self):
         ids = [x for layer in mod.OMP_POWER_SELECTION.values() for x in layer]
