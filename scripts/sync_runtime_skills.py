@@ -104,5 +104,137 @@ def sync_all() -> None:
                     install_contract_package(source, runtime_root, source.name, "MEGA.md", "Mega Skill")
 
 
+
+# Native OMP is an additive target.  Its skill selection is a mission-starting
+# coalition, NOT a cap: the full canonical hierarchy remains available for
+# further mission-specific composition.
+OMP_POWER_SELECTION = {
+    "atomic": (
+        "power-skill", "skill-connector-router", "casey-operator-execution-kernel",
+        "genius-mastery", "codemaster", "capability-admission",
+        "strong-smart-routing-kernel", "apex-aspen-grove-bootup",
+        "unified-memory-connect", "agent-memory-systems", "apex-meta-skill-kernel",
+        "systematic-debugging", "test-driven-development",
+        "verification-before-completion", "spiral-promotion-gate",
+        "progressive-pyramid", "computer-user-core",
+        "apex-universal-mcp-powerhouse", "make-it-heavy", "mcp-architect",
+    ),
+    "compound": (
+        "genius-epistemic-engineering", "apex-mesh-dispatch",
+        "strong-smart-execution-stack", "cross-cloud-memory-synthesis",
+    ),
+    "mega": (
+        "apex-genius-mastery", "apex-strong-smart-execution-engine",
+        "apex-repository-continuity-steward", "far-away-party",
+        "apex-self-healing-forge",
+    ),
+}
+
+
+def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) -> dict:
+    """Preview or add source-bound native OMP Skills without replacing profile state.
+
+    Atomic Skills are direct directory symlinks. Compound/Mega Skills receive
+    compatible SKILL.md adapters while their source contract stays linked.
+    Existing targets, including different symlinks, are NEVER silently replaced.
+    """
+    import hashlib
+    import re
+    from collections import Counter
+
+    layers = {
+        "atomic": (SKILLS_DIR, "SKILL.md", None),
+        "compound": (COMBOS_DIR, "COMBO.md", "Combo Skill"),
+        "mega": (MEGAS_DIR, "MEGA.md", "Mega Skill"),
+    }
+    chosen = selection if selection is not None else OMP_POWER_SELECTION
+    allowed_id = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    all_ids = [name for layer in layers for name in chosen.get(layer, ())]
+    if len(set(all_ids)) != len(all_ids):
+        raise ValueError("A selected skill name is duplicated across layers")
+    if any(not isinstance(name, str) or not allowed_id.fullmatch(name) for name in all_ids):
+        raise ValueError("Skill names must be canonical kebab-case identifiers")
+    if any(layer not in layers for layer in chosen):
+        raise ValueError("Unknown Skill layer")
+
+    runtime_root = Path(runtime_root).expanduser()
+    results = []
+    for layer, (root, document_name, adapter_kind) in layers.items():
+        for name in chosen.get(layer, ()):
+            source = root / name
+            document = source / document_name
+            target = runtime_root / name
+            item = {"layer": layer, "name": name, "source": str(source),
+                    "target": str(target), "sha256": ""}
+            if not source.is_dir() or not document.is_file():
+                item["status"] = "missing_source"
+            else:
+                item["sha256"] = hashlib.sha256(document.read_bytes()).hexdigest()
+                present = target.is_symlink() or target.exists()
+                if present:
+                    if adapter_kind is None:
+                        identical = target.is_symlink() and target.resolve() == source.resolve()
+                    else:
+                        rendered = render_adapter(document, name, adapter_kind)
+                        link = target / document_name
+                        wrapper = target / "SKILL.md"
+                        identical = (
+                            target.is_dir() and not target.is_symlink()
+                            and link.is_symlink() and link.resolve() == document.resolve()
+                            and wrapper.is_file() and wrapper.read_text(encoding="utf-8") == rendered
+                        )
+                    item["status"] = "already_present" if identical else "conflict"
+                elif not apply:
+                    item["status"] = "planned"
+                else:
+                    try:
+                        runtime_root.mkdir(parents=True, exist_ok=True)
+                        if adapter_kind is None:
+                            target.symlink_to(source, target_is_directory=True)
+                        else:
+                            # mkdir is exclusive: never silently replace a concurrent target.
+                            target.mkdir()
+                            try:
+                                (target / document_name).symlink_to(document)
+                                (target / "SKILL.md").write_text(
+                                    render_adapter(document, name, adapter_kind), encoding="utf-8"
+                                )
+                            except Exception:
+                                # Roll back only the entries this invocation created.
+                                for child in target.iterdir():
+                                    child.unlink()
+                                target.rmdir()
+                                raise
+                        item["status"] = "created"
+                    except (OSError, UnicodeError) as exc:
+                        item["status"] = "install_error"
+                        item["error"] = type(exc).__name__
+            results.append(item)
+    return {"runtime": "omp", "apply": apply, "profile_skills_dir": str(runtime_root),
+            "counts": dict(sorted(Counter(item["status"] for item in results).items())),
+            "items": results}
+
+
+def main() -> None:
+    import argparse
+    import json
+
+    parser = argparse.ArgumentParser(description="Synchronize canonical Skills into agent runtimes")
+    parser.add_argument("--runtime", choices=("legacy", "omp"), default="legacy")
+    parser.add_argument("--omp-skills-dir", type=Path,
+                        default=Path.home() / ".omp" / "agent" / "skills")
+    parser.add_argument("--apply", action="store_true", help="Install only absent skills; never overwrite")
+    args = parser.parse_args()
+    if args.runtime == "legacy":
+        if args.apply:
+            parser.error("OMP activation flags require --runtime omp")
+        sync_all()
+        return
+    result = sync_omp_skills(args.omp_skills_dir, apply=args.apply)
+    print(json.dumps(result, indent=2))
+    if result["counts"].get("missing_source", 0) or result["counts"].get("conflict", 0) or result["counts"].get("install_error", 0):
+        raise SystemExit(2)
+
+
 if __name__ == "__main__":
-    sync_all()
+    main()
