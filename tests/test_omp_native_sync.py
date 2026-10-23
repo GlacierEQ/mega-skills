@@ -59,7 +59,54 @@ class OmpNativeSyncTests(unittest.TestCase):
         result = self.run_sync(apply=True)
         self.assertEqual((existing / "SKILL.md").read_text(), "Original operator skill")
         self.assertIn("conflict", [item["status"] for item in result["items"]])
-        self.assertEqual(result["counts"].get("created"), 2)
+        self.assertTrue(result["blocked_preflight"])
+        self.assertEqual(result["counts"].get("created", 0), 0)
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+        self.assertFalse((self.target / "apex-genius-mastery").exists())
+
+    def test_conflict_cannot_cause_partial_install(self):
+        (self.target / "apex-genius-mastery").mkdir(parents=True)
+        result = self.run_sync(apply=True)
+        self.assertTrue(result["blocked_preflight"])
+        self.assertFalse((self.target / "power-skill").exists())
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+
+    def test_apply_error_rolls_back_additions_without_touching_preexisting(self):
+        neighbor = self.target / "custom" / "SKILL.md"
+        neighbor.parent.mkdir(parents=True)
+        neighbor.write_text("Operator owned", encoding="utf-8")
+        original_symlink_to = Path.symlink_to
+
+        def fails_at_second_layer(path, target, *args, **kwargs):
+            if path.name == "COMBO.md":
+                raise OSError("simulated disk denial")
+            return original_symlink_to(path, target, *args, **kwargs)
+
+        with patch.object(Path, "symlink_to", autospec=True, side_effect=fails_at_second_layer):
+            result = self.run_sync(apply=True)
+        self.assertTrue(result["verification_failed"])
+        self.assertFalse((self.target / "power-skill").exists())
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+        self.assertFalse((self.target / "apex-genius-mastery").exists())
+        self.assertEqual(neighbor.read_text(encoding="utf-8"), "Operator owned")
+        self.assertGreaterEqual(result["counts"].get("rolled_back", 0), 1)
+
+    def test_readback_rejects_native_skill_drift_and_rolls_back(self):
+        real = mod.has_native_omp_description
+        checks = {"seen": 0}
+
+        def changed_between_reads(document):
+            checks["seen"] += 1
+            if checks["seen"] == 3:  # after initial planning and actual write
+                return False
+            return real(document)
+
+        with patch.object(mod, "has_native_omp_description", side_effect=changed_between_reads):
+            result = self.run_sync(apply=True)
+        self.assertTrue(result["verification_failed"])
+        self.assertFalse((self.target / "power-skill").exists())
+        self.assertFalse((self.target / "genius-epistemic-engineering").exists())
+        self.assertFalse((self.target / "apex-genius-mastery").exists())
 
     def test_idempotence_never_rewrites_identical_adapters(self):
         self.run_sync(apply=True)
