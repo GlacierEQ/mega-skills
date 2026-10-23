@@ -56,6 +56,21 @@ def check_receipt(evidence, criterion, revision, kind, receipt_root):
     return None
 
 
+
+def verified_native_readback(value, revision):
+    """Require a structured, revision-bound readback; booleans are never receipts."""
+    return (
+        isinstance(value, dict)
+        and value.get("source") == "provider"
+        and value.get("status") == "confirmed"
+        and value.get("revision") == revision
+        and isinstance(value.get("receipt_id"), str)
+        and len(value["receipt_id"].strip()) >= 8
+        and isinstance(value.get("observed_at"), str)
+        and bool(value["observed_at"].strip())
+    )
+
+
 def decide(m, receipt_root=None):
     errors = []
     if not isinstance(m, dict):
@@ -90,9 +105,9 @@ def decide(m, receipt_root=None):
             errors.append(error)
     if m.get("ci") != "passed":
         errors.append("CI_NOT_PASSED")
-    if m.get("deployed") and not m.get("deployment_readback"):
+    if m.get("deployed") and not verified_native_readback(m.get("deployment_readback"), revision):
         errors.append("DEPLOYMENT_UNVERIFIED")
-    if m.get("provider_mutation") and not m.get("provider_readback"):
+    if (m.get("provider_mutation") or m.get("require_provider_readback")) and not verified_native_readback(m.get("provider_readback"), revision):
         errors.append("PROVIDER_UNVERIFIED")
     if m.get("claims_complete") and m.get("draft_only"):
         errors.append("DRAFT_NOT_DEPLOYED")
