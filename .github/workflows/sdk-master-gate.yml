@@ -1,0 +1,26 @@
+name: SDK Master acceptance gate
+on:
+  pull_request:
+    paths:
+      - 'skills/sdk-master/**'
+      - '.github/workflows/sdk-master-gate.yml'
+  push:
+    paths:
+      - 'skills/sdk-master/**'
+      - '.github/workflows/sdk-master-gate.yml'
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run SDK Master tests
+        run: python -m unittest discover -s skills/sdk-master/tests -v
+      - name: Enforce mission acceptance (fail closed)
+        run: |
+          if [ ! -f skills/sdk-master/receipts/MISSION_STATE.json ]; then
+            echo "Missing durable mission state"; exit 1
+          fi
+          python skills/sdk-master/scripts/completion_gate.py skills/sdk-master/receipts/MISSION_STATE.json
