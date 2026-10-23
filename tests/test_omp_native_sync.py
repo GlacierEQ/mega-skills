@@ -110,6 +110,9 @@ class OmpNativeSyncTests(unittest.TestCase):
         self.assertGreaterEqual(len(ids), 20)
         for name in ["power-skill", "genius-mastery", "strong-smart-routing-kernel", "systematic-debugging", "apex-genius-mastery", "far-away-party"]:
             self.assertIn(name, ids)
+        self.assertIn("apex-dev-fork-orchestrator", ids)
+        self.assertIn("apex-orchestrator-mesh", ids)
+        self.assertNotIn("apex-repository-continuity-steward", ids)
         self.assertEqual(len(ids), len(set(ids)))
 
 
