@@ -8,6 +8,7 @@ from pathlib import Path
 
 SDK_NAME = re.compile(r"(?:^|[-_/.@])(?:sdk|client|api)(?:$|[-_/])", re.I)
 KNOWN_CLIENT_PACKAGES = {"openai", "anthropic", "ai", "@openai/agents", "boto3", "botocore", "google-genai", "@google/genai", "@modelcontextprotocol/sdk", "mcp", "@anthropic-ai/sdk", "@ai-sdk/openai", "@ai-sdk/anthropic", "@ai-sdk/google", "stripe", "@stripe/stripe-js", "aws-sdk", "@aws-sdk/client-s3", "@azure/identity", "azure-identity"}
+SAFE_PACKAGE = re.compile(r"^(?:@[A-Za-z0-9_.-]+/)?[A-Za-z0-9_.-]+$")
 SAFE_SPEC = re.compile(r"^[\^~<>=!v*0-9][\w.*+~^<>=!|, \-]*$|^workspace:[\w.*^~\-]+$")
 
 
@@ -25,7 +26,7 @@ def inspect(root):
     root = Path(root).resolve()
     if not root.is_dir():
         raise ValueError("ROOT_NOT_DIRECTORY")
-    report = {"schema_version": 1, "manifests": [], "sdk_candidates": [], "warnings": [], "execution": "READ_ONLY_STATIC_DISCOVERY", "provider_verified": False}
+    report = {"schema_version": 1, "manifests": [], "sdk_candidates": [], "package_identity": None, "warnings": [], "execution": "READ_ONLY_STATIC_DISCOVERY", "provider_verified": False}
     for name in ("package.json", "pyproject.toml", "go.mod", "Cargo.toml"):
         path = root / name
         if not path.exists():
@@ -40,6 +41,17 @@ def inspect(root):
                 obj = json.loads(blob)
                 if not isinstance(obj, dict):
                     raise ValueError("expected object")
+                exports = obj.get("exports") or {}
+                conditions = set()
+                if isinstance(exports, dict):
+                    for field in exports.values():
+                        if isinstance(field, dict):
+                            conditions.update(k for k in field if k in {"import", "require", "types", "default", "node", "browser"})
+                name_value = obj.get("name")
+                report["package_identity"] = {
+                    "ecosystem": "npm", "package": name_value if isinstance(name_value, str) and SAFE_PACKAGE.fullmatch(name_value) else "UNKNOWN_OR_REDACTED",
+                    "declared_version": safe_spec(obj.get("version")), "export_conditions": sorted(conditions), "exports_verified": False
+                }
                 for section in ("dependencies", "devDependencies", "peerDependencies", "optionalDependencies"):
                     for pkg, spec in (obj.get(section) or {}).items():
                         add_candidate(report["sdk_candidates"], "npm", pkg, spec, name + ":" + section)
