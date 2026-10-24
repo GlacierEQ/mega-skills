@@ -1,5 +1,0 @@
-# Configuration schema for quality-gate
-version: '1.0.0'
-enabled: true
-settings:
-  strict_validation: true

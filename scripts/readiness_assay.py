@@ -24,24 +24,6 @@ FALSE_L2_RECEIPT_MARKERS = ('"status": "success"', '"epistemic_tier": "L2"', '"f
 GENERIC_CONTRACT_MARKERS = ("Execute domain scripts", "Epistemic Tier & Verification Proofs", "Cognitive Firewall")
 SOURCE_SUFFIXES = {".py",".js",".mjs",".cjs",".ts",".tsx",".sh",".go",".rs",".jl"}
 
-def maturity_hold_reason(entry: dict[str, Any]) -> str | None:
-    """A registry entry may declare a deliberate maturity hold.
-
-    The assay measures readiness; it does not promote. An entry whose
-    maturity is held by human decision declares ``maturity_hold`` with a
-    reason (a non-empty string, or an object carrying ``reason``). The
-    write-back skips held entries entirely; readiness state is still
-    computed and reported. A hold without a reason is not a hold.
-    """
-    hold = entry.get("maturity_hold")
-    if isinstance(hold, str) and hold.strip():
-        return hold.strip()
-    if isinstance(hold, dict):
-        reason = hold.get("reason")
-        if isinstance(reason, str) and reason.strip():
-            return reason.strip()
-    return None
-
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -202,7 +184,7 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
         state, ready = "contract_incomplete", False
     return {
         "id": entry["id"], "layer":"skill", "ready":ready, "state":state,
-        "declared_maturity":entry.get("maturity"), "maturity_hold":maturity_hold_reason(entry), "instruction_ready":instruction_ok,
+        "declared_maturity":entry.get("maturity"), "instruction_ready":instruction_ok,
         "real_implementation_files":real_impl, "generic_adapter_files":adapters,
         "scaffold_files":scaffolds, "stub_files":stubs, "behavioral_tests":behavioral, "structural_tests":structural,
         "reasons":reasons
@@ -222,7 +204,7 @@ def inspect_combo(entry, skill_states, external_ids):
     if not doc.is_file() or len(doc.read_text(encoding="utf-8",errors="replace").strip())<300:
         reasons.append("COMBO.md contract missing or too small")
     ready=not reasons
-    return {"id":entry["id"],"layer":"combo","ready":ready,"state":"composition_ready" if ready else "composition_candidate","declared_maturity":entry.get("maturity"),"maturity_hold":maturity_hold_reason(entry),"reasons":reasons}
+    return {"id":entry["id"],"layer":"combo","ready":ready,"state":"composition_ready" if ready else "composition_candidate","declared_maturity":entry.get("maturity"),"reasons":reasons}
 
 def inspect_mega(entry, combo_states):
     reasons=[]
@@ -233,7 +215,7 @@ def inspect_mega(entry, combo_states):
     if not doc.is_file() or len(doc.read_text(encoding="utf-8",errors="replace").strip())<300:
         reasons.append("MEGA.md contract missing or too small")
     ready=not reasons
-    return {"id":entry["id"],"layer":"mega","ready":ready,"state":"mission_contract_ready" if ready else "mission_candidate","execution_scope":entry.get("firewall",{}).get("mode","unspecified"),"declared_maturity":entry.get("maturity"),"maturity_hold":maturity_hold_reason(entry),"reasons":reasons}
+    return {"id":entry["id"],"layer":"mega","ready":ready,"state":"mission_contract_ready" if ready else "mission_candidate","execution_scope":entry.get("firewall",{}).get("mode","unspecified"),"declared_maturity":entry.get("maturity"),"reasons":reasons}
 
 def build_report():
     skills_doc=load_json(REGISTRY/"skills.json")
@@ -257,20 +239,18 @@ def build_report():
       "skills":skills,"combos":combos,"megas":megas}
 
 def apply_maturity(report):
-    changed=Counter(); held=[]
+    # 2026-10-23 eradication: the maturity_hold mechanism (stamp-as-hold pin
+    # that skipped write-back for held entries) is removed. The assay remains
+    # bookkeeping: computed readiness now writes back for every entry.
+    changed=Counter()
     for filename,key in (("skills.json","skills"),("combo-skills.json","combos"),("mega-skills.json","megas")):
         path=REGISTRY/filename; doc=load_json(path); states={e["id"]:e for e in report[key]}
         for entry in doc.get("entries",[]):
-            reason=maturity_hold_reason(entry)
-            if reason is not None:
-                held.append({"file":filename,"id":entry["id"],"reason":reason})
-                continue
             desired="active" if states[entry["id"]]["ready"] else "candidate"
             if entry.get("maturity")!=desired:
                 entry["maturity"]=desired; changed[filename]+=1
         dump_json(path,doc)
-    result=dict(changed); result["held"]=held
-    return result
+    return dict(changed)
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--pass",dest="pass_number",type=int,choices=(1,2),required=True); p.add_argument("--apply",action="store_true"); p.add_argument("--report",type=Path)
