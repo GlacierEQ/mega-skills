@@ -341,6 +341,75 @@ class OperatorExecutionKernelTests(unittest.TestCase):
         self.assertIn("replacement_would_discard_unique_state", result["reasons"])
         self.assertEqual(result["retirement"]["branch_state"], "ACTIVE_IN_MESH")
 
+    def test_operator_requested_finished_artifact_is_dispatchable_without_invented_substantive_flag(self):
+        """A direct Operator artifact request is the mission, not forbidden support work."""
+        result = run_kernel("dispatch_gate", {
+            "scope": {"mode": "specialized", "lane": "engineering"},
+            "continuation_hydrated": True,
+            "candidates": [{
+                "id": "deliver-requested-functional-patch",
+                "lane": "engineering",
+                "source_state_hydrated": True,
+                "authorized": True,
+                "executable": True,
+                "substantive": False,
+                "support_only": True,
+                "artifact_only": True,
+                "requested_finished_deliverable": True,
+                "explicit_operator_priority": True,
+                "operator_impact": 1.0,
+            }],
+        })
+        self.assertTrue(result["dispatch_allowed"], result["rejected"])
+        self.assertEqual(result["selected"]["id"], "deliver-requested-functional-patch")
+
+    def test_explicitly_requested_support_does_not_trigger_no_action_default(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "specialized", "lane": "engineering"},
+            "continuation_hydrated": True,
+            "candidates": [{
+                "id": "operator-requests-support-task",
+                "lane": "engineering",
+                "authorized": True,
+                "executable": True,
+                "substantive": False,
+                "support_only": True,
+                "result_kind": "audit",
+                "explicitly_requested_support": True,
+            }],
+        })
+        self.assertTrue(result["dispatch_allowed"], result["rejected"])
+
+    def test_requested_finished_deliverable_can_finalize_on_verified_receipt(self):
+        result = run_kernel("completion_gate", {
+            "mission_state_changed": True,
+            "verified": True,
+            "verification_refs": ["owner-provider-readback-1"],
+            "support_only": True,
+            "artifact_only": True,
+            "requested_finished_deliverable": True,
+            "authorized_executable_action_exists": False,
+        })
+        self.assertTrue(result["can_finalize"], result["reasons"])
+        self.assertEqual(result["finalization_kind"], "verified_mission_delta")
+
+    def test_unrequested_support_and_artifacts_still_cannot_replace_real_mission(self):
+        result = run_kernel("mission_select", {
+            "scope": {"mode": "specialized", "lane": "engineering"},
+            "continuation_hydrated": True,
+            "candidates": [{
+                "id": "unrequested-admin-audit",
+                "lane": "engineering",
+                "authorized": True, "executable": True,
+                "substantive": False,
+                "support_only": True,
+                "artifact_only": True,
+                "result_kind": "audit",
+            }],
+        })
+        self.assertFalse(result["dispatch_allowed"])
+
+
 
 if __name__ == "__main__":
     unittest.main()
