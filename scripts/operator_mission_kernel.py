@@ -186,14 +186,18 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     verification_refs = [str(item) for item in as_list(payload.get("verification_refs")) if str(item).strip()]
     support_only = bool(payload.get("support_only", False))
     artifact_only = bool(payload.get("artifact_only", False))
+    operator_requested_deliverable = bool(
+        payload.get("requested_finished_deliverable", False)
+        or payload.get("explicitly_requested_support", False)
+    )
     further = bool(payload.get("authorized_executable_action_exists", False))
     hard_boundary = bool(payload.get("hard_external_boundary", False) or payload.get("operator_only_boundary", False))
     replacement_attempted = bool(payload.get("replacement_attempted", False))
     retirement = retirement_gate(dict(payload.get("retirement_check") or {})) if replacement_attempted else None
     reasons: list[str] = []
-    if support_only:
+    if support_only and not operator_requested_deliverable:
         reasons.append("support_work_is_not_mission_completion")
-    if artifact_only:
+    if artifact_only and not operator_requested_deliverable:
         reasons.append("artifact_only_output_is_not_mission_completion")
     if not changed:
         reasons.append("target_mission_state_did_not_change")
@@ -209,8 +213,9 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     replacement_safe = not replacement_attempted or bool(retirement and retirement["can_retire"])
     success = (
         changed and verified and bool(verification_refs)
-        and not support_only and not artifact_only and not further
-        and replacement_safe
+        and (operator_requested_deliverable or not support_only)
+        and (operator_requested_deliverable or not artifact_only)
+        and not further and replacement_safe
     )
     boundary = hard_boundary and not further
     return {
@@ -237,11 +242,15 @@ def rejection_reasons(candidate: dict[str, Any], scope_mode: str, scope_lane: st
         reasons.append("not_authorized")
     if not bool(candidate.get("executable", True)):
         reasons.append("not_executable_now")
-    if not bool(candidate.get("substantive", False)):
+    operator_requested_deliverable = bool(
+        candidate.get("requested_finished_deliverable", False)
+        or candidate.get("explicitly_requested_support", False)
+    )
+    if not bool(candidate.get("substantive", False)) and not operator_requested_deliverable:
         reasons.append("not_substantive")
-    if bool(candidate.get("support_only", False)) and not bool(candidate.get("explicitly_requested_support", False)):
+    if bool(candidate.get("support_only", False)) and not operator_requested_deliverable:
         reasons.append("support_only")
-    if bool(candidate.get("artifact_only", False)) or result_kind_is_support(candidate):
+    if (bool(candidate.get("artifact_only", False)) and not operator_requested_deliverable) or result_kind_is_support(candidate):
         reasons.append("artifact_only")
     if scope_mode == "estate" and candidate_is_recency_only(candidate):
         reasons.append("recency_only")
