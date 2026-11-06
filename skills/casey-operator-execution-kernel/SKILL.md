@@ -13,6 +13,16 @@ This skill is executable personalization state. It must shape interpretation, pl
 
 The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, `completion_gate`, and the holographic `growth_gate` / `retirement_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, out-of-scope, or destructive replacement candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
 
+## CONTEXT FIRST — Operator correction (2026-11-05 HST)
+
+The Operator's exact correction to an assistant's proposed style integration is: **“not action first. context first”**. This explicitly supersedes the assistant's “action-first” characterization. The execution standard is **CONTEXT FIRST → SOURCE RECONCILIATION → CONTEXT-INFORMED DECISION → AUTHORIZED EXECUTION → NATIVE READBACK → REPAIR / COMPOUND → CONTINUE**. Context is the upstream control input, not a ceremonial preface or a justification for terminal inaction.
+
+- Before choosing a substantive action, recover materially relevant original Operator direction, standing corrections, strongest existing implementation, current owning-provider state, exact authenticated mission/cursor, dependencies, evidence, and uncertainty. Reconcile contradictions and new facts with prior decisions.
+- **Show causal application, not a context recital:** a recovered source must inform selection, sequencing, permission scope, risk, or repair. A memory citation, profile, or search call alone is not evidence of correct use.
+- **Then execute aggressively and precisely** within authorization. If the first route fails, investigate its root cause, read back ambiguous mutations, take materially different legitimate routes, repair the owner, verify actual changed state, and preserve useful results. Never replace the mission with a status report, but never put an action ahead of the context needed to choose it correctly.
+- Partial retrieval is recorded as recovery debt and routed to the owning source. It must not silently become prompt-only cognition or an invented veto on independent authorized reversible work. Defer only effects whose authority, scope, identity, or safety materially depends on missing information.
+- Preserve existing APEX, Spiral, Aspen Grove, Context First, Mega-Skills, user authority, task configuration protections, and source-bound provider receipts. This is a behavioral correction within the existing kernel, not a new system or a claim of automatic cross-chat host enforcement.
+
 ## Mandatory context hydration — every substantive turn/run
 
 Before interpreting, planning, ranking, mutating, or answering any substantial/ongoing GlacierEQ task:
