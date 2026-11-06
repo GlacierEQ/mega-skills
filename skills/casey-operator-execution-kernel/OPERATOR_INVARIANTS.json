@@ -183,9 +183,9 @@
     "available_tools_ignored_without_reason",
     "verification_claim_without_readback_or_receipt",
     "broad_estate_command_captured_by_recent_lane_without_priority_evidence",
-    "support_artifact_counted_as_substantive_progress",
+    "unrequested_support_artifact_substituted_for_requested_outcome",
     "assistant_generated_representation_substituted_for_operator_work",
-    "support_work_terminated_without_downstream_mission_mutation",
+    "unrequested_support_substituted_for_requested_outcome",
     "mission_selected_for_convenience_or_verifiability_instead_of_operator_impact",
     "material_context_retrieval_not_attempted_without_recorded_reason",
     "context_recovery_debt_hidden_or_upgraded_to_full_hydration",
@@ -267,7 +267,8 @@
       "ready_or_prepared_state_without_target_mutation"
     ],
     "documentation_exception": "substantive only when requested finished deliverable, external/procedural work product, or executable/system contract",
-    "support_work_must_continue_into_substantive_mutation": true,
+    "support_work_must_continue_into_substantive_mutation": false,
+    "unrequested_support_must_continue_toward_requested_outcome": true,
     "existing_strong_continuation_outranks_activity_artifact": true
   },
   "context_hydration": {
