@@ -71,5 +71,52 @@ class SwarmRepairTests(unittest.TestCase):
             self.assertTrue(substantive_instruction(path)[0])
 
 
+    def test_swarm_preserves_existing_mission_and_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            previous_mission_dir = swarm.MISSION_DIR
+            swarm.MISSION_DIR = Path(tmp)
+            originals = {
+                "MISSION.md": "Original operator scope and independent lanes.\n",
+                "ROADMAP.md": "Historical milestones and unresolved requirements.\n",
+                "HANDOFF.md": "Operator-authored continuation.\n",
+                "EVIDENCE.md": "Existing source receipt and history.\n",
+            }
+            summary = {"summary": {
+                "skills": 2, "combos": 0, "megas": 0,
+                "ready_total": 0, "not_ready_total": 2,
+            }}
+            try:
+                for filename, content in originals.items():
+                    (swarm.MISSION_DIR / filename).write_text(content, encoding="utf-8")
+                swarm.write_state(summary, [], 2)
+                for filename, content in originals.items():
+                    self.assertEqual((swarm.MISSION_DIR / filename).read_text(), content)
+                swarm.write_state(summary, ["mission-test"], 2)
+                evidence = (swarm.MISSION_DIR / "EVIDENCE.md").read_text()
+                self.assertTrue(evidence.startswith(originals["EVIDENCE.md"]))
+                self.assertIn("Instruction-contract file changed: `mission-test`", evidence)
+                self.assertNotIn("runtime completion", evidence.lower().split("Existing source receipt")[0])
+                swarm.write_state(summary, ["mission-test"], 2)
+                self.assertEqual(evidence, (swarm.MISSION_DIR / "EVIDENCE.md").read_text())
+                for filename in ("MISSION.md", "ROADMAP.md", "HANDOFF.md"):
+                    self.assertEqual((swarm.MISSION_DIR / filename).read_text(), originals[filename])
+            finally:
+                swarm.MISSION_DIR = previous_mission_dir
+
+    def test_new_generated_mission_has_no_fixed_completed_status(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            previous_mission_dir = swarm.MISSION_DIR
+            swarm.MISSION_DIR = Path(tmp)
+            try:
+                summary = {"summary": {"skills": 1, "combos": 0, "megas": 0, "ready_total": 0, "not_ready_total": 1}}
+                swarm.write_state(summary, [], 1)
+                roadmap = (swarm.MISSION_DIR / "ROADMAP.md").read_text()
+                self.assertNotIn("— COMPLETE", roadmap)
+                self.assertIn("downstream behavior", roadmap)
+                self.assertIn("checkpoints, not proof", (swarm.MISSION_DIR / "HANDOFF.md").read_text())
+            finally:
+                swarm.MISSION_DIR = previous_mission_dir
+
+
 if __name__ == "__main__":
     unittest.main()
