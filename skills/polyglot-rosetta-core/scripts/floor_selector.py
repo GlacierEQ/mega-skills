@@ -9,13 +9,31 @@ import json
 import sys
 from pathlib import Path
 
-FLOOR_CAPABILITIES = {
-    "rust": {"domains": ["systems", "concurrency", "performance", "cli"], "memory_safety": "borrow_checker", "speed_tier": "native"},
-    "capnp": {"domains": ["ipc", "zero_copy", "serialization", "streaming"], "memory_safety": "arena_allocation", "speed_tier": "zero_copy"},
-    "ebpf": {"domains": ["kernel", "telemetry", "tracing", "packet_filter"], "memory_safety": "kernel_verifier", "speed_tier": "in_kernel"},
-    "lean4": {"domains": ["formal_verification", "proofs", "invariants", "correctness"], "memory_safety": "dependent_types", "speed_tier": "proven"},
-    "cairo": {"domains": ["zk_stark", "verifiable_computation", "blockchain", "receipts"], "memory_safety": "algebraic_vm", "speed_tier": "verifiable"},
-}
+import os
+from pathlib import Path
+import yaml
+
+_CATALOG_PATH = Path(__file__).resolve().parents[1] / "resources" / "floor_catalog.yaml"
+
+def _load_catalog():
+    if _CATALOG_PATH.exists():
+        data = yaml.safe_load(_CATALOG_PATH.read_text())
+        out = {}
+        for f in data.get("floors", []):
+            out[f["language"]] = {
+                "domains": f.get("domains", []),
+                "memory_safety": f.get("memory_safety"),
+                "speed_tier": f.get("speed_tier"),
+                "binary": f.get("binary"),
+                "id": f.get("id"),
+                "proof_target": f.get("proof_target"),
+            }
+        # alias capnp -> capnproto style not needed; keep capnp entry for ipc/zero_copy
+        out.setdefault("capnp", {"domains": ["ipc", "zero_copy", "serialization", "streaming"], "memory_safety": "arena_allocation", "speed_tier": "zero_copy", "binary": "capnp", "id": 0, "proof_target": "lean4"})
+        return out
+    return {}
+
+FLOOR_CAPABILITIES = _load_catalog()
 
 
 def select_target_floor(requirements: list[str]) -> dict:
@@ -23,12 +41,15 @@ def select_target_floor(requirements: list[str]) -> dict:
     req_set = {r.lower() for r in requirements}
     best_floor = "rust"
     best_score = -1
+    best_id = 9999
 
     for floor, profile in FLOOR_CAPABILITIES.items():
         score = sum(1 for d in profile["domains"] if d in req_set)
-        if score > best_score:
+        fid = profile.get("id", 9999) or 9999
+        if score > best_score or (score == best_score and fid < best_id):
             best_score = score
             best_floor = floor
+            best_id = fid
 
     return {
         "selected_floor": best_floor,

@@ -1,2 +1,374 @@
 # 51 Tower of Babel floors with language capabilities
-# TODO: Add YAML content
+# Each floor maps to a real toolchain available (or targetable) on the device.
+version: '1.0.0'
+floors:
+  # --- Systems / Native ---
+  - id: 1
+    language: rust
+    binary: rustc
+    domains: [systems, concurrency, performance, cli, memory_safety, zero_copy]
+    memory_safety: borrow_checker
+    speed_tier: native
+    proof_target: lean4
+  - id: 2
+    language: c
+    binary: gcc
+    domains: [systems, kernel, embedded, performance, ffi]
+    memory_safety: manual
+    speed_tier: native
+    proof_target: lean4
+  - id: 3
+    language: cpp
+    binary: g++
+    domains: [systems, performance, oop, templates, zero_copy]
+    memory_safety: manual_raii
+    speed_tier: native
+    proof_target: lean4
+  - id: 4
+    language: zig
+    binary: zig
+    domains: [systems, embedded, comptime, c_interop, performance]
+    memory_safety: optional_safety
+    speed_tier: native
+    proof_target: lean4
+  - id: 5
+    language: nim
+    binary: nim
+    domains: [systems, scripting, metaprogramming, performance, gc_optional]
+    memory_safety: gc_or_arc
+    speed_tier: native
+    proof_target: lean4
+  - id: 6
+    language: go
+    binary: go
+    domains: [concurrency, networking, cli, microservices, gc]
+    memory_safety: gc
+    speed_tier: native
+    proof_target: lean4
+  - id: 7
+    language: d
+    binary: dmd
+    domains: [systems, metaprogramming, gc_optional, performance]
+    memory_safety: gc_or_manual
+    speed_tier: native
+    proof_target: lean4
+  - id: 8
+    language: odin
+    binary: odin
+    domains: [systems, data_oriented, manual_memory, performance]
+    memory_safety: manual
+    speed_tier: native
+    proof_target: lean4
+  # --- JVM ---
+  - id: 9
+    language: java
+    binary: javac
+    domains: [enterprise, oop, jvm, concurrency, gc]
+    memory_safety: gc
+    speed_tier: jvm
+    proof_target: lean4
+  - id: 10
+    language: kotlin
+    binary: kotlinc
+    domains: [android, jvm, null_safety, coroutines, interop]
+    memory_safety: gc
+    speed_tier: jvm
+    proof_target: lean4
+  - id: 11
+    language: scala
+    binary: scalac
+    domains: [functional, jvm, type_system, big_data]
+    memory_safety: gc
+    speed_tier: jvm
+    proof_target: lean4
+  - id: 12
+    language: clojure
+    binary: clj
+    domains: [functional, lisp, jvm, immutable, repl]
+    memory_safety: gc
+    speed_tier: jvm
+    proof_target: lean4
+  - id: 13
+    language: groovy
+    binary: groovyc
+    domains: [scripting, jvm, dsl, dynamic]
+    memory_safety: gc
+    speed_tier: jvm
+    proof_target: lean4
+  # --- .NET ---
+  - id: 14
+    language: csharp
+    binary: dotnet
+    domains: [enterprise, oop, dotnet, async, gc]
+    memory_safety: gc
+    speed_tier: clr
+    proof_target: lean4
+  - id: 15
+    language: fsharp
+    binary: dotnet
+    domains: [functional, dotnet, type_inference, async]
+    memory_safety: gc
+    speed_tier: clr
+    proof_target: lean4
+  # --- Scripting ---
+  - id: 16
+    language: python
+    binary: python3
+    domains: [scripting, ml, data, rapid_prototyping, gc]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 17
+    language: ruby
+    binary: ruby
+    domains: [scripting, web, dsl, gc, metaprogramming]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 18
+    language: php
+    binary: php
+    domains: [web, scripting, server_side, gc]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 19
+    language: perl
+    binary: perl
+    domains: [scripting, text_processing, regex, sysadmin]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 20
+    language: lua
+    binary: lua5.4
+    domains: [embedded, scripting, lightweight, gc]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 21
+    language: javascript
+    binary: node
+    domains: [web, async, event_loop, gc, scripting]
+    memory_safety: gc
+    speed_tier: jit
+    proof_target: lean4
+  - id: 22
+    language: typescript
+    binary: tsc
+    domains: [web, typed, static_analysis, interop]
+    memory_safety: gc
+    speed_tier: jit
+    proof_target: lean4
+  # --- Functional ---
+  - id: 23
+    language: haskell
+    binary: ghc
+    domains: [functional, lazy, type_system, purity]
+    memory_safety: gc
+    speed_tier: native
+    proof_target: lean4
+  - id: 24
+    language: ocaml
+    binary: ocamlc
+    domains: [functional, type_inference, performance, gc]
+    memory_safety: gc
+    speed_tier: native
+    proof_target: lean4
+  - id: 25
+    language: erlang
+    binary: erlc
+    domains: [concurrency, distributed, fault_tolerance, gc]
+    memory_safety: gc
+    speed_tier: beam
+    proof_target: lean4
+  - id: 26
+    language: elixir
+    binary: elixirc
+    domains: [functional, distributed, metaprogramming, beam]
+    memory_safety: gc
+    speed_tier: beam
+    proof_target: lean4
+  - id: 27
+    language: scheme
+    binary: guile
+    domains: [functional, lisp, macros, repl]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 28
+    language: racket
+    binary: racket
+    domains: [functional, lisp, language_oriented, macros]
+    memory_safety: gc
+    speed_tier: jit
+    proof_target: lean4
+  # --- Data / Scientific ---
+  - id: 29
+    language: r
+    binary: R
+    domains: [statistics, data_analysis, plotting, gc]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  - id: 30
+    language: julia
+    binary: julia
+    domains: [scientific, numerical, jit, multiple_dispatch]
+    memory_safety: gc
+    speed_tier: jit
+    proof_target: lean4
+  - id: 31
+    language: fortran
+    binary: gfortran
+    domains: [scientific, numerical, hpc, performance]
+    memory_safety: manual
+    speed_tier: native
+    proof_target: lean4
+  - id: 32
+    language: matlab
+    binary: matlab
+    domains: [numerical, matrix, engineering, plotting]
+    memory_safety: gc
+    speed_tier: interpreted
+    proof_target: lean4
+  # --- Web / Frontend ---
+  - id: 33
+    language: dart
+    binary: dart
+    domains: [mobile, web, ui, gc, async]
+    memory_safety: gc
+    speed_tier: jit
+    proof_target: lean4
+  - id: 34
+    language: elm
+    binary: elm
+    domains: [web, functional, no_runtime_errors, typed]
+    memory_safety: gc
+    speed_tier: js_compile
+    proof_target: lean4
+  - id: 35
+    language: svelte
+    binary: svelte-check
+    domains: [web, reactive, compiler, ui]
+    memory_safety: gc
+    speed_tier: compiled
+    proof_target: lean4
+  # --- Kernel / eBPF ---
+  - id: 36
+    language: ebpf_c
+    binary: clang
+    domains: [kernel, tracing, telemetry, packet_filter, in_kernel]
+    memory_safety: kernel_verifier
+    speed_tier: in_kernel
+    proof_target: lean4
+  - id: 37
+    language: ebpf_rust
+    binary: cargo
+    domains: [kernel, tracing, aya, memory_safety, in_kernel]
+    memory_safety: borrow_checker
+    speed_tier: in_kernel
+    proof_target: lean4
+  # --- Formal Verification ---
+  - id: 38
+    language: lean4
+    binary: lean
+    domains: [formal_verification, proofs, invariants, dependent_types]
+    memory_safety: dependent_types
+    speed_tier: proven
+    proof_target: self
+  - id: 39
+    language: coq
+    binary: coqc
+    domains: [formal_verification, proofs, dependent_types, extraction]
+    memory_safety: dependent_types
+    speed_tier: proven
+    proof_target: self
+  - id: 40
+    language: agda
+    binary: agda
+    domains: [formal_verification, proofs, dependent_types, totality]
+    memory_safety: dependent_types
+    speed_tier: proven
+    proof_target: self
+  - id: 41
+    language: isabelle
+    binary: isabelle
+    domains: [formal_verification, proofs, higher_order_logic]
+    memory_safety: logic
+    speed_tier: proven
+    proof_target: self
+  # --- ZK / Verifiable ---
+  - id: 42
+    language: cairo
+    binary: cairo-compile
+    domains: [zk_stark, verifiable_computation, blockchain, receipts]
+    memory_safety: algebraic_vm
+    speed_tier: verifiable
+    proof_target: cairo
+  - id: 43
+    language: noir
+    binary: nargo
+    domains: [zk_snark, privacy, circuits, verifiable]
+    memory_safety: algebraic_vm
+    speed_tier: verifiable
+    proof_target: noir
+  - id: 44
+    language: circom
+    binary: circom
+    domains: [zk_circuits, r1cs, snark, verifiable]
+    memory_safety: algebraic_vm
+    speed_tier: verifiable
+    proof_target: circom
+  # --- Blockchain / Smart Contracts ---
+  - id: 45
+    language: solidity
+    binary: solc
+    domains: [smart_contracts, evm, blockchain, defi]
+    memory_safety: manual
+    speed_tier: evm
+    proof_target: lean4
+  - id: 46
+    language: move
+    binary: move
+    domains: [smart_contracts, resources, blockchain, safety]
+    memory_safety: resource_safety
+    speed_tier: vm
+    proof_target: lean4
+  - id: 47
+    language: vyper
+    binary: vyper
+    domains: [smart_contracts, python_like, evm, safety]
+    memory_safety: manual
+    speed_tier: evm
+    proof_target: lean4
+  # --- GPU / Accelerated ---
+  - id: 48
+    language: cuda
+    binary: nvcc
+    domains: [gpu, parallel, hpc, kernels]
+    memory_safety: manual
+    speed_tier: gpu
+    proof_target: lean4
+  - id: 49
+    language: opencl
+    binary: clang
+    domains: [gpu, parallel, portable, kernels]
+    memory_safety: manual
+    speed_tier: gpu
+    proof_target: lean4
+  - id: 50
+    language: mojo
+    binary: mojo
+    domains: [ai, performance, python_superset, simd]
+    memory_safety: manual
+    speed_tier: native
+    proof_target: lean4
+  # --- WebAssembly / Edge ---
+  - id: 51
+    language: wasm
+    binary: wasm-pack
+    domains: [webassembly, edge, sandbox, portable, browser]
+    memory_safety: sandbox
+    speed_tier: near_native
+    proof_target: lean4

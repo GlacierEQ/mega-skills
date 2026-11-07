@@ -1,2 +1,33 @@
 # Formal invariant specification format for Lean 4 / Cairo
-# TODO: Add YAML content
+version: '1.0.0'
+description: >
+  Schema for declaring invariants that must hold across polyglot floors.
+  Each invariant is a (name, statement, scope) triple that proof_generator
+  turns into a hash-anchored receipt.
+invariant:
+  required_fields:
+    - name: string            # snake_case identifier
+    - statement: string       # formal predicate, e.g. "forall s: State, s.balance >= 0"
+    - scope: list[string]     # floors where the invariant must hold
+    - severity: enum[info, warning, error, critical]
+  optional_fields:
+    - owner: string           # responsible subsystem
+    - evidence: list[string]  # file paths or test names supporting the claim
+    - proof_engine: enum[lean4, cairo, coq, agda, isabelle, noir, circom]
+  validation_rules:
+    - name must match ^[a-z][a-z0-9_]*$
+    - statement must be non-empty
+    - scope must be non-empty
+    - severity defaults to error
+    - proof_engine defaults to lean4
+examples:
+  - name: non_negative_balance
+    statement: "forall s: State, s.balance >= 0"
+    scope: [rust, go, python]
+    severity: critical
+    proof_engine: lean4
+  - name: no_data_loss_on_transfer
+    statement: "src.bytes == dst.bytes after transfer"
+    scope: [rust, c, cpp]
+    severity: critical
+    proof_engine: lean4
