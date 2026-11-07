@@ -74,13 +74,13 @@ CONTINUATION_CONTRACT = {
 EXECUTION_CONTRACT = {
     "loop": ["select_substantive_work", "do_it", "verify", "persist_continuation", "keep_doing"],
     "completion_gate": "no_final_response_while_authorized_executable_action_exists",
-    "observation_role": "minimum_input_for_immediate_concrete_action_only",
-    "reconciliation_role": "incidental_technique_inside_specific_mutation_only",
+    "observation_role": "requested_read_only_outcome_or_relevant_input_for_action",
+    "reconciliation_role": "requested_outcome_or_incidental_technique",
     "tool_failure_role": "internal_repair_or_route_around_then_continue",
     "operator_boundary": "surface_only_genuine_operator_only_dependencies",
-    "success_condition": "durable_verified_substantive_mission_state_change_when_substantive_executable_work_exists",
+    "success_condition": "verified_requested_outcome_without_fabricated_state_change",
     "mission_work_gate": "support_work_cannot_satisfy_completion_unless_explicitly_requested_as_mission",
-    "support_work_requires_follow_through": "support_work_must_immediately_enable_and_be_followed_by_substantive_mutation_when_authorized",
+    "support_work_requires_follow_through": "support_work_advances_larger_requested_outcome_unless_it_is_the_requested_outcome",
     "continuity": CONTINUATION_CONTRACT,
     "support_work_examples": [
         "inspection",
@@ -127,15 +127,15 @@ def main() -> int:
         status = "mission_hydration_required"
         dispatch_allowed = False
         reason = (
-            "Execution accepted, but unqualified dispatch is forbidden. Hydrate the operator objective graph or specialized continuation, provide source-hydrated substantive candidates, then pass them through the operator mission dispatch gate."
+            "Execution requires mission input and authorized executable candidates; use relevant context and the dispatch result to select them."
         )
     elif args.execute:
         dispatch_allowed = bool(mission_gate.get("dispatch_allowed"))
         status = "dispatch_required" if dispatch_allowed else "mission_hydration_required"
         reason = (
-            "Operator mission gate selected a qualified substantive continuation; dispatch only that selected mission and verify the resulting target-state mutation."
+            "Operator mission gate selected a qualified continuation; execute the selected work and verify its requested outcome where appropriate."
             if dispatch_allowed
-            else "Operator mission gate rejected dispatch. Hydrate/compare real mission fronts and continue until a qualified substantive candidate exists."
+            else "Operator mission gate rejected dispatch. Review the rejection reasons and available context to identify an authorized executable next action."
         )
     else:
         status = "adapter_ready"
