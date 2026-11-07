@@ -84,12 +84,12 @@ Use this skill when the requested task matches the capability described above an
 
 ## Operating Method
 
-1. Identify the concrete outcome, inputs, and constraints.
-2. Inspect relevant project state or artifacts before making changes.
-3. Load only the bundled resources needed for the current task.
-4. Execute the narrowest complete workflow that produces the requested outcome.
-5. Verify the result with observable output, tests, or source-backed evidence.
-6. Report the produced artifact or exact resulting state. Never claim execution that did not occur.
+1. Recover the exact Operator objective, existing mission graph, corrections, verified gains, source pointers, and completion test.
+2. Refresh relevant owning-source state and reconcile it with recovered evidence before treating a historical gap or task label as current.
+3. Map affected workstreams, critical dependencies, useful independent routes, and downstream consequences; load the resources needed to cover that work.
+4. Select and execute the strongest coherent workflow by outcome gain, dependency unlock, evidence value, and preservation of verified strengths. Skill ownership scopes each operation; it never shrinks the mission.
+5. Verify the resulting state, propagate material corrections across affected work, and continue through reachable authorized work. A prepared next action or completed artifact is a checkpoint; completion requires the requested outcome.
+6. Report the resulting outcome and observable proof, unfinished obligations, and exact continuation frontier. Never claim execution that did not occur.
 
 ## Progressive Disclosure
 
@@ -138,9 +138,9 @@ Objective: turn candidate skills into truthfully usable capabilities without inv
 """,
       "ROADMAP.md":"""# ROADMAP — Candidate Uplift
 
-1. Truth repair of false ready/executed adapters — COMPLETE
-2. Instruction contract swarm — ACTIVE
-3. Behavioral verification swarm — NEXT
+1. Earlier adapter truth repair — retain source receipts; validate current downstream behavior before closing
+2. Instruction contract repairs — record actual changed files; not a mission-completion signal
+3. Behavioral verification and live application — outstanding until native proof
 4. Domain implementation forge for explicit stubs
 5. Combo reactivation
 6. Mega activation when dependencies are actually ready
@@ -158,12 +158,35 @@ Instruction contracts repaired: {len(repairs)}
       "EVIDENCE.md":"# EVIDENCE — Candidate Uplift\n\nContract repairs this run:\n"+("\n".join("- "+x for x in repairs) if repairs else "- none")+"\n",
       "HANDOFF.md":"""# HANDOFF — Candidate Uplift
 
-Parallel inspection and evidence-supported contract repairs are complete for this cycle.
+Inspection and changed instruction contracts are checkpoints, not proof of domain implementation or mission completion.
 
-Next: rerun readiness, hierarchy validation, and tests. Then attack implementation-unverified skills with substantive code and the cheapest path to real behavioral proof. Worker JSON files are the durable backlog map.
+Next: rerun readiness, hierarchy validation, and tests. Then implement and live-verify missing domain capability; use worker JSON only as discovery, never as a completion receipt or replacement for prior mission history.
 """
     }
-    for n,c in files.items(): (MISSION_DIR/n).write_text(c,encoding="utf-8")
+    # The mission, roadmap, handoff, and evidence are durable operator/worker
+    # continuity, not scratch projections. Regenerating them used to erase
+    # previous work and reassert fixed "COMPLETE" claims on every run.
+    # Only CONTEXT.md is a replaceable current-run projection.
+    for name, content in files.items():
+        path = MISSION_DIR / name
+        if name == "CONTEXT.md":
+            if not path.exists() or path.read_text(encoding="utf-8") != content:
+                path.write_text(content, encoding="utf-8")
+        elif name == "EVIDENCE.md":
+            if not path.exists():
+                path.write_text("# EVIDENCE — Candidate Uplift\n", encoding="utf-8")
+            if repairs:
+                previous = path.read_text(encoding="utf-8")
+                additions = [
+                    "- Instruction-contract file changed: `" + sid + "`"
+                    for sid in sorted(set(repairs))
+                    if "- Instruction-contract file changed: `" + sid + "`" not in previous
+                ]
+                if additions:
+                    path.write_text(previous.rstrip() + "\n\n## Source changes (not runtime completion)\n"
+                                    + "\n".join(additions) + "\n", encoding="utf-8")
+        elif not path.exists():
+            path.write_text(content, encoding="utf-8")
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--workers",type=int,default=8); p.add_argument("--repair",action="store_true"); a=p.parse_args()
