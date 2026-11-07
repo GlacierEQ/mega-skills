@@ -432,5 +432,17 @@ class OperatorExecutionKernelTests(unittest.TestCase):
                 "artifact_only": True, "requested_finished_deliverable": True}]})
         self.assertFalse(result["dispatch_allowed"])
 
+    def test_explicit_incomplete_outcome_blocks_success_even_when_state_changed(self):
+        payload = {"mission_state_changed": True, "requested_finished_deliverable": True,
+                   "requested_outcome_complete": False, "verified": True,
+                   "verification_refs": ["verified-partial"], "artifact_only": True,
+                   "support_only": True, "authorized_executable_action_exists": False}
+        result = run_kernel("completion_gate", payload)
+        self.assertFalse(result["can_finalize"])
+        self.assertIn("requested_outcome_incomplete", result["reasons"])
+        boundary = run_kernel("completion_gate", {**payload, "hard_external_boundary": True})
+        self.assertEqual(boundary["finalization_kind"], "hard_boundary")
+        self.assertIn("requested_outcome_incomplete", boundary["reasons"])
+
 if __name__ == "__main__":
     unittest.main()
