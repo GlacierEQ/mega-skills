@@ -185,7 +185,8 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     verified = bool(payload.get("verified", False))
     verification_refs = [str(item) for item in as_list(payload.get("verification_refs")) if str(item).strip()]
     requested = payload.get("requested_finished_deliverable") is True
-    requested_complete = requested and (changed or payload.get("requested_outcome_complete") is True)
+    requested_incomplete = requested and payload.get("requested_outcome_complete") is False
+    requested_complete = requested and not requested_incomplete and (changed or payload.get("requested_outcome_complete") is True)
     support_only = bool(payload.get("support_only", False)) and not requested
     artifact_only = bool(payload.get("artifact_only", False)) and not requested
     further = bool(payload.get("authorized_executable_action_exists", False))
@@ -193,6 +194,8 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     replacement_attempted = bool(payload.get("replacement_attempted", False))
     retirement = retirement_gate(dict(payload.get("retirement_check") or {})) if replacement_attempted else None
     reasons: list[str] = []
+    if requested_incomplete:
+        reasons.append("requested_outcome_incomplete")
     if support_only:
         reasons.append("support_work_is_not_mission_completion")
     if artifact_only:
@@ -211,7 +214,7 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     replacement_safe = not replacement_attempted or bool(retirement and retirement["can_retire"])
     success = (
         (changed or requested_complete) and verified and bool(verification_refs)
-        and not support_only and not artifact_only and not further
+        and not requested_incomplete and not support_only and not artifact_only and not further
         and replacement_safe
     )
     boundary = hard_boundary and not further
