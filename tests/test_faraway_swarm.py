@@ -95,7 +95,7 @@ class SwarmRepairTests(unittest.TestCase):
                 evidence = (swarm.MISSION_DIR / "EVIDENCE.md").read_text()
                 self.assertTrue(evidence.startswith(originals["EVIDENCE.md"]))
                 self.assertIn("Instruction-contract file changed: `mission-test`", evidence)
-                self.assertNotIn("runtime completion", evidence.lower().split("Existing source receipt")[0])
+                self.assertIn("not runtime completion", evidence)
                 swarm.write_state(summary, ["mission-test"], 2)
                 self.assertEqual(evidence, (swarm.MISSION_DIR / "EVIDENCE.md").read_text())
                 for filename in ("MISSION.md", "ROADMAP.md", "HANDOFF.md"):
