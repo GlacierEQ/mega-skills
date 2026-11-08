@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+const mod=await import(pathToFileURL(new URL('../.omp/extensions/glaciereq-memory-boot.ts', import.meta.url).pathname));
+let handler;
+mod.default({on:(name,fn)=>{assert.equal(name,'before_agent_start');handler=fn;}});
+assert.equal(typeof handler,'function');
+const noKey=await handler({prompt:'Tell me how to cook dinner'});
+assert.match(noKey.additionalContext,/No unambiguous exact mission identifier/);
+assert.doesNotMatch(noKey.additionalContext,/CASE-CHR-003/);
+const exact=await handler({prompt:'Continue 1FDV-23-0001009 with docket readback'});
+assert.match(exact.additionalContext,/Current-turn identifier candidate: 1FDV-23-0001009/);
+const ambiguous=await handler({prompt:'Compare CASE-CHR-003 with CASE-21'});
+assert.match(ambiguous.additionalContext,/No unambiguous exact mission identifier/);
+console.log('OMP advisory boot mock tests: 3/3 PASS; live OMP integration not verified');
