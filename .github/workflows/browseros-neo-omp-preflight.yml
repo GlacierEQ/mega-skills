@@ -1,0 +1,50 @@
+name: BrowserOS Neo OMP Verification
+
+on:
+  push:
+    branches: [feat/browseros-neo-omp-bootstrap-20261018]
+    paths:
+      - 'integrations/omp/**'
+      - '.github/workflows/browseros-neo-omp-preflight.yml'
+  pull_request:
+    paths:
+      - 'integrations/omp/**'
+      - '.github/workflows/browseros-neo-omp-preflight.yml'
+  workflow_dispatch:
+    inputs:
+      expected_mac:
+        description: 'Type KcBs-MacBook-Air to authorize read-only macOS preflight'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  portable-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Python source compiles
+        run: python3 -m py_compile integrations/omp/browseros_neo_setup.py
+      - name: Execute all integration regression tests
+        run: python3 -m unittest discover -s integrations/omp -p 'test_browseros_neo_setup.py' -v
+
+  mac-preflight:
+    # Never execute PR-supplied code on the user's self-hosted Mac automatically.
+    if: github.event_name == 'workflow_dispatch' && inputs.expected_mac == 'KcBs-MacBook-Air'
+    runs-on: [self-hosted, mega-skills, macos-x64]
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate target Mac and account
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(hostname -s)" == 'KcBs-MacBook-Air' ]] || { echo 'WRONG_HOST=1'; exit 1; }
+          [[ "$(id -u)" -ne 0 ]] || { echo 'RUNNING_AS_ROOT_DENIED=1'; exit 1; }
+          echo 'EXPECTED_MAC=1 MAC_PREFLIGHT_ONLY=1'
+      - name: Read-only MCP initialize and tools/list probe
+        shell: bash
+        run: python3 integrations/omp/browseros_neo_setup.py --expected-host KcBs-MacBook-Air
