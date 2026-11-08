@@ -4,7 +4,7 @@
 
 **Headline:** Forward Deployed AI Architect | AI Systems Architecture, Agent Infrastructure & Orchestration | Reliable Applied AI
 
-**Evidence coverage score:** 82.2 / 100  
+**Evidence coverage score:** 76.5 / 100  
 _Evidence coverage score measures strength and breadth of retained proof against the target contract. Correlated claims are collapsed by independence group before evidence is compounded. It is not a hiring probability, seniority rating, or claim of employer fit._
 
 ## Proof architecture
@@ -26,18 +26,18 @@ architecture → orchestration substrate → applied systems → evidence/releas
 
 ## Highest-signal public proof
 
-- `ev_2683a44bc479221a` [1.00] **anthropic-safety-monitor** — Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.
-- `ev_6913037c125fd85e` [1.00] **anthropic-safety-monitor** — The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.
-- `ev_2f7e0709053f0e34` [0.92] **glaciereq-mcp-stack** — Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.
-- `ev_468f0323d353e27e` [0.92] **glaciereq-mcp-stack** — Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.
-- `ev_6f53b25e7abcf6dd` [0.92] **job-app-helix-intelligence** — Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.
-- `ev_e5f0e22324e43cc6` [0.92] **job-app-helix-intelligence** — Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.
-- `ev_19a92b5a84973875` [0.92] **microsoft-identity-zero-trust** — Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.
-- `ev_1f25e9848323179d` [0.92] **microsoft-identity-zero-trust** — Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.
-- `ev_6286994c2eaec763` [0.72] **anthropic-agent-coordinator** — Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.
-- `ev_3d5ecbd0ba619288` [0.72] **job-application** — The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.
-- `ev_ba8f3d3f576ca3af` [0.72] **job-application** — Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.
-- `ev_06770a0211a04cf6` [0.72] **spacex-autonomy** — The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.
+- `ev_2683a44bc479221a` [0.85] **anthropic-safety-monitor** — Built and verified a deterministic agent tool-use safety boundary that returns allow, confirm, or deny with stable rule IDs, explicit reasons, and human-confirmation requirements without executing the proposed action.
+- `ev_6913037c125fd85e` [0.85] **anthropic-safety-monitor** — The verified promotion includes hash-bound tool transcript receipts, tamper detection, predecessor chaining, parser hardening, and explicit evidence limits across a 153-execution Python matrix.
+- `ev_2f7e0709053f0e34` [0.78] **glaciereq-mcp-stack** — Built a verified local MCP router with explicit separation between registration and execution authority, an execution allow-list, mutation gating for write tools, and fail-closed dispatch that avoids leaking exception text.
+- `ev_468f0323d353e27e` [0.78] **glaciereq-mcp-stack** — Built a dual-plane integration stack with credential-gated stdio MCP packages for GitHub, Asana, Confluence, Supabase, and Neo4j plus shared environment, logging, and retry machinery, while keeping live external connectivity outside the claim boundary until credentials and receipts exist.
+- `ev_6f53b25e7abcf6dd` [0.78] **job-app-helix-intelligence** — Built provenance-bound company-intelligence acquisition that restricts sources to approved domains, content-addresses fetched material, expires stale observations, and keeps company observations separate from candidate claims.
+- `ev_e5f0e22324e43cc6` [0.78] **job-app-helix-intelligence** — Built company-fit and target-intelligence cycles that map fresh attributable signals to candidate evidence, preserve matched and unmatched signals, advance live openings through change-sensitive watch state, continue across source failures when configured, and emit deterministic receipts.
+- `ev_19a92b5a84973875` [0.78] **microsoft-identity-zero-trust** — Built a deterministic least-privilege workload identity model with exact audience, scope, lifetime, and source binding plus SHA-256 receipts and fail-closed refusal on tampering, audience mismatch, missing scope, or invalid validity windows.
+- `ev_1f25e9848323179d` [0.78] **microsoft-identity-zero-trust** — Built a principal-aware autonomous/delegated action authorization plane that derives required audience and scopes from trusted policy, applies mode, risk, location, and human zero-trust controls, and emits explicit receipt-bound ALLOW, STEP_UP, or DENY decisions.
+- `ev_6286994c2eaec763` [0.61] **anthropic-agent-coordinator** — Built a deterministic specialist-task DAG scheduler with cycle validation, dependency waves, shared token budgets, per-role capacity, full-funding semantics, and structured deferrals.
+- `ev_3d5ecbd0ba619288` [0.61] **job-application** — The hiring system uses claim → observable behavior → implementation → executable verification → receipt → public promotion as its evidence path and fails closed on stale or unsafe projections.
+- `ev_ba8f3d3f576ca3af` [0.61] **job-application** — Built a hiring-system presentation layer whose public recruiter, resume, master, mesh, atlas, and machine surfaces are projections of Helix-governed evidence rather than independent claims.
+- `ev_06770a0211a04cf6` [0.61] **spacex-autonomy** — The system preserves conflicting simulated votes, fails closed on invalid conditions, and emits deterministic SHA-256 receipts rather than implying real vehicle authority.
 
 ## Defensible metrics
 
@@ -49,8 +49,8 @@ architecture → orchestration substrate → applied systems → evidence/releas
 
 ## Ranked proof gaps
 
-- **Customer discovery and workflow problem decomposition** — PARTIAL · priority `0.9563` · HARD GATE
-- **Customer deployment support, adoption, and lifecycle expansion** — PARTIAL · priority `0.7763` · HARD GATE
+- **Customer discovery and workflow problem decomposition** — PARTIAL · priority `0.9759` · HARD GATE
+- **Customer deployment support, adoption, and lifecycle expansion** — PARTIAL · priority `0.7944` · HARD GATE
 
 ## Skill ontology
 

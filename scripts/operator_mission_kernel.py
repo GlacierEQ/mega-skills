@@ -184,8 +184,9 @@ def completion_gate(payload: dict[str, Any]) -> dict[str, Any]:
     changed = bool(payload.get("mission_state_changed", False))
     verified = bool(payload.get("verified", False))
     verification_refs = [str(item) for item in as_list(payload.get("verification_refs")) if str(item).strip()]
-    support_only = bool(payload.get("support_only", False))
-    artifact_only = bool(payload.get("artifact_only", False))
+    is_requested_deliverable = bool(payload.get("requested_finished_deliverable", False))
+    support_only = bool(payload.get("support_only", False)) and not is_requested_deliverable
+    artifact_only = bool(payload.get("artifact_only", False)) and not is_requested_deliverable
     further = bool(payload.get("authorized_executable_action_exists", False))
     hard_boundary = bool(payload.get("hard_external_boundary", False) or payload.get("operator_only_boundary", False))
     replacement_attempted = bool(payload.get("replacement_attempted", False))
@@ -237,11 +238,13 @@ def rejection_reasons(candidate: dict[str, Any], scope_mode: str, scope_lane: st
         reasons.append("not_authorized")
     if not bool(candidate.get("executable", True)):
         reasons.append("not_executable_now")
-    if not bool(candidate.get("substantive", False)):
+    is_requested_deliverable = bool(candidate.get("requested_finished_deliverable", False))
+    is_explicit_support = bool(candidate.get("explicitly_requested_support", False))
+    if not bool(candidate.get("substantive", False)) and not is_requested_deliverable and not is_explicit_support:
         reasons.append("not_substantive")
-    if bool(candidate.get("support_only", False)) and not bool(candidate.get("explicitly_requested_support", False)):
+    if bool(candidate.get("support_only", False)) and not is_explicit_support and not is_requested_deliverable:
         reasons.append("support_only")
-    if bool(candidate.get("artifact_only", False)) or result_kind_is_support(candidate):
+    if (bool(candidate.get("artifact_only", False)) or result_kind_is_support(candidate)) and not is_requested_deliverable and not is_explicit_support:
         reasons.append("artifact_only")
     if scope_mode == "estate" and candidate_is_recency_only(candidate):
         reasons.append("recency_only")
