@@ -1,5 +1,7 @@
 # GlacierEQ Mega Skills
 
+[![CI](https://github.com/GlacierEQ/mega-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/GlacierEQ/mega-skills/actions/workflows/ci.yml)
+
 Mega-Skills is the canonical capability repository for building complete workflows and pipelines as **hierarchies of real Skills**.
 
 ```text

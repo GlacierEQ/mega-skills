@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test & Hierarchy Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pytest pytest-subtests pyyaml
+
+      - name: Compile python surfaces
+        run: python -m compileall -q scripts tests
+
+      - name: Validate Mega Skills recursive hierarchy
+        run: python scripts/validate_hierarchy.py
+
+      - name: Verify Pyramid manifest synchronization
+        run: python scripts/generate_mega_skill_pyramids.py --check
+
+      - name: Run Pytest suite
+        run: pytest -q
