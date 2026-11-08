@@ -2,7 +2,7 @@
   "schema_version": 1,
   "driver": "casebuilding_activation.py",
   "mode": "dry_run",
-  "generated_utc": "2026-09-03T18:49:18.536211+00:00",
+  "generated_utc": "2026-11-08T10:00:49.398595+00:00",
   "target_skills": [
     "audio-forensic-core",
     "forensic-evidence-chain-core",
@@ -24,17 +24,27 @@
       "tail": [
         "..........",
         "----------------------------------------------------------------------",
-        "Ran 10 tests in 0.102s",
+        "Ran 10 tests in 0.522s",
         "",
         "OK"
+      ]
+    },
+    "audio-forensic-core:test_enf_whisperx_loader.py": {
+      "returncode": 0,
+      "tail": [
+        ".ss.ss",
+        "----------------------------------------------------------------------",
+        "Ran 6 tests in 0.010s",
+        "",
+        "OK (skipped=4)"
       ]
     },
     "forensic-evidence-chain-core:test_forensic_evidence_chain_core.py": {
       "returncode": 0,
       "tail": [
-        "........",
+        ".........",
         "----------------------------------------------------------------------",
-        "Ran 8 tests in 0.101s",
+        "Ran 9 tests in 1.578s",
         "",
         "OK"
       ]
@@ -44,7 +54,7 @@
       "tail": [
         ".......",
         "----------------------------------------------------------------------",
-        "Ran 7 tests in 0.006s",
+        "Ran 7 tests in 0.088s",
         "",
         "OK"
       ]
@@ -56,26 +66,28 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/audio-forensic-core/scripts/sha256_audit.py",
-        "skills/audio-forensic-core/scripts/whisperx_align.py",
-        "skills/audio-forensic-core/scripts/enf_extractor.py",
-        "skills/audio-forensic-core/scripts/transcript_formatter.py",
         "skills/audio-forensic-core/scripts/bates_stamper.py",
-        "skills/audio-forensic-core/scripts/speaker_diarize.py"
+        "skills/audio-forensic-core/scripts/enf_extractor.py",
+        "skills/audio-forensic-core/scripts/sha256_audit.py",
+        "skills/audio-forensic-core/scripts/speaker_diarize.py",
+        "skills/audio-forensic-core/scripts/transcript_formatter.py",
+        "skills/audio-forensic-core/scripts/whisperx_align.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/audio-forensic-core/skill.py",
-        "skills/audio-forensic-core/scripts/purpose.py",
+        "skills/audio-forensic-core/scripts/output_contract.py",
         "skills/audio-forensic-core/scripts/procedure.py",
-        "skills/audio-forensic-core/scripts/output_contract.py"
+        "skills/audio-forensic-core/scripts/purpose.py",
+        "skills/audio-forensic-core/scripts/run.py"
       ],
       "stub_files": [],
       "behavioral_tests": [
-        "skills/audio-forensic-core/tests/test_audio_forensic_core.py"
+        "skills/audio-forensic-core/tests/test_audio_forensic_core.py",
+        "skills/audio-forensic-core/tests/test_enf_whisperx_loader.py"
       ],
       "structural_tests": [],
       "reasons": []
@@ -85,22 +97,23 @@
       "layer": "skill",
       "ready": true,
       "state": "behavior_verified",
-      "declared_maturity": "candidate",
+      "declared_maturity": "active",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
         "skills/forensic-evidence-chain-core/scripts/anomaly_scanner.py",
-        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py",
         "skills/forensic-evidence-chain-core/scripts/bates_stamper.py",
+        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py",
         "skills/forensic-evidence-chain-core/scripts/pii_scrubber.py",
-        "skills/forensic-evidence-chain-core/scripts/manifest_emitter.py"
+        "skills/forensic-evidence-chain-core/scripts/sha256_digester.py",
+        "skills/forensic-evidence-chain-core/scripts/timestamp_verifier.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/forensic-evidence-chain-core/skill.py",
-        "skills/forensic-evidence-chain-core/scripts/purpose.py",
+        "skills/forensic-evidence-chain-core/scripts/output_contract.py",
         "skills/forensic-evidence-chain-core/scripts/procedure.py",
-        "skills/forensic-evidence-chain-core/scripts/output_contract.py"
+        "skills/forensic-evidence-chain-core/scripts/purpose.py",
+        "skills/forensic-evidence-chain-core/scripts/run.py"
       ],
       "stub_files": [],
       "behavioral_tests": [
@@ -117,17 +130,18 @@
       "declared_maturity": "candidate",
       "instruction_ready": true,
       "real_implementation_files": [
-        "skills/epistemic-gate/scripts/sha256_verifier.py",
-        "skills/epistemic-gate/scripts/tier_evaluator.py",
         "skills/epistemic-gate/scripts/gate_enforcer.py",
-        "skills/epistemic-gate/scripts/receipt_generator.py"
+        "skills/epistemic-gate/scripts/receipt_generator.py",
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/epistemic-gate/skill.py",
         "skills/epistemic-gate/scripts/output_contract.py",
         "skills/epistemic-gate/scripts/procedure.py",
-        "skills/epistemic-gate/scripts/purpose.py"
+        "skills/epistemic-gate/scripts/purpose.py",
+        "skills/epistemic-gate/scripts/run.py"
       ],
       "stub_files": [],
       "behavioral_tests": [

@@ -5,20 +5,19 @@
     "skills": 1297,
     "combos": 41,
     "megas": 35,
-    "ready_total": 1194,
-    "not_ready_total": 179,
+    "ready_total": 1265,
+    "not_ready_total": 108,
     "skill_states": {
-      "instruction_ready": 1081,
-      "behavior_verified": 101,
-      "contract_incomplete": 10,
-      "implementation_unverified": 105
+      "instruction_ready": 1084,
+      "behavior_verified": 105,
+      "implementation_unverified": 105,
+      "contract_incomplete": 3
     },
     "combo_states": {
-      "composition_candidate": 29,
-      "composition_ready": 12
+      "composition_ready": 41
     },
     "mega_states": {
-      "mission_candidate": 35
+      "mission_contract_ready": 35
     }
   },
   "skills": [
@@ -723,19 +722,23 @@
     {
       "id": "apex-aspen-grove-bootup",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "instruction_ready",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "instruction_ready": true,
       "real_implementation_files": [],
-      "generic_adapter_files": [],
+      "generic_adapter_files": [
+        "skills/apex-aspen-grove-bootup/skill.py",
+        "skills/apex-aspen-grove-bootup/scripts/run.py",
+        "skills/apex-aspen-grove-bootup/scripts/this_skill.py"
+      ],
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "structural_tests": [
+        "skills/apex-aspen-grove-bootup/tests/test_apex_aspen_grove_bootup.py"
+      ],
+      "reasons": []
     },
     {
       "id": "apex-ast-sentinel",
@@ -763,19 +766,26 @@
     {
       "id": "apex-boot-core",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
-      "real_implementation_files": [],
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/apex-boot-core/skill.py",
+        "skills/apex-boot-core/scripts/boot_watchdog.py",
+        "skills/apex-boot-core/scripts/operator_semantics.py",
+        "skills/apex-boot-core/scripts/run.py",
+        "skills/apex-boot-core/scripts/this_skill.py"
+      ],
       "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/apex-boot-core/tests/test_apex_boot_core.py",
+        "skills/apex-boot-core/tests/test_operator_semantics.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-execution-modes",
@@ -4670,19 +4680,23 @@
     {
       "id": "enforcing-resource-attribution",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "instruction_ready",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "instruction_ready": true,
       "real_implementation_files": [],
-      "generic_adapter_files": [],
+      "generic_adapter_files": [
+        "skills/enforcing-resource-attribution/skill.py",
+        "skills/enforcing-resource-attribution/scripts/run.py",
+        "skills/enforcing-resource-attribution/scripts/this_skill.py"
+      ],
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "structural_tests": [
+        "skills/enforcing-resource-attribution/tests/test_enforcing_resource_attribution.py"
+      ],
+      "reasons": []
     },
     {
       "id": "engineering-innovations",
@@ -4815,19 +4829,30 @@
     {
       "id": "epistemic-gate",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
-      "real_implementation_files": [],
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/epistemic-gate/scripts/gate_enforcer.py",
+        "skills/epistemic-gate/scripts/receipt_generator.py",
+        "skills/epistemic-gate/scripts/sha256_verifier.py",
+        "skills/epistemic-gate/scripts/tier_evaluator.py"
+      ],
       "generic_adapter_files": [],
-      "scaffold_files": [],
+      "scaffold_files": [
+        "skills/epistemic-gate/skill.py",
+        "skills/epistemic-gate/scripts/output_contract.py",
+        "skills/epistemic-gate/scripts/procedure.py",
+        "skills/epistemic-gate/scripts/purpose.py",
+        "skills/epistemic-gate/scripts/run.py"
+      ],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/epistemic-gate/tests/test_epistemic_gate.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "reasons": []
     },
     {
       "id": "ethical-hacking-methodology",
@@ -9294,19 +9319,25 @@
     {
       "id": "mega-mermicorn-mega-boot",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "instruction_ready",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
-      "scaffold_files": [],
+      "scaffold_files": [
+        "skills/mega-mermicorn-mega-boot/skill.py",
+        "skills/mega-mermicorn-mega-boot/scripts/mega_mermicorn_mega_boot_reporter.py",
+        "skills/mega-mermicorn-mega-boot/scripts/mega_mermicorn_mega_boot_validator.py",
+        "skills/mega-mermicorn-mega-boot/scripts/quick_rules.py",
+        "skills/mega-mermicorn-mega-boot/scripts/run.py"
+      ],
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "structural_tests": [
+        "skills/mega-mermicorn-mega-boot/tests/test_mega_mermicorn_mega_boot.py"
+      ],
+      "reasons": []
     },
     {
       "id": "mega-meta-llama-collective-sentinel",
@@ -9842,19 +9873,25 @@
     {
       "id": "mermicorn-mega-boot",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "instruction_ready",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
+      "instruction_ready": true,
       "real_implementation_files": [],
       "generic_adapter_files": [],
-      "scaffold_files": [],
+      "scaffold_files": [
+        "skills/mermicorn-mega-boot/skill.py",
+        "skills/mermicorn-mega-boot/scripts/mermicorn_mega_boot_reporter.py",
+        "skills/mermicorn-mega-boot/scripts/mermicorn_mega_boot_validator.py",
+        "skills/mermicorn-mega-boot/scripts/quick_rules.py",
+        "skills/mermicorn-mega-boot/scripts/run.py"
+      ],
       "stub_files": [],
       "behavioral_tests": [],
-      "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "structural_tests": [
+        "skills/mermicorn-mega-boot/tests/test_mermicorn_mega_boot.py"
+      ],
+      "reasons": []
     },
     {
       "id": "meta-llama-collective-sentinel",
@@ -11206,14 +11243,14 @@
         "skills/polyglot-rosetta-core/scripts/code_synthesizer.py",
         "skills/polyglot-rosetta-core/scripts/cross_compiler.py",
         "skills/polyglot-rosetta-core/scripts/floor_selector.py",
-        "skills/polyglot-rosetta-core/scripts/proof_generator.py"
+        "skills/polyglot-rosetta-core/scripts/output_contract.py",
+        "skills/polyglot-rosetta-core/scripts/procedure.py",
+        "skills/polyglot-rosetta-core/scripts/proof_generator.py",
+        "skills/polyglot-rosetta-core/scripts/purpose.py"
       ],
       "generic_adapter_files": [],
       "scaffold_files": [
         "skills/polyglot-rosetta-core/skill.py",
-        "skills/polyglot-rosetta-core/scripts/output_contract.py",
-        "skills/polyglot-rosetta-core/scripts/procedure.py",
-        "skills/polyglot-rosetta-core/scripts/purpose.py",
         "skills/polyglot-rosetta-core/scripts/run.py"
       ],
       "stub_files": [],
@@ -11963,19 +12000,31 @@
     {
       "id": "quality-gate",
       "layer": "skill",
-      "ready": false,
-      "state": "contract_incomplete",
+      "ready": true,
+      "state": "behavior_verified",
       "declared_maturity": "candidate",
-      "instruction_ready": false,
-      "real_implementation_files": [],
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/quality-gate/skill.py",
+        "skills/quality-gate/scripts/artifact_inspector.py",
+        "skills/quality-gate/scripts/criteria_reader.py",
+        "skills/quality-gate/scripts/decision_recorder.py",
+        "skills/quality-gate/scripts/failure_classifier.py",
+        "skills/quality-gate/scripts/output_contract.py",
+        "skills/quality-gate/scripts/procedure.py",
+        "skills/quality-gate/scripts/purpose.py",
+        "skills/quality-gate/scripts/verifier_coordinator.py"
+      ],
       "generic_adapter_files": [],
-      "scaffold_files": [],
+      "scaffold_files": [
+        "skills/quality-gate/scripts/run.py"
+      ],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/quality-gate/tests/test_quality_gate.py"
+      ],
       "structural_tests": [],
-      "reasons": [
-        "missing SKILL.md"
-      ]
+      "reasons": []
     },
     {
       "id": "quantum-context",
@@ -13224,18 +13273,22 @@
       "id": "skill-creator",
       "layer": "skill",
       "ready": true,
-      "state": "instruction_ready",
+      "state": "behavior_verified",
       "declared_maturity": "active",
       "instruction_ready": true,
-      "real_implementation_files": [],
-      "generic_adapter_files": [
+      "real_implementation_files": [
         "skills/skill-creator/skill.py",
+        "skills/skill-creator/scripts/author_skill.py",
         "skills/skill-creator/scripts/run.py",
-        "skills/skill-creator/scripts/this_skill.py"
+        "skills/skill-creator/scripts/validate_package.py"
       ],
+      "generic_adapter_files": [],
       "scaffold_files": [],
       "stub_files": [],
-      "behavioral_tests": [],
+      "behavioral_tests": [
+        "skills/skill-creator/tests/test_author_skill.py",
+        "skills/skill-creator/tests/test_validate_package.py"
+      ],
       "structural_tests": [
         "skills/skill-creator/tests/test_skill_creator.py"
       ],
@@ -25439,12 +25492,10 @@
     {
       "id": "aerospace-mission-simulation",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-mesh-dispatch",
@@ -25457,32 +25508,26 @@
     {
       "id": "architectural-refactoring-engine",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "automation-control",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "autonomous-agent-foundry",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "branch-sprawl-control-loop",
@@ -25495,42 +25540,34 @@
     {
       "id": "capability-readiness",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "closed-loop-code-repair",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "court-evidence-compiler",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "cross-cloud-memory-synthesis",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "cybersecurity-threat-analysis",
@@ -25543,65 +25580,50 @@
     {
       "id": "diamond-research-topography",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: epistemic-gate",
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "epistemic-verification-chain",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: epistemic-gate",
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "evidence-to-evolution-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "fleet-recon-and-harmonize",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "forensic-docket-intelligence",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: epistemic-gate",
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "frontier-orbit-synthesis",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "genius-entity-forge",
@@ -25630,22 +25652,18 @@
     {
       "id": "guarded-automation-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "hardware-accelerated-inference",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "interactive-media-3d-pipeline",
@@ -25658,32 +25676,26 @@
     {
       "id": "long-horizon-core",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "max-research-spiral",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "mission-aware-operating-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "multi-agent-orchestration-mesh",
@@ -25696,82 +25708,66 @@
     {
       "id": "pipeline-orchestration",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "polyglot-systems-verification",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "recon-and-map",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "runtime-operations",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "secure-service-deployment",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "signal-to-decision-loop",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "skill-forge",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "upstream-fork-harmonization",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "vercel-fullstack-deployment",
@@ -25784,12 +25780,10 @@
     {
       "id": "voice-evidence-authenticator",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "web-build-foundation",
@@ -25802,13 +25796,10 @@
     {
       "id": "strong-smart-execution-stack",
       "layer": "combo",
-      "ready": false,
-      "state": "composition_candidate",
+      "ready": true,
+      "state": "composition_ready",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required skill not ready: epistemic-gate",
-        "required skill not ready: quality-gate"
-      ]
+      "reasons": []
     },
     {
       "id": "code-upgrade-pipeline",
@@ -25831,429 +25822,319 @@
     {
       "id": "apex-accelerated-compute-mesh",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: hardware-accelerated-inference"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-adaptive-operations",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-aerospace-sim",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-agent-architect-core",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: autonomous-agent-foundry"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-always-on-core",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: guarded-automation-loop",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-architectural-evolution-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: architectural-refactoring-engine"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-autonomous-agent-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: autonomous-agent-foundry"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-autonomous-software-engineering",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: closed-loop-code-repair",
-        "required combo not ready: architectural-refactoring-engine",
-        "required combo not ready: guarded-automation-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-backend-infrastructure-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: closed-loop-code-repair",
-        "required combo not ready: guarded-automation-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-capability-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: evidence-to-evolution-loop",
-        "required combo not ready: skill-forge"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-casebuild-mesh",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: forensic-docket-intelligence",
-        "required combo not ready: cross-cloud-memory-synthesis",
-        "required combo not ready: epistemic-verification-chain"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-cybersecurity-sentinel",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: secure-service-deployment"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-dev-fork-orchestrator",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-docgen-synthesis",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: architectural-refactoring-engine"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-fleet-harmonizer",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-forensic-litigation-sentinel",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: forensic-docket-intelligence"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-genius-mastery",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-growth-intelligence",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-interactive-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: closed-loop-code-repair"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-legal-forensic-powerhouse",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: guarded-automation-loop",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-legal-warfare",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-max-research-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: recon-and-map",
-        "required combo not ready: cross-cloud-memory-synthesis",
-        "required combo not ready: epistemic-verification-chain",
-        "required combo not ready: max-research-spiral",
-        "required combo not ready: diamond-research-topography",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-omniversal-memory",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-orchestrator-mesh",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-polyglot-rosetta",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-safe-change-orchestrator",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-secure-cloud-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: secure-service-deployment"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-self-healing-forge",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-sovereign-runtime",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-vercel-web-foundry",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-voice-forensics",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-web-build-system",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "far-away-party",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-strong-smart-execution-engine",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: strong-smart-execution-stack",
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: epistemic-verification-chain",
-        "required combo not ready: pipeline-orchestration"
-      ]
+      "reasons": []
     },
     {
       "id": "apex-repository-continuity-steward",
       "layer": "mega",
-      "ready": false,
-      "state": "mission_candidate",
+      "ready": true,
+      "state": "mission_contract_ready",
       "execution_scope": "read_only",
       "declared_maturity": "candidate",
-      "reasons": [
-        "required combo not ready: long-horizon-core",
-        "required combo not ready: signal-to-decision-loop"
-      ]
+      "reasons": []
     }
   ],
-  "pass": 2,
-  "maturity_changes": {
-    "skills.json": 7,
-    "combo-skills.json": 29,
-    "mega-skills.json": 34
-  }
+  "pass": 1,
+  "pass1_adapter_repairs": 0
 }

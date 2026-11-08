@@ -1,0 +1,80 @@
+# Epistemic Spectrum — formal L0-L6 tier definitions with proof requirements
+# Canonical reference: docs/EPISTEMIC_CONTRACT.md (repo root)
+# Executable owner: scripts/tier_evaluator.py (EpistemicTier enum + TIER_CHECKS registry)
+# This resource is consumed as documentation of the ladder the evaluator enforces.
+version: '1.0.0'
+
+tiers:
+  - id: L0
+    name: presence
+    question: Does the artifact exist at all?
+    repo_meaning: File or route exists on disk; no behavior is assumed
+    proof_required:
+      - path exists and is readable
+      - byte size recorded
+    authorizes: observation and reporting only
+    mutation_authorized: false
+
+  - id: L1
+    name: structure
+    question: Is the artifact well-formed?
+    repo_meaning: Static AST, signatures, or schema verified
+    proof_required:
+      - for Python source, AST parses and function/class inventory is recorded
+      - for JSON or YAML, the document parses without error
+    authorizes: structural reasoning; no execution claims
+    mutation_authorized: false
+
+  - id: L2
+    name: behavior
+    question: Does it actually work as claimed?
+    repo_meaning: Unit tests pass, SHA-256 verified, compilers green
+    proof_required:
+      - sibling test suite under tests/ passes
+      - deterministic SHA-256 digest recorded for the artifact
+    authorizes: local execution and mutation claims (BASELINE ACTION AUTHORIZATION)
+    mutation_authorized: true
+
+  - id: L3
+    name: backend
+    question: Do the live integrations agree?
+    repo_meaning: Live DB integration, RPC mesh, multi-store sync verified
+    proof_required:
+      - connector configuration present
+      - live connection test or provider readback receipt
+    authorizes: claims about synchronized multi-system state
+    mutation_authorized: true
+
+  - id: L4
+    name: telemetry
+    question: Does it stay healthy over time?
+    repo_meaning: Runtime latency, profiling, leak checks, automated repair confirmed
+    proof_required:
+      - telemetry or profiling configuration detected
+      - repair integration evidence over repeated runs
+    authorizes: operational-health and self-healing claims
+    mutation_authorized: true
+
+  - id: L5
+    name: swarm
+    question: Do independent reviewers agree?
+    repo_meaning: Four-phase dialectic multi-agent consensus reached
+    proof_required:
+      - parallel independent passes agree on the deliverable
+      - second-source confirmation recorded for court or enterprise artifacts
+    authorizes: enterprise and court-facing deliverables (ENTERPRISE STANDARD)
+    mutation_authorized: true
+
+  - id: L6
+    name: sovereign
+    question: Does it track upstream with zero drift?
+    repo_meaning: Upstream tracking with no drift from source of record
+    proof_required:
+      - bridge-manifest digests equal live upstream digests
+      - drift check passes across runs
+    authorizes: autonomous operation within the tracked boundary
+    mutation_authorized: true
+
+law_of_action: >-
+  Nothing below L2 authorizes a mutation claim; enterprise or court-facing
+  deliverables require L5. Gaps are recorded, never silently dropped.

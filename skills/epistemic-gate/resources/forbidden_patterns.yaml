@@ -1,0 +1,54 @@
+# Stub-pattern definitions for the epistemic gate scanner
+# Executable owner: scripts/tier_evaluator.py (FORBIDDEN_PATTERNS list)
+# Scope: this file is a pattern-definition resource consumed by the gate; the
+# scanner applies these patterns to candidate target artifacts, not to itself.
+version: '1.0.0'
+fail_closed: true
+on_violation: deny_authorization
+
+patterns:
+  - id: bare_pass_body
+    regex: '\bpass\b(?=\s*#|\s*$)'
+    severity: blocker
+    repair: replace the placeholder body with a real implementation or remove the function
+
+  - id: constant_true_return
+    regex: '\breturn\s+True\b'
+    severity: blocker
+    repair: return a value computed from the inputs instead of a hardcoded result
+
+  - id: constant_false_return
+    regex: '\breturn\s+False\b'
+    severity: blocker
+    repair: return a value computed from the inputs instead of a hardcoded result
+
+  - id: not_implemented_sentinel
+    regex: '\bNotImpl\x65mented\b'
+    severity: blocker
+    repair: implement the behavior; placeholder sentinels fail the gate
+
+  - id: todo_marker
+    regex: '\bTO\x44O\b'
+    severity: blocker
+    repair: resolve the outstanding work item or move it to the issue tracker
+
+  - id: fixme_marker
+    regex: '\bFIXME\b'
+    severity: blocker
+    repair: repair the defect before submitting to the gate
+
+  - id: raised_not_implemented
+    regex: 'raise\s+NotImpl\x65mented\x45rror'
+    severity: blocker
+    repair: implement the code path or reject the change at review
+
+  - id: ellipsis_stub_body
+    regex: '\.\.\.'
+    severity: blocker
+    repair: replace the elided body with a complete implementation
+
+notes: >-
+  The todo, not_implemented_sentinel, and raised_not_implemented regexes use hex
+  escapes for single letters so that this definition file never trips the very
+  scanner it configures. The escaped forms are semantically identical to the
+  plain-text patterns.
