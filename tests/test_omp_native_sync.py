@@ -217,6 +217,17 @@ class OmpNativeSyncTests(unittest.TestCase):
         result = self.run_sync(apply=False)
         self.assertEqual(result["items"][0]["status"], "planned")
 
+    def test_apple_desktop_and_ios_intelligence_is_source_linked_without_duplication(self):
+        apple = {
+            "desktop-commander-overview", "re-apple-bundles",
+            "swiftui-patterns", "swift-concurrency-6-2", "xcode-project-setup",
+            "mobile-design", "foundation-models-on-device", "ios-icon-gen",
+        }
+        ids = [name for layer in mod.OMP_POWER_SELECTION.values() for name in layer]
+        self.assertTrue(apple.issubset(ids))
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(len(ids), 38)
+
     def test_default_power_coalition_is_not_arbitrarily_skill_capped(self):
         ids = [x for layer in mod.OMP_POWER_SELECTION.values() for x in layer]
         self.assertGreaterEqual(len(ids), 20)
