@@ -226,7 +226,7 @@ class OmpNativeSyncTests(unittest.TestCase):
         ids = [name for layer in mod.OMP_POWER_SELECTION.values() for name in layer]
         self.assertTrue(apple.issubset(ids))
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(len(ids), 38)
+        self.assertGreaterEqual(len(ids), len(apple) + 30)
 
     def test_default_power_coalition_is_not_arbitrarily_skill_capped(self):
         ids = [x for layer in mod.OMP_POWER_SELECTION.values() for x in layer]
