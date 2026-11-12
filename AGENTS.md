@@ -36,3 +36,16 @@ Foundry, registry, and execution kernel for APEX skills, compounding combo-skill
 - **Career Control Plane:** `missions/anthropic-applied-ai/` driven by `scripts/career_evidence_backbone.py` and `scripts/career_action_queue.py`. Keep target freshness `FRESH` and substantiate open hard gates with verified evidence.
 - **Operator Deliverable Rule:** When the Operator requests a deliverable or support task (`requested_finished_deliverable: True` or `explicitly_requested_support: True`), the kernel must dispatch and finalize upon verified receipt. Never reject requested deliverables as "support-only" or "not substantive".
 - **Registry Validation:** `scripts/readiness_assay.py` and `registry/` files must remain structurally sound and free of unexecuted stubs claiming false verification.
+
+# 9-Cycle Process Doctrine — Mega-Skills Foundry
+
+Enforced from `/root/workspace/AGENTS.md`. Same 9-cycle structure:
+
+1. Analyze → 2. Contemplate → 3. Research/Study → 4. Plan → 5. Execute → 6. Test → 7. Fix → 8. Deploy → 9. Reward
+
+Epistemic ladder (E0–E4) enforced. Advisor in-turn verification. Planner ladder (power→planner→worker). Orchestration commands same set.
+
+Additional: Skill compounding and routing evolution via `.learning_ledger.json`. The learning ledger plugs into existing structures: `pipeline-create.py main()` writes the ledger row after every node, and before every node, `learned_routing()` reads the ledger and sets `model_class` via `learned_routing()` — overriding static defaults.
+
+Mode `make-it-heavy` (thorough ops) vs `lite` (scout, research, reversible edits) same as other repos.
+
