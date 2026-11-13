@@ -72,6 +72,19 @@ python tests/test_recursive_skill_hierarchy.py -v
 
 The generated registry stores 35 Mega roots, canonical Compound adjacency, typed leaves, shared-node lineage, and canonical artifact/validation field paths. Any Mega pyramid can therefore be expanded deterministically to real Skill nodes without duplicating the underlying Skill contracts.
 
+## Evidence-aware selection
+
+`scripts/evidence_capability_selector.py` re-ranks the existing lexical resolver with `registry/skill-readiness.json`. It does not install skills and does not replace the fixed 30-skill OMP coalition.
+
+```bash
+python scripts/evidence_capability_selector.py "autonomous software engineering" --limit 5
+python -m unittest tests.test_evidence_capability_selector -v
+```
+
+On 10 pre-registered queries against main `fa5e5efe8993c52e7095d1d118ad3a735b2381f9`: evidence selection matched lexical gold hits (10/10), beat the fixed coalition (4/10), injected no unverified skills (lexical injected 2), and returned 4.2 skills instead of 30. That is a registry comparison, not a host activation or a coding-benchmark pass-rate claim.
+
+Capability docs, not a claim that the rest of this repository implements Apex Forge: [`docs/evidence-capability-selector/`](docs/evidence-capability-selector/README.md).
+
 ## Public projection
 
 Job Application Helix projects a recruiter-facing view at:

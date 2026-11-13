@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "objective": "Task-conditioned skill selection using readiness evidence, compared with lexical ranking and the fixed OMP coalition.",
+  "owning_linear_issue": "HI-826",
+  "repository": "GlacierEQ/mega-skills",
+  "baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
+  "introducing_commit": null,
+  "weights_locked_before_live_run": true,
+  "constants": {
+    "activation_floor": 50,
+    "lexical_cap": 30,
+    "state_benefit": {
+      "behavior_verified": 80,
+      "composition_ready": 55,
+      "mission_contract_ready": 55,
+      "instruction_ready": 35,
+      "implementation_unverified": 8
+    }
+  },
+  "tests": {
+    "command": "python3 -m unittest tests.test_evidence_capability_selector -v",
+    "cwd": "repository root",
+    "result": "10 tests, 0 failures, exit 0, Python 3.10, 2026-11-13"
+  },
+  "live_comparison": {
+    "environment": "registry JSON downloaded from GlacierEQ/mega-skills main at baseline_commit; skills/ tree absent so filesystem source checks were not applied; capability_runtime.py was the upstream file",
+    "tasks": 10,
+    "limit": 5,
+    "evidence_gold_hits": 10,
+    "lexical_gold_hits": 10,
+    "coalition_gold_hits": 4,
+    "evidence_mean_selected": 4.2,
+    "lexical_mean_selected": 4.3,
+    "coalition_selected": 30,
+    "evidence_forbidden_total": 0,
+    "lexical_forbidden_total": 2,
+    "coalition_forbidden_total": 0,
+    "lexical_forbidden_ids": ["story-lifecycle", "diagnosing-bugs"],
+    "empty_relevant_tasks_count_as_vacuous_hits": ["trap"],
+    "top1_displacement": [
+      {
+        "query": "verification before completion",
+        "evidence_top": "re-reconstruction-verification",
+        "gold_still_inside_k": "verification-before-completion"
+      },
+      {
+        "query": "test driven development",
+        "evidence_top": "mega-skills-test-runner",
+        "gold_still_inside_k": "test-driven-development"
+      }
+    ]
+  },
+  "not_proven": [
+    "host OMP or legacy runtime activation",
+    "SWE-bench or agent pass-rate lift",
+    "merge to main",
+    "deployment"
+  ],
+  "tracks": {
+    "A_fixed_coalition_and_lexical": "measured as baseline",
+    "B_evidence_rerank": "implemented",
+    "C_embedding_retrieval": "not implemented"
+  }
+}
