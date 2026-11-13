@@ -4,7 +4,7 @@
   "owning_linear_issue": "HI-826",
   "repository": "GlacierEQ/mega-skills",
   "baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
-  "introducing_commit": null,
+  "introducing_commit": "b99dad2a239ffcc3a06b1665cc480a501c931d60",
   "weights_locked_before_live_run": true,
   "constants": {
     "activation_floor": 50,

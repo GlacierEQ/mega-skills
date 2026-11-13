@@ -3,6 +3,7 @@
 Repository: GlacierEQ/mega-skills
 Documentation revision: 1
 Evidence: `ops/receipts/evidence-capability-selector.json`
+Implementation commit: b99dad2a239ffcc3a06b1665cc480a501c931d60
 
 ## Ownership
 

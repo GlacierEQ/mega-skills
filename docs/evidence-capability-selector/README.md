@@ -3,7 +3,7 @@
 Repository: GlacierEQ/mega-skills
 Module: `scripts/evidence_capability_selector.py`
 Documentation revision: 1
-Canonical commit: recorded in `ops/receipts/evidence-capability-selector.json` after the introducing commit
+Canonical commit: b99dad2a239ffcc3a06b1665cc480a501c931d60
 Evidence: `ops/receipts/evidence-capability-selector.json`
 
 Select a small set of Mega-Skills for one task using the readiness assay. This does not install skills into OMP, Codex, or any other host.

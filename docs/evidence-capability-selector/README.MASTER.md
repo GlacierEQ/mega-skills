@@ -5,7 +5,7 @@ Module: `scripts/evidence_capability_selector.py`
 Baseline preserved: `scripts/capability_runtime.py` (unchanged), `OMP_POWER_SELECTION` in `scripts/sync_runtime_skills.py` (unchanged)
 Documentation revision: 1
 Evidence: `ops/receipts/evidence-capability-selector.json`
-Canonical commit: see that receipt
+Canonical commit: b99dad2a239ffcc3a06b1665cc480a501c931d60
 
 ## Problem
 
