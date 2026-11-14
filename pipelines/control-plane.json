@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "control-plane",
   "display_name": "Control Plane",
-  "description": "Session continuity, adaptive operations, guarded always-on execution, and proof-bound runtime amplification.",
+  "description": "Session continuity, Genius-Mastery truth and entity forging, contradiction-preserving multi-agent orchestration, adaptive operations, guarded execution, and proof-bound runtime amplification.",
   "family": "control-plane",
   "span": [
     "inception",
@@ -21,7 +21,8 @@
     "apex-adaptive-operations",
     "apex-sovereign-runtime",
     "far-away-party",
-    "apex-genius-mastery"
+    "apex-genius-mastery",
+    "apex-agent-architect-core"
   ],
   "required_combos": [
     "long-horizon-core",
@@ -29,7 +30,8 @@
     "pipeline-orchestration",
     "genius-epistemic-engineering",
     "genius-entity-forge",
-    "epistemic-verification-chain"
+    "epistemic-verification-chain",
+    "multi-agent-orchestration-mesh"
   ],
   "deploy_mode": "approval_packet_only",
   "max_parallel": 1,

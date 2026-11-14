@@ -1,4 +1,4 @@
-import json, importlib.util, shutil, tempfile, unittest
+import json, importlib.util, shutil, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location("readiness_assay",ROOT/"scripts/readiness_assay.py")
@@ -49,4 +49,10 @@ class ReadinessAssayTests(unittest.TestCase):
         self.assertIn(harness,state["structural_tests"])
         self.assertNotIn(harness,state["behavioral_tests"])
         self.assertEqual(state["state"],"implementation_unverified")
+    def test_inspection_file_lists_are_deterministically_sorted(self):
+        entry=next(e for e in json.loads((ROOT/"registry/skills.json").read_text())["entries"] if e["id"]=="mega-xai-colossus-2")
+        state=MOD.inspect_skill(entry)
+        for field in ("real_implementation_files","generic_adapter_files","scaffold_files","stub_files","behavioral_tests","structural_tests"):
+            self.assertEqual(state[field], sorted(state[field]), field)
+
 if __name__=="__main__": unittest.main()

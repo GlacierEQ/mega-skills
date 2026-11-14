@@ -4292,10 +4292,10 @@
       "entrypoint": "combo-skills/multi-agent-orchestration-mesh/COMBO.md",
       "selection": {
         "use_when": [
-          "Multi-agent team coordination, tool building, dynamic routing, and dialectic consensus are required."
+          "A mission needs multiple specialist agents, bounded parallel fan-out, dynamic routing, and evidence-weighted synthesis."
         ],
         "do_not_use_when": [
-          "Single-threaded atomic scripts without agent collaboration are running."
+          "A single bounded worker can complete the mission without losing coverage or independent challenge."
         ]
       },
       "members": [
@@ -4314,7 +4314,7 @@
         {
           "id": "chunk-power",
           "kind": "skill",
-          "role": "Execute sequential thinking, branch exploration, and synthesis gates.",
+          "role": "Run independent challenger branches, preserve contradictions and minority reports, and synthesize only evidence-supported convergence.",
           "required": true
         }
       ],
@@ -4352,7 +4352,7 @@
             "produces": [
               "SWARM_CONSENSUS_RECORD.md"
             ],
-            "validation": "Synthesis gate verifies 100% alignment across agents."
+            "validation": "Unresolved dissent is preserved explicitly; convergence is recorded only where evidence supports it."
           }
         ]
       },
@@ -4382,18 +4382,21 @@
           }
         ],
         "evidence_requirements": [
-          "Agent topology graph",
-          "Tool schema definitions",
-          "Synthesis hashes"
+          "Every lane result carries provenance, evidence, counterevidence, confidence, and a receipt.",
+          "Synthesis records both evidence-supported convergence and surviving contradictions."
         ],
         "risk_boundaries": [
-          "No unbounded recursive agent spawning"
+          "Never force consensus, average away contradiction, or overwrite minority evidence.",
+          "Bound fan-out by mission budget, dependency topology, and supervisor depth.",
+          "Do not promote worker output to mission truth before synthesis and verification."
         ],
         "quality_gates": [
-          "Zero tool execution runtime failures"
+          "No unresolved contradiction is silently discarded.",
+          "Every promoted conclusion cites the lane evidence that justifies promotion.",
+          "Unresolved dissent includes an explicit next probe or blocking dependency."
         ],
         "state_updates": [
-          "EVIDENCE.md update with consensus hash"
+          "Persist lane receipts, contradiction set, convergence set, unresolved dissent, and continuation frontier."
         ]
       },
       "compounding": {
@@ -4401,7 +4404,7 @@
           "Agent topology",
           "Tool compilation contracts"
         ],
-        "adds": "Dialectic swarm consensus and sequential synthesis",
+        "adds": "Bounded multi-agent topology plus contradiction-preserving, evidence-weighted synthesis across independent specialist lanes.",
         "compound_artifact": "SWARM_CONSENSUS_RECORD.md",
         "next_layer_ready_when": [
           "All agent steps complete and synthesis gate is signed"
