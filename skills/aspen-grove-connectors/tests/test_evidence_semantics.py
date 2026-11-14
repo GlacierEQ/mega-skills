@@ -113,6 +113,19 @@ class EvidenceSemanticsTests(unittest.TestCase):
         expected = {"gmail", "google_drive", "slack", "memoryplugin", "mem0", "e2b"}
         self.assertTrue(expected.issubset(set(mesh.AspenGroveMesh.SERVICES)))
 
+    def test_mock_cli_is_not_provider_ready(self):
+        from contextlib import redirect_stdout
+        import io
+        import json
+
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(mesh.main(force_mock=True), 0)
+        result = json.loads(output.getvalue())
+        self.assertEqual(result["status"], "simulated_not_provider_ready")
+        self.assertFalse(result["runnable"])
+        self.assertEqual(result["evidence_state"], "SIMULATED")
+
     def test_mirrored_entrypoints_match_canonical_source(self):
         canonical = (ROOT / "skill.py").read_text(encoding="utf-8")
         for relative in ("scripts/connector_mesh.py", "scripts/run.py", "scripts/this_skill.py"):
