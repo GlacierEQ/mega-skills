@@ -333,6 +333,44 @@
       ],
       "runner": "scripts/run_deep_work_pipeline.py",
       "stage_runner": "scripts/strong_smart_stage.py"
+    },
+    {
+      "id": "telecommunications-evolution",
+      "display_name": "APEX Telecommunications Evolution",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "pipelines/telecommunications-evolution.json",
+      "family": "telecommunications",
+      "span": [
+        "inception",
+        "readiness",
+        "recon",
+        "design",
+        "build",
+        "verify",
+        "package",
+        "deploy-gate",
+        "handoff",
+        "evolve"
+      ],
+      "mega_roots": [
+        "apex-telecommunications",
+        "apex-genius-mastery",
+        "apex-safe-change-orchestrator",
+        "apex-architectural-evolution-engine"
+      ],
+      "required_combos": [
+        "long-horizon-core",
+        "capability-readiness",
+        "pipeline-orchestration",
+        "telecommunications-mission-orchestration",
+        "genius-epistemic-engineering",
+        "epistemic-verification-chain",
+        "polyglot-systems-verification"
+      ],
+      "deploy_mode": "approval_packet_only",
+      "runner": "scripts/run_deep_work_pipeline.py"
     }
   ]
 }
