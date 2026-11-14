@@ -2,14 +2,14 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 1304,
+    "skills": 1308,
     "combos": 42,
     "megas": 35,
-    "ready_total": 1271,
+    "ready_total": 1275,
     "not_ready_total": 110,
     "skill_states": {
       "instruction_ready": 1090,
-      "behavior_verified": 105,
+      "behavior_verified": 109,
       "implementation_unverified": 106,
       "contract_incomplete": 3
     },
@@ -25594,6 +25594,86 @@
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "library-quality-audit",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/library-quality-audit/skill.py",
+        "skills/library-quality-audit/scripts/purpose.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/library-quality-audit/tests/test_library_quality_audit.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "link-admission",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/link-admission/skill.py",
+        "skills/link-admission/scripts/purpose.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/link-admission/tests/test_link_admission.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "machine-binding",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/machine-binding/skill.py",
+        "skills/machine-binding/scripts/purpose.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/machine-binding/tests/test_machine_binding.py"
+      ],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "staleness-assess",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/staleness-assess/skill.py",
+        "skills/staleness-assess/scripts/purpose.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "skills/staleness-assess/tests/test_staleness_assess.py"
+      ],
       "structural_tests": [],
       "reasons": []
     }

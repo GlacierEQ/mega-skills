@@ -200,8 +200,92 @@ def handoff(op: str, p: dict[str, Any]) -> dict[str, Any]:
         "\n\n## Assumptions\n"+bullets(x["assumptions"])+"\n\n## Failed Approaches\n"+bullets(x["failed_approaches"])+"\n")
     return {"valid":not errors,"errors":errors,"handoff":x,"artifact":"HANDOFF.md","markdown":md if not errors else ""}
 
+def link_admission(op: str, p: dict[str, Any]) -> dict[str, Any]:
+    cands=p.get("candidates")
+    if cands is None:
+        cands=[{"url":str(p.get("url","")).strip(),"authority":str(p.get("authority","")).strip(),"relevance":str(p.get("relevance","")).strip()}]
+    admitted=[];rejected=[]
+    for i,v in enumerate(as_list(cands),1):
+        d=dict(v) if isinstance(v,dict) else {"url":str(v)}
+        d.setdefault("id",f"L-{i:02d}")
+        for k in ("url","authority","relevance"): d[k]=str(d.get(k,"")).strip()
+        errs=[k+" is required" for k in ("url","authority","relevance") if not d[k]]
+        d["admitted"]=not errs
+        (admitted if not errs else rejected).append(d)
+    if op=="authority_classifier": return {"admitted":[{k:a[k] for k in ("id","url","authority")} for a in admitted]}
+    if op=="relevance_scorer": return {"scored":[{k:a[k] for k in ("id","url","relevance")} for a in admitted]}
+    if op=="admission_recorder":
+        lines=["# LINK ADMISSION","", "Admitted: %d | Rejected: %d"%(len(admitted),len(rejected)),"","## Admitted"]
+        lines+=["- [%s] %s — %s — %s"%(a["id"],a["url"],a["authority"],a["relevance"]) for a in admitted] or ["- None"]
+        lines+=["","## Rejected"]+["- [%s] %s"%(r["id"],r.get("url","")) for r in rejected] or ["- None"]
+        return {"admitted":admitted,"rejected":rejected,"artifact":"LINK_ADMISSION.md","markdown":"\n".join(lines)+"\n"}
+    return {"admitted":admitted,"rejected":rejected}
+
+def machine_binding(op: str, p: dict[str, Any]) -> dict[str, Any]:
+    links=p.get("links") or p.get("admitted") or []
+    profile=p.get("device_profile") or {}
+    bound=[];unbound=[]
+    for i,v in enumerate(as_list(links),1):
+        d=dict(v) if isinstance(v,dict) else {"url":str(v)}
+        d.setdefault("id",f"B-{i:02d}")
+        d["bound_property"]=str(d.get("bound_property","")).strip()
+        ok=bool(d["bound_property"]) and (not isinstance(profile,dict) or not profile or d["bound_property"] in profile)
+        d["bound"]=ok
+        (bound if ok else unbound).append(d)
+    if op=="property_resolver": return {"bound":[{"id":b["id"],"bound_property":b["bound_property"]} for b in bound]}
+    if op=="scope_comparator": return {"profile_keys":sorted(profile.keys()) if isinstance(profile,dict) else [],"bound_count":len(bound),"unbound_count":len(unbound)}
+    if op=="binding_recorder":
+        lines=["# MACHINE BINDING","", "Bound: %d | Unbound: %d"%(len(bound),len(unbound)),""]
+        lines+=["- [%s] %s → %s"%(b["id"],b.get("url",""),b["bound_property"]) for b in bound] or ["- None bound"]
+        lines+=["","## Unbound"]+["- [%s] %s — no observed device property"%(u["id"],u.get("url","")) for u in unbound] or ["- None"]
+        return {"bound":bound,"unbound":unbound,"artifact":"MACHINE_BINDING.md","markdown":"\n".join(lines)+"\n"}
+    return {"bound":bound,"unbound":unbound}
+
+def staleness_assess(op: str, p: dict[str, Any]) -> dict[str, Any]:
+    srcs=p.get("sources") or p.get("bound") or []
+    assessed=[];unpinned=[]
+    for i,v in enumerate(as_list(srcs),1):
+        d=dict(v) if isinstance(v,dict) else {"url":str(v)}
+        d.setdefault("id",f"S-{i:02d}")
+        for k in ("resolved_at","version"): d[k]=str(d.get(k,"")).strip()
+        errs=[k+" is required" for k in ("resolved_at","version") if not d[k]]
+        d["current"]=not errs
+        (assessed if not errs else unpinned).append(d)
+    if op=="version_pinner": return {"pinned":[{"id":a["id"],"version":a["version"]} for a in assessed]}
+    if op=="date_checker": return {"unpinned":[s["id"] for s in unpinned]}
+    if op=="staleness_recorder":
+        lines=["# LINK STALENESS","", "Current: %d | Unpinned: %d"%(len(assessed),len(unpinned)),"","## Current"]
+        lines+=["- [%s] %s — %s @ %s"%(a["id"],a.get("url",""),a["version"],a["resolved_at"]) for a in assessed] or ["- None"]
+        lines+=["","## Unpinned"]+["- [%s] %s"%(u["id"],u.get("url","")) for u in unpinned] or ["- None"]
+        return {"assessed":assessed,"unpinned":unpinned,"artifact":"LINK_STALENESS.md","markdown":"\n".join(lines)+"\n"}
+    return {"assessed":assessed,"unpinned":unpinned}
+
+def library_quality_audit(op: str, p: dict[str, Any]) -> dict[str, Any]:
+    claims=p.get("claims") or []
+    known=set(str(x) for x in as_list(p.get("sources")))
+    known|={str((s or {}).get("id","")) for s in as_list(p.get("assessed")) if isinstance(s,dict)}
+    known|={str((s or {}).get("id","")) for s in as_list(p.get("bound")) if isinstance(s,dict)}
+    rows=[];unsupported=[]
+    for i,v in enumerate(as_list(claims),1):
+        d=dict(v) if isinstance(v,dict) else {"claim":str(v)}
+        d.setdefault("id",f"C-{i:02d}")
+        d["source_id"]=str(d.get("source_id","")).strip()
+        d["supported"]=bool(d["source_id"]) and d["source_id"] in known
+        if not d["supported"]: unsupported.append(d)
+        rows.append(d)
+    state="fail" if unsupported else "pass"
+    if op=="claim_mapper": return {"claims":rows,"unsupported":[c["id"] for c in unsupported]}
+    if op=="source_verifier": return {"known_source_ids":sorted(x for x in known if x)}
+    if op=="unresolved_claim_lister": return {"unsupported":[{"id":c["id"],"claim":c.get("claim","")} for c in unsupported]}
+    lines=["# MACBOOK AIR LINK AUDIT","","Decision: "+state.upper(),"","## Claims"]
+    lines+=["- [%s] %s — %s"%(c["id"],"SUPPORTED" if c["supported"] else "UNSUPPORTED",c.get("claim","")) for c in rows] or ["- None"]
+    lines+=["","## Unsupported claims"]+["- [%s] %s"%(c["id"],c.get("claim","")) for c in unsupported] or ["- None"]
+    return {"decision":state,"claims":rows,"unsupported":unsupported,"artifact":"MACBOOK_AIR_LINK_AUDIT.md","markdown":"\n".join(lines)+"\n"}
+
 RUNNERS={"mission-contract":mission,"roadmap-builder":roadmap,"evidence-register":evidence,"context-capsule":context,
-         "work-packet":packet,"quality-gate":quality,"handoff-record":handoff}
+         "work-packet":packet,"quality-gate":quality,"handoff-record":handoff,
+         "link-admission":link_admission,"machine-binding":machine_binding,
+         "staleness-assess":staleness_assess,"library-quality-audit":library_quality_audit}
 
 def run(skill: str, operation: str, payload: dict[str, Any]) -> dict[str, Any]:
     if skill not in RUNNERS:

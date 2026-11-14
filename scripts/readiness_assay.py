@@ -185,8 +185,8 @@ def inspect_skill(entry: dict[str, Any]) -> dict[str, Any]:
     return {
         "id": entry["id"], "layer":"skill", "ready":ready, "state":state,
         "declared_maturity":entry.get("maturity"), "instruction_ready":instruction_ok,
-        "real_implementation_files":real_impl, "generic_adapter_files":adapters,
-        "scaffold_files":scaffolds, "stub_files":stubs, "behavioral_tests":behavioral, "structural_tests":structural,
+        "real_implementation_files":sorted(real_impl), "generic_adapter_files":sorted(adapters),
+        "scaffold_files":sorted(scaffolds), "stub_files":sorted(stubs), "behavioral_tests":sorted(behavioral), "structural_tests":sorted(structural),
         "reasons":reasons
     }
 

@@ -72,7 +72,8 @@
         "apex-adaptive-operations",
         "apex-sovereign-runtime",
         "far-away-party",
-        "apex-genius-mastery"
+        "apex-genius-mastery",
+        "apex-agent-architect-core"
       ],
       "required_combos": [
         "long-horizon-core",
@@ -80,7 +81,8 @@
         "pipeline-orchestration",
         "genius-epistemic-engineering",
         "genius-entity-forge",
-        "epistemic-verification-chain"
+        "epistemic-verification-chain",
+        "multi-agent-orchestration-mesh"
       ],
       "deploy_mode": "approval_packet_only",
       "runner": "scripts/run_deep_work_pipeline.py",

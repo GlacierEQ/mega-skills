@@ -79,13 +79,14 @@ FAMILIES = {
     "control-plane": {
         "display_name": "Control Plane",
         "family": "control-plane",
-        "description": "Session continuity, adaptive operations, guarded always-on execution, and proof-bound runtime amplification.",
+        "description": "Session continuity, Genius-Mastery truth and entity forging, contradiction-preserving multi-agent orchestration, adaptive operations, guarded execution, and proof-bound runtime amplification.",
         "mega_roots": [
             "apex-always-on-core",
             "apex-adaptive-operations",
             "apex-sovereign-runtime",
             "far-away-party",
             "apex-genius-mastery",
+            "apex-agent-architect-core",
         ],
         "required_combos": [
             "long-horizon-core",
@@ -94,6 +95,7 @@ FAMILIES = {
             "genius-epistemic-engineering",
             "genius-entity-forge",
             "epistemic-verification-chain",
+            "multi-agent-orchestration-mesh",
         ],
         "stage_runner": "scripts/runtime_amplified_stage.py",
         "runtime_profile": "control-plane-max-runtime-v1",
