@@ -1,0 +1,126 @@
+"""Source-state decisions are pure; no sending or provider writes in these tests."""
+import importlib.util
+from pathlib import Path
+import unittest
+
+MODULE = Path(__file__).resolve().parents[1] / 'skills' / 'linear-frontier-deduplicator' / 'scripts' / 'decision_gate.py'
+spec = importlib.util.spec_from_file_location('decision_gate', MODULE)
+gate = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(gate)
+
+
+class CorrespondenceDecisionTests(unittest.TestCase):
+    def invoke(self, events=None, expected='cherry@example.com', actual='cherry@example.com', authorized=False, key='case-1|custodian-1|records-request', coverage=True):
+        return gate.decide_correspondence(action_key=key, expected_sender=expected, authenticated_sender=actual, approved=authorized, events=events or [], coverage_verified=coverage)
+
+    def test_whitespace_action_key_blocks(self):
+        self.assertEqual(self.invoke(key='  ', authorized=True)['decision'], 'BLOCK_IDENTITY_UNRESOLVED')
+
+    def test_unverified_coverage_blocks_even_approved_new_action(self):
+        self.assertEqual(self.invoke(authorized=True, coverage=False)['decision'], 'NEEDS_SOURCE_COVERAGE')
+
+    def test_unverified_coverage_blocks_even_approved_existing_action(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'DRAFT'}], authorized=True, coverage=False)['decision'], 'NEEDS_SOURCE_COVERAGE')
+
+    def test_pending_appeal_is_not_replayed(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'APPEALED','observed_at':'2026-10-19T00:00:00Z'}], authorized=True)['decision'], 'WAITING_APPEAL')
+
+    def test_wrong_mailbox_blocks_even_with_explicit_approval(self):
+        self.assertEqual(self.invoke(actual='casey@example.com', authorized=True)['decision'], 'BLOCK_WRONG_SENDER')
+
+    def test_missing_sender_policy_blocks(self):
+        self.assertEqual(self.invoke(expected='', authorized=True)['decision'], 'BLOCK_IDENTITY_UNRESOLVED')
+
+    def test_missing_approval_yields_draft_only(self):
+        self.assertEqual(self.invoke()['decision'], 'DRAFT_ONLY')
+
+    def test_explicit_approval_of_new_action_allows_one_dispatch(self):
+        self.assertEqual(self.invoke(authorized=True)['decision'], 'READY_FOR_DISPATCH')
+
+    def test_draft_is_not_sent(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'DRAFT','observed_at':'2026-10-19T00:00:00Z'}], authorized=True)['decision'], 'READY_FOR_DISPATCH')
+
+    def test_already_sent_suppresses_repeat(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'SENT','observed_at':'2026-10-19T00:00:00Z'}], authorized=True)['decision'], 'WAITING_EXTERNAL')
+
+    def test_acknowledged_suppresses_repeat(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'ACKNOWLEDGED','observed_at':'2026-10-19T00:00:00Z'}], authorized=True)['decision'], 'WAITING_EXTERNAL')
+
+    def test_receipt_is_not_relief(self):
+        o=self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'ACKNOWLEDGED','observed_at':'2026-10-19T00:00:00Z'}])
+        self.assertFalse(o['outcome_verified'])
+
+    def test_written_denial_goes_to_review(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'DENIED','observed_at':'2026-10-19T00:00:00Z'}])['decision'], 'REVIEW_ADVERSE_DETERMINATION')
+
+    def test_partial_production_needs_reconciliation(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'PARTIAL','observed_at':'2026-10-19T00:00:00Z'}])['decision'], 'RECONCILE_PARTIAL')
+
+    def test_full_production_requires_verification(self):
+        o=self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'PRODUCED','observed_at':'2026-10-19T00:00:00Z'}])
+        self.assertEqual(o['decision'],'VERIFY_PRODUCTION')
+        self.assertFalse(o['outcome_verified'])
+
+    def test_ambiguous_delivery_never_retries(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'AMBIGUOUS_SEND'}], authorized=True)['decision'], 'NEEDS_PROOF')
+
+    def test_another_case_does_not_block_this_action(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'different-case|custodian-1|records-request','stage':'SENT'}], authorized=True)['decision'], 'READY_FOR_DISPATCH')
+
+    def test_specific_reply_overrides_old_draft(self):
+        ev=[{'action_key':'case-1|custodian-1|records-request','stage':'DRAFT', 'observed_at':'2026-10-11T00:00:00Z'}, {'action_key':'case-1|custodian-1|records-request','stage':'ACKNOWLEDGED','observed_at':'2026-10-16T00:00:00Z'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'WAITING_EXTERNAL')
+
+    def test_missing_time_does_not_overwrite_ordered_event(self):
+        ev=[{'action_key':'case-1|custodian-1|records-request','stage':'ACKNOWLEDGED','observed_at':'2026-10-16T00:00:00Z'}, {'action_key':'case-1|custodian-1|records-request','stage':'DRAFT'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
+
+    def test_mixed_timezone_offsets_do_not_resurrect_old_draft(self):
+        events = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'SENT', 'observed_at': '2026-10-19T19:27:00-07:00'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-20T01:00:00+00:00'},
+        ]
+        self.assertEqual(self.invoke(events=events, authorized=True)['decision'], 'WAITING_EXTERNAL')
+
+    def test_new_draft_after_sent_cannot_reauthorize_same_action(self):
+        ev = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'SENT', 'observed_at': '2026-10-11T00:00:00Z'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-19T00:00:00Z'},
+        ]
+        self.assertEqual(self.invoke(events=ev, authorized=True)['decision'], 'WAITING_EXTERNAL')
+
+    def test_later_draft_cannot_override_ambiguous_delivery(self):
+        ev = [
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'AMBIGUOUS_SEND', 'observed_at': '2026-10-11T00:00:00Z'},
+            {'action_key': 'case-1|custodian-1|records-request', 'stage': 'DRAFT', 'observed_at': '2026-10-19T00:00:00Z'},
+        ]
+        self.assertEqual(self.invoke(events=ev, authorized=True)['decision'], 'NEEDS_PROOF')
+
+    def test_single_invalid_timestamp_needs_proof(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'SENT','observed_at':'bad'}])['decision'], 'NEEDS_PROOF')
+
+    def test_earlier_equal_time_conflict_needs_proof(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'SENT','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'DENIED','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'DRAFT','observed_at':'2026-10-20T10:00:00Z'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
+
+    def test_ambiguous_delivery_cannot_be_silently_overwritten(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'AMBIGUOUS_SEND','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'SENT','observed_at':'2026-10-20T10:00:00Z'}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'NEEDS_PROOF')
+
+    def test_ambiguous_delivery_can_be_resolved_by_later_verified_receipt(self):
+        key='case-1|custodian-1|records-request'
+        ev=[{'action_key':key,'stage':'AMBIGUOUS_SEND','observed_at':'2026-10-19T10:00:00Z'},
+            {'action_key':key,'stage':'SENT','observed_at':'2026-10-20T10:00:00Z','resolution_verified':True}]
+        self.assertEqual(self.invoke(events=ev)['decision'], 'WAITING_EXTERNAL')
+
+    def test_unrecognized_stage_blocks(self):
+        self.assertEqual(self.invoke(events=[{'action_key':'case-1|custodian-1|records-request','stage':'HYPOTHETICAL_VICTORY'}])['decision'], 'NEEDS_PROOF')
+
+
+if __name__ == '__main__':
+    unittest.main()
