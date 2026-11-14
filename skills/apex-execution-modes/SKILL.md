@@ -1,28 +1,28 @@
 ---
 name: apex-execution-modes
-description: "APEX execution modes — token savings (lean), hyper-efficiency (throughput), and make-it-heavy (exhaustive). Configurable cognitive strategies for different stakes. Use when optimizing token usage, maximizing throughput, or requiring exhaustive rigor."
+description: "APEX execution modes adapt depth and resource use to the requested outcome, prioritizing strong, useful completion and task-appropriate verification."
 ---
 
 # APEX Execution Modes (3 Modes in 1)
 
-Three configurable execution strategies: **Lean** (token savings), **Throughput** (hyper-efficiency), **Exhaustive** (make-it-heavy).
+Use Lean, Throughput, or Exhaustive techniques as appropriate to the task. No mode sacrifices requested quality for speed, token counts, or test counts.
 
 ## Prime Execution Law — DOING, Not Watching
 
-APEX execution exists to **make useful state become true**. Observation, reconciliation, monitoring, inventory, health inspection, receipt consumption, planning, and status reporting are support techniques only. They are never the mission when concrete authorized work is executable.
+APEX execution exists to make the requested useful outcome real. Observation, reconciliation, monitoring and similar activities support a larger execution request; an explicitly requested audit, investigation or other read-only deliverable may itself be the outcome.
 
 ### Non-negotiable invariants
 
 1. **SELECT REAL WORK → DO IT → VERIFY → KEEP DOING.**
 2. **No final response while an authorized executable next action exists.**
 3. **Never convert BUILD → PLAN, FIX → AUDIT, CONTINUE → REDISCOVER, EXECUTE → WATCH, or ADVANCE → RECONCILE.**
-4. Observation is permitted only as the minimum acquisition required to perform a concrete mutation.
-5. Reconciliation is permitted only as an incidental technique inside a specific mutation. A reconciliation result is not a deliverable or success condition.
-6. Monitoring, CI watching, connector-health watching, delta consumption, cursor comparison, divergence inspection, and strongest-next-action reporting never count as useful completion by themselves.
+4. Observation serves a requested investigation or provides task-relevant input for action; a read-only outcome does not require a mutation.
+5. Reconciliation can be the requested outcome or a technique supporting another outcome.
+6. Do not mistake incidental monitoring, CI watching, diagnostics or status reporting for completion of a larger requested outcome. They can be a result when specifically requested.
 7. Once the Operator has authenticated or provisioned a tool/capability, tool invocation, schema discovery, retries, alternate routes, troubleshooting, connector recovery, adapter repair, verification, and readback are **system work**, not Operator work.
 8. Recoverable tool failures are internal implementation events. Repair or route around them and continue. Do not hand them back to the Operator as tasks.
 9. Stop only for a genuine Operator-only decision/action, unavailable required information that cannot be acquired with existing capabilities, or a hard external boundary after safe execution paths are exhausted.
-10. A successful execution cycle leaves a **durable verified useful state change** whenever executable work exists.
+10. A successful execution cycle fulfills the requested outcome to the extent evidence supports. A read-only result need not mutate state.
 
 ### Anti-observer completion gate
 
@@ -34,7 +34,7 @@ Before finalizing, ask one machine question: **“Can any available authorized t
 
 The following are **support work**, not substantive mission completion, unless the Operator explicitly requested them as the mission: inspection, diagnostics, audit, inventory, reconciliation, health checks, CI watching, receipt consumption, branch freshness, meta-tool repair, skill-framework repair, scheduler repair, governance, registry maintenance, and reporting.
 
-Support work may run only when it is necessary to unblock a selected substantive mutation, and it must be followed by that substantive mutation in the same execution cycle whenever any authorized path exists. An inspection artifact, diagnostic report, audit result, reconciliation result, health result, test result, CI result, plan, queue, manifest, or “next action” can never satisfy the success condition by itself.
+When support work serves a larger execution request, continue into the authorized requested work; do not substitute an inspection artifact, report, test or status for that outcome. When expressly requested, a completed, source-grounded audit, analysis or other deliverable is itself the outcome; do not manufacture a mutation.
 
 ### Scheduler/worker rule
 
@@ -43,6 +43,8 @@ Recurring workers are production executors unless the Operator explicitly reques
 ---
 
 ## Mode Selection
+
+The budgets below are illustrative, not quality ceilings. Choose the depth the requested outcome requires.
 
 | Mode | When to Use | Token Budget | Depth |
 |------|-------------|--------------|-------|
@@ -61,6 +63,8 @@ source ~/APEX_BOOTUP/apex-bootup.sh coremaximized
 ```
 
 ### Token Reduction Stack
+
+The figures below are illustrative and unverified, not measured savings.
 | Technique | Reduction |
 |-----------|-----------|
 | Pointer index vs. dir scan | ~85% |
@@ -77,7 +81,7 @@ cached = optimizer.get_cached(query_hash)
 if not cached:
     result = expensive_op()
     optimizer.set_cache(query_hash, result)
-    # → Saves ~42.5% tokens on repeat accesses
+    # Savings depend on actual use and must be measured
 ```
 
 ### Session Discipline
@@ -103,10 +107,10 @@ graph LR
 ```
 
 ### 4-Phase Execution
-1. **Phase 1** — Diagnostics run in parallel (never sequential)
+1. **Phase 1** — Run relevant independent diagnostics in parallel when useful
 2. **Phase 2** — ForensicStrikeEngine + Memory sync launched concurrently
 3. **Phase 3** — State written to single manifest (not scattered logs)
-4. **Phase 4** — Verification gate before ANY next phase
+4. **Phase 4** — Verify material results appropriately without blocking unrelated progress
 
 ### Parallel Execution Pattern
 ```python
@@ -116,15 +120,16 @@ async def run_all():
         load_constellation(),
         check_connectors()
     )
-    # All three complete in parallel = 3× token efficiency
+    # Parallel calls may reduce elapsed time; token savings are not assumed
 ```
 
 ### Helix Orchestrator
-- Helix A (builder/drafter) always active
-- Helix B (adversary/auditor) runs simultaneously
-- Result: self-correcting output without extra review passes
+- Use specialist builder or reviewer roles when materially useful and explicitly authorized.
+- Independent review can find issues; it does not guarantee a self-correcting result.
 
 ### Efficiency Multiplier Stack
+
+The following is illustrative, not a measured result or guarantee.
 ```
 CoreMaximized Profile  →  +baseline efficiency
 + Pointer Index First  →  ×0.15 token cost (85% reduction)
@@ -132,7 +137,7 @@ CoreMaximized Profile  →  +baseline efficiency
 + Cache-Hit Protocol   →  -42.5% on repeats
 + Diamond Facet Route  →  ÷9 context injection cost
 + StartLine/EndLine    →  ×0.1–0.4 file read cost
-= APEX OMNIVERSAL SAVINGS: 95%+ token reduction
+= Illustrative estimate only; actual savings unmeasured
 ```
 
 ---

@@ -143,6 +143,33 @@ class TestApexExecutionModes(unittest.TestCase):
         self.assertTrue(payload["dispatch_allowed"])
         self.assertEqual(payload["operator_mission_gate"]["selected"]["id"], "runtime-fix")
 
+    def test_requested_read_only_outcome_dispatches_without_implying_mutation(self):
+        import tempfile
+        candidate = {"id": "audit", "lane": "engineering", "source_state_hydrated": True,
+                     "authorized": True, "executable": True, "substantive": False,
+                     "support_only": True, "artifact_only": True,
+                     "requested_finished_deliverable": True, "result_kind": "audit"}
+        mission = {"scope": {"mode": "specialized", "lane": "engineering"},
+                   "candidates": [candidate]}
+        def invoke():
+            with tempfile.NamedTemporaryFile("w", suffix=".json") as handle:
+                json.dump(mission, handle)
+                handle.flush()
+                proc = subprocess.run([sys.executable, str(SKILL_ROOT / "skill.py"),
+                                       "--execute", "--mission-input", handle.name],
+                                      check=False, capture_output=True, text=True)
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+                return json.loads(proc.stdout)
+        result = invoke()
+        self.assertTrue(result["dispatch_allowed"], result["operator_mission_gate"])
+        self.assertEqual(result["operator_mission_gate"]["selected"]["id"], "audit")
+        self.assertFalse(result["capability_executed"])
+        self.assertNotIn("mutation", result["reason"])
+        self.assertEqual(result["execution_contract"]["observation_role"],
+                         "requested_read_only_outcome_or_relevant_input_for_action")
+        candidate["authorized"] = False
+        self.assertFalse(invoke()["dispatch_allowed"])
+
     def test_adapter_without_execute_still_exposes_continuity_contract(self):
         proc = subprocess.run(
             [sys.executable, str(SKILL_ROOT / "skill.py")],
