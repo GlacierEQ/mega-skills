@@ -228,7 +228,7 @@
       "version": "0.1.0",
       "path": "mega-skills/apex-agent-architect-core",
       "entrypoint": "mega-skills/apex-agent-architect-core/MEGA.md",
-      "purpose": "End-to-end autonomous AI agent design, multi-agent mesh topology synthesis, dynamic tool generation, and dialectic swarm consensus.",
+      "purpose": "End-to-end AI agent design, multi-agent mesh topology synthesis, dynamic tool generation, bounded fan-out, and contradiction-preserving dialectic synthesis.",
       "combos": [
         "long-horizon-core",
         "multi-agent-orchestration-mesh",
@@ -257,7 +257,7 @@
         "AGENT_ARCHITECT_RECORD.md"
       ],
       "local_validation": [
-        "Multi-agent dialectic consensus reaches mathematical convergence with zero hallucinated tool calls."
+        "Multi-agent synthesis preserves unresolved dissent, promotes only evidence-supported convergence, and emits zero hallucinated tool calls."
       ],
       "does_not_own": [
         "Unbounded recursive agent spawning without supervisor depth bounds"
@@ -332,7 +332,7 @@
         ],
         "human_control": "required"
       },
-      "adds": "Autonomous multi-agent architecture control plane: coordinates multi-agent topology design, dynamic tool generation, gateway routing, and dialectic swarm consensus."
+      "adds": "Multi-agent architecture control plane coordinating topology design, dynamic tool generation, bounded fan-out, gateway routing, and contradiction-preserving evidence-weighted synthesis."
     },
     {
       "id": "apex-always-on-core",
@@ -2858,6 +2858,87 @@
         ],
         "human_control": "required"
       }
+    },
+    {
+      "id": "apex-telecommunications",
+      "display_name": "APEX Telecommunications",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-telecommunications",
+      "entrypoint": "mega-skills/apex-telecommunications/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "automation-control",
+        "epistemic-verification-chain",
+        "polyglot-systems-verification",
+        "genius-epistemic-engineering",
+        "voice-evidence-authenticator"
+      ],
+      "mission_output": "TELECOMMUNICATIONS_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "TELECOM_RECEIPTS.jsonl",
+        "PROVIDER_CAPABILITIES.json",
+        "TRANSPLANT_LEDGER.md",
+        "UPSTREAM_LOCK.json"
+      ],
+      "adds": "Mission-scale provider-neutral telecommunications coordination with rich call/SMS semantics, native receipts, false-success prevention, provenance, relationship/case projections, upstream-core upgrade discipline and Genius Mastery/Lineage compounding.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-telecommunications",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "provider_native_receipt",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
+      ]
     }
   ],
   "layer": "mega-skills"

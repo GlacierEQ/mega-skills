@@ -236,12 +236,23 @@ class AspenGroveMesh:
         }
 
 
-def main() -> int:
-    mesh = AspenGroveMesh(force_mock=True)
+def main(force_mock: bool = True) -> int:
+    mesh = AspenGroveMesh(force_mock=force_mock)
     health = mesh.health_all()
+    all_verified = all(c["verified"] for c in health.values())
+    if force_mock:
+        top_status = "simulated_not_provider_ready"
+        runnable = False
+        evidence_state = "SIMULATED"
+    else:
+        top_status = "ready" if all_verified else "blocked"
+        runnable = all_verified
+        evidence_state = "VERIFIED" if all_verified else "UNVERIFIED"
     print(json.dumps({
         "skill": "aspen-grove-connectors",
-        "status": "ready",
+        "status": top_status,
+        "runnable": runnable,
+        "evidence_state": evidence_state,
         "firewall_active": True,
         "connector_count": len(health),
         "verification_semantics": (

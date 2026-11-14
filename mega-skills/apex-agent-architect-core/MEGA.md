@@ -2,7 +2,7 @@
 
 ## Mission
 
-End-to-end autonomous AI agent design, multi-agent mesh topology synthesis, dynamic tool generation, and dialectic swarm consensus.
+End-to-end AI agent design, multi-agent mesh topology synthesis, dynamic tool generation, bounded fan-out, and contradiction-preserving dialectic swarm synthesis.
 
 ## Compounding structure
 
@@ -43,7 +43,7 @@ Produce `AGENT_ARCHITECT_RECORD.md` upon mission completion.
 
 ## Local validation
 
-Multi-agent dialectic consensus reaches mathematical convergence with zero hallucinated tool calls.
+Multi-agent synthesis preserves unresolved dissent, promotes only evidence-supported convergence, and emits zero hallucinated tool calls.
 
 ## Non-goals
 

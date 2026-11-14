@@ -1,0 +1,31 @@
+{
+  "schema": "glaciereq.plugin-provider-verification.v1",
+  "provider": "LaunchDarkly",
+  "observed_at": "2026-09-30",
+  "evidence_state": "VERIFIED_READ_WRITE",
+  "verified_scope": ["list_projects", "list_flags", "update_flag_settings:updateDescription", "get_flag:production"],
+  "provider_evidence": {
+    "project_key": "default",
+    "flag_key": "glaciereq-plugin-mesh-write-receipt",
+    "metadata_write": "description update",
+    "provider_readback_matched": true,
+    "production_targeting_on": false,
+    "production_version": 1,
+    "targeting_rules": 0,
+    "targets": 0,
+    "prerequisites": 0
+  },
+  "verification_boundary": {
+    "verified": "project discovery, flag inventory, metadata-only flag settings write, exact flag readback",
+    "not_promoted": ["targeting mutation", "rollout mutation", "experiment mutation", "alert mutation", "AgentControl mutation"]
+  },
+  "coalition": {
+    "id": "release-control-evidence",
+    "launchdarkly_stage": "VERIFIED_READ_WRITE_METADATA_SCOPE"
+  },
+  "next_frontier": [
+    "Connect a source or deployment artifact to a LaunchDarkly flag without changing production targeting.",
+    "Verify an under-profiled deployment fallback provider such as Railway or Render.",
+    "Do not re-probe this LaunchDarkly metadata surface absent regression."
+  ]
+}

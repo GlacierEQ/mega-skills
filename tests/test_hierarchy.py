@@ -131,6 +131,24 @@ class HierarchyFoundationTests(unittest.TestCase):
         self.assertTrue((ROOT / combo["entrypoint"]).is_file())
         self.assertEqual([step["step"] for step in combo["execution"]["ordered_steps"]], [1, 2, 3, 4, 5])
 
+    def test_multi_agent_orchestration_preserves_disagreement_and_routes_through_genius_control_plane(self):
+        combos = json.loads((REGISTRY / "combo-skills.json").read_text(encoding="utf-8"))["entries"]
+        mesh = next(entry for entry in combos if entry["id"] == "multi-agent-orchestration-mesh")
+        mesh_contract = json.dumps(mesh).lower()
+        self.assertNotIn("100% alignment", mesh_contract)
+        self.assertIn("contradiction", mesh_contract)
+        self.assertIn("unresolved dissent", mesh_contract)
+
+        megas = json.loads((REGISTRY / "mega-skills.json").read_text(encoding="utf-8"))["entries"]
+        architect = next(entry for entry in megas if entry["id"] == "apex-agent-architect-core")
+        architect_contract = json.dumps(architect).lower()
+        self.assertNotIn("mathematical convergence", architect_contract)
+        self.assertIn("dissent", architect_contract)
+
+        pipelines = json.loads((REGISTRY / "pipelines.json").read_text(encoding="utf-8"))["entries"]
+        control = next(entry for entry in pipelines if entry["id"] == "control-plane")
+        self.assertIn("multi-agent-orchestration-mesh", control["required_combos"])
+
     def test_external_skills_are_metadata_only(self):
         self.assertFalse((ROOT / "skills/repository-context-onboarding").exists())
         self.assertTrue((REGISTRY / "external-skills.json").is_file())
