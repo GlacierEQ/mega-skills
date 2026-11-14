@@ -30054,6 +30054,34 @@
       "does_not_own": [
         "Source admission, device binding, or claim acceptance"
       ]
+    },
+    {
+      "id": "telecommunications-execution-core",
+      "display_name": "Telecommunications Execution Core",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/telecommunications-execution-core",
+      "entrypoint": "skills/telecommunications-execution-core/SKILL.md",
+      "purpose": "Validate APEX telecom mission preflight and provider-native communication receipts with independent state dimensions and false-success prevention.",
+      "input_contract": [
+        "Bounded telecommunications mission JSON",
+        "Optional provider-native receipt JSON"
+      ],
+      "output_contract": [
+        "telecommunications-execution-receipt.json"
+      ],
+      "local_validation": [
+        "100% assertions pass in tests/test_telecommunications_execution_core.py",
+        "Stale/unauthorized/non-allowlisted missions fail closed",
+        "False-success claims produce REPAIR/BLOCKED rather than success"
+      ],
+      "does_not_own": [
+        "External call/SMS send authority",
+        "Provider runtime internals",
+        "Legal case truth",
+        "Relationship identity sovereignty"
+      ]
     }
   ]
 }

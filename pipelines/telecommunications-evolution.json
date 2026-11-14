@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "id": "telecommunications-evolution",
+  "display_name": "APEX Telecommunications Evolution",
+  "description": "Evolve provider-neutral telecommunications around clean upstream cores with Genius Mastery, source-bearing receipts, semantic evals and human-gated release packets.",
+  "family": "telecommunications",
+  "span": [
+    "inception",
+    "readiness",
+    "recon",
+    "design",
+    "build",
+    "verify",
+    "package",
+    "deploy-gate",
+    "handoff",
+    "evolve"
+  ],
+  "mega_roots": [
+    "apex-telecommunications",
+    "apex-genius-mastery",
+    "apex-safe-change-orchestrator",
+    "apex-architectural-evolution-engine"
+  ],
+  "required_combos": [
+    "long-horizon-core",
+    "capability-readiness",
+    "pipeline-orchestration",
+    "telecommunications-mission-orchestration",
+    "genius-epistemic-engineering",
+    "epistemic-verification-chain",
+    "polyglot-systems-verification"
+  ],
+  "deploy_mode": "approval_packet_only",
+  "max_parallel": 1,
+  "manifest": "missions/telecommunications-evolution/pipeline-execution-manifest.json",
+  "stages": [
+    {
+      "id": "inception",
+      "phase": "inception",
+      "needs": [],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "inception"
+      ],
+      "consumes": [],
+      "produces": [
+        "missions/telecommunications-evolution/MISSION.md",
+        "missions/telecommunications-evolution/ROADMAP.md",
+        "missions/telecommunications-evolution/CONTEXT.md",
+        "missions/telecommunications-evolution/inception.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "readiness",
+      "phase": "readiness",
+      "needs": [
+        "inception"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "readiness"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/inception.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/READINESS.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "recon",
+      "phase": "recon",
+      "needs": [
+        "readiness"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "recon"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/READINESS.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/RECON.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "design",
+      "phase": "design",
+      "needs": [
+        "recon"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "design"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/RECON.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/ROUTE.json",
+        "missions/telecommunications-evolution/ARCHITECTURE.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "build",
+      "phase": "build",
+      "needs": [
+        "design"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "build"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/ROUTE.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/BUILD_PREFLIGHT.json",
+        "missions/telecommunications-evolution/SAFE_CHANGE_PREFLIGHT.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "verify",
+      "phase": "verify",
+      "needs": [
+        "build"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "verify"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/BUILD_PREFLIGHT.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/VERIFY.json",
+        "missions/telecommunications-evolution/EVIDENCE.md"
+      ],
+      "resume_safe": false,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "package",
+      "phase": "package",
+      "needs": [
+        "verify"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "package"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/VERIFY.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/RELEASE_PACKET.json",
+        "missions/telecommunications-evolution/RELEASE_PACKET.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "deploy-gate",
+      "phase": "deploy-gate",
+      "needs": [
+        "package"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "deploy-gate"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/RELEASE_PACKET.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/DEPLOYMENT_DECISION.json"
+      ],
+      "resume_safe": false,
+      "approval_required": true,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "handoff",
+      "phase": "handoff",
+      "needs": [
+        "deploy-gate"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "handoff"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/DEPLOYMENT_DECISION.json"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/HANDOFF.md"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    },
+    {
+      "id": "evolve",
+      "phase": "evolve",
+      "needs": [
+        "handoff"
+      ],
+      "command": [
+        "{python}",
+        "scripts/deep_work_stage.py",
+        "--root",
+        "{workspace}",
+        "--pipeline-id",
+        "telecommunications-evolution",
+        "--family",
+        "telecommunications",
+        "--stage",
+        "evolve"
+      ],
+      "consumes": [
+        "missions/telecommunications-evolution/HANDOFF.md"
+      ],
+      "produces": [
+        "missions/telecommunications-evolution/EVOLUTION_BACKLOG.json"
+      ],
+      "resume_safe": true,
+      "approval_required": false,
+      "timeout_seconds": 120
+    }
+  ]
+}
