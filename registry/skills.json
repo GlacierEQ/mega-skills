@@ -29962,6 +29962,98 @@
         "External email sends or legal filing without specific human approval",
         "Autonomous provider facts or automatic ChatGPT session boot"
       ]
+    },
+    {
+      "id": "library-quality-audit",
+      "display_name": "Library Quality Audit",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/library-quality-audit",
+      "entrypoint": "skills/library-quality-audit/SKILL.md",
+      "purpose": "Reject any capability claim lacking an admitted, bound, non-stale source. Use as the final gate before publishing a device-capability claim.",
+      "input_contract": [
+        "Claim set with source ids",
+        "Admitted, bound, and assessed source records"
+      ],
+      "output_contract": [
+        "MACBOOK_AIR_LINK_AUDIT.md with pass or fail decision and unsupported claims"
+      ],
+      "local_validation": [
+        "100% test assertions in skills/library-quality-audit/tests/test_library_quality_audit.py"
+      ],
+      "does_not_own": [
+        "Source admission, device binding, or version pinning"
+      ]
+    },
+    {
+      "id": "link-admission",
+      "display_name": "Link Admission",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/link-admission",
+      "entrypoint": "skills/link-admission/SKILL.md",
+      "purpose": "Admit candidate external sources for a named domain with stated authority and relevance. Use before sources are bound or cited.",
+      "input_contract": [
+        "Candidate source list with url, authority, and relevance",
+        "Target domain for the route"
+      ],
+      "output_contract": [
+        "LINK_ADMISSION.md with admitted and rejected sources"
+      ],
+      "local_validation": [
+        "100% test assertions in skills/link-admission/tests/test_link_admission.py"
+      ],
+      "does_not_own": [
+        "Binding sources to device properties, version currency, or claim verification"
+      ]
+    },
+    {
+      "id": "machine-binding",
+      "display_name": "Machine Binding",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/machine-binding",
+      "entrypoint": "skills/machine-binding/SKILL.md",
+      "purpose": "Bind admitted sources to specific observed device properties so generic guidance becomes evidence about this host. Use before citing a source for a device-specific claim.",
+      "input_contract": [
+        "Admitted source set",
+        "Observed device profile"
+      ],
+      "output_contract": [
+        "MACHINE_BINDING.md mapping sources to observed properties"
+      ],
+      "local_validation": [
+        "100% test assertions in skills/machine-binding/tests/test_machine_binding.py"
+      ],
+      "does_not_own": [
+        "Source admission, version currency, or claim acceptance"
+      ]
+    },
+    {
+      "id": "staleness-assess",
+      "display_name": "Staleness Assessment",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "skills/staleness-assess",
+      "entrypoint": "skills/staleness-assess/SKILL.md",
+      "purpose": "Record version and resolution-date currency for bound sources so a moving target cannot silently become a contradiction.",
+      "input_contract": [
+        "Bound source set",
+        "Resolved versions and dates"
+      ],
+      "output_contract": [
+        "LINK_STALENESS.md with current and unpinned sets"
+      ],
+      "local_validation": [
+        "100% test assertions in skills/staleness-assess/tests/test_staleness_assess.py"
+      ],
+      "does_not_own": [
+        "Source admission, device binding, or claim acceptance"
+      ]
     }
   ]
 }
