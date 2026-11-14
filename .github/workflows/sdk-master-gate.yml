@@ -24,11 +24,15 @@ jobs:
           python-version: '3.12'
       - name: Run SDK Master tests
         run: python -m unittest discover -s skills/sdk-master/tests -v
-      - name: Verify mission completion gate accepts
+      - name: Verify open mission fails closed
         run: |
+          set +e
           python skills/sdk-master/scripts/completion_gate.py skills/sdk-master/receipts/MISSION_STATE.json > /tmp/decision.json
+          status=$?
+          set -e
           cat /tmp/decision.json
-          python -c 'import json; d=json.load(open("/tmp/decision.json")); assert d["decision"] == "COMPLETE" and d["accepted"]'
+          test "$status" -eq 1
+          python -c 'import json; d=json.load(open("/tmp/decision.json")); assert d["decision"] == "OPEN" and not d["accepted"]'
       - name: Enforce actual mission completion on explicit dispatch
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.enforce_completion }}
         run: python skills/sdk-master/scripts/completion_gate.py skills/sdk-master/receipts/MISSION_STATE.json
