@@ -1,0 +1,13 @@
+{
+  "criterion": "error_paths",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "status": "passed",
+  "kind": "http_loopback",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "run_id": "d5491b4e-2eda-47e6-a54f-aefb45590206",
+  "finished_at": "2026-10-23T22:37:20.298Z",
+  "command": "node tests/sdk_ts_runtime_conformance.cjs <SDK_ROOT>",
+  "exit_code": 0,
+  "observed": "Real local HTTP: auth 401; rate limit 429; 503; retries bounded to 3 attempts; timeout and abort typed",
+  "limitations": "Loopback only; does not establish authenticated Supermemory provider state"
+}
