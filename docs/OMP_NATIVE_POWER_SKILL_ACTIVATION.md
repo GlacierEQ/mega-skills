@@ -4,10 +4,11 @@
 
 ## Recovered power coalition
 
-The initial mission-ready activation contains **30 source-linked Skills**: 20 active atomics, four active Compound Skills, and six active Mega Skills. This is a starting coalition, **not a hard skill-count ceiling**.
+The mission-ready activation selects **38 source-linked Skills**: 28 active atomics (including eight additive Apple-platform specialists), four active Compound Skills, and six active Mega Skills. This is a starting coalition, **not a hard skill-count ceiling**.
 
 - **Mission/authority:** power-skill, casey-operator-execution-kernel, capability-admission, strong-smart-routing-kernel, apex-aspen-grove-bootup, apex-meta-skill-kernel
 - **Reasoning/engineering:** genius-mastery, codemaster, make-it-heavy, systematic-debugging, test-driven-development, verification-before-completion, progressive-pyramid
+- **Mac/iOS native intelligence:** desktop-commander-overview, re-apple-bundles, swiftui-patterns, swift-concurrency-6-2, xcode-project-setup, mobile-design, foundation-models-on-device, ios-icon-gen
 - **Memory/continuity/MCP:** skill-connector-router, unified-memory-connect, agent-memory-systems, spiral-promotion-gate, computer-user-core, apex-universal-mcp-powerhouse, mcp-architect
 - **Compound mission workflows:** genius-epistemic-engineering, apex-mesh-dispatch, strong-smart-execution-stack, cross-cloud-memory-synthesis
 - **Mega mission workflows:** apex-genius-mastery, apex-strong-smart-execution-engine, apex-dev-fork-orchestrator, apex-orchestrator-mesh, far-away-party, apex-self-healing-forge
@@ -30,7 +31,7 @@ After inspecting the preview and selecting the correct profile, apply only missi
 
 Apply first preflights the entire coalition. A source conflict, missing file, or invalid native metadata prevents every write; a simulated or actual install/readback failure triggers ownership-checked rollback for newly created entries, never deletion of pre-existing skill directories. A nonzero return indicates a missing source, collision, installation error, or unsuccessful readback. A collision is reported, not silently overwritten. The synchronizer never deletes or retires existing OMP skills. Atomic Skills point directly at canonical skill directories. Compound and Mega Skills use native SKILL.md adapters with source-linked COMBO.md/MEGA.md; changed source that invalidates an existing adapter is reported as drift/conflict, not silently rebaselined. The returned per-item SHA-256, created/rolled_back status, and blocked_preflight/verification_failed flags let CI and host operators independently reconcile the attempt.
 
-**Upstream OMP discovery proof:** Current native `scanSkillsFromDir` enumerates immediate children with `isDirectory()` **or** `isSymbolicLink()`, then checks each `SKILL.md`. Native source discovery requires `description` frontmatter. The activation tool now detects missing native description and returns `invalid_source` instead of silently installing an undiscoverable skill. All 20 selected atomic entrypoints were independently inspected for a non-empty description; all passed. See `https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/src/discovery/helpers.ts` and `https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md`. This is upstream source verification, not a local OMP host activation claim.
+**Upstream OMP discovery proof:** Current native `scanSkillsFromDir` enumerates immediate children with `isDirectory()` **or** `isSymbolicLink()`, then checks each `SKILL.md`. Native source discovery requires `description` frontmatter. The activation tool now detects missing native description and returns `invalid_source` instead of silently installing an undiscoverable skill. All 28 selected atomic entrypoints were independently inspected for a non-empty description; all passed. See `https://github.com/can1357/oh-my-pi/blob/main/packages/coding-agent/src/discovery/helpers.ts` and `https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md`. This is upstream source verification, not a local OMP host activation claim.
 
 **Provenance boundary:** emitted SHA-256 values describe source bytes at inspection time. Source symlinks are *not* immutable revision pins. Lock repository revision and verify provider-native state before promoting to host-certified operation.
 
@@ -53,7 +54,7 @@ Focused source-check commands (provider execution still required for actual chan
     python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
     python -m compileall -q scripts tests
 
-Red-before-green reproduced missing native OMP activation. Eighteen committed focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, no arbitrary skill cap, and cross-checks for source drift during write, unexpected adapter readback, and concurrent modifications during rollback.
+Red-before-green reproduced missing native OMP activation. Nineteen committed focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, no arbitrary skill cap, and cross-checks for source drift during write, unexpected adapter readback, and concurrent modifications during rollback.
 
 **Release proof ladder:**
 1. Exact branch blob hashes match locally tested bytes; upstream hierarchy and native CI pass.

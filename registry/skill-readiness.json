@@ -2,19 +2,20 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 1297,
-    "combos": 41,
+    "skills": 1304,
+    "combos": 42,
     "megas": 35,
-    "ready_total": 1265,
-    "not_ready_total": 108,
+    "ready_total": 1271,
+    "not_ready_total": 110,
     "skill_states": {
-      "instruction_ready": 1084,
+      "instruction_ready": 1090,
       "behavior_verified": 105,
-      "implementation_unverified": 105,
+      "implementation_unverified": 106,
       "contract_incomplete": 3
     },
     "combo_states": {
-      "composition_ready": 41
+      "composition_ready": 41,
+      "composition_candidate": 1
     },
     "mega_states": {
       "mission_contract_ready": 35
@@ -25486,6 +25487,115 @@
       ],
       "structural_tests": [],
       "reasons": []
+    },
+    {
+      "id": "adverse-outcome-remedy-router",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "correspondence-identity-gate",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "jurisdiction-authority-citation-check",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "linear-frontier-deduplicator",
+      "layer": "skill",
+      "ready": false,
+      "state": "implementation_unverified",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "skills/linear-frontier-deduplicator/scripts/decision_gate.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": [
+        "implementation exists without behavioral verification"
+      ]
+    },
+    {
+      "id": "precision-provider-email",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "provider-thread-forensics",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "receipt-provenance-continuation",
+      "layer": "skill",
+      "ready": true,
+      "state": "instruction_ready",
+      "declared_maturity": "candidate",
+      "instruction_ready": true,
+      "real_implementation_files": [],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
     }
   ],
   "combos": [
@@ -25816,6 +25926,16 @@
       "state": "composition_ready",
       "declared_maturity": "active",
       "reasons": []
+    },
+    {
+      "id": "source-bound-correspondence-loop",
+      "layer": "combo",
+      "ready": false,
+      "state": "composition_candidate",
+      "declared_maturity": "candidate",
+      "reasons": [
+        "required skill not ready: linear-frontier-deduplicator"
+      ]
     }
   ],
   "megas": [
@@ -26135,6 +26255,6 @@
       "reasons": []
     }
   ],
-  "pass": 1,
+  "pass": 2,
   "pass1_adapter_repairs": 0
 }

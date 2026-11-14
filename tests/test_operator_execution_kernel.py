@@ -411,5 +411,38 @@ class OperatorExecutionKernelTests(unittest.TestCase):
 
 
 
+    def test_requested_read_only_outcome_can_complete_without_mutating_state(self):
+        payload = {"mission_state_changed": False, "requested_finished_deliverable": True,
+                   "requested_outcome_complete": True, "verified": True,
+                   "verification_refs": ["reviewed-source"], "artifact_only": True,
+                   "support_only": True, "authorized_executable_action_exists": False}
+        result = run_kernel("completion_gate", payload)
+        self.assertTrue(result["can_finalize"], result["reasons"])
+        self.assertEqual(result["finalization_kind"], "verified_requested_outcome")
+        for key, value in (("requested_outcome_complete", False), ("verified", False),
+                           ("verification_refs", []), ("authorized_executable_action_exists", True),
+                           ("requested_finished_deliverable", False), ("replacement_attempted", True)):
+            with self.subTest(key=key):
+                self.assertFalse(run_kernel("completion_gate", {**payload, key: value})["can_finalize"])
+
+    def test_requested_deliverable_still_requires_authorization(self):
+        result = run_kernel("dispatch_gate", {"scope": {"mode": "specialized", "lane": "engineering"},
+            "candidates": [{"id": "requested", "lane": "engineering", "authorized": False,
+                "executable": True, "substantive": False, "support_only": True,
+                "artifact_only": True, "requested_finished_deliverable": True}]})
+        self.assertFalse(result["dispatch_allowed"])
+
+    def test_explicit_incomplete_outcome_blocks_success_even_when_state_changed(self):
+        payload = {"mission_state_changed": True, "requested_finished_deliverable": True,
+                   "requested_outcome_complete": False, "verified": True,
+                   "verification_refs": ["verified-partial"], "artifact_only": True,
+                   "support_only": True, "authorized_executable_action_exists": False}
+        result = run_kernel("completion_gate", payload)
+        self.assertFalse(result["can_finalize"])
+        self.assertIn("requested_outcome_incomplete", result["reasons"])
+        boundary = run_kernel("completion_gate", {**payload, "hard_external_boundary": True})
+        self.assertEqual(boundary["finalization_kind"], "hard_boundary")
+        self.assertIn("requested_outcome_incomplete", boundary["reasons"])
+
 if __name__ == "__main__":
     unittest.main()

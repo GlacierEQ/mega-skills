@@ -1,83 +1,145 @@
 {
   "mission_id": "sdk-master-operational-20261023",
-  "state": "COMPLETE",
-  "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-  "ci": "passed",
-  "deployed": true,
-  "deployment_readback": "sdk-master + gate + workflow on mega-skills main: 5cf92506 (landing/registration), e90c1059 (CI retargeted to self-hosted runner); each push verified by git ls-remote == local HEAD; CI executed from main checkout on runner muse-vm-1 (run 40033990251, all steps success).",
-  "provider_mutation": true,
-  "provider_readback": "Live Supermemory via sdk-ts @ dc1cf85, account key resolved from stored name 'Raycast': namespaces.list returned 10 namespaces; add to namespace 'sdk-master-verify' -> id qppycY8sVP48v3Zuxbjb2y, lifecycle queued->processing->done; documents.get readback contained marker SDK-MASTER-LIVE-VERIFY-2026-10-23-c1c7ce; documents.delete -> {count:1, errors:[]}; post-delete get threw NotFoundError 404. Test document fully removed; nothing left behind.",
+  "state": "OPEN",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "ci": "unverified",
   "criteria": {
     "recovery": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Recovered from live sources: PR #52 OPEN/DRAFT, branch tip b466281; sdk-ts HEAD dc1cf85 (v5.0.2, 2026-10-13). Prior mission record's revision 8594587e77a6 does not exist in sdk-ts history and its '216 passed / 33 skipped' matches no suite at this revision (real suite: 50 tests) \u2014 fabricated baseline identified and corrected before any work was built on it."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/recovery.json",
+        "sha256": "2294c64d6057de7b0405bd357b2ef858c4c59be6b54be8214c7021951bdea740"
+      }
     },
     "implementation": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "skills/sdk-master (SKILL.md, 3 references, completion_gate.py, inspect_sdk.py, 21 tests) landed on mega-skills main 5cf92506 and registered: registry/skills.json entry #1297; registry/skill-readiness.json record added with assay-computed state behavior_verified; summary updated to assay values, surgical diff only."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/implementation.json",
+        "sha256": "a7a69db05f4ffc95d4f006199e24a5867539d8733986e43e3562c905c932d7ed"
+      }
     },
     "integration": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Executable gate runs in CI on registered self-hosted runner muse-vm-1 (GitHub-hosted allocation for this private repo fails jobs in ~3s with zero steps \u2014 diagnosed from job records, not logs, which do not exist for zero-step failures). GitHub Actions run 40033990251 on main: Set up job, checkout, setup-python, SDK Master tests, fails-closed verification \u2014 all success. validate_hierarchy passes on the landed tree.",
-      "kind": "operational"
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/integration.json",
+        "sha256": "68206beb69e76b21381d4c82bcbeb0b76d93ad3e44c3a8021b700bd2c93f882a"
+      }
     },
     "real_execution": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Full battery executed at dc1cf85 in ~/workspace/sdk-ts-exercise: bun install, build, check-types, bun test, error-path scripts against the built dist, and live provider calls. Outputs preserved in EXERCISE_SUMMARY.md + *-output.txt in that workspace.",
-      "kind": "operational"
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/real_execution.json",
+        "sha256": "dfd506846f237677ded67f4af0b26af10a5a4b517eacda1f1c9ab4d5430e418a"
+      }
     },
     "tests": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "sdk-ts bun test: 50 pass / 0 fail / 184 expect() calls (stubbed-fetch suite: request construction, retry/abort, typed status errors). sdk-master unittest: 21 pass locally and in CI. mega-skills pytest on landed tree: 185 pass / 4 skipped / 0 failed (baseline 183/4/0 + sdk-master collection)."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/tests.json",
+        "sha256": "02e2b2521ba099f5ab1bf974f7bc2a07479ff8b6e43368147c492bffe1acb269"
+      }
     },
     "build": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "bun run build PASS at dc1cf85: tsc ESM + CJS projects, dist/esm/index.js and dist/cjs/index.js emitted, zero TypeScript errors."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/build.json",
+        "sha256": "330638ad7548825cd196e9d201e245dd3c560725ae6363abb1eb8312f7a339e3"
+      }
     },
     "typecheck": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "bun run check-types PASS: tsc --noEmit clean; tests/check-docs.ts typechecked 9 doc examples. (Requires a bunx shim on PATH in this environment \u2014 environment gap, recorded, not a code defect.)"
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/typecheck.json",
+        "sha256": "8482abd68973b4d4b6b0192d226893118f06bb7b792be497dd10679aeacad782"
+      }
     },
     "imports": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "ESM: dist/esm imported by every exercise/verification script. CJS: require('./dist/cjs/index.js') verified \u2014 Supermemory client constructs."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/imports.json",
+        "sha256": "71dbcd1e4589c06616cb5140b38cc024e10f337429da1526ac692c690dff1114"
+      }
     },
     "error_paths": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Six paths exercised against the built dist (error-paths.mjs): missing apiKey -> SupermemoryError validation message; bad key against LIVE api.supermemory.ai -> SupermemoryError 401 with provider body {error:'Unauthorized'}; unreachable host -> SupermemoryError 'fetch failed'; stalled fetch + timeoutInSeconds=1 -> SupermemoryTimeoutError; pre-aborted signal (correct requestOptions position) -> SupermemoryError 'The user aborted a request', no dispatch; 200 + invalid JSON -> genuine defect, see defect_regression.",
-      "kind": "operational"
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "http_loopback",
+      "evidence": {
+        "path": "evidence/error_paths.json",
+        "sha256": "70a21b2760fccd6d350905b7f8642660c0f3bc6473ddc09d7a8eba94819026da"
+      }
     },
     "defect_regression": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "GENUINE DEFECT in sdk-ts v5.0.2 @ dc1cf85: non-JSON 2xx bodies are delivered to callers as response data. Chain: getResponseBody returns an error-shaped object {ok:false,error:{reason:'non-json',...}} as the body value; fetcherImpl wraps any 2xx body unconditionally as {ok:true, body}; handleNonStatusCodeError's non-json throw is unreachable dead code. Reproduced from pristine clone (await namespaces.list() resolved with the error envelope). Repair built in throwaway copy sdk-ts-repair (Fetcher success branch reroutes the internal error envelope to the error channel): regression tests/non-json-error.test.ts fails unpatched (1 pass/1 fail), patched full suite 52 pass / 0 fail, build + check-types clean; post-patch list() throws SupermemoryError statusCode=200. sdk-ts is supermemoryai's repo \u2014 fix + test preserved locally as a ready upstream report; upstream merge is their decision, not this mission's to force."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/defect_regression.json",
+        "sha256": "244d012dc7c9c991b72c5ffa20e9144bae32081fb24a51d535fad56380e54b5c"
+      }
     },
     "revision_readback": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Every mega-skills push verified by git ls-remote: main == 5cf92506 after landing, == e90c1059 after CI retarget, == receipts commit after this update. sdk-ts clone HEAD remained dc1cf85 for all exercise work; pristine clone restored clean after the defect-detection run (git status empty)."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/revision_readback.json",
+        "sha256": "dfc6623b6c65aaa3a9cff3d5a40c5f520a106f810cad78731e869a06db7e3688"
+      }
     },
     "durable_receipts": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "This state file plus EXECUTION_RECEIPT.json, TEST_RECEIPT.json, INTEGRATION_RECEIPT.json, VERIFICATION_RECEIPT.json, COMPLETION_DECISION.json (gate output on this state), CONTINUATION_STATE.json \u2014 committed on mega-skills main under skills/sdk-master/receipts/."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/durable_receipts.json",
+        "sha256": "d898a7a835057b58c7e904f369d8dd13eae87b5f052480f4d7c423d49bdd96ea"
+      }
     },
     "reproduction": {
       "status": "passed",
-      "revision": "dc1cf8595095b3358867b5feb11971d1b39aca80",
-      "evidence": "Independent reproduction in a second environment: GitHub Actions on self-hosted runner muse-vm-1 executed the sdk-master tests + gate from a clean main checkout (run 40033990251) with the same results as the author's shell runs; defect reproduced independently from a pristine clone and a minimal repro before repair."
+      "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+      "kind": "aws_runtime",
+      "evidence": {
+        "path": "evidence/reproduction.json",
+        "sha256": "e78da693257033a811e023c78f41a8760200200d3effee68de101a77ea057c92"
+      }
     }
   },
-  "outstanding_actions": [],
+  "outstanding_actions": [
+    "GitHub-hosted CI job 40034771936 failed without runner allocation or executed steps; establish zero-additional-cost CI runner or equivalent CI readback",
+    "Authenticate an authorized Supermemory provider sandbox; execute a reversible SDK operation and native provider readback before external acceptance",
+    "Independently verify any final provider/deployment mutation; do not reinterpret loopback tests as provider verification"
+  ],
   "unresolved_defects": [],
-  "claims_complete": true
+  "coverage_gaps": [
+    "The upstream sdk-ts Jest suite intentionally skips 33 tests across 4 suites; report as skipped, not passed",
+    "Real authenticated Supermemory API readback not possible without the appropriate SDK credential",
+    "New macOS runner-dependent workflow cannot execute while Mac operating system is down"
+  ],
+  "provider_mutation": false,
+  "require_provider_readback": true,
+  "provider_readback": null,
+  "deployed": false,
+  "claims_complete": false,
+  "draft_only": true,
+  "accountability_score": -35,
+  "free_tier_constraint": "Use existing infrastructure; no new paid compute or browser usage; AWS has nonzero October costs",
+  "mac_status": "offline_until_OS_reinstall"
 }

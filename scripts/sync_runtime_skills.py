@@ -118,6 +118,11 @@ OMP_POWER_SELECTION = {
         "verification-before-completion", "spiral-promotion-gate",
         "progressive-pyramid", "computer-user-core",
         "apex-universal-mcp-powerhouse", "make-it-heavy", "mcp-architect",
+        # Apple/macOS/iOS: additive source-linked specialists, never a skill cap.
+        "desktop-commander-overview", "re-apple-bundles",
+        "swiftui-patterns", "swift-concurrency-6-2",
+        "xcode-project-setup", "mobile-design",
+        "foundation-models-on-device", "ios-icon-gen",
     ),
     "compound": (
         "genius-epistemic-engineering", "apex-mesh-dispatch",

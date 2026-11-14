@@ -1,0 +1,13 @@
+{
+  "criterion": "real_execution",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "status": "passed",
+  "kind": "http_loopback",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "run_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+  "finished_at": "2026-10-23T22:52:09.568Z",
+  "command": "bash scripts/reproduce.sh <SDK_ROOT> verify",
+  "exit_code": 0,
+  "observed": "One-command end-to-end AWS runtime execution exit 0; external mutation not exercised",
+  "limitations": "Loopback only; does not establish authenticated Supermemory provider state"
+}

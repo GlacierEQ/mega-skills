@@ -11,7 +11,7 @@ This skill is executable personalization state. It must shape interpretation, pl
 
 ## Executable enforcement
 
-The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, `completion_gate`, and the holographic `growth_gate` / `retirement_gate`. A prose instruction is not enforcement: runtime behavior must reject recency-captured, support-only, artifact-only, out-of-scope, or destructive replacement candidates and must refuse finalization unless real mission state changed, that change is verified, and no authorized executable action remains.
+The doctrine in this file is backed by `skill.py` and `scripts/operator_mission_kernel.py`. Production callers use `mission_select`, `dispatch_gate`, `completion_gate`, and the holographic `growth_gate` / `retirement_gate`. A prose instruction is not enforcement: runtime behavior rejects unrequested support-only or artifact-only substitutions, out-of-scope work and unsafe replacements. A specifically requested finished deliverable, including a read-only audit, is the outcome rather than a forbidden artifact. Finalization requires its verified completion with an appropriate reference, no remaining authorized action, and safe replacement handling; a read-only outcome need not mutate mission state. Do not elevate test counts, speed, or status labels above the requested outcome.
 
 ## CONTEXT FIRST — Operator correction (2026-11-05 HST)
 
@@ -126,7 +126,7 @@ Before choosing what to work on for a broad command such as `EXECUTE GlacierEQ`,
 
 ## Mission-delta gate
 
-A run counts as substantive progress only when it directly changes at least one operator objective state, for example:
+A requested finished deliverable, including a read-only audit or analysis, can itself fulfill the objective. Otherwise a substantive run advances an operator objective, for example:
 
 - working code, runtime behavior, deployed capability, integration, automation, performance, reliability, or other executable engineering capability becomes stronger or newly real;
 - new source-bearing evidence is acquired, transformed, linked, verified, or made materially more usable;

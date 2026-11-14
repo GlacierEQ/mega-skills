@@ -1,0 +1,13 @@
+{
+  "criterion": "implementation",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "status": "passed",
+  "kind": "aws_runtime",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "run_id": "b475b43c-7cb2-4997-94ba-d8b63077c719",
+  "finished_at": "2026-10-23T22:41:40.649Z",
+  "command": "python3.12 -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "observed": "SDK Master gate/inspector changes tested on real AWS host; 33/33 passed",
+  "limitations": null
+}

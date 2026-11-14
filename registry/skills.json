@@ -29801,6 +29801,167 @@
         "Provider-side state changes beyond the authorized verification scope",
         "Declaring a mission complete \u2014 the completion gate decides from evidence, not the author"
       ]
+    },
+    {
+      "id": "adverse-outcome-remedy-router",
+      "display_name": "Adverse Outcome Remedy Router",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/adverse-outcome-remedy-router",
+      "entrypoint": "skills/adverse-outcome-remedy-router/SKILL.md",
+      "purpose": "Branch actual grant, partial grant, denial, no-response or ambiguous state to lawful next action.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "correspondence-identity-gate",
+      "display_name": "Correspondence Identity Gate",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/correspondence-identity-gate",
+      "entrypoint": "skills/correspondence-identity-gate/SKILL.md",
+      "purpose": "Resolve authenticated sender, beneficiary and first-party authority while preserving historical threads.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "jurisdiction-authority-citation-check",
+      "display_name": "Jurisdiction Authority Citation Check",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/jurisdiction-authority-citation-check",
+      "entrypoint": "skills/jurisdiction-authority-citation-check/SKILL.md",
+      "purpose": "Verify applicable jurisdiction, current rule, primary-law citation and actual deadline before correspondence.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "linear-frontier-deduplicator",
+      "display_name": "Linear Frontier Deduplicator",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/linear-frontier-deduplicator",
+      "entrypoint": "skills/linear-frontier-deduplicator/SKILL.md",
+      "purpose": "Reconcile provider evidence against existing Linear issue graph and prevent duplicate external actions.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "27 focused reconciliation tests in tests/test_correspondence_decision_gate.py; host/provider integration not yet verified"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "precision-provider-email",
+      "display_name": "Precision Provider Email",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/precision-provider-email",
+      "entrypoint": "skills/precision-provider-email/SKILL.md",
+      "purpose": "Draft evidence-and-law-grounded correspondence without avoidable admissions, repetition or unsupported claims.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "provider-thread-forensics",
+      "display_name": "Provider Thread Forensics",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/provider-thread-forensics",
+      "entrypoint": "skills/provider-thread-forensics/SKILL.md",
+      "purpose": "Reconstruct provider-native email chronology and exact draft/sent/received/decision stages.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
+    },
+    {
+      "id": "receipt-provenance-continuation",
+      "display_name": "Receipt Provenance Continuation",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "skills/receipt-provenance-continuation",
+      "entrypoint": "skills/receipt-provenance-continuation/SKILL.md",
+      "purpose": "Read back actual provider effects and write a safe source-bound resume cursor in existing Linear issue.",
+      "input_contract": [
+        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
+      ],
+      "output_contract": [
+        "Source-linked skill output with audit receipt and exact continuation"
+      ],
+      "local_validation": [
+        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
+      ],
+      "does_not_own": [
+        "External email sends or legal filing without specific human approval",
+        "Autonomous provider facts or automatic ChatGPT session boot"
+      ]
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "criterion": "defect_regression",
+  "revision": "8594587e77a6d31f649ebd4b40fe4a6189770461",
+  "status": "passed",
+  "kind": "aws_runtime",
+  "executor": "AWS SSM / EC2 Amazon Linux 2023 us-west-2 i-09e62d6012bc289ed",
+  "run_id": "69478d9d-a9e9-4702-8c1a-ca9c3d10436a",
+  "finished_at": "2026-10-23T22:52:09.568Z",
+  "command": "python3.12 -m unittest discover -s tests -v && node tests/sdk_ts_runtime_conformance.cjs <SDK_ROOT>",
+  "exit_code": 0,
+  "observed": "False-positive mission-gate regressions and SDK timeout error classification fixed; 33 regression tests pass",
+  "limitations": null
+}

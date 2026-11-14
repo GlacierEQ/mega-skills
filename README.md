@@ -21,13 +21,15 @@ Existing `combo-skills/` manifests remain canonical and supported; their semanti
 
 | Registry | Role | Current entries |
 |---|---|---:|
-| `registry/skills.json` | Atomic Skills | 1296 |
-| `registry/combo-skills.json` | Compound workflow Skills | 39 |
+| `registry/skills.json` | Atomic Skills | 1304 |
+| `registry/combo-skills.json` | Compound workflow Skills | 42 |
 | `registry/mega-skills.json` | Mega apex Skills | 35 |
 | `registry/mega-skill-pyramids.json` | Generated normalized recursive graph | 35 Mega roots |
 | `registry/pipelines.json` | Executable deep-work DAGs | 7 |
 
 Counts describe repository objects, not production/adoption claims.
+
+**Case/email execution capability:** [Source-Bound Correspondence Workflow](docs/SOURCE_BOUND_CORRESPONDENCE_WORKFLOW.md) connects seven source-, identity-, law-, drafting-, and receipt-based atomic skills with existing `long-horizon-core` in the candidate `source-bound-correspondence-loop` Compound Skill. The included pure decision admission gate has 27 focused regression tests; automatic provider/ChatGPT enforcement and external email delivery are not claimed, and the new skills are not host-verified. See `registry/skill-readiness.json` for candidate readiness.
 
 ## Deep-work pipelines
 
@@ -71,6 +73,19 @@ python tests/test_recursive_skill_hierarchy.py -v
 ```
 
 The generated registry stores 35 Mega roots, canonical Compound adjacency, typed leaves, shared-node lineage, and canonical artifact/validation field paths. Any Mega pyramid can therefore be expanded deterministically to real Skill nodes without duplicating the underlying Skill contracts.
+
+## Evidence-aware selection
+
+`scripts/evidence_capability_selector.py` re-ranks the existing lexical resolver with `registry/skill-readiness.json`. It does not install skills and does not replace the fixed 30-skill OMP coalition.
+
+```bash
+python scripts/evidence_capability_selector.py "autonomous software engineering" --limit 5
+python -m unittest tests.test_evidence_capability_selector -v
+```
+
+On 10 pre-registered queries against main `fa5e5efe8993c52e7095d1d118ad3a735b2381f9`: evidence selection matched lexical gold hits (10/10), beat the fixed coalition (4/10), injected no unverified skills (lexical injected 2), and returned 4.2 skills instead of 30. That is a registry comparison, not a host activation or a coding-benchmark pass-rate claim.
+
+Capability docs, not a claim that the rest of this repository implements Apex Forge: [`docs/evidence-capability-selector/`](docs/evidence-capability-selector/README.md).
 
 ## Public projection
 
