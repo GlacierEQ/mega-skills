@@ -302,7 +302,7 @@ def _load_skill_evidence_selector():
     """Optional T1 path. Default OMP activation does not call this."""
     path = Path(__file__).with_name("skill_evidence_selector.py")
     spec = importlib.util.spec_from_file_location("skill_evidence_selector", path)
-    if spec is None or spec.loader is None:
+    if spec is None or spec.loader is None or not hasattr(spec.loader, "exec_module"):
         raise RuntimeError(f"unable to load evidence selector from {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

@@ -28,6 +28,8 @@ APPLE = {
 
 def load_module(name: str, path: Path):
     spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None or not hasattr(spec.loader, "exec_module"):
+        raise RuntimeError(f"unable to load module {name!r} from {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -109,6 +111,25 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
 
     def tearDown(self):
         self.assertEqual(LEDGER_PATH.read_bytes(), self.ledger_bytes)
+
+    def test_duplicate_task_id_is_not_reported_as_missing(self):
+        task = {
+            "id": "same-id",
+            "intent": "Repair a failing Python unit test.",
+            "domain_tags": ["python", "repair"],
+            "required_artifacts": ["tests/test_widget.py"],
+            "task_family": "python-repair",
+        }
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "tasks.json"
+            path.write_text(json.dumps({"tasks": [task, dict(task)]}), encoding="utf-8")
+            with self.assertRaises(ValueError) as duplicate:
+                SELECTOR.load_task(path, "same-id")
+            self.assertIn("duplicate task id: same-id", str(duplicate.exception))
+            self.assertNotIn("not found", str(duplicate.exception))
+            with self.assertRaises(ValueError) as missing:
+                SELECTOR.load_task(path, "absent-id")
+            self.assertIn("task id not found: absent-id", str(missing.exception))
 
     def test_ledger_is_fixture_seed_only(self):
         self.assertEqual(self.ledger["schema_version"], 1)

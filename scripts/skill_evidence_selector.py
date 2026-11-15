@@ -323,8 +323,10 @@ def load_task(path: Path, task_id: str | None = None) -> dict[str, Any]:
     if not task_id:
         raise ValueError("task file contains multiple tasks; pass task_id")
     matches = [task for task in tasks if task.get("id") == task_id or task.get("task_id") == task_id]
-    if len(matches) != 1:
+    if len(matches) == 0:
         raise ValueError(f"task id not found: {task_id}")
+    if len(matches) > 1:
+        raise ValueError(f"duplicate task id: {task_id}")
     return matches[0]
 
 
