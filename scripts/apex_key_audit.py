@@ -12,7 +12,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import subprocess
 import sys
 import urllib.error
@@ -26,11 +25,10 @@ _SCRIPTS = Path(__file__).resolve().parent
 if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
 
+import env_file
 import key_hierarchy
 
-ASSIGNMENT = re.compile(
-    r"""([A-Za-z_][A-Za-z0-9_]*)\s*=\s*("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|[^\s#]+)"""
-)
+MIN_LEAK_LENGTH = 12
 
 
 def mask(value: str) -> str:
@@ -39,25 +37,8 @@ def mask(value: str) -> str:
     return f"{value[:4]}...{value[-2:]}"
 
 
-def _unquote(raw: str) -> str:
-    if len(raw) >= 2 and raw[0] == raw[-1] and raw[0] in {'"', "'"}:
-        return raw[1:-1]
-    return raw
-
-
 def parse_env(path: Path) -> Dict[str, str]:
-    env: Dict[str, str] = {}
-    text = path.read_text(encoding="utf-8", errors="ignore")
-    for raw in text.splitlines():
-        line = re.sub(r"^(export\s+|declare\s+-x\s+)", "", raw.strip())
-        if not line or line.startswith("#"):
-            continue
-        for match in ASSIGNMENT.finditer(line):
-            key = match.group(1)
-            value = _unquote(match.group(2)).strip()
-            if key and value:
-                env[key] = value
-    return env
+    return env_file.parse_env_text(path.read_text(encoding="utf-8", errors="ignore"))
 
 
 def _family_of(name: str) -> str | None:
@@ -189,7 +170,7 @@ def write_clean_env(source: Path, canonical: Dict[str, str]) -> Path:
     destination = source.with_suffix(".deduped.env")
     if not destination_is_safe(destination):
         raise SystemExit(f"refusing to write secrets inside the git repo: {destination}")
-    lines = [f"{key}={value}" for key, value in sorted(canonical.items())]
+    lines = [f"{key}={env_file.quote_env(value)}" for key, value in sorted(canonical.items())]
     destination.write_text("\n".join(lines) + "\n", encoding="utf-8")
     destination.chmod(0o600)
     return destination
@@ -197,7 +178,7 @@ def write_clean_env(source: Path, canonical: Dict[str, str]) -> Path:
 
 def report_contains_secret(report: dict, values: Dict[str, str]) -> bool:
     printable = json.dumps(report)
-    return any(value and value in printable for value in values.values())
+    return any(len(value) >= MIN_LEAK_LENGTH and value in printable for value in values.values())
 
 
 def build_report(raw: Dict[str, str], canonical: Dict[str, str], duplicates: List[dict], probes: List[dict]) -> dict:

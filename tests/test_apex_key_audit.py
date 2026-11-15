@@ -26,6 +26,7 @@ def _load(name: str, path: Path):
 AUDIT = _load("apex_key_audit", ROOT / "scripts" / "apex_key_audit.py")
 BOOT = _load("apex_boot_unified", ROOT / "scripts" / "apex_boot_unified.py")
 BRIDGE = _load("n8n_stdio_bridge", ROOT / "ops" / "apex" / "n8n_stdio_bridge.py")
+CACHE = _load("apex_memory_cache", ROOT / "scripts" / "apex_memory_cache.py")
 
 
 class AuditTests(unittest.TestCase):
@@ -149,6 +150,47 @@ class AuditTests(unittest.TestCase):
         report = {"canonical_names": ["OPENAI_API_KEY"], "note": raw["OPENAI_API_KEY"]}
         self.assertTrue(AUDIT.report_contains_secret(report, raw))
         self.assertFalse(AUDIT.report_contains_secret({"canonical_names": ["OPENAI_API_KEY"]}, raw))
+        self.assertFalse(AUDIT.report_contains_secret({"canonical_names": ["DEBUG"], "raw_count": 1}, {"DEBUG": "1"}))
+
+    def test_inline_comment_does_not_override_quoted_hash(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            env_path = Path(tmp) / ".env"
+            env_path.write_text(
+                'OPENAI_API_KEY=real # retired OPENAI_API_KEY=old\n'
+                'SERVICE_PASSWORD="abc # def"\n',
+                encoding="utf-8",
+            )
+            parsed = AUDIT.parse_env(env_path)
+            self.assertEqual(parsed["OPENAI_API_KEY"], "real")
+            self.assertNotIn("old", parsed.values())
+            self.assertEqual(parsed["SERVICE_PASSWORD"], "abc # def")
+            booted = BOOT.load_env(env_path)
+            self.assertEqual(booted["OPENAI_API_KEY"], "real")
+            destination = AUDIT.write_clean_env(env_path, parsed)
+            self.assertEqual(AUDIT.parse_env(destination)["SERVICE_PASSWORD"], "abc # def")
+
+    def test_mem0_account_keys_stay_distinct(self) -> None:
+        canonical, _duplicates = AUDIT.dedupe(
+            {"MEM0_PRO_API_KEY": "pro-account-key", "MEM0_REG_API_KEY": "reg-account-key", "MEM0_KEY": "fallback-key"}
+        )
+        self.assertEqual(canonical["MEM0_PRO_API_KEY"], "pro-account-key")
+        self.assertEqual(canonical["MEM0_REG_API_KEY"], "reg-account-key")
+        self.assertEqual(canonical["MEM0_API_KEY"], "fallback-key")
+
+    def test_memory_cache_expires_and_scopes_pinecone(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "memory_hits.json"
+            key = CACHE.mem0_cache_key("pro", "operator", "where is the brief")
+            CACHE.cache_set(path, key, "old-hit", now=1_000.0)
+            self.assertEqual(CACHE.cache_get(path, key, now=1_000.0 + CACHE.CACHE_TTL_SECONDS), "old-hit")
+            self.assertIsNone(CACHE.cache_get(path, key, now=1_000.0 + CACHE.CACHE_TTL_SECONDS + 1))
+            CACHE.cache_set(path, key, "fresh", now=2_000.0)
+            self.assertEqual(CACHE.invalidate_prefix(path, CACHE.mem0_prefix("pro", "operator")), 1)
+            self.assertIsNone(CACHE.cache_get(path, key, now=2_000.0))
+            first = CACHE.pinecone_cache_key("index-a.example", "key-a", "query")
+            second = CACHE.pinecone_cache_key("index-b.example", "key-a", "query")
+            self.assertNotEqual(first, second)
+            self.assertNotIn("key-a", first)
 
     def test_n8n_bridge_sends_bearer_header_and_keeps_it_out_of_argv(self) -> None:
         seen = {}

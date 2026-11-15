@@ -3,12 +3,16 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import sys
 from pathlib import Path
 
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+import apex_memory_cache
 import aiohttp
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
@@ -22,36 +26,12 @@ MAX_FACT_LENGTH = 1000
 SIMILARITY_THRESHOLD = 0.75
 
 
-def _ensure_cache() -> None:
-    CACHE_DIR.mkdir(exist_ok=True)
-
-
 def _cache_get(key: str) -> str | None:
-    if not CACHE_FILE.exists():
-        return None
-    try:
-        return json.loads(CACHE_FILE.read_text(encoding="utf-8")).get(key)
-    except (OSError, json.JSONDecodeError):
-        return None
+    return apex_memory_cache.cache_get(CACHE_FILE, key)
 
 
 def _cache_set(key: str, value: str) -> None:
-    _ensure_cache()
-    data: dict[str, str] = {}
-    if CACHE_FILE.exists():
-        try:
-            loaded = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
-            if isinstance(loaded, dict):
-                data = {str(item_key): str(item_value) for item_key, item_value in loaded.items()}
-        except (OSError, json.JSONDecodeError):
-            data = {}
-    data[key] = value
-    CACHE_FILE.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
-    CACHE_FILE.chmod(0o600)
-
-
-def _qhash(query: str) -> str:
-    return hashlib.sha256(query.strip().lower().encode()).hexdigest()
+    apex_memory_cache.cache_set(CACHE_FILE, key, value)
 
 
 def _dedup(items: list) -> list:
@@ -87,12 +67,13 @@ async def add_mem0_fact(fact: str, account: str = "pro", user_id: str = "operato
         ) as response:
             if response.status != 200:
                 return f"Error {response.status}: {await response.text()}"
+            apex_memory_cache.invalidate_prefix(CACHE_FILE, apex_memory_cache.mem0_prefix(account, user_id))
             return json.dumps(await response.json())
 
 
 @mcp.tool()
 async def search_mem0_facts(query: str, account: str = "pro", user_id: str = "operator") -> str:
-    cache_key = f"mem0:{account}:{user_id}:{_qhash(query)}"
+    cache_key = apex_memory_cache.mem0_cache_key(account, user_id, query)
     cached = _cache_get(cache_key)
     if cached:
         return f"[CACHE HIT] {cached}"
@@ -119,7 +100,7 @@ async def search_mem0_facts(query: str, account: str = "pro", user_id: str = "op
 
 @mcp.tool()
 async def search_supermemory(query: str, container_tag: str = "default") -> str:
-    cache_key = f"sm:{container_tag}:{_qhash(query)}"
+    cache_key = f"sm:{container_tag}:{apex_memory_cache.query_hash(query)}"
     cached = _cache_get(cache_key)
     if cached:
         return f"[CACHE HIT] {cached}"
@@ -141,15 +122,15 @@ async def search_supermemory(query: str, container_tag: str = "default") -> str:
 
 @mcp.tool()
 async def query_pinecone_vector(query: str) -> str:
-    cache_key = f"pc:{_qhash(query)}"
-    cached = _cache_get(cache_key)
-    if cached:
-        return f"[CACHE HIT] {cached}"
     pinecone_key = os.getenv("PINECONE_API_KEY")
     openai_key = os.getenv("OPENAI_API_KEY")
     host = os.getenv("PINECONE_HOST")
     if not (pinecone_key and openai_key and host):
         return "Error: Missing PINECONE_API_KEY, PINECONE_HOST, or OPENAI_API_KEY"
+    cache_key = apex_memory_cache.pinecone_cache_key(host, pinecone_key, query)
+    cached = _cache_get(cache_key)
+    if cached:
+        return f"[CACHE HIT] {cached}"
     async with aiohttp.ClientSession() as session:
         async with session.post(
             "https://api.openai.com/v1/embeddings",

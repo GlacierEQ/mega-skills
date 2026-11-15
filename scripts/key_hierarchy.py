@@ -135,7 +135,7 @@ FAMILIES: dict[str, dict[str, Any]] = {
         "env": "MEM0_API_KEY",
         "use": "memory",
         "method": "api-key",
-        "aliases": ["MEM0_API_KEY", "MEM0_KEY", "MEM0_PRO_API_KEY", "MEM0_REG_API_KEY"],
+        "aliases": ["MEM0_API_KEY", "MEM0_KEY"],
     },
     "pinecone": {
         "env": "PINECONE_API_KEY",

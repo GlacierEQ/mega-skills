@@ -9,12 +9,17 @@ import json
 import logging
 import os
 import platform
-import re
 import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict
+
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+import env_file
 
 try:
     import httpx
@@ -54,27 +59,13 @@ def _logger() -> logging.Logger:
     return logger
 
 
-_ASSIGNMENT = re.compile(
-    r"""([A-Za-z_][A-Za-z0-9_]*)\s*=\s*("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|[^\s#]+)"""
-)
-
-
 def load_env(path: Path = ENV_PATH) -> Dict[str, str]:
     loaded: Dict[str, str] = {}
     if not path.exists():
         return loaded
-    for raw in path.read_text(encoding="utf-8", errors="ignore").splitlines():
-        line = re.sub(r"^(export\s+|declare\s+-x\s+)", "", raw.strip())
-        if not line or line.startswith("#"):
-            continue
-        for match in _ASSIGNMENT.finditer(line):
-            key = match.group(1)
-            value = match.group(2).strip()
-            if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
-                value = value[1:-1]
-            if key and value:
-                os.environ.setdefault(key, value)
-                loaded[key] = value
+    for key, value in env_file.parse_env_text(path.read_text(encoding="utf-8", errors="ignore")).items():
+        os.environ.setdefault(key, value)
+        loaded[key] = value
     return loaded
 
 
