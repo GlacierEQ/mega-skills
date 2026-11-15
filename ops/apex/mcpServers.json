@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "supermemory": {
+      "url": "https://mcp.supermemory.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${SUPERMEMORY_API_KEY}",
+        "x-sm-project": "default"
+      }
+    },
+    "memoryplugin": {
+      "command": "npx",
+      "args": ["-y", "@memoryplugin/mcp-server"],
+      "env": { "MEMORY_PLUGIN_TOKEN": "${MEMORY_PLUGIN_TOKEN}" }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}/Workspace", "/Volumes"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "${GH_TOKEN}" }
+    },
+    "desktop-commander": {
+      "command": "npx",
+      "args": ["-y", "@wonderwhy-er/desktop-commander@latest"]
+    },
+    "fetch": { "command": "uvx", "args": ["mcp-server-fetch"] },
+    "git": { "command": "uvx", "args": ["mcp-server-git"] },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "taskade": {
+      "command": "npx",
+      "args": ["-y", "@taskade/mcp-server"],
+      "env": { "TASKADE_API_KEY": "${TASKADE_API_KEY}" }
+    },
+    "n8n-mcp": {
+      "command": "npx",
+      "args": ["-y", "supergateway", "--streamableHttp", "${N8N_BASE_URL}/mcp-server/http", "--header", "authorization:Bearer ${N8N_API_KEY}"]
+    }
+  }
+}
