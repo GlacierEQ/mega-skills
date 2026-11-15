@@ -25,6 +25,7 @@ def _load(name: str, path: Path):
 
 AUDIT = _load("apex_key_audit", ROOT / "scripts" / "apex_key_audit.py")
 BOOT = _load("apex_boot_unified", ROOT / "scripts" / "apex_boot_unified.py")
+BRIDGE = _load("n8n_stdio_bridge", ROOT / "ops" / "apex" / "n8n_stdio_bridge.py")
 
 
 class AuditTests(unittest.TestCase):
@@ -56,6 +57,17 @@ class AuditTests(unittest.TestCase):
 
     def test_clean_env_refuses_tracked_path_and_allows_ignored_home(self) -> None:
         self.assertFalse(AUDIT.destination_is_safe(ROOT / "secrets" / "catalog.json"))
+        previous = os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.chdir(tmp)
+            try:
+                missing_parent = ROOT / "brand-new-untracked-dir" / "report.json"
+                self.assertFalse(missing_parent.parent.exists())
+                self.assertFalse(AUDIT.destination_is_safe(missing_parent))
+                outside = Path(tmp) / "also-missing" / "out.json"
+                self.assertTrue(AUDIT.destination_is_safe(outside))
+            finally:
+                os.chdir(previous)
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / ".env"
             source.write_text('OPENAI_API_KEY="sk-test-value"\n', encoding="utf-8")
@@ -128,8 +140,53 @@ class AuditTests(unittest.TestCase):
                 else:
                     os.environ["OPENAI_API_KEY"] = previous
             self.assertNotIn("sk-test-boot", body)
-            self.assertIn("sha256", body)
+            document = json.loads(body)
+            self.assertEqual(document["sha256"], BOOT.receipt_digest(document["report"]))
             self.assertIn("missing", body)
+
+    def test_report_leak_is_detected_before_any_write(self) -> None:
+        raw = {"OPENAI_API_KEY": "sk-test-should-not-print"}
+        report = {"canonical_names": ["OPENAI_API_KEY"], "note": raw["OPENAI_API_KEY"]}
+        self.assertTrue(AUDIT.report_contains_secret(report, raw))
+        self.assertFalse(AUDIT.report_contains_secret({"canonical_names": ["OPENAI_API_KEY"]}, raw))
+
+    def test_n8n_bridge_sends_bearer_header_and_keeps_it_out_of_argv(self) -> None:
+        seen = {}
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_POST(self):  # noqa: N802
+                seen["path"] = self.path
+                seen["authorization"] = self.headers.get("Authorization")
+                length = int(self.headers.get("Content-Length", "0"))
+                seen["body"] = self.rfile.read(length)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Mcp-Session-Id", "session-1")
+                self.end_headers()
+                self.wfile.write(b'{"jsonrpc":"2.0","id":1,"result":{"ok":true}}')
+
+            def log_message(self, fmt, *args):
+                return
+
+        server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            url = f"http://127.0.0.1:{server.server_address[1]}/mcp-server/http"
+            session, messages = BRIDGE.forward(url, "bridge-test-token", '{"jsonrpc":"2.0","id":1,"method":"ping"}', None)
+        finally:
+            server.shutdown()
+            thread.join(timeout=2)
+        self.assertEqual(session, "session-1")
+        self.assertEqual(json.loads(messages[0])["result"]["ok"], True)
+        self.assertEqual(seen["authorization"], "Bearer bridge-test-token")
+        self.assertNotIn("bridge-test-token", seen["path"])
+        config = json.loads((ROOT / "ops" / "apex" / "mcpServers.json").read_text(encoding="utf-8"))
+        n8n = config["mcpServers"]["n8n-mcp"]
+        self.assertNotIn("N8N_API_KEY", " ".join(n8n["args"]))
+        self.assertEqual(n8n["env"]["N8N_API_KEY"], "${N8N_API_KEY}")
+        self.assertEqual(BRIDGE.endpoint("https://example.n8n-host.com"), "https://example.n8n-host.com/mcp-server/http")
+        self.assertEqual(BRIDGE.sse_payloads('event: message\ndata: {"ok":1}\n\n'), ['{"ok":1}'])
 
 
 if __name__ == "__main__":

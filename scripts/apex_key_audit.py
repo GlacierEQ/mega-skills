@@ -158,9 +158,19 @@ def _git_toplevel(start: Path) -> Path | None:
     return Path(result.stdout.strip())
 
 
+def _existing_ancestor(path: Path) -> Path:
+    current = path if path.is_dir() else path.parent
+    while not current.exists():
+        parent = current.parent
+        if parent == current:
+            return current
+        current = parent
+    return current
+
+
 def destination_is_safe(path: Path) -> bool:
-    parent = path.parent if path.parent.exists() else Path.cwd()
-    top = _git_toplevel(parent)
+    start = _existing_ancestor(path)
+    top = _git_toplevel(start)
     if top is None:
         return True
     try:
@@ -183,6 +193,11 @@ def write_clean_env(source: Path, canonical: Dict[str, str]) -> Path:
     destination.write_text("\n".join(lines) + "\n", encoding="utf-8")
     destination.chmod(0o600)
     return destination
+
+
+def report_contains_secret(report: dict, values: Dict[str, str]) -> bool:
+    printable = json.dumps(report)
+    return any(value and value in printable for value in values.values())
 
 
 def build_report(raw: Dict[str, str], canonical: Dict[str, str], duplicates: List[dict], probes: List[dict]) -> dict:
@@ -230,18 +245,17 @@ def main(argv: List[str] | None = None) -> int:
             for future in as_completed(futures):
                 probes.append(future.result())
     report = build_report(raw, canonical, duplicates, probes)
+    if report_contains_secret(report, raw):
+        raise SystemExit("report included a secret value; refusing to write")
     out_path = Path(args.out)
     if not destination_is_safe(out_path):
         raise SystemExit(f"refusing to write the report inside the git repo: {out_path}")
+    printable = json.dumps(report, indent=2)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    out_path.write_text(printable + "\n", encoding="utf-8")
     out_path.chmod(0o600)
     if args.write_clean_env:
         write_clean_env(env_path, canonical)
-    printable = json.dumps(report, indent=2)
-    for value in raw.values():
-        if value and value in printable:
-            raise SystemExit("report included a secret value; refusing to print")
     print(printable)
     return 0
 

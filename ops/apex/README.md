@@ -10,4 +10,6 @@ python3 scripts/apex_key_audit.py --env ~/.env --out "$HOME/key_audit_report.jso
 python3 scripts/apex_boot_unified.py
 ```
 
-The audit prints names, fingerprints, and HTTP status. It refuses to write a cleaned env file or a report into a tracked git path. Do not commit `~/.env`.
+The audit prints names, fingerprints, and HTTP status. It refuses to write a cleaned env file or a report into a tracked git path, and it checks the report for secret values before writing it. Do not commit `~/.env`.
+
+`n8n-mcp` runs `ops/apex/n8n_stdio_bridge.py` from the repo root. The bearer token stays in `N8N_API_KEY` and is sent as an HTTP header. It is not a process argument.

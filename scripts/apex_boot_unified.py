@@ -112,12 +112,18 @@ async def check_local_locus(endpoint: str) -> str:
         return "OFFLINE (BYPASS)"
 
 
+def receipt_digest(report: dict) -> str:
+    payload = {key: value for key, value in report.items() if key != "sha256"}
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(encoded).hexdigest()
+
+
 def write_boot_receipt(report: dict, directory: Path = LOG_DIR) -> Path:
-    digest = hashlib.sha256(json.dumps(report, sort_keys=True).encode()).hexdigest()
-    report["sha256"] = digest
+    payload = {key: value for key, value in report.items() if key != "sha256"}
+    document = {"sha256": receipt_digest(payload), "report": payload}
     directory.mkdir(parents=True, exist_ok=True)
     destination = directory / "latest_boot_receipt.json"
-    destination.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    destination.write_text(json.dumps(document, indent=2) + "\n", encoding="utf-8")
     destination.chmod(0o600)
     return destination
 

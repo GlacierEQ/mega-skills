@@ -157,8 +157,14 @@ async def query_pinecone_vector(query: str) -> str:
             headers={"Authorization": f"Bearer {openai_key}", "Content-Type": "application/json"},
         ) as response:
             if response.status != 200:
-                return f"Embedding error: {await response.text()}"
-            vector = (await response.json())["data"][0]["embedding"]
+                return f"Embedding error: HTTP {response.status}"
+            payload = await response.json()
+            rows = payload.get("data") if isinstance(payload, dict) else None
+            if not rows or not isinstance(rows, list) or not isinstance(rows[0], dict):
+                return "Embedding error: unexpected response shape"
+            vector = rows[0].get("embedding")
+            if not vector:
+                return "Embedding error: unexpected response shape"
         async with session.post(
             f"https://{host}/query",
             json={"vector": vector, "topK": 4, "includeMetadata": True},
