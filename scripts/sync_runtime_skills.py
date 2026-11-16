@@ -11,6 +11,7 @@ from __future__ import annotations
 import importlib.util
 import os
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -305,6 +306,7 @@ def _load_skill_evidence_selector():
     if spec is None or spec.loader is None or not hasattr(spec.loader, "exec_module"):
         raise RuntimeError(f"unable to load evidence selector from {path}")
     module = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(spec.name, module)
     spec.loader.exec_module(module)
     return module
 
@@ -363,6 +365,8 @@ def main(argv: list[str] | None = None) -> None:
                 "withheld": selector_receipt["withheld"],
                 "refused": selector_receipt["refused"],
                 "skill_count": len(selector_receipt["skill_ids"]),
+                "skill_ids": selector_receipt["skill_ids"],
+                "coalition": selector_receipt["coalition"],
             },
         }
     print(json.dumps(result, indent=2))

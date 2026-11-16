@@ -28,6 +28,9 @@ SELECTOR_SCHEMA_VERSION = 1
 LEDGER_SCHEMA_VERSION = 1
 SELECTOR_ID = "evidence_aware_omp_t1"
 BASELINE_ID = "B1"
+# Pin B1 to PR #51 merge commit; tests assert B1_COALITION still matches this revision.
+B1_FROZEN_GIT_REV = "da26fa48"
+READINESS_SELECTOR_MODULE = "scripts/evidence_capability_selector.py"
 NO_EVIDENCE = "no evidence"
 PASS_POINTS = 100
 FAIL_POINTS = 100
@@ -139,6 +142,21 @@ def b1_coalition() -> dict[str, list[str]]:
 
 def b1_ids() -> list[str]:
     return [skill_id for layer in ("atomic", "compound", "mega") for skill_id in B1_COALITION[layer]]
+
+
+def parse_omp_selection_from_sync_source(source: str) -> dict[str, list[str]]:
+    """Parse OMP_POWER_SELECTION from a sync_runtime_skills.py source string."""
+    block_match = re.search(r"OMP_POWER_SELECTION\s*=\s*\{(.*?)\n\}", source, re.S)
+    if not block_match:
+        raise ValueError("OMP_POWER_SELECTION block not found")
+    coalition: dict[str, list[str]] = {}
+    for layer in ("atomic", "compound", "mega"):
+        layer_match = re.search(rf'"{layer}":\s*\((.*?)\)', block_match.group(1), re.S)
+        if not layer_match:
+            raise ValueError(f"OMP layer missing: {layer}")
+        coalition[layer] = [reject_skill_id(part.strip().strip('"').strip("'"))
+                           for part in layer_match.group(1).split(",") if part.strip()]
+    return coalition
 
 
 def family_utility(passes: int, fails: int, regressions: int, wall_time_ms: float, cost_bytes: int) -> float:
@@ -254,6 +272,8 @@ def validate_entry(entry: Mapping[str, Any]) -> dict[str, Any]:
     label = entry.get("label")
     if not isinstance(label, str) or not label.strip():
         raise ValueError(f"ledger entry {entry_id} needs a label")
+    if production is True:
+        raise ValueError(f"ledger entry {entry_id} refuses production_outcome true; append fixture seeds only")
     if production is False and "not a production outcome" not in label:
         raise ValueError(f"ledger entry {entry_id} must say it is not a production outcome")
     family = entry.get("task_family")
@@ -285,8 +305,10 @@ def validate_ledger(document: Mapping[str, Any]) -> dict[str, Any]:
         raise ValueError("ledger must be a JSON object")
     if document.get("schema_version") != LEDGER_SCHEMA_VERSION:
         raise ValueError("ledger schema_version must be 1")
-    if "append_only" in document and document.get("append_only") is not True:
-        raise ValueError("ledger must stay append-only")
+    if document.get("append_only") is not True:
+        raise ValueError("ledger must set append_only to true")
+    if document.get("production_outcomes") is not False:
+        raise ValueError("ledger must set production_outcomes to false")
     entries = document.get("entries")
     if not isinstance(entries, list):
         raise ValueError("ledger entries must be a list")
@@ -301,6 +323,7 @@ def validate_ledger(document: Mapping[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": LEDGER_SCHEMA_VERSION,
         "append_only": True,
+        "production_outcomes": False,
         "entries": normalized,
     }
 

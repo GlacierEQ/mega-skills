@@ -8,7 +8,7 @@
   "branch": "feat/evidence-aware-skill-selector-20261113",
   "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
   "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
-  "head_commit": "72fb29526d2b3fdc7f5b653507fb3def578c6012",
+  "head_commit": "c59a92fc",
   "distinction": {
     "this_module": "scripts/skill_evidence_selector.py",
     "readiness_selector": "scripts/evidence_capability_selector.py",
@@ -62,7 +62,7 @@
     },
     "skill_evidence_selector": {
       "command": "python3 -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v",
-      "result": "15 passed, exit 0"
+      "result": "18 passed, exit 0"
     },
     "compileall": {
       "command": "python3 -m compileall -q scripts tests",
@@ -77,6 +77,39 @@
     "Phase 2 engineering quality evaluation",
     "merge to main"
   ],
+  "hidden_harms_audited": {
+    "summary": "Counter-engineered failure modes that look like wins or safe defaults.",
+    "items": [
+      {
+        "harm": "B2 recall looks strong while precision is poor",
+        "mitigation": "Receipt reports both; fixture labels gold per task, not union-of-all-tasks static bundle."
+      },
+      {
+        "harm": "Confuse T1 with evidence_capability_selector readiness routing",
+        "mitigation": "Receipt distinction block; different module paths and opt-in flag only on sync_runtime_skills."
+      },
+      {
+        "harm": "Ledger rows treated as production truth",
+        "mitigation": "validate_ledger requires production_outcomes false; validate_entry rejects production_outcome true and enforces label wording."
+      },
+      {
+        "harm": "B1 baseline drift vs live OMP_POWER_SELECTION",
+        "mitigation": "B1_COALITION pinned; test_b1_coalition_matches_frozen_pr51_merge parses da26fa48 sync source."
+      },
+      {
+        "harm": "Silent partial coalition in CLI JSON",
+        "mitigation": "Selector block emits skill_ids and coalition alongside skill_count for audit replay."
+      },
+      {
+        "harm": "Path escape via skill id or ledger artifact",
+        "mitigation": "reject_skill_id and _check_artifact; existing refusal tests retained."
+      },
+      {
+        "harm": "Fixture precision metrics read as OMP host certification",
+        "mitigation": "not_proven list and test_fixture_metrics_do_not_imply_host_certification."
+      }
+    ]
+  },
   "ledger": {
     "path": "evidence/skill-selection/ledger.json",
     "production_outcomes": false,

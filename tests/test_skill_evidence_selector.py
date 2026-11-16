@@ -112,6 +112,33 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
     def tearDown(self):
         self.assertEqual(LEDGER_PATH.read_bytes(), self.ledger_bytes)
 
+    def test_b1_coalition_matches_frozen_pr51_merge(self):
+        source = (
+            ROOT / "scripts" / "sync_runtime_skills.py"
+        )
+        git = __import__("subprocess").check_output(
+            ["git", "show", f"{SELECTOR.B1_FROZEN_GIT_REV}:scripts/sync_runtime_skills.py"],
+            cwd=ROOT,
+            text=True,
+        )
+        parsed = SELECTOR.parse_omp_selection_from_sync_source(git)
+        self.assertEqual(SELECTOR.b1_coalition(), parsed)
+
+    def test_ledger_rejects_production_rows_and_missing_safety_flags(self):
+        base = dict(self.ledger)
+        with self.assertRaises(ValueError):
+            SELECTOR.validate_ledger({**base, "production_outcomes": True})
+        with self.assertRaises(ValueError):
+            SELECTOR.validate_ledger({**base, "append_only": False})
+        bad_entry = dict(self.ledger["entries"][0], production_outcome=True, label="production win")
+        with self.assertRaises(ValueError):
+            SELECTOR.validate_ledger({**base, "entries": [bad_entry]})
+
+    def test_fixture_metrics_do_not_imply_host_certification(self):
+        """B1/B2 numbers compare static bundles to per-task gold; they are not pass-rate claims."""
+        self.assertIn("not_proven", json.loads((ROOT / "ops/receipts/evidence-aware-skill-selector-omp.json").read_text()))
+        self.assertGreater(self.registry.resolve("mega-gcp-data-engineering", "atomic").cost_bytes, 100_000)
+
     def test_duplicate_task_id_is_not_reported_as_missing(self):
         task = {
             "id": "same-id",
@@ -348,6 +375,7 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
         ledger = {
             "schema_version": 1,
             "append_only": True,
+            "production_outcomes": False,
             "entries": [{
                 "entry_id": "seed-ambiguous-long-horizon",
                 "provenance": "fixture-seed",
@@ -385,6 +413,8 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
         def observe(outcome: str, wall_time_ms: int, regressions: int, **flags):
             ledger = {
                 "schema_version": 1,
+                "append_only": True,
+                "production_outcomes": False,
                 "entries": [{
                     "entry_id": "seed-size-probe",
                     "provenance": "fixture-seed",
@@ -467,6 +497,8 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
             self.assertEqual([item["name"] for item in evidence["items"]], SELECTOR.b1_ids())
             self.assertEqual(evidence["selector"]["decision"], "no evidence")
             self.assertEqual(evidence["selector"]["baseline_id"], "B1")
+            self.assertEqual(evidence["selector"]["skill_ids"], SELECTOR.b1_ids())
+            self.assertEqual(evidence["selector"]["coalition"], SELECTOR.b1_coalition())
             self.assertEqual(evidence["counts"].get("planned"), 30)
             self.assertFalse(evidence_dir.exists())
             with self.assertRaises(SystemExit), redirect_stderr(io.StringIO()):
