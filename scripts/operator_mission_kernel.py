@@ -2,7 +2,18 @@
 """Executable mission-selection and completion gate for the GlacierEQ Operator."""
 from __future__ import annotations
 
+from importlib.util import module_from_spec, spec_from_file_location
+from pathlib import Path
 from typing import Any
+
+_GATE_POLARITY_SPEC = spec_from_file_location(
+    "gate_polarity",
+    Path(__file__).resolve().parent / "gate_polarity.py",
+)
+if _GATE_POLARITY_SPEC is None or _GATE_POLARITY_SPEC.loader is None:
+    raise ImportError("unable to load scripts/gate_polarity.py")
+gate_polarity = module_from_spec(_GATE_POLARITY_SPEC)
+_GATE_POLARITY_SPEC.loader.exec_module(gate_polarity)
 
 POSITIVE_WEIGHTS = {
     "operator_impact": 12.0,
@@ -372,6 +383,8 @@ def run_operator_mission_kernel(operation: str, payload: dict[str, Any]) -> dict
         return retirement_gate(payload)
     if operation == "completion_gate":
         return completion_gate(payload)
+    if operation in {"gate_polarity", "counter_gate", "invert_gate"}:
+        return gate_polarity.evaluate(payload)
     if operation in {"mission_select", "dispatch_gate"}:
         result = mission_select(payload)
         if operation == "dispatch_gate":

@@ -3,7 +3,9 @@ name: hidden-harm-cross-domain
 description: "General hidden-harm removal skill for work outside GitHub/context/connectors/casebuild. Detects technically-valid transitions that reduce human-outcome leverage, capability, truth fidelity, optionality, privacy, reversibility, or completion quality."
 ---
 
-# Hidden Harm — Cross-Domain
+# Hidden Harm — Cross-Domain Calibrator
+
+> Chassis wheel for remainder risk. Steering calibrator → `hidden-harm-governance`. Domain wheels → github / context / connectors / casebuild. One wheel rolls; four on a chassis is a vehicle.
 
 ## Mission
 
@@ -49,6 +51,7 @@ A transition is acceptable only if its net effect is stronger for the mission af
 - memory/context/history/summary/continuity -> `hidden-harm-context`
 - plugins/MCP/providers/data movement -> `hidden-harm-connectors`
 - legal/evidence/case work -> `hidden-harm-casebuild`
+- governance / HARD-GATE / approval theater / GATE DENIED -> `hidden-harm-governance`
 
 ## Success
 
