@@ -49,6 +49,7 @@ A transition is acceptable only if its net effect is stronger for the mission af
 - memory/context/history/summary/continuity -> `hidden-harm-context`
 - plugins/MCP/providers/data movement -> `hidden-harm-connectors`
 - legal/evidence/case work -> `hidden-harm-casebuild`
+- governance / HARD-GATE / approval theater / GATE DENIED -> `hidden-harm-governance`
 
 ## Success
 

@@ -78,6 +78,7 @@ Hidden-harm removal is a cross-cutting execution concern. Before material execut
 - context / memory / summaries / continuity / Operator semantics → `hidden-harm-context`
 - connectors / plugins / MCP / provider pipelines → `hidden-harm-connectors`
 - legal / evidence / casebuilding → `hidden-harm-casebuild`
+- governance / HARD-GATE / approval theater / GATE DENIED / token soft-caps → `hidden-harm-governance` (hard halt → quality pitstop, not permission)
 - all other work, or multi-domain remainder risk → `hidden-harm-cross-domain`
 
 Compose multiple specialists when a work unit crosses domains. The shared invariant is:
