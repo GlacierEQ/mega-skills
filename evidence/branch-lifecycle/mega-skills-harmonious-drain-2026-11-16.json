@@ -1,10 +1,11 @@
 {
   "schema": "glaciereq.harmonious-merge-audit.v1",
   "repository": "GlacierEQ/mega-skills",
-  "recorded_at": "2026-11-16T14:22:00Z",
+  "recorded_at": "2026-11-16T14:52:00Z",
   "baseline": {
     "branch": "main",
-    "sha_at_drain_complete": "0deea56e3b4fc7acfe32131c642e6f8ad520e158",
+    "sha_at_drain_complete": "bb205f0c4408fa0ee0558bac365833093f07cd9d",
+    "closure_pull_request": 65,
     "remote_branch_count_excluding_default": 0,
     "open_pull_request_count": 0
   },
@@ -64,6 +65,13 @@
     "mega_skill": "apex-fleet-harmonizer",
     "combo": "fleet-recon-and-harmonize",
     "tooling": "scripts/fleet_branch_sprawl_snapshot.py",
+    "snapshot_receipt": "evidence/branch-lifecycle/fleet-sprawl-glaciereq-2026-11-16.json",
+    "priority_targets": [
+      "GlacierEQ/xai-colossus-cooling",
+      "GlacierEQ/the-tower-of-babel",
+      "GlacierEQ/Z-BACKUP-aspen-grove-operator-v7",
+      "GlacierEQ/sigma-glue"
+    ],
     "note": "Apply the same harvest-then-delete loop per repo; never bulk-merge stale tips."
   }
 }

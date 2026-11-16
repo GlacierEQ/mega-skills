@@ -36,7 +36,7 @@
 
 ## Live engineering (provenance-gated)
 - Chassis reconnect receipt on **main** after **#62**: `evidence/calibrator-chassis/pro-mastermind-reconnect.md`.
-- **mega-skills branch drain (2026-11-16):** `main` only on remote; benefits merged via **#60–#64**. Receipt: `evidence/branch-lifecycle/mega-skills-harmonious-drain-2026-11-16.json`. Fleet next: `scripts/fleet_branch_sprawl_snapshot.py` + `apex-fleet-harmonizer` / `fleet-recon-and-harmonize`.
+- **mega-skills branch drain (2026-11-16):** `main` only on remote; benefits merged via **#60–#65**. Receipt: `evidence/branch-lifecycle/mega-skills-harmonious-drain-2026-11-16.json`. Fleet recon receipt (200 repos): `evidence/branch-lifecycle/fleet-sprawl-glaciereq-2026-11-16.json` — next wave: `xai-colossus-cooling`, `the-tower-of-babel`, `Z-BACKUP-aspen-grove-operator-v7`, `sigma-glue`.
 - Cortex **6/12** claim is documented on the PR #62 reconnect receipt: Core-Think, Phantom, Shadow + Microwave, Sonic, Sherlock-Alpha. Still dark: Tower, Genius lineages, Ghost/Viper/Wraith/Specter/Supernova/Bodybuilder. **Do not say peak restored.**
 - `MASTERMIND_HOME` must be portable + `cd` before maximize (no `/root/projects/mastermind` hardcode).
 - Related: `GlacierEQ/mastermind` PR #178.
