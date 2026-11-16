@@ -11,6 +11,16 @@ class TestAgyCustomizations(unittest.TestCase):
         self.assertIn("name: agy-customizations", skill_md)
         self.assertIn("description:", skill_md)
 
+    def test_honesty_gate_missing_docs_dir(self):
+        """Hidden-harm: missing ./docs must not be presented as required local guides."""
+        skill_md = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("Honesty gate", skill_md)
+        self.assertIn("https://antigravity.google/docs", skill_md)
+        docs = SKILL_ROOT / "docs"
+        if not docs.is_dir():
+            self.assertNotIn("[JSON Configurations Guide](./docs/json_configs.md)", skill_md)
+            self.assertIn("OFFLINE_GAP", skill_md)
+
     def test_skill_entry_point_exists_and_executable(self):
         skill_py = SKILL_ROOT / "skill.py"
         self.assertTrue(skill_py.exists())

@@ -2,28 +2,40 @@
   "kind": "operator_continuity_handoff",
   "timezone_note": "Pacific/Honolulu",
   "written_at_utc": "2026-11-16T08:50:20.545015+00:00",
+  "hidden_harms_scrubbed_at_utc": "2026-11-16T13:40:00+00:00",
   "operator": "Casey Barton / @GlacierEQ",
   "mem0_status": "declined_this_session",
   "supermemory_status": "primary_continuity_store",
+  "supermemory_verify_scope": "GET /v3/documents/{id} status=done; search ranking may lag — miss is not absence",
   "handoff_md": "missions/operator-continuity/HANDOFF.md",
   "readme_md": "missions/operator-continuity/README.md",
+  "hidden_harms_audit_md": "missions/operator-continuity/HIDDEN_HARMS_AUDIT.md",
   "session_env_ephemeral": "/home/ubuntu/.apex-session/env-part2.sh",
   "sm_hits_ephemeral": "/opt/cursor/artifacts/operator-supermemory-hits.json",
   "supermemory_document_ids": [
     "Esmc3XxT3XvoYyU5rX2zrh",
     "62FKGrefuQeEGNuLfJoaBB",
     "cHexPhbGsbh7s87MkyUV3S",
-    "DFitxk6kZxDA2ezmJV3Q7B"
+    "DFitxk6kZxDA2ezmJV3Q7B",
+    "CgsrLQNwjySMqLeYzcqJB1",
+    "TArYSFHdWeDZA5LLxzb9xr"
   ],
   "supermemory_query": "OPERATOR CONTINUITY Aspen Grove is the house Keymaster Iceberg handoff 2026-11-16",
-  "active_branch": "cursor/pro-mastermind-quality-processors-f969",
-  "open_prs": [
+  "pro_mastermind_reconnect_md": {
+    "path": "evidence/calibrator-chassis/pro-mastermind-reconnect.md",
+    "present_on": "cursor/pro-mastermind-quality-processors-f969",
+    "absent_on": ["main", "cursor/operator-continuity-handoff-f969"],
+    "retrieval": "RETRIEVAL_GAP unless that branch is checked out"
+  },
+  "active_engineering_branch": "cursor/pro-mastermind-quality-processors-f969",
+  "open_prs_backlog": [
     60,
     61,
     62,
     63
   ],
   "aspen_rule": "Aspen Grove is the house; Keymaster vault; Iceberg memory front door; Gatekeeper future single key",
+  "agy_note": "Offline antigravity-guide references/ and agy-customizations docs/ were false capabilities; use live https://antigravity.google/docs. Omnibus antigravity_cli.py has Mac-absolute paths — not portable on this VM.",
   "part2_key_names": [
     "SUPERMEMORY_API_KEY",
     "SUPERMEMORY_API_KEY_ALT",
@@ -38,7 +50,7 @@
     "NEO4J_USER",
     "NEO4J_PASSWORD"
   ],
-  "cortex_live": [
+  "cortex_live_claimed_on_pr62": [
     "Core-Think",
     "Phantom",
     "Shadow",
@@ -46,5 +58,5 @@
     "Sonic",
     "Sherlock-Alpha"
   ],
-  "next_chat_seed": "Read missions/operator-continuity/HANDOFF.md then OPERATOR CONTINUITY from SuperMemory tag operator-continuity-2026-11-16"
+  "next_chat_seed": "Read missions/operator-continuity/HANDOFF.md + HIDDEN_HARMS_AUDIT.md; GET SuperMemory docs by id; do not trust missing offline AGY references/"
 }
