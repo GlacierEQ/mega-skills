@@ -2949,6 +2949,7 @@
       "path": "mega-skills/glaciereq-macbook-air-expert",
       "entrypoint": "mega-skills/glaciereq-macbook-air-expert/MEGA.md",
       "required_combos": [
+        "long-horizon-core",
         "macbook-air-ops-library"
       ],
       "conditional_combos": [

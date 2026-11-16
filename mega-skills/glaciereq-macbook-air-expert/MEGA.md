@@ -7,10 +7,9 @@ version: 1.0.0
 path: mega-skills/glaciereq-macbook-air-expert
 entrypoint: mega-skills/glaciereq-macbook-air-expert/MEGA.md
 required_combos:
+  - long-horizon-core
   - macbook-air-ops-library
-  - capability-readiness
 conditional_combos:
-  - capability-readiness
   - automation-control
   - cybersecurity-threat-analysis
   - evidence-to-evolution-loop

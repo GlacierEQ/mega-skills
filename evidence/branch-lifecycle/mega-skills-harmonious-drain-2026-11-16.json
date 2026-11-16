@@ -1,0 +1,69 @@
+{
+  "schema": "glaciereq.harmonious-merge-audit.v1",
+  "repository": "GlacierEQ/mega-skills",
+  "recorded_at": "2026-11-16T14:22:00Z",
+  "baseline": {
+    "branch": "main",
+    "sha_at_drain_complete": "0deea56e3b4fc7acfe32131c642e6f8ad520e158",
+    "remote_branch_count_excluding_default": 0,
+    "open_pull_request_count": 0
+  },
+  "procedure": {
+    "combo": "branch-sprawl-control-loop",
+    "skills": [
+      "branch-lifecycle-intelligence",
+      "fleet-git-harmonizer-core"
+    ],
+    "phases": [
+      "inventory",
+      "prove_redundancy_or_harvest",
+      "merge_beneficial_prs",
+      "delete_residue",
+      "receipt"
+    ]
+  },
+  "merged_integrations": [
+    { "pr": 60, "benefit": "APEX env key audit, boot, unified memory MCP wiring" },
+    { "pr": 61, "benefit": "Gate polarity pitstops vs false hard-halts" },
+    { "pr": 62, "benefit": "Pro-Mastermind quality processor reconnect" },
+    { "pr": 63, "benefit": "Hidden-harm counter-wave always-on + operator continuity packet" },
+    { "pr": 64, "benefit": "Harmonious harvest: Aspen tests, cert seed, MacBook combo/mega, evidence selector, SCAdvance doctrine" }
+  ],
+  "closed_without_merge_after_harvest": [
+    { "pr": 24, "reason": "doctrine transcribed to governance/STRONG_COHERENT_ADVANCE.md" },
+    { "pr": 54, "reason": "main kernel already includes gate_polarity + requested deliverable path" },
+    { "pr": 59, "reason": "selector landed via #64" }
+  ],
+  "deletion_waves": {
+    "wave1_merged_redundant": 42,
+    "wave2a_content_redundant_or_superseded": 27,
+    "wave2b_post_harvest_donors": 9
+  },
+  "intentionally_not_integrated": [
+    {
+      "ref": "fix/buildkite-mission-output-path",
+      "reason": "false-readiness inflation in build_all_workspace_skills sync"
+    },
+    {
+      "ref": "fix/buildkite-validation-parity-20260908",
+      "reason": "removes provider-continuity preflight required on main"
+    },
+    {
+      "ref": "fix/operator-requested-deliverable-dispatch-20261026",
+      "reason": "older incomplete kernel relative to main after #60–#63"
+    }
+  ],
+  "local_validation_at_receipt": {
+    "validate_hierarchy": "pass",
+    "aspen_connectors_tests": "4/4",
+    "skill_evidence_selector_tests": "18/18",
+    "hidden_harm_counter_wave_tests": "5/5",
+    "branch_lifecycle_tests": "18/18"
+  },
+  "fleet_next": {
+    "mega_skill": "apex-fleet-harmonizer",
+    "combo": "fleet-recon-and-harmonize",
+    "tooling": "scripts/fleet_branch_sprawl_snapshot.py",
+    "note": "Apply the same harvest-then-delete loop per repo; never bulk-merge stale tips."
+  }
+}
