@@ -35,8 +35,8 @@
 - Rotate any keys pasted into chat.
 
 ## Live engineering (provenance-gated)
-- Chassis work lives on branch `cursor/pro-mastermind-quality-processors-f969` (PR **#62**) — including `evidence/calibrator-chassis/pro-mastermind-reconnect.md`. That file is **not** on `main` / this continuity branch alone → checkout PR #62 branch before citing it (`RETRIEVAL_GAP` otherwise).
-- Related open PRs (backlog, not this packet’s sole mission): **#60** apex env keys; **#61** gate polarity; **#62** Pro-Mastermind reconnect; **#63** this continuity packet.
+- Chassis reconnect receipt on **main** after **#62**: `evidence/calibrator-chassis/pro-mastermind-reconnect.md`.
+- **mega-skills branch drain (2026-11-16):** `main` only on remote; benefits merged via **#60–#64**. Receipt: `evidence/branch-lifecycle/mega-skills-harmonious-drain-2026-11-16.json`. Fleet next: `scripts/fleet_branch_sprawl_snapshot.py` + `apex-fleet-harmonizer` / `fleet-recon-and-harmonize`.
 - Cortex **6/12** claim is documented on the PR #62 reconnect receipt: Core-Think, Phantom, Shadow + Microwave, Sonic, Sherlock-Alpha. Still dark: Tower, Genius lineages, Ghost/Viper/Wraith/Specter/Supernova/Bodybuilder. **Do not say peak restored.**
 - `MASTERMIND_HOME` must be portable + `cd` before maximize (no `/root/projects/mastermind` hardcode).
 - Related: `GlacierEQ/mastermind` PR #178.
