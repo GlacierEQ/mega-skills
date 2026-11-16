@@ -6,7 +6,7 @@ import io
 import json
 import tempfile
 import unittest
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -469,7 +469,7 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
             self.assertEqual(evidence["selector"]["baseline_id"], "B1")
             self.assertEqual(evidence["counts"].get("planned"), 30)
             self.assertFalse(evidence_dir.exists())
-            with self.assertRaises(SystemExit):
+            with self.assertRaises(SystemExit), redirect_stderr(io.StringIO()):
                 SYNC.main(["--select", "evidence", "--task-json", str(FIXTURE_PATH), "--task-id", "evidence-insufficient"])
 
 

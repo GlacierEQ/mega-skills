@@ -313,7 +313,10 @@ def main(argv: list[str] | None = None) -> None:
     import argparse
     import json
 
-    parser = argparse.ArgumentParser(description="Synchronize canonical Skills into agent runtimes")
+    parser = argparse.ArgumentParser(
+        prog="sync_runtime_skills.py",
+        description="Synchronize canonical Skills into agent runtimes",
+    )
     parser.add_argument("--runtime", choices=("legacy", "omp"), default="legacy")
     parser.add_argument("--omp-skills-dir", type=Path,
                         default=Path.home() / ".omp" / "agent" / "skills")
