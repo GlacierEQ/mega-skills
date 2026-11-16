@@ -36,6 +36,7 @@ Foundry, registry, and execution kernel for APEX skills, compounding combo-skill
 - **Career Control Plane:** `missions/anthropic-applied-ai/` driven by `scripts/career_evidence_backbone.py` and `scripts/career_action_queue.py`. Keep target freshness `FRESH` and substantiate open hard gates with verified evidence.
 - **Operator Deliverable Rule:** When the Operator requests a deliverable or support task (`requested_finished_deliverable: True` or `explicitly_requested_support: True`), the kernel must dispatch and finalize upon verified receipt. Never reject requested deliverables as "support-only" or "not substantive".
 - **Registry Validation:** `scripts/readiness_assay.py` and `registry/` files must remain structurally sound and free of unexecuted stubs claiming false verification.
+- **Hidden-Harm Counter-Wave:** Compose `hidden-harm-counter-wave` on every material work unit. Route via `integrations/hidden-harm-skill-matrix.json` and `scripts/hidden_harm_counter_wave.py` through domain specialists (`hidden-harm-github`, `hidden-harm-context`, `hidden-harm-connectors`, `hidden-harm-casebuild`, `hidden-harm-cross-domain`). Dynamically counter-engineer meta-harms introduced by remediations themselves. Not bureaucracy — prevent technically-valid actions from silently weakening the Operator mission.
 
 # 9-Cycle Process Doctrine — Mega-Skills Foundry
 

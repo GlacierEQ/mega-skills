@@ -16744,6 +16744,29 @@
       ]
     },
     {
+      "id": "hidden-harm-counter-wave",
+      "display_name": "Hidden Harm Counter Wave",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/hidden-harm-counter-wave",
+      "entrypoint": "skills/hidden-harm-counter-wave/SKILL.md",
+      "purpose": "Always-on Operator counter-wave: compose domain hidden-harm specialists on every material transition and recursively counter-engineer meta-harms introduced by remediations.",
+      "input_contract": [
+        "Work unit description and optional domain tags"
+      ],
+      "output_contract": [
+        "Composition plan with specialists, recursive meta-harm checklist, and routing receipt"
+      ],
+      "local_validation": [
+        "python3 -m unittest discover -s skills/hidden-harm-counter-wave/tests -v",
+        "python3 scripts/hidden_harm_counter_wave.py --json \"wire Iceberg MCP\""
+      ],
+      "does_not_own": [
+        "Becoming a permission ladder or displacing the Operator objective with audit theater"
+      ]
+    },
+    {
       "id": "monolith-docket-forensics",
       "display_name": "Monolith Docket Forensics",
       "ownership": "glaciereq",

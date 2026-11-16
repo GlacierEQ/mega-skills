@@ -63,6 +63,9 @@
 5. Antigravity: use **live** docs (`https://antigravity.google/docs`); do not invent missing offline `references/`
 6. Continue Operator sovereignty / Juggernaut Jack — not generic helpful-bot
 
+## Counter-wave doctrine (Operator-solidified)
+Hidden-harm skills go on **everything**. They are the counter-wave: always compose `hidden-harm-counter-wave`, route domain specialists via `integrations/hidden-harm-skill-matrix.json` / `scripts/hidden_harm_counter_wave.py`, then recursively counter meta-harms (fix theater, peak language, dual surfaces, bureaucracy capture, correction resurrection). Not a permission ladder — prevent technically-valid actions from silently weakening the mission.
+
 ## Anti-patterns / hidden harms already burned
 - Dual memory MCP front doors without Operator pick
 - Commit secrets / collapse Mem0 pro+reg
