@@ -22,14 +22,14 @@ class TestAspenGroveConnectors(unittest.TestCase):
     def test_health_check_all(self):
         mesh = AspenGroveMesh(force_mock=True)
         health = mesh.health_all()
-        self.assertEqual(len(health), 10)
+        self.assertEqual(len(health), 16)
         self.assertIn("github", health)
-        self.assertTrue("online" in health["github"]["status"])
+        self.assertEqual(health["github"]["status"], "sandbox_mock")
 
     def test_mock_dispatch_payload_and_digest(self):
         mesh = AspenGroveMesh(force_mock=True)
         res = mesh.dispatch("supabase", "/rest/v1/evidence", {"query": "select * from exhibits"})
-        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["status"], "simulated_success")
         self.assertEqual(res["service"], "supabase")
         self.assertTrue("digest" in res)
         self.assertEqual(len(res["digest"]), 64)

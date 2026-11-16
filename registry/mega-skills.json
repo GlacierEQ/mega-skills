@@ -2078,6 +2078,79 @@
       ]
     },
     {
+      "id": "apex-repository-continuity-steward",
+      "display_name": "APEX Repository Continuity Steward",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "maturity_hold": {
+        "reason": "Deliberate candidate posture \u2014 read_only firewall, human_control required; promotion is a human decision. The assay measures readiness; it does not promote."
+      },
+      "version": "0.1.0",
+      "path": "mega-skills/apex-repository-continuity-steward",
+      "entrypoint": "mega-skills/apex-repository-continuity-steward/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "branch-sprawl-control-loop",
+        "signal-to-decision-loop"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "upstream-fork-harmonization",
+        "evidence-to-evolution-loop"
+      ],
+      "mission_output": "REPOSITORY_CONTINUITY_STEWARD_RECORD.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "CONTEXT.md",
+        "EVIDENCE.md",
+        "HANDOFF.md"
+      ],
+      "adds": "Estate-level continuity governance that reconciles branch lifecycle, protected fork overlays, and evidence-backed decisions into a recoverable approval-scoped record without claiming autonomous cleanup or synchronization.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-repository-continuity-steward",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      }
+    },
+    {
       "id": "apex-safe-change-orchestrator",
       "display_name": "APEX Safe Change Orchestrator",
       "ownership": "glaciereq",
@@ -2367,6 +2440,171 @@
       },
       "combos": [
         "long-horizon-core"
+      ]
+    },
+    {
+      "id": "apex-strong-smart-execution-engine",
+      "display_name": "APEX Strong-Smart Execution Engine",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "1.0.0",
+      "path": "mega-skills/apex-strong-smart-execution-engine",
+      "entrypoint": "mega-skills/apex-strong-smart-execution-engine/MEGA.md",
+      "required_combos": [
+        "strong-smart-execution-stack",
+        "long-horizon-core",
+        "epistemic-verification-chain",
+        "pipeline-orchestration"
+      ],
+      "conditional_combos": [
+        "guarded-automation-loop",
+        "mission-aware-operating-loop",
+        "recon-and-map",
+        "evidence-to-evolution-loop",
+        "closed-loop-code-repair",
+        "capability-readiness"
+      ],
+      "mission_output": "STRONG_SMART_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "CONTEXT.md",
+        "POWER_FIT_ROUTE.json",
+        "EVIDENCE.md",
+        "READBACK.json",
+        "HANDOFF.md"
+      ],
+      "adds": "Enforceable strongest-intelligent-fit persona, routing, deep execution, adversarial verification, readback, and durable continuation without increasing authority.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-strong-smart-execution-engine",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "power_fit_route",
+          "phase_receipts",
+          "provider_readback",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "strong-smart-execution-stack",
+        "long-horizon-core",
+        "capability-readiness",
+        "epistemic-verification-chain",
+        "pipeline-orchestration"
+      ]
+    },
+    {
+      "id": "apex-telecommunications",
+      "display_name": "APEX Telecommunications",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "mega-skills/apex-telecommunications",
+      "entrypoint": "mega-skills/apex-telecommunications/MEGA.md",
+      "required_combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
+      ],
+      "conditional_combos": [
+        "capability-readiness",
+        "automation-control",
+        "epistemic-verification-chain",
+        "polyglot-systems-verification",
+        "genius-epistemic-engineering",
+        "voice-evidence-authenticator"
+      ],
+      "mission_output": "TELECOMMUNICATIONS_MISSION_RESULT.md",
+      "durable_state": [
+        "MISSION.md",
+        "ROADMAP.md",
+        "EVIDENCE.md",
+        "CONTEXT.md",
+        "HANDOFF.md",
+        "TELECOM_RECEIPTS.jsonl",
+        "PROVIDER_CAPABILITIES.json",
+        "TRANSPLANT_LEDGER.md",
+        "UPSTREAM_LOCK.json"
+      ],
+      "adds": "Mission-scale provider-neutral telecommunications coordination with rich call/SMS semantics, native receipts, false-success prevention, provenance, relationship/case projections, upstream-core upgrade discipline and Genius Mastery/Lineage compounding.",
+      "firewall": {
+        "schema_version": 1,
+        "mega_id": "apex-telecommunications",
+        "mode": "read_only",
+        "allowed_actions": [
+          "read_repository",
+          "run_local_tests",
+          "write_run_artifacts",
+          "emit_receipt"
+        ],
+        "approval_required_for": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "forbidden_actions": [
+          "external_mutation",
+          "network_send",
+          "file_submission",
+          "deletion",
+          "deployment",
+          "merge",
+          "credential_access",
+          "legal_filing",
+          "autonomous_legal_decision",
+          "execute_unknown_program"
+        ],
+        "required_evidence": [
+          "input_manifest",
+          "phase_receipts",
+          "provider_native_receipt",
+          "output_manifest",
+          "failure_record"
+        ],
+        "human_control": "required"
+      },
+      "combos": [
+        "long-horizon-core",
+        "telecommunications-mission-orchestration"
       ]
     },
     {
@@ -2703,198 +2941,34 @@
       ]
     },
     {
-      "id": "apex-strong-smart-execution-engine",
-      "display_name": "APEX Strong-Smart Execution Engine",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "1.0.0",
-      "path": "mega-skills/apex-strong-smart-execution-engine",
-      "entrypoint": "mega-skills/apex-strong-smart-execution-engine/MEGA.md",
-      "required_combos": [
-        "strong-smart-execution-stack",
-        "long-horizon-core",
-        "epistemic-verification-chain",
-        "pipeline-orchestration"
-      ],
-      "conditional_combos": [
-        "guarded-automation-loop",
-        "mission-aware-operating-loop",
-        "recon-and-map",
-        "evidence-to-evolution-loop",
-        "closed-loop-code-repair",
-        "capability-readiness"
-      ],
-      "mission_output": "STRONG_SMART_MISSION_RESULT.md",
-      "durable_state": [
-        "MISSION.md",
-        "CONTEXT.md",
-        "POWER_FIT_ROUTE.json",
-        "EVIDENCE.md",
-        "READBACK.json",
-        "HANDOFF.md"
-      ],
-      "adds": "Enforceable strongest-intelligent-fit persona, routing, deep execution, adversarial verification, readback, and durable continuation without increasing authority.",
-      "firewall": {
-        "schema_version": 1,
-        "mega_id": "apex-strong-smart-execution-engine",
-        "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "power_fit_route",
-          "phase_receipts",
-          "provider_readback",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required"
-      },
-      "combos": [
-        "strong-smart-execution-stack",
-        "long-horizon-core",
-        "capability-readiness",
-        "epistemic-verification-chain",
-        "pipeline-orchestration"
-      ]
-    },
-    {
-      "id": "apex-repository-continuity-steward",
-      "display_name": "APEX Repository Continuity Steward",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "maturity_hold": {
-        "reason": "Deliberate candidate posture \u2014 read_only firewall, human_control required; promotion is a human decision. The assay measures readiness; it does not promote."
-      },
-      "version": "0.1.0",
-      "path": "mega-skills/apex-repository-continuity-steward",
-      "entrypoint": "mega-skills/apex-repository-continuity-steward/MEGA.md",
-      "required_combos": [
-        "long-horizon-core",
-        "branch-sprawl-control-loop",
-        "signal-to-decision-loop"
-      ],
-      "conditional_combos": [
-        "capability-readiness",
-        "upstream-fork-harmonization",
-        "evidence-to-evolution-loop"
-      ],
-      "mission_output": "REPOSITORY_CONTINUITY_STEWARD_RECORD.md",
-      "durable_state": [
-        "MISSION.md",
-        "ROADMAP.md",
-        "CONTEXT.md",
-        "EVIDENCE.md",
-        "HANDOFF.md"
-      ],
-      "adds": "Estate-level continuity governance that reconciles branch lifecycle, protected fork overlays, and evidence-backed decisions into a recoverable approval-scoped record without claiming autonomous cleanup or synchronization.",
-      "firewall": {
-        "schema_version": 1,
-        "mega_id": "apex-repository-continuity-steward",
-        "mode": "read_only",
-        "allowed_actions": [
-          "read_repository",
-          "run_local_tests",
-          "write_run_artifacts",
-          "emit_receipt"
-        ],
-        "approval_required_for": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "forbidden_actions": [
-          "external_mutation",
-          "network_send",
-          "file_submission",
-          "deletion",
-          "deployment",
-          "merge",
-          "credential_access",
-          "legal_filing",
-          "autonomous_legal_decision",
-          "execute_unknown_program"
-        ],
-        "required_evidence": [
-          "input_manifest",
-          "phase_receipts",
-          "output_manifest",
-          "failure_record"
-        ],
-        "human_control": "required"
-      }
-    },
-    {
-      "id": "apex-telecommunications",
-      "display_name": "APEX Telecommunications",
+      "id": "glaciereq-macbook-air-expert",
+      "display_name": "GlacierEQ MacBook Air Expert",
       "ownership": "glaciereq",
       "maturity": "active",
-      "version": "0.1.0",
-      "path": "mega-skills/apex-telecommunications",
-      "entrypoint": "mega-skills/apex-telecommunications/MEGA.md",
+      "version": "1.0.0",
+      "path": "mega-skills/glaciereq-macbook-air-expert",
+      "entrypoint": "mega-skills/glaciereq-macbook-air-expert/MEGA.md",
       "required_combos": [
-        "long-horizon-core",
-        "telecommunications-mission-orchestration"
+        "macbook-air-ops-library"
       ],
       "conditional_combos": [
         "capability-readiness",
         "automation-control",
-        "epistemic-verification-chain",
-        "polyglot-systems-verification",
-        "genius-epistemic-engineering",
-        "voice-evidence-authenticator"
+        "cybersecurity-threat-analysis",
+        "evidence-to-evolution-loop"
       ],
-      "mission_output": "TELECOMMUNICATIONS_MISSION_RESULT.md",
+      "mission_output": "MACBOOK_AIR_MISSION_RESULT.md",
       "durable_state": [
         "MISSION.md",
         "ROADMAP.md",
-        "EVIDENCE.md",
         "CONTEXT.md",
-        "HANDOFF.md",
-        "TELECOM_RECEIPTS.jsonl",
-        "PROVIDER_CAPABILITIES.json",
-        "TRANSPLANT_LEDGER.md",
-        "UPSTREAM_LOCK.json"
+        "EVIDENCE.md",
+        "HANDOFF.md"
       ],
-      "adds": "Mission-scale provider-neutral telecommunications coordination with rich call/SMS semantics, native receipts, false-success prevention, provenance, relationship/case projections, upstream-core upgrade discipline and Genius Mastery/Lineage compounding.",
+      "adds": "Device-scoped operating reference for the MacBookAir7,2 host: maintenance, OpenCore/OCLP patching, honest local-AI ceilings, off-prem operations, and a resource-starvation diagnostic law derived from the 2026-09-30 load-983 incident.",
       "firewall": {
         "schema_version": 1,
-        "mega_id": "apex-telecommunications",
+        "mega_id": "glaciereq-macbook-air-expert",
         "mode": "read_only",
         "allowed_actions": [
           "read_repository",
@@ -2929,15 +3003,13 @@
         "required_evidence": [
           "input_manifest",
           "phase_receipts",
-          "provider_native_receipt",
           "output_manifest",
           "failure_record"
         ],
         "human_control": "required"
       },
       "combos": [
-        "long-horizon-core",
-        "telecommunications-mission-orchestration"
+        "macbook-air-ops-library"
       ]
     }
   ],

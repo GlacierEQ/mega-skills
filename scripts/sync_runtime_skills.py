@@ -8,8 +8,10 @@ the repository so compatibility packaging cannot recreate committed layer copies
 
 from __future__ import annotations
 
+import importlib.util
 import os
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -297,22 +299,76 @@ def sync_omp_skills(runtime_root: Path, *, selection=None, apply: bool = False) 
             "items": results}
 
 
-def main() -> None:
+def _load_skill_evidence_selector():
+    """Optional T1 path. Default OMP activation does not call this."""
+    path = Path(__file__).with_name("skill_evidence_selector.py")
+    spec = importlib.util.spec_from_file_location("skill_evidence_selector", path)
+    if spec is None or spec.loader is None or not hasattr(spec.loader, "exec_module"):
+        raise RuntimeError(f"unable to load evidence selector from {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(spec.name, module)
+    spec.loader.exec_module(module)
+    return module
+
+
+def main(argv: list[str] | None = None) -> None:
     import argparse
     import json
 
-    parser = argparse.ArgumentParser(description="Synchronize canonical Skills into agent runtimes")
+    parser = argparse.ArgumentParser(
+        prog="sync_runtime_skills.py",
+        description="Synchronize canonical Skills into agent runtimes",
+    )
     parser.add_argument("--runtime", choices=("legacy", "omp"), default="legacy")
     parser.add_argument("--omp-skills-dir", type=Path,
                         default=Path.home() / ".omp" / "agent" / "skills")
     parser.add_argument("--apply", action="store_true", help="Install only absent skills; never overwrite")
-    args = parser.parse_args()
+    parser.add_argument("--select", choices=("static", "evidence"), default="static",
+                        help="static keeps OMP_POWER_SELECTION; evidence is the opt-in T1 ledger selector")
+    parser.add_argument("--task-json", type=Path, help="Task descriptor for --select evidence")
+    parser.add_argument("--task-id", help="Task id when --task-json holds more than one task")
+    parser.add_argument("--ledger", type=Path, help="Evidence ledger for --select evidence")
+    args = parser.parse_args(argv)
     if args.runtime == "legacy":
-        if args.apply:
+        if args.apply or args.select != "static" or args.task_json or args.task_id or args.ledger:
             parser.error("OMP activation flags require --runtime omp")
         sync_all()
         return
-    result = sync_omp_skills(args.omp_skills_dir, apply=args.apply)
+    # Default --select static keeps OMP_POWER_SELECTION. Evidence selection is opt-in
+    # and reuses sync_omp_skills rather than writing a second installer.
+    selection = None
+    selector_receipt = None
+    if args.select == "evidence":
+        if args.task_json is None:
+            parser.error("--select evidence requires --task-json")
+        selector = _load_skill_evidence_selector()
+        ledger_path = args.ledger or (ROOT / "evidence" / "skill-selection" / "ledger.json")
+        task = selector.load_task(args.task_json, args.task_id)
+        ledger = selector.load_ledger(ledger_path)
+        selector_receipt = selector.select_from_documents(ROOT, task, ledger)
+        selection = selector_receipt["coalition"]
+    elif args.task_json or args.task_id or args.ledger:
+        parser.error("--task-json, --task-id, and --ledger require --select evidence")
+    result = sync_omp_skills(args.omp_skills_dir, selection=selection, apply=args.apply)
+    if selector_receipt is not None:
+        result = {
+            **result,
+            "selector": {
+                "selector_id": selector_receipt["selector_id"],
+                "baseline_id": selector_receipt["baseline_id"],
+                "decision": selector_receipt["decision"],
+                "task_family": selector_receipt["task_family"],
+                "task_id": selector_receipt["task_id"],
+                "cost_bytes": selector_receipt["cost_bytes"],
+                "added": selector_receipt["added"],
+                "excluded": selector_receipt["excluded"],
+                "withheld": selector_receipt["withheld"],
+                "refused": selector_receipt["refused"],
+                "skill_count": len(selector_receipt["skill_ids"]),
+                "skill_ids": selector_receipt["skill_ids"],
+                "coalition": selector_receipt["coalition"],
+            },
+        }
     print(json.dumps(result, indent=2))
     if (result.get("blocked_preflight") or result.get("verification_failed")
             or any(result["counts"].get(name, 0) for name in

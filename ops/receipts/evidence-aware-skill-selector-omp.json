@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "objective": "Opt-in OMP skill coalition (T1) from task descriptor plus append-only evidence ledger, compared to frozen B1 (30) and static OMP_POWER_SELECTION B2 (38).",
+  "owning_linear_issue": "HI-826",
+  "related_linear_issue": "HI-823",
+  "repository": "GlacierEQ/mega-skills",
+  "pull_request": "https://github.com/GlacierEQ/mega-skills/pull/59",
+  "branch": "feat/evidence-aware-skill-selector-20261113",
+  "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
+  "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
+  "head_commit": "442c7aaf",
+  "distinction": {
+    "this_module": "scripts/skill_evidence_selector.py",
+    "readiness_selector": "scripts/evidence_capability_selector.py",
+    "default_installer": "scripts/sync_runtime_skills.py OMP_POWER_SELECTION unchanged unless --select evidence"
+  },
+  "baselines": {
+    "B1": {
+      "id": "B1",
+      "skills": 30,
+      "source": "PR #51 merge da26fa48, frozen as B1_COALITION"
+    },
+    "B2": {
+      "id": "B2",
+      "skills": 38,
+      "source": "OMP_POWER_SELECTION on main after PR #56"
+    },
+    "T1": {
+      "id": "evidence_aware_omp_t1",
+      "installer_flag": "--select evidence",
+      "fallback": "B1 exact with decision no evidence"
+    }
+  },
+  "fixture_comparison": {
+    "fixture": "tests/fixtures/skill_selection_tasks.json",
+    "scored_tasks": 9,
+    "gold_skill_mentions": 272,
+    "B1": {
+      "precision": 0.996296,
+      "recall": 0.988971,
+      "true_positive": 269,
+      "predicted": 270
+    },
+    "T1": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 272,
+      "predicted": 272
+    },
+    "B2": {
+      "precision": 0.789474,
+      "recall": 0.992647,
+      "true_positive": 270,
+      "predicted": 342
+    }
+  },
+  "tests": {
+    "omp_native_sync": {
+      "command": "python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v",
+      "result": "19 passed, exit 0",
+      "note": "test file unchanged on this branch"
+    },
+    "skill_evidence_selector": {
+      "command": "python3 -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v",
+      "result": "18 passed, exit 0"
+    },
+    "compileall": {
+      "command": "python3 -m compileall -q scripts tests",
+      "result": "exit 0"
+    },
+    "verified_at_utc": "2026-11-16T14:15:00Z",
+    "environment": "cloud agent workspace, python3 not python on PATH"
+  },
+  "not_proven": [
+    "hosted GitHub Actions (issue #23 empty runs)",
+    "host OMP profile apply",
+    "Phase 2 engineering quality evaluation",
+    "merge to main"
+  ],
+  "hidden_harms_audited": {
+    "summary": "Counter-engineered failure modes that look like wins or safe defaults.",
+    "items": [
+      {
+        "harm": "B2 recall looks strong while precision is poor",
+        "mitigation": "Receipt reports both; fixture labels gold per task, not union-of-all-tasks static bundle."
+      },
+      {
+        "harm": "Confuse T1 with evidence_capability_selector readiness routing",
+        "mitigation": "Receipt distinction block; different module paths and opt-in flag only on sync_runtime_skills."
+      },
+      {
+        "harm": "Ledger rows treated as production truth",
+        "mitigation": "validate_ledger requires production_outcomes false; validate_entry rejects production_outcome true and enforces label wording."
+      },
+      {
+        "harm": "B1 baseline drift vs live OMP_POWER_SELECTION",
+        "mitigation": "B1_COALITION pinned; test_b1_coalition_matches_frozen_pr51_merge parses da26fa48 sync source."
+      },
+      {
+        "harm": "Silent partial coalition in CLI JSON",
+        "mitigation": "Selector block emits skill_ids and coalition alongside skill_count for audit replay."
+      },
+      {
+        "harm": "Path escape via skill id or ledger artifact",
+        "mitigation": "reject_skill_id and _check_artifact; existing refusal tests retained."
+      },
+      {
+        "harm": "Fixture precision metrics read as OMP host certification",
+        "mitigation": "not_proven list and test_fixture_metrics_do_not_imply_host_certification."
+      }
+    ]
+  },
+  "ledger": {
+    "path": "evidence/skill-selection/ledger.json",
+    "production_outcomes": false,
+    "append_only": true
+  }
+}

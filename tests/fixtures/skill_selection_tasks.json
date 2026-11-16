@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "description": "Labeled tasks for B1 versus T1 skill selection. Expectations are for the test harness. The selector ignores expect, score, and sync_check.",
+  "tasks": [
+    {
+      "id": "py-repair-generic",
+      "intent": "Repair a failing Python unit test in this repository.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_widget.py"],
+      "task_family": "python-repair",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1",
+        "withhold": ["desktop-commander-overview", "mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "py-repair-followup",
+      "intent": "Fix the next Python regression in the same test family.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_widget_followup.py"],
+      "task_family": "python-repair",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1",
+        "withhold": ["desktop-commander-overview", "mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "py-withhold-specialists",
+      "intent": "Repair the Python test. Desktop Commander and the GCP data engineering skill are large and well known.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_widget.py"],
+      "task_family": "python-repair",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1",
+        "withhold": ["desktop-commander-overview", "mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "macos-swiftui",
+      "intent": "Build a SwiftUI screen for the macOS and iOS app.",
+      "domain_tags": ["macos", "ios", "swiftui"],
+      "required_artifacts": ["Sources/Views/ContentView.swift"],
+      "task_family": "macos-ios",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1+swiftui-patterns",
+        "withhold": ["desktop-commander-overview"],
+        "exclude": [],
+        "allowed_extra": 1
+      }
+    },
+    {
+      "id": "python-lint-win",
+      "intent": "Lint and validate a Python change after a small repair.",
+      "domain_tags": ["python", "lint"],
+      "required_artifacts": ["src/widget.py"],
+      "task_family": "python-lint",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1+lint-and-validate",
+        "withhold": ["mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 1
+      }
+    },
+    {
+      "id": "python-lint-reuse",
+      "intent": "Run the same Python lint check on the next file.",
+      "domain_tags": ["python", "lint"],
+      "required_artifacts": ["src/widget_followup.py"],
+      "task_family": "python-lint",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1+lint-and-validate",
+        "withhold": ["mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 1
+      }
+    },
+    {
+      "id": "harmful-exclusion",
+      "intent": "Repair Python code where a conflicting heavy skill has caused regressions.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_conflict.py"],
+      "task_family": "python-repair-conflict",
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1-make-it-heavy",
+        "withhold": [],
+        "exclude": ["make-it-heavy"],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "evidence-insufficient",
+      "intent": "Inventory a domain this ledger has never observed.",
+      "domain_tags": ["unseen"],
+      "required_artifacts": ["docs/unseen.txt"],
+      "task_family": "novel-domain-without-evidence",
+      "score": true,
+      "expect": {
+        "decision": "no evidence",
+        "match": "B1",
+        "withhold": [],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "derived-python-repair",
+      "intent": "Repair the failing Python helper without naming a skill.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["src/helper.py"],
+      "score": true,
+      "expect": {
+        "decision": "evidence",
+        "match": "B1",
+        "task_family": "python-repair",
+        "withhold": ["desktop-commander-overview", "mega-gcp-data-engineering"],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "profile-collision",
+      "intent": "Repair a failing Python unit test and install only into an empty profile slot.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_widget.py"],
+      "task_family": "python-repair",
+      "score": false,
+      "sync_check": "profile_collision",
+      "expect": {
+        "decision": "evidence",
+        "match": "B1",
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    },
+    {
+      "id": "bad-identifier",
+      "intent": "Reject a path-escape skill id before any profile write.",
+      "domain_tags": ["python", "repair"],
+      "required_artifacts": ["tests/test_widget.py"],
+      "task_family": "python-repair",
+      "mentioned_skill_ids": ["../secrets"],
+      "score": false,
+      "sync_check": "bad_identifier",
+      "expect": {
+        "error": "rejected skill id"
+      }
+    },
+    {
+      "id": "missing-source",
+      "intent": "Refuse an unknown skill id instead of inventing a source.",
+      "domain_tags": ["python"],
+      "required_artifacts": ["tests/test_widget.py"],
+      "task_family": "missing-source-probe",
+      "mentioned_skill_ids": ["not-in-registry-skill"],
+      "score": false,
+      "sync_check": "missing_source",
+      "expect": {
+        "decision": "no evidence",
+        "match": "B1",
+        "refuse": ["not-in-registry-skill"],
+        "exclude": [],
+        "allowed_extra": 0
+      }
+    }
+  ]
+}

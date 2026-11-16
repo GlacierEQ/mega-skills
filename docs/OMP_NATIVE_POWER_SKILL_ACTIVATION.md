@@ -15,6 +15,30 @@ The mission-ready activation selects **38 source-linked Skills**: 28 active atom
 
 These names are resolved from existing canonical directories. Active source maturity was inspected against repository registries; candidate-only Mega Skills are excluded from initial activation. The entire skill graph remains available for mission-specific composition; no specialist-count gate may truncate required mission coverage.
 
+## Evidence-aware selector (T1) and static baselines
+
+The default command below still uses `OMP_POWER_SELECTION` unchanged. On this revision that constant is the 38-skill list, because the eight Apple/macOS/iOS atomics from PR #56 are already on main. Comparison names:
+
+- **B1** is the frozen 30-skill coalition from PR #51 (merge `da26fa48`): 20 atomics, 4 compound skills, and 6 mega skills. It does not include the Apple platform atomics. The list lives in `scripts/skill_evidence_selector.py` as `B1_COALITION`.
+- **B2** is today's `OMP_POWER_SELECTION`: B1 plus `desktop-commander-overview`, `re-apple-bundles`, `swiftui-patterns`, `swift-concurrency-6-2`, `xcode-project-setup`, `mobile-design`, `foundation-models-on-device`, and `ios-icon-gen`.
+- **T1** is opt-in. `--select evidence` reads a task descriptor plus the append-only ledger, then passes that coalition into the existing `sync_omp_skills(..., selection=...)`. Preflight, no overwrites, rollback on failed readback, and write-free preview stay in the installer.
+
+T1 scores a task family by pass/fail, regressions, mean wall time, and a cost proxy. The cost proxy is the sum of canonical contract bytes: `SKILL.md` for atomics, `COMBO.md` for compound skills, and `MEGA.md` for mega skills. Catalog prestige and skill count do not raise a score. A skill outside B1 is added only when that family's utility is positive. A skill marked harmful or conflicting for that family is removed. Rows from another family do not transfer. If the family has no usable evidence, T1 returns B1 unchanged and sets `decision` to `no evidence`. It does not invent a new default bundle.
+
+`evidence/skill-selection/ledger.json` is schema version 1 and append-only. Every committed row is a fixture seed (`production_outcome` false, label states it is not a production outcome). Labeled tasks, including the generic Python repair case, the ledger-reuse follow-up, the withheld Apple/cloud specialist, the single Apple atomic, the harmful-skill exclusion, profile collision, bad identifiers, missing sources, and the no-evidence fallback, live in `tests/fixtures/skill_selection_tasks.json`. Verified fixture metrics and command receipts for this OMP selector live in `ops/receipts/evidence-aware-skill-selector-omp.json` (distinct from `scripts/evidence_capability_selector.py` and `ops/receipts/evidence-capability-selector.json`).
+
+Proof commands from a checkout of this revision:
+
+    python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
+    python -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v
+    python -m compileall -q scripts tests
+
+Write-free evidence preview against a temporary directory, not a live OMP profile:
+
+    python scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir /tmp/omp-skill-preview --select evidence --task-json tests/fixtures/skill_selection_tasks.json --task-id evidence-insufficient
+
+This selector does not certify a host OMP install and it does not report Phase 2 engineering-quality results. Local unit output is the proof available here. Hosted GitHub Actions on this private repo currently exit in a few seconds with zero steps (issue #23). That account-level blocker is unchanged.
+
 ## Inspect the actual OMP profile before applying
 
 OMP's default user profile is typically ~/.omp/agent. Named profiles use ~/.omp/profiles/NAME/agent, and project-level .omp configuration may override user settings. Confirm the actual root with OMP's own profile/runtime tools before applying.
