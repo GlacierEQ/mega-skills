@@ -287,9 +287,9 @@ Compose `hidden-harm-context` during context hydration, memory reconciliation, c
 
 The protected semantic dimensions are Casey's **word, intention, information, strategy, position, corrections, scope, and priority**. Derived state may route work but may not silently replace those dimensions. Machine labels such as `UNRESOLVED`, `OPEN`, `BLOCKED`, or `NEXT_FRONTIER` never create a mission by themselves.
 
-## Governance pitstop owner
+## Governance calibrator owner
 
 Compose `hidden-harm-governance` when an imported skill, packet, or script proposes a HARD-GATE, approval wait, `GATE DENIED`, token soft-cap stop, or commit/push pause for ordinary reversible engineering.
 
-Those halts are **quality pitstops**, not permission. Take the enrichment transition (`VALIDATED_LEVEL_UP`, `ENRICH_WITH_UNCERTAINTY`, `LOCALIZE_REPAIR_REROUTE_LEVEL_UP`, …), strip permission labels, and continue. Reserved irreversible boundaries remain the only hard stops. Executable surface: `gate_polarity` on `scripts/operator_mission_kernel.py`.
+Those halts are **quality pitstops**, not permission. Take the enrichment transition, strip permission labels, continue. Context that merely *mentions* a reserved prohibition does not invent a hard stop. Unprompted reserved effects stay `HARD_BOUNDARY`; Operator-authorized reserved effects become `AUTHORIZED_BOUNDARY` with receipt. Executable: `gate_polarity` / `counter_gate` / `invert_gate` on `skill.py` and `scripts/operator_mission_kernel.py`.
 

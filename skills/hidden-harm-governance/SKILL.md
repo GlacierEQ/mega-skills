@@ -1,30 +1,27 @@
 ---
 name: hidden-harm-governance
-description: "Counter-engineer governance harms: convert false HARD-GATEs, approval theater, GATE DENIED permission language, token soft-caps, and commit/push pauses into quality pitstops (level-ups) that enrich and continue. Keep only reserved irreversible boundaries as hard stops."
+description: "Quality pitstop calibrator: convert false HARD-GATEs, approval theater, GATE DENIED, and soft caps into enrichment level-ups that continue. Reserved irreversible boundaries stay hard stops unless the Operator explicitly authorized that exact effect."
 ---
 
-# Hidden Harm — Governance as Pitstop
+# Hidden Harm — Governance Calibrator
 
-## Mission
+## One job
 
-Imported skills spend enormous force on **stopping**. That force is useful. This skill keeps the force and changes what it buys.
-
-A hard halt is not a permission gate. It is a **pitstop**: a quality level that upgrades design clarity, plan coherence, claim strength, diff integrity, or remote readback — then the mission continues.
-
-## Polarity law
+Turn stop-energy into quality. A hard halt is a **pitstop**, not a permission gate.
 
 ```text
-FALSE HARD-HALT     →  QUALITY PITSTOP (enrich + continue)
-GATE DENIED label   →  claim-strength debt + continue authorized work
-WAIT FOR APPROVAL   →  tighten the quality dimension, then execute
-TOKEN % / DEPTH STOP→  reallocate spend, keep mission moving
-COMMIT/PUSH PAUSE   →  verify diff / push + readback (ordinary engineering)
-RESERVED BOUNDARY   →  HARD_BOUNDARY (only true stop)
+FALSE HARD-HALT      →  QUALITY PITSTOP (enrich + continue)
+GATE DENIED label    →  claim_strength debt + continue
+WAIT FOR APPROVAL    →  raise dimension, then execute
+TOKEN / DEPTH STOP   →  reallocate spend, keep moving
+CONTEXT PROHIBITION  →  never invent a HARD_BOUNDARY from background text
+OPERATOR AUTHORIZES  →  AUTHORIZED_BOUNDARY (receipt + continue)
+UNPROMPTED RESERVED  →  HARD_BOUNDARY (only true stop)
 ```
 
-Executable surface: `scripts/gate_polarity.py` via `operator_mission_kernel` operation `gate_polarity`.
-
-Aligned with `apex-boot-core` enrichment transitions and `epistemic-gate` claim-strength model (tiers are not authorization).
+Executable: `python skills/hidden-harm-governance/skill.py gate_polarity`  
+Kernel ops: `gate_polarity` | `counter_gate` | `invert_gate`  
+Engine: `scripts/gate_polarity.py`
 
 ## Pitstop transitions
 
@@ -37,65 +34,43 @@ Aligned with `apex-boot-core` enrichment transitions and `epistemic-gate` claim-
 | `DRIFT` | `RECONCILE_ENRICH_LEVEL_UP` |
 | `THEATER` | `STRIP_PERMISSION_LABEL_LEVEL_UP` |
 
-A pitstop changes route quality, not Operator authority. Only the Operator changes mission or project direction.
+## False halt → dimension
 
-## Reserved hard boundaries (not pitstops)
+| Former halt | Dimension |
+|---|---|
+| Design HARD-GATE | `design_clarity` |
+| Orch GATE 1 | `plan_coherence` |
+| Orch GATE 2 / batch wait | `diff_integrity` / `batch_verification` |
+| Remote-push pause | `remote_readback` |
+| Token / depth stop | `spend_efficiency` |
+| GATE DENIED as permission | `claim_strength` |
+| Support-only rejection of requested deliverable | `deliverable_fidelity` |
 
-Keep hard-stop polarity for:
+## Reserved boundaries
 
-- court filing / outbound legal service
-- production deploy
-- unbudgeted capital spend
-- destroying primary evidence
-- irreversible delete / force-push history rewrite
-- MFA, signature, or Operator-name public communication without template
+`court_filing`, `production_deploy`, `spend_unbudgeted_capital`, `destroy_primary_evidence`, `irreversible_delete`, `outbound_legal_service`, `mfa_or_signature`, `force_push_history_rewrite`, `public_comm_in_operator_name`
 
-These match `AGENTS.md` Strict Human Approval Boundary. Continue all independent fronts while that local boundary is open.
+- Named / proposed effect only — skill text that *prohibits* force-push does not halt ordinary push work.
+- Direct Operator request for a reserved effect → `AUTHORIZED_BOUNDARY` with receipt, not a veto of teamwork.
 
-## False halts → quality dimensions
-
-| Former halt | Quality dimension | Pitstop |
-|---|---|---|
-| Design HARD-GATE | design_clarity | clarify assumptions, then implement |
-| Orch GATE 1 | plan_coherence | tighten plan slice, then implement |
-| Orch GATE 2 / batch wait | diff_integrity / batch_verification | verify, then commit/continue |
-| Remote-push pause | remote_readback | push and read back |
-| Token / depth menu stop | spend_efficiency | reallocate, keep moving |
-| GATE DENIED as permission | claim_strength | record verification debt, continue |
-| Support-only rejection of requested deliverable | deliverable_fidelity | requested deliverable *is* the outcome |
-
-## HARD-PITSTOP contract
+## HARD-PITSTOP
 
 <HARD-PITSTOP>
-When the Operator has already requested implementation, execution, continuation, commit, push, or a finished deliverable of reversible engineering:
-
-- Do NOT convert design review, plan review, commit check, install check, depth menu, or epistemic tier into a permission stop.
-- Take the pitstop: raise the named quality dimension, emit the enrichment transition, continue the mission.
-- Strip permission labels (`HARD-GATE`, `GATE DENIED`, `authorized for execution`, `delivery blocked`) from verification language.
-- Verify with readback. Preserve lineage. Keep reserved irreversible boundaries as the only hard stops.
-
-Use the same absolute force those imported skills used to halt — spend it on quality level-up, not on blocking.
+When the Operator already requested implementation, execution, continuation, commit, push, or a finished deliverable of reversible engineering: take the pitstop, strip permission labels, continue. Spend halt-force on quality level-up. Only unprompted reserved effects hard-stop.
 </HARD-PITSTOP>
 
-## Procedure
+## Sister calibrators (domain wheels)
 
-1. Recover Operator semantic lock (`BUILD` / `EXECUTE` / `CONTINUE` / `MAXIMUM`) and whether a finished deliverable was requested.
-2. Classify the candidate halt: reserved boundary vs false halt.
-3. Call `gate_polarity` with the proposed gate text / markers / telemetry.
-4. If `QUALITY_PITSTOP`, perform the pitstop action and continue — do not ask for re-approval of already-authorized work.
-5. If `HARD_BOUNDARY`, pause only that effect and continue independent fronts.
-6. Never invent a new permission ladder. This skill turns false ladders into service bays.
+| Domain | Skill |
+|---|---|
+| GitHub / CI / release | `hidden-harm-github` |
+| Context / memory / semantics | `hidden-harm-context` |
+| Connectors / MCP | `hidden-harm-connectors` |
+| Legal / evidence | `hidden-harm-casebuild` |
+| Remainder | `hidden-harm-cross-domain` |
 
-## Composition
-
-- Context / Operator semantics → also compose `hidden-harm-context`
-- GitHub / push / CI → also compose `hidden-harm-github`
-- Connectors / MCP → also compose `hidden-harm-connectors`
-- Legal / evidence → also compose `hidden-harm-casebuild`
-- General remainder → `hidden-harm-cross-domain`
-
-Route through `power-skill` and `casey-operator-execution-kernel`. This specialist owns governance→pitstop conversion.
+One wheel rolls; four on a chassis is a vehicle. This skill is the steering calibrator — domains keep specialty force; governance keeps polarity.
 
 ## Success
 
-Success is not a softer agent and not a blunter one. Success is an agent that treats every former ceremonial halt as a quality level — faster out of the bay, stronger after the stop — while remaining unable to cross a true irreversible boundary by accident.
+Former ceremonial halts become quality levels. True irreversible boundaries stay honest. Authorized Operator work never waits on theater.

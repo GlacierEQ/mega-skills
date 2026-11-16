@@ -2,6 +2,10 @@
 from __future__ import annotations
 
 import importlib.util
+import json
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -49,18 +53,42 @@ class GatePolarityTests(unittest.TestCase):
         self.assertEqual(result["transition"], "STRIP_PERMISSION_LABEL_LEVEL_UP")
         self.assertTrue(result["continue_mission"])
 
-    def test_court_filing_stays_hard_boundary(self) -> None:
+    def test_unprompted_court_filing_stays_hard_boundary(self) -> None:
         result = POLARITY.evaluate(
             {
                 "proposed_gate": "pause before court filing",
                 "boundary": "court_filing",
-                "operator_authorized": True,
             }
         )
         self.assertEqual(result["kind"], "HARD_BOUNDARY")
         self.assertFalse(result["is_pitstop"])
         self.assertEqual(result["boundary"], "court_filing")
+        self.assertFalse(result["continue_mission"])
         self.assertTrue(result["continue_independent_fronts"])
+
+    def test_operator_authorized_reserved_boundary_discharges(self) -> None:
+        result = POLARITY.evaluate(
+            {
+                "boundary": "production_deploy",
+                "direct_operator_request": True,
+            }
+        )
+        self.assertEqual(result["kind"], "AUTHORIZED_BOUNDARY")
+        self.assertTrue(result["continue_mission"])
+        self.assertTrue(result["require_receipt"])
+        self.assertEqual(result["boundary"], "production_deploy")
+
+    def test_context_force_push_prohibition_does_not_block_push_pitstop(self) -> None:
+        result = POLARITY.evaluate(
+            {
+                "proposed_gate": "ask before push",
+                "skill_text": "Never force-push history. Do not rewrite protected branches.",
+                "operator_authorized": True,
+            }
+        )
+        self.assertEqual(result["kind"], "QUALITY_PITSTOP")
+        self.assertEqual(result["quality_dimension"], "remote_readback")
+        self.assertTrue(result["continue_mission"])
 
     def test_reserved_boundary_match_is_deterministic(self) -> None:
         first = POLARITY.evaluate({"proposed_gate": "court filing and production deploy"})
@@ -99,6 +127,41 @@ class GatePolarityTests(unittest.TestCase):
         self.assertEqual(result["operation"], "gate_polarity")
         self.assertEqual(result["invariant"], "hard_halt_is_pitstop_not_permission")
         self.assertEqual(result["kind"], "QUALITY_PITSTOP")
+        self.assertEqual(result["calibrator"], "hidden-harm-governance")
+
+    def test_casey_entrypoint_accepts_gate_polarity(self) -> None:
+        payload = {
+            "skill_text": "GATE DENIED theater",
+            "operator_authorized": True,
+        }
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            json.dump(payload, handle)
+            path = handle.name
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "skills" / "casey-operator-execution-kernel" / "skill.py"), "gate_polarity", "--input", path],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        body = json.loads(proc.stdout)
+        self.assertEqual(body["kind"], "QUALITY_PITSTOP")
+
+    def test_governance_calibrator_entrypoint(self) -> None:
+        payload = {"proposed_gate": "ask before push", "semantic_lock": "CONTINUE"}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            json.dump(payload, handle)
+            path = handle.name
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "skills" / "hidden-harm-governance" / "skill.py"), "calibrate", "--input", path],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        body = json.loads(proc.stdout)
+        self.assertEqual(body["kind"], "QUALITY_PITSTOP")
+        self.assertEqual(body["quality_dimension"], "remote_readback")
 
     def test_skill_doc_uses_pitstop_not_permission_language(self) -> None:
         text = (ROOT / "skills" / "hidden-harm-governance" / "SKILL.md").read_text(encoding="utf-8")
@@ -106,7 +169,15 @@ class GatePolarityTests(unittest.TestCase):
         self.assertIn("QUALITY PITSTOP", text)
         self.assertIn("HARD-PITSTOP", text)
         self.assertIn("not a permission gate", folded)
-        self.assertIn("quality pitstop", folded)
+        self.assertIn("calibrator", folded)
+
+    def test_governance_is_registered(self) -> None:
+        skills = json.loads((ROOT / "registry" / "skills.json").read_text(encoding="utf-8"))
+        ids = {entry["id"] for entry in skills["entries"]}
+        self.assertIn("hidden-harm-governance", ids)
+        readiness = json.loads((ROOT / "registry" / "skill-readiness.json").read_text(encoding="utf-8"))
+        ready_ids = {entry["id"] for entry in readiness["skills"]}
+        self.assertIn("hidden-harm-governance", ready_ids)
 
 
 if __name__ == "__main__":

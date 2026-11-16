@@ -3,7 +3,9 @@ name: hidden-harm-context
 description: "Counter-engineer hidden harms in context, memory, summaries, and continuity: preserve the Operator's word, intention, information, strategy, position, corrections, provenance, scope, and active execution path."
 ---
 
-# Hidden Harm — Context & Continuity
+# Hidden Harm — Context Calibrator
+
+> Chassis wheel. Governance polarity → `hidden-harm-governance` / `gate_polarity`. This skill owns semantic continuity; it does not invent permission ladders.
 
 ## Mission
 

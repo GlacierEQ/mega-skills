@@ -3,7 +3,8 @@
 
 A pitstop upgrades claim strength, design clarity, verification, or routing.
 It does not grant or deny Operator authorization. Reserved irreversible
-boundaries remain the only hard stops.
+boundaries remain the only hard stops — unless the Operator explicitly
+authorized that exact effect (direct-request discharge).
 """
 
 from __future__ import annotations
@@ -30,6 +31,14 @@ RESERVED_BOUNDARIES = (
     "mfa_or_signature",
     "force_push_history_rewrite",
     "public_comm_in_operator_name",
+)
+
+BOUNDARY_ALIASES = (
+    ("court filing", "court_filing"),
+    ("production deploy", "production_deploy"),
+    ("prod deploy", "production_deploy"),
+    ("force-push", "force_push_history_rewrite"),
+    ("force push", "force_push_history_rewrite"),
 )
 
 # Former hard-halts → quality dimensions they actually measure.
@@ -90,16 +99,54 @@ PITSTOP_PATTERNS = {
     },
 }
 
+# Fields that describe the *proposed effect* (what we might do now).
+_PROPOSED_KEYS = (
+    "proposed_gate",
+    "proposed_effect",
+    "effect",
+    "action",
+    "instruction",
+    "reason",
+    "message",
+    "pattern",
+    "markers",
+)
 
-def _text_blob(payload: dict[str, Any]) -> str:
+# Fields that are contextual doctrine (may *mention* reserved acts as prohibitions).
+_CONTEXT_KEYS = (
+    "skill_text",
+    "context",
+    "background",
+    "doctrine",
+    "policy_text",
+)
+
+
+def _join_values(payload: dict[str, Any], keys: tuple[str, ...]) -> str:
     parts: list[str] = []
-    for key in ("proposed_gate", "skill_text", "instruction", "reason", "message", "pattern", "telemetry"):
+    for key in keys:
         value = payload.get(key)
-        if value:
+        if value is None:
+            continue
+        if isinstance(value, (list, tuple)):
+            parts.extend(str(item) for item in value if item)
+        elif value:
             parts.append(str(value))
-    for item in payload.get("markers") or []:
-        parts.append(str(item))
     return " ".join(parts).lower()
+
+
+def _proposed_blob(payload: dict[str, Any]) -> str:
+    return _join_values(payload, _PROPOSED_KEYS)
+
+
+def _context_blob(payload: dict[str, Any]) -> str:
+    return _join_values(payload, _CONTEXT_KEYS)
+
+
+def _scan_blob(payload: dict[str, Any]) -> str:
+    """Full blob for pitstop pattern matching (proposed + context)."""
+    telemetry = str(payload.get("telemetry") or "")
+    return f"{_proposed_blob(payload)} {_context_blob(payload)} {telemetry}".strip().lower()
 
 
 def _operator_authorized(payload: dict[str, Any]) -> bool:
@@ -112,24 +159,26 @@ def _operator_authorized(payload: dict[str, Any]) -> bool:
     )
 
 
-def _reserved_hit(payload: dict[str, Any], blob: str) -> str | None:
-    named = str(payload.get("boundary") or payload.get("effect_class") or "").strip().lower()
-    if named in RESERVED_BOUNDARIES:
-        return named
+def _match_boundary_name(blob: str) -> str | None:
     for name in RESERVED_BOUNDARIES:
         if name.replace("_", " ") in blob or name in blob:
             return name
-    aliases = {
-        "court filing": "court_filing",
-        "production deploy": "production_deploy",
-        "prod deploy": "production_deploy",
-        "force-push": "force_push_history_rewrite",
-        "force push": "force_push_history_rewrite",
-    }
-    for alias, canonical in aliases.items():
+    for alias, canonical in BOUNDARY_ALIASES:
         if alias in blob:
             return canonical
     return None
+
+
+def _reserved_hit(payload: dict[str, Any]) -> str | None:
+    """Detect reserved boundary from named fields or *proposed* effect only.
+
+    Contextual skill text that merely prohibits force-push / court filing must
+    not classify ordinary engineering as HARD_BOUNDARY.
+    """
+    named = str(payload.get("boundary") or payload.get("effect_class") or "").strip().lower()
+    if named in RESERVED_BOUNDARIES:
+        return named
+    return _match_boundary_name(_proposed_blob(payload))
 
 
 def _match_pitstops(blob: str) -> list[dict[str, str]]:
@@ -156,14 +205,63 @@ def _override_telemetry(payload: dict[str, Any], default: str) -> str:
     return default
 
 
+def _pitstop_result(
+    *,
+    authorized: bool,
+    pitstops: list[dict[str, str]],
+    reason: str,
+    action: str | None = None,
+    quality_dimension: str | None = None,
+    transition: str | None = None,
+    telemetry: str | None = None,
+) -> dict[str, Any]:
+    primary = pitstops[0] if pitstops else None
+    return {
+        "kind": "QUALITY_PITSTOP",
+        "action": action or (primary["pitstop"] if primary else "continue_with_current_quality_floor"),
+        "quality_dimension": quality_dimension
+        or (primary["quality_dimension"] if primary else "mission_continuity"),
+        "transition": transition or (primary["transition"] if primary else "VALIDATED_LEVEL_UP"),
+        "telemetry": telemetry or (primary["telemetry"] if primary else "PASS"),
+        "is_permission_gate": False,
+        "is_pitstop": True,
+        "continue_mission": True,
+        "approval_theater": False,
+        "operator_authorized": authorized,
+        "pitstops": pitstops,
+        "stripped_labels": [
+            "HARD-GATE",
+            "GATE DENIED",
+            "wait for approval",
+            "authorized for execution",
+            "delivery blocked",
+        ],
+        "reason": reason,
+    }
+
+
 def convert_halt(payload: dict[str, Any]) -> dict[str, Any]:
     """Turn a hard-halt candidate into a pitstop or keep a reserved boundary."""
-    blob = _text_blob(payload)
-    reserved = _reserved_hit(payload, blob)
+    scan_blob = _scan_blob(payload)
+    reserved = _reserved_hit(payload)
     authorized = _operator_authorized(payload)
-    hits = _match_pitstops(blob)
+    hits = _match_pitstops(scan_blob)
 
     if reserved:
+        if authorized:
+            return {
+                "kind": "AUTHORIZED_BOUNDARY",
+                "action": "proceed_with_explicit_operator_authorization",
+                "boundary": reserved,
+                "is_permission_gate": False,
+                "is_pitstop": False,
+                "continue_mission": True,
+                "continue_independent_fronts": True,
+                "require_receipt": True,
+                "operator_authorized": True,
+                "pitstops": [],
+                "reason": "direct_operator_request_discharges_reserved_boundary",
+            }
         return {
             "kind": "HARD_BOUNDARY",
             "action": "require_explicit_operator_boundary",
@@ -172,13 +270,13 @@ def convert_halt(payload: dict[str, Any]) -> dict[str, Any]:
             "is_pitstop": False,
             "continue_mission": False,
             "continue_independent_fronts": True,
-            "operator_authorized": authorized,
+            "operator_authorized": False,
             "pitstops": [],
             "reason": "reserved_irreversible_or_external_effect",
         }
 
     if hits:
-        pitstops = []
+        pitstops: list[dict[str, str]] = []
         for hit in hits:
             telemetry = _override_telemetry(payload, hit["telemetry"])
             pitstops.append(
@@ -188,43 +286,18 @@ def convert_halt(payload: dict[str, Any]) -> dict[str, Any]:
                     "transition": PITSTOP_TRANSITIONS[telemetry],
                 }
             )
-        primary = pitstops[0]
-        return {
-            "kind": "QUALITY_PITSTOP",
-            "action": primary["pitstop"],
-            "quality_dimension": primary["quality_dimension"],
-            "transition": primary["transition"],
-            "telemetry": primary["telemetry"],
-            "is_permission_gate": False,
-            "is_pitstop": True,
-            "continue_mission": True,
-            "approval_theater": False,
-            "operator_authorized": authorized,
-            "pitstops": pitstops,
-            "stripped_labels": [
-                "HARD-GATE",
-                "GATE DENIED",
-                "wait for approval",
-                "authorized for execution",
-                "delivery blocked",
-            ],
-            "reason": "hard_halt_converted_to_quality_level",
-        }
+        return _pitstop_result(
+            authorized=authorized,
+            pitstops=pitstops,
+            reason="hard_halt_converted_to_quality_level",
+        )
 
     if authorized:
-        return {
-            "kind": "QUALITY_PITSTOP",
-            "action": "continue_with_current_quality_floor",
-            "quality_dimension": "mission_continuity",
-            "transition": "VALIDATED_LEVEL_UP",
-            "telemetry": "PASS",
-            "is_permission_gate": False,
-            "is_pitstop": True,
-            "continue_mission": True,
-            "operator_authorized": True,
-            "pitstops": [],
-            "reason": "operator_authorized_no_false_halt",
-        }
+        return _pitstop_result(
+            authorized=True,
+            pitstops=[],
+            reason="operator_authorized_no_false_halt",
+        )
 
     return {
         "kind": "NEUTRAL_CONTINUE",
@@ -243,6 +316,7 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
     result["operation"] = "gate_polarity"
     result["invariant"] = "hard_halt_is_pitstop_not_permission"
     result["doctrine"] = "quality_level_not_authorization"
+    result["calibrator"] = "hidden-harm-governance"
     return result
 
 

@@ -3,7 +3,9 @@ name: hidden-harm-casebuild
 description: "Counter-engineer hidden harms in legal/casebuilding work: preserve Operator strategy, native evidence, attribution, evidentiary scope, contradictions, remedies, privacy, and case objectives while preventing procedural-gap gravity and assistant-authored strategy substitution."
 ---
 
-# Hidden Harm — Casebuilding
+# Hidden Harm — Casebuild Calibrator
+
+> Chassis wheel. Governance polarity → `hidden-harm-governance` / `gate_polarity`. This skill owns legal/evidence loss detection; reserved court boundaries stay hard unless Operator-authorized.
 
 ## Mission
 

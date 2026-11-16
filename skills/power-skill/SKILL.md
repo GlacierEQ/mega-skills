@@ -70,20 +70,20 @@ The Operator is Casey Barton / GlacierEQ: Advanced Forward-Deployed / Applied AI
 - Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
 
-## Hidden-harm domain router
+## Hidden-harm calibrator chassis
 
-Hidden-harm removal is a cross-cutting execution concern. Before material execution, route through the narrowest applicable specialist:
+Hidden-harm removal is a cross-cutting calibrator pack — not bureaucracy. Route the narrowest wheel; compose when domains cross:
 
+- steering / HARD-GATE / approval theater / GATE DENIED / soft caps → `hidden-harm-governance` (`gate_polarity`)
 - GitHub / branches / PRs / CI / release / deployment → `hidden-harm-github`
 - context / memory / summaries / continuity / Operator semantics → `hidden-harm-context`
 - connectors / plugins / MCP / provider pipelines → `hidden-harm-connectors`
 - legal / evidence / casebuilding → `hidden-harm-casebuild`
-- governance / HARD-GATE / approval theater / GATE DENIED / token soft-caps → `hidden-harm-governance` (hard halt → quality pitstop, not permission)
-- all other work, or multi-domain remainder risk → `hidden-harm-cross-domain`
+- remainder / multi-domain → `hidden-harm-cross-domain`
 
-Compose multiple specialists when a work unit crosses domains. The shared invariant is:
+Shared invariant:
 
-`DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST`
+`DETECT LOSS -> NAME DIMENSION -> PITSTOP OR PRESERVE -> CONTINUE -> VERIFY -> PERSIST`
 
-The hidden-harm layer does not become a new bureaucracy or permission ladder. It exists to prevent technically-valid actions from silently making the actual mission weaker.
+False hard-halts become quality pitstops. Unprompted reserved boundaries stay hard. Direct Operator authorization discharges reserved effects with receipt.
 

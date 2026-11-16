@@ -21,6 +21,7 @@ def main() -> int:
         choices=(
             "context_gate", "mission_select", "dispatch_gate", "completion_gate",
             "retirement_gate", "growth_gate",
+            "gate_polarity", "counter_gate", "invert_gate",
             "purpose", "procedure", "output_contract",
         ),
     )

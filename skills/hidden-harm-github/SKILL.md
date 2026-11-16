@@ -3,7 +3,9 @@ name: hidden-harm-github
 description: "Counter-engineer hidden harms in GitHub/repository work: prevent branch/donor capability loss, stale-CI authority, destructive simplification, false merge/completion claims, and provenance loss while preserving stronger code and optionality."
 ---
 
-# Hidden Harm — GitHub
+# Hidden Harm — GitHub Calibrator
+
+> Chassis wheel. Governance polarity → `hidden-harm-governance` / `gate_polarity`. This skill owns GitHub-domain loss detection; it does not invent permission ladders.
 
 ## Mission
 

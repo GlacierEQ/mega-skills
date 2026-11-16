@@ -3,7 +3,9 @@ name: hidden-harm-connectors
 description: "Counter-engineer hidden harms in connectors/plugins/MCP: prevent false verification, weaker-fallback substitution, account ambiguity, projection loss, unsafe writes, privacy widening, scope overgeneralization, and provider-state demotion."
 ---
 
-# Hidden Harm — Connectors
+# Hidden Harm — Connectors Calibrator
+
+> Chassis wheel. Governance polarity → `hidden-harm-governance` / `gate_polarity`. This skill owns connector/MCP loss detection; it does not invent permission ladders.
 
 ## Mission
 

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "policy": "No package may claim active/ready without observable readiness evidence.",
   "summary": {
-    "skills": 1309,
+    "skills": 1310,
     "combos": 43,
     "megas": 36,
     "ready_total": 1200,
@@ -15705,6 +15705,26 @@
       "scaffold_files": [],
       "stub_files": [],
       "behavioral_tests": [],
+      "structural_tests": [],
+      "reasons": []
+    },
+    {
+      "id": "hidden-harm-governance",
+      "layer": "skill",
+      "ready": true,
+      "state": "behavior_verified",
+      "declared_maturity": "active",
+      "instruction_ready": true,
+      "real_implementation_files": [
+        "scripts/gate_polarity.py",
+        "skills/hidden-harm-governance/skill.py"
+      ],
+      "generic_adapter_files": [],
+      "scaffold_files": [],
+      "stub_files": [],
+      "behavioral_tests": [
+        "tests/test_gate_polarity.py"
+      ],
       "structural_tests": [],
       "reasons": []
     },
