@@ -20,7 +20,7 @@ PITSTOP_TRANSITIONS = {
     "THEATER": "STRIP_PERMISSION_LABEL_LEVEL_UP",
 }
 
-RESERVED_BOUNDARIES = {
+RESERVED_BOUNDARIES = (
     "court_filing",
     "production_deploy",
     "spend_unbudgeted_capital",
@@ -30,7 +30,7 @@ RESERVED_BOUNDARIES = {
     "mfa_or_signature",
     "force_push_history_rewrite",
     "public_comm_in_operator_name",
-}
+)
 
 # Former hard-halts → quality dimensions they actually measure.
 PITSTOP_PATTERNS = {

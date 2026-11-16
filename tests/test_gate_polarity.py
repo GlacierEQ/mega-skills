@@ -10,8 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def _load(name: str, path: Path):
     spec = importlib.util.spec_from_file_location(name, path)
-    module = importlib.util.module_from_spec(spec)
     assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
@@ -61,6 +61,13 @@ class GatePolarityTests(unittest.TestCase):
         self.assertFalse(result["is_pitstop"])
         self.assertEqual(result["boundary"], "court_filing")
         self.assertTrue(result["continue_independent_fronts"])
+
+    def test_reserved_boundary_match_is_deterministic(self) -> None:
+        first = POLARITY.evaluate({"proposed_gate": "court filing and production deploy"})
+        second = POLARITY.evaluate({"proposed_gate": "court filing and production deploy"})
+        self.assertEqual(first["kind"], "HARD_BOUNDARY")
+        self.assertEqual(first["boundary"], second["boundary"])
+        self.assertEqual(first["boundary"], "court_filing")
 
     def test_orch_gates_are_plan_and_diff_pitstops(self) -> None:
         plan = POLARITY.evaluate(

@@ -2,15 +2,18 @@
 """Executable mission-selection and completion gate for the GlacierEQ Operator."""
 from __future__ import annotations
 
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 from typing import Any
-import sys
 
-_SCRIPTS = Path(__file__).resolve().parent
-if str(_SCRIPTS) not in sys.path:
-    sys.path.insert(0, str(_SCRIPTS))
-
-import gate_polarity
+_GATE_POLARITY_SPEC = spec_from_file_location(
+    "gate_polarity",
+    Path(__file__).resolve().parent / "gate_polarity.py",
+)
+if _GATE_POLARITY_SPEC is None or _GATE_POLARITY_SPEC.loader is None:
+    raise ImportError("unable to load scripts/gate_polarity.py")
+gate_polarity = module_from_spec(_GATE_POLARITY_SPEC)
+_GATE_POLARITY_SPEC.loader.exec_module(gate_polarity)
 
 POSITIVE_WEIGHTS = {
     "operator_impact": 12.0,
