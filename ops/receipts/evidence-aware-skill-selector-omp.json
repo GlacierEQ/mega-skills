@@ -8,7 +8,7 @@
   "branch": "feat/evidence-aware-skill-selector-20261113",
   "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
   "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
-  "head_commit": "b012dbf345a6f851064d693ff433d61fac20afc1",
+  "head_commit": "055eb427",
   "distinction": {
     "this_module": "scripts/skill_evidence_selector.py",
     "readiness_selector": "scripts/evidence_capability_selector.py",
