@@ -70,9 +70,9 @@ The Operator is Casey Barton / GlacierEQ: Advanced Forward-Deployed / Applied AI
 - Notion projection: Power-Skill — Maximum Operator Execution (make-it-heavy) · page `c6eb8644d7474ccb818ad92dbc737d67` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
 
-## Hidden-harm calibrator chassis
+## Hidden-harm counter-wave + calibrator chassis (always-on)
 
-Hidden-harm removal is a cross-cutting calibrator pack — not bureaucracy. Route the narrowest wheel; compose when domains cross:
+Hidden-harm removal is the Operator **counter-wave** and a calibrator pack — not bureaucracy. Before material execution, compose `hidden-harm-counter-wave`, then the narrowest applicable specialist(s):
 
 - steering / HARD-GATE / approval theater / GATE DENIED / soft caps → `hidden-harm-governance` (`gate_polarity`)
 - GitHub / branches / PRs / CI / release / deployment → `hidden-harm-github`
@@ -81,9 +81,11 @@ Hidden-harm removal is a cross-cutting calibrator pack — not bureaucracy. Rout
 - legal / evidence / casebuilding → `hidden-harm-casebuild`
 - remainder / multi-domain → `hidden-harm-cross-domain`
 
-Shared invariant:
+Compose multiple specialists when a work unit crosses domains. After planning a remediation, recursively counter meta-harms (fix theater, peak language, dual surfaces, bureaucracy capture, correction resurrection). Shared invariant:
 
-`DETECT LOSS -> NAME DIMENSION -> PITSTOP OR PRESERVE -> CONTINUE -> VERIFY -> PERSIST`
+`DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND / PITSTOP -> VERIFY -> PERSIST -> RECURSIVE META-HARM SCAN`
+
+Executable router: `scripts/hidden_harm_counter_wave.py`. Matrix: `integrations/hidden-harm-skill-matrix.json`.
 
 False hard-halts become quality pitstops. Unprompted reserved boundaries stay hard. Direct Operator authorization discharges reserved effects with receipt.
 

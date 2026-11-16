@@ -1,109 +1,52 @@
 {
-  "schema": "glaciereq.hidden-harm-skill-matrix.v1",
-  "purpose": "Route work through a domain-specific hidden-harm counter-engineering skill before material execution.",
-  "counter_pattern": "DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST",
+  "schema": "glaciereq.hidden-harm-skill-matrix.v2",
+  "purpose": "Always-on Operator counter-wave: route every material work unit through domain hidden-harm specialists, then recursively counter-engineer harms introduced by the remediation itself.",
+  "operator_doctrine": "Hidden-harm skills go on everything. They dynamically counter-engineer other hidden harms. Not bureaucracy — prevent technically-valid actions from silently weakening the mission.",
+  "always_on": true,
+  "dynamic_recursive": true,
+  "counter_wave_skill": "hidden-harm-counter-wave",
+  "counter_pattern": "DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST -> RECURSIVE META-HARM SCAN",
+  "meta_harms": [
+    "fix_theater",
+    "verification_capture",
+    "convenience_centralization",
+    "bureaucracy_capture",
+    "peak_language",
+    "dual_surfaces",
+    "correction_resurrection"
+  ],
   "skills": [
     {
       "id": "hidden-harm-github",
       "path": "skills/hidden-harm-github/SKILL.md",
-      "domains": [
-        "github",
-        "git",
-        "branches",
-        "pull_requests",
-        "ci",
-        "releases",
-        "deployments"
-      ],
-      "protects": [
-        "unique_capability",
-        "lineage",
-        "source_provenance",
-        "deployment_correspondence",
-        "optionality"
-      ]
+      "domains": ["github", "git", "branches", "pull_requests", "ci", "releases", "deployments"],
+      "protects": ["unique_capability", "lineage", "source_provenance", "deployment_correspondence", "optionality"]
     },
     {
       "id": "hidden-harm-context",
       "path": "skills/hidden-harm-context/SKILL.md",
-      "domains": [
-        "context",
-        "memory",
-        "summaries",
-        "continuity",
-        "operator_authority"
-      ],
-      "protects": [
-        "word",
-        "intention",
-        "information",
-        "strategy",
-        "position",
-        "corrections",
-        "scope"
-      ]
+      "domains": ["context", "memory", "summaries", "continuity", "operator_authority"],
+      "protects": ["word", "intention", "information", "strategy", "position", "corrections", "scope"]
     },
     {
       "id": "hidden-harm-connectors",
       "path": "skills/hidden-harm-connectors/SKILL.md",
-      "domains": [
-        "connectors",
-        "plugins",
-        "mcp",
-        "providers",
-        "cross_service_pipelines"
-      ],
-      "protects": [
-        "provider_provenance",
-        "verification_scope",
-        "capability_surface",
-        "readback",
-        "privacy",
-        "reversibility"
-      ]
+      "domains": ["connectors", "plugins", "mcp", "providers", "cross_service_pipelines"],
+      "protects": ["provider_provenance", "verification_scope", "capability_surface", "readback", "privacy", "reversibility"]
     },
     {
       "id": "hidden-harm-casebuild",
       "path": "skills/hidden-harm-casebuild/SKILL.md",
-      "domains": [
-        "casebuilding",
-        "evidence",
-        "legal",
-        "family_court",
-        "claims",
-        "relief"
-      ],
-      "protects": [
-        "operator_strategy",
-        "native_evidence",
-        "attribution",
-        "contradictions",
-        "remedy",
-        "privacy",
-        "human_outcome"
-      ]
+      "domains": ["casebuilding", "evidence", "legal", "family_court", "claims", "relief"],
+      "protects": ["operator_strategy", "native_evidence", "attribution", "contradictions", "remedy", "privacy", "human_outcome"]
     },
     {
       "id": "hidden-harm-cross-domain",
       "path": "skills/hidden-harm-cross-domain/SKILL.md",
-      "domains": [
-        "other",
-        "jobs",
-        "research",
-        "operations",
-        "documents",
-        "planning",
-        "systems"
-      ],
-      "protects": [
-        "human_outcome",
-        "capability",
-        "truth_fidelity",
-        "optionality",
-        "reversibility",
-        "completion_quality"
-      ]
+      "domains": ["other", "jobs", "research", "operations", "documents", "planning", "systems"],
+      "protects": ["human_outcome", "capability", "truth_fidelity", "optionality", "reversibility", "completion_quality"]
     }
   ],
-  "routing_rule": "Select the narrowest applicable specialist. Compose multiple specialists when a work unit crosses domains. Always include hidden-harm-cross-domain when no specialist fully covers the material risk."
+  "routing_rule": "Compose hidden-harm-counter-wave on every material unit. Select the narrowest applicable specialist(s). Always include hidden-harm-cross-domain as remainder cover when specialists fire or when no specialist fully covers the risk. After planning a remediation, recursively scan meta-harms before execute.",
+  "executable": "scripts/hidden_harm_counter_wave.py"
 }

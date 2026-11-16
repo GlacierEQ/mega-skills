@@ -281,11 +281,21 @@ When assistant-created state violates this kernel:
 - Notion projection: Casey Operator Execution Kernel — Authority, Locks, Gates · page `6184d704135440b19a2e1894a50ffa12` (route, don't copy — this file outranks the projection)
 - Index: `integrations/notion-skill-bridge.json`
 
-## Hidden-harm context owner
+## Hidden-harm counter-wave (always-on)
 
-Compose `hidden-harm-context` during context hydration, memory reconciliation, correction handling, summary/projection, mission selection, and continuation recovery.
+Operator doctrine: hidden-harm skills go on **everything**. They are the counter-wave — designed to **dynamically counter-engineer other hidden harms**, including harms created by “fixes,” summaries, fallbacks, and status theater.
 
-The protected semantic dimensions are Casey's **word, intention, information, strategy, position, corrections, scope, and priority**. Derived state may route work but may not silently replace those dimensions. Machine labels such as `UNRESOLVED`, `OPEN`, `BLOCKED`, or `NEXT_FRONTIER` never create a mission by themselves.
+Compose `hidden-harm-counter-wave` on every material work unit. Route through the matrix in `integrations/hidden-harm-skill-matrix.json` / `scripts/hidden_harm_counter_wave.py`:
+
+- context / memory / continuity → also compose `hidden-harm-context`
+- GitHub / PR / CI / deploy → `hidden-harm-github`
+- connectors / MCP / providers → `hidden-harm-connectors`
+- casebuild / evidence / legal → `hidden-harm-casebuild`
+- remainder / multi-domain spill → `hidden-harm-cross-domain`
+
+Shared pattern: `DETECT LOSS -> NAME LOST DIMENSION -> PRESERVE STRONGER STATE -> ROUTE AROUND -> VERIFY -> PERSIST -> RECURSIVE META-HARM SCAN`.
+
+The protected semantic dimensions for context work remain Casey's **word, intention, information, strategy, position, corrections, scope, and priority**. Derived state may route work but may not silently replace those dimensions. Machine labels such as `UNRESOLVED`, `OPEN`, `BLOCKED`, or `NEXT_FRONTIER` never create a mission by themselves. The counter-wave must not become bureaucracy that displaces the Operator objective.
 
 ## Governance calibrator owner
 

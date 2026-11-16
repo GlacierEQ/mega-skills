@@ -1,54 +1,43 @@
 ---
 name: antigravity-guide
-description: "Provides a comprehensive guide, quick reference, and sitemap for Google Antigravity (AGY), including the Antigravity CLI (agy), Antigravity 2.0, Antigravity IDE, Python SDK, slash commands, keybindings, and customizations (skills, rules, MCP, sidecars). Activate this skill when the user asks questions about how to use, configure, or customize Antigravity, AGY, the agy CLI, the Antigravity IDE, or Antigravity 2.0."
+description: "Guide for Google Antigravity (AGY): CLI (agy), IDE, Antigravity 2.0 app, Python SDK, slash commands, keybindings, and customizations. Prefer live official docs; do not invent offline reference files. Activate when the user asks about Antigravity, AGY, the agy CLI, Antigravity IDE, or Antigravity 2.0."
 ---
 
 # Google Antigravity (AGY) Guide & Sitemap
 
-Google Antigravity is an AI-first development platform. Depending on which
-surface the user is asking about, you **MUST** read the corresponding
-subdocumentation in the `references/` directory of this skill:
+Google Antigravity is an AI-first development platform.
 
-## 1. Surfaces Sitemap (Offline Subdocs)
+## Honesty gate (hidden-harm)
 
--   **Antigravity CLI (`agy`)**: [references/cli.md](references/cli.md)
-    -   Pointers to the authoritative public CLI docs for slash commands,
-        features, settings, and best practices.
--   **Antigravity IDE**: [references/ide.md](references/ide.md)
-    -   Covers the standalone AI-first IDE, sidebar chat panels, and inline code
-        lenses.
--   **Antigravity 2.0**: [references/app.md](references/app.md)
-    -   Covers the parallel desktop application, left-hand sidebar, chat canvas,
-        and the HTML Auxiliary Pane (Subagents, Background Tasks, Artifacts,
-        Files Changed, Terminals).
--   **Antigravity SDK**: [references/sdk.md](references/sdk.md)
-    -   Covers the public Python SDK
-        (https://github.com/google-antigravity/antigravity-sdk-python) for
-        programmatic agent leasing, orchestration APIs, and custom tool
-        exposing.
+- This skill’s `skill.py` is a **compatibility adapter only** (`capability_executed: false`). It does **not** run the Antigravity CLI.
+- Offline `references/` subdocs are **optional**. If a linked file is missing, treat that as `OFFLINE_GAP` and fetch the **live** page — never invent CLI behavior from memory alone.
+- Operator estate note: some local `antigravity_cli.py` wrappers hardcode Mac absolute paths; those are **not** portable evidence that `agy` is installed on the current machine. Check `command -v agy` / product install before claiming CLI availability.
 
---------------------------------------------------------------------------------
+## 1. Surfaces (live docs are authority)
 
-## 2. Smart Hybrid Retrieval: When to Fetch Live Docs
+When the user asks about a surface, fetch the matching live page if offline refs are absent or stale:
 
-The offline subdocs provide excellent quick references. However, if the user
-asks for the latest updates, advanced Vertex AI integrations, or complex setups
-not covered here, you **MUST** dynamically fetch the live page from the official
-sitemap:
+| Surface | Live docs | Offline (if present) |
+|---|---|---|
+| Antigravity CLI (`agy`) | https://antigravity.google/docs | `references/cli.md` |
+| Antigravity IDE | https://antigravity.google/docs | `references/ide.md` |
+| Antigravity 2.0 app | https://antigravity.google/docs | `references/app.md` |
+| Antigravity SDK | https://github.com/google-antigravity/antigravity-sdk-python | `references/sdk.md` |
 
-<!-- LINT.IfChange(sitemap) -->
+## 2. Official sitemap (fetch live when needed)
 
--   **Main Documentation Home**: `https://antigravity.google/docs`
--   **Skills**: `https://antigravity.google/docs/skills`
--   **Rules**: `https://antigravity.google/docs/rules-workflows`
--   **Hooks**: `https://antigravity.google/docs/hooks`
--   **Plugins**: `https://antigravity.google/docs/plugins`
--   **Sidecars**: `https://antigravity.google/docs/sidecars`
--   **Model Context Protocol (MCP)**: `https://antigravity.google/docs/mcp`
--   **Browser Automation & Testing**:
-    `https://antigravity.google/docs/ide/browser`
--   **Agent Permissions & Security**:
-    `https://antigravity.google/docs/permissions`
--   **Changelog & Release Notes**: `https://antigravity.google/changelog`
--   **Troubleshooting & Support**: `https://antigravity.google/support`
-    <!-- LINT.ThenChange(//depot/google3/third_party/gemini_coder/agent_ui_toolkit/dev/appVariant/externalAppVariant.ts:custom_links) -->
+- **Main Documentation Home**: `https://antigravity.google/docs`
+- **Skills**: `https://antigravity.google/docs/skills`
+- **Rules**: `https://antigravity.google/docs/rules-workflows`
+- **Hooks**: `https://antigravity.google/docs/hooks`
+- **Plugins**: `https://antigravity.google/docs/plugins`
+- **Sidecars**: `https://antigravity.google/docs/sidecars`
+- **Model Context Protocol (MCP)**: `https://antigravity.google/docs/mcp`
+- **Browser Automation & Testing**: `https://antigravity.google/docs/ide/browser`
+- **Agent Permissions & Security**: `https://antigravity.google/docs/permissions`
+- **Changelog & Release Notes**: `https://antigravity.google/changelog`
+- **Troubleshooting & Support**: `https://antigravity.google/support`
+
+## 3. Related skill
+
+For customization loading priority (rules/skills/plugins/hooks/MCP), also see `agy-customizations` — same honesty rule: missing `./docs/` files ⇒ live docs, not fabricated content.
