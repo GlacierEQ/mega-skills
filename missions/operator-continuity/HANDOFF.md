@@ -52,12 +52,13 @@
 5. Merge mastermind #178 after CI
 
 ## Resume first actions (next chat)
-1. Read this file + `/opt/cursor/artifacts/operator-supermemory-hits.json`
-2. `source /home/ubuntu/.apex-session/env-part2.sh` if present (names only in chat)
-3. `git checkout cursor/pro-mastermind-quality-processors-f969 && git pull`
-4. Read `evidence/calibrator-chassis/pro-mastermind-reconnect.md`
-5. If Mac wiring: Aspen `bootup_with_vault.py` + Iceberg README → injection checklist, no secret values
-6. Continue Operator sovereignty / Juggernaut Jack — not generic helpful-bot
+1. Read `missions/operator-continuity/HANDOFF.md` (this file) and `missions/operator-continuity/resume.json`
+2. SuperMemory: query `OPERATOR CONTINUITY Aspen Grove is the house` or GET docs listed in `resume.json` → `supermemory_document_ids`
+3. Session-local only if present: `source` the path in `resume.json` → `session_env_ephemeral` (names only in chat; may be absent on a new VM)
+4. `git checkout cursor/pro-mastermind-quality-processors-f969 && git pull`
+5. Read `evidence/calibrator-chassis/pro-mastermind-reconnect.md`
+6. If Mac wiring: Aspen `bootup_with_vault.py` + Iceberg README → injection checklist, no secret values
+7. Continue Operator sovereignty / Juggernaut Jack — not generic helpful-bot
 
 ## Anti-patterns
 - Dual memory MCP front doors without Operator pick

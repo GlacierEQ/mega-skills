@@ -5,14 +5,23 @@
   "operator": "Casey Barton / @GlacierEQ",
   "mem0_status": "declined_this_session",
   "supermemory_status": "primary_continuity_store",
-  "session_env": "/home/ubuntu/.apex-session/env-part2.sh",
-  "handoff_md": "/opt/cursor/artifacts/OPERATOR-CONTINUITY-HANDOFF.md",
-  "sm_hits": "/opt/cursor/artifacts/operator-supermemory-hits.json",
+  "handoff_md": "missions/operator-continuity/HANDOFF.md",
+  "readme_md": "missions/operator-continuity/README.md",
+  "session_env_ephemeral": "/home/ubuntu/.apex-session/env-part2.sh",
+  "sm_hits_ephemeral": "/opt/cursor/artifacts/operator-supermemory-hits.json",
+  "supermemory_document_ids": [
+    "Esmc3XxT3XvoYyU5rX2zrh",
+    "62FKGrefuQeEGNuLfJoaBB",
+    "cHexPhbGsbh7s87MkyUV3S",
+    "DFitxk6kZxDA2ezmJV3Q7B"
+  ],
+  "supermemory_query": "OPERATOR CONTINUITY Aspen Grove is the house Keymaster Iceberg handoff 2026-11-16",
   "active_branch": "cursor/pro-mastermind-quality-processors-f969",
   "open_prs": [
     60,
     61,
-    62
+    62,
+    63
   ],
   "aspen_rule": "Aspen Grove is the house; Keymaster vault; Iceberg memory front door; Gatekeeper future single key",
   "part2_key_names": [
