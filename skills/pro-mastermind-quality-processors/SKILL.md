@@ -25,7 +25,8 @@ Bring Pro-Mastermind / Mastermind back to peak Spiral power, infuse pitstop cali
 ## Commands
 
 ```bash
-export MASTERMIND_HOME=/path/to/mastermind
+# Run from a Mastermind checkout (or set MASTERMIND_HOME to that checkout).
+export MASTERMIND_HOME="${MASTERMIND_HOME:-$PWD}"
 python3 -m unittest tests.test_paths_portable tests.test_quality_processor -v
 python3 maximize_mastermind.py
 ```
