@@ -5,6 +5,8 @@
   "related_linear_issue": "HI-823",
   "repository": "GlacierEQ/mega-skills",
   "pull_request": "https://github.com/GlacierEQ/mega-skills/pull/59",
+  "merged_to_main_via": "https://github.com/GlacierEQ/mega-skills/pull/64",
+  "main_merge_commit": "1551f1233b4fc7acfe32131c642e6f8ad520e158",
   "branch": "feat/evidence-aware-skill-selector-20261113",
   "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
   "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
