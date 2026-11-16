@@ -1,0 +1,11 @@
+{
+  "schema": "geq-cold-chat-seed-v1",
+  "mission_id": "GEQ-COLD-CHAT-E2E-001",
+  "status": "SEEDED_NOT_CERTIFIED",
+  "correction": "phase-1.json only; old-phase-1.json forbidden",
+  "cursor": "P1_PENDING",
+  "phase_1_path": "certification-runs/GEQ-COLD-CHAT-E2E-001/phase-1.json",
+  "phase_2_path": "certification-runs/GEQ-COLD-CHAT-E2E-001/phase-2.json",
+  "source_mem_note": "bb00f40e-50ed-54e4-bd1f-0e88668afe5a",
+  "test_boundary": "Synthetic certification only. No automatic ChatGPT boot proven."
+}

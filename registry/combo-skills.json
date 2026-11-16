@@ -1283,6 +1283,390 @@
       }
     },
     {
+      "id": "code-upgrade-pipeline",
+      "display_name": "Code Upgrade Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/code-upgrade-pipeline",
+      "entrypoint": "combo-skills/code-upgrade-pipeline/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Upgrading, modernizing, or migrating code across one or more GlacierEQ repositories under evidence gates.",
+          "Retiring deprecated APIs, flags, or frameworks estate-wide with proof of completion."
+        ],
+        "do_not_use_when": [
+          "Single-file typo, lint, or one-line fixes.",
+          "Net-new feature development with no upgrade or migration component."
+        ]
+      },
+      "members": [
+        {
+          "id": "automated-architecture-analysis",
+          "kind": "skill",
+          "role": "Assess: build the typed dependency graph; find cycles, forbidden edges, and the safe decoupling order.",
+          "required": true
+        },
+        {
+          "id": "characterization-tests-first",
+          "kind": "skill",
+          "role": "Assess: pin the current behavior of untested legacy code before it changes.",
+          "required": true
+        },
+        {
+          "id": "dependency-update-operator",
+          "kind": "skill",
+          "role": "Decide (feed): produce governed dependency-update candidates via the Dependabot baseline and Renovate patterns.",
+          "required": true
+        },
+        {
+          "id": "spiral-promotion-gate",
+          "kind": "skill",
+          "role": "Decide: judge each candidate on parity, rollback readiness, and measured gain; issue or withhold the promotion grant.",
+          "required": true
+        },
+        {
+          "id": "automated-code-refactoring",
+          "kind": "skill",
+          "role": "Transform: run bounded, reversible transformation batches under a changed-file budget.",
+          "required": true
+        },
+        {
+          "id": "openrewrite-recipes",
+          "kind": "skill",
+          "role": "Transform (JVM lane): execute API migrations and deprecation removal as versioned OpenRewrite recipes.",
+          "required": false
+        },
+        {
+          "id": "ast-grep-structural-rewrite",
+          "kind": "skill",
+          "role": "Transform (polyglot lane): execute structural rewrites by AST pattern with audited match sets.",
+          "required": false
+        },
+        {
+          "id": "deprecation-removal",
+          "kind": "skill",
+          "role": "Transform: retire deprecated surfaces after consumers migrate; prove zero remaining references.",
+          "required": false
+        },
+        {
+          "id": "test-drift-archaeology-repair",
+          "kind": "skill",
+          "role": "Verify: return a drifted suite to green by archaeology, without weakening a single test.",
+          "required": true
+        },
+        {
+          "id": "verification-before-completion",
+          "kind": "skill",
+          "role": "Verify: block any completion claim that lacks command output.",
+          "required": true
+        },
+        {
+          "id": "release",
+          "kind": "skill",
+          "role": "Promote: run release gates, bump the version, commit and push to main.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "automated-architecture-analysis",
+            "consumes": [
+              "Target repository set",
+              "Upgrade goal"
+            ],
+            "produces": [
+              "Dependency graph and decoupling plan",
+              "Risk register"
+            ],
+            "validation": "Graph covers every in-scope repository; cycles and forbidden edges are named with a decoupling order."
+          },
+          {
+            "step": 2,
+            "member_id": "characterization-tests-first",
+            "consumes": [
+              "Decoupling plan",
+              "Legacy code areas"
+            ],
+            "produces": [
+              "Characterization test suite",
+              "Quirk register"
+            ],
+            "validation": "Suite passes 100% on untouched code; surprising behaviors are registered, not assumed."
+          },
+          {
+            "step": 3,
+            "member_id": "dependency-update-operator",
+            "consumes": [
+              "Repository inventory",
+              "Update policy"
+            ],
+            "produces": [
+              "Update candidate ledger",
+              "dependabot.yml / renovate configuration"
+            ],
+            "validation": "Every repository has an update posture; candidates are grouped, scheduled, and classified patch/minor/major."
+          },
+          {
+            "step": 4,
+            "member_id": "spiral-promotion-gate",
+            "consumes": [
+              "Update candidate ledger",
+              "Before/after quality states"
+            ],
+            "produces": [
+              "Promotion decision and chained receipt",
+              "Promotion grant (on PROMOTE)"
+            ],
+            "validation": "No candidate advances without parity, rollback, and measured-gain evidence."
+          },
+          {
+            "step": 5,
+            "member_id": "automated-code-refactoring",
+            "consumes": [
+              "Decoupling plan",
+              "Approved transformation scope"
+            ],
+            "produces": [
+              "Bounded transformation batches",
+              "Refactor receipts"
+            ],
+            "validation": "Each batch is one conceptual change, within budget, and independently reversible."
+          },
+          {
+            "step": 6,
+            "member_id": "openrewrite-recipes",
+            "consumes": [
+              "API migration specification",
+              "Recipe list"
+            ],
+            "produces": [
+              "Recipe dry-run diff",
+              "Applied migration diff"
+            ],
+            "validation": "Dry-run diff reviewed before apply; one recipe per batch."
+          },
+          {
+            "step": 7,
+            "member_id": "ast-grep-structural-rewrite",
+            "consumes": [
+              "Structural pattern set",
+              "Target trees"
+            ],
+            "produces": [
+              "Audited match list",
+              "Rewrite diff"
+            ],
+            "validation": "Match set audited for false positives; post-run search returns zero live matches."
+          },
+          {
+            "step": 8,
+            "member_id": "deprecation-removal",
+            "consumes": [
+              "Deprecated surface inventory",
+              "Retirement decision record"
+            ],
+            "produces": [
+              "Consumer dispositions",
+              "Deletion diff with zero-reference proof"
+            ],
+            "validation": "No surface deleted with live consumers; absence proven by search output."
+          },
+          {
+            "step": 9,
+            "member_id": "test-drift-archaeology-repair",
+            "consumes": [
+              "Full suite failure enumeration",
+              "Git history"
+            ],
+            "produces": [
+              "Green suite",
+              "Drift root-cause record"
+            ],
+            "validation": "Full suite green with zero tests weakened, skipped, or deleted."
+          },
+          {
+            "step": 10,
+            "member_id": "verification-before-completion",
+            "consumes": [
+              "All stage receipts",
+              "Suite and build output"
+            ],
+            "produces": [
+              "Verification verdict"
+            ],
+            "validation": "Every completion claim in the record cites command output."
+          },
+          {
+            "step": 11,
+            "member_id": "release",
+            "consumes": [
+              "Promotion grant",
+              "Verification verdict"
+            ],
+            "produces": [
+              "Version bump and artifacts",
+              "Commit and push to main"
+            ],
+            "validation": "Release gates pass; the upgrade lands on main with receipts attached."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "automated-architecture-analysis",
+            "to_member": "characterization-tests-first",
+            "required_inputs": [
+              "Dependency graph and decoupling plan"
+            ],
+            "accepted_outputs": [
+              "Characterization test suite"
+            ],
+            "failure_owner": "assessor"
+          },
+          {
+            "from_member": "characterization-tests-first",
+            "to_member": "dependency-update-operator",
+            "required_inputs": [
+              "Characterization test suite"
+            ],
+            "accepted_outputs": [
+              "Update candidate ledger"
+            ],
+            "failure_owner": "test-engineer"
+          },
+          {
+            "from_member": "dependency-update-operator",
+            "to_member": "spiral-promotion-gate",
+            "required_inputs": [
+              "Update candidate ledger"
+            ],
+            "accepted_outputs": [
+              "Promotion decision and chained receipt"
+            ],
+            "failure_owner": "dependency-operator"
+          },
+          {
+            "from_member": "spiral-promotion-gate",
+            "to_member": "automated-code-refactoring",
+            "required_inputs": [
+              "Promotion decision and chained receipt"
+            ],
+            "accepted_outputs": [
+              "Bounded transformation batches"
+            ],
+            "failure_owner": "promotion-authority"
+          },
+          {
+            "from_member": "automated-code-refactoring",
+            "to_member": "openrewrite-recipes",
+            "required_inputs": [
+              "Bounded transformation batches"
+            ],
+            "accepted_outputs": [
+              "Recipe dry-run diff"
+            ],
+            "failure_owner": "lead-coder"
+          },
+          {
+            "from_member": "openrewrite-recipes",
+            "to_member": "ast-grep-structural-rewrite",
+            "required_inputs": [
+              "Recipe dry-run diff"
+            ],
+            "accepted_outputs": [
+              "Audited match list"
+            ],
+            "failure_owner": "recipe-engineer"
+          },
+          {
+            "from_member": "ast-grep-structural-rewrite",
+            "to_member": "deprecation-removal",
+            "required_inputs": [
+              "Audited match list"
+            ],
+            "accepted_outputs": [
+              "Consumer dispositions"
+            ],
+            "failure_owner": "transform-engineer"
+          },
+          {
+            "from_member": "deprecation-removal",
+            "to_member": "test-drift-archaeology-repair",
+            "required_inputs": [
+              "Consumer dispositions"
+            ],
+            "accepted_outputs": [
+              "Green suite"
+            ],
+            "failure_owner": "retirement-engineer"
+          },
+          {
+            "from_member": "test-drift-archaeology-repair",
+            "to_member": "verification-before-completion",
+            "required_inputs": [
+              "Green suite"
+            ],
+            "accepted_outputs": [
+              "Verification verdict"
+            ],
+            "failure_owner": "repair-engineer"
+          },
+          {
+            "from_member": "verification-before-completion",
+            "to_member": "release",
+            "required_inputs": [
+              "Verification verdict"
+            ],
+            "accepted_outputs": [
+              "Version bump and artifacts"
+            ],
+            "failure_owner": "verifier"
+          }
+        ],
+        "evidence_requirements": [
+          "Dependency graph and decoupling plan for the assessed scope.",
+          "Full before/after test-suite outputs for every transformed repository.",
+          "SHA-256-chained promotion receipts for every promoted candidate.",
+          "Zero-reference search output for every retired deprecated surface."
+        ],
+        "risk_boundaries": [
+          "No transformation batch exceeds its changed-file budget or crosses its approved scope.",
+          "No candidate is promoted without parity and rollback evidence (Spiral Promotion Gate).",
+          "Deprecated surfaces are never deleted while live consumers remain.",
+          "Renovate code is never lifted into the estate (AGPL-3.0); it runs as a tool or service only."
+        ],
+        "quality_gates": [
+          "Full test suite green in every transformed repository.",
+          "Dry-run diff reviewed before every recipe or codemod application.",
+          "Zero tests weakened, skipped, or deleted to reach green."
+        ],
+        "state_updates": [
+          "Append chained receipts to the upgrade record.",
+          "Update the update-candidate ledger with final dispositions.",
+          "Record exemptions (deprecated surfaces, skipped repositories) with reasons and expiries."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "automated-architecture-analysis dependency graphs",
+          "characterization-tests-first behavior pinning",
+          "spiral-promotion-gate evidence standard",
+          "automated-code-refactoring bounded batches",
+          "test-drift-archaeology-repair pattern"
+        ],
+        "adds": "One governed pipeline for code upgrades \u2014 assess, decide, transform, verify, promote \u2014 where every stage is owned by a registered skill and every transition is receipted, so an upgrade is provable end-to-end instead of asserted.",
+        "compound_artifact": "CODE_UPGRADE_RECORD.md",
+        "next_layer_ready_when": [
+          "A full upgrade run completes with all stage receipts chained.",
+          "Zero unresolved REVISE signals remain in the run record."
+        ]
+      }
+    },
+    {
       "id": "court-evidence-compiler",
       "display_name": "Court Evidence Compiler",
       "ownership": "glaciereq",
@@ -3848,6 +4232,171 @@
       }
     },
     {
+      "id": "macbook-air-ops-library",
+      "display_name": "MacBook Air Ops Library",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/macbook-air-ops-library",
+      "entrypoint": "combo-skills/macbook-air-ops-library/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A MacBook Air mission needs authoritative link resolution across maintenance, OpenCore/OCLP, AI capability, machine ceilings, or off-prem ops.",
+          "A capability claim for this host must be tied to an admitted, bound, non-stale source."
+        ],
+        "do_not_use_when": [
+          "The Mega Skill decision logic is what is needed rather than source citation.",
+          "The claim is unrelated to this machine profile or the five MacBook Air ops domains."
+        ]
+      },
+      "members": [
+        {
+          "id": "link-admission",
+          "required": true,
+          "role": "Admit candidate sources per domain with authority and relevance stated.",
+          "kind": "skill"
+        },
+        {
+          "id": "machine-binding",
+          "required": true,
+          "role": "Bind each admitted source to a specific observed property of this host.",
+          "kind": "skill"
+        },
+        {
+          "id": "staleness-assess",
+          "required": true,
+          "role": "Record version pins and resolution dates for every bound source.",
+          "kind": "skill"
+        },
+        {
+          "id": "library-quality-audit",
+          "required": true,
+          "role": "Reject any downstream capability claim that lacks an admitted, bound, non-stale source.",
+          "kind": "skill"
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "link-admission",
+            "consumes": [
+              "Candidate source",
+              "Domain tag"
+            ],
+            "produces": [
+              "LINK_ADMISSION.md"
+            ],
+            "validation": "Authority and relevance are stated for each admitted source."
+          },
+          {
+            "step": 2,
+            "member_id": "machine-binding",
+            "consumes": [
+              "LINK_ADMISSION.md",
+              "DEVICE_PROFILE.md"
+            ],
+            "produces": [
+              "BOUND_REFERENCES.md"
+            ],
+            "validation": "Every admitted link is tied to an observed host property."
+          },
+          {
+            "step": 3,
+            "member_id": "staleness-assess",
+            "consumes": [
+              "BOUND_REFERENCES.md"
+            ],
+            "produces": [
+              "LINK_STALENESS.md"
+            ],
+            "validation": "Dates and version pins are explicit for every bound source."
+          },
+          {
+            "step": 4,
+            "member_id": "library-quality-audit",
+            "consumes": [
+              "LINK_ADMISSION.md",
+              "BOUND_REFERENCES.md",
+              "LINK_STALENESS.md"
+            ],
+            "produces": [
+              "MACBOOK_AIR_LINK_AUDIT.md"
+            ],
+            "validation": "No unsourced capability claim survives the audit."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "link-admission",
+            "to_member": "machine-binding",
+            "required_inputs": [
+              "Admitted sources",
+              "Domain tags"
+            ],
+            "accepted_outputs": [
+              "Bound references tied to host properties"
+            ],
+            "failure_owner": "link-admission owner"
+          },
+          {
+            "from_member": "machine-binding",
+            "to_member": "staleness-assess",
+            "required_inputs": [
+              "Bound references",
+              "DEVICE_PROFILE.md"
+            ],
+            "accepted_outputs": [
+              "Version pins and resolution dates"
+            ],
+            "failure_owner": "machine-binding owner"
+          },
+          {
+            "from_member": "staleness-assess",
+            "to_member": "library-quality-audit",
+            "required_inputs": [
+              "LINK_STALENESS.md",
+              "Bound references"
+            ],
+            "accepted_outputs": [
+              "MACBOOK_AIR_LINK_AUDIT.md"
+            ],
+            "failure_owner": "staleness owner"
+          }
+        ],
+        "evidence_requirements": [
+          "Record each admitted source, authority class, host binding, and staleness pin.",
+          "Reject unsourced capability claims in the audit receipt."
+        ],
+        "risk_boundaries": [
+          "Do not treat link presence as proof the page content was read or currently correct.",
+          "Do not use this Combo as a substitute for Mega Skill decision logic."
+        ],
+        "quality_gates": [
+          "Every capability claim resolves to an admitted, bound, non-stale source."
+        ],
+        "state_updates": [
+          "Write MACBOOK_AIR_LINK_AUDIT.md and refresh LINK_STALENESS.md when sources change."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Domain-partitioned link admissions",
+          "Host-bound references",
+          "Staleness pins",
+          "Library audit receipt"
+        ],
+        "adds": "A machine-specific link library that forces every MacBook Air capability claim to resolve through admitted, bound, non-stale sources.",
+        "compound_artifact": "MACBOOK_AIR_LINK_AUDIT.md",
+        "next_layer_ready_when": [
+          "Every cited source is admitted, bound to DEVICE_PROFILE.md, and freshness-pinned.",
+          "The Mega Skill can decide without inventing unsourced capability claims."
+        ]
+      }
+    },
+    {
       "id": "max-research-spiral",
       "display_name": "Max Research Spiral",
       "ownership": "glaciereq",
@@ -4824,6 +5373,660 @@
       }
     },
     {
+      "id": "reverse-engineering-pipeline",
+      "display_name": "Reverse Engineering Pipeline",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "1.0.0",
+      "path": "combo-skills/reverse-engineering-pipeline",
+      "entrypoint": "combo-skills/reverse-engineering-pipeline/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Reverse engineering a shipped artifact end-to-end \u2014 binary, package, app, firmware, capture, or bytecode \u2014 under authorization and evidence gates.",
+          "Rebuilding a behavior from a shipped artifact and verifying the reconstruction against the original."
+        ],
+        "do_not_use_when": [
+          "Ordinary analysis of a complete source repository (use normal repository tools; REA is for shipped artifacts).",
+          "Any purpose on the REA disclaimer exclusion list (DRM/license/anti-cheat circumvention, cheat development, unauthorized access)."
+        ]
+      },
+      "members": [
+        {
+          "id": "re-safety-gate",
+          "kind": "skill",
+          "role": "GATE: establish authority, scope, exclusions, and environment before any target is touched.",
+          "required": true
+        },
+        {
+          "id": "rea-operator",
+          "kind": "skill",
+          "role": "CONNECT: register the pinned REA backend from official channels and verify tools in the live session.",
+          "required": true
+        },
+        {
+          "id": "re-target-triage",
+          "kind": "skill",
+          "role": "TRIAGE: identify the artifact, choose the first tool, and route to the owning family lane.",
+          "required": true
+        },
+        {
+          "id": "re-untrusted-content-defense",
+          "kind": "skill",
+          "role": "PROVENANCE: arm the untrusted-content discipline before any target-derived content is read.",
+          "required": true
+        },
+        {
+          "id": "re-javascript-electron",
+          "kind": "skill",
+          "role": "STATIC (JavaScript/Electron lane): ASAR and app-tree analysis, module graphs, IPC boundaries, source maps, fuses.",
+          "required": false
+        },
+        {
+          "id": "re-native-static-readers",
+          "kind": "skill",
+          "role": "STATIC (portable readers lane): PE/ELF structure, certificates, resources, notes, exports, Go, Rust, pyc, BEAM, SQLite.",
+          "required": false
+        },
+        {
+          "id": "re-managed-dotnet",
+          "kind": "skill",
+          "role": "STATIC (.NET lane): static CIL/metadata inspection; NativeAOT detection and routing.",
+          "required": false
+        },
+        {
+          "id": "re-mobile-android",
+          "kind": "skill",
+          "role": "STATIC (Android lane): package/code inspection, apktool resources, APK signature and lineage, adb device analysis.",
+          "required": false
+        },
+        {
+          "id": "re-apple-bundles",
+          "kind": "skill",
+          "role": "STATIC (Apple lane): bundle resources \u2014 plist, Interface Builder, asset catalogs, keyed archives.",
+          "required": false
+        },
+        {
+          "id": "re-game-artifacts",
+          "kind": "skill",
+          "role": "STATIC (game lane): IL2CPP metadata, Flutter packages, Godot PCK.",
+          "required": false
+        },
+        {
+          "id": "re-wasm-evm",
+          "kind": "skill",
+          "role": "STATIC (bytecode lane): WASM decoded to WAT via WABT; EVM interface inference via evmole.",
+          "required": false
+        },
+        {
+          "id": "re-firmware-extraction",
+          "kind": "skill",
+          "role": "STATIC (firmware lane): region mapping first; extraction only on request into a fresh directory via Binwalk/Unblob.",
+          "required": false
+        },
+        {
+          "id": "re-gpu-model-artifacts",
+          "kind": "skill",
+          "role": "STATIC (GPU/model lane): GPU code-object inventories and GGUF/safetensors declaration reading.",
+          "required": false
+        },
+        {
+          "id": "re-engine-bridges",
+          "kind": "skill",
+          "role": "BRIDGE: deep decompilation through the operator's Ghidra, IDA Pro, Hopper, Cutter/Rizin, JEB, or Kuna.",
+          "required": false
+        },
+        {
+          "id": "re-dynamic-analysis",
+          "kind": "skill",
+          "role": "DYNAMIC: Frida instrumentation, LLDB/GDB/pwndbg debugging, process capture, recorded-crash analysis.",
+          "required": false
+        },
+        {
+          "id": "re-web-network-analysis",
+          "kind": "skill",
+          "role": "DYNAMIC (web/network lane): browser/Electron observation, declared scenarios, HAR/SAZ/qlog/PCAP capture reading.",
+          "required": false
+        },
+        {
+          "id": "re-signal-recordings",
+          "kind": "skill",
+          "role": "DYNAMIC (recorded signals lane): sigrok decoder discovery and paged trace decoding.",
+          "required": false
+        },
+        {
+          "id": "re-version-comparison",
+          "kind": "skill",
+          "role": "COMPARE: artifact/function/bundle differentials, changed-behavior candidates, call paths, static-runtime correlation.",
+          "required": false
+        },
+        {
+          "id": "re-evidence-record",
+          "kind": "skill",
+          "role": "EVIDENCE: maintain the finding ledger \u2014 conclusions tied to Evidence IDs, unknowns as first-class records, checklist closeout.",
+          "required": true
+        },
+        {
+          "id": "re-reconstruction-verification",
+          "kind": "skill",
+          "role": "RECONSTRUCT \u2192 VERIFY: rebuild behavior from the ledger and verify against the original under a finite typed specification.",
+          "required": false
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "re-safety-gate",
+            "consumes": [
+              "Target identity",
+              "Operator authority basis and requested operations"
+            ],
+            "produces": [
+              "Gate decision with authorized scope",
+              "Effect classification for executing/destructive operations"
+            ],
+            "validation": "No analysis call happens before the gate decision is recorded; excluded purposes are refused, not renegotiated."
+          },
+          {
+            "step": 2,
+            "member_id": "rea-operator",
+            "consumes": [
+              "Gate decision",
+              "Agent client identity and pinned rea-agents version"
+            ],
+            "produces": [
+              "Registration receipt",
+              "Doctor/session verification"
+            ],
+            "validation": "REA tools are visibly present in the session, or the blocker is named with its remedy; setup writes only followed a reviewed dry-run plan."
+          },
+          {
+            "step": 3,
+            "member_id": "re-target-triage",
+            "consumes": [
+              "Supplied artifact",
+              "Investigation question and constraints"
+            ],
+            "produces": [
+              "Triage record with artifact identity and digest",
+              "Family-lane handoff"
+            ],
+            "validation": "Artifact class and route are named from the artifact itself; session tool availability is checked before broader work."
+          },
+          {
+            "step": 4,
+            "member_id": "re-untrusted-content-defense",
+            "consumes": [
+              "Triage record",
+              "Authorized instruction set (operator request, skill workflows)"
+            ],
+            "produces": [
+              "Provenance-marking rule active for the investigation",
+              "Injection-attempt reporting channel"
+            ],
+            "validation": "Every target-derived item entering the record carries the untrusted-content provenance mark."
+          },
+          {
+            "step": 5,
+            "member_id": "re-javascript-electron",
+            "consumes": [
+              "ASAR archive or extracted app tree",
+              "Investigation question"
+            ],
+            "produces": [
+              "Application Evidence record",
+              "Feature trace with IPC boundaries"
+            ],
+            "validation": "Findings carry file/line locations; fuse state is recorded before any runtime attempt is planned."
+          },
+          {
+            "step": 6,
+            "member_id": "re-native-static-readers",
+            "consumes": [
+              "Explicit native or packaged artifact path",
+              "Structural question"
+            ],
+            "produces": [
+              "Reader Evidence records with raw ranges and digests",
+              "Structural findings with per-reader limitations"
+            ],
+            "validation": "Raw locations and digests are preserved verbatim; each reader's coverage limit is stated beside its findings."
+          },
+          {
+            "step": 7,
+            "member_id": "re-managed-dotnet",
+            "consumes": [
+              "Managed PE/CLI assembly",
+              "Investigation question"
+            ],
+            "produces": [
+              "Managed Evidence record",
+              "NativeAOT routing note when applicable"
+            ],
+            "validation": "The assembly is never executed in this lane; NativeAOT artifacts are routed, not reported as empty."
+          },
+          {
+            "step": 8,
+            "member_id": "re-mobile-android",
+            "consumes": [
+              "APK/AAB path or operator-owned device",
+              "Investigation question"
+            ],
+            "produces": [
+              "Android Evidence records",
+              "Signature report with fingerprints and lineage"
+            ],
+            "validation": "Signature results are reported as identity/integrity evidence, never as a trust verdict."
+          },
+          {
+            "step": 9,
+            "member_id": "re-apple-bundles",
+            "consumes": [
+              "Apple bundle or resource path",
+              "Investigation question"
+            ],
+            "produces": [
+              "Bundle Evidence records",
+              "Executable routing note"
+            ],
+            "validation": "Declared capabilities are recorded as declarations, never as exercised behavior."
+          },
+          {
+            "step": 10,
+            "member_id": "re-game-artifacts",
+            "consumes": [
+              "global-metadata.dat, Flutter package, or Godot PCK",
+              "Investigation question"
+            ],
+            "produces": [
+              "Metadata Evidence records",
+              "Coverage note (versions, linkage, unknowns)"
+            ],
+            "validation": "Metadata version support and binary-linkage status are stated; same-build pairing is never claimed from metadata alone."
+          },
+          {
+            "step": 11,
+            "member_id": "re-wasm-evm",
+            "consumes": [
+              "WASM artifact or EVM bytecode carrier",
+              "Investigation question"
+            ],
+            "produces": [
+              "WASM Evidence record with retained WAT",
+              "EVM Evidence record with labeled inference candidates"
+            ],
+            "validation": "Decoded facts and inferred candidates are labeled distinctly; no chain lookup or execution occurs."
+          },
+          {
+            "step": 12,
+            "member_id": "re-firmware-extraction",
+            "consumes": [
+              "Firmware image path",
+              "Extraction request and fresh output directory when applicable"
+            ],
+            "produces": [
+              "Firmware region Evidence record",
+              "Extraction receipt with recovered inventory"
+            ],
+            "validation": "Inspection precedes extraction; extracted artifacts re-enter through triage with their own identities."
+          },
+          {
+            "step": 13,
+            "member_id": "re-gpu-model-artifacts",
+            "consumes": [
+              "GPU-bearing artifact or model file",
+              "Investigation question"
+            ],
+            "produces": [
+              "GPU Evidence record",
+              "Model Evidence record with hash scope stated"
+            ],
+            "validation": "Hash scope (header vs full) is stated with every identity claim; behavior is never inferred from declarations."
+          },
+          {
+            "step": 14,
+            "member_id": "re-engine-bridges",
+            "consumes": [
+              "Native or managed target",
+              "Deep-analysis question and available engines"
+            ],
+            "produces": [
+              "Provider Evidence records with addresses",
+              "Provider selection note with blind spots"
+            ],
+            "validation": "Built-in readers were exhausted first; provider identity/version and coverage limits ride with every finding."
+          },
+          {
+            "step": 15,
+            "member_id": "re-dynamic-analysis",
+            "consumes": [
+              "Gate decision authorizing execution",
+              "Runtime question static evidence left open"
+            ],
+            "produces": [
+              "Runtime Evidence records labeled as observations",
+              "Crash analysis records for core work"
+            ],
+            "validation": "Execution happens only in the gate-named throwaway environment, within the declared lifecycle."
+          },
+          {
+            "step": 16,
+            "member_id": "re-web-network-analysis",
+            "consumes": [
+              "User-owned runtime target or recorded capture file",
+              "Investigation question"
+            ],
+            "produces": [
+              "Observation Evidence records",
+              "Capture Evidence records with digests preserved"
+            ],
+            "validation": "Recorded URLs are never fetched; capture coverage limits and credential exclusions are honored."
+          },
+          {
+            "step": 17,
+            "member_id": "re-signal-recordings",
+            "consumes": [
+              "Recorded signal trace file",
+              "Decoder/channel settings"
+            ],
+            "produces": [
+              "Decoded Evidence record",
+              "Decoder discovery record"
+            ],
+            "validation": "Window counts are identified as display lines, annotations, or samples \u2014 never blurred."
+          },
+          {
+            "step": 18,
+            "member_id": "re-version-comparison",
+            "consumes": [
+              "Comparable Evidence sets from the family lanes",
+              "Differential question"
+            ],
+            "produces": [
+              "Comparison Evidence record",
+              "Changed-behavior candidates with evidence class"
+            ],
+            "validation": "Equivalence or absence is claimed only over complete, compatible page sets; static deltas stay candidates."
+          },
+          {
+            "step": 19,
+            "member_id": "re-evidence-record",
+            "consumes": [
+              "All lane Evidence records",
+              "Investigation checklist"
+            ],
+            "produces": [
+              "Finding ledger",
+              "Checklist closeout (answered / partial / unresolved)"
+            ],
+            "validation": "Every conclusion cites Evidence IDs with limitations preserved; no required question is silently dropped."
+          },
+          {
+            "step": 20,
+            "member_id": "re-reconstruction-verification",
+            "consumes": [
+              "Finding ledger",
+              "Typed reconstruction specification"
+            ],
+            "produces": [
+              "Reconstruction with verification result",
+              "Claim-scope statement (passed / failed / unverified)"
+            ],
+            "validation": "A pass is claimed at exactly the specification's scope \u2014 never as global equivalence with the original."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "re-safety-gate",
+            "to_member": "rea-operator",
+            "required_inputs": [
+              "Gate decision with authorized scope"
+            ],
+            "accepted_outputs": [
+              "Registration receipt"
+            ],
+            "failure_owner": "gatekeeper"
+          },
+          {
+            "from_member": "rea-operator",
+            "to_member": "re-target-triage",
+            "required_inputs": [
+              "Registration receipt"
+            ],
+            "accepted_outputs": [
+              "Triage record with artifact identity and digest"
+            ],
+            "failure_owner": "tool-operator"
+          },
+          {
+            "from_member": "re-target-triage",
+            "to_member": "re-untrusted-content-defense",
+            "required_inputs": [
+              "Triage record with artifact identity and digest"
+            ],
+            "accepted_outputs": [
+              "Provenance-marking rule active for the investigation"
+            ],
+            "failure_owner": "triager"
+          },
+          {
+            "from_member": "re-untrusted-content-defense",
+            "to_member": "re-javascript-electron",
+            "required_inputs": [
+              "Provenance-marking rule active for the investigation"
+            ],
+            "accepted_outputs": [
+              "Application Evidence record"
+            ],
+            "failure_owner": "provenance-warden"
+          },
+          {
+            "from_member": "re-javascript-electron",
+            "to_member": "re-native-static-readers",
+            "required_inputs": [
+              "Application Evidence record"
+            ],
+            "accepted_outputs": [
+              "Reader Evidence records with raw ranges and digests"
+            ],
+            "failure_owner": "js-analyst"
+          },
+          {
+            "from_member": "re-native-static-readers",
+            "to_member": "re-managed-dotnet",
+            "required_inputs": [
+              "Reader Evidence records with raw ranges and digests"
+            ],
+            "accepted_outputs": [
+              "Managed Evidence record"
+            ],
+            "failure_owner": "native-reader"
+          },
+          {
+            "from_member": "re-managed-dotnet",
+            "to_member": "re-mobile-android",
+            "required_inputs": [
+              "Managed Evidence record"
+            ],
+            "accepted_outputs": [
+              "Android Evidence records"
+            ],
+            "failure_owner": "managed-analyst"
+          },
+          {
+            "from_member": "re-mobile-android",
+            "to_member": "re-apple-bundles",
+            "required_inputs": [
+              "Android Evidence records"
+            ],
+            "accepted_outputs": [
+              "Bundle Evidence records"
+            ],
+            "failure_owner": "android-analyst"
+          },
+          {
+            "from_member": "re-apple-bundles",
+            "to_member": "re-game-artifacts",
+            "required_inputs": [
+              "Bundle Evidence records"
+            ],
+            "accepted_outputs": [
+              "Metadata Evidence records"
+            ],
+            "failure_owner": "apple-analyst"
+          },
+          {
+            "from_member": "re-game-artifacts",
+            "to_member": "re-wasm-evm",
+            "required_inputs": [
+              "Metadata Evidence records"
+            ],
+            "accepted_outputs": [
+              "WASM Evidence record with retained WAT"
+            ],
+            "failure_owner": "game-analyst"
+          },
+          {
+            "from_member": "re-wasm-evm",
+            "to_member": "re-firmware-extraction",
+            "required_inputs": [
+              "WASM Evidence record with retained WAT"
+            ],
+            "accepted_outputs": [
+              "Firmware region Evidence record"
+            ],
+            "failure_owner": "bytecode-analyst"
+          },
+          {
+            "from_member": "re-firmware-extraction",
+            "to_member": "re-gpu-model-artifacts",
+            "required_inputs": [
+              "Firmware region Evidence record"
+            ],
+            "accepted_outputs": [
+              "GPU Evidence record"
+            ],
+            "failure_owner": "firmware-analyst"
+          },
+          {
+            "from_member": "re-gpu-model-artifacts",
+            "to_member": "re-engine-bridges",
+            "required_inputs": [
+              "GPU Evidence record"
+            ],
+            "accepted_outputs": [
+              "Provider Evidence records with addresses"
+            ],
+            "failure_owner": "artifact-analyst"
+          },
+          {
+            "from_member": "re-engine-bridges",
+            "to_member": "re-dynamic-analysis",
+            "required_inputs": [
+              "Provider Evidence records with addresses"
+            ],
+            "accepted_outputs": [
+              "Runtime Evidence records labeled as observations"
+            ],
+            "failure_owner": "bridge-operator"
+          },
+          {
+            "from_member": "re-dynamic-analysis",
+            "to_member": "re-web-network-analysis",
+            "required_inputs": [
+              "Runtime Evidence records labeled as observations"
+            ],
+            "accepted_outputs": [
+              "Observation Evidence records"
+            ],
+            "failure_owner": "dynamic-analyst"
+          },
+          {
+            "from_member": "re-web-network-analysis",
+            "to_member": "re-signal-recordings",
+            "required_inputs": [
+              "Observation Evidence records"
+            ],
+            "accepted_outputs": [
+              "Decoded Evidence record"
+            ],
+            "failure_owner": "web-analyst"
+          },
+          {
+            "from_member": "re-signal-recordings",
+            "to_member": "re-version-comparison",
+            "required_inputs": [
+              "Decoded Evidence record"
+            ],
+            "accepted_outputs": [
+              "Comparison Evidence record"
+            ],
+            "failure_owner": "signal-analyst"
+          },
+          {
+            "from_member": "re-version-comparison",
+            "to_member": "re-evidence-record",
+            "required_inputs": [
+              "Comparison Evidence record"
+            ],
+            "accepted_outputs": [
+              "Finding ledger"
+            ],
+            "failure_owner": "diff-analyst"
+          },
+          {
+            "from_member": "re-evidence-record",
+            "to_member": "re-reconstruction-verification",
+            "required_inputs": [
+              "Finding ledger"
+            ],
+            "accepted_outputs": [
+              "Reconstruction with verification result"
+            ],
+            "failure_owner": "ledger-keeper"
+          }
+        ],
+        "evidence_requirements": [
+          "Gate decision recorded before the first analysis call, with authority basis, scope, and environment.",
+          "Finding ledger linking every conclusion to Evidence IDs, coverage, and residual unknowns.",
+          "Provenance marks on all target-derived content, with injection attempts reported.",
+          "For reconstructions: the typed specification and the claim-scope statement beside the verification result."
+        ],
+        "risk_boundaries": [
+          "No target is touched before the re-safety-gate decision; excluded purposes are refused at the gate.",
+          "Target execution happens only in a throwaway environment, within the declared lifecycle \u2014 REA is not a sandbox.",
+          "REA and its engines come only from official channels at pinned versions; lookalike installers are treated as hostile artifacts.",
+          "Recorded captures are read offline; recorded URLs are never fetched and live attribution is never claimed from a recording."
+        ],
+        "quality_gates": [
+          "Every conclusion in the closeout cites Evidence IDs with limitations preserved.",
+          "Absence and equivalence claims rest on complete, compatible evidence sets, with coverage named.",
+          "Reconstruction verification passes are reported at claim scope (passed / failed / unverified), never blended."
+        ],
+        "state_updates": [
+          "Append the gate decision, triage record, and all Evidence IDs to the investigation record.",
+          "Update unknowns as they are recorded, revised, and resolved in the ledger.",
+          "Record exemptions and unrun lanes with reasons (lane not applicable vs provider unavailable)."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "re-safety-gate authorization discipline",
+          "re-evidence-record finding-ledger standard",
+          "re-untrusted-content-defense provenance marking",
+          "verification-before-completion completion-claim gate"
+        ],
+        "adds": "One governed pipeline for reverse engineering \u2014 gate, connect, triage, provenance, static lanes, engine bridges, dynamic lanes, comparison, evidence, reconstruction, verification \u2014 where the safety gate is a required first-class member, every finding carries its evidence and its unknowns, and a reconstruction is claimed only at the scope its verification actually covered.",
+        "compound_artifact": "RE_INVESTIGATION_RECORD.md",
+        "next_layer_ready_when": [
+          "A full investigation completes with gate, ledger, and closeout receipts chained.",
+          "Zero unresolved gate or provenance exceptions remain in the run record."
+        ]
+      }
+    },
+    {
       "id": "runtime-operations",
       "display_name": "Runtime Operations",
       "ownership": "glaciereq",
@@ -5493,6 +6696,664 @@
       }
     },
     {
+      "id": "source-bound-correspondence-loop",
+      "display_name": "Source-Bound Correspondence Loop",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "0.1.0",
+      "path": "combo-skills/source-bound-correspondence-loop",
+      "entrypoint": "combo-skills/source-bound-correspondence-loop/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A case, agency or employer needs defensible correspondence and reliable provider follow-up."
+        ],
+        "do_not_use_when": [
+          "Simple factual replies without provider state, legal risk or durable action."
+        ]
+      },
+      "members": [
+        {
+          "id": "long-horizon-core",
+          "kind": "compound-skill",
+          "role": "Recover exact mission, constraints, source evidence, existing context and safe handoff",
+          "required": true
+        },
+        {
+          "id": "correspondence-identity-gate",
+          "kind": "skill",
+          "role": "Verify first-party author and connected account",
+          "required": true
+        },
+        {
+          "id": "provider-thread-forensics",
+          "kind": "skill",
+          "role": "Reconcile provider chronological evidence",
+          "required": true
+        },
+        {
+          "id": "linear-frontier-deduplicator",
+          "kind": "skill",
+          "role": "Match existing issue and suppress duplicate contact",
+          "required": true
+        },
+        {
+          "id": "jurisdiction-authority-citation-check",
+          "kind": "skill",
+          "role": "Check lawful authority and actual time rules",
+          "required": true
+        },
+        {
+          "id": "adverse-outcome-remedy-router",
+          "kind": "skill",
+          "role": "Map favorable, partial, adverse and missing response to lawful options",
+          "required": true
+        },
+        {
+          "id": "precision-provider-email",
+          "kind": "skill",
+          "role": "Prepare professional evidence-backed message",
+          "required": true
+        },
+        {
+          "id": "receipt-provenance-continuation",
+          "kind": "skill",
+          "role": "Read back provider effect and resume without replay",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "long-horizon-core",
+            "consumes": [
+              "Mission",
+              "Provider evidence"
+            ],
+            "produces": [
+              "MISSION.md",
+              "CONTEXT.md"
+            ],
+            "validation": "Mission recovered and no unverified assumption promoted"
+          },
+          {
+            "step": 2,
+            "member_id": "correspondence-identity-gate",
+            "consumes": [
+              "MISSION.md",
+              "Provider account metadata"
+            ],
+            "produces": [
+              "IDENTITY_ROUTE.json"
+            ],
+            "validation": "Authenticated sender matches beneficiary and consent or blocks"
+          },
+          {
+            "step": 3,
+            "member_id": "provider-thread-forensics",
+            "consumes": [
+              "IDENTITY_ROUTE.json",
+              "Full thread"
+            ],
+            "produces": [
+              "PROVIDER_TIMELINE.md"
+            ],
+            "validation": "DRAFT/SENT/ACK and later responses correctly separate"
+          },
+          {
+            "step": 4,
+            "member_id": "linear-frontier-deduplicator",
+            "consumes": [
+              "PROVIDER_TIMELINE.md",
+              "Linear work graph"
+            ],
+            "produces": [
+              "LINEAR_RECONCILIATION.md"
+            ],
+            "validation": "Owning issue and action state evidenced"
+          },
+          {
+            "step": 5,
+            "member_id": "jurisdiction-authority-citation-check",
+            "consumes": [
+              "Current facts",
+              "Custodian and venue"
+            ],
+            "produces": [
+              "AUTHORITY_MATRIX.md"
+            ],
+            "validation": "Pinpoint source and scope/exception checked"
+          },
+          {
+            "step": 6,
+            "member_id": "adverse-outcome-remedy-router",
+            "consumes": [
+              "Provider position",
+              "AUTHORITY_MATRIX.md"
+            ],
+            "produces": [
+              "REMEDY_BRANCHES.md"
+            ],
+            "validation": "No automatic win or unsupported misconduct allegation"
+          },
+          {
+            "step": 7,
+            "member_id": "precision-provider-email",
+            "consumes": [
+              "Remedy analysis",
+              "Approved account route"
+            ],
+            "produces": [
+              "EMAIL_DRAFT.md",
+              "PRE_SEND_GATE.md"
+            ],
+            "validation": "Wrong sender, repeat, unsourced law or protected information blocked"
+          },
+          {
+            "step": 8,
+            "member_id": "receipt-provenance-continuation",
+            "consumes": [
+              "Draft or authorized provider result",
+              "Canonical issue"
+            ],
+            "produces": [
+              "ACTION_RECEIPT.json",
+              "RESUME_CURSOR.md"
+            ],
+            "validation": "Native status and Linear projection match or NEEDS_PROOF"
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "long-horizon-core",
+            "to_member": "correspondence-identity-gate",
+            "required_inputs": [
+              "Recovered mission",
+              "Existing authority"
+            ],
+            "accepted_outputs": [
+              "Correct connected sender/beneficiary"
+            ],
+            "failure_owner": "mission controller"
+          },
+          {
+            "from_member": "provider-thread-forensics",
+            "to_member": "linear-frontier-deduplicator",
+            "required_inputs": [
+              "Source event IDs",
+              "Provider timeline"
+            ],
+            "accepted_outputs": [
+              "Existing owner and no-replay classification"
+            ],
+            "failure_owner": "source auditor"
+          },
+          {
+            "from_member": "jurisdiction-authority-citation-check",
+            "to_member": "precision-provider-email",
+            "required_inputs": [
+              "Applicable authority",
+              "Response window and exceptions"
+            ],
+            "accepted_outputs": [
+              "Source-bound professional draft"
+            ],
+            "failure_owner": "legal verifier"
+          },
+          {
+            "from_member": "precision-provider-email",
+            "to_member": "receipt-provenance-continuation",
+            "required_inputs": [
+              "Draft or approved send",
+              "Provider account and owning issue"
+            ],
+            "accepted_outputs": [
+              "Native receipt or draft-only resume cursor"
+            ],
+            "failure_owner": "effect verifier"
+          }
+        ],
+        "evidence_requirements": [
+          "Use original provider records, complete thread and immutable message IDs rather than unverified summaries."
+        ],
+        "risk_boundaries": [
+          "Explicit human permission for any external send, consent or filing.",
+          "No cross-account impersonation or disclosure of protected source material.",
+          "Uncertain delivery remains NEEDS_PROOF, never blind retry.",
+          "Denial is evidence and potential lawful review; no automatic victory."
+        ],
+        "quality_gates": [
+          "Correct mission, source identity and recipient are verified.",
+          "No previously verified request is repeated.",
+          "Specific cited law and policy checked against jurisdiction and effective dates.",
+          "Actual effect proved by provider readback before Linear projection."
+        ],
+        "state_updates": [
+          "Append provider-native receipt to existing issue.",
+          "Retire only proven completed subaction.",
+          "Preserve exact actor/case/source identity and resume cursor."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "long-horizon-core",
+          "correspondence-identity-gate",
+          "provider-thread-forensics",
+          "linear-frontier-deduplicator",
+          "jurisdiction-authority-citation-check",
+          "adverse-outcome-remedy-router",
+          "precision-provider-email",
+          "receipt-provenance-continuation"
+        ],
+        "adds": "Composes long-horizon context and seven proper atomic skills into a complete defendable correspondence workflow with provenance, lawful response branches and duplicate-safe case continuation.",
+        "compound_artifact": "SOURCE_BOUND_CORRESPONDENCE_RUN.md",
+        "next_layer_ready_when": [
+          "Registry references resolve to owning atomic skills.",
+          "Real provider negative-path and authority tests pass.",
+          "Cross-session readback proves no duplicate external actions."
+        ]
+      }
+    },
+    {
+      "id": "strong-smart-execution-stack",
+      "display_name": "Strong-Smart Execution Stack",
+      "ownership": "glaciereq",
+      "maturity": "candidate",
+      "version": "1.0.0",
+      "path": "combo-skills/strong-smart-execution-stack",
+      "entrypoint": "combo-skills/strong-smart-execution-stack/COMBO.md",
+      "selection": {
+        "use_when": [
+          "Mission requires strongest-intelligent-fit capability composition and evidence-backed execution."
+        ],
+        "do_not_use_when": [
+          "Candidate routes cannot yet be compared honestly; acquire evidence first."
+        ]
+      },
+      "members": [
+        {
+          "id": "casey-operator-execution-kernel",
+          "kind": "skill",
+          "role": "Own operator intent, semantic locks, corrections, and authority.",
+          "required": true
+        },
+        {
+          "id": "strong-smart-routing-kernel",
+          "kind": "skill",
+          "role": "Rank eligible routes by measurable power fit.",
+          "required": true
+        },
+        {
+          "id": "power-skill",
+          "kind": "skill",
+          "role": "Compose the strongest relevant capability set.",
+          "required": true
+        },
+        {
+          "id": "make-it-heavy",
+          "kind": "skill",
+          "role": "Expand useful engineering and reasoning density.",
+          "required": true
+        },
+        {
+          "id": "epistemic-gate",
+          "kind": "skill",
+          "role": "Type claims and enforce proof floors.",
+          "required": true
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Block completion without acceptance evidence.",
+          "required": true
+        },
+        {
+          "id": "handoff-record",
+          "kind": "skill",
+          "role": "Preserve receipts, alternatives, and continuation state.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "casey-operator-execution-kernel",
+            "consumes": [
+              "operator message"
+            ],
+            "produces": [
+              "authority receipt"
+            ],
+            "validation": "Intent and semantic locks are explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "strong-smart-routing-kernel",
+            "consumes": [
+              "authority receipt"
+            ],
+            "produces": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "validation": "Hard gates pass and route ranking is reproducible."
+          },
+          {
+            "step": 3,
+            "member_id": "power-skill",
+            "consumes": [
+              "POWER_FIT_ROUTE.json"
+            ],
+            "produces": [
+              "capability composition"
+            ],
+            "validation": "Composition covers the selected mission architecture."
+          },
+          {
+            "step": 4,
+            "member_id": "make-it-heavy",
+            "consumes": [
+              "capability composition"
+            ],
+            "produces": [
+              "deep execution artifact"
+            ],
+            "validation": "Useful depth is expanded without tool-count theater."
+          },
+          {
+            "step": 5,
+            "member_id": "epistemic-gate",
+            "consumes": [
+              "deep execution artifact"
+            ],
+            "produces": [
+              "typed evidence record"
+            ],
+            "validation": "Every consequential claim has an evidence state."
+          },
+          {
+            "step": 6,
+            "member_id": "quality-gate",
+            "consumes": [
+              "typed evidence record"
+            ],
+            "produces": [
+              "quality verdict"
+            ],
+            "validation": "Acceptance tests and unresolved gaps are recorded."
+          },
+          {
+            "step": 7,
+            "member_id": "handoff-record",
+            "consumes": [
+              "quality verdict"
+            ],
+            "produces": [
+              "STRONG_SMART_EXECUTION_RECEIPT.json"
+            ],
+            "validation": "Receipts and exact continuation state are preserved."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "casey-operator-execution-kernel",
+            "to_member": "strong-smart-routing-kernel",
+            "required_inputs": [
+              "operator intent and authority"
+            ],
+            "accepted_outputs": [
+              "ranked eligible routes"
+            ],
+            "failure_owner": "strong-smart-routing-kernel"
+          },
+          {
+            "from_member": "strong-smart-routing-kernel",
+            "to_member": "power-skill",
+            "required_inputs": [
+              "selected route"
+            ],
+            "accepted_outputs": [
+              "capability composition"
+            ],
+            "failure_owner": "power-skill"
+          }
+        ],
+        "evidence_requirements": [
+          "Typed claims, source locators, stage receipts, and provider-native readback for external effects."
+        ],
+        "risk_boundaries": [
+          "Capability may increase; authority, safety, privacy, and human-control requirements may not weaken."
+        ],
+        "quality_gates": [
+          "No completion claim without tests, readback, and unresolved-gap accounting."
+        ],
+        "state_updates": [
+          "Persist selected route, rejected alternatives, contradictions, evidence, and exact resume point."
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Operator authority, power-skill composition, epistemic discipline, quality gates, and durable handoff."
+        ],
+        "adds": "A measurable strongest-intelligent-fit decision layer and enforceable end-to-end mission sequence.",
+        "compound_artifact": "STRONG_SMART_EXECUTION_RECEIPT.json",
+        "next_layer_ready_when": [
+          "All required members emit accepted artifacts and all hard gates pass."
+        ]
+      }
+    },
+    {
+      "id": "telecommunications-mission-orchestration",
+      "display_name": "Telecommunications Mission Orchestration",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "combo-skills/telecommunications-mission-orchestration",
+      "entrypoint": "combo-skills/telecommunications-mission-orchestration/COMBO.md",
+      "selection": {
+        "use_when": [
+          "A bounded APEX mission must execute and verify a voice/SMS/SIP/PSTN/WebRTC communication."
+        ],
+        "do_not_use_when": [
+          "Casual transcription or voice generation with no telecommunications mission semantics."
+        ]
+      },
+      "members": [
+        {
+          "id": "mission-contract",
+          "kind": "skill",
+          "role": "Set objective, authority, target and evidence boundaries.",
+          "required": true
+        },
+        {
+          "id": "telecommunications-execution-core",
+          "kind": "skill",
+          "role": "Preflight, normalize receipt state and prevent false success.",
+          "required": true
+        },
+        {
+          "id": "voice-ai-development",
+          "kind": "skill",
+          "role": "Realtime voice/provider architecture for voice routes.",
+          "required": false
+        },
+        {
+          "id": "voice-agents",
+          "kind": "skill",
+          "role": "Conversational turn-taking and interruption handling.",
+          "required": false
+        },
+        {
+          "id": "whisperx-audio-processing",
+          "kind": "skill",
+          "role": "High-assurance post-call transcription when audio exists.",
+          "required": false
+        },
+        {
+          "id": "voice-evidence-authenticator",
+          "kind": "compound-skill",
+          "role": "Authenticate material recorded evidence when required.",
+          "required": false
+        },
+        {
+          "id": "forensic-evidence-chain-core",
+          "kind": "skill",
+          "role": "Preserve source/derivative hashes and provenance.",
+          "required": true
+        },
+        {
+          "id": "agent-evaluation",
+          "kind": "skill",
+          "role": "Evaluate agent behavior and scenario reliability.",
+          "required": false
+        },
+        {
+          "id": "quality-gate",
+          "kind": "skill",
+          "role": "Promote only verified communication outcomes.",
+          "required": true
+        }
+      ],
+      "execution": {
+        "ordered_steps": [
+          {
+            "step": 1,
+            "member_id": "mission-contract",
+            "consumes": [
+              "Mission request",
+              "Current source state"
+            ],
+            "produces": [
+              "MISSION.md"
+            ],
+            "validation": "Authority, target, objective and stop conditions explicit."
+          },
+          {
+            "step": 2,
+            "member_id": "telecommunications-execution-core",
+            "consumes": [
+              "MISSION.md",
+              "Source freshness"
+            ],
+            "produces": [
+              "Preflight receipt"
+            ],
+            "validation": "Freshness/authority/destination semantics pass."
+          },
+          {
+            "step": 3,
+            "member_id": "voice-ai-development",
+            "consumes": [
+              "Voice route plan"
+            ],
+            "produces": [
+              "Realtime provider/transport plan"
+            ],
+            "validation": "Only required for voice/realtime routes; upstream cores remain external."
+          },
+          {
+            "step": 4,
+            "member_id": "forensic-evidence-chain-core",
+            "consumes": [
+              "Provider receipt",
+              "Transcript/recording when present"
+            ],
+            "produces": [
+              "Provenance-bound evidence record"
+            ],
+            "validation": "Original/native artifacts remain intact and hashed."
+          },
+          {
+            "step": 5,
+            "member_id": "quality-gate",
+            "consumes": [
+              "Semantic receipt",
+              "Evidence record"
+            ],
+            "produces": [
+              "Promotion gate record"
+            ],
+            "validation": "No false-success or unsupported source claim advances state."
+          }
+        ]
+      },
+      "integration": {
+        "handoffs": [
+          {
+            "from_member": "mission-contract",
+            "to_member": "telecommunications-execution-core",
+            "required_inputs": [
+              "Bounded mission packet"
+            ],
+            "accepted_outputs": [
+              "READY/BLOCKED preflight"
+            ],
+            "failure_owner": "telecom-manager"
+          },
+          {
+            "from_member": "telecommunications-execution-core",
+            "to_member": "forensic-evidence-chain-core",
+            "required_inputs": [
+              "Provider-native receipt"
+            ],
+            "accepted_outputs": [
+              "Source-linked receipt/evidence record"
+            ],
+            "failure_owner": "receipt-verifier"
+          },
+          {
+            "from_member": "forensic-evidence-chain-core",
+            "to_member": "quality-gate",
+            "required_inputs": [
+              "Evidence/provenance record"
+            ],
+            "accepted_outputs": [
+              "ACCEPT/REPAIR/REDISPATCH gate"
+            ],
+            "failure_owner": "telecom-quality-auditor"
+          }
+        ],
+        "evidence_requirements": [
+          "Provider-native IDs/readback retained",
+          "Receipt/transcript/recording hashes retained when available",
+          "Truth-state/provenance preserved"
+        ],
+        "risk_boundaries": [
+          "No standing external send authority",
+          "No provider lock-in",
+          "No silent source replacement",
+          "No upstream-core business-logic patching"
+        ],
+        "quality_gates": [
+          "Semantic false-success suite passes",
+          "Missing provider evidence cannot produce objective success"
+        ],
+        "state_updates": [
+          "Append verified receipt",
+          "Update continuity/relationship/case projections only from accepted evidence"
+        ]
+      },
+      "compounding": {
+        "inherits": [
+          "Mission bounds",
+          "Realtime voice architecture",
+          "Forensic provenance",
+          "Quality promotion"
+        ],
+        "adds": "End-to-end telecom mission routing and semantic outcome verification across provider-neutral transports.",
+        "compound_artifact": "TELECOMMUNICATIONS_EXECUTION_RECORD.md",
+        "next_layer_ready_when": [
+          "Preflight and provider-receipt semantics verify",
+          "False-success tests pass",
+          "Native evidence lineage is retained"
+        ]
+      }
+    },
+    {
       "id": "upstream-fork-harmonization",
       "display_name": "Upstream Fork Harmonization",
       "ownership": "glaciereq",
@@ -6069,1702 +7930,6 @@
         "next_layer_ready_when": [
           "All required outputs are present and the conditional full-stack route is explicitly resolved.",
           "Every handoff names an owner, accepted output, and close condition."
-        ]
-      }
-    },
-    {
-      "id": "strong-smart-execution-stack",
-      "display_name": "Strong-Smart Execution Stack",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "1.0.0",
-      "path": "combo-skills/strong-smart-execution-stack",
-      "entrypoint": "combo-skills/strong-smart-execution-stack/COMBO.md",
-      "selection": {
-        "use_when": [
-          "Mission requires strongest-intelligent-fit capability composition and evidence-backed execution."
-        ],
-        "do_not_use_when": [
-          "Candidate routes cannot yet be compared honestly; acquire evidence first."
-        ]
-      },
-      "members": [
-        {
-          "id": "casey-operator-execution-kernel",
-          "kind": "skill",
-          "role": "Own operator intent, semantic locks, corrections, and authority.",
-          "required": true
-        },
-        {
-          "id": "strong-smart-routing-kernel",
-          "kind": "skill",
-          "role": "Rank eligible routes by measurable power fit.",
-          "required": true
-        },
-        {
-          "id": "power-skill",
-          "kind": "skill",
-          "role": "Compose the strongest relevant capability set.",
-          "required": true
-        },
-        {
-          "id": "make-it-heavy",
-          "kind": "skill",
-          "role": "Expand useful engineering and reasoning density.",
-          "required": true
-        },
-        {
-          "id": "epistemic-gate",
-          "kind": "skill",
-          "role": "Type claims and enforce proof floors.",
-          "required": true
-        },
-        {
-          "id": "quality-gate",
-          "kind": "skill",
-          "role": "Block completion without acceptance evidence.",
-          "required": true
-        },
-        {
-          "id": "handoff-record",
-          "kind": "skill",
-          "role": "Preserve receipts, alternatives, and continuation state.",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "casey-operator-execution-kernel",
-            "consumes": [
-              "operator message"
-            ],
-            "produces": [
-              "authority receipt"
-            ],
-            "validation": "Intent and semantic locks are explicit."
-          },
-          {
-            "step": 2,
-            "member_id": "strong-smart-routing-kernel",
-            "consumes": [
-              "authority receipt"
-            ],
-            "produces": [
-              "POWER_FIT_ROUTE.json"
-            ],
-            "validation": "Hard gates pass and route ranking is reproducible."
-          },
-          {
-            "step": 3,
-            "member_id": "power-skill",
-            "consumes": [
-              "POWER_FIT_ROUTE.json"
-            ],
-            "produces": [
-              "capability composition"
-            ],
-            "validation": "Composition covers the selected mission architecture."
-          },
-          {
-            "step": 4,
-            "member_id": "make-it-heavy",
-            "consumes": [
-              "capability composition"
-            ],
-            "produces": [
-              "deep execution artifact"
-            ],
-            "validation": "Useful depth is expanded without tool-count theater."
-          },
-          {
-            "step": 5,
-            "member_id": "epistemic-gate",
-            "consumes": [
-              "deep execution artifact"
-            ],
-            "produces": [
-              "typed evidence record"
-            ],
-            "validation": "Every consequential claim has an evidence state."
-          },
-          {
-            "step": 6,
-            "member_id": "quality-gate",
-            "consumes": [
-              "typed evidence record"
-            ],
-            "produces": [
-              "quality verdict"
-            ],
-            "validation": "Acceptance tests and unresolved gaps are recorded."
-          },
-          {
-            "step": 7,
-            "member_id": "handoff-record",
-            "consumes": [
-              "quality verdict"
-            ],
-            "produces": [
-              "STRONG_SMART_EXECUTION_RECEIPT.json"
-            ],
-            "validation": "Receipts and exact continuation state are preserved."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "casey-operator-execution-kernel",
-            "to_member": "strong-smart-routing-kernel",
-            "required_inputs": [
-              "operator intent and authority"
-            ],
-            "accepted_outputs": [
-              "ranked eligible routes"
-            ],
-            "failure_owner": "strong-smart-routing-kernel"
-          },
-          {
-            "from_member": "strong-smart-routing-kernel",
-            "to_member": "power-skill",
-            "required_inputs": [
-              "selected route"
-            ],
-            "accepted_outputs": [
-              "capability composition"
-            ],
-            "failure_owner": "power-skill"
-          }
-        ],
-        "evidence_requirements": [
-          "Typed claims, source locators, stage receipts, and provider-native readback for external effects."
-        ],
-        "risk_boundaries": [
-          "Capability may increase; authority, safety, privacy, and human-control requirements may not weaken."
-        ],
-        "quality_gates": [
-          "No completion claim without tests, readback, and unresolved-gap accounting."
-        ],
-        "state_updates": [
-          "Persist selected route, rejected alternatives, contradictions, evidence, and exact resume point."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "Operator authority, power-skill composition, epistemic discipline, quality gates, and durable handoff."
-        ],
-        "adds": "A measurable strongest-intelligent-fit decision layer and enforceable end-to-end mission sequence.",
-        "compound_artifact": "STRONG_SMART_EXECUTION_RECEIPT.json",
-        "next_layer_ready_when": [
-          "All required members emit accepted artifacts and all hard gates pass."
-        ]
-      }
-    },
-    {
-      "id": "code-upgrade-pipeline",
-      "display_name": "Code Upgrade Pipeline",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "combo-skills/code-upgrade-pipeline",
-      "entrypoint": "combo-skills/code-upgrade-pipeline/COMBO.md",
-      "selection": {
-        "use_when": [
-          "Upgrading, modernizing, or migrating code across one or more GlacierEQ repositories under evidence gates.",
-          "Retiring deprecated APIs, flags, or frameworks estate-wide with proof of completion."
-        ],
-        "do_not_use_when": [
-          "Single-file typo, lint, or one-line fixes.",
-          "Net-new feature development with no upgrade or migration component."
-        ]
-      },
-      "members": [
-        {
-          "id": "automated-architecture-analysis",
-          "kind": "skill",
-          "role": "Assess: build the typed dependency graph; find cycles, forbidden edges, and the safe decoupling order.",
-          "required": true
-        },
-        {
-          "id": "characterization-tests-first",
-          "kind": "skill",
-          "role": "Assess: pin the current behavior of untested legacy code before it changes.",
-          "required": true
-        },
-        {
-          "id": "dependency-update-operator",
-          "kind": "skill",
-          "role": "Decide (feed): produce governed dependency-update candidates via the Dependabot baseline and Renovate patterns.",
-          "required": true
-        },
-        {
-          "id": "spiral-promotion-gate",
-          "kind": "skill",
-          "role": "Decide: judge each candidate on parity, rollback readiness, and measured gain; issue or withhold the promotion grant.",
-          "required": true
-        },
-        {
-          "id": "automated-code-refactoring",
-          "kind": "skill",
-          "role": "Transform: run bounded, reversible transformation batches under a changed-file budget.",
-          "required": true
-        },
-        {
-          "id": "openrewrite-recipes",
-          "kind": "skill",
-          "role": "Transform (JVM lane): execute API migrations and deprecation removal as versioned OpenRewrite recipes.",
-          "required": false
-        },
-        {
-          "id": "ast-grep-structural-rewrite",
-          "kind": "skill",
-          "role": "Transform (polyglot lane): execute structural rewrites by AST pattern with audited match sets.",
-          "required": false
-        },
-        {
-          "id": "deprecation-removal",
-          "kind": "skill",
-          "role": "Transform: retire deprecated surfaces after consumers migrate; prove zero remaining references.",
-          "required": false
-        },
-        {
-          "id": "test-drift-archaeology-repair",
-          "kind": "skill",
-          "role": "Verify: return a drifted suite to green by archaeology, without weakening a single test.",
-          "required": true
-        },
-        {
-          "id": "verification-before-completion",
-          "kind": "skill",
-          "role": "Verify: block any completion claim that lacks command output.",
-          "required": true
-        },
-        {
-          "id": "release",
-          "kind": "skill",
-          "role": "Promote: run release gates, bump the version, commit and push to main.",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "automated-architecture-analysis",
-            "consumes": [
-              "Target repository set",
-              "Upgrade goal"
-            ],
-            "produces": [
-              "Dependency graph and decoupling plan",
-              "Risk register"
-            ],
-            "validation": "Graph covers every in-scope repository; cycles and forbidden edges are named with a decoupling order."
-          },
-          {
-            "step": 2,
-            "member_id": "characterization-tests-first",
-            "consumes": [
-              "Decoupling plan",
-              "Legacy code areas"
-            ],
-            "produces": [
-              "Characterization test suite",
-              "Quirk register"
-            ],
-            "validation": "Suite passes 100% on untouched code; surprising behaviors are registered, not assumed."
-          },
-          {
-            "step": 3,
-            "member_id": "dependency-update-operator",
-            "consumes": [
-              "Repository inventory",
-              "Update policy"
-            ],
-            "produces": [
-              "Update candidate ledger",
-              "dependabot.yml / renovate configuration"
-            ],
-            "validation": "Every repository has an update posture; candidates are grouped, scheduled, and classified patch/minor/major."
-          },
-          {
-            "step": 4,
-            "member_id": "spiral-promotion-gate",
-            "consumes": [
-              "Update candidate ledger",
-              "Before/after quality states"
-            ],
-            "produces": [
-              "Promotion decision and chained receipt",
-              "Promotion grant (on PROMOTE)"
-            ],
-            "validation": "No candidate advances without parity, rollback, and measured-gain evidence."
-          },
-          {
-            "step": 5,
-            "member_id": "automated-code-refactoring",
-            "consumes": [
-              "Decoupling plan",
-              "Approved transformation scope"
-            ],
-            "produces": [
-              "Bounded transformation batches",
-              "Refactor receipts"
-            ],
-            "validation": "Each batch is one conceptual change, within budget, and independently reversible."
-          },
-          {
-            "step": 6,
-            "member_id": "openrewrite-recipes",
-            "consumes": [
-              "API migration specification",
-              "Recipe list"
-            ],
-            "produces": [
-              "Recipe dry-run diff",
-              "Applied migration diff"
-            ],
-            "validation": "Dry-run diff reviewed before apply; one recipe per batch."
-          },
-          {
-            "step": 7,
-            "member_id": "ast-grep-structural-rewrite",
-            "consumes": [
-              "Structural pattern set",
-              "Target trees"
-            ],
-            "produces": [
-              "Audited match list",
-              "Rewrite diff"
-            ],
-            "validation": "Match set audited for false positives; post-run search returns zero live matches."
-          },
-          {
-            "step": 8,
-            "member_id": "deprecation-removal",
-            "consumes": [
-              "Deprecated surface inventory",
-              "Retirement decision record"
-            ],
-            "produces": [
-              "Consumer dispositions",
-              "Deletion diff with zero-reference proof"
-            ],
-            "validation": "No surface deleted with live consumers; absence proven by search output."
-          },
-          {
-            "step": 9,
-            "member_id": "test-drift-archaeology-repair",
-            "consumes": [
-              "Full suite failure enumeration",
-              "Git history"
-            ],
-            "produces": [
-              "Green suite",
-              "Drift root-cause record"
-            ],
-            "validation": "Full suite green with zero tests weakened, skipped, or deleted."
-          },
-          {
-            "step": 10,
-            "member_id": "verification-before-completion",
-            "consumes": [
-              "All stage receipts",
-              "Suite and build output"
-            ],
-            "produces": [
-              "Verification verdict"
-            ],
-            "validation": "Every completion claim in the record cites command output."
-          },
-          {
-            "step": 11,
-            "member_id": "release",
-            "consumes": [
-              "Promotion grant",
-              "Verification verdict"
-            ],
-            "produces": [
-              "Version bump and artifacts",
-              "Commit and push to main"
-            ],
-            "validation": "Release gates pass; the upgrade lands on main with receipts attached."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "automated-architecture-analysis",
-            "to_member": "characterization-tests-first",
-            "required_inputs": [
-              "Dependency graph and decoupling plan"
-            ],
-            "accepted_outputs": [
-              "Characterization test suite"
-            ],
-            "failure_owner": "assessor"
-          },
-          {
-            "from_member": "characterization-tests-first",
-            "to_member": "dependency-update-operator",
-            "required_inputs": [
-              "Characterization test suite"
-            ],
-            "accepted_outputs": [
-              "Update candidate ledger"
-            ],
-            "failure_owner": "test-engineer"
-          },
-          {
-            "from_member": "dependency-update-operator",
-            "to_member": "spiral-promotion-gate",
-            "required_inputs": [
-              "Update candidate ledger"
-            ],
-            "accepted_outputs": [
-              "Promotion decision and chained receipt"
-            ],
-            "failure_owner": "dependency-operator"
-          },
-          {
-            "from_member": "spiral-promotion-gate",
-            "to_member": "automated-code-refactoring",
-            "required_inputs": [
-              "Promotion decision and chained receipt"
-            ],
-            "accepted_outputs": [
-              "Bounded transformation batches"
-            ],
-            "failure_owner": "promotion-authority"
-          },
-          {
-            "from_member": "automated-code-refactoring",
-            "to_member": "openrewrite-recipes",
-            "required_inputs": [
-              "Bounded transformation batches"
-            ],
-            "accepted_outputs": [
-              "Recipe dry-run diff"
-            ],
-            "failure_owner": "lead-coder"
-          },
-          {
-            "from_member": "openrewrite-recipes",
-            "to_member": "ast-grep-structural-rewrite",
-            "required_inputs": [
-              "Recipe dry-run diff"
-            ],
-            "accepted_outputs": [
-              "Audited match list"
-            ],
-            "failure_owner": "recipe-engineer"
-          },
-          {
-            "from_member": "ast-grep-structural-rewrite",
-            "to_member": "deprecation-removal",
-            "required_inputs": [
-              "Audited match list"
-            ],
-            "accepted_outputs": [
-              "Consumer dispositions"
-            ],
-            "failure_owner": "transform-engineer"
-          },
-          {
-            "from_member": "deprecation-removal",
-            "to_member": "test-drift-archaeology-repair",
-            "required_inputs": [
-              "Consumer dispositions"
-            ],
-            "accepted_outputs": [
-              "Green suite"
-            ],
-            "failure_owner": "retirement-engineer"
-          },
-          {
-            "from_member": "test-drift-archaeology-repair",
-            "to_member": "verification-before-completion",
-            "required_inputs": [
-              "Green suite"
-            ],
-            "accepted_outputs": [
-              "Verification verdict"
-            ],
-            "failure_owner": "repair-engineer"
-          },
-          {
-            "from_member": "verification-before-completion",
-            "to_member": "release",
-            "required_inputs": [
-              "Verification verdict"
-            ],
-            "accepted_outputs": [
-              "Version bump and artifacts"
-            ],
-            "failure_owner": "verifier"
-          }
-        ],
-        "evidence_requirements": [
-          "Dependency graph and decoupling plan for the assessed scope.",
-          "Full before/after test-suite outputs for every transformed repository.",
-          "SHA-256-chained promotion receipts for every promoted candidate.",
-          "Zero-reference search output for every retired deprecated surface."
-        ],
-        "risk_boundaries": [
-          "No transformation batch exceeds its changed-file budget or crosses its approved scope.",
-          "No candidate is promoted without parity and rollback evidence (Spiral Promotion Gate).",
-          "Deprecated surfaces are never deleted while live consumers remain.",
-          "Renovate code is never lifted into the estate (AGPL-3.0); it runs as a tool or service only."
-        ],
-        "quality_gates": [
-          "Full test suite green in every transformed repository.",
-          "Dry-run diff reviewed before every recipe or codemod application.",
-          "Zero tests weakened, skipped, or deleted to reach green."
-        ],
-        "state_updates": [
-          "Append chained receipts to the upgrade record.",
-          "Update the update-candidate ledger with final dispositions.",
-          "Record exemptions (deprecated surfaces, skipped repositories) with reasons and expiries."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "automated-architecture-analysis dependency graphs",
-          "characterization-tests-first behavior pinning",
-          "spiral-promotion-gate evidence standard",
-          "automated-code-refactoring bounded batches",
-          "test-drift-archaeology-repair pattern"
-        ],
-        "adds": "One governed pipeline for code upgrades \u2014 assess, decide, transform, verify, promote \u2014 where every stage is owned by a registered skill and every transition is receipted, so an upgrade is provable end-to-end instead of asserted.",
-        "compound_artifact": "CODE_UPGRADE_RECORD.md",
-        "next_layer_ready_when": [
-          "A full upgrade run completes with all stage receipts chained.",
-          "Zero unresolved REVISE signals remain in the run record."
-        ]
-      }
-    },
-    {
-      "id": "reverse-engineering-pipeline",
-      "display_name": "Reverse Engineering Pipeline",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "combo-skills/reverse-engineering-pipeline",
-      "entrypoint": "combo-skills/reverse-engineering-pipeline/COMBO.md",
-      "selection": {
-        "use_when": [
-          "Reverse engineering a shipped artifact end-to-end \u2014 binary, package, app, firmware, capture, or bytecode \u2014 under authorization and evidence gates.",
-          "Rebuilding a behavior from a shipped artifact and verifying the reconstruction against the original."
-        ],
-        "do_not_use_when": [
-          "Ordinary analysis of a complete source repository (use normal repository tools; REA is for shipped artifacts).",
-          "Any purpose on the REA disclaimer exclusion list (DRM/license/anti-cheat circumvention, cheat development, unauthorized access)."
-        ]
-      },
-      "members": [
-        {
-          "id": "re-safety-gate",
-          "kind": "skill",
-          "role": "GATE: establish authority, scope, exclusions, and environment before any target is touched.",
-          "required": true
-        },
-        {
-          "id": "rea-operator",
-          "kind": "skill",
-          "role": "CONNECT: register the pinned REA backend from official channels and verify tools in the live session.",
-          "required": true
-        },
-        {
-          "id": "re-target-triage",
-          "kind": "skill",
-          "role": "TRIAGE: identify the artifact, choose the first tool, and route to the owning family lane.",
-          "required": true
-        },
-        {
-          "id": "re-untrusted-content-defense",
-          "kind": "skill",
-          "role": "PROVENANCE: arm the untrusted-content discipline before any target-derived content is read.",
-          "required": true
-        },
-        {
-          "id": "re-javascript-electron",
-          "kind": "skill",
-          "role": "STATIC (JavaScript/Electron lane): ASAR and app-tree analysis, module graphs, IPC boundaries, source maps, fuses.",
-          "required": false
-        },
-        {
-          "id": "re-native-static-readers",
-          "kind": "skill",
-          "role": "STATIC (portable readers lane): PE/ELF structure, certificates, resources, notes, exports, Go, Rust, pyc, BEAM, SQLite.",
-          "required": false
-        },
-        {
-          "id": "re-managed-dotnet",
-          "kind": "skill",
-          "role": "STATIC (.NET lane): static CIL/metadata inspection; NativeAOT detection and routing.",
-          "required": false
-        },
-        {
-          "id": "re-mobile-android",
-          "kind": "skill",
-          "role": "STATIC (Android lane): package/code inspection, apktool resources, APK signature and lineage, adb device analysis.",
-          "required": false
-        },
-        {
-          "id": "re-apple-bundles",
-          "kind": "skill",
-          "role": "STATIC (Apple lane): bundle resources \u2014 plist, Interface Builder, asset catalogs, keyed archives.",
-          "required": false
-        },
-        {
-          "id": "re-game-artifacts",
-          "kind": "skill",
-          "role": "STATIC (game lane): IL2CPP metadata, Flutter packages, Godot PCK.",
-          "required": false
-        },
-        {
-          "id": "re-wasm-evm",
-          "kind": "skill",
-          "role": "STATIC (bytecode lane): WASM decoded to WAT via WABT; EVM interface inference via evmole.",
-          "required": false
-        },
-        {
-          "id": "re-firmware-extraction",
-          "kind": "skill",
-          "role": "STATIC (firmware lane): region mapping first; extraction only on request into a fresh directory via Binwalk/Unblob.",
-          "required": false
-        },
-        {
-          "id": "re-gpu-model-artifacts",
-          "kind": "skill",
-          "role": "STATIC (GPU/model lane): GPU code-object inventories and GGUF/safetensors declaration reading.",
-          "required": false
-        },
-        {
-          "id": "re-engine-bridges",
-          "kind": "skill",
-          "role": "BRIDGE: deep decompilation through the operator's Ghidra, IDA Pro, Hopper, Cutter/Rizin, JEB, or Kuna.",
-          "required": false
-        },
-        {
-          "id": "re-dynamic-analysis",
-          "kind": "skill",
-          "role": "DYNAMIC: Frida instrumentation, LLDB/GDB/pwndbg debugging, process capture, recorded-crash analysis.",
-          "required": false
-        },
-        {
-          "id": "re-web-network-analysis",
-          "kind": "skill",
-          "role": "DYNAMIC (web/network lane): browser/Electron observation, declared scenarios, HAR/SAZ/qlog/PCAP capture reading.",
-          "required": false
-        },
-        {
-          "id": "re-signal-recordings",
-          "kind": "skill",
-          "role": "DYNAMIC (recorded signals lane): sigrok decoder discovery and paged trace decoding.",
-          "required": false
-        },
-        {
-          "id": "re-version-comparison",
-          "kind": "skill",
-          "role": "COMPARE: artifact/function/bundle differentials, changed-behavior candidates, call paths, static-runtime correlation.",
-          "required": false
-        },
-        {
-          "id": "re-evidence-record",
-          "kind": "skill",
-          "role": "EVIDENCE: maintain the finding ledger \u2014 conclusions tied to Evidence IDs, unknowns as first-class records, checklist closeout.",
-          "required": true
-        },
-        {
-          "id": "re-reconstruction-verification",
-          "kind": "skill",
-          "role": "RECONSTRUCT \u2192 VERIFY: rebuild behavior from the ledger and verify against the original under a finite typed specification.",
-          "required": false
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "re-safety-gate",
-            "consumes": [
-              "Target identity",
-              "Operator authority basis and requested operations"
-            ],
-            "produces": [
-              "Gate decision with authorized scope",
-              "Effect classification for executing/destructive operations"
-            ],
-            "validation": "No analysis call happens before the gate decision is recorded; excluded purposes are refused, not renegotiated."
-          },
-          {
-            "step": 2,
-            "member_id": "rea-operator",
-            "consumes": [
-              "Gate decision",
-              "Agent client identity and pinned rea-agents version"
-            ],
-            "produces": [
-              "Registration receipt",
-              "Doctor/session verification"
-            ],
-            "validation": "REA tools are visibly present in the session, or the blocker is named with its remedy; setup writes only followed a reviewed dry-run plan."
-          },
-          {
-            "step": 3,
-            "member_id": "re-target-triage",
-            "consumes": [
-              "Supplied artifact",
-              "Investigation question and constraints"
-            ],
-            "produces": [
-              "Triage record with artifact identity and digest",
-              "Family-lane handoff"
-            ],
-            "validation": "Artifact class and route are named from the artifact itself; session tool availability is checked before broader work."
-          },
-          {
-            "step": 4,
-            "member_id": "re-untrusted-content-defense",
-            "consumes": [
-              "Triage record",
-              "Authorized instruction set (operator request, skill workflows)"
-            ],
-            "produces": [
-              "Provenance-marking rule active for the investigation",
-              "Injection-attempt reporting channel"
-            ],
-            "validation": "Every target-derived item entering the record carries the untrusted-content provenance mark."
-          },
-          {
-            "step": 5,
-            "member_id": "re-javascript-electron",
-            "consumes": [
-              "ASAR archive or extracted app tree",
-              "Investigation question"
-            ],
-            "produces": [
-              "Application Evidence record",
-              "Feature trace with IPC boundaries"
-            ],
-            "validation": "Findings carry file/line locations; fuse state is recorded before any runtime attempt is planned."
-          },
-          {
-            "step": 6,
-            "member_id": "re-native-static-readers",
-            "consumes": [
-              "Explicit native or packaged artifact path",
-              "Structural question"
-            ],
-            "produces": [
-              "Reader Evidence records with raw ranges and digests",
-              "Structural findings with per-reader limitations"
-            ],
-            "validation": "Raw locations and digests are preserved verbatim; each reader's coverage limit is stated beside its findings."
-          },
-          {
-            "step": 7,
-            "member_id": "re-managed-dotnet",
-            "consumes": [
-              "Managed PE/CLI assembly",
-              "Investigation question"
-            ],
-            "produces": [
-              "Managed Evidence record",
-              "NativeAOT routing note when applicable"
-            ],
-            "validation": "The assembly is never executed in this lane; NativeAOT artifacts are routed, not reported as empty."
-          },
-          {
-            "step": 8,
-            "member_id": "re-mobile-android",
-            "consumes": [
-              "APK/AAB path or operator-owned device",
-              "Investigation question"
-            ],
-            "produces": [
-              "Android Evidence records",
-              "Signature report with fingerprints and lineage"
-            ],
-            "validation": "Signature results are reported as identity/integrity evidence, never as a trust verdict."
-          },
-          {
-            "step": 9,
-            "member_id": "re-apple-bundles",
-            "consumes": [
-              "Apple bundle or resource path",
-              "Investigation question"
-            ],
-            "produces": [
-              "Bundle Evidence records",
-              "Executable routing note"
-            ],
-            "validation": "Declared capabilities are recorded as declarations, never as exercised behavior."
-          },
-          {
-            "step": 10,
-            "member_id": "re-game-artifacts",
-            "consumes": [
-              "global-metadata.dat, Flutter package, or Godot PCK",
-              "Investigation question"
-            ],
-            "produces": [
-              "Metadata Evidence records",
-              "Coverage note (versions, linkage, unknowns)"
-            ],
-            "validation": "Metadata version support and binary-linkage status are stated; same-build pairing is never claimed from metadata alone."
-          },
-          {
-            "step": 11,
-            "member_id": "re-wasm-evm",
-            "consumes": [
-              "WASM artifact or EVM bytecode carrier",
-              "Investigation question"
-            ],
-            "produces": [
-              "WASM Evidence record with retained WAT",
-              "EVM Evidence record with labeled inference candidates"
-            ],
-            "validation": "Decoded facts and inferred candidates are labeled distinctly; no chain lookup or execution occurs."
-          },
-          {
-            "step": 12,
-            "member_id": "re-firmware-extraction",
-            "consumes": [
-              "Firmware image path",
-              "Extraction request and fresh output directory when applicable"
-            ],
-            "produces": [
-              "Firmware region Evidence record",
-              "Extraction receipt with recovered inventory"
-            ],
-            "validation": "Inspection precedes extraction; extracted artifacts re-enter through triage with their own identities."
-          },
-          {
-            "step": 13,
-            "member_id": "re-gpu-model-artifacts",
-            "consumes": [
-              "GPU-bearing artifact or model file",
-              "Investigation question"
-            ],
-            "produces": [
-              "GPU Evidence record",
-              "Model Evidence record with hash scope stated"
-            ],
-            "validation": "Hash scope (header vs full) is stated with every identity claim; behavior is never inferred from declarations."
-          },
-          {
-            "step": 14,
-            "member_id": "re-engine-bridges",
-            "consumes": [
-              "Native or managed target",
-              "Deep-analysis question and available engines"
-            ],
-            "produces": [
-              "Provider Evidence records with addresses",
-              "Provider selection note with blind spots"
-            ],
-            "validation": "Built-in readers were exhausted first; provider identity/version and coverage limits ride with every finding."
-          },
-          {
-            "step": 15,
-            "member_id": "re-dynamic-analysis",
-            "consumes": [
-              "Gate decision authorizing execution",
-              "Runtime question static evidence left open"
-            ],
-            "produces": [
-              "Runtime Evidence records labeled as observations",
-              "Crash analysis records for core work"
-            ],
-            "validation": "Execution happens only in the gate-named throwaway environment, within the declared lifecycle."
-          },
-          {
-            "step": 16,
-            "member_id": "re-web-network-analysis",
-            "consumes": [
-              "User-owned runtime target or recorded capture file",
-              "Investigation question"
-            ],
-            "produces": [
-              "Observation Evidence records",
-              "Capture Evidence records with digests preserved"
-            ],
-            "validation": "Recorded URLs are never fetched; capture coverage limits and credential exclusions are honored."
-          },
-          {
-            "step": 17,
-            "member_id": "re-signal-recordings",
-            "consumes": [
-              "Recorded signal trace file",
-              "Decoder/channel settings"
-            ],
-            "produces": [
-              "Decoded Evidence record",
-              "Decoder discovery record"
-            ],
-            "validation": "Window counts are identified as display lines, annotations, or samples \u2014 never blurred."
-          },
-          {
-            "step": 18,
-            "member_id": "re-version-comparison",
-            "consumes": [
-              "Comparable Evidence sets from the family lanes",
-              "Differential question"
-            ],
-            "produces": [
-              "Comparison Evidence record",
-              "Changed-behavior candidates with evidence class"
-            ],
-            "validation": "Equivalence or absence is claimed only over complete, compatible page sets; static deltas stay candidates."
-          },
-          {
-            "step": 19,
-            "member_id": "re-evidence-record",
-            "consumes": [
-              "All lane Evidence records",
-              "Investigation checklist"
-            ],
-            "produces": [
-              "Finding ledger",
-              "Checklist closeout (answered / partial / unresolved)"
-            ],
-            "validation": "Every conclusion cites Evidence IDs with limitations preserved; no required question is silently dropped."
-          },
-          {
-            "step": 20,
-            "member_id": "re-reconstruction-verification",
-            "consumes": [
-              "Finding ledger",
-              "Typed reconstruction specification"
-            ],
-            "produces": [
-              "Reconstruction with verification result",
-              "Claim-scope statement (passed / failed / unverified)"
-            ],
-            "validation": "A pass is claimed at exactly the specification's scope \u2014 never as global equivalence with the original."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "re-safety-gate",
-            "to_member": "rea-operator",
-            "required_inputs": [
-              "Gate decision with authorized scope"
-            ],
-            "accepted_outputs": [
-              "Registration receipt"
-            ],
-            "failure_owner": "gatekeeper"
-          },
-          {
-            "from_member": "rea-operator",
-            "to_member": "re-target-triage",
-            "required_inputs": [
-              "Registration receipt"
-            ],
-            "accepted_outputs": [
-              "Triage record with artifact identity and digest"
-            ],
-            "failure_owner": "tool-operator"
-          },
-          {
-            "from_member": "re-target-triage",
-            "to_member": "re-untrusted-content-defense",
-            "required_inputs": [
-              "Triage record with artifact identity and digest"
-            ],
-            "accepted_outputs": [
-              "Provenance-marking rule active for the investigation"
-            ],
-            "failure_owner": "triager"
-          },
-          {
-            "from_member": "re-untrusted-content-defense",
-            "to_member": "re-javascript-electron",
-            "required_inputs": [
-              "Provenance-marking rule active for the investigation"
-            ],
-            "accepted_outputs": [
-              "Application Evidence record"
-            ],
-            "failure_owner": "provenance-warden"
-          },
-          {
-            "from_member": "re-javascript-electron",
-            "to_member": "re-native-static-readers",
-            "required_inputs": [
-              "Application Evidence record"
-            ],
-            "accepted_outputs": [
-              "Reader Evidence records with raw ranges and digests"
-            ],
-            "failure_owner": "js-analyst"
-          },
-          {
-            "from_member": "re-native-static-readers",
-            "to_member": "re-managed-dotnet",
-            "required_inputs": [
-              "Reader Evidence records with raw ranges and digests"
-            ],
-            "accepted_outputs": [
-              "Managed Evidence record"
-            ],
-            "failure_owner": "native-reader"
-          },
-          {
-            "from_member": "re-managed-dotnet",
-            "to_member": "re-mobile-android",
-            "required_inputs": [
-              "Managed Evidence record"
-            ],
-            "accepted_outputs": [
-              "Android Evidence records"
-            ],
-            "failure_owner": "managed-analyst"
-          },
-          {
-            "from_member": "re-mobile-android",
-            "to_member": "re-apple-bundles",
-            "required_inputs": [
-              "Android Evidence records"
-            ],
-            "accepted_outputs": [
-              "Bundle Evidence records"
-            ],
-            "failure_owner": "android-analyst"
-          },
-          {
-            "from_member": "re-apple-bundles",
-            "to_member": "re-game-artifacts",
-            "required_inputs": [
-              "Bundle Evidence records"
-            ],
-            "accepted_outputs": [
-              "Metadata Evidence records"
-            ],
-            "failure_owner": "apple-analyst"
-          },
-          {
-            "from_member": "re-game-artifacts",
-            "to_member": "re-wasm-evm",
-            "required_inputs": [
-              "Metadata Evidence records"
-            ],
-            "accepted_outputs": [
-              "WASM Evidence record with retained WAT"
-            ],
-            "failure_owner": "game-analyst"
-          },
-          {
-            "from_member": "re-wasm-evm",
-            "to_member": "re-firmware-extraction",
-            "required_inputs": [
-              "WASM Evidence record with retained WAT"
-            ],
-            "accepted_outputs": [
-              "Firmware region Evidence record"
-            ],
-            "failure_owner": "bytecode-analyst"
-          },
-          {
-            "from_member": "re-firmware-extraction",
-            "to_member": "re-gpu-model-artifacts",
-            "required_inputs": [
-              "Firmware region Evidence record"
-            ],
-            "accepted_outputs": [
-              "GPU Evidence record"
-            ],
-            "failure_owner": "firmware-analyst"
-          },
-          {
-            "from_member": "re-gpu-model-artifacts",
-            "to_member": "re-engine-bridges",
-            "required_inputs": [
-              "GPU Evidence record"
-            ],
-            "accepted_outputs": [
-              "Provider Evidence records with addresses"
-            ],
-            "failure_owner": "artifact-analyst"
-          },
-          {
-            "from_member": "re-engine-bridges",
-            "to_member": "re-dynamic-analysis",
-            "required_inputs": [
-              "Provider Evidence records with addresses"
-            ],
-            "accepted_outputs": [
-              "Runtime Evidence records labeled as observations"
-            ],
-            "failure_owner": "bridge-operator"
-          },
-          {
-            "from_member": "re-dynamic-analysis",
-            "to_member": "re-web-network-analysis",
-            "required_inputs": [
-              "Runtime Evidence records labeled as observations"
-            ],
-            "accepted_outputs": [
-              "Observation Evidence records"
-            ],
-            "failure_owner": "dynamic-analyst"
-          },
-          {
-            "from_member": "re-web-network-analysis",
-            "to_member": "re-signal-recordings",
-            "required_inputs": [
-              "Observation Evidence records"
-            ],
-            "accepted_outputs": [
-              "Decoded Evidence record"
-            ],
-            "failure_owner": "web-analyst"
-          },
-          {
-            "from_member": "re-signal-recordings",
-            "to_member": "re-version-comparison",
-            "required_inputs": [
-              "Decoded Evidence record"
-            ],
-            "accepted_outputs": [
-              "Comparison Evidence record"
-            ],
-            "failure_owner": "signal-analyst"
-          },
-          {
-            "from_member": "re-version-comparison",
-            "to_member": "re-evidence-record",
-            "required_inputs": [
-              "Comparison Evidence record"
-            ],
-            "accepted_outputs": [
-              "Finding ledger"
-            ],
-            "failure_owner": "diff-analyst"
-          },
-          {
-            "from_member": "re-evidence-record",
-            "to_member": "re-reconstruction-verification",
-            "required_inputs": [
-              "Finding ledger"
-            ],
-            "accepted_outputs": [
-              "Reconstruction with verification result"
-            ],
-            "failure_owner": "ledger-keeper"
-          }
-        ],
-        "evidence_requirements": [
-          "Gate decision recorded before the first analysis call, with authority basis, scope, and environment.",
-          "Finding ledger linking every conclusion to Evidence IDs, coverage, and residual unknowns.",
-          "Provenance marks on all target-derived content, with injection attempts reported.",
-          "For reconstructions: the typed specification and the claim-scope statement beside the verification result."
-        ],
-        "risk_boundaries": [
-          "No target is touched before the re-safety-gate decision; excluded purposes are refused at the gate.",
-          "Target execution happens only in a throwaway environment, within the declared lifecycle \u2014 REA is not a sandbox.",
-          "REA and its engines come only from official channels at pinned versions; lookalike installers are treated as hostile artifacts.",
-          "Recorded captures are read offline; recorded URLs are never fetched and live attribution is never claimed from a recording."
-        ],
-        "quality_gates": [
-          "Every conclusion in the closeout cites Evidence IDs with limitations preserved.",
-          "Absence and equivalence claims rest on complete, compatible evidence sets, with coverage named.",
-          "Reconstruction verification passes are reported at claim scope (passed / failed / unverified), never blended."
-        ],
-        "state_updates": [
-          "Append the gate decision, triage record, and all Evidence IDs to the investigation record.",
-          "Update unknowns as they are recorded, revised, and resolved in the ledger.",
-          "Record exemptions and unrun lanes with reasons (lane not applicable vs provider unavailable)."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "re-safety-gate authorization discipline",
-          "re-evidence-record finding-ledger standard",
-          "re-untrusted-content-defense provenance marking",
-          "verification-before-completion completion-claim gate"
-        ],
-        "adds": "One governed pipeline for reverse engineering \u2014 gate, connect, triage, provenance, static lanes, engine bridges, dynamic lanes, comparison, evidence, reconstruction, verification \u2014 where the safety gate is a required first-class member, every finding carries its evidence and its unknowns, and a reconstruction is claimed only at the scope its verification actually covered.",
-        "compound_artifact": "RE_INVESTIGATION_RECORD.md",
-        "next_layer_ready_when": [
-          "A full investigation completes with gate, ledger, and closeout receipts chained.",
-          "Zero unresolved gate or provenance exceptions remain in the run record."
-        ]
-      }
-    },
-    {
-      "id": "source-bound-correspondence-loop",
-      "display_name": "Source-Bound Correspondence Loop",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "combo-skills/source-bound-correspondence-loop",
-      "entrypoint": "combo-skills/source-bound-correspondence-loop/COMBO.md",
-      "selection": {
-        "use_when": [
-          "A case, agency or employer needs defensible correspondence and reliable provider follow-up."
-        ],
-        "do_not_use_when": [
-          "Simple factual replies without provider state, legal risk or durable action."
-        ]
-      },
-      "members": [
-        {
-          "id": "long-horizon-core",
-          "kind": "compound-skill",
-          "role": "Recover exact mission, constraints, source evidence, existing context and safe handoff",
-          "required": true
-        },
-        {
-          "id": "correspondence-identity-gate",
-          "kind": "skill",
-          "role": "Verify first-party author and connected account",
-          "required": true
-        },
-        {
-          "id": "provider-thread-forensics",
-          "kind": "skill",
-          "role": "Reconcile provider chronological evidence",
-          "required": true
-        },
-        {
-          "id": "linear-frontier-deduplicator",
-          "kind": "skill",
-          "role": "Match existing issue and suppress duplicate contact",
-          "required": true
-        },
-        {
-          "id": "jurisdiction-authority-citation-check",
-          "kind": "skill",
-          "role": "Check lawful authority and actual time rules",
-          "required": true
-        },
-        {
-          "id": "adverse-outcome-remedy-router",
-          "kind": "skill",
-          "role": "Map favorable, partial, adverse and missing response to lawful options",
-          "required": true
-        },
-        {
-          "id": "precision-provider-email",
-          "kind": "skill",
-          "role": "Prepare professional evidence-backed message",
-          "required": true
-        },
-        {
-          "id": "receipt-provenance-continuation",
-          "kind": "skill",
-          "role": "Read back provider effect and resume without replay",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "long-horizon-core",
-            "consumes": [
-              "Mission",
-              "Provider evidence"
-            ],
-            "produces": [
-              "MISSION.md",
-              "CONTEXT.md"
-            ],
-            "validation": "Mission recovered and no unverified assumption promoted"
-          },
-          {
-            "step": 2,
-            "member_id": "correspondence-identity-gate",
-            "consumes": [
-              "MISSION.md",
-              "Provider account metadata"
-            ],
-            "produces": [
-              "IDENTITY_ROUTE.json"
-            ],
-            "validation": "Authenticated sender matches beneficiary and consent or blocks"
-          },
-          {
-            "step": 3,
-            "member_id": "provider-thread-forensics",
-            "consumes": [
-              "IDENTITY_ROUTE.json",
-              "Full thread"
-            ],
-            "produces": [
-              "PROVIDER_TIMELINE.md"
-            ],
-            "validation": "DRAFT/SENT/ACK and later responses correctly separate"
-          },
-          {
-            "step": 4,
-            "member_id": "linear-frontier-deduplicator",
-            "consumes": [
-              "PROVIDER_TIMELINE.md",
-              "Linear work graph"
-            ],
-            "produces": [
-              "LINEAR_RECONCILIATION.md"
-            ],
-            "validation": "Owning issue and action state evidenced"
-          },
-          {
-            "step": 5,
-            "member_id": "jurisdiction-authority-citation-check",
-            "consumes": [
-              "Current facts",
-              "Custodian and venue"
-            ],
-            "produces": [
-              "AUTHORITY_MATRIX.md"
-            ],
-            "validation": "Pinpoint source and scope/exception checked"
-          },
-          {
-            "step": 6,
-            "member_id": "adverse-outcome-remedy-router",
-            "consumes": [
-              "Provider position",
-              "AUTHORITY_MATRIX.md"
-            ],
-            "produces": [
-              "REMEDY_BRANCHES.md"
-            ],
-            "validation": "No automatic win or unsupported misconduct allegation"
-          },
-          {
-            "step": 7,
-            "member_id": "precision-provider-email",
-            "consumes": [
-              "Remedy analysis",
-              "Approved account route"
-            ],
-            "produces": [
-              "EMAIL_DRAFT.md",
-              "PRE_SEND_GATE.md"
-            ],
-            "validation": "Wrong sender, repeat, unsourced law or protected information blocked"
-          },
-          {
-            "step": 8,
-            "member_id": "receipt-provenance-continuation",
-            "consumes": [
-              "Draft or authorized provider result",
-              "Canonical issue"
-            ],
-            "produces": [
-              "ACTION_RECEIPT.json",
-              "RESUME_CURSOR.md"
-            ],
-            "validation": "Native status and Linear projection match or NEEDS_PROOF"
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "long-horizon-core",
-            "to_member": "correspondence-identity-gate",
-            "required_inputs": [
-              "Recovered mission",
-              "Existing authority"
-            ],
-            "accepted_outputs": [
-              "Correct connected sender/beneficiary"
-            ],
-            "failure_owner": "mission controller"
-          },
-          {
-            "from_member": "provider-thread-forensics",
-            "to_member": "linear-frontier-deduplicator",
-            "required_inputs": [
-              "Source event IDs",
-              "Provider timeline"
-            ],
-            "accepted_outputs": [
-              "Existing owner and no-replay classification"
-            ],
-            "failure_owner": "source auditor"
-          },
-          {
-            "from_member": "jurisdiction-authority-citation-check",
-            "to_member": "precision-provider-email",
-            "required_inputs": [
-              "Applicable authority",
-              "Response window and exceptions"
-            ],
-            "accepted_outputs": [
-              "Source-bound professional draft"
-            ],
-            "failure_owner": "legal verifier"
-          },
-          {
-            "from_member": "precision-provider-email",
-            "to_member": "receipt-provenance-continuation",
-            "required_inputs": [
-              "Draft or approved send",
-              "Provider account and owning issue"
-            ],
-            "accepted_outputs": [
-              "Native receipt or draft-only resume cursor"
-            ],
-            "failure_owner": "effect verifier"
-          }
-        ],
-        "evidence_requirements": [
-          "Use original provider records, complete thread and immutable message IDs rather than unverified summaries."
-        ],
-        "risk_boundaries": [
-          "Explicit human permission for any external send, consent or filing.",
-          "No cross-account impersonation or disclosure of protected source material.",
-          "Uncertain delivery remains NEEDS_PROOF, never blind retry.",
-          "Denial is evidence and potential lawful review; no automatic victory."
-        ],
-        "quality_gates": [
-          "Correct mission, source identity and recipient are verified.",
-          "No previously verified request is repeated.",
-          "Specific cited law and policy checked against jurisdiction and effective dates.",
-          "Actual effect proved by provider readback before Linear projection."
-        ],
-        "state_updates": [
-          "Append provider-native receipt to existing issue.",
-          "Retire only proven completed subaction.",
-          "Preserve exact actor/case/source identity and resume cursor."
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "long-horizon-core",
-          "correspondence-identity-gate",
-          "provider-thread-forensics",
-          "linear-frontier-deduplicator",
-          "jurisdiction-authority-citation-check",
-          "adverse-outcome-remedy-router",
-          "precision-provider-email",
-          "receipt-provenance-continuation"
-        ],
-        "adds": "Composes long-horizon context and seven proper atomic skills into a complete defendable correspondence workflow with provenance, lawful response branches and duplicate-safe case continuation.",
-        "compound_artifact": "SOURCE_BOUND_CORRESPONDENCE_RUN.md",
-        "next_layer_ready_when": [
-          "Registry references resolve to owning atomic skills.",
-          "Real provider negative-path and authority tests pass.",
-          "Cross-session readback proves no duplicate external actions."
-        ]
-      }
-    },
-    {
-      "id": "telecommunications-mission-orchestration",
-      "display_name": "Telecommunications Mission Orchestration",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "combo-skills/telecommunications-mission-orchestration",
-      "entrypoint": "combo-skills/telecommunications-mission-orchestration/COMBO.md",
-      "selection": {
-        "use_when": [
-          "A bounded APEX mission must execute and verify a voice/SMS/SIP/PSTN/WebRTC communication."
-        ],
-        "do_not_use_when": [
-          "Casual transcription or voice generation with no telecommunications mission semantics."
-        ]
-      },
-      "members": [
-        {
-          "id": "mission-contract",
-          "kind": "skill",
-          "role": "Set objective, authority, target and evidence boundaries.",
-          "required": true
-        },
-        {
-          "id": "telecommunications-execution-core",
-          "kind": "skill",
-          "role": "Preflight, normalize receipt state and prevent false success.",
-          "required": true
-        },
-        {
-          "id": "voice-ai-development",
-          "kind": "skill",
-          "role": "Realtime voice/provider architecture for voice routes.",
-          "required": false
-        },
-        {
-          "id": "voice-agents",
-          "kind": "skill",
-          "role": "Conversational turn-taking and interruption handling.",
-          "required": false
-        },
-        {
-          "id": "whisperx-audio-processing",
-          "kind": "skill",
-          "role": "High-assurance post-call transcription when audio exists.",
-          "required": false
-        },
-        {
-          "id": "voice-evidence-authenticator",
-          "kind": "compound-skill",
-          "role": "Authenticate material recorded evidence when required.",
-          "required": false
-        },
-        {
-          "id": "forensic-evidence-chain-core",
-          "kind": "skill",
-          "role": "Preserve source/derivative hashes and provenance.",
-          "required": true
-        },
-        {
-          "id": "agent-evaluation",
-          "kind": "skill",
-          "role": "Evaluate agent behavior and scenario reliability.",
-          "required": false
-        },
-        {
-          "id": "quality-gate",
-          "kind": "skill",
-          "role": "Promote only verified communication outcomes.",
-          "required": true
-        }
-      ],
-      "execution": {
-        "ordered_steps": [
-          {
-            "step": 1,
-            "member_id": "mission-contract",
-            "consumes": [
-              "Mission request",
-              "Current source state"
-            ],
-            "produces": [
-              "MISSION.md"
-            ],
-            "validation": "Authority, target, objective and stop conditions explicit."
-          },
-          {
-            "step": 2,
-            "member_id": "telecommunications-execution-core",
-            "consumes": [
-              "MISSION.md",
-              "Source freshness"
-            ],
-            "produces": [
-              "Preflight receipt"
-            ],
-            "validation": "Freshness/authority/destination semantics pass."
-          },
-          {
-            "step": 3,
-            "member_id": "voice-ai-development",
-            "consumes": [
-              "Voice route plan"
-            ],
-            "produces": [
-              "Realtime provider/transport plan"
-            ],
-            "validation": "Only required for voice/realtime routes; upstream cores remain external."
-          },
-          {
-            "step": 4,
-            "member_id": "forensic-evidence-chain-core",
-            "consumes": [
-              "Provider receipt",
-              "Transcript/recording when present"
-            ],
-            "produces": [
-              "Provenance-bound evidence record"
-            ],
-            "validation": "Original/native artifacts remain intact and hashed."
-          },
-          {
-            "step": 5,
-            "member_id": "quality-gate",
-            "consumes": [
-              "Semantic receipt",
-              "Evidence record"
-            ],
-            "produces": [
-              "Promotion gate record"
-            ],
-            "validation": "No false-success or unsupported source claim advances state."
-          }
-        ]
-      },
-      "integration": {
-        "handoffs": [
-          {
-            "from_member": "mission-contract",
-            "to_member": "telecommunications-execution-core",
-            "required_inputs": [
-              "Bounded mission packet"
-            ],
-            "accepted_outputs": [
-              "READY/BLOCKED preflight"
-            ],
-            "failure_owner": "telecom-manager"
-          },
-          {
-            "from_member": "telecommunications-execution-core",
-            "to_member": "forensic-evidence-chain-core",
-            "required_inputs": [
-              "Provider-native receipt"
-            ],
-            "accepted_outputs": [
-              "Source-linked receipt/evidence record"
-            ],
-            "failure_owner": "receipt-verifier"
-          },
-          {
-            "from_member": "forensic-evidence-chain-core",
-            "to_member": "quality-gate",
-            "required_inputs": [
-              "Evidence/provenance record"
-            ],
-            "accepted_outputs": [
-              "ACCEPT/REPAIR/REDISPATCH gate"
-            ],
-            "failure_owner": "telecom-quality-auditor"
-          }
-        ],
-        "evidence_requirements": [
-          "Provider-native IDs/readback retained",
-          "Receipt/transcript/recording hashes retained when available",
-          "Truth-state/provenance preserved"
-        ],
-        "risk_boundaries": [
-          "No standing external send authority",
-          "No provider lock-in",
-          "No silent source replacement",
-          "No upstream-core business-logic patching"
-        ],
-        "quality_gates": [
-          "Semantic false-success suite passes",
-          "Missing provider evidence cannot produce objective success"
-        ],
-        "state_updates": [
-          "Append verified receipt",
-          "Update continuity/relationship/case projections only from accepted evidence"
-        ]
-      },
-      "compounding": {
-        "inherits": [
-          "Mission bounds",
-          "Realtime voice architecture",
-          "Forensic provenance",
-          "Quality promotion"
-        ],
-        "adds": "End-to-end telecom mission routing and semantic outcome verification across provider-neutral transports.",
-        "compound_artifact": "TELECOMMUNICATIONS_EXECUTION_RECORD.md",
-        "next_layer_ready_when": [
-          "Preflight and provider-receipt semantics verify",
-          "False-success tests pass",
-          "Native evidence lineage is retained"
         ]
       }
     }
