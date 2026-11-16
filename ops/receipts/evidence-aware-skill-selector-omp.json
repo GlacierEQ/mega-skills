@@ -76,8 +76,7 @@
   "not_proven": [
     "hosted GitHub Actions (issue #23 empty runs)",
     "host OMP profile apply",
-    "Phase 2 engineering quality evaluation",
-    "merge to main"
+    "Phase 2 engineering quality evaluation"
   ],
   "hidden_harms_audited": {
     "summary": "Counter-engineered failure modes that look like wins or safe defaults.",
