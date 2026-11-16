@@ -34,7 +34,9 @@ gating, and lane-based routing. Canonical implementation of the
 Prefer `MASTERMIND_HOME` (portable). Legacy `/root/projects/mastermind` is an optional donor only.
 
 ```bash
+# Set MASTERMIND_HOME to the Mastermind checkout, then enter it.
 export MASTERMIND_HOME="${MASTERMIND_HOME:-$PWD}"
+cd "$MASTERMIND_HOME"
 
 # Maximize mesh + seed Kanban quality processors
 python3 maximize_mastermind.py
