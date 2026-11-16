@@ -5,6 +5,7 @@
   "baseline": {
     "branch": "main",
     "sha_at_drain_complete": "0deea56e3b4fc7acfe32131c642e6f8ad520e158",
+    "t1_verification_artifact": "evidence/skill-selection/t1-verification-2026-11-16.json",
     "remote_branch_count_excluding_default": 0,
     "open_pull_request_count": 0
   },

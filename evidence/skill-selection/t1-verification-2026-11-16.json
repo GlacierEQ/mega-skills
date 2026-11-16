@@ -1,0 +1,58 @@
+{
+  "schema": "glaciereq.omp-skill-selector-verification.v1",
+  "linear_issue": "HI-826",
+  "related": "HI-823",
+  "status": "shipped_on_main",
+  "delivery_path": {
+    "origin_pr": 59,
+    "merged_via_pr": 64,
+    "main_merge_commit": "1551f1233b4fc7acfe32131c642e6f8ad520e158",
+    "closure_receipt": "ops/receipts/evidence-aware-skill-selector-omp.json"
+  },
+  "treatment": {
+    "id": "evidence_aware_omp_t1",
+    "module": "scripts/skill_evidence_selector.py",
+    "installer_flag": "--select evidence",
+    "default_unchanged": "OMP_POWER_SELECTION (B2, 38 skills)"
+  },
+  "verification_at": {
+    "recorded_utc": "2026-11-16T14:55:00Z",
+    "git_ref": "main",
+    "commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac",
+    "environment": "cloud agent workspace",
+    "closure_commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac"
+  },
+  "commands": [
+    "python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v",
+    "python3 -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v",
+    "python3 -m compileall -q scripts tests",
+    "python3 scripts/validate_hierarchy.py"
+  ],
+  "results": {
+    "test_omp_native_sync": "19 passed",
+    "test_skill_evidence_selector": "18 passed",
+    "compileall": "exit 0",
+    "validate_hierarchy": "passed",
+    "fixture_metrics": {
+      "scored_tasks": 9,
+      "gold_skill_mentions": 272,
+      "B1": {
+        "precision": 0.996296,
+        "recall": 0.988971
+      },
+      "T1": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "B2": {
+        "precision": 0.789474,
+        "recall": 0.992647
+      }
+    }
+  },
+  "explicitly_not_proven": [
+    "hosted GitHub Actions reliability (repo issue #23)",
+    "host OMP profile --apply on Operator machine",
+    "Phase 2 engineering-quality evaluation"
+  ]
+}

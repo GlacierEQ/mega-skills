@@ -37,6 +37,7 @@
 ## Live engineering (provenance-gated)
 - Chassis reconnect receipt on **main** after **#62**: `evidence/calibrator-chassis/pro-mastermind-reconnect.md`.
 - **mega-skills branch drain (2026-11-16):** `main` only on remote; benefits merged via **#60–#64**. Receipt: `evidence/branch-lifecycle/mega-skills-harmonious-drain-2026-11-16.json`. Fleet next: `scripts/fleet_branch_sprawl_snapshot.py` + `apex-fleet-harmonizer` / `fleet-recon-and-harmonize`.
+- **OMP evidence-aware selector T1 (HI-826):** shipped on `main` via **#64** (origin **#59**). Opt-in `--select evidence` only; default `OMP_POWER_SELECTION` unchanged. Receipt: `ops/receipts/evidence-aware-skill-selector-omp.json`; verification: `evidence/skill-selection/t1-verification-2026-11-16.json`. Not host `--apply`-certified.
 - Cortex **6/12** claim is documented on the PR #62 reconnect receipt: Core-Think, Phantom, Shadow + Microwave, Sonic, Sherlock-Alpha. Still dark: Tower, Genius lineages, Ghost/Viper/Wraith/Specter/Supernova/Bodybuilder. **Do not say peak restored.**
 - `MASTERMIND_HOME` must be portable + `cd` before maximize (no `/root/projects/mastermind` hardcode).
 - Related: `GlacierEQ/mastermind` PR #178.

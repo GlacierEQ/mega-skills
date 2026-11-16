@@ -29,13 +29,14 @@ T1 scores a task family by pass/fail, regressions, mean wall time, and a cost pr
 
 Proof commands from a checkout of this revision:
 
-    python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
-    python -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v
-    python -m compileall -q scripts tests
+    python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
+    python3 -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v
+    python3 -m compileall -q scripts tests
+    python3 scripts/validate_hierarchy.py
 
 Write-free evidence preview against a temporary directory, not a live OMP profile:
 
-    python scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir /tmp/omp-skill-preview --select evidence --task-json tests/fixtures/skill_selection_tasks.json --task-id evidence-insufficient
+    python3 scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir /tmp/omp-skill-preview --select evidence --task-json tests/fixtures/skill_selection_tasks.json --task-id evidence-insufficient
 
 This selector does not certify a host OMP install and it does not report Phase 2 engineering-quality results. Local unit output is the proof available here. Hosted GitHub Actions on this private repo currently exit in a few seconds with zero steps (issue #23). That account-level blocker is unchanged.
 
@@ -45,13 +46,13 @@ OMP's default user profile is typically ~/.omp/agent. Named profiles use ~/.omp/
 
 From a checked-out Mega-Skills repository at the intended revision:
 
-    python scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills"
+    python3 scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills"
 
 This is **preview-only**, returns per-item planned/existing/conflict/missing state and SHA-256 of each current source contract, and does not create the OMP skills directory.
 
 After inspecting the preview and selecting the correct profile, apply only missing links/adapters:
 
-    python scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills" --apply
+    python3 scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills" --apply
 
 Apply first preflights the entire coalition. A source conflict, missing file, or invalid native metadata prevents every write; a simulated or actual install/readback failure triggers ownership-checked rollback for newly created entries, never deletion of pre-existing skill directories. A nonzero return indicates a missing source, collision, installation error, or unsuccessful readback. A collision is reported, not silently overwritten. The synchronizer never deletes or retires existing OMP skills. Atomic Skills point directly at canonical skill directories. Compound and Mega Skills use native SKILL.md adapters with source-linked COMBO.md/MEGA.md; changed source that invalidates an existing adapter is reported as drift/conflict, not silently rebaselined. The returned per-item SHA-256, created/rolled_back status, and blocked_preflight/verification_failed flags let CI and host operators independently reconcile the attempt.
 
@@ -75,8 +76,8 @@ This activation does not overwrite RULES.md, AGENTS.md, MCP profile/config, sess
 
 Focused source-check commands (provider execution still required for actual changed branch):
 
-    python -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
-    python -m compileall -q scripts tests
+    python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v
+    python3 -m compileall -q scripts tests
 
 Red-before-green reproduced missing native OMP activation. Nineteen committed focused regressions cover preview/no-write, additive symlinks/adapters, **whole-coalition preflight**, idempotence, missing sources, unrelated profile preservation, identifier/path rejection, changed-source detection, untrusted symlink preservation, OMP-required descriptions (including multiline YAML), **simulated mid-install failure rollback**, **post-install readback rollback**, no arbitrary skill cap, and cross-checks for source drift during write, unexpected adapter readback, and concurrent modifications during rollback.
 

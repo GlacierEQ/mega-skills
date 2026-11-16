@@ -23,17 +23,21 @@
   "supermemory_query": "OPERATOR CONTINUITY Aspen Grove is the house Keymaster Iceberg handoff 2026-11-16",
   "pro_mastermind_reconnect_md": {
     "path": "evidence/calibrator-chassis/pro-mastermind-reconnect.md",
-    "present_on": "cursor/pro-mastermind-quality-processors-f969",
-    "absent_on": ["main", "cursor/operator-continuity-handoff-f969"],
-    "retrieval": "RETRIEVAL_GAP unless that branch is checked out"
+    "present_on": ["main"],
+    "merged_via_pr": 62,
+    "note": "On main after #62; branch-only retrieval gap closed"
+  },
+  "omp_evidence_selector_t1": {
+    "linear": "HI-826",
+    "status": "shipped_on_main",
+    "merged_via_pr": 64,
+    "receipt": "ops/receipts/evidence-aware-skill-selector-omp.json",
+    "verification": "evidence/skill-selection/t1-verification-2026-11-16.json",
+    "installer": "python3 scripts/sync_runtime_skills.py --runtime omp --select evidence"
   },
   "active_engineering_branch": "cursor/pro-mastermind-quality-processors-f969",
-  "open_prs_backlog": [
-    60,
-    61,
-    62,
-    63
-  ],
+  "open_prs_backlog": [],
+  "merged_pr_receipts_2026_11_16": [60, 61, 62, 63, 64, 65],
   "aspen_rule": "Aspen Grove is the house; Keymaster vault; Iceberg memory front door; Gatekeeper future single key",
   "agy_note": "Offline antigravity-guide references/ and agy-customizations docs/ were false capabilities; use live https://antigravity.google/docs. Omnibus antigravity_cli.py has Mac-absolute paths — not portable on this VM.",
   "part2_key_names": [

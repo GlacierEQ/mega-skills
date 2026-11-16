@@ -11,6 +11,9 @@
   "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
   "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
   "head_commit": "442c7aaf",
+  "main_verification_commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac",
+  "ship_status": "shipped_on_main",
+  "verification_artifact": "evidence/skill-selection/t1-verification-2026-11-16.json",
   "distinction": {
     "this_module": "scripts/skill_evidence_selector.py",
     "readiness_selector": "scripts/evidence_capability_selector.py",
@@ -70,7 +73,11 @@
       "command": "python3 -m compileall -q scripts tests",
       "result": "exit 0"
     },
-    "verified_at_utc": "2026-11-16T14:15:00Z",
+    "validate_hierarchy": {
+      "command": "python3 scripts/validate_hierarchy.py",
+      "result": "Mega Skills recursive hierarchy validation passed"
+    },
+    "verified_at_utc": "2026-11-16T14:55:00Z",
     "environment": "cloud agent workspace, python3 not python on PATH"
   },
   "not_proven": [
