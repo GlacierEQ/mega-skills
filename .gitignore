@@ -1,5 +1,9 @@
 .env
 .env.*
+*.deduped.env
+.deduped.env
+key_audit_report.json
+.apex_cache/
 *.key
 *.pem
 *.p12
