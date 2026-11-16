@@ -12318,6 +12318,29 @@
       ]
     },
     {
+      "id": "pro-mastermind-quality-processors",
+      "display_name": "Pro Mastermind Quality Processors",
+      "ownership": "glaciereq",
+      "maturity": "active",
+      "version": "0.1.0",
+      "path": "skills/pro-mastermind-quality-processors",
+      "entrypoint": "skills/pro-mastermind-quality-processors/SKILL.md",
+      "purpose": "Reconnect Pro-Mastermind with Mastermind control, Kanban squads, and pitstop calibrators as cruising quality processors.",
+      "input_contract": [
+        "Operator reconnect intent and Mastermind/Pro-Mastermind checkout paths"
+      ],
+      "output_contract": [
+        "Seeded Kanban processor board, maximize receipt, portable home boot"
+      ],
+      "local_validation": [
+        "python3 scripts/validate_hierarchy.py"
+      ],
+      "does_not_own": [
+        "Absorbing specialist repos into Mastermind",
+        "Unprompted irreversible external effects"
+      ]
+    },
+    {
       "id": "product-business-analysis",
       "display_name": "Product Business Analysis",
       "ownership": "glaciereq",

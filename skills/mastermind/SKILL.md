@@ -31,23 +31,25 @@ gating, and lane-based routing. Canonical implementation of the
 
 ## Key Commands
 
+Prefer `MASTERMIND_HOME` (portable). Legacy `/root/projects/mastermind` is an optional donor only.
+
 ```bash
-# Health
-cd /root/projects/mastermind && python -m mastermind health
+export MASTERMIND_HOME="${MASTERMIND_HOME:-$PWD}"
 
-# Execute an intent
-cd /root/projects/mastermind && python -m mastermind execute "deploy portfolio" \
-    --component portfolio --capability deploy
+# Maximize mesh + seed Kanban quality processors
+python3 maximize_mastermind.py
 
-# Walk the receipt chain
-cd /root/projects/mastermind && python -m mastermind chain
+# Health / execute / chain (module CLI)
+python -m mastermind health
+python -m mastermind execute "deploy portfolio" --component portfolio --capability deploy
+python -m mastermind chain
+python -m mastermind receipts
 
-# Inspect receipts
-cd /root/projects/mastermind && python -m mastermind receipts
-
-# Run the suite
-cd /root/projects/mastermind && python -m pytest tests/ -v
+# Focused reconnect proofs
+python3 -m unittest tests.test_paths_portable tests.test_quality_processor -v
 ```
+
+Compose `pro-mastermind-quality-processors` when restoring unplugged power or cruising Kanban×calibrator workers across the estate.
 
 ## Hard Rules (Non-Negotiable)
 
