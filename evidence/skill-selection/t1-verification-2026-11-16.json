@@ -18,9 +18,9 @@
   "verification_at": {
     "recorded_utc": "2026-11-16T14:55:00Z",
     "git_ref": "main",
-    "commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac",
+    "commit": "bb205f0c4408fa0ee0558bac365833093f07cd9d",
     "environment": "cloud agent workspace",
-    "closure_commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac"
+    "closure_commit": "a62c0a66979c024bdac1e2037efe4ae1894ae67d"
   },
   "commands": [
     "python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v",

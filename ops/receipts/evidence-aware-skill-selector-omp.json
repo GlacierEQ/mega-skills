@@ -11,7 +11,7 @@
   "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
   "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
   "head_commit": "442c7aaf",
-  "main_verification_commit": "e342d0211bfa75834672aa8bb4fb7f32ac0905ac",
+  "main_verification_commit": "a62c0a66979c024bdac1e2037efe4ae1894ae67d",
   "ship_status": "shipped_on_main",
   "verification_artifact": "evidence/skill-selection/t1-verification-2026-11-16.json",
   "distinction": {
