@@ -1,0 +1,41 @@
+{
+  "kind": "operator_continuity_handoff",
+  "timezone_note": "Pacific/Honolulu",
+  "written_at_utc": "2026-11-16T08:50:20.545015+00:00",
+  "operator": "Casey Barton / @GlacierEQ",
+  "mem0_status": "declined_this_session",
+  "supermemory_status": "primary_continuity_store",
+  "session_env": "/home/ubuntu/.apex-session/env-part2.sh",
+  "handoff_md": "/opt/cursor/artifacts/OPERATOR-CONTINUITY-HANDOFF.md",
+  "sm_hits": "/opt/cursor/artifacts/operator-supermemory-hits.json",
+  "active_branch": "cursor/pro-mastermind-quality-processors-f969",
+  "open_prs": [
+    60,
+    61,
+    62
+  ],
+  "aspen_rule": "Aspen Grove is the house; Keymaster vault; Iceberg memory front door; Gatekeeper future single key",
+  "part2_key_names": [
+    "SUPERMEMORY_API_KEY",
+    "SUPERMEMORY_API_KEY_ALT",
+    "MEM0_API_KEY",
+    "MEM0_API_KEY_ALT",
+    "MEM_API_KEY",
+    "PINECONE_API_KEY",
+    "PINECONE_HOST",
+    "QDRANT_URL",
+    "QDRANT_API_KEY",
+    "NEO4J_URI",
+    "NEO4J_USER",
+    "NEO4J_PASSWORD"
+  ],
+  "cortex_live": [
+    "Core-Think",
+    "Phantom",
+    "Shadow",
+    "Microwave",
+    "Sonic",
+    "Sherlock-Alpha"
+  ],
+  "next_chat_seed": "Read missions/operator-continuity/HANDOFF.md then OPERATOR CONTINUITY from SuperMemory tag operator-continuity-2026-11-16"
+}
