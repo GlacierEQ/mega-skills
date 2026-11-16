@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "objective": "Opt-in OMP skill coalition (T1) from task descriptor plus append-only evidence ledger, compared to frozen B1 (30) and static OMP_POWER_SELECTION B2 (38).",
+  "owning_linear_issue": "HI-826",
+  "related_linear_issue": "HI-823",
+  "repository": "GlacierEQ/mega-skills",
+  "pull_request": "https://github.com/GlacierEQ/mega-skills/pull/59",
+  "branch": "feat/evidence-aware-skill-selector-20261113",
+  "base_branch_commit": "34b47b92ad2c103d5660d0bbfe6c5e92df1c8269",
+  "requested_baseline_commit": "fa5e5efe8993c52e7095d1d118ad3a735b2381f9",
+  "head_commit": "8b230607ed8d0776010365b8ee5ed7853027e8a4",
+  "distinction": {
+    "this_module": "scripts/skill_evidence_selector.py",
+    "readiness_selector": "scripts/evidence_capability_selector.py",
+    "default_installer": "scripts/sync_runtime_skills.py OMP_POWER_SELECTION unchanged unless --select evidence"
+  },
+  "baselines": {
+    "B1": {
+      "id": "B1",
+      "skills": 30,
+      "source": "PR #51 merge da26fa48, frozen as B1_COALITION"
+    },
+    "B2": {
+      "id": "B2",
+      "skills": 38,
+      "source": "OMP_POWER_SELECTION on main after PR #56"
+    },
+    "T1": {
+      "id": "evidence_aware_omp_t1",
+      "installer_flag": "--select evidence",
+      "fallback": "B1 exact with decision no evidence"
+    }
+  },
+  "fixture_comparison": {
+    "fixture": "tests/fixtures/skill_selection_tasks.json",
+    "scored_tasks": 9,
+    "gold_skill_mentions": 272,
+    "B1": {
+      "precision": 0.996296,
+      "recall": 0.988971,
+      "true_positive": 269,
+      "predicted": 270
+    },
+    "T1": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 272,
+      "predicted": 272
+    },
+    "B2": {
+      "precision": 0.789474,
+      "recall": 0.992647,
+      "true_positive": 270,
+      "predicted": 342
+    }
+  },
+  "tests": {
+    "omp_native_sync": {
+      "command": "python3 -m unittest discover -s tests -p 'test_omp_native_sync.py' -v",
+      "result": "19 passed, exit 0",
+      "note": "test file unchanged on this branch"
+    },
+    "skill_evidence_selector": {
+      "command": "python3 -m unittest discover -s tests -p 'test_skill_evidence_selector.py' -v",
+      "result": "15 passed, exit 0"
+    },
+    "compileall": {
+      "command": "python3 -m compileall -q scripts tests",
+      "result": "exit 0"
+    },
+    "verified_at_utc": "2026-11-16T14:15:00Z",
+    "environment": "cloud agent workspace, python3 not python on PATH"
+  },
+  "not_proven": [
+    "hosted GitHub Actions (issue #23 empty runs)",
+    "host OMP profile apply",
+    "Phase 2 engineering quality evaluation",
+    "merge to main"
+  ],
+  "ledger": {
+    "path": "evidence/skill-selection/ledger.json",
+    "production_outcomes": false,
+    "append_only": true
+  }
+}
