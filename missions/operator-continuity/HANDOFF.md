@@ -50,7 +50,7 @@
 ## Open asks (backlog — Operator ranks)
 1. Wire Part 2 on Mac (Aspen + Iceberg + future Gatekeeper)
 2. Send Parts 1/3/4 → merge name-only map
-3. Land PRs #60–#62 after review truth
+3. PRs #60–#65 are already merged (GitHub-native readback 2026-11-16); do not replay them. PR #66 remains open with merge conflicts; reconcile against current main and verify its exact head before promotion.
 4. Bind remaining Cortex pistons
 5. Merge mastermind #178 after CI
 6. Portable AGY/Juggernaut CLI (strip Mac-absolute paths) when Operator schedules it
