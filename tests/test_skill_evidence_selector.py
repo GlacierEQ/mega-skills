@@ -469,13 +469,20 @@ class SkillEvidenceSelectorTests(unittest.TestCase):
             swiftui_bytes,
         )
 
-    def test_opt_in_evidence_path_reuses_installer_and_default_stays_static(self):
+    def test_omp_default_uses_evidence_and_static_opt_in_is_b2(self):
         with tempfile.TemporaryDirectory() as temp:
             static_dir = Path(temp) / "static"
             evidence_dir = Path(temp) / "evidence"
+            default_out = io.StringIO()
+            with redirect_stdout(default_out):
+                SYNC.main(["--runtime", "omp", "--omp-skills-dir", str(evidence_dir)])
+            default_run = json.loads(default_out.getvalue())
+            self.assertIn("selector", default_run)
+            self.assertEqual(default_run["selector"]["task_id"], "omp-default-mission")
+            self.assertFalse(evidence_dir.exists())
             static_out = io.StringIO()
             with redirect_stdout(static_out):
-                SYNC.main(["--runtime", "omp", "--omp-skills-dir", str(static_dir)])
+                SYNC.main(["--runtime", "omp", "--omp-skills-dir", str(static_dir), "--select", "static"])
             static = json.loads(static_out.getvalue())
             self.assertEqual(
                 [item["name"] for item in static["items"]],
