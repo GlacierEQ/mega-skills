@@ -323,32 +323,45 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--omp-skills-dir", type=Path,
                         default=Path.home() / ".omp" / "agent" / "skills")
     parser.add_argument("--apply", action="store_true", help="Install only absent skills; never overwrite")
-    parser.add_argument("--select", choices=("static", "evidence"), default="static",
-                        help="static keeps OMP_POWER_SELECTION; evidence is the opt-in T1 ledger selector")
-    parser.add_argument("--task-json", type=Path, help="Task descriptor for --select evidence")
-    parser.add_argument("--task-id", help="Task id when --task-json holds more than one task")
-    parser.add_argument("--ledger", type=Path, help="Evidence ledger for --select evidence")
+    default_task = ROOT / "evidence" / "skill-selection" / "default-omp-task.json"
+    default_ledger = ROOT / "evidence" / "skill-selection" / "ledger.json"
+    parser.add_argument("--select", choices=("static", "evidence"), default="evidence",
+                        help="evidence (default) uses T1 ledger selector; static keeps OMP_POWER_SELECTION (B2)")
+    parser.add_argument("--task-json", type=Path, default=default_task,
+                        help="Task descriptor for --select evidence")
+    parser.add_argument("--task-id", default="omp-default-mission",
+                        help="Task id when --task-json holds more than one task")
+    parser.add_argument("--ledger", type=Path, default=default_ledger,
+                        help="Evidence ledger for --select evidence")
     args = parser.parse_args(argv)
     if args.runtime == "legacy":
-        if args.apply or args.select != "static" or args.task_json or args.task_id or args.ledger:
+        omp_only = (
+            args.apply,
+            args.select != "static",
+            args.task_json != default_task,
+            args.task_id != "omp-default-mission",
+            args.ledger != default_ledger,
+        )
+        if any(omp_only):
             parser.error("OMP activation flags require --runtime omp")
         sync_all()
         return
-    # Default --select static keeps OMP_POWER_SELECTION. Evidence selection is opt-in
-    # and reuses sync_omp_skills rather than writing a second installer.
+    # Default --select evidence uses T1 with repo default task/ledger. Pass --select static for B2.
     selection = None
     selector_receipt = None
     if args.select == "evidence":
-        if args.task_json is None:
-            parser.error("--select evidence requires --task-json")
         selector = _load_skill_evidence_selector()
         ledger_path = args.ledger or (ROOT / "evidence" / "skill-selection" / "ledger.json")
         task = selector.load_task(args.task_json, args.task_id)
         ledger = selector.load_ledger(ledger_path)
         selector_receipt = selector.select_from_documents(ROOT, task, ledger)
         selection = selector_receipt["coalition"]
-    elif args.task_json or args.task_id or args.ledger:
-        parser.error("--task-json, --task-id, and --ledger require --select evidence")
+    elif args.select == "static" and (
+        args.task_json.resolve() != default_task.resolve()
+        or args.task_id != "omp-default-mission"
+        or args.ledger.resolve() != default_ledger.resolve()
+    ):
+        parser.error("custom --task-json, --task-id, or --ledger require --select evidence")
     result = sync_omp_skills(args.omp_skills_dir, selection=selection, apply=args.apply)
     if selector_receipt is not None:
         result = {

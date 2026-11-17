@@ -17,11 +17,11 @@ These names are resolved from existing canonical directories. Active source matu
 
 ## Evidence-aware selector (T1) and static baselines
 
-The default command below still uses `OMP_POWER_SELECTION` unchanged. On this revision that constant is the 38-skill list, because the eight Apple/macOS/iOS atomics from PR #56 are already on main. Comparison names:
+The default OMP sync command uses **T1 evidence selection** with `evidence/skill-selection/default-omp-task.json` and the fixture ledger. Pass `--select static` when you explicitly want the full **B2** `OMP_POWER_SELECTION` (38 skills, including eight Apple/macOS/iOS atomics from PR #56). Comparison names:
 
 - **B1** is the frozen 30-skill coalition from PR #51 (merge `da26fa48`): 20 atomics, 4 compound skills, and 6 mega skills. It does not include the Apple platform atomics. The list lives in `scripts/skill_evidence_selector.py` as `B1_COALITION`.
 - **B2** is today's `OMP_POWER_SELECTION`: B1 plus `desktop-commander-overview`, `re-apple-bundles`, `swiftui-patterns`, `swift-concurrency-6-2`, `xcode-project-setup`, `mobile-design`, `foundation-models-on-device`, and `ios-icon-gen`.
-- **T1** is opt-in. `--select evidence` reads a task descriptor plus the append-only ledger, then passes that coalition into the existing `sync_omp_skills(..., selection=...)`. Preflight, no overwrites, rollback on failed readback, and write-free preview stay in the installer.
+- **T1** is the default for `--runtime omp`. It reads a task descriptor plus the append-only ledger (repo defaults unless you override paths), then passes that coalition into `sync_omp_skills(..., selection=...)`. Preflight, no overwrites, rollback on failed readback, and preview-before-apply stay in the installer.
 
 T1 scores a task family by pass/fail, regressions, mean wall time, and a cost proxy. The cost proxy is the sum of canonical contract bytes: `SKILL.md` for atomics, `COMBO.md` for compound skills, and `MEGA.md` for mega skills. Catalog prestige and skill count do not raise a score. A skill outside B1 is added only when that family's utility is positive. A skill marked harmful or conflicting for that family is removed. Rows from another family do not transfer. If the family has no usable evidence, T1 returns B1 unchanged and sets `decision` to `no evidence`. It does not invent a new default bundle.
 
@@ -48,9 +48,7 @@ From a checked-out Mega-Skills repository at the intended revision:
 
     python3 scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills"
 
-This is **preview-only**, returns per-item planned/existing/conflict/missing state and SHA-256 of each current source contract, and does not create the OMP skills directory.
-
-After inspecting the preview and selecting the correct profile, apply only missing links/adapters:
+This is **preview-only** (T1 evidence coalition by default). For the static 38-skill bundle add `--select static`. Apply only after preview when paths look correct:
 
     python3 scripts/sync_runtime_skills.py --runtime omp --omp-skills-dir "$HOME/.omp/agent/skills" --apply
 

@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "id": "omp-default-mission",
+      "intent": "Execute an unspecified operator mission using evidence-aware skill selection when no explicit task descriptor was supplied.",
+      "domain_tags": ["python", "repair", "verification"],
+      "required_artifacts": ["scripts/sync_runtime_skills.py"],
+      "task_family": "python-repair",
+      "mentioned_skill_ids": [
+        "verification-before-completion",
+        "systematic-debugging",
+        "test-driven-development"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "glaciereq.omp-host-apply.v1",
+  "host": "cloud-agent-linux",
+  "omp_skills_dir": "/home/ubuntu/.omp/agent/skills",
+  "select_mode": "evidence",
+  "task_id": "omp-default-mission",
+  "applied_at_utc": "2026-11-16T21:00:00Z",
+  "repo_commit": "c3dcb576e536e0e1a1570d41317e709740b7173a",
+  "skills_installed": 30,
+  "decision": "evidence",
+  "exit_code": 0,
+  "note": "Proves installer apply+readback on a real OMP profile path. Operator Mac path is the same command with the same defaults; not a separate permission gate."
+}
