@@ -1,1 +1,1 @@
-LOAD_FROM_FILE:/tmp/mega_push/privacy_skill.txt
+PLACEHOLDER_WILL_REPLACE
