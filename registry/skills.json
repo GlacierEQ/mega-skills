@@ -12318,29 +12318,6 @@
       ]
     },
     {
-      "id": "pro-mastermind-quality-processors",
-      "display_name": "Pro Mastermind Quality Processors",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/pro-mastermind-quality-processors",
-      "entrypoint": "skills/pro-mastermind-quality-processors/SKILL.md",
-      "purpose": "Reconnect Pro-Mastermind with Mastermind control, Kanban squads, and pitstop calibrators as cruising quality processors.",
-      "input_contract": [
-        "Operator reconnect intent and Mastermind/Pro-Mastermind checkout paths"
-      ],
-      "output_contract": [
-        "Seeded Kanban processor board, maximize receipt, portable home boot"
-      ],
-      "local_validation": [
-        "python3 scripts/validate_hierarchy.py"
-      ],
-      "does_not_own": [
-        "Absorbing specialist repos into Mastermind",
-        "Unprompted irreversible external effects"
-      ]
-    },
-    {
       "id": "product-business-analysis",
       "display_name": "Product Business Analysis",
       "ownership": "glaciereq",
@@ -16697,30 +16674,6 @@
       ]
     },
     {
-      "id": "hidden-harm-governance",
-      "display_name": "Hidden Harm Governance Calibrator",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.2.0",
-      "path": "skills/hidden-harm-governance",
-      "entrypoint": "skills/hidden-harm-governance/SKILL.md",
-      "purpose": "Quality pitstop calibrator: convert false HARD-GATEs, approval theater, GATE DENIED, and soft caps into enrichment level-ups that continue. Reserved irreversible boundaries stay hard stops unless the Operator explicitly authorized that exact effect.",
-      "input_contract": [
-        "Proposed gate / instruction / skill text and Operator authorization flags"
-      ],
-      "output_contract": [
-        "QUALITY_PITSTOP, AUTHORIZED_BOUNDARY, HARD_BOUNDARY, or NEUTRAL_CONTINUE receipt"
-      ],
-      "local_validation": [
-        "python3 -m unittest tests.test_gate_polarity",
-        "python3 scripts/validate_hierarchy.py"
-      ],
-      "does_not_own": [
-        "Operator authority to define mission",
-        "Unprompted irreversible external effects"
-      ]
-    },
-    {
       "id": "hidden-harm-github",
       "display_name": "Hidden Harm Github",
       "ownership": "glaciereq",
@@ -16741,29 +16694,6 @@
       ],
       "does_not_own": [
         "Unverified claims of production execution or mission completion"
-      ]
-    },
-    {
-      "id": "hidden-harm-counter-wave",
-      "display_name": "Hidden Harm Counter Wave",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/hidden-harm-counter-wave",
-      "entrypoint": "skills/hidden-harm-counter-wave/SKILL.md",
-      "purpose": "Always-on Operator counter-wave: compose domain hidden-harm specialists on every material transition and recursively counter-engineer meta-harms introduced by remediations.",
-      "input_contract": [
-        "Work unit description and optional domain tags"
-      ],
-      "output_contract": [
-        "Composition plan with specialists, recursive meta-harm checklist, and routing receipt"
-      ],
-      "local_validation": [
-        "python3 -m unittest discover -s skills/hidden-harm-counter-wave/tests -v",
-        "python3 scripts/hidden_harm_counter_wave.py --json \"wire Iceberg MCP\""
-      ],
-      "does_not_own": [
-        "Becoming a permission ladder or displacing the Operator objective with audit theater"
       ]
     },
     {
@@ -29873,284 +29803,55 @@
       ]
     },
     {
-      "id": "adverse-outcome-remedy-router",
-      "display_name": "Adverse Outcome Remedy Router",
+      "id": "elite-kanban-team",
+      "display_name": "Elite Kanban Team",
       "ownership": "glaciereq",
       "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/adverse-outcome-remedy-router",
-      "entrypoint": "skills/adverse-outcome-remedy-router/SKILL.md",
-      "purpose": "Branch actual grant, partial grant, denial, no-response or ambiguous state to lawful next action.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "correspondence-identity-gate",
-      "display_name": "Correspondence Identity Gate",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/correspondence-identity-gate",
-      "entrypoint": "skills/correspondence-identity-gate/SKILL.md",
-      "purpose": "Resolve authenticated sender, beneficiary and first-party authority while preserving historical threads.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "jurisdiction-authority-citation-check",
-      "display_name": "Jurisdiction Authority Citation Check",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/jurisdiction-authority-citation-check",
-      "entrypoint": "skills/jurisdiction-authority-citation-check/SKILL.md",
-      "purpose": "Verify applicable jurisdiction, current rule, primary-law citation and actual deadline before correspondence.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "linear-frontier-deduplicator",
-      "display_name": "Linear Frontier Deduplicator",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/linear-frontier-deduplicator",
-      "entrypoint": "skills/linear-frontier-deduplicator/SKILL.md",
-      "purpose": "Reconcile provider evidence against existing Linear issue graph and prevent duplicate external actions.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "27 focused reconciliation tests in tests/test_correspondence_decision_gate.py; host/provider integration not yet verified"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "precision-provider-email",
-      "display_name": "Precision Provider Email",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/precision-provider-email",
-      "entrypoint": "skills/precision-provider-email/SKILL.md",
-      "purpose": "Draft evidence-and-law-grounded correspondence without avoidable admissions, repetition or unsupported claims.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "provider-thread-forensics",
-      "display_name": "Provider Thread Forensics",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/provider-thread-forensics",
-      "entrypoint": "skills/provider-thread-forensics/SKILL.md",
-      "purpose": "Reconstruct provider-native email chronology and exact draft/sent/received/decision stages.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "receipt-provenance-continuation",
-      "display_name": "Receipt Provenance Continuation",
-      "ownership": "glaciereq",
-      "maturity": "candidate",
-      "version": "0.1.0",
-      "path": "skills/receipt-provenance-continuation",
-      "entrypoint": "skills/receipt-provenance-continuation/SKILL.md",
-      "purpose": "Read back actual provider effects and write a safe source-bound resume cursor in existing Linear issue.",
-      "input_contract": [
-        "Owning mission ID, provider-native source pointers, actual scope and authorized context"
-      ],
-      "output_contract": [
-        "Source-linked skill output with audit receipt and exact continuation"
-      ],
-      "local_validation": [
-        "Hierarchy contract validation and adversarial scenario checks; runtime integration not yet established"
-      ],
-      "does_not_own": [
-        "External email sends or legal filing without specific human approval",
-        "Autonomous provider facts or automatic ChatGPT session boot"
-      ]
-    },
-    {
-      "id": "library-quality-audit",
-      "display_name": "Library Quality Audit",
-      "ownership": "glaciereq",
-      "maturity": "active",
       "version": "1.0.0",
-      "path": "skills/library-quality-audit",
-      "entrypoint": "skills/library-quality-audit/SKILL.md",
-      "purpose": "Reject any capability claim lacking an admitted, bound, non-stale source. Use as the final gate before publishing a device-capability claim.",
+      "path": "skills/elite-kanban-team",
+      "entrypoint": "skills/elite-kanban-team/SKILL.md",
+      "purpose": "Operate top-level kanban teams with zero bad habits: anti-pattern contract, two-phase dispatch, 6-stage lifecycle, merge/receipt gates, headroom gate, metrics. Run when building or running a kanban team at power.",
       "input_contract": [
-        "Claim set with source ids",
-        "Admitted, bound, and assessed source records"
+        "mission mandate and parameters",
+        "team composition (owner, scope)"
       ],
       "output_contract": [
-        "MACBOOK_AIR_LINK_AUDIT.md with pass or fail decision and unsupported claims"
+        "verified task execution receipt and output payload",
+        "teamagent handoff artifacts with l2_proof + sha256 chain"
       ],
       "local_validation": [
-        "100% test assertions in skills/library-quality-audit/tests/test_library_quality_audit.py"
+        "pipeline-lint.py exit 0 (DAG + timeout + headroom gate)",
+        "kanban-throughput.py reports parallel_saved > 0",
+        "team-delivery verify gates green (l2_proof:true + sha256 chain)"
       ],
       "does_not_own": [
-        "Source admission, device binding, or version pinning"
+        "unverified work, full-context transcripts, parallel heavy builds"
       ]
     },
     {
-      "id": "link-admission",
-      "display_name": "Link Admission",
+      "id": "elite-kanban-team",
+      "display_name": "Elite Kanban Team",
       "ownership": "glaciereq",
-      "maturity": "active",
+      "maturity": "candidate",
       "version": "1.0.0",
-      "path": "skills/link-admission",
-      "entrypoint": "skills/link-admission/SKILL.md",
-      "purpose": "Admit candidate external sources for a named domain with stated authority and relevance. Use before sources are bound or cited.",
+      "path": "skills/elite-kanban-team",
+      "entrypoint": "skills/elite-kanban-team/SKILL.md",
+      "purpose": "Operate top-level kanban teams with zero bad habits: anti-pattern contract, two-phase dispatch, 6-stage lifecycle, merge/receipt gates, headroom gate, metrics. Run when building or running a kanban team at power.",
       "input_contract": [
-        "Candidate source list with url, authority, and relevance",
-        "Target domain for the route"
+        "mission mandate and parameters",
+        "team composition (owner, scope)"
       ],
       "output_contract": [
-        "LINK_ADMISSION.md with admitted and rejected sources"
+        "verified task execution receipt and output payload",
+        "teamagent handoff artifacts with l2_proof + sha256 chain"
       ],
       "local_validation": [
-        "100% test assertions in skills/link-admission/tests/test_link_admission.py"
+        "pipeline-lint.py exit 0 (DAG + timeout + headroom gate)",
+        "kanban-throughput.py reports parallel_saved > 0",
+        "team-delivery verify gates green (l2_proof:true + sha256 chain)"
       ],
       "does_not_own": [
-        "Binding sources to device properties, version currency, or claim verification"
-      ]
-    },
-    {
-      "id": "machine-binding",
-      "display_name": "Machine Binding",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/machine-binding",
-      "entrypoint": "skills/machine-binding/SKILL.md",
-      "purpose": "Bind admitted sources to specific observed device properties so generic guidance becomes evidence about this host. Use before citing a source for a device-specific claim.",
-      "input_contract": [
-        "Admitted source set",
-        "Observed device profile"
-      ],
-      "output_contract": [
-        "MACHINE_BINDING.md mapping sources to observed properties"
-      ],
-      "local_validation": [
-        "100% test assertions in skills/machine-binding/tests/test_machine_binding.py"
-      ],
-      "does_not_own": [
-        "Source admission, version currency, or claim acceptance"
-      ]
-    },
-    {
-      "id": "staleness-assess",
-      "display_name": "Staleness Assessment",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "1.0.0",
-      "path": "skills/staleness-assess",
-      "entrypoint": "skills/staleness-assess/SKILL.md",
-      "purpose": "Record version and resolution-date currency for bound sources so a moving target cannot silently become a contradiction.",
-      "input_contract": [
-        "Bound source set",
-        "Resolved versions and dates"
-      ],
-      "output_contract": [
-        "LINK_STALENESS.md with current and unpinned sets"
-      ],
-      "local_validation": [
-        "100% test assertions in skills/staleness-assess/tests/test_staleness_assess.py"
-      ],
-      "does_not_own": [
-        "Source admission, device binding, or claim acceptance"
-      ]
-    },
-    {
-      "id": "telecommunications-execution-core",
-      "display_name": "Telecommunications Execution Core",
-      "ownership": "glaciereq",
-      "maturity": "active",
-      "version": "0.1.0",
-      "path": "skills/telecommunications-execution-core",
-      "entrypoint": "skills/telecommunications-execution-core/SKILL.md",
-      "purpose": "Validate APEX telecom mission preflight and provider-native communication receipts with independent state dimensions and false-success prevention.",
-      "input_contract": [
-        "Bounded telecommunications mission JSON",
-        "Optional provider-native receipt JSON"
-      ],
-      "output_contract": [
-        "telecommunications-execution-receipt.json"
-      ],
-      "local_validation": [
-        "100% assertions pass in tests/test_telecommunications_execution_core.py",
-        "Stale/unauthorized/non-allowlisted missions fail closed",
-        "False-success claims produce REPAIR/BLOCKED rather than success"
-      ],
-      "does_not_own": [
-        "External call/SMS send authority",
-        "Provider runtime internals",
-        "Legal case truth",
-        "Relationship identity sovereignty"
+        "unverified work, full-context transcripts, parallel heavy builds"
       ]
     }
   ]

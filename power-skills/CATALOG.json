@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "layer": "power-skills",
+  "created": "2026-11-17",
+  "verified": true,
+  "entries": [
+    {
+      "id": "apex-orchestration",
+      "path": "projects/mega-skills/skills/apex-orchestration",
+      "name": "APEX Orchestration",
+      "desc": "12-lane holographic mission mesh, 26 logic packets, 6-stage lifecycle, receipt-chain verification",
+      "power": "mission-mastery: decompose->dispatch->verify->fuse->deliver",
+      "purpose": "mission-mastery",
+      "merge_with": [
+        "team-agent-orchestration",
+        "ws-verify"
+      ]
+    },
+    {
+      "id": "team-agent-orchestration",
+      "path": "projects/mega-skills/skills/team-agent-orchestration",
+      "name": "Team Agent Orchestration",
+      "desc": "team Kanban + board + merge-gate for multi-agent squads",
+      "power": "team governance: owner/scope/acceptance/merge-gate",
+      "purpose": "team-governance",
+      "merge_with": [
+        "apex-orchestration",
+        "team-builder"
+      ]
+    },
+    {
+      "id": "team-builder",
+      "path": "projects/mega-skills/skills/team-builder",
+      "name": "Team Builder",
+      "desc": "pick arbitrary cross-domain agent teams from role files",
+      "power": "ad-hoc team composition",
+      "purpose": "team-composition",
+      "merge_with": [
+        "team-agent-orchestration",
+        "elite-kanban-team"
+      ]
+    },
+    {
+      "id": "ws-verify",
+      "path": "env-bin:ws-verify",
+      "name": "ws-verify",
+      "desc": "SHA-256 chain-of-custody dossier verify: HASHES: OK, ZIP: OK, SEAL: OK",
+      "power": "cryptographic release verification",
+      "purpose": "verification",
+      "merge_with": [
+        "build_release.py",
+        "apex-evidence"
+      ]
+    },
+    {
+      "id": "legal-dossier-ops",
+      "path": "dotfiles-skills:legal-dossier-ops",
+      "name": "Legal Dossier Ops",
+      "desc": "hedge-lint, cite-check, provenance, deadline-clock; legal quality gates",
+      "power": "filing quality: no self-undermining hedges, cite-check, provenance",
+      "purpose": "legal-quality",
+      "merge_with": [
+        "apex-orchestration",
+        "ws-verify"
+      ]
+    },
+    {
+      "id": "weblibre",
+      "path": "dotfiles-skills:weblibre",
+      "name": "WebLibre",
+      "desc": "multi-source research + citations, reader-mode, agent search",
+      "power": "research amplification",
+      "purpose": "research",
+      "merge_with": [
+        "apex-orchestration",
+        "team-agent-orchestration"
+      ]
+    },
+    {
+      "id": "apex-boot-core",
+      "path": "projects/apex-boot-core",
+      "name": "Apex Boot Core",
+      "desc": "cold-start bootstrap + vault seed",
+      "power": "cold-start",
+      "purpose": "cold-start",
+      "merge_with": [
+        "aspen-grove-core"
+      ]
+    },
+    {
+      "id": "aspen-grove-core",
+      "path": "projects/aspen-grove-core",
+      "name": "Aspen Grove Core",
+      "desc": "ontology spine + routing + elite-core verification",
+      "power": "knowledge spine + elite-core verification",
+      "purpose": "ontology",
+      "merge_with": [
+        "apex-boot-core",
+        "apex-memory"
+      ]
+    },
+    {
+      "id": "apex-memory",
+      "path": "env-bin:apex-memory",
+      "name": "Apex Memory",
+      "desc": "persistent memory / state",
+      "power": "state persistence across sessions",
+      "purpose": "state",
+      "merge_with": [
+        "aspen-grove-core"
+      ]
+    },
+    {
+      "id": "aspen-grove-evidence",
+      "path": "projects/aspen-grove-evidence",
+      "name": "Aspen Grove Evidence",
+      "desc": "evidentiary provenance / source-bearing artifacts",
+      "power": "evidentiary provenance",
+      "purpose": "provenance",
+      "merge_with": [
+        "ws-verify",
+        "apex-memory"
+      ]
+    },
+    {
+      "id": "build_release.py",
+      "path": "NEXCOM-CVB-APEX-FORTRESS/scripts/build_release.py",
+      "name": "build_release",
+      "desc": "SHA-256 CoC manifest + byte-deterministic ZIP for the dossier",
+      "power": "release packaging",
+      "purpose": "release-packaging",
+      "merge_with": [
+        "ws-verify",
+        "aspen-grove-evidence"
+      ]
+    },
+    {
+      "id": "legal-doc-clean",
+      "path": "dotfiles-skills:legal-doc-clean",
+      "name": "Legal Doc Clean",
+      "desc": "strip transcript scaffolding, hype, emoji; reformat filings",
+      "power": "filing-form-cleanup",
+      "purpose": "filing-form-cleanup",
+      "merge_with": [
+        "legal-hedge-lint",
+        "apex-orchestration"
+      ]
+    }
+  ]
+}
