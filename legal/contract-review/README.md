@@ -186,7 +186,7 @@ Based on ContractEval benchmarks, Claude achieves F1 ~0.62 on clause extraction.
 
 - [CUAD Dataset](https://github.com/TheAtticusProject/cuad) — Atticus Project (NeurIPS 2021)
 - [LegalBench](https://hazyresearch.stanford.edu/legalbench/) — Stanford HAI
-- [ContractEval](https://arxiv.org/abs/2303.07389) — Contract understanding benchmarks
+- [ContractEval](https://arxiv.org/abs/2303.073389) — Contract understanding benchmarks
 
 ## Next Steps
 
