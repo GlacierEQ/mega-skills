@@ -15,10 +15,18 @@
       "transcription_status": "generated — review pending",
       "source_location": "iCloud UNIFIED_FORENSIC_LIBRARY/04_AUDIO",
       "integrity_records": [
-        {"source": "CASE EVIDENCE INVENTORY (Notion)", "sha256": "9086d2922d0c3fdc868f03d3412b5eeb98619762b2948f4007e11942faa556da"},
-        {"source": "P1 TRANSCRIBE task row (Notion Legal War Room)", "sha256": "faab712a693925cce0abf17b94a6f90b86f88d5cce2535a23b92c4b0681cd427", "file_description": "Oct 11 at 3-29 PM Kekoa Distress.m4a", "duration": "45m 50s"}
+        {"source": "CASE EVIDENCE INVENTORY (Notion)", "sha256": "9086d2922d0c3fdc868f03d3412b5eeb98619762b2948f4007e11942faa556da", "authoritative": true},
+        {"source": "P1 TRANSCRIBE task row (Notion Legal War Room)", "sha256": "faab712a693925cce0abf17b94a6f90b86f88d5cce2535a23b92c4b0681cd427", "file_description": "Oct 11 at 3-29 PM Kekoa Distress.m4a", "duration": "45m 50s", "authoritative": false}
       ],
-      "integrity_flag": "HASH_DISCREPANCY_UNRESOLVED — two workspace records carry different SHA-256 values and descriptions for EX-AUD-001; resolve by re-hashing the custodial original before any filing use"
+      "custodial_original": {
+        "path": "dropbox:UNIFIED_FORENSIC_LIBRARY/04_AUDIO/LEGACY_MIXED_INBOX_IMPORT_2026-08-03/FAMILY_AND_LEGAL_NAMED_RECORDINGS/Phone call - kekoa is alone.m4a",
+        "size_bytes": 2979676,
+        "mod_time": "2026-04-10T23:18:38Z",
+        "sha256": "9086d2922d0c3fdc868f03d3412b5eeb98619762b2948f4007e11942faa556da",
+        "verified_at": "2026-11-17",
+        "method": "rclone copyto --retries 3, then sha256sum; local size matched remote lsjson Size"
+      },
+      "integrity_flag": "RECONCILED 2026-11-17 — custodial original SHA-256 9086d292… matches the Notion inventory record. The P1 task row's faab712a… carries a different file description (\"Oct 11 at 3-29 PM Kekoa Distress.m4a\") and is not this exhibit."
     },
     {
       "id": "1FDV-23-1009_EX-AUD-002",

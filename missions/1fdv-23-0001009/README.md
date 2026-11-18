@@ -23,13 +23,15 @@ into `intake/` and `audio/` are hashed, anomaly-scanned, PII-scanned,
 Bates-planned, and custody-chained. The pipeline is `read_only` over evidence
 and fail-closed: any stage that cannot verify exits non-zero and stops the run.
 
-## Open integrity flag (surfaced, not hidden)
+## Integrity flag — RESOLVED 2026-11-17
 
-`1FDV-23-1009_EX-AUD-001` carries **two conflicting SHA-256 records** in the
-workspace (inventory `9086d292…` vs P1 task row `faab712a…`, with different
-file descriptions). Re-hash the custodial original and reconcile the register
-before any filing use of that exhibit. The pipeline's anomaly philosophy:
-surface, never silently resolve.
+`1FDV-23-1009_EX-AUD-001` carried two conflicting SHA-256 records (inventory
+`9086d292…` vs P1 task row `faab712a…`). The custodial original was re-hashed
+(`dropbox:UNIFIED_FORENSIC_LIBRARY/04_AUDIO/…/Phone call - kekoa is alone.m4a`,
+2,979,676 bytes) → **`9086d292…`**, matching the inventory record. The P1 task
+row's `faab712a…` describes a different file ("Oct 11 at 3-29 PM Kekoa
+Distress.m4a") and is not this exhibit. Register updated; exhibit cleared for
+filing use.
 
 ## Runbook
 
