@@ -20,7 +20,6 @@ This skill consumes a local portable report, preferably self-contained HTML. If 
 2. Run the helper.
 
    ```bash
-   python3 <REPORT_TO_GOOGLE_SLIDES_SKILL_DIR>/scripts/report_to_google_slides.py \
      <LOCAL_HTML_REPORT_PATH> \
      --out-dir /tmp/report_to_google_slides
    ```

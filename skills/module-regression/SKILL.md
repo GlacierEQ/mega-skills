@@ -39,7 +39,7 @@ The remedy is a **regression ledger** (`REGRESSION.md`) plus a deterministic aud
 ## Module 03 — Shop Data Cleaning
 Downstream consumers: 05-aggregation, 07-final-export
 Dependency evidence: `<repository dependency graph or reproducible scan command>`
-Regression acceptance command: `pytest tests/test_03.py && python scripts/reconcile.py --module 03`
+# (removed: referenced absent script)
 Propagation rule: external behavior change → run 05 and 07; internal-only change with a green module check → downstream may be exempted
 ```
 

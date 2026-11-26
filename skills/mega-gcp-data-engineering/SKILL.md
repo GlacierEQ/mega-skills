@@ -256,7 +256,7 @@ and validate them with the user.
 > `google_cloud_storage`). It uses the derived project and location from Step 0.
 
 ```bash
-python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID>
+# NOTE: scripts/bigquery_dts.py is not shipped in this skill; see prose below.
 ```
 
 1.  **Run Discovery Script**: Use the `bigquery_dts.py` script to inspect Data
@@ -264,7 +264,7 @@ python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID>
 
     ```bash
     # Passes the derived project and region to the script.
-    python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID> <DATA_SOURCE_ID> <REGION>
+    # NOTE: scripts/bigquery_dts.py is not shipped in this skill; see prose below.
     ```
 
     > [!IMPORTANT]
@@ -589,10 +589,10 @@ Perform these checks **before** generating the `implementation_plan.md`.
         available (unless scan was denied).
     -   **Commands**:
 
-        1.  **Obtain user approval**: Present the `scripts/dataplex_scanner.py`
+# (removed: referenced absent script)
             scan command to the user and obtain explicit approval before
             executing it. Use the following template to present the command:
-            -   **Command**: `python3 scripts/dataplex_scanner.py ...` (Fetch
+# (removed: referenced absent script)
                 full arguments from step 6 below)
             -   **Summary**: The script automates Dataplex data profiling. It
                 checks table sizes, applies dynamic sampling for large tables
@@ -608,7 +608,7 @@ Perform these checks **before** generating the `implementation_plan.md`.
             -   **Scope**: The approval obtained here covers all executions of
                 this scanner script for this task (including verification
                 steps).
-        2.  Run the `scripts/dataplex_scanner.py` script located in the same
+# (removed: referenced absent script)
             directory as this `SKILL.md` file. This script handles concurrent
             scan creation, dynamic sampling for large tables, and polling for
             results. Use --help to learn more.
@@ -622,7 +622,7 @@ Perform these checks **before** generating the `implementation_plan.md`.
         6.  Use the following command template:
 
             ```bash
-            python3 scripts/dataplex_scanner.py \
+            # NOTE: scripts/dataplex_scanner.py is not shipped in this skill; see prose below.
               --tables <project.dataset.table> <project.catalog.namespace.table> \
               --location <location> \
               --output-dir <output_dir>
@@ -745,7 +745,7 @@ Perform these checks **before** generating the `implementation_plan.md`.
         If approval was DENIED in Step 1, DO NOT run the scanner script and DO
         NOT ask the user for approval again. Proceed with manual verification
         using `bq` sample queries to ensure transformations were successful.
-    -   Run the `scripts/dataplex_scanner.py` script on the temporary table.
+# (removed: referenced absent script)
     -   The script will automatically wait for the profile job to finish and
         save the results as JSON.
 5.  **Compare profiles** (Skip if scans were denied) — Check the new profile
@@ -3766,7 +3766,7 @@ Deploy → Poll → Trigger flow.
 > with -- help to discover and learn the interface.
 >
 > ```
-> python scripts/trigger/airflow_trigger.py \ --project <PROJECT_ID>
+# (removed: referenced absent script)
 > --location <REGION> \ --environment <COMPOSER_ENV> --dag_id <PIPELINE_ID>
 > ```
 >

@@ -46,19 +46,19 @@ sees `.agents/skills/`. This script is the cross-tree gate:
 From the repo root:
 
 ```bash
-node scripts/ci/validate-skill-host-compat.js
+# NOTE: scripts/ci/validate-skill-host-compat.js is not shipped in this skill; see prose below.
 ```
 
 Print counts without failing:
 
 ```bash
-node scripts/ci/validate-skill-host-compat.js --inventory
+# NOTE: scripts/ci/validate-skill-host-compat.js is not shipped in this skill; see prose below.
 ```
 
 Promote checklist warnings:
 
 ```bash
-node scripts/ci/validate-skill-host-compat.js --strict-checklist
+# NOTE: scripts/ci/validate-skill-host-compat.js is not shipped in this skill; see prose below.
 ```
 
 Slash command:

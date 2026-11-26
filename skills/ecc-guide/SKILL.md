@@ -27,12 +27,12 @@ Answer from current files, not memory. ECC changes quickly, so hard-coded catalo
 When the ECC repository is available, inspect the relevant files before giving a concrete answer:
 
 ```bash
-node scripts/ci/catalog.js --json
+# NOTE: scripts/ci/catalog.js is not shipped in this skill; see prose below.
 find skills -maxdepth 2 -name SKILL.md | sort
 find commands -maxdepth 1 -name '*.md' | sort
 find agents -maxdepth 1 -name '*.md' | sort
-node scripts/install-plan.js --list-profiles
-node scripts/install-plan.js --list-components --json
+# NOTE: scripts/install-plan.js is not shipped in this skill; see prose below.
+# NOTE: scripts/install-plan.js is not shipped in this skill; see prose below.
 ```
 
 Use the smallest set of reads needed for the user's question.
@@ -105,16 +105,16 @@ find skills -maxdepth 2 -name SKILL.md | sort
 Use managed install paths:
 
 ```bash
-node scripts/install-plan.js --list-profiles
-node scripts/install-plan.js --profile minimal --target claude --json
-node scripts/install-apply.js --profile minimal --target claude --dry-run
+# NOTE: scripts/install-plan.js is not shipped in this skill; see prose below.
+# NOTE: scripts/install-plan.js is not shipped in this skill; see prose below.
+# NOTE: scripts/install-apply.js is not shipped in this skill; see prose below.
 ```
 
 For specific skill installs:
 
 ```bash
-node scripts/install-plan.js --skills <skill-id> --target claude --json
-node scripts/install-apply.js --skills <skill-id> --target claude --dry-run
+# NOTE: scripts/install-plan.js is not shipped in this skill; see prose below.
+# NOTE: scripts/install-apply.js is not shipped in this skill; see prose below.
 ```
 
 Warn users not to stack plugin installs and full manual/profile installs unless they intentionally want duplicate surfaces.

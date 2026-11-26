@@ -48,7 +48,7 @@ python scripts/run.py notebook_manager.py list
 python scripts/run.py ask_question.py --question "..."
 
 # ❌ WRONG - Never call directly:
-python scripts/auth_manager.py status  # Fails without venv!
+# NOTE: scripts/auth_manager.py is not shipped in this skill; see prose below.
 ```
 
 The `run.py` wrapper automatically:

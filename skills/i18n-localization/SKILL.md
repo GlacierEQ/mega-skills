@@ -150,4 +150,4 @@ Before shipping:
 
 | Script | Purpose | Command |
 |--------|---------|---------|
-| `scripts/i18n_checker.py` | Detect hardcoded strings & missing translations | `python scripts/i18n_checker.py <project_path>` |
+| Detect hardcoded strings & missing translations |

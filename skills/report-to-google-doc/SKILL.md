@@ -19,7 +19,6 @@ The expected path is HTML -> DOCX -> Drive upload. It is acceptable for Drive to
 2. Run the bundled helper.
 
    ```bash
-   python3 <REPORT_TO_GOOGLE_DOC_SKILL_DIR>/scripts/report_to_google_doc_plan.py \
      /absolute/path/to/report.html \
      --out-dir /tmp/report_to_google_doc_plan
    ```
@@ -102,7 +101,6 @@ Use these fixes when validation exposes a conversion issue:
 
 ```bash
 python3 -m py_compile <REPORT_TO_GOOGLE_DOC_SKILL_DIR>/scripts/report_to_google_doc_plan.py
-python3 <REPORT_TO_GOOGLE_DOC_SKILL_DIR>/scripts/report_to_google_doc_plan.py \
   /absolute/path/to/report.html \
   --out-dir /tmp/report_to_google_doc_plan_smoke
 jq '.status, .summary' /tmp/report_to_google_doc_plan_smoke/preflight_checks.json

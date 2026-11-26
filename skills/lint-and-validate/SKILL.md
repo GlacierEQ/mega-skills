@@ -39,5 +39,5 @@ description: "Autonomous skill for lint and validate within the APEX Estate."
 
 | Script | Purpose | Command |
 |--------|---------|---------|
-| `scripts/lint_runner.py` | Unified lint check | `python scripts/lint_runner.py <project_path>` |
-| `scripts/type_coverage.py` | Type coverage analysis | `python scripts/type_coverage.py <project_path>` |
+| Unified lint check |
+| Type coverage analysis |

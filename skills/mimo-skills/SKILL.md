@@ -38,13 +38,8 @@ description: "Operational capability for mimo skills."
 
 ```bash
 # capability + savings + heavy verify
-python3 ~/GlacierEQ_Swarm/automations/make-heavy-microwave-flipper.py
-python3 ~/GlacierEQ_Swarm/automations/token-100pct-savings-flipper.py
-python3 ~/GlacierEQ_Swarm/automations/toolbelt-doctor.py
 
 # voice mission
-python3 ~/GlacierEQ_Swarm/automations/voice-memo-stage-a-flipper.py
-python3 ~/GlacierEQ_Swarm/automations/voice-memo-stage-c-queue-flipper.py
 ```
 
 Ptr results: `state/*_last.json` · `state/capability_merge.json` · `state/voice_memos/`.

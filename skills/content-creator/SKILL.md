@@ -13,7 +13,7 @@ content creation, blog posts, SEO, brand voice, social media, content calendar, 
 ## Quick Start
 
 ### For Brand Voice Development
-1. Run `scripts/brand_voice_analyzer.py` on existing content to establish baseline
+# (removed: referenced absent script)
 2. Review `references/brand_guidelines.md` to select voice attributes
 3. Apply chosen voice consistently across all content
 
@@ -21,7 +21,7 @@ content creation, blog posts, SEO, brand voice, social media, content calendar, 
 1. Choose template from `references/content_frameworks.md`
 2. Research keywords for topic
 3. Write content following template structure
-4. Run `scripts/seo_optimizer.py [file] [primary-keyword]` to optimize
+# (removed: referenced absent script)
 5. Apply recommendations before publishing
 
 ### For Social Media Content
@@ -38,7 +38,7 @@ When creating content for a new brand or client:
 
 1. **Analyze Existing Content** (if available)
    ```bash
-   python scripts/brand_voice_analyzer.py existing_content.txt
+   # NOTE: scripts/brand_voice_analyzer.py is not shipped in this skill; see prose below.
    ```
    
 2. **Define Voice Attributes**
@@ -66,7 +66,7 @@ When creating content for a new brand or client:
 
 3. **Optimization Check**
    ```bash
-   python scripts/seo_optimizer.py blog_post.md "primary keyword" "secondary,keywords,list"
+   # NOTE: scripts/seo_optimizer.py is not shipped in this skill; see prose below.
    ```
 
 4. **Apply SEO Recommendations**
@@ -115,7 +115,7 @@ When creating content for a new brand or client:
 ### brand_voice_analyzer.py
 Analyzes text content for voice characteristics, readability, and consistency.
 
-**Usage**: `python scripts/brand_voice_analyzer.py <file> [json|text]`
+# (removed: referenced absent script)
 
 **Returns**:
 - Voice profile (formality, tone, perspective)
@@ -126,7 +126,7 @@ Analyzes text content for voice characteristics, readability, and consistency.
 ### seo_optimizer.py
 Analyzes content for SEO optimization and provides actionable recommendations.
 
-**Usage**: `python scripts/seo_optimizer.py <file> [primary_keyword] [secondary_keywords]`
+# (removed: referenced absent script)
 
 **Returns**:
 - SEO score (0-100)
@@ -226,10 +226,10 @@ This skill works best with:
 
 ```bash
 # Analyze brand voice
-python scripts/brand_voice_analyzer.py content.txt
+# NOTE: scripts/brand_voice_analyzer.py is not shipped in this skill; see prose below.
 
 # Optimize for SEO
-python scripts/seo_optimizer.py article.md "main keyword"
+# NOTE: scripts/seo_optimizer.py is not shipped in this skill; see prose below.
 
 # Check content against brand guidelines
 grep -f references/brand_guidelines.md content.txt

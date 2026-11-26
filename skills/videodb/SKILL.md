@@ -314,7 +314,7 @@ except InvalidRequestError as e:
 #### クイックスタート
 
 1. **状態ディレクトリを選択**：`STATE_DIR="${VIDEODB_EVENTS_DIR:-$HOME/.local/state/videodb}"`
-2. **リスナーを起動**：`VIDEODB_EVENTS_DIR="$STATE_DIR" python scripts/ws_listener.py --clear "$STATE_DIR" &`
+# (removed: referenced absent script)
 3. **WebSocket IDを取得**：`cat "$STATE_DIR/videodb_ws_id"`
 4. **キャプチャコードを実行**（完全なワークフローはreference/capture.mdを参照）
 5. **イベントの書き込み先**：`$STATE_DIR/videodb_events.jsonl`

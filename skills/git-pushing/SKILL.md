@@ -21,13 +21,11 @@ Automatically activate when the user:
 **ALWAYS use the script** - do NOT use manual git commands:
 
 ```bash
-bash skills/git-pushing/scripts/smart_commit.sh
 ```
 
 With custom message:
 
 ```bash
-bash skills/git-pushing/scripts/smart_commit.sh "feat: add feature"
 ```
 
 Script handles: staging, conventional commit message, Claude footer, push with -u flag.

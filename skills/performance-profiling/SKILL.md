@@ -13,7 +13,7 @@ description: "Performance profiling principles. Measurement, analysis, and optim
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `scripts/lighthouse_audit.py` | Lighthouse performance audit | `python scripts/lighthouse_audit.py https://example.com` |
+| Lighthouse performance audit |
 
 ---
 

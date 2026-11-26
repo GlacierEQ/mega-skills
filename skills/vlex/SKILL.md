@@ -25,7 +25,6 @@ doc = client.get_document(results['results'][0]['id'])
 ### CLI
 ```bash
 export VLEX_API_KEY="your_key"
-python3 skills/integrations/vlex/vlex_client.py "child custody jurisdiction"
 ```
 
 ## Integration Hooks

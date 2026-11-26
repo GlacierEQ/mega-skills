@@ -91,7 +91,7 @@ and validate them with the user.
 > `google_cloud_storage`). It uses the derived project and location from Step 0.
 
 ```bash
-python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID>
+# NOTE: scripts/bigquery_dts.py is not shipped in this skill; see prose below.
 ```
 
 1.  **Run Discovery Script**: Use the `bigquery_dts.py` script to inspect Data
@@ -99,7 +99,7 @@ python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID>
 
     ```bash
     # Passes the derived project and region to the script.
-    python3 scripts/bigquery_dts.py --project_id=<PROJECT_ID> <DATA_SOURCE_ID> <REGION>
+    # NOTE: scripts/bigquery_dts.py is not shipped in this skill; see prose below.
     ```
 
     > [!IMPORTANT]

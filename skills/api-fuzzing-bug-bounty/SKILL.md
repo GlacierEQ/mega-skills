@@ -55,7 +55,6 @@ Identify API type and enumerate endpoints:
 kr scan https://target.com -w routes-large.kite
 
 # Extract paths from Swagger
-python3 json2paths.py swagger.json
 ```
 
 ### Step 2: Authentication Testing

@@ -8,7 +8,7 @@ description: "Toolkit for interacting with and testing local web applications us
 To test local web applications, write native Python Playwright scripts.
 
 **Helper Scripts Available**:
-- `scripts/with_server.py` - Manages server lifecycle (supports multiple servers)
+# (removed: referenced absent script)
 
 **Always run scripts with `--help` first** to see usage. DO NOT read the source until you try running the script first and find that a customized solution is abslutely necessary. These scripts can be very large and thus pollute your context window. They exist to be called directly as black-box scripts rather than ingested into your context window.
 
@@ -21,7 +21,7 @@ User task → Is it static HTML?
     │         └─ Fails/Incomplete → Treat as dynamic (below)
     │
     └─ No (dynamic webapp) → Is the server already running?
-        ├─ No → Run: python scripts/with_server.py --help
+# (removed: referenced absent script)
         │        Then use the helper + write simplified Playwright script
         │
         └─ Yes → Reconnaissance-then-action:
@@ -37,12 +37,12 @@ To start a server, run `--help` first, then use the helper:
 
 **Single server:**
 ```bash
-python scripts/with_server.py --server "npm run dev" --port 5173 -- python your_automation.py
+# NOTE: scripts/with_server.py is not shipped in this skill; see prose below.
 ```
 
 **Multiple servers (e.g., backend + frontend):**
 ```bash
-python scripts/with_server.py \
+# NOTE: scripts/with_server.py is not shipped in this skill; see prose below.
   --server "cd backend && python server.py" --port 3000 \
   --server "cd frontend && npm run dev" --port 5173 \
   -- python your_automation.py

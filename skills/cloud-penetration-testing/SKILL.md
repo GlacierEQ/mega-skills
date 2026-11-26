@@ -62,7 +62,6 @@ curl "https://login.microsoftonline.com/getuserrealm.srf?login=user@target.com&x
 curl "https://login.microsoftonline.com/target.com/v2.0/.well-known/openid-configuration"
 
 # Enumerate cloud resources by company name
-python3 cloud_enum.py -k targetcompany
 
 # Check IP against cloud providers
 cat ips.txt | python3 ip2provider.py
@@ -438,7 +437,6 @@ gcloud auth list
 ```powershell
 # Using MSOLSpray with FireProx for IP rotation
 # First create FireProx endpoint
-python fire.py --access_key <key> --secret_access_key <secret> --region us-east-1 --url https://login.microsoft.com --command create
 
 # Spray passwords
 Import-Module .\MSOLSpray.ps1

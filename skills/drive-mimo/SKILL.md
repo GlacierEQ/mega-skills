@@ -46,8 +46,8 @@ which tmux || echo "tmux not found — install it for TUI mode"
 ```
 
 > **Running the `wait-for-text.sh` helper:** invoke it as
-> `bash scripts/wait-for-text.sh …` from this skill's directory. The extracted
-> copy is not marked executable, so calling it directly (`scripts/wait-for-text.sh`)
+# (removed: referenced absent script)
+# (removed: referenced absent script)
 > would fail with "Permission denied" — always prefix with `bash`.
 
 ---
@@ -205,7 +205,7 @@ tmux new-session -d -s "$SESSION" -x 120 -y 30 \
   "MIMOCODE_HOME=$MHOME MIMOCODE_PURE=true mimo $WORKSPACE; sleep 999"
 
 # Wait for the TUI to render its input prompt
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "$PROMPT_RE" -T 15
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 ```
 
 Where `PROMPT_RE` is a language-neutral pattern for the input prompt. The
@@ -255,26 +255,26 @@ tmux capture-pane -t "$SESSION:0.0" -p -S -50
 
 ```bash
 # Wait for agent to start processing
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "thinking\|reading\|writing" -T 30
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Wait for tool permission prompt
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "Allow\|Deny\|permission\|approve" -T 30
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Wait for completion
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "completed\|done\|finished\|idle" -T 120
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Wait for error
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "error\|failed\|Error" -T 30
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Custom regex
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "hello\.txt.*world" -T 30
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 ```
 
 ### Handle permission dialogs
 
 ```bash
 # Wait for permission prompt, then approve
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "Allow\|approve" -T 30
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 tmux send-keys -t "$SESSION:0.0" -l -- "y"
 tmux send-keys -t "$SESSION:0.0" Enter
 
@@ -289,12 +289,12 @@ tmux send-keys -t "$SESSION:0.0" Enter
 # Turn 1: send initial message
 tmux send-keys -t "$SESSION:0.0" -l -- "Create a TypeScript file that adds two numbers"
 tmux send-keys -t "$SESSION:0.0" Enter
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "completed\|done" -T 120
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Turn 2: follow-up
 tmux send-keys -t "$SESSION:0.0" -l -- "Now add a test for it"
 tmux send-keys -t "$SESSION:0.0" Enter
-bash scripts/wait-for-text.sh -t "$SESSION:0.0" -p "completed\|done" -T 120
+# NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
 # Verify result
 tmux capture-pane -t "$SESSION:0.0" -p -S - | grep -i "pass\|fail"
@@ -352,14 +352,14 @@ test_tui_interactive() {
   tmux new-session -d -s "$SID" -x 120 -y 30 "MIMOCODE_HOME=$MHOME MIMOCODE_PURE=true mimo $WS; sleep 999"
 
   # Wait for prompt
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "$PROMPT_RE" -T 15 || { echo "FAIL: no prompt"; tmux kill-session -t $SID; return 1; }
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   # Send task
   tmux send-keys -t "$SID:0.0" -l -- "Create hello.txt with content 'world'"
   tmux send-keys -t "$SID:0.0" Enter
 
   # Wait for completion (agent shows elapsed time like "· 9.8s")
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "· [0-9]" -T 120 || { echo "FAIL: no completion"; tmux kill-session -t $SID; return 1; }
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   # Verify file
   [ -f "$WS/hello.txt" ] && echo "PASS" || echo "FAIL"
@@ -376,21 +376,21 @@ test_tui_permission() {
   local PROMPT_RE='>|Ask|/[a-z]'
   tmux new-session -d -s "$SID" -x 120 -y 30 "MIMOCODE_HOME=$MHOME MIMOCODE_PURE=true mimo $WS; sleep 999"
 
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "$PROMPT_RE" -T 15
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   # Ask for something that needs permission (no --dangerously-skip-permissions in TUI)
   tmux send-keys -t "$SID:0.0" -l -- "Run the command: echo hello"
   tmux send-keys -t "$SID:0.0" Enter
 
   # Wait for permission prompt
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "Allow\|approve\|permission\|y/n" -T 30 || { echo "FAIL: no permission prompt"; tmux kill-session -t $SID; return 1; }
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   # Approve
   tmux send-keys -t "$SID:0.0" -l -- "y"
   tmux send-keys -t "$SID:0.0" Enter
 
   # Wait for completion
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "· [0-9]" -T 60
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   tmux capture-pane -t "$SID:0.0" -p | grep -q "hello" && echo "PASS" || echo "FAIL"
   tmux kill-session -t "$SID" 2>/dev/null
@@ -406,7 +406,7 @@ test_tui_keybindings() {
   local PROMPT_RE='>|Ask|/[a-z]'
   tmux new-session -d -s "$SID" -x 120 -y 30 "MIMOCODE_HOME=$MHOME MIMOCODE_PURE=true mimo $WS; sleep 999"
 
-  bash scripts/wait-for-text.sh -t "$SID:0.0" -p "$PROMPT_RE" -T 15
+  # NOTE: scripts/wait-for-text.sh is not shipped in this skill; see prose below.
 
   # Test Ctrl+C cancels input
   tmux send-keys -t "$SID:0.0" -l -- "some partial input"
@@ -452,7 +452,7 @@ run_all() {
 | TUI launch | `tmux new-session -d -s test -x 120 -y 30 "MIMOCODE_HOME=$(mktemp -d) mimo $WORKSPACE; sleep 999"` |
 | Send text | `tmux send-keys -t test:0.0 -l -- "text" && tmux send-keys -t test:0.0 Enter` |
 | Capture screen | `tmux capture-pane -t test:0.0 -p -S -` |
-| Wait for text | `bash scripts/wait-for-text.sh -t test:0.0 -p "pattern" -T 30` |
+| Wait for text |
 | Send Ctrl+C | `tmux send-keys -t test:0.0 C-c` |
 | Approve permission | `tmux send-keys -t test:0.0 -l -- "y" && tmux send-keys -t test:0.0 Enter` |
 | Cleanup | `tmux kill-session -t test && rm -rf $MHOME` |

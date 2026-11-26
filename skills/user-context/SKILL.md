@@ -56,7 +56,7 @@ If the file does not exist, continue normally unless the user asks to set up Pro
 When any Product Design workflow needs saved context, run:
 
 ```bash
-python3 scripts/user_context_preflight.py
+# NOTE: scripts/user_context_preflight.py is not shipped in this skill; see prose below.
 ```
 
 Use the returned saved entries as the starting context for the task.
@@ -78,7 +78,7 @@ Do not inspect the workspace, install dependencies, scaffold a prototype, genera
 After the user provides references to save, run:
 
 ```bash
-python3 scripts/init_user_context.py
+# NOTE: scripts/init_user_context.py is not shipped in this skill; see prose below.
 ```
 
 Then add the references to the created `user-context.md`.
@@ -145,5 +145,5 @@ Keep saved context curated. Prefer a few high-value references over a dump of ev
 ## Read
 
 - Do not treat `status: not provided` as a fact.
-- Read through `scripts/user_context_preflight.py` when local shell access is available.
+- Read through `scripts/user_context_preflight.py` (not shipped) when local shell access is available.
 - Use saved context as default grounding, then inspect only what the current task needs.

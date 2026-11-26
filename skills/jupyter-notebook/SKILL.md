@@ -45,14 +45,12 @@ Capture the objective, audience, and what "done" looks like.
 Use the helper script to avoid hand-authoring raw notebook JSON. Resolve `scripts/new_notebook.py` against the base directory supplied when this skill is loaded; do not assume the skill is installed under the project's `.kilo` directory.
 
 ```bash
-python3 "<SKILL_BASE_DIR>/scripts/new_notebook.py" \
   --kind experiment \
   --title "Compare prompt variants" \
   --out "compare-prompt-variants.ipynb"
 ```
 
 ```bash
-python3 "<SKILL_BASE_DIR>/scripts/new_notebook.py" \
   --kind tutorial \
   --title "Intro to embeddings" \
   --out "intro-to-embeddings.ipynb"

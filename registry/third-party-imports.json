@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "policy": "Third-party skills imported under upstream MIT license; repo-level LICENSE governs. Hollow adapters rejected.",
+  "sources": [
+    {
+      "repo": "Jeffallan/claude-skills",
+      "license": "MIT",
+      "skills": 18
+    },
+    {
+      "repo": "alirezarezvani/claude-skills",
+      "license": "MIT",
+      "skills": 6
+    }
+  ],
+  "imported_at": "2026-11-26",
+  "skills": [
+    "firebase-expert",
+    "flask-expert",
+    "fullstack-guardian",
+    "nuxt-expert",
+    "code-reviewer",
+    "session-handoff",
+    "loop-library",
+    "ml-pipeline",
+    "shopify-expert",
+    "rust-engineer",
+    "secure-code-guardian",
+    "devops-engineer",
+    "self-improving-agent",
+    "vue-expert-js",
+    "spec-miner",
+    "skillopt-sleep",
+    "wordpress-pro",
+    "mobile-release",
+    "sql-pro",
+    "test-master",
+    "monitoring-expert",
+    "game-developer",
+    "fine-tuning-expert",
+    "django-storages-s3"
+  ],
+  "rejected": [
+    {
+      "skill": "senior-architect",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "senior-fullstack",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "gemini-api-dev",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "google-antigravity-sdk",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "google-workspace-ops",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "gcp-cloud-run",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    },
+    {
+      "skill": "mega-pro-code-engineering",
+      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+    }
+  ]
+}

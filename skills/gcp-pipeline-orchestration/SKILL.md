@@ -365,7 +365,7 @@ Deploy → Poll → Trigger flow.
 > with -- help to discover and learn the interface.
 >
 > ```
-> python scripts/trigger/airflow_trigger.py \ --project <PROJECT_ID>
+# (removed: referenced absent script)
 > --location <REGION> \ --environment <COMPOSER_ENV> --dag_id <PIPELINE_ID>
 > ```
 >

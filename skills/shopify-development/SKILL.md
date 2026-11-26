@@ -347,7 +347,7 @@ For detailed implementation guides, read these files:
 
 ## Scripts
 
-- `scripts/shopify_init.py` - Interactive project scaffolding. Run: `python scripts/shopify_init.py`
+# (removed: referenced absent script)
 - `scripts/shopify_graphql.py` - GraphQL utilities with query templates, pagination, rate limiting. Import: `from shopify_graphql import ShopifyGraphQL`
 
 ---

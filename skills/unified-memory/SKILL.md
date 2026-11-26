@@ -24,7 +24,7 @@ command -v ecc-memory-mcp
 ```
 
 A repository checkout may instead run the CLI as
-`node scripts/ecc.js memory ...`, but MCP configurations that name
+# (removed: referenced absent script)
 `ecc-memory-mcp` still require that binary on `PATH`.
 
 ## When To Use

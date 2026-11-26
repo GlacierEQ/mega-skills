@@ -150,7 +150,6 @@ cat all_urls.txt | unfurl paths | sort -u > custom_wordlist.txt
 
 ```bash
 # ParamSpider for parameter extraction
-python3 paramspider.py --domain target.com -o params.txt
 
 # Filter with Gxss
 cat params.txt | Gxss -p test

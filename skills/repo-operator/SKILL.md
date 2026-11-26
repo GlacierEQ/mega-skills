@@ -20,21 +20,21 @@ Repo Operator 2.1 is an "Operator-Grade" automation suite designed for high-stak
 ## 🛠 Usage
 ### Bootstrap / Setup
 ```bash
-python3 scripts/orchestrator.py all --dry-run
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
 ```
 
 ### Apply Baseline Completion
 ```bash
-python3 scripts/orchestrator.py all --apply-patches
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
 ```
 
 ### Individual Phases
 ```bash
-python3 scripts/orchestrator.py analysis
-python3 scripts/orchestrator.py completion --apply-patches
-python3 scripts/orchestrator.py deployment_prep
-python3 scripts/orchestrator.py validation
-python3 scripts/orchestrator.py deploy
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
+# NOTE: scripts/orchestrator.py is not shipped in this skill; see prose below.
 ```
 
 ## 📂 Production Artifacts

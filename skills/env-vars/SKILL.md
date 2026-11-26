@@ -217,7 +217,7 @@ npx dotenv -e .env.local -- npx drizzle-kit push
 npx dotenv -e .env.local -- npx tsx scripts/seed.ts
 
 # Or source manually
-source <(grep -v '^#' .env.local | sed 's/^/export /') && node scripts/migrate.js
+# (removed: referenced absent script)
 ```
 
 ## Best Practices

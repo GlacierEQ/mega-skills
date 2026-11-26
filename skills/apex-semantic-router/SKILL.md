@@ -10,13 +10,13 @@ This skill provides the hardened Unified Memory MCP Server configured with Domai
 ## Bundled Resources
 
 - `scripts/unified_memory_mcp.py`: The core FastMCP server containing the `semantic_memory_router` tool and all individual layer integrations.
-- `scripts/launch_remote_mcp.sh`: Bash script to launch the server via SSE and expose it to the internet using localtunnel.
+- `scripts/launch_remote_mcp.sh` (not shipped): Bash script to launch the server via SSE and expose it to the internet using localtunnel.
 
 ## Usage
 
 To launch the router as a remote SSE MCP server (for use in Claude Desktop, Cursor, or other agents):
 ```bash
-bash scripts/launch_remote_mcp.sh
+# NOTE: scripts/launch_remote_mcp.sh is not shipped in this skill; see prose below.
 ```
 
 To run it locally as a standard STDIO MCP server:

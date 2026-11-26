@@ -33,7 +33,7 @@ Run ECC on the DeepSeek Harness. Full guide: `docs/DEEPSEEK-HARNESS-GUIDE.md`.
    from the canonical ECC hooks file:
 
    ```bash
-   node scripts/dsh/generate-hooks-config.js --ecc-root /path/to/ECC --out ~/.dsh/ecc/hooks-dsh.json
+   # NOTE: scripts/dsh/generate-hooks-config.js is not shipped in this skill; see prose below.
    ```
 
    The generator lower-cases tool-name matchers, prefixes

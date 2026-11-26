@@ -9,19 +9,19 @@ Search, read, cite, and analyze academic papers using the free arXiv API and Sem
 
 ## Quick Start: the `arxiv.py` script
 
-Prefer `scripts/arxiv.py` over raw `curl` — it handles Atom XML parsing, versioned IDs, withdrawn-paper detection, and produces clean readable (or `--json`) output.
+# (removed: referenced absent script)
 
 | Goal | Command |
 |------|---------|
-| Search papers | `python scripts/arxiv.py search "GRPO reinforcement learning" --max 10 --sort date` |
-| Filtered search | `python scripts/arxiv.py search "attention" --author vaswani --category cs.CL` |
-| Full metadata + abstract | `python scripts/arxiv.py get 2601.02780,1706.03762` |
-| BibTeX citation | `python scripts/arxiv.py bibtex 2601.02780` |
-| Download PDF | `python scripts/arxiv.py download 2601.02780 --dest ./papers` |
-| Latest in a category | `python scripts/arxiv.py new cs.CL --max 10` |
-| Who cites this paper | `python scripts/arxiv.py cites 2601.02780 --max 20` |
-| What this paper cites | `python scripts/arxiv.py refs 2601.02780` |
-| Related-paper recommendations | `python scripts/arxiv.py similar 2601.02780` |
+| Search papers |
+| Filtered search |
+| Full metadata + abstract |
+| BibTeX citation |
+| Download PDF |
+| Latest in a category |
+| Who cites this paper |
+| What this paper cites |
+| Related-paper recommendations |
 | Machine-readable output | append `--json` to any command |
 
 Common flags: `--max N` (result count), `--sort relevance|date|updated`, `--start N` (pagination offset, search only), `--json`.
@@ -41,7 +41,7 @@ If HTML is unavailable and the PDF must be processed locally, `download` it firs
 **Literature review on a topic**
 1. `search "topic" --sort date --max 15` — recent work
 2. `search "topic" --max 15` — seminal work (relevance-sorted)
-3. Cross-check impact: `python scripts/arxiv.py get ID` then `cites ID --max 5` for citation counts
+# (removed: referenced absent script)
 4. Read the top candidates via `webfetch` on the abs/html URLs
 5. `bibtex ID1,ID2,...` for the papers you keep
 

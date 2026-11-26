@@ -6,9 +6,9 @@ description: "Suite of tools for creating elaborate, multi-component claude.ai H
 # Web Artifacts Builder
 
 To build powerful frontend claude.ai artifacts, follow these steps:
-1. Initialize the frontend repo using `scripts/init-artifact.sh`
+1. Initialize the frontend repo using `scripts/init-artifact.sh` (not shipped)
 2. Develop your artifact by editing the generated code
-3. Bundle all code into a single HTML file using `scripts/bundle-artifact.sh`
+3. Bundle all code into a single HTML file using `scripts/bundle-artifact.sh` (not shipped)
 4. Display artifact to user
 5. (Optional) Test the artifact
 
@@ -24,7 +24,7 @@ VERY IMPORTANT: To avoid what is often referred to as "AI slop", avoid using exc
 
 Run the initialization script to create a new React project:
 ```bash
-bash scripts/init-artifact.sh <project-name>
+# NOTE: scripts/init-artifact.sh is not shipped in this skill; see prose below.
 cd <project-name>
 ```
 
@@ -45,7 +45,7 @@ To build the artifact, edit the generated files. See **Common Development Tasks*
 
 To bundle the React app into a single HTML artifact:
 ```bash
-bash scripts/bundle-artifact.sh
+# NOTE: scripts/bundle-artifact.sh is not shipped in this skill; see prose below.
 ```
 
 This creates `bundle.html` - a self-contained artifact with all JavaScript, CSS, and dependencies inlined. This file can be directly shared in Claude conversations as an artifact.

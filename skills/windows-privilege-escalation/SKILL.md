@@ -279,7 +279,6 @@ GodPotato.exe -cmd "cmd /c whoami"
 ```powershell
 # Use Windows Exploit Suggester
 systeminfo > systeminfo.txt
-python wes.py systeminfo.txt
 
 # Or use Watson (on target)
 Watson.exe

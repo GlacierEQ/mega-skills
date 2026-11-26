@@ -16,7 +16,7 @@ description: "Mobile-first design thinking and decision-making for iOS and Andro
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `scripts/mobile_audit.py` | Mobile UX & Touch Audit | `python scripts/mobile_audit.py <project_path>` |
+| Mobile UX & Touch Audit |
 
 ---
 

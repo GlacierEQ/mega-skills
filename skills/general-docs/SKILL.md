@@ -54,19 +54,16 @@ if __name__ == "__main__":
 To execute the app in the terminal, run
 
 ```bash
-python main.py
 ```
 
 When multiple commands are registered to the Typer app, you have to add the command name:
 
 ```bash
-python main.py hello
 ```
 
 To see the automatically generated help documentation, run
 
 ```bash
-python main.py --help
 ```
 
 or set `no_args_is_help` to `True` when creating the `Typer()` add to automatically show the help when running a command without any arguments.
@@ -98,8 +95,6 @@ if __name__ == "__main__":
 This program can be run as-is, or can provide a specific name:
 
 ```bash
-python main.py
-python main.py Rick
 ```
 
 An older way of setting a default value is this:
@@ -148,8 +143,6 @@ if __name__ == "__main__":
 You can run this program as such:
 
 ```bash
-python main.py -n "Rick"
-python main.py --name "Morty"
 ```
 
 ### CLI options with multiple values
@@ -180,7 +173,6 @@ if __name__ == "__main__":
 This can be executed like so:
 
 ```bash
-python main.py --user Rick --user Morty --user Summer
 ```
 
 ## Rich
