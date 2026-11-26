@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Verify Python source compiles
         run: python3 -m py_compile integrations/omp/browseros_neo_setup.py
       - name: Execute all integration regression tests
@@ -37,7 +37,7 @@ jobs:
     runs-on: [self-hosted, mega-skills, macos-x64]
     timeout-minutes: 4
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate target Mac and account
         shell: bash
         run: |
