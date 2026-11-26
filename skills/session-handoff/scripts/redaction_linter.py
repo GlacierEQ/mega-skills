@@ -258,11 +258,16 @@ def main(argv: list[str] | None = None) -> int:
             "Allowed: AKIAIOSFODNN7EXAMPLE <!-- handoff:allow secret -->\n"
         )
         report = scan_text(fixture)
+        if args.mode == "off":
+            print("Redaction linter is off (--mode off).")
+            return 0
         if args.json:
-            print(_report_json(report, "strict", "<sample>"))
+            print(_report_json(report, args.mode, "<sample>"))
         else:
-            print(_format_human(report, "strict", Path("<sample>")))
-        return 1 if report.findings else 0
+            print(_format_human(report, args.mode, Path("<sample>")))
+        if args.mode == "strict":
+            return 1 if report.findings else 0
+        return 0
 
     if args.mode == "off":
         print("Redaction linter is off (--mode off).")

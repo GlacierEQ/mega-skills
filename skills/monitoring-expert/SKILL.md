@@ -151,6 +151,19 @@ export default function () {
 }
 ```
 
+## Executable check
+
+Lint the collector config before deploying it:
+
+```bash
+python3 scripts/lint_config.py prometheus.yml alerts.yml
+python3 scripts/lint_config.py --json rules/
+```
+
+Flags `scrape_interval_too_long`, `no_scrape_timeout`, `missing_job_name`,
+`alert_without_for`, `no_severity_label` and `hardcoded_threshold`, naming
+file, line and fix. Static only — it never contacts a running collector.
+
 ## Reference Guide
 
 Load detailed guidance based on context:

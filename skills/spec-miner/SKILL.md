@@ -75,6 +75,19 @@ EARS (Easy Approach to Requirements Syntax) structures observed behavior as:
 
 > See `references/ears-format.md` for the complete EARS reference.
 
+## Executable first pass
+
+Before reading files one by one, get the structural map:
+
+```bash
+python3 scripts/map_codebase.py path/to/repo
+python3 scripts/map_codebase.py path/to/repo --json > map.json
+```
+
+Emits per-file line counts, top-level defs (with class methods), and import
+edges. Write the spec from that evidence, then read only the files the map
+marks as load-bearing.
+
 ## Reference Guide
 
 Load detailed guidance based on context:

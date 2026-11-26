@@ -2,7 +2,7 @@
   "repo_root": "/root/workspace/projects/mega-skills",
   "skill_count": 1396,
   "has_skill_py_ratio": 0.49498567335243554,
-  "has_tests_ratio": 0.15544412607449856,
+  "has_tests_ratio": 0.16045845272206305,
   "top_scripts": [
     [
       "run.py",

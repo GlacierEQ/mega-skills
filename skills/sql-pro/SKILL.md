@@ -30,6 +30,20 @@ metadata:
 4. **Verify** - Run `EXPLAIN ANALYZE` and confirm no sequential scans on large tables; if query does not meet sub-100ms target, iterate on index selection or query rewrite before proceeding
 5. **Document** - Provide query explanations, index rationale, performance metrics
 
+## Executable check
+
+Before reviewing SQL by hand, run the static analyzer:
+
+```bash
+python3 scripts/sql_analyze.py path/to/query.sql
+python3 scripts/sql_analyze.py --json migrations/
+```
+
+It flags `select_star`, `leading_wildcard_like`, `function_on_column`,
+`or_in_where`, `not_in_with_nulls`, `offset_pagination`,
+`count_distinct_wide` and `implicit_cast`, naming the line and the rewrite.
+Findings are advisory; confirm each against the real execution plan.
+
 ## Reference Guide
 
 Load detailed guidance based on context:
