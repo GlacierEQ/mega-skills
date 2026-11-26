@@ -7,9 +7,11 @@ import sys
 def main():
     print(json.dumps({
         "skill": "mega-web",
-        "status": "ready",
-        "epistemic_tier": "L2",
-        "firewall_active": True
+        "status": "execution_unavailable",
+        "epistemic_tier": "L0",
+        "firewall_active": False,
+        "capability_executed": False,
+        "reason": "Routing-only skill; bodies live in absent ~/.grok/plane catalog."
     }, indent=2))
     return 0
 

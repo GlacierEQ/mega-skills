@@ -15,6 +15,10 @@ import os
 import re
 import sys
 
+CLAIM_TIER = re.compile(r'"epistemic_tier":\s*"(L[2-4][^"]*)"')
+CLAIM_READY = re.compile(r'"status":\s*"ready"')
+CLAIM_FIREWALL = re.compile(r'"firewall_active":\s*True')
+EXECUTED_CLAIM = re.compile(r'\[\s*"status"\]\s*=\s*"executed"')
 SCRIPT_REF = re.compile(
     r"(?:python3?|node|bash|sh)\s+((?:scripts|bin|tools)/[\w./-]+\.(?:py|js|mjs|sh))"
 )
@@ -37,13 +41,13 @@ def py_lines(paths: list[str]) -> int:
     return total
 
 
-def scan(skills_dir: str, stub_max_lines: int) -> tuple[list, list, list]:
+def scan(skills_dir: str, stub_max_lines: int) -> tuple[list, list, list, list]:
     root_scripts = {
         os.path.relpath(f)
         for f in glob.glob("scripts/**/*", recursive=True)
         if os.path.isfile(f)
     }
-    missing, stubs, weak_tests = [], [], []
+    missing, stubs, weak_tests, false_claims = [], [], [], []
 
     for name in sorted(os.listdir(skills_dir)):
         d = os.path.join(skills_dir, name)
@@ -72,19 +76,32 @@ def scan(skills_dir: str, stub_max_lines: int) -> tuple[list, list, list]:
         if all(m in local for m in STUB_MARKERS) and py_lines(allf) <= stub_max_lines:
             stubs.append({"skill": name, "py_lines": py_lines(allf), "files": len(allf)})
 
-        for t in glob.glob(f"{d}/tests/**/*.py", recursive=True) + glob.glob(
-            f"{d}/test/**/*.py", recursive=True
-        ):
+        for entry in sorted(local):
+            if not entry.endswith(".py"):
+                continue
             try:
-                with open(t, encoding="utf-8", errors="replace") as fh:
+                with open(os.path.join(d, entry), encoding="utf-8", errors="replace") as fh:
                     body = fh.read()
             except OSError:
                 continue
-            if PRESENCE_ONLY.search(body) and "subprocess" not in body:
-                weak_tests.append({"skill": name, "test": os.path.relpath(t)})
-                break
-
-    return missing, stubs, weak_tests
+            tiers = CLAIM_TIER.findall(body)
+            executed = bool(EXECUTED_CLAIM.search(body))
+            real = [
+                f
+                for f in glob.glob(f"{d}/scripts/*")
+                if os.path.isfile(f)
+                and os.path.basename(f) not in ("run.py", "this_skill.py")
+            ]
+            if (tiers or executed) and not real:
+                false_claims.append(
+                    {
+                        "skill": name,
+                        "file": entry,
+                        "tiers": sorted(set(tiers)),
+                        "claims_executed": executed,
+                    }
+                )
+    return missing, stubs, weak_tests, false_claims
 
 
 def main() -> int:
@@ -94,14 +111,15 @@ def main() -> int:
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
-    missing, stubs, weak = scan(a.skills_dir, a.stub_max_lines)
+    missing, stubs, weak, claims = scan(a.skills_dir, a.stub_max_lines)
     report = {
         "skills_dir": a.skills_dir,
         "documented_scripts_missing": missing,
         "stub_template_signature": stubs,
         "presence_only_tests": weak,
+        "false_capability_claims": claims,
         "verdict": "FAIL"
-        if (missing or stubs or weak)
+        if (missing or stubs or weak or claims)
         else "PASS",
     }
     if a.json:
@@ -110,6 +128,7 @@ def main() -> int:
         print(f"documented scripts missing : {len(missing)}")
         print(f"stub template signature    : {len(stubs)}")
         print(f"presence-only tests        : {len(weak)}")
+        print(f"false capability claims    : {len(claims)}")
         print(f"verdict                    : {report['verdict']}")
         for r in missing[:15]:
             print(f"  MISSING {r['skill']}: {r['missing']}")
