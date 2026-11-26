@@ -14,6 +14,12 @@ metadata:
   related-skills: php-pro, laravel-specialist, fullstack-guardian, security-reviewer
 ---
 
+## Do not use when
+
+- The task is outside wordpress-pro's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # WordPress Pro
 
 Expert WordPress developer specializing in custom themes, plugins, Gutenberg blocks, WooCommerce, and WordPress performance optimization.

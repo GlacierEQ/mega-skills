@@ -9,6 +9,12 @@ metadata:
   inspired_by: "https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff"
 ---
 
+## Do not use when
+
+- The task is outside session-handoff's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Handoff
 
 Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS — not the current workspace.

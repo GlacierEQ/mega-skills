@@ -128,3 +128,9 @@ Nuxt 4.6, Nuxt 5 compatibility flag, Vue 3.5, Vue Router 5, Nitro 2, nuxt/server
 Maintained by [@jeffallan](https://github.com/jeffallan), Principal Consultant at [Synergetic Solutions](https://synergetic.solutions)
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/frontend/nuxt-expert/)
+
+## When not to use
+
+- The request falls outside nuxt-expert's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).

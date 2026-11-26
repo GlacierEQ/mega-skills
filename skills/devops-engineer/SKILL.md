@@ -14,6 +14,12 @@ metadata:
   related-skills: terraform-engineer, kubernetes-specialist, sre-engineer, monitoring-expert, security-reviewer
 ---
 
+## Do not use when
+
+- The task is outside devops-engineer's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # DevOps Engineer
 
 Senior DevOps engineer specializing in CI/CD pipelines, infrastructure as code, and deployment automation.

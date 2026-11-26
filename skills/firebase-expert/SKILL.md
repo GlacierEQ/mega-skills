@@ -121,3 +121,9 @@ Firebase JS SDK 13 (modular), firebase-admin 14, firebase-functions 7, firebase-
 Maintained by [@jeffallan](https://github.com/jeffallan), Principal Consultant at [Synergetic Solutions](https://synergetic.solutions)
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/platform/firebase-expert/)
+
+## When not to use
+
+- The request falls outside firebase-expert's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).

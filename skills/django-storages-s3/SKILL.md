@@ -13,6 +13,12 @@ metadata:
   related-skills: django-expert
 ---
 
+## Do not use when
+
+- The task is outside django-storages-s3's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Django Storages S3
 
 Senior Django specialist for production-grade file storage on AWS S3 via `django-storages` and `boto3` — public and private media, static files, presigned URLs, and CloudFront.

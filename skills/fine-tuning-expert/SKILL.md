@@ -14,6 +14,12 @@ metadata:
   related-skills: devops-engineer
 ---
 
+## Do not use when
+
+- The task is outside fine-tuning-expert's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Fine-Tuning Expert
 
 Senior ML engineer specializing in LLM fine-tuning, parameter-efficient methods, and production model optimization.

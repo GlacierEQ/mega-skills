@@ -14,6 +14,12 @@ metadata:
   related-skills: devops-engineer, kubernetes-specialist, cloud-architect, python-pro
 ---
 
+## Do not use when
+
+- The task is outside ml-pipeline's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # ML Pipeline Expert
 
 Senior ML pipeline engineer specializing in production-grade machine learning infrastructure, orchestration systems, and automated training workflows.

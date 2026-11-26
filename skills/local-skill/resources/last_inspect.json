@@ -1,0 +1,209 @@
+{
+  "repo_root": "/root/workspace/projects/mega-skills",
+  "skill_count": 1396,
+  "has_skill_py_ratio": 0.49498567335243554,
+  "has_tests_ratio": 0.15544412607449856,
+  "top_scripts": [
+    [
+      "run.py",
+      727
+    ],
+    [
+      "this_skill.py",
+      561
+    ],
+    [
+      "_common.py",
+      47
+    ],
+    [
+      "quick_rules.py",
+      33
+    ],
+    [
+      "purpose.py",
+      27
+    ],
+    [
+      "output_contract.py",
+      22
+    ],
+    [
+      "procedure.py",
+      22
+    ],
+    [
+      "keywords.py",
+      15
+    ],
+    [
+      "__init__.py",
+      13
+    ],
+    [
+      "capabilities.py",
+      8
+    ],
+    [
+      "patterns.py",
+      8
+    ],
+    [
+      "requirements.txt",
+      8
+    ],
+    [
+      "architecture.py",
+      7
+    ],
+    [
+      "project_layout.py",
+      7
+    ],
+    [
+      "estate_shape_audit.py",
+      6
+    ],
+    [
+      "pattern_recognition.py",
+      6
+    ],
+    [
+      ".coverage",
+      5
+    ],
+    [
+      "requirements.py",
+      4
+    ],
+    [
+      "setup.py",
+      4
+    ],
+    [
+      "activate.py",
+      4
+    ]
+  ],
+  "resource_extensions": {
+    ".yaml": 167,
+    ".json": 149,
+    ".md": 8,
+    ".applescript": 1,
+    ".template": 4
+  },
+  "sample_skills": [
+    {
+      "name": "13c-metabolic-flux",
+      "has_skill_py": false,
+      "has_init": false,
+      "has_requirements": false,
+      "scripts": [
+        "_mfa_fit.py",
+        "_mfa_model.py",
+        "mfa.py"
+      ],
+      "resources": [],
+      "tests": [
+        "test_mfa_check.py"
+      ],
+      "templates": [],
+      "references": [
+        "inference.md",
+        "input-contract.md"
+      ]
+    },
+    {
+      "name": "2d-games",
+      "has_skill_py": true,
+      "has_init": false,
+      "has_requirements": true,
+      "scripts": [
+        "run.py",
+        "this_skill.py"
+      ],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "3d-games",
+      "has_skill_py": true,
+      "has_init": false,
+      "has_requirements": true,
+      "scripts": [
+        "run.py",
+        "this_skill.py"
+      ],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "3d-web-experience",
+      "has_skill_py": true,
+      "has_init": false,
+      "has_requirements": true,
+      "scripts": [
+        "run.py",
+        "this_skill.py"
+      ],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "a11y-debugging",
+      "has_skill_py": true,
+      "has_init": false,
+      "has_requirements": true,
+      "scripts": [
+        "run.py",
+        "this_skill.py"
+      ],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "ab-test-setup",
+      "has_skill_py": true,
+      "has_init": false,
+      "has_requirements": true,
+      "scripts": [
+        "run.py",
+        "this_skill.py"
+      ],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "academy-guide",
+      "has_skill_py": false,
+      "has_init": false,
+      "has_requirements": false,
+      "scripts": [],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    },
+    {
+      "name": "accessibility",
+      "has_skill_py": false,
+      "has_init": false,
+      "has_requirements": false,
+      "scripts": [],
+      "resources": [],
+      "tests": [],
+      "templates": [],
+      "references": []
+    }
+  ]
+}

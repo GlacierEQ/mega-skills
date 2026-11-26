@@ -111,3 +111,9 @@ Treat all OS 27-cycle APIs as beta unless the user explicitly opts into a beta t
 - [Testing, cancellation, and legacy bridges](references/testing-and-bridges.md)
 - [Strict-concurrency example](examples/ConcurrencyMigrationExample.swift)
 - [Positive and negative prompt scenarios](examples/prompts.md)
+
+## When not to use
+
+- The request falls outside swift-concurrency-migration's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).

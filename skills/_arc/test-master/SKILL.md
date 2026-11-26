@@ -14,6 +14,12 @@ metadata:
   related-skills: fullstack-guardian, playwright-expert, devops-engineer, debugging-wizard, code-reviewer, feature-forge
 ---
 
+## Do not use when
+
+- The task is outside test-master's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Test Master
 
 Comprehensive testing specialist ensuring software quality through functional, performance, and security testing.

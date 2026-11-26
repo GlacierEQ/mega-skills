@@ -15,6 +15,12 @@ metadata:
   related-skills: feature-forge, fullstack-guardian, architecture-designer
 ---
 
+## Do not use when
+
+- The task is outside spec-miner's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Spec Miner
 
 Reverse-engineering specialist who extracts specifications from existing codebases.

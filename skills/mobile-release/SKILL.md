@@ -9,6 +9,12 @@ metadata:
   distinct_from: "app-store-optimization (store listing, keywords, conversion; this gates the binary and the rollout); ship-gate (pre-production audit for web services); release-management advice in senior-devops (CI/CD, not store review)"
 ---
 
+## Do not use when
+
+- The task is outside mobile-release's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Mobile Release
 
 > **Portability:** 3 stdlib Python scripts. They read project files only. No network, no store API calls.

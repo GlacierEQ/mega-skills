@@ -14,6 +14,12 @@ metadata:
   related-skills: fullstack-guardian, security-reviewer, architecture-designer, firebase-expert
 ---
 
+## Do not use when
+
+- The task is outside secure-code-guardian's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Secure Code Guardian
 
 ## Core Workflow

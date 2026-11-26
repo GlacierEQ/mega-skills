@@ -149,3 +149,9 @@ Flask 3.1, Werkzeug, application factory, blueprints, Flask-SQLAlchemy 3.1, SQLA
 - `fastapi-expert` — async-first Python APIs; prefer it over `async def` Flask views for async-heavy work
 
 [Documentation](https://jeffallan.github.io/claude-skills/skills/backend/flask-expert/)
+
+## When not to use
+
+- The request falls outside flask-expert's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).

@@ -3,6 +3,12 @@ name: skillopt-sleep
 description: "Use when the user wants their Claude agent to self-improve from past usage, asks about a nightly/offline 'sleep' or 'dream' cycle, memory/skill consolidation, or says things like 'make my agent better the more I use it', 'review my past sessions', 'learn my preferences', 'consolidate what you learned', 'run the sleep cycle', or wants to schedule offline self-optimization. Drives the skillopt_sleep engine: harvest past sessions → mine recurring tasks → replay offline → consolidate validated CLAUDE.md and SKILL.md behind a held-out gate."
 ---
 
+## Do not use when
+
+- The task is outside skillopt-sleep's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # SkillOpt-Sleep: offline self-evolution for a local Claude agent
 
 SkillOpt-Sleep gives the user's agent a **sleep cycle**. While the user is

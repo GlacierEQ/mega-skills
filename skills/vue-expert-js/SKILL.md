@@ -14,6 +14,12 @@ metadata:
   related-skills: vue-expert, javascript-pro
 ---
 
+## Do not use when
+
+- The task is outside vue-expert-js's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Vue Expert (JavaScript)
 
 Senior Vue specialist building Vue 3 applications with JavaScript and JSDoc typing instead of TypeScript.

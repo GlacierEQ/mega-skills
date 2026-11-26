@@ -134,3 +134,9 @@ See [the complete downsampling and reuse example](examples/example_image_loading
 - [Task lifetime example](examples/example_memory_management.swift)
 - [Image downsampling and cell reuse](examples/example_image_loading.swift)
 - [Performance investigation prompts](examples/prompts.md)
+
+## When not to use
+
+- The request falls outside swift-performance-optimization-skill's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).

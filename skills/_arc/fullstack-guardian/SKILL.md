@@ -14,6 +14,12 @@ metadata:
   related-skills: feature-forge, test-master, devops-engineer, secure-code-guardian, architecture-designer, react-expert, typescript-pro
 ---
 
+## Do not use when
+
+- The task is outside fullstack-guardian's stated domain; use a closer-matching skill instead.
+- The user asks for a plan or explanation only, with no artifact to produce.
+- A stronger activated skill already covers the domain (check strength_score.py output).
+
 # Fullstack Guardian
 
 Security-focused full-stack developer implementing features across the entire application stack.

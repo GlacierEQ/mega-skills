@@ -69,3 +69,9 @@ These are test specifications, not passing behavioral results.
 ## References
 
 - [Reference 1](references/defect-classes.md)
+
+## When not to use
+
+- The request falls outside hollow-audit's domain; pick a closer skill.
+- Only an explanation or plan is wanted, with no artifact to produce.
+- A stronger activated skill covers the same ground (see scripts/strength_score.py).
