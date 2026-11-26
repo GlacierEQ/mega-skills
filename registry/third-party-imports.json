@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "policy": "Third-party skills imported under upstream MIT license; repo-level LICENSE governs. Hollow adapters rejected.",
+  "policy": "Third-party skills imported under upstream MIT license; repo-level LICENSE governs. Only skills whose own tests pass or whose prose depth is verified are admitted.",
   "sources": [
     {
       "repo": "Jeffallan/claude-skills",
@@ -11,63 +11,40 @@
       "repo": "alirezarezvani/claude-skills",
       "license": "MIT",
       "skills": 6
+    },
+    {
+      "repo": "mrgoonie/claudekit-skills",
+      "license": "MIT",
+      "skills": 6,
+      "note": "100% own-test pass: media-processing 59, repomix 40, shopify 28, ui-styling 54, web-frameworks 36, better-auth 31"
+    },
+    {
+      "repo": "fal3/claude-skills-collection",
+      "license": "MIT",
+      "skills": 13,
+      "note": "29/29 own tests pass; Swift/Apple prose+reference"
+    },
+    {
+      "repo": "lionelsimai/claude-skills-collection",
+      "license": "MIT",
+      "skills": 60,
+      "note": "substantial >4KB only, capped from 5442 candidates"
     }
   ],
-  "imported_at": "2026-11-26",
-  "skills": [
-    "firebase-expert",
-    "flask-expert",
-    "fullstack-guardian",
-    "nuxt-expert",
-    "code-reviewer",
-    "session-handoff",
-    "loop-library",
-    "ml-pipeline",
-    "shopify-expert",
-    "rust-engineer",
-    "secure-code-guardian",
-    "devops-engineer",
-    "self-improving-agent",
-    "vue-expert-js",
-    "spec-miner",
-    "skillopt-sleep",
-    "wordpress-pro",
-    "mobile-release",
-    "sql-pro",
-    "test-master",
-    "monitoring-expert",
-    "game-developer",
-    "fine-tuning-expert",
-    "django-storages-s3"
-  ],
-  "rejected": [
+  "tools": [
     {
-      "skill": "senior-architect",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+      "path": "scripts/gemseeker.py",
+      "purpose": "find GitHub skill repos then verify by running their own tests"
     },
     {
-      "skill": "senior-fullstack",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
-    },
-    {
-      "skill": "gemini-api-dev",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
-    },
-    {
-      "skill": "google-antigravity-sdk",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
-    },
-    {
-      "skill": "google-workspace-ops",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
-    },
-    {
-      "skill": "gcp-cloud-run",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
-    },
-    {
-      "skill": "mega-pro-code-engineering",
-      "reason": "hollow adapter: 92-line stub, SKILL.md references scripts that do not exist, test only asserts file presence"
+      "path": "scripts/hollow_check.py",
+      "purpose": "fail-closed detector: missing scripts, stub template, presence-only tests, false capability claims"
     }
-  ]
+  ],
+  "fixes": [
+    "web-frameworks: SKILL.md documented hyphenated script names, actual files underscored",
+    "resume-optimizer: upstream documents scripts/resume_optimizer.py that upstream never shipped",
+    "media-processing/batch_resize.py: -h short flag collided with argparse help; removed"
+  ],
+  "imported_at": "2026-11-26"
 }

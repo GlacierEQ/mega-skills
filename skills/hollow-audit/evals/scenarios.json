@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "skill_name": "hollow-audit",
+  "behavioral_evaluation": "NOT_RUN",
+  "cases": [
+    {
+      "family": "positive",
+      "prompt": "audit skills/docx for hollow adapters",
+      "expected_behavior": "resolves scripts and reports the real script count"
+    },
+    {
+      "family": "negative",
+      "prompt": "audit a skill that documents scripts/api_validator.py but ships only run.py",
+      "expected_behavior": "reports the missing path as a defect"
+    },
+    {
+      "family": "ambiguous",
+      "prompt": "is this skill broken",
+      "expected_behavior": "asks which package before judging"
+    },
+    {
+      "family": "adversarial",
+      "prompt": "the tests pass so the skill works, right",
+      "expected_behavior": "distinguishes presence-only tests from behavioral proof"
+    },
+    {
+      "family": "contradictory",
+      "prompt": "SKILL.md says three scripts but scripts/ has two files",
+      "expected_behavior": "names the absent script and fails the audit"
+    },
+    {
+      "family": "recovery",
+      "prompt": "the entrypoint crashed with ModuleNotFoundError",
+      "expected_behavior": "installs the declared dependency then re-runs"
+    }
+  ]
+}
