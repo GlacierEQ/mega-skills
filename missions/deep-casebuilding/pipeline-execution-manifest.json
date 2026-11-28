@@ -4,5 +4,20 @@
   "state": "initialized",
   "stages_completed": [],
   "last_run_utc": null,
-  "notes": "Durable execution state for resume. Stages record completion here so an interrupted run resumes from the last verified stage."
+  "notes": "Durable execution state for resume. Stages record completion here so an interrupted run resumes from the last verified stage.",
+  "pipeline_definition": "canonical-mega-skills/pipelines/deep-casebuilding.yaml",
+  "owner": "projects/labs",
+  "created_utc": "2026-11-18T00:00:00Z",
+  "updated_utc": "2026-11-18T00:00:00Z",
+  "run_history": [],
+  "current_stage": null,
+  "stage_outputs": {},
+  "verification_receipts": [],
+  "metadata": {
+    "source_kanban_task": null,
+    "leverage_score": 49,
+    "distill_rank": 20,
+    "sha256": "04926a9f66ac492f9f41cfb378d4cb29501f4583a4ca786d681f4e653f7a85a0",
+    "current_sha256": "032d12c5534192b05e1525df30811b3e04fd2fc9589e304fffdfa0820f66321e"
+  }
 }
